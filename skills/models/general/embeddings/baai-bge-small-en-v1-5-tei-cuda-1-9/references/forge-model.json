@@ -1,0 +1,535 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "hidden_size": 384,
+      "intermediate_size": 1536,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "remote_code": false,
+      "torch_dtype": "float32"
+    },
+    "artifact_files": {
+      "1_Pooling/config.json": {
+        "hf_blob_id": "1da070f0993788c8851a652170ff013aa54dd519",
+        "size_bytes": 190
+      },
+      "config.json": {
+        "hf_blob_id": "3992bf890728a92476c700e6e657fd696eb94160",
+        "size_bytes": 743
+      },
+      "model.safetensors": {
+        "hf_blob_id": "a4fef68c99b10468206a9bc1d54d0112d87c5557",
+        "size_bytes": 133466304
+      },
+      "sentence_bert_config.json": {
+        "hf_blob_id": "ea85692bff64b0d1917833c31ddbca8ab10f5455",
+        "size_bytes": 52
+      }
+    },
+    "artifact_last_modified": "2024-02-22T03:36:23.000Z",
+    "artifact_parameters": {
+      "F32": 33360000,
+      "I64": 512,
+      "total": 33360512
+    },
+    "artifact_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "b300_sm103_diagnostic": {
+      "checked_at": "2026-05-31T17:12:33Z",
+      "cleanup": "retained diagnostic pod deleted after log and describe capture",
+      "exit_code": 1,
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference:cuda-1.9@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "log_error": "cuda compute cap 103 is not supported",
+      "pod_name": "forge-probe-baai-bge-small-en-v1-5-t-b300-uk-south1-f4b7a9",
+      "report_json": "tmp/parallel-matrix/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T17Z-b300-diagnostic.json",
+      "report_md": "docs/model-onboarding/general/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T17Z-b300-diagnostic.md",
+      "status": "other_error"
+    },
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face cache paths follow existing Forge TEI manifests and should be mounted to shared /mnt/data-backed model cache storage by the model pod template.",
+    "candidate_selection": "Selected as a compact MIT-licensed BGE retrieval model that fills a cost and latency slot between all-MiniLM-L6-v2 and bge-large-en-v1.5 without new wrapper code or new private credentials.",
+    "container_created": "2026-03-23T09:18:22.111980354Z",
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_image_size_bytes": 3110078263,
+    "container_license_evidence": "skopeo inspect labels for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 report org.opencontainers.image.licenses=Apache-2.0 and org.opencontainers.image.version=cuda-1.9.3.",
+    "container_revision": "06670157fb6c1523482219bdb2d1660277d38088",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image",
+    "expected_gpu_notes": {
+      "B200": "persisted support-row matrix supported on 2026-05-31T18Z with p50 166 ms, 10 samples, and 0.81 GB measured VRAM",
+      "B300": "direct retained diagnostic on pinned TEI CUDA 1.9.3 exited with cuda compute cap 103 is not supported; requires an SM103-capable TEI or CUDA 13 pooling fallback before support can be claimed",
+      "H200": "persisted support-row matrix supported on 2026-05-31T18Z with p50 95 ms, p95 96 ms, 10 samples, and 0.71 GB measured VRAM",
+      "L40S": "persisted support-row matrix supported on 2026-05-31T18Z with p50 98 ms, p95 103 ms, 10 samples, and 0.54 GB measured VRAM",
+      "RTX6000": "persisted support-row matrix supported on 2026-05-31T18Z with p50 163 ms, 10 samples, and 0.68 GB measured VRAM"
+    },
+    "hidden_live_upsert": {
+      "command": "POSTGRES_URL=<redacted> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/baai-bge-small-en-v1-5-tei-cuda-1-9.json",
+      "completed_at": "2026-05-31T17Z",
+      "default_eligible": false,
+      "status": "onboarding"
+    },
+    "latest_no_persist_matrix_probe": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "cells": [
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "gpu_node": "computeinstance-u00jt6wekmrm7dfwjd",
+          "gpu_type": "B200",
+          "pod_name": "forge-probe-baai-bge-small-en-v1-5-t-b200-us-central1-b015bd",
+          "region": "us-central1",
+          "request_ms_p50": 165,
+          "samples_ms": [
+            165,
+            166,
+            165,
+            165,
+            165,
+            165,
+            165,
+            165,
+            165,
+            165
+          ],
+          "startup_ms": 269267,
+          "status": "supported",
+          "tokens_per_second": 157.58,
+          "vram_used_gb": 0.81
+        },
+        {
+          "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+          "gpu_node": "computeinstance-e02qrr5b7wych6gj31",
+          "gpu_type": "H200",
+          "pod_name": "forge-probe-baai-bge-small-en-v1-5-t-h200-eu-north2-022263",
+          "region": "eu-north2",
+          "request_ms_p50": 101,
+          "samples_ms": [
+            100,
+            101,
+            101,
+            101,
+            100,
+            100,
+            101,
+            100,
+            101,
+            101
+          ],
+          "startup_ms": 314369,
+          "status": "supported",
+          "tokens_per_second": 257.43,
+          "vram_used_gb": 0.71
+        },
+        {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "gpu_node": "computeinstance-e00zfvvbpd91rkzq5b",
+          "gpu_type": "L40S",
+          "pod_name": "forge-probe-baai-bge-small-en-v1-5-t-l40s-eu-north1-2eab1e",
+          "region": "eu-north1",
+          "request_ms_p50": 88,
+          "samples_ms": [
+            88,
+            88,
+            88,
+            88,
+            88,
+            89,
+            88,
+            88,
+            89,
+            88
+          ],
+          "startup_ms": 310910,
+          "status": "supported",
+          "tokens_per_second": 295.45,
+          "vram_used_gb": 0.54
+        },
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "gpu_node": "computeinstance-u00qredmjxv11b3ahn",
+          "gpu_type": "RTX6000",
+          "pod_name": "forge-probe-baai-bge-small-en-v1-5-t-rtx6000-us-central1-81d918",
+          "region": "us-central1",
+          "request_ms_p50": 166,
+          "samples_ms": [
+            166,
+            166,
+            166,
+            166,
+            166,
+            166,
+            166,
+            166,
+            166,
+            167
+          ],
+          "startup_ms": 361256,
+          "status": "supported",
+          "tokens_per_second": 156.63,
+          "vram_used_gb": 0.68
+        },
+        {
+          "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+          "error": "RuntimeError: pod_start_failure:model:terminated:Error",
+          "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+          "gpu_type": "B300",
+          "pod_name": "forge-probe-baai-bge-small-en-v1-5-t-b300-uk-south1-9ad07c",
+          "region": "uk-south1",
+          "status": "other_error"
+        }
+      ],
+      "checked_at": "2026-05-31T17:11:45Z",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug baai-bge-small-en-v1-5-tei-cuda-1-9 --include-status onboarding --no-persist --timeout 1800 --request-timeout 120 --warmup-runs 3 --benchmark-runs 10 --max-parallel 5 --report-json tmp/parallel-matrix/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T17Z-no-persist-matrix.json --report-md docs/model-onboarding/general/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T17Z-no-persist-matrix.md",
+      "model_time_source": "client_wall_ms",
+      "other_error": 1,
+      "persisted": false,
+      "report_json": "tmp/parallel-matrix/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T17Z-no-persist-matrix.json",
+      "report_md": "docs/model-onboarding/general/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T17Z-no-persist-matrix.md",
+      "supported": 4,
+      "warmup_runs": 3
+    },
+    "latest_persisted_matrix_probe_20260531T18Z": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "cells_supported": {
+        "B200/us-central1": {
+          "request_ms_p50": 166,
+          "request_ms_p95": 166,
+          "request_ms_samples": 10,
+          "startup_ms": 188607,
+          "tokens_per_second": 156.63,
+          "vram_measured_gb": 0.81
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 95,
+          "request_ms_p95": 96,
+          "request_ms_samples": 10,
+          "startup_ms": 222553,
+          "tokens_per_second": 273.68,
+          "vram_measured_gb": 0.71
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 98,
+          "request_ms_p95": 103,
+          "request_ms_samples": 10,
+          "startup_ms": 200179,
+          "tokens_per_second": 265.31,
+          "vram_measured_gb": 0.54
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 163,
+          "request_ms_p95": 163,
+          "request_ms_samples": 10,
+          "startup_ms": 306749,
+          "tokens_per_second": 159.51,
+          "vram_measured_gb": 0.68
+        }
+      },
+      "checked_at": "2026-05-31T18:09:26Z",
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug baai-bge-small-en-v1-5-tei-cuda-1-9 --include-status onboarding --timeout 1800 --request-timeout 120 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json docs/model-onboarding/general/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T18Z-persisted-four-cell-matrix.json --report-md docs/model-onboarding/general/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T18Z-persisted-four-cell-matrix.md",
+      "excluded": {
+        "B300/uk-south1": "excluded because the pinned TEI CUDA 1.9.3 image rejects SM103 with cuda compute cap 103 is not supported"
+      },
+      "live_support_row_readback_20260531T20Z": "read-only DB verification returned supported rows for B200/us-central1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 10 request samples each",
+      "model_time_source": "client_wall_ms",
+      "persisted": true,
+      "report_json": "docs/model-onboarding/general/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T18Z-persisted-four-cell-matrix.json",
+      "report_md": "docs/model-onboarding/general/baai-bge-small-en-v1-5-tei-cuda-1-9-20260531T18Z-persisted-four-cell-matrix.md",
+      "supported": 4,
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model-card metadata report license=mit; the API reports private=false, gated=false, disabled=false, and tags include license:mit, text-embeddings-inference, and endpoints_compatible.",
+    "next_steps": [
+      "Do not mark B300 supported on TEI CUDA 1.9.3. Add an SM103-capable TEI image or a CUDA 13 pooling fallback, then rerun B300 before claiming B300 support.",
+      "Keep default_eligible=false until product routing policy decides whether this compact BGE row should be a default English embedding route."
+    ],
+    "onboarding_state": "active_testing_non_default_persisted_hostpath_b200_h200_l40s_rtx6000_supported_b300_sm103_runtime_incompatible",
+    "pooling_config": {
+      "pooling_mode_cls_token": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_tokens": false,
+      "word_embedding_dimension": 384
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260531T20Z": {
+      "decision": "publish_active_testing_non_default_b200_h200_l40s_rtx6000_keep_b300_disabled",
+      "default_eligible": false,
+      "gpu_compatibility": {
+        "B200": true,
+        "B300": false,
+        "H200": true,
+        "L40S": true,
+        "RTX6000": true
+      },
+      "live_upsert": {
+        "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/baai-bge-small-en-v1-5-tei-cuda-1-9.json --keep-existing-family-latest",
+        "result": "pending"
+      },
+      "reason": "The 18Z persisted matrix and 20Z read-only DB verification show supported rows with 10 measured requests for B200/us-central1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1. B300 remains disabled because the pinned TEI CUDA 1.9.3 image rejects SM103 at startup."
+    },
+    "regional_mirror_status": "The selected TEI CUDA 1.9.3 digest is already referenced by active Forge general embedding manifests in us-central1, eu-north1, eu-north2, and uk-south1. This candidate was not mirrored separately because the model artifact hydrates from Hugging Face at runtime.",
+    "runtime_evidence": "Hugging Face metadata tags the model as text-embeddings-inference and endpoints_compatible; TEI exposes the OpenAI-compatible /v1/embeddings endpoint already used by sibling Forge embedding manifests.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "sentence_bert_config": {
+      "do_lower_case": true,
+      "max_seq_length": 512
+    },
+    "sources": {
+      "huggingface_api": "https://huggingface.co/api/models/BAAI/bge-small-en-v1.5?blobs=true",
+      "huggingface_model": "https://huggingface.co/BAAI/bge-small-en-v1.5",
+      "tei_image": "https://github.com/huggingface/text-embeddings-inference"
+    },
+    "validation": {
+      "focused_manifest_test": "passed_20260531T20Z",
+      "image_gate": "passed_20260531T16Z_20260531T17Z_and_20260531T20Z",
+      "json": "passed_20260531T16Z_20260531T17Z_and_20260531T20Z",
+      "upsert_model_dry_run": "passed_20260531T16Z_20260531T17Z_and_20260531T20Z"
+    }
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic_search",
+    "english",
+    "bge",
+    "huggingface",
+    "tei",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-31T17:05:26.245718+00:00",
+  "default_eligible": false,
+  "description": "BAAI bge-small-en-v1.5 is a public MIT-licensed English embedding model for semantic search, short RAG retrieval, clustering, and low-cost passage ranking. Hugging Face API metadata refreshed on 2026-05-31T16Z reports private=false, gated=false, disabled=false, library_name=sentence-transformers, pipeline_tag=feature-extraction, license=mit, revision 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a, tags text-embeddings-inference and endpoints_compatible, and safetensors parameters I64=512 plus F32=33,360,000. The config uses BertModel with 12 layers, 384 hidden size, 12 attention heads, 512 positions, and no remote-code auto_map. The sentence-transformers metadata sets max_seq_length=512, lowercase tokenization, CLS pooling, and 384-dimensional embeddings. This active testing, non-default profile reuses Forge's already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, clears unnecessary Hugging Face token variables because the artifact is public and ungated, and follows existing Forge TEI manifests by routing Hugging Face caches through /opt/nim/.cache paths backed by shared model cache storage. The 2026-05-31T18Z persisted matrix validated B200/us-central1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 3 warmups and 10 measured requests per cell. B300/uk-south1 remains blocked on this pinned TEI image because a retained diagnostic pod exited with `cuda compute cap 103 is not supported`; use an SM103-capable TEI or CUDA 13 pooling fallback before claiming B300.",
+  "family_id": "3f6d54cf-afff-4395-be78-3a1233d1992e",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "BAAI/bge-small-en-v1.5",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "BAAI/bge-small-en-v1.5"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T18:07:28.384327+00:00",
+      "region": "us-central1",
+      "request_ms": 166,
+      "request_ms_p50": 166,
+      "request_ms_p95": 166,
+      "request_ms_p99": 166,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 188607,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 156.63,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.81,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T18:08:00.687861+00:00",
+      "region": "eu-north2",
+      "request_ms": 95,
+      "request_ms_p50": 95,
+      "request_ms_p95": 96,
+      "request_ms_p99": 96,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 222553,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 273.68,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T18:07:38.389115+00:00",
+      "region": "eu-north1",
+      "request_ms": 98,
+      "request_ms_p50": 98,
+      "request_ms_p95": 103,
+      "request_ms_p99": 106,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 200179,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 265.31,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.54,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T18:09:26.435930+00:00",
+      "region": "us-central1",
+      "request_ms": 163,
+      "request_ms_p50": 163,
+      "request_ms_p95": 163,
+      "request_ms_p99": 163,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 306749,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 159.51,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.68,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "3d2db2e1-891d-4ea8-ade0-942b4754ef8e",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "baai-bge-small-en-v1-5",
+  "name": "BGE Small EN v1.5",
+  "parameter_count": 33360512,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "float",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "BAAI/bge-small-en-v1.5"
+    },
+    "input_fields": [
+      {
+        "default": "Represent this sentence for searching relevant passages: Lightweight embeddings help support teams rank short knowledge-base answers quickly.",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 89,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "baai-bge-small-en-v1-5-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/BAAI/bge-small-en-v1.5",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic-search",
+    "english",
+    "bge",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for BAAI bge-small-en-v1.5.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

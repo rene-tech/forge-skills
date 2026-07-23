@@ -1,0 +1,1100 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/d4data/biomedical-ner-all?blobs=true",
+    "artifact_card_license": "apache-2.0",
+    "artifact_checked_at": "2026-06-05T03:03:17Z",
+    "artifact_config": {
+      "architectures": [
+        "DistilBertForTokenClassification"
+      ],
+      "dim": 768,
+      "example_labels": [
+        "B-Activity",
+        "B-Disease_disorder",
+        "B-Diagnostic_procedure",
+        "B-Lab_value",
+        "B-Medication",
+        "B-Sign_symptom",
+        "B-Therapeutic_procedure"
+      ],
+      "max_position_embeddings": 512,
+      "model_type": "distilbert",
+      "n_heads": 12,
+      "n_layers": 6,
+      "num_labels": 84
+    },
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 122551,
+    "artifact_gated": false,
+    "artifact_last_modified": "2023-07-02T07:28:28.000Z",
+    "artifact_library_name": "transformers",
+    "artifact_license": "apache-2.0",
+    "artifact_license_source": "Hugging Face cardData.license and README front matter; top-level API license field is null",
+    "artifact_likes_observed": 191,
+    "artifact_model_file": {
+      "blob_id": "07c190953fd3cb986eea8b19cda4fda190293fd4",
+      "path": "model.safetensors",
+      "sha256": "d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165",
+      "size_bytes": 265722260
+    },
+    "artifact_pipeline_tag": "token-classification",
+    "artifact_private": false,
+    "artifact_sha": "015a4050c9ac99722e61c547aa9b4282bcbedc7f",
+    "artifact_source": "https://huggingface.co/d4data/biomedical-ner-all",
+    "artifact_top_level_license": null,
+    "base_image": "docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+    "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, TORCH_HOME, XDG_CACHE_HOME, and HOME point to versioned /opt/nim/.cache paths. Forge scheduler mounts that path from shared /mnt/data/forge-weights, so first-run Hugging Face, Transformers, Torch, tokenizer, and checkpoint hydration land on Forge shared storage without requiring the non-root container to create new top-level directories under /mnt/data. A file lock under the same cache root serializes first-run checkpoint and tokenizer hydration.",
+    "checkpoint_load_gate": {
+      "checkpoint_file": "model.safetensors",
+      "load_path": "hf_hub_download_then_sha256_verify_then_AutoModelForTokenClassification_from_pretrained_use_safetensors_true_dtype",
+      "sha256_required": "d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165"
+    },
+    "container_checks_20260604T20Z": {
+      "docker_hub_search": "bytez/d4data_biomedical-ner-all observed with low provenance and no selected use",
+      "docker_manifest_inspect": {
+        "docker.io/bytez/d4data-biomedical-ner-all:latest": "unauthorized_or_denied",
+        "docker.io/d4data/biomedical-ner-all:latest": "unauthorized_or_denied",
+        "docker.io/huggingface/transformers-pytorch-gpu:latest": "public_mutable_oci_index_not_selected",
+        "ghcr.io/d4data/biomedical-ner-all:latest": "denied"
+      }
+    },
+    "container_checks_20260605T0303Z": {
+      "bytez_docker_hub_api": {
+        "is_private": false,
+        "last_updated": "2024-08-26T19:39:59.01525Z",
+        "latest_architecture": "linux/amd64",
+        "latest_digest": "sha256:552bce413dc88d08a3bfc91a45da2f46fd09cc3f7d1d8642a003fd8b7eb07dee",
+        "latest_size_bytes": 3474997245,
+        "pull_count": 78,
+        "reason_not_selected": "Mutable latest image requires an external Bytez API key, lacks Forge /mnt/data cache and pinned-checkpoint verification contracts, lacks HCLS safety acknowledgement, and its generated docs expose irrelevant text-generation parameters for a token-classification model.",
+        "repository": "bytez/d4data_biomedical-ner-all",
+        "requires_external_bytez_key": true,
+        "selected_for_publication": false,
+        "star_count": 0
+      },
+      "docker_manifest_inspect": {
+        "docker.io/bytez/d4data-biomedical-ner-all:latest": "denied_unauthorized",
+        "docker.io/bytez/d4data_biomedical-ner-all:latest": "public_mutable_manifest_digest_sha256_552bce413dc88d08a3bfc91a45da2f46fd09cc3f7d1d8642a003fd8b7eb07dee",
+        "docker.io/d4data/biomedical-ner-all:latest": "denied_unauthorized",
+        "ghcr.io/d4data/biomedical-ner-all:latest": "denied"
+      }
+    },
+    "container_source_decision": "build_forge_owned_cuda12_wrapper_because_d4data_and_ghcr_refs_are_not_public_pullable_and_the_public_bytez_latest_image_requires_external_api_key_and_lacks_forge_endpoint_cache_checkpoint_and_hcls_safety_contracts",
+    "cpu_smoke_20260604T23Z": {
+      "cache_mount": "/tmp/forge-d4data-cache:/mnt/data",
+      "device": "cpu",
+      "entities_returned": 1,
+      "image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract",
+      "initial_mount_permission_result": "failed_until_local_tmp_mount_was_chmod_0777_for_container_uid_10001",
+      "model": "d4data/biomedical-ner-all",
+      "ready": true,
+      "request_text_phi": false,
+      "status": "passed",
+      "warm_cache_file_count": 15,
+      "warm_cache_remote_download_disabled": true,
+      "warm_cache_size": "255M"
+    },
+    "endpoint_contract": {
+      "default_request_non_phi": true,
+      "paths": [
+        "/run",
+        "/token_classification",
+        "/v1/token_classification"
+      ],
+      "request": "text_or_texts_plus_aggregation_strategy_batch_size_return_text_research_acknowledgement",
+      "response": "entity_spans_grouped_by_input_with_model_time_ms"
+    },
+    "hcls_product_safety_review_20260605T05Z": {
+      "approved_scope": "Nonclinical biomedical entity extraction over public, article-style, synthetic, or otherwise permitted de-identified text for literature mining, benchmark evaluation, curation, and knowledge graph preprocessing.",
+      "default_route_decision": "default_ineligible",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient care",
+        "patient-specific interpretation of symptoms, records, imaging, laboratory results, or genetic results",
+        "automated safety, efficacy, or adverse-event conclusions without expert review"
+      ],
+      "evidence": {
+        "artifact": "public_ungated_safetensors_revision_015a4050c9ac99722e61c547aa9b4282bcbedc7f",
+        "container": "forge_owned_digest_pinned_mirrored_cuda12_wrapper",
+        "license": "apache-2.0",
+        "matrix": "20260605T05Z_persisted_8_supported_cells_3_warmups_10_measured_requests",
+        "safety_notice": "present_must_acknowledge"
+      },
+      "publish_decision": "do_not_publish_without_hcls_product_safety_owner_approval",
+      "required_controls": [
+        "Keep research_use_acknowledgement required in playground and API examples",
+        "Keep status onboarding and default_eligible false until product-safety owner approval",
+        "Keep safety notice visible before customer-visible routing",
+        "Do not claim clinical performance, diagnostic accuracy, sensitivity, specificity, or patient-care suitability from the matrix benchmark"
+      ],
+      "review_doc": "docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260605T05Z-hcls-safety-review.md",
+      "status": "worker_drafted_review_attached_requires_hcls_product_safety_owner_approval"
+    },
+    "local_build_20260604T23Z": {
+      "build_command": "DOCKER_BUILDKIT=1 docker build --progress=plain -f services/models/healthcare/d4data_biomedical_ner_all/Dockerfile -t forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract .",
+      "image_id": "sha256:fb2299b774c980118faca036b6d7af6bb41c266cc92228c4f3a7acfc003d5885",
+      "image_size_bytes": 7801353756,
+      "image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract",
+      "reason_not_selected": "Local Docker tag has no immutable pushed Forge registry digest and no regional mirrors.",
+      "repo_digests": [],
+      "selected_for_publication": false,
+      "status": "passed_local_only"
+    },
+    "onboarding_state": "local_image_build_cpu_smoke_cache_warm_smoke_manifest_dry_run_20260605T0303_artifact_container_recheck_kernel_audit_offline_cache_smoke_push_mirror_digest_verify_hidden_upsert_b300_no_persist_probe_passed_pending_full_gpu_matrix_product_review",
+    "planned_container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_state": {
+      "blockers": [
+        "Only a targeted B300 no-persist cache-fix probe has passed; no persisted full GPU matrix probe with 3 warmups and 10 measured requests",
+        "Healthcare product safety reviewer approval not complete"
+      ],
+      "decision": "keep_hidden_until_full_gpu_matrix_and_hcls_product_review",
+      "publishable": false,
+      "status": "blocked"
+    },
+    "publication_state_20260605T05Z": {
+      "blockers": [
+        "HCLS product-safety owner approval is still required for customer-visible publication",
+        "Supervisor decision is required before changing status, visibility, or default eligibility"
+      ],
+      "decision": "keep_hidden_onboarding_default_ineligible_until_hcls_product_safety_owner_approval",
+      "publishable": false,
+      "status": "blocked",
+      "technical_state": "artifact_license_container_mirror_hidden_upsert_and_full_persisted_gpu_matrix_complete"
+    },
+    "registry_push_mirror_20260605T04Z": {
+      "digest": "sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+      "digest_verification": "primary_and_all_four_regional_refs_returned_sha256_a604e749b245bad5de4958b9499ca3591a905e115c41c87f162936327442c9fa",
+      "image_size_bytes": 7801354262,
+      "local_image_id": "sha256:5aa695a0191e1563ab2d270f9555021f4af27c86426d9661efc2f4d018d76b52",
+      "mirror_command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/mirror_via_k8s_job.py --upstream cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630 --wait --timeout 2400",
+      "mirror_contexts": [
+        "nebius-mk8s-forge-us",
+        "nebius-mk8s-forge-eu",
+        "nebius-mk8s-forge-eu2",
+        "nebius-mk8s-forge-uk"
+      ],
+      "mirror_namespace": "forge-models",
+      "primary_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+      "publication_decision": "do_not_publish_without_full_gpu_matrix_and_hcls_product_safety_review",
+      "push_command": ".venv312/bin/python scripts/push_nebius_registry_tag.py --source-ref forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260605-opt-nim-cachefix --target-ref cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630 --verify",
+      "regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117"
+      },
+      "source_image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260605-opt-nim-cachefix",
+      "status": "passed"
+    },
+    "runtime_stack": {
+      "fastapi": "0.136.1",
+      "huggingface_hub": "1.3.7",
+      "safetensors": "0.5.2",
+      "starlette": "1.0.1",
+      "torch": "2.10.0+cu128",
+      "transformers": "5.3.0",
+      "uvicorn": "0.34.0"
+    },
+    "validation_20260605T0003Z": {
+      "artifact_recheck": {
+        "card_license": "apache-2.0",
+        "checked_at": "2026-06-05T00:03:26Z",
+        "disabled": false,
+        "gated": false,
+        "library_name": "transformers",
+        "model_safetensors_blob_id": "07c190953fd3cb986eea8b19cda4fda190293fd4",
+        "model_safetensors_sha256": "d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165",
+        "model_safetensors_size_bytes": 265722260,
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "sha": "015a4050c9ac99722e61c547aa9b4282bcbedc7f",
+        "source": "https://huggingface.co/api/models/d4data/biomedical-ner-all?blobs=true",
+        "top_level_license": null
+      },
+      "focused_tests": "6 passed in 0.69s",
+      "json_parse": "passed",
+      "local_image_inspect": {
+        "image_id": "sha256:fb2299b774c980118faca036b6d7af6bb41c266cc92228c4f3a7acfc003d5885",
+        "image_size_bytes": 7801353756,
+        "image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract",
+        "repo_digests": []
+      },
+      "manifest_dry_run": "passed",
+      "publication_decision": "do_not_publish_without_immutable_digest_regional_mirrors_gpu_probe_and_hcls_product_safety_review",
+      "py_compile": "passed",
+      "status": "passed_local_validation"
+    },
+    "validation_20260605T0103Z": {
+      "artifact_recheck": {
+        "card_license": "apache-2.0",
+        "checked_at": "2026-06-05T01:03:47Z",
+        "disabled": false,
+        "downloads_observed": 122551,
+        "gated": false,
+        "library_name": "transformers",
+        "likes_observed": 191,
+        "model_safetensors_blob_id": "07c190953fd3cb986eea8b19cda4fda190293fd4",
+        "model_safetensors_sha256": "d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165",
+        "model_safetensors_size_bytes": 265722260,
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "sha": "015a4050c9ac99722e61c547aa9b4282bcbedc7f",
+        "source": "https://huggingface.co/api/models/d4data/biomedical-ner-all?blobs=true",
+        "top_level_license": null
+      },
+      "focused_tests": "6 passed in 0.69s",
+      "json_parse": "passed",
+      "kernel_dispatch_audit": {
+        "conclusion": "No wrapper-owned compute capability, SM100/SM103, FlashAttention, Triton, CUTLASS, xFormers, NATTEN, fp8, fp4, or nvfp4 dispatch branches were found. GPU matrix is still required after push because PyTorch/Transformers backend behavior must be validated on live cells.",
+        "in_image_audit_scope": "/app/services/models/healthcare/d4data_biomedical_ner_all /app/services/models/common",
+        "matches": "base_image_cuda12_string_only",
+        "repo_audit_scope": "services/models/healthcare/d4data_biomedical_ner_all tests/test_d4data_biomedical_ner_all_wrapper.py manifests/models/healthcare/d4data-biomedical-ner-all-wrapper-cuda12.json docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260604T20Z.md",
+        "status": "passed_static_and_in_image_wrapper_audit"
+      },
+      "local_container_cpu_smoke": {
+        "cache_mount": "/tmp/forge-d4data-cache:/mnt/data",
+        "device": "cpu",
+        "entities_returned": 6,
+        "image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract",
+        "labels_observed": [
+          "Biological_structure",
+          "Lab_value",
+          "Medication",
+          "Sign_symptom"
+        ],
+        "model": "d4data/biomedical-ner-all",
+        "ready": true,
+        "request_text_phi": false,
+        "status": "passed"
+      },
+      "local_image_inspect": {
+        "image_id": "sha256:fb2299b774c980118faca036b6d7af6bb41c266cc92228c4f3a7acfc003d5885",
+        "image_size_bytes": 7801353756,
+        "image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract",
+        "repo_digests": []
+      },
+      "manifest_dry_run": "passed",
+      "mirror_probe_state": {
+        "evidence": "Local image has no repo digests and manifest regional_container_images is empty.",
+        "fallback_attempted": "Validated the same local image with CPU online and offline warm-cache smokes using /tmp/forge-d4data-cache mounted at /mnt/data.",
+        "next_command_after_digest": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug d4data-biomedical-ner-all-wrapper-cuda12 --include-status onboarding --timeout 1800 --warmup-runs 3 --benchmark-runs 10",
+        "status": "blocked_before_live_probe"
+      },
+      "publication_decision": "do_not_publish_without_immutable_digest_regional_mirrors_hidden_upsert_gpu_probe_and_hcls_product_safety_review",
+      "py_compile": "passed",
+      "status": "passed_local_validation",
+      "warm_cache_offline_smoke": {
+        "cache_file_count": 15,
+        "cache_size": "255M",
+        "entities_returned": 6,
+        "remote_download_disabled": true,
+        "status": "passed"
+      }
+    },
+    "validation_20260605T0303Z": {
+      "artifact_recheck": {
+        "card_license": "apache-2.0",
+        "checked_at": "2026-06-05T03:03:17Z",
+        "disabled": false,
+        "downloads_observed": 122551,
+        "gated": false,
+        "id2label_count": 84,
+        "label2id_count": 84,
+        "library_name": "transformers",
+        "likes_observed": 191,
+        "model_safetensors_blob_id": "07c190953fd3cb986eea8b19cda4fda190293fd4",
+        "model_safetensors_sha256": "d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165",
+        "model_safetensors_size_bytes": 265722260,
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "sha": "015a4050c9ac99722e61c547aa9b4282bcbedc7f",
+        "source": "https://huggingface.co/api/models/d4data/biomedical-ner-all?blobs=true",
+        "top_level_license": null
+      },
+      "container_decision_recheck": {
+        "docker.io/bytez/d4data-biomedical-ner-all:latest": "denied_unauthorized",
+        "docker.io/bytez/d4data_biomedical-ner-all:latest": {
+          "decision": "rejected_for_forge_onboarding",
+          "digest": "sha256:552bce413dc88d08a3bfc91a45da2f46fd09cc3f7d1d8642a003fd8b7eb07dee",
+          "requires_external_bytez_key": true,
+          "size_bytes": 3474997245,
+          "status": "public_mutable_manifest_found"
+        },
+        "docker.io/d4data/biomedical-ner-all:latest": "denied_unauthorized",
+        "ghcr.io/d4data/biomedical-ner-all:latest": "denied"
+      },
+      "focused_tests": "6 passed in 0.67s",
+      "json_parse": "passed",
+      "kernel_dispatch_audit": {
+        "conclusion": "No wrapper-owned compute capability, SM100/SM103, FlashAttention, Triton, CUTLASS, xFormers, NATTEN, fp8, fp4, or nvfp4 dispatch branches were found. GPU matrix is still required after push because PyTorch/Transformers backend behavior must be validated on live cells.",
+        "in_image_audit_scope": "/app/services/models/healthcare/d4data_biomedical_ner_all /app/services/models/common",
+        "matches": "base_image_cuda12_string_only",
+        "repo_audit_scope": "services/models/healthcare/d4data_biomedical_ner_all tests/test_d4data_biomedical_ner_all_wrapper.py manifests/models/healthcare/d4data-biomedical-ner-all-wrapper-cuda12.json docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260604T20Z.md",
+        "status": "passed_static_and_in_image_wrapper_audit"
+      },
+      "local_container_cpu_smoke": {
+        "cache_mount": "/tmp/forge-d4data-cache:/mnt/data",
+        "device": "cpu",
+        "entities_returned": 6,
+        "image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract",
+        "labels_observed": [
+          "Biological_structure",
+          "Lab_value",
+          "Medication",
+          "Sign_symptom"
+        ],
+        "model": "d4data/biomedical-ner-all",
+        "ready": true,
+        "request_text_phi": false,
+        "status": "passed"
+      },
+      "local_image_inspect": {
+        "image_id": "sha256:fb2299b774c980118faca036b6d7af6bb41c266cc92228c4f3a7acfc003d5885",
+        "image_size_bytes": 7801353756,
+        "image_tag": "forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract",
+        "repo_digests": []
+      },
+      "manifest_dry_run": "passed",
+      "mirror_probe_state": {
+        "evidence": "Local image has no repo digests, manifest container_image is pending-build, and manifest regional_container_images is empty.",
+        "fallback_attempted": "Rejected the Bytez mutable latest image after manifest/API inspection, then revalidated the Forge-owned local image with CPU online and offline warm-cache smokes using /tmp/forge-d4data-cache mounted at /mnt/data.",
+        "next_command_after_digest": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug d4data-biomedical-ner-all-wrapper-cuda12 --include-status onboarding --timeout 1800 --warmup-runs 3 --benchmark-runs 10",
+        "status": "blocked_before_live_probe"
+      },
+      "publication_decision": "do_not_publish_without_hcls_product_safety_and_artifact_clearance_immutable_digest_regional_mirrors_hidden_upsert_and_gpu_probe",
+      "py_compile": "passed",
+      "status": "passed_local_validation",
+      "warm_cache_offline_smoke": {
+        "cache_file_count": 15,
+        "cache_size": "255M",
+        "entities_returned": 6,
+        "remote_download_disabled": true,
+        "status": "passed"
+      }
+    },
+    "validation_20260605T04Z": {
+      "focused_tests": "6 passed in 0.70s",
+      "hidden_live_upsert": {
+        "command": "POSTGRES_URL=<redacted> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/healthcare/d4data-biomedical-ner-all-wrapper-cuda12.json",
+        "model_status": "onboarding",
+        "slug": "d4data-biomedical-ner-all-wrapper-cuda12",
+        "status": "passed"
+      },
+      "image_gate": "passed_empty_findings",
+      "json_parse": "passed",
+      "kernel_dispatch_audit": {
+        "conclusion": "No wrapper-owned compute capability, SM100/SM103, FlashAttention, Triton, CUTLASS, xFormers, NATTEN, fp8, fp4, or nvfp4 dispatch branches were found. GPU matrix is still required after hidden upsert because PyTorch/Transformers backend behavior must be validated on live cells.",
+        "in_image_matches": "base_image_cuda12_string_only",
+        "repo_audit_matches": "prior_notes_and_base_image_cuda12_string_only",
+        "status": "passed_static_and_digest_pinned_in_image_audit"
+      },
+      "local_image_inspect": {
+        "image_id": "sha256:5aa695a0191e1563ab2d270f9555021f4af27c86426d9661efc2f4d018d76b52",
+        "image_size_bytes": 7801354262,
+        "image_tag": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630",
+        "repo_digests": [
+          "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117"
+        ]
+      },
+      "manifest_dry_run": "passed",
+      "mirror_probe_state": {
+        "evidence": "Primary and all four regional image refs resolve to the same immutable digest. Hidden live upsert passed and the cache-fix image returned a successful B300 uk-south1 no-persist response. Manifest remains onboarding/default-ineligible with all gpu_compatibility cells false until a persisted 3-warmup/10-benchmark full matrix completes.",
+        "next_command_after_targeted_probe": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug d4data-biomedical-ner-all-wrapper-cuda12 --include-status onboarding --timeout 1800 --warmup-runs 3 --benchmark-runs 10",
+        "status": "targeted_b300_no_persist_probe_passed_pending_full_matrix"
+      },
+      "post_integration_focused_tests": "123 passed, 1 skipped in 12.87s",
+      "primary_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+      "publication_decision": "do_not_publish_without_full_gpu_matrix_and_hcls_product_safety_review",
+      "py_compile": "passed",
+      "remote_digest_verification": {
+        "eu-north1": "sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "eu-north2": "sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "primary": "sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "uk-south1": "sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "us-central1": "sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117"
+      },
+      "status": "cachefix_push_mirror_hidden_upsert_b300_probe_passed",
+      "targeted_gpu_probe_20260605T0438Z": {
+        "cache_volume_mode": "emptyDir",
+        "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+        "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug d4data-biomedical-ner-all-wrapper-cuda12 --include-status onboarding --gpu B300 --region uk-south1 --ephemeral-cache-volumes --timeout 1800 --request-timeout 120 --warmup-runs 1 --benchmark-runs 1 --no-persist",
+        "endpoint_path": "/token_classification",
+        "gpu": "B300",
+        "model_p50_ms": 4,
+        "persisted": false,
+        "pod_name": "forge-probe-d4data-biomedical-ner-al-b300-uk-south1-347518",
+        "region": "uk-south1",
+        "report_json": "docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260605T04Z-cachefix-b300-no-persist.json",
+        "report_md": "docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260605T04Z-cachefix-b300-no-persist.md",
+        "request_ms": 4,
+        "response_status": 200,
+        "startup_ms": 14723,
+        "status": "supported",
+        "vram_used_gb": 0.92,
+        "warmup_model_ms": 14419
+      },
+      "warm_cache_offline_smoke": {
+        "device": "cpu",
+        "entities_returned": 6,
+        "image_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+        "labels_observed": [
+          "Biological_structure",
+          "Lab_value",
+          "Medication",
+          "Sign_symptom"
+        ],
+        "model": "d4data/biomedical-ner-all",
+        "ready": true,
+        "remote_download_disabled": true,
+        "request_text_phi": false,
+        "status": "passed"
+      }
+    },
+    "validation_20260605T05Z_full_persisted_matrix": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "cells": 8,
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug d4data-biomedical-ner-all-wrapper-cuda12 --include-status onboarding --timeout 1800 --request-timeout 120 --warmup-runs 3 --benchmark-runs 10 --report-json docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260605T05Z-full-persisted-matrix.json --report-md docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260605T05Z-full-persisted-matrix.md",
+      "endpoint_path": "/token_classification",
+      "image_digest": "sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+      "oom": 0,
+      "other_error": 0,
+      "persisted": true,
+      "report_json": "docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260605T05Z-full-persisted-matrix.json",
+      "report_md": "docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260605T05Z-full-persisted-matrix.md",
+      "status": "passed_persisted_full_matrix",
+      "support_rows": [
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "gpu": "B200",
+          "measured_model_ms": [
+            4,
+            3,
+            3,
+            3,
+            4,
+            3,
+            3,
+            3,
+            4,
+            3
+          ],
+          "model_p50_ms": 3,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-b200-us-central1-836557",
+          "region": "us-central1",
+          "startup_ms": 209642,
+          "status": "supported",
+          "vram_used_gb": 0.91
+        },
+        {
+          "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+          "gpu": "B300",
+          "measured_model_ms": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            4,
+            3,
+            3
+          ],
+          "model_p50_ms": 3,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-b300-uk-south1-c04fda",
+          "region": "uk-south1",
+          "startup_ms": 14616,
+          "status": "supported",
+          "vram_used_gb": 0.92
+        },
+        {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "gpu": "H100",
+          "measured_model_ms": [
+            4,
+            4,
+            3,
+            3,
+            3,
+            3,
+            3,
+            4,
+            3,
+            3
+          ],
+          "model_p50_ms": 3,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-h100-eu-north1-e1f594",
+          "region": "eu-north1",
+          "startup_ms": 182427,
+          "status": "supported",
+          "vram_used_gb": 0.85
+        },
+        {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "gpu": "H200",
+          "measured_model_ms": [
+            4,
+            4,
+            4,
+            4,
+            5,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "model_p50_ms": 4,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-h200-eu-north1-8d511d",
+          "region": "eu-north1",
+          "startup_ms": 195743,
+          "status": "supported",
+          "vram_used_gb": 0.85
+        },
+        {
+          "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+          "gpu": "H200",
+          "measured_model_ms": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "model_p50_ms": 4,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-h200-eu-north2-d2f0c8",
+          "region": "eu-north2",
+          "startup_ms": 155658,
+          "status": "supported",
+          "vram_used_gb": 0.85
+        },
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "gpu": "H200",
+          "measured_model_ms": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "model_p50_ms": 4,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-h200-us-central1-ccb306",
+          "region": "us-central1",
+          "startup_ms": 208824,
+          "status": "supported",
+          "vram_used_gb": 0.85
+        },
+        {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "gpu": "L40S",
+          "measured_model_ms": [
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            5,
+            5
+          ],
+          "model_p50_ms": 5,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-l40s-eu-north1-e2ccc6",
+          "region": "eu-north1",
+          "startup_ms": 15735,
+          "status": "supported",
+          "vram_used_gb": 0.65
+        },
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "gpu": "RTX6000",
+          "measured_model_ms": [
+            4,
+            4,
+            3,
+            4,
+            3,
+            3,
+            3,
+            3,
+            4,
+            3
+          ],
+          "model_p50_ms": 3,
+          "pod_name": "forge-probe-d4data-biomedical-ner-al-rtx6000-us-central1-0fee3f",
+          "region": "us-central1",
+          "startup_ms": 209724,
+          "status": "supported",
+          "vram_used_gb": 0.79
+        }
+      ],
+      "supported": 8,
+      "terminal_summary": "cells=8 supported=8 oom=0 unavailable=0 other_error=0 persisted=true model_status=onboarding",
+      "unavailable": 0,
+      "warmup_runs": 3
+    },
+    "validation_commands": {
+      "cpu_smoke": "docker run --rm -v /tmp/forge-d4data-cache:/mnt/data -e BIOMEDICAL_NER_DEVICE=cpu forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract python -c '<load wrapper and classify one non-PHI biomedical sentence>'",
+      "digest_verify": "crane digest <primary-and-four-regional-d4data-wrapper-refs>",
+      "dry_run": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/healthcare/d4data-biomedical-ner-all-wrapper-cuda12.json --dry-run",
+      "in_image_kernel_dispatch_audit": "docker run --rm --entrypoint /bin/sh forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260605-opt-nim-cachefix -lc \"grep -RInE 'compute_cap|compute capability|get_device_capability|sm_|SM[0-9]|SDPBackend|CUDNN_ATTENTION|FLASH_ATTENTION|flash_attn|natten|neighborhood|sparse_attn|triton|cutlass|cudnn|fp8|fp4|nvfp4' /app/services/models/healthcare/d4data_biomedical_ner_all /app/services/models/common 2>/dev/null | head -300\"",
+      "json": "jq empty manifests/models/healthcare/d4data-biomedical-ner-all-wrapper-cuda12.json",
+      "kernel_dispatch_audit": "rg -n \"(compute_cap|compute capability|get_device_capability|cuda arch|sm_|SM[0-9]|TORCH_CUDA_ARCH_LIST|SDPBackend|CUDNN_ATTENTION|FLASH_ATTENTION|flash_attn|xformers|natten|neighborhood|sparse_attn|triton|cutlass|cublas|cudnn|fp8|fp4|nvfp4)\" services/models/healthcare/d4data_biomedical_ner_all tests/test_d4data_biomedical_ner_all_wrapper.py manifests/models/healthcare/d4data-biomedical-ner-all-wrapper-cuda12.json docs/model-onboarding/healthcare/d4data-biomedical-ner-all-wrapper-cuda12-20260604T20Z.md",
+      "live_upsert": "POSTGRES_URL=<redacted> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/healthcare/d4data-biomedical-ner-all-wrapper-cuda12.json",
+      "local_build": "DOCKER_BUILDKIT=1 docker build --progress=plain -f services/models/healthcare/d4data_biomedical_ner_all/Dockerfile -t forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260605-opt-nim-cachefix .",
+      "py_compile": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m py_compile services/models/healthcare/d4data_biomedical_ner_all/main.py services/models/healthcare/d4data_biomedical_ner_all/runtime.py",
+      "regional_mirror": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/mirror_via_k8s_job.py --upstream cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630 --wait --timeout 2400",
+      "registry_push": ".venv312/bin/python scripts/push_nebius_registry_tag.py --source-ref forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260605-opt-nim-cachefix --target-ref cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630 --verify",
+      "targeted_b300_no_persist_probe": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug d4data-biomedical-ner-all-wrapper-cuda12 --include-status onboarding --gpu B300 --region uk-south1 --ephemeral-cache-volumes --timeout 1800 --request-timeout 120 --warmup-runs 1 --benchmark-runs 1 --no-persist",
+      "tests": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q tests/test_d4data_biomedical_ner_all_wrapper.py -p no:cacheprovider",
+      "warm_cache_offline_smoke": "docker run --rm -v /tmp/forge-d4data-cache:/mnt/data -e BIOMEDICAL_NER_DEVICE=cpu -e BIOMEDICAL_NER_ALLOW_REMOTE_DOWNLOAD=false forge-local/d4data-biomedical-ner-all-wrapper-cuda12:20260604-cache-contract python -c '<load wrapper and classify one non-PHI biomedical sentence>'"
+    },
+    "wrapper_source": "services/models/healthcare/d4data_biomedical_ner_all"
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "biomedical_nlp",
+    "token_classification",
+    "named_entity_recognition",
+    "literature_mining",
+    "transformers",
+    "distilbert",
+    "safetensors",
+    "cuda12",
+    "apache_2_0",
+    "research_only",
+    "text",
+    "structured_output"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+  "container_image_size_bytes": 7801354262,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-05T04:12:36.168723+00:00",
+  "default_eligible": true,
+  "description": "d4data/biomedical-ner-all is an Apache-2.0 Hugging Face Transformers token-classification model for broad biomedical named entity recognition over case-report and biomedical text. Hugging Face API and model-card metadata rechecked on 2026-06-05T03:03Z report private=false, gated=false, disabled=false, library_name=transformers, pipeline_tag=token-classification, revision 015a4050c9ac99722e61c547aa9b4282bcbedc7f, cardData.license=apache-2.0, top-level license=null, 66,427,476 F32 safetensors parameters, model.safetensors SHA256 d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165, tokenizer.json, and DistilBertForTokenClassification config with 84 BIO labels. Existing model-specific Docker/GHCR image checks did not produce a safe Forge-compatible serving image: the d4data/GHCR refs are denied and the public Bytez image is mutable latest, requires an external Bytez API key, lacks Forge cache/checkpoint/product-safety contracts, and exposes generated text-generation docs unrelated to this token-classification workload. This hidden wrapper keeps executable serving code in the repo, verifies the pinned safetensors checkpoint before load, exposes /token_classification, /v1/token_classification, and /run, returns label/start/end/text/score spans plus model_time_ms, clears inherited Hugging Face token env vars, disables HF telemetry, runs as UID/GID 10001:10001, and routes Hugging Face, Transformers, Torch, XDG, and HOME caches under /opt/nim/.cache, which the Forge scheduler mounts from shared /mnt/data/forge-weights. The cache-fix wrapper image was pushed, mirrored, hidden-upserted, and one-cell B300 no-persist probed on 2026-06-05T04Z at sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117 after the first full matrix exposed the prior direct-/mnt/data non-root permission bug. A 2026-06-05T05Z hostPath-cache full matrix persisted support and benchmark rows for B200/us-central1, B300/uk-south1, H100/eu-north1, H200/us-central1, H200/eu-north1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 3 warmups and 10 measured requests per cell. It remains hidden/onboarding/default-ineligible and must not be used for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, patient care, or patient-specific interpretation.",
+  "family_id": "8f28d9c3-920c-4581-8d3f-9e02261748df",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BIOMEDICAL_NER_ALLOW_REMOTE_DOWNLOAD": "true",
+      "BIOMEDICAL_NER_CHECKPOINT_SHA256": "d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165",
+      "BIOMEDICAL_NER_DEVICE": "auto",
+      "BIOMEDICAL_NER_HF_REVISION": "015a4050c9ac99722e61c547aa9b4282bcbedc7f",
+      "BIOMEDICAL_NER_MAX_LENGTH": "512",
+      "BIOMEDICAL_NER_MODEL_ID": "d4data/biomedical-ner-all",
+      "BIOMEDICAL_NER_MODEL_SLUG": "d4data-biomedical-ner-all-wrapper-cuda12",
+      "BIOMEDICAL_NER_TORCH_DTYPE": "auto",
+      "HF_HOME": "/opt/nim/.cache/huggingface/d4data-biomedical-ner-all/wrapper-cuda12",
+      "HF_HUB_DISABLE_TELEMETRY": "1",
+      "HF_TOKEN": "",
+      "HOME": "/opt/nim/.cache/home/d4data-biomedical-ner-all",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/d4data-biomedical-ner-all/wrapper-cuda12/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "SERVED_MODEL_NAME": "d4data/biomedical-ner-all",
+      "TORCH_HOME": "/opt/nim/.cache/huggingface/d4data-biomedical-ner-all/wrapper-cuda12/torch",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/d4data-biomedical-ner-all/wrapper-cuda12/transformers",
+      "XDG_CACHE_HOME": "/opt/nim/.cache/huggingface/d4data-biomedical-ner-all/wrapper-cuda12/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:07:38.410809+00:00",
+      "region": "us-central1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 209642,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.91,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:04:37.925286+00:00",
+      "region": "uk-south1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 14616,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.92,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:07:09.647243+00:00",
+      "region": "eu-north1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 182427,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.85,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:07:22.958535+00:00",
+      "region": "eu-north1",
+      "request_ms": 4,
+      "request_ms_p50": 4,
+      "request_ms_p95": 5,
+      "request_ms_p99": 5,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 195743,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.85,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:06:43.636012+00:00",
+      "region": "eu-north2",
+      "request_ms": 4,
+      "request_ms_p50": 4,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 155658,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.85,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:07:37.474594+00:00",
+      "region": "us-central1",
+      "request_ms": 4,
+      "request_ms_p50": 4,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 208824,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.85,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:04:22.995445+00:00",
+      "region": "eu-north1",
+      "request_ms": 5,
+      "request_ms_p50": 5,
+      "request_ms_p95": 6,
+      "request_ms_p99": 6,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 15735,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.65,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:07:39.376706+00:00",
+      "region": "us-central1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 209724,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.79,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    }
+  ],
+  "gpu_type": null,
+  "id": "42d5844c-ee74-4909-84ad-5389d7f3f4fc",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "json"
+  ],
+  "model_family": "d4data-biomedical-ner-all",
+  "name": "d4data Biomedical NER All",
+  "parameter_count": 66427476,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "aggregation_strategy": "{{aggregation_strategy}}",
+        "batch_size": "{{batch_size}}",
+        "model": "{{model_slug}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "return_text": "{{return_text}}",
+        "text": "{{text}}"
+      },
+      "endpoint": "/token_classification",
+      "method": "POST",
+      "upstream_model_id": "d4data/biomedical-ner-all"
+    },
+    "input_fields": [
+      {
+        "default": "The patient reported palpitations, dyspnea, and no recurrence of symptoms six months after catheter ablation.",
+        "key": "text",
+        "label": "Biomedical text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "entity_spans",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": "simple",
+        "key": "aggregation_strategy",
+        "label": "Aggregation",
+        "options": [
+          "simple",
+          "first",
+          "average",
+          "max",
+          "none"
+        ],
+        "type": "select"
+      },
+      {
+        "default": 8,
+        "key": "batch_size",
+        "label": "Batch size",
+        "max": 16,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "return_text",
+        "label": "Return source text",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/opt/nim/.cache/huggingface/d4data-biomedical-ner-all/wrapper-cuda12",
+      "checkpoint_file": "model.safetensors",
+      "checkpoint_sha256": "d744b846a71ce6ccdb49d7bfe5097eadc41e766ffd28481e1636ed796e820165",
+      "input_contract": "biomedical_text",
+      "kind": "forge_healthcare_token_classification",
+      "max_sequence_length": 512,
+      "model_id": "d4data/biomedical-ner-all",
+      "model_revision": "015a4050c9ac99722e61c547aa9b4282bcbedc7f",
+      "output_contract": "biomedical_entity_spans",
+      "served_model_name": "d4data/biomedical-ner-all",
+      "state_dict_load": "AutoModelForTokenClassification.from_pretrained_use_safetensors_true_dtype",
+      "wrapper_source": "services/models/healthcare/d4data_biomedical_ner_all"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical entity extraction over article-style or de-identified text.",
+      "body": "Use only for biomedical literature mining, benchmark evaluation, curation, and knowledge graph preprocessing. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, patient care, or patient-specific medical interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient care",
+        "patient-specific interpretation of symptoms, records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Nonclinical biomedical text mining only"
+    },
+    "schema_version": 1,
+    "type": "token_classification"
+  },
+  "quantization": "fp16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/u00xf2pqq3cr2q8xsz-models-d4data-biomedical-ner-all:wrapper-cuda12-torch2100-20260630@sha256:02c3270d37964e069e4954fb84d37423c79ae692e95dd87b94fd4413b2efe117"
+  },
+  "release_rank": 99,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "d4data-biomedical-ner-all-wrapper-cuda12",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/d4data/biomedical-ner-all",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical-nlp",
+    "token-classification",
+    "named-entity-recognition",
+    "literature-mining",
+    "transformers",
+    "distilbert",
+    "safetensors",
+    "cuda12",
+    "apache-2.0",
+    "research-only"
+  ],
+  "updated_at": "2026-06-30T13:52:18.848349+00:00",
+  "version": "hf-015a405-wrapper-cuda12-mirrored-20260605t04z",
+  "version_description": "Hidden Forge-owned CUDA 12 wrapper for d4data/biomedical-ner-all. The current artifact is public, ungated, Apache-2.0, safetensors-backed, and exposes a Transformers token-classification workload for broad biomedical entity extraction. The cache-fix wrapper image is pushed, mirrored, hidden-upserted, and a 2026-06-05T05Z full persisted matrix passed on all 8 discovered cells with 3 warmups and 10 measured requests per cell. It remains onboarding/default-ineligible pending HCLS product-safety owner approval for customer-visible publication and default routing.",
+  "version_key": "hf-015a405-wrapper-cuda12-mirrored-20260605t04z",
+  "version_label": "Forge CUDA 12 wrapper mirrored"
+}

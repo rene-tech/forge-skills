@@ -1,0 +1,367 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 4096,
+      "max_position_embeddings": 40960,
+      "model_type": "qwen3",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 36,
+      "num_key_value_heads": 8,
+      "torch_dtype": "bfloat16"
+    },
+    "artifact_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "artifact_evidence": "Hugging Face API reported Qwen/Qwen3-Embedding-8B as public, ungated, enabled, feature-extraction, sentence-transformers, license:apache-2.0, revision 1d8ad4ca9b3dd8059ad90a75d4983776a23d44af, and 7,567,295,488 BF16 safetensors parameters on 2026-05-24T19Z.",
+    "artifact_parameters": {
+      "BF16": 7567295488,
+      "total": 7567295488
+    },
+    "artifact_revision": "1d8ad4ca9b3dd8059ad90a75d4983776a23d44af",
+    "blockers": [
+      "The TEI CUDA 1.9 image at digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a rejects B300/SM103 at startup.",
+      "TEI embeddings responses do not expose runtime-internal model execution time, so current request_ms is direct pod client_wall_ms.",
+      "Keep status onboarding and default_eligible false until B300 is resolved or product explicitly accepts a four-cell TEI profile with B300 disabled."
+    ],
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_license_evidence": "skopeo inspect labels for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 report org.opencontainers.image.licenses=Apache-2.0, org.opencontainers.image.version=cuda-1.9.3, and org.opencontainers.image.revision=06670157fb6c1523482219bdb2d1660277d38088.",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_image",
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 2,
+      "cells_supported": {
+        "L40S/eu-north1": {
+          "gpu_node": "computeinstance-e00rbwdyfy2va3jj09",
+          "pod_name": "forge-probe-qwen-qwen3-embedding-8b--l40s-eu-north1-536c3e",
+          "request_ms_p50": 117,
+          "request_ms_samples": [
+            117,
+            120,
+            117,
+            117,
+            117,
+            117,
+            118,
+            117,
+            117,
+            117
+          ],
+          "startup_ms": 385144,
+          "tokens_per_second": 256.41,
+          "vram_used_gb": 14.69
+        },
+        "RTX6000/us-central1": {
+          "gpu_node": "computeinstance-u00hap2htj7q8wn7fc",
+          "pod_name": "forge-probe-qwen-qwen3-embedding-8b--rtx6000-us-central1-6291f6",
+          "request_ms_p50": 177,
+          "request_ms_samples": [
+            178,
+            177,
+            177,
+            177,
+            177,
+            177,
+            177,
+            178,
+            177,
+            178
+          ],
+          "startup_ms": 197064,
+          "tokens_per_second": 169.49,
+          "vram_used_gb": 14.81
+        }
+      },
+      "checked_at": "2026-05-24T19:11:25Z",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-embedding-8b-tei-cuda-1-9 --include-status onboarding --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 2 --report-json docs/supervisor/model-onboarding/general-qwen-qwen3-embedding-8b-tei-cuda-1-9-20260524T19Z-l40s-rtx6000.json --report-md docs/supervisor/model-onboarding/general-qwen-qwen3-embedding-8b-tei-cuda-1-9-20260524T19Z-l40s-rtx6000.md",
+      "report_json": "docs/supervisor/model-onboarding/general-qwen-qwen3-embedding-8b-tei-cuda-1-9-20260524T19Z-l40s-rtx6000.json",
+      "report_md": "docs/supervisor/model-onboarding/general-qwen-qwen3-embedding-8b-tei-cuda-1-9-20260524T19Z-l40s-rtx6000.md",
+      "request_time_source": "client_wall_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model metadata report license:apache-2.0; the model is public and ungated.",
+    "onboarding_state": "b200_h200_l40s_rtx6000_supported_b300_sm103_entrypoint_incompatible",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-24T19Z",
+    "source_evidence": [
+      "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+      "https://huggingface.co/Qwen/Qwen3-Embedding-8B/raw/main/config.json",
+      "https://github.com/huggingface/text-embeddings-inference"
+    ],
+    "support_evidence": {
+      "B200/us-central1": "2026-05-21 focused probe supported; startup 420488 ms, client-wall median warm embedding latency 174 ms, VRAM 14.99 GB.",
+      "B300/uk-south1": "2026-05-22 focused probe failed before readiness; diagnostic pod exited code 1 after image pull/start with log `cuda compute cap 103 is not supported`.",
+      "H200/eu-north2": "2026-05-21 focused probe supported; client-wall median warm embedding latency 104 ms.",
+      "L40S/eu-north1": "2026-05-24T19Z focused probe supported; startup 385144 ms, client-wall median warm embedding latency 117 ms, throughput 256.41 TPS, VRAM 14.69 GB.",
+      "RTX6000/us-central1": "2026-05-24T19Z focused probe supported; startup 197064 ms, client-wall median warm embedding latency 177 ms, throughput 169.49 TPS, VRAM 14.81 GB."
+    }
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "code_retrieval",
+    "qwen3",
+    "huggingface",
+    "tei",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-21T20:06:26.090837+00:00",
+  "default_eligible": false,
+  "description": "Qwen3 Embedding 8B served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic search, code retrieval, clustering, and RAG. The upstream model is Apache-2.0, public, ungated, sentence-transformers based, tagged text-embeddings-inference/endpoints_compatible, and backed by 7,567,295,488 BF16 safetensors parameters. This onboarding entry has verified regional TEI image mirrors at digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, uses TEI MODEL_ID/DTYPE/PORT env overrides, and stores Hugging Face cache under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. Focused non-public probes support H200/eu-north2, B200/us-central1, L40S/eu-north1, and RTX6000/us-central1 with 10 measured warm embedding requests per supported cell. B300/uk-south1 was probed on 2026-05-22 with the same TEI CUDA 1.9 digest and remains unsupported because the container exits on SM103 with `cuda compute cap 103 is not supported`. Keep non-public and non-default until a Blackwell-compatible TEI/runtime is selected for B300 or product explicitly publishes this four-cell profile with B300 disabled.",
+  "family_id": "3a1f140d-71b8-4cf3-b7a9-fcf5a7e59cdf",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "MAX_BATCH_TOKENS": "32768",
+      "MAX_CLIENT_BATCH_SIZE": "16",
+      "MODEL_ID": "Qwen/Qwen3-Embedding-8B",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "Qwen/Qwen3-Embedding-8B"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T23:11:09.676566+00:00",
+      "region": "us-central1",
+      "request_ms": 174,
+      "request_ms_p50": 174,
+      "request_ms_p95": 174,
+      "request_ms_p99": 174,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 420488,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 172.41,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 14.99,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-22T06:09:55.488307+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T20:16:21.534873+00:00",
+      "region": "eu-north2",
+      "request_ms": 104,
+      "request_ms_p50": 104,
+      "request_ms_p95": 104,
+      "request_ms_p99": 104,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 565431,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 288.46,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 14.83,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T19:11:25.100328+00:00",
+      "region": "eu-north1",
+      "request_ms": 117,
+      "request_ms_p50": 117,
+      "request_ms_p95": 119,
+      "request_ms_p99": 120,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 385144,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 256.41,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 14.69,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T19:08:18.718093+00:00",
+      "region": "us-central1",
+      "request_ms": 177,
+      "request_ms_p50": 177,
+      "request_ms_p95": 178,
+      "request_ms_p99": 178,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 197064,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 169.49,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 14.81,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "2a334e70-e05f-428f-8ea0-19c3af1af6b9",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "qwen-qwen3-embedding-8b",
+  "name": "Qwen3 Embedding 8B",
+  "parameter_count": 7567295488,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "float",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "Qwen/Qwen3-Embedding-8B"
+    },
+    "input_fields": [
+      {
+        "default": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: How does shared GPU cache reduce model cold starts?",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 40,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-qwen3-embedding-8b-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "code-retrieval",
+    "qwen3",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for Qwen3 Embedding 8B.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

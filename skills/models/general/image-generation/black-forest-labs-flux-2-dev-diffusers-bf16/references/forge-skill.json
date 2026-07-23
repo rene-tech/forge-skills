@@ -1,0 +1,228 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "dfcf3730dbf806d9896c27c4e4638faeb7a8821cf7797caa33c397c38d12d994",
+  "defaultEligible": false,
+  "displayName": "Use FLUX.2 Dev",
+  "domain": "image-generation",
+  "downloadUrl": "/v1/model-skills/black-forest-labs-flux-2-dev-diffusers-bf16/markdown?download=true",
+  "group": "image-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "image-generation",
+    "black-forest-labs-flux-2-dev-diffusers-bf16"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/black-forest-labs-flux-2-dev-diffusers-bf16",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A photorealistic editorial product image of a compact GPU workstation on a clean lab bench, realistic materials, softbox lighting, sharp details, no text",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "input_image",
+      "label": "Input image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "1:1",
+        "4:3",
+        "3:2",
+        "16:9",
+        "3:4",
+        "2:3",
+        "9:16"
+      ],
+      "default": "1:1",
+      "fieldType": "select",
+      "key": "aspect_ratio",
+      "label": "Aspect ratio",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 28,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 80,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 20,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "width",
+      "label": "Width",
+      "maximum": 1536,
+      "minimum": 256,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "height",
+      "label": "Height",
+      "maximum": 1536,
+      "minimum": 256,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "number",
+      "key": "caption_upsample_temperature",
+      "label": "Caption temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-black-forest-labs-flux-2-dev-diffusers-bf16\ndescription: Use the exact Forge model black-forest-labs-flux-2-dev-diffusers-bf16 for text, image to image tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use FLUX.2 Dev\n\n- Model slug: `black-forest-labs-flux-2-dev-diffusers-bf16`\n- Model family: `black-forest-labs-flux-2-dev`\n- Version: `diffusers-bf16-pytorch2.9.1-cuda12.8-v1` (`diffusers-bf16`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / image-generation / black-forest-labs-flux-2-dev-diffusers-bf16`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `flux-non-commercial-license`\n\n## Purpose\n\nFLUX.2 Dev is a gated, non-commercial Black Forest Labs image generation and editing model served through a Forge-owned Diffusers Flux2Pipeline BF16 wrapper.\n\n## Use this exact model when\n\n- Use this exact `black-forest-labs-flux-2-dev-diffusers-bf16` version when the task supplies text, image and needs image.\n- FLUX.2 Dev is a gated, non-commercial Black Forest Labs image generation and editing model served through a Forge-owned Diffusers Flux2Pipeline BF16 wrapper.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `input_image` (file_upload, optional): Input image\n- `aspect_ratio` (select, optional): Aspect ratio\n- `seed` (number, optional; bounds 0..999999): Seed\n- `steps` (number, optional; bounds 1..80): Steps\n- `guidance_scale` (number, optional; bounds 0..20): Guidance\n- `width` (number, optional; bounds 256..1536): Width\n- `height` (number, optional; bounds 256..1536): Height\n- `caption_upsample_temperature` (number, optional; bounds 0..2): Caption temperature\n\nRequest template:\n\n```json\n{\n  \"aspect_ratio\": \"{{aspect_ratio}}\",\n  \"caption_upsample_temperature\": \"{{caption_upsample_temperature}}\",\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"height\": \"{{height}}\",\n  \"image\": \"{{input_image}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\",\n  \"width\": \"{{width}}\"\n}\n```\n\n## Exact output\n\n- `image`\n\n## Route\n\n`POST /v1/inference/black-forest-labs-flux-2-dev-diffusers-bf16`\n\n## Workflow\n\n1. Load this skill and pin model slug `black-forest-labs-flux-2-dev-diffusers-bf16` with version key `diffusers-bf16`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/black-forest-labs-flux-2-dev-diffusers-bf16` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16`\n- Routes: `/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16/inference-routes`\n- Regional deployment: `/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16/regional-deployment`\n- Deployment handoff: `/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-2-dev-diffusers-bf16/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/black-forest-labs-flux-2-dev-diffusers-bf16/SKILL.md\n\n## References\n\n- [FLUX.2 Dev source](https://huggingface.co/black-forest-labs/FLUX.2-dev) (model-card)\n",
+  "license": "flux-non-commercial-license",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16/deploy",
+    "inferenceRoutesUrl": "/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/black-forest-labs-flux-2-dev",
+    "modelUrl": "/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16",
+    "regionalDeploymentUrl": "/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/black-forest-labs-flux-2-dev-diffusers-bf16/markdown",
+  "modelFamily": "black-forest-labs-flux-2-dev",
+  "modelSlug": "black-forest-labs-flux-2-dev-diffusers-bf16",
+  "modelUrl": "/v1/models/black-forest-labs-flux-2-dev-diffusers-bf16",
+  "outputFields": [
+    "image"
+  ],
+  "outputModalities": [
+    "image"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "FLUX.2 Dev is a gated, non-commercial Black Forest Labs image generation and editing model served through a Forge-owned Diffusers Flux2Pipeline BF16 wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/black-forest-labs-flux-2-dev-diffusers-bf16/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "FLUX.2 Dev source",
+      "url": "https://huggingface.co/black-forest-labs/FLUX.2-dev"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-2-dev-diffusers-bf16/SKILL.md",
+  "repositoryPath": "skills/models/general/image-generation/black-forest-labs-flux-2-dev-diffusers-bf16/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "aspect_ratio": "{{aspect_ratio}}",
+    "caption_upsample_temperature": "{{caption_upsample_temperature}}",
+    "guidance_scale": "{{guidance_scale}}",
+    "height": "{{height}}",
+    "image": "{{input_image}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}",
+    "width": "{{width}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "bfloat16",
+    "requiresHfToken": true,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+    "tags": [
+      "image-generation",
+      "image-editing",
+      "text-to-image",
+      "image-to-image",
+      "diffusion",
+      "flux",
+      "flux2",
+      "black-forest-labs",
+      "diffusers",
+      "bfloat16",
+      "cuda12.8",
+      "blackwell-candidate",
+      "gated",
+      "non-commercial",
+      "forge-wrapper"
+    ],
+    "versionLabel": "Diffusers BF16"
+  },
+  "shortDescription": "FLUX.2 Dev is a gated, non-commercial Black Forest Labs image generation and editing model served through a Forge-owned Diffusers Flux2Pipeline BF16 wrapper.",
+  "skillName": "use-forge-black-forest-labs-flux-2-dev-diffusers-bf16",
+  "skillUrl": "/v1/model-skills/black-forest-labs-flux-2-dev-diffusers-bf16",
+  "slug": "black-forest-labs-flux-2-dev-diffusers-bf16",
+  "stability": "experimental",
+  "version": "diffusers-bf16-pytorch2.9.1-cuda12.8-v1",
+  "versionKey": "diffusers-bf16",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `black-forest-labs-flux-2-dev-diffusers-bf16` version when the task supplies text, image and needs image.",
+    "FLUX.2 Dev is a gated, non-commercial Black Forest Labs image generation and editing model served through a Forge-owned Diffusers Flux2Pipeline BF16 wrapper.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `black-forest-labs-flux-2-dev-diffusers-bf16` with version key `diffusers-bf16`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/black-forest-labs-flux-2-dev-diffusers-bf16` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

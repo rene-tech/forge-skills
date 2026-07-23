@@ -1,0 +1,125 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "dea9102d0d7f6214a07c310e3838466d6edb113a7a9b273ca23a08da91077452",
+  "defaultEligible": true,
+  "displayName": "Use Hive Deepfake Image Detection",
+  "domain": "classification-and-detection",
+  "downloadUrl": "/v1/model-skills/hive-deepfake-image-detection-nim/markdown?download=true",
+  "group": "classification-and-detection",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "classification-and-detection",
+    "hive-deepfake-image-detection-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/infer",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "https://upload.wikimedia.org/wikipedia/commons/3/3f/JPEG_example_flower.jpg",
+      "fieldType": "text",
+      "key": "image_url",
+      "label": "Image URL",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-hive-deepfake-image-detection-nim\ndescription: Use the exact Forge model hive-deepfake-image-detection-nim for image to classification tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Hive Deepfake Image Detection\n\n- Model slug: `hive-deepfake-image-detection-nim`\n- Model family: `hive-deepfake-image-detection`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / classification-and-detection / hive-deepfake-image-detection-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `nvidia-nim; third-party model license`\n\n## Purpose\n\nHive deepfake image detection NIM for classifying manipulated face images; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.\n\n## Use this exact model when\n\n- Use this exact `hive-deepfake-image-detection-nim` version when the task supplies image and needs classification.\n- Hive deepfake image detection NIM for classifying manipulated face images; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['image'] \u2192 ['classification'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `image_url` (text, optional): Image URL\n\nRequest template:\n\n```json\n{\n  \"input\": [\n    {\n      \"type\": \"image_url\",\n      \"url\": \"{{image_url}}\"\n    }\n  ]\n}\n```\n\n## Exact output\n\n- `classification`\n\n## Route\n\n`POST /v1/infer`\n\n## Workflow\n\n1. Load this skill and pin model slug `hive-deepfake-image-detection-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/infer` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/hive-deepfake-image-detection-nim`\n- Routes: `/v1/models/hive-deepfake-image-detection-nim/inference-routes`\n- Regional deployment: `/v1/models/hive-deepfake-image-detection-nim/regional-deployment`\n- Deployment handoff: `/v1/models/hive-deepfake-image-detection-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/classification-and-detection/hive-deepfake-image-detection-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/classification-and-detection/hive-deepfake-image-detection-nim/SKILL.md\n\n## References\n\n- [Hive Deepfake Image Detection source](https://build.nvidia.com/hive/deepfake-image-detection) (model-card)\n",
+  "license": "nvidia-nim; third-party model license",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/hive-deepfake-image-detection-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/hive-deepfake-image-detection-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/hive-deepfake-image-detection",
+    "modelUrl": "/v1/models/hive-deepfake-image-detection-nim",
+    "regionalDeploymentUrl": "/v1/models/hive-deepfake-image-detection-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/hive-deepfake-image-detection-nim/markdown",
+  "modelFamily": "hive-deepfake-image-detection",
+  "modelSlug": "hive-deepfake-image-detection-nim",
+  "modelUrl": "/v1/models/hive-deepfake-image-detection-nim",
+  "outputFields": [
+    "classification"
+  ],
+  "outputModalities": [
+    "classification"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Hive deepfake image detection NIM for classifying manipulated face images; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/classification-and-detection/hive-deepfake-image-detection-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Hive Deepfake Image Detection source",
+      "url": "https://build.nvidia.com/hive/deepfake-image-detection"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/classification-and-detection/hive-deepfake-image-detection-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/classification-and-detection/hive-deepfake-image-detection-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "input": [
+      {
+        "type": "image_url",
+        "url": "{{image_url}}"
+      }
+    ]
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/hive/deepfake-image-detection",
+    "tags": [
+      "image-detection",
+      "deepfake-detection",
+      "hive",
+      "nvidia-nim"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "Hive deepfake image detection NIM for classifying manipulated face images; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+  "skillName": "use-forge-hive-deepfake-image-detection-nim",
+  "skillUrl": "/v1/model-skills/hive-deepfake-image-detection-nim",
+  "slug": "hive-deepfake-image-detection-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['image'] \u2192 ['classification'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `hive-deepfake-image-detection-nim` version when the task supplies image and needs classification.",
+    "Hive deepfake image detection NIM for classifying manipulated face images; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `hive-deepfake-image-detection-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/infer` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

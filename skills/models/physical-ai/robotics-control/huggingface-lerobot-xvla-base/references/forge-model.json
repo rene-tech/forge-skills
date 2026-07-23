@@ -1,0 +1,820 @@
+{
+  "benchmark_scores": {
+    "artifact_files": {
+      "config_json": {
+        "blob_id": "a11780285ea2a19c5196e2240a58f55eca3172a3",
+        "path": "config.json",
+        "size_bytes": 5463
+      },
+      "model_safetensors": {
+        "blob_id": "768713b490c2be2289f227265eec8f7f07018902",
+        "path": "model.safetensors",
+        "sha256": "f05bc0fab1c9523d7f5d6b41a651313641ca2227a88822249845da8e20e036c9",
+        "size_bytes": 3519073692
+      },
+      "policy_postprocessor_json": {
+        "blob_id": "ab48d64c33d98a17cd4411b8fcccfe130879792d",
+        "path": "policy_postprocessor.json",
+        "size_bytes": 575
+      },
+      "policy_preprocessor_json": {
+        "blob_id": "2366ff221c419c3779b759c0a09c6be5b8ac2269",
+        "path": "policy_preprocessor.json",
+        "size_bytes": 2078
+      }
+    },
+    "blockers": [
+      "No robot-policy simulator replay, HIL dry run, or external safety signoff exists; the 2026-05-29T13Z static no-actuation preflight is not sufficient for publication.",
+      "The in-cluster wrapper build helper is currently blocked by admission/service-links and image-volume bootstrap behavior; local Buildx was used as the safe fallback for this candidate."
+    ],
+    "build_evidence_20260529T07Z": {
+      "local_buildx_selected": {
+        "command": "docker buildx build --progress=plain --push --tag <four regional refs> --file services/models/physical-ai/huggingface_lerobot_xvla_base/Dockerfile .",
+        "digest": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "status": "pushed_all_regions",
+        "tag": "gpu-wrapper-cdb7964e-artifactkeys-07z"
+      },
+      "local_buildx_superseded": {
+        "digest": "sha256:48721b6892581c1159da572b0d1d1a56d952c847e5895ca68dc1b2c1e7bf431b",
+        "reason": "Built before the wrapper defaults were corrected from LIBERO camera aliases to the pinned base artifact keys image,image2,image3.",
+        "status": "pushed_then_superseded_before_manifest",
+        "tag": "gpu-wrapper-cdb7964e-07z"
+      },
+      "manual_kaniko_attempt": {
+        "cleanup": "job and configmap deleted",
+        "configmap": "forge-build-context-xvla-52320785",
+        "failure": "bootstrap-kaniko exited with cp: can't stat '/kaniko-image/kaniko/.': No such file or directory.",
+        "job": "forge-build-xvla-07z-52320785",
+        "status": "failed_before_build"
+      },
+      "repo_helper_attempt": {
+        "cleanup": "job and configmap deleted",
+        "configmap": "forge-build-context-9589a79e",
+        "failure": "ValidatingAdmissionPolicy forge-require-no-service-links-forge-pods.security.nebius.com denied pod creation because the generated Job did not set enableServiceLinks:false.",
+        "job": "forge-build-forge-huggingface-le-9589a79e",
+        "status": "blocked_before_pod_start"
+      }
+    },
+    "built_image_import_smoke_20260529T07Z": {
+      "command": "docker run --rm --entrypoint /lerobot/.venv/bin/python <selected-image> -c <import XVLAPolicy, make_pre_post_processors, RuntimeSettings, create_app>",
+      "result": "imports_ok XVLAPolicy make_pre_post_processors Forge Hugging Face LeRobot X-VLA Runtime lerobot/xvla-base cdb7964e4fe842935d671bfab5a5ebe00a96648c ('image', 'image2', 'image3') ee6d /mnt/data/forge-weights/huggingface-lerobot/xvla-base",
+      "status": "passed_no_weight_hydration"
+    },
+    "cache_root": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base",
+    "checked_at": "2026-05-29T13:09:03Z",
+    "dispatch_audit_20260529T07Z": {
+      "gpu_runtime_smoke": "B200/us-central1, B300/uk-south1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 completed through Forge probe. B300/SM103 reached response_status=200 with query_time_ms samples while the wrapper guard routed SM103 away from cuDNN SDP.",
+      "status": "static_image_audit_complete_five_cell_runtime_probe_complete",
+      "wrapper_guard": "XVLA_DISABLE_CUDNN_SDP_ON_SM103=true disables torch.backends.cuda.cudnn_sdp on compute capability 10.3 and leaves Flash, memory-efficient, and math SDPA enabled.",
+      "xvla_attention_paths": [
+        "lerobot/policies/xvla/modeling_florence2.py imports flash_attn when available and has Florence2SdpaAttention using torch.nn.functional.scaled_dot_product_attention.",
+        "lerobot/policies/xvla/soft_transformer.py uses torch.nn.functional.scaled_dot_product_attention when present."
+      ]
+    },
+    "gpu_probe_20260529T08Z": {
+      "cleanup_verification": {
+        "checked_at": "2026-05-29T08:10:00Z",
+        "contexts": [
+          "nebius-mk8s-forge-us",
+          "nebius-mk8s-forge-eu",
+          "nebius-mk8s-forge-eu2",
+          "nebius-mk8s-forge-uk"
+        ],
+        "remaining_probe_pods": 0
+      },
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-xvla-base --include-status active --include-status onboarding --warmup-runs 3 --benchmark-runs 10 --request-timeout 600 --timeout 1800",
+      "completed_cells": [
+        {
+          "gpu_type": "L40S",
+          "last_error": null,
+          "pod_cleanup": "probe pod deleted by script before wrap-up verification",
+          "probed_at": "2026-05-29T08:06:21.863250Z",
+          "region": "eu-north1",
+          "request_ms": 135,
+          "request_ms_history_samples": [
+            135,
+            135,
+            136,
+            136,
+            135,
+            133,
+            136,
+            134,
+            134,
+            133
+          ],
+          "request_ms_p50": 135,
+          "request_ms_p95": 136,
+          "request_ms_p99": 136,
+          "request_ms_samples": 10,
+          "startup_ms": 57527,
+          "status": "supported",
+          "tokens_per_second": null,
+          "vram_measured_gb": 4.17
+        }
+      ],
+      "interrupted_cells": [
+        {
+          "classification": "not_persisted_interrupted",
+          "gpu_type": "B200",
+          "node": "computeinstance-u00kraen1pxk791bbq",
+          "pod": "forge-probe-huggingface-lerobot-xvla-b200-us-central1-205e79",
+          "region": "us-central1",
+          "state_at_interrupt": "poll_until_healthy"
+        },
+        {
+          "classification": "not_persisted_interrupted",
+          "gpu_type": "RTX6000",
+          "node": "computeinstance-u00n5xxzd0sbfjg3hv",
+          "pod": "forge-probe-huggingface-lerobot-xvla-rtx6000-us-central1-936f53",
+          "region": "us-central1",
+          "state_at_interrupt": "poll_until_healthy"
+        },
+        {
+          "classification": "not_persisted_interrupted",
+          "gpu_type": "H200",
+          "node": "computeinstance-e02hg4b4tftehffqzr",
+          "pod": "forge-probe-huggingface-lerobot-xvla-h200-eu-north2-bc4e8d",
+          "region": "eu-north2",
+          "state_at_interrupt": "poll_until_healthy"
+        },
+        {
+          "classification": "not_persisted_interrupted",
+          "gpu_type": "B300",
+          "node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod": "forge-probe-huggingface-lerobot-xvla-b300-uk-south1-f4872d",
+          "region": "uk-south1",
+          "state_at_interrupt": "poll_until_healthy"
+        }
+      ],
+      "status": "partial_user_interrupted_after_l40s_success"
+    },
+    "gpu_probe_20260529T09Z": {
+      "cache_volume_mode": "hostPath",
+      "cleanup_verification": {
+        "checked_at": "2026-05-29T09:10:00Z",
+        "contexts": [
+          "nebius-mk8s-forge-us",
+          "nebius-mk8s-forge-eu",
+          "nebius-mk8s-forge-eu2",
+          "nebius-mk8s-forge-uk"
+        ],
+        "remaining_probe_pods": 0
+      },
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-xvla-base --include-status active --include-status onboarding --warmup-runs 3 --benchmark-runs 10 --request-timeout 600 --timeout 1800 --report-json tmp/parallel-matrix/huggingface-lerobot-xvla-base-20260529T09Z.json --report-md tmp/parallel-matrix/huggingface-lerobot-xvla-base-20260529T09Z.md",
+      "completed_cells": [
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "gpu_type": "B200",
+          "node": "computeinstance-u00pyd1rnq28tmd2b2",
+          "region": "us-central1",
+          "request_ms": 107,
+          "request_ms_history_samples": [
+            107,
+            107,
+            107,
+            108,
+            107,
+            107,
+            107,
+            107,
+            106,
+            107
+          ],
+          "request_ms_samples": 10,
+          "request_ms_source": "query_time_ms",
+          "response_status": 200,
+          "startup_ms": 261389,
+          "status": "supported",
+          "vram_measured_gb": 4.37
+        },
+        {
+          "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+          "gpu_type": "B300",
+          "node": "computeinstance-e03n331ngk3v1z71a4",
+          "region": "uk-south1",
+          "request_ms": 112,
+          "request_ms_history_samples": [
+            111,
+            112,
+            112,
+            112,
+            111,
+            112,
+            112,
+            111,
+            111,
+            112
+          ],
+          "request_ms_samples": 10,
+          "request_ms_source": "query_time_ms",
+          "response_status": 200,
+          "startup_ms": 79113,
+          "status": "supported",
+          "vram_measured_gb": 4.37
+        },
+        {
+          "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+          "gpu_type": "H200",
+          "node": "computeinstance-e02bf73e3ecaj6cvh5",
+          "region": "eu-north2",
+          "request_ms": 127,
+          "request_ms_history_samples": [
+            127,
+            128,
+            129,
+            128,
+            127,
+            127,
+            127,
+            127,
+            127,
+            127
+          ],
+          "request_ms_samples": 10,
+          "request_ms_source": "query_time_ms",
+          "response_status": 200,
+          "startup_ms": 30083,
+          "status": "supported",
+          "vram_measured_gb": 4.28
+        },
+        {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "gpu_type": "L40S",
+          "node": "computeinstance-e00r5wx71cbrtbjzvg",
+          "region": "eu-north1",
+          "request_ms": 136,
+          "request_ms_history_samples": [
+            137,
+            134,
+            136,
+            136,
+            135,
+            137,
+            137,
+            137,
+            135,
+            136
+          ],
+          "request_ms_samples": 10,
+          "request_ms_source": "query_time_ms",
+          "response_status": 200,
+          "startup_ms": 36258,
+          "status": "supported",
+          "vram_measured_gb": 4.17
+        },
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "gpu_type": "RTX6000",
+          "node": "computeinstance-u00a33zp1tw115zq4k",
+          "region": "us-central1",
+          "request_ms": 144,
+          "request_ms_history_samples": [
+            145,
+            146,
+            144,
+            144,
+            144,
+            143,
+            144,
+            144,
+            145,
+            145
+          ],
+          "request_ms_samples": 10,
+          "request_ms_source": "query_time_ms",
+          "response_status": 200,
+          "startup_ms": 276548,
+          "status": "supported",
+          "vram_measured_gb": 4.32
+        }
+      ],
+      "generated_at": "2026-05-29T09:09:17.908252+00:00",
+      "report_json": "docs/model-onboarding/physical-ai/xvla-base-20260529T09Z-five-cell-probe.json",
+      "report_md": "docs/model-onboarding/physical-ai/xvla-base-20260529T09Z-five-cell-probe.md",
+      "status": "five_cells_supported_10run",
+      "summary": {
+        "cells": 5,
+        "oom": 0,
+        "other_error": 0,
+        "probe_pending": 0,
+        "supported": 5,
+        "unavailable": 0
+      }
+    },
+    "gpu_probe_20260529T13Z_b300_safety_probe": {
+      "cleanup_verification": {
+        "checked_at": "2026-05-29T13:08:00Z",
+        "contexts": [
+          "nebius-mk8s-forge-us",
+          "nebius-mk8s-forge-eu",
+          "nebius-mk8s-forge-eu2",
+          "nebius-mk8s-forge-uk"
+        ],
+        "remaining_probe_pods": 0
+      },
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-xvla-base --include-status active --include-status onboarding --gpu B300 --region uk-south1 --warmup-runs 0 --benchmark-runs 1 --request-timeout 600 --timeout 1200 --max-parallel 1 --keep-pods --report-json tmp/parallel-matrix/huggingface-lerobot-xvla-base-20260529T13Z-b300-safety-probe.json --report-md tmp/parallel-matrix/huggingface-lerobot-xvla-base-20260529T13Z-b300-safety-probe.md",
+      "first_request_ms": 27143,
+      "first_request_ms_source": "query_time_ms",
+      "first_request_wall_ms": 27424,
+      "generated_at": "2026-05-29T13:06:22.465548+00:00",
+      "gpu_type": "B300",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "region": "uk-south1",
+      "report_json": "tmp/parallel-matrix/huggingface-lerobot-xvla-base-20260529T13Z-b300-safety-probe.json",
+      "report_md": "tmp/parallel-matrix/huggingface-lerobot-xvla-base-20260529T13Z-b300-safety-probe.md",
+      "response_status": 200,
+      "retained_pod_full_response_query": {
+        "model_time_ms": 114,
+        "model_time_source": "query_time_ms",
+        "query_wall_ms": 318,
+        "response_status": 200
+      },
+      "startup_ms": 27876,
+      "status": "supported_retained_pod_full_response_queried_and_cleaned_up"
+    },
+    "hf_api_url": "https://huggingface.co/api/models/lerobot/xvla-base?blobs=true",
+    "hf_downloads_observed": 4013,
+    "hf_last_modified": "2026-03-02T09:30:03.000Z",
+    "hf_library_name": "lerobot",
+    "hf_likes_observed": 21,
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "lerobot/xvla-base",
+    "hf_model_license": "apache-2.0",
+    "hf_model_private": false,
+    "hf_model_revision": "cdb7964e4fe842935d671bfab5a5ebe00a96648c",
+    "hf_pipeline_tag": "robotics",
+    "model_spec": {
+      "action_dim": 20,
+      "action_mode": "ee6d",
+      "camera_keys": [
+        "image",
+        "image2",
+        "image3"
+      ],
+      "chunk_size": 30,
+      "image_shapes": {
+        "image": [
+          3,
+          256,
+          256
+        ],
+        "image2": [
+          3,
+          256,
+          256
+        ],
+        "image3": [
+          3,
+          224,
+          224
+        ]
+      },
+      "max_state_dim": 20,
+      "n_action_steps": 30,
+      "policy_type": "xvla",
+      "state_dim": 8
+    },
+    "official_container_checks": {
+      "docker.io/2toinf/x-vla:latest": "401_unauthorized",
+      "docker.io/lerobot/xvla:latest": "401_unauthorized",
+      "ghcr.io/2toinf/x-vla:latest": "denied"
+    },
+    "official_serving_container_found": false,
+    "onboarding_state": "hidden_upserted_five_cell_supported_10run_static_safety_preflight_pending_sim_or_hil_signoff",
+    "probe_plan": {
+      "dry_run_manifest_first": true,
+      "next_command": "Run robot-policy safety validation against a simulator replay or HIL dry-run harness using the same digest-backed wrapper, then rerun focused probes only if wrapper or runtime changes.",
+      "publish_gate": "Do not publish or mark default-eligible until robot-policy simulator/HIL/safety signoff exists even though all current GPU cells are supported and the static preflight passed.",
+      "start_with": "Use a LIBERO-compatible simulator replay or no-actuation HIL contract check to validate action traces, reset semantics, domain/action-mode selection, and unsafe output handling."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260529T13Z": {
+      "decision": "do_not_publish_keep_hidden_onboarding",
+      "reason": "The no-actuation action-trace preflight passed, but it is not a simulator replay, HIL dry run, or external robot-policy safety signoff."
+    },
+    "reference_repo": "https://github.com/2toinf/X-VLA",
+    "reference_repo_license": "Apache-2.0",
+    "reference_repo_pushed_at": "2026-05-06T18:33:10Z",
+    "reference_repo_updated_at": "2026-05-28T06:59:56Z",
+    "regional_digest_checks": {
+      "eu-north1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+      "eu-north2": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+      "uk-south1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+      "us-central1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049"
+    },
+    "robot_policy_safety_preflight_20260529T13Z": {
+      "action_space_source": "/lerobot/src/lerobot/policies/xvla/action_hub.py",
+      "checks": {
+        "action_mode": "ee6d",
+        "action_shape": [
+          1,
+          30,
+          20
+        ],
+        "all_finite": true,
+        "continuity_threshold": 0.25,
+        "gripper_indices": [
+          9,
+          19
+        ],
+        "gripper_max": 0.5743550062179565,
+        "gripper_min": 0.4022456705570221,
+        "gripper_values_within_unit_interval": true,
+        "max_abs_action_value": 0.5743550062179565,
+        "max_abs_step_delta": 0.008585972711443901,
+        "max_abs_step_delta_dim": 7,
+        "max_abs_step_delta_step": 19,
+        "max_abs_step_delta_within_threshold": true,
+        "max_action_value": 0.5743550062179565,
+        "min_action_value": -0.44600948691368103
+      },
+      "decision": "keep_hidden_onboarding",
+      "preflight_report_json": "docs/model-onboarding/physical-ai/xvla-base-20260529T13Z-static-safety-preflight.json",
+      "preflight_report_md": "docs/model-onboarding/physical-ai/xvla-base-20260529T13Z-static-safety-preflight.md",
+      "remaining_review": "A real simulator replay, hardware-in-the-loop dry run, or external robot-policy safety signoff is still required before publication.",
+      "scope": "full retained B300 response for the manifest default no-actuation request",
+      "source_probe_report": "tmp/parallel-matrix/huggingface-lerobot-xvla-base-20260529T13Z-b300-safety-probe.json",
+      "status": "passes_no_actuation_static_action_trace_preflight_not_simulation_signoff"
+    },
+    "selected_candidate": "lerobot/xvla-base",
+    "selected_reason": "Compact Apache-2.0 LeRobot X-VLA policy with public ungated safetensors artifacts and an explicit serving contract through XVLAPolicy.",
+    "selected_wrapper_digest": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "selected_wrapper_size_bytes": 5693629882,
+    "selected_wrapper_tag": "gpu-wrapper-cdb7964e-artifactkeys-07z",
+    "source_urls": [
+      "https://huggingface.co/lerobot/xvla-base",
+      "https://huggingface.co/api/models/lerobot/xvla-base?blobs=true",
+      "https://github.com/huggingface/lerobot",
+      "https://github.com/2toinf/X-VLA"
+    ],
+    "upstream_lerobot_gpu_image": "docker.io/huggingface/lerobot-gpu:latest",
+    "upstream_lerobot_gpu_latest_index_digest": "sha256:bd6ac22a678ca48585cff88323d0eea542ee2bb1186128e2bd8956ef62232d5b",
+    "upstream_source_license": "Apache-2.0",
+    "upstream_source_pushed_at": "2026-05-29T12:11:56Z",
+    "upstream_source_repo": "https://github.com/huggingface/lerobot",
+    "upstream_source_updated_at": "2026-05-29T13:03:48Z",
+    "wrapper_base_image": "docker.io/huggingface/lerobot-gpu@sha256:3bf82d106c710ef0d3115281ca04cf94d7af7706271f202ad4e05be7fa78bf75",
+    "wrapper_path": "services/models/physical-ai/huggingface_lerobot_xvla_base"
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "lerobot",
+    "xvla",
+    "safetensors",
+    "apache_2_0",
+    "forge_wrapper_candidate",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-xvla-base:gpu-wrapper-cdb7964e-artifactkeys-07z@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+  "container_image_size_bytes": 5693629882,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-29T08:04:33.351582+00:00",
+  "default_eligible": false,
+  "description": "X-VLA Base is an Apache-2.0 LeRobot vision-language-action policy checkpoint with 0.9B parameters, soft-prompted flow matching, three visual observations, an 8D robot state, and 20D ee6d robot actions. This hidden Forge candidate now has a digest-backed Forge HTTP wrapper image in all active regions, an import smoke, static dispatch audit, hidden DB upsert, completed five-cell Forge GPU probe coverage with 10 warm samples per cell, and a B300 no-actuation static action-trace preflight. It remains blocked from publication until robot-policy simulator/HIL safety validation exists.",
+  "family_id": "0931ccfd-227d-4045-a5ec-9886c71f7474",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base",
+      "FORGE_MODEL_ID": "lerobot/xvla-base",
+      "FORGE_MODEL_REVISION": "cdb7964e4fe842935d671bfab5a5ebe00a96648c",
+      "FORGE_MODEL_SLUG": "huggingface-lerobot-xvla-base",
+      "HF_HOME": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base/huggingface/hub",
+      "TORCH_HOME": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/huggingface-lerobot/xvla-base/xdg",
+      "XVLA_ACTION_MODE": "ee6d",
+      "XVLA_CAMERA_KEYS": "image,image2,image3",
+      "XVLA_DEVICE": "cuda",
+      "XVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+      "XVLA_DOMAIN_ID": "0",
+      "XVLA_NUM_INFERENCE_STEPS": "10",
+      "XVLA_ROBOT_TYPE": "libero",
+      "XVLA_STATE_DIM": "8"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:09:03.561560+00:00",
+      "region": "us-central1",
+      "request_ms": 107,
+      "request_ms_p50": 107,
+      "request_ms_p95": 108,
+      "request_ms_p99": 108,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 261389,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 4.37,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.35
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T13:06:21.560687+00:00",
+      "region": "uk-south1",
+      "request_ms": 27143,
+      "request_ms_p50": 112,
+      "request_ms_p95": 13628,
+      "request_ms_p99": 24440,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 27876,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 4.37,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.35
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:04:59.933776+00:00",
+      "region": "eu-north2",
+      "request_ms": 127,
+      "request_ms_p50": 127,
+      "request_ms_p95": 129,
+      "request_ms_p99": 129,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 30083,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 4.28,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.35
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:05:06.212647+00:00",
+      "region": "eu-north1",
+      "request_ms": 136,
+      "request_ms_p50": 136,
+      "request_ms_p95": 137,
+      "request_ms_p99": 137,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 36258,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 4.17,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.35
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:09:17.410834+00:00",
+      "region": "us-central1",
+      "request_ms": 144,
+      "request_ms_p50": 144,
+      "request_ms_p95": 146,
+      "request_ms_p99": 146,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 276548,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 4.32,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.35
+    }
+  ],
+  "gpu_type": null,
+  "id": "8e664239-eb62-4bf5-8753-e2e34144eb50",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "huggingface-lerobot-xvla",
+  "name": "Hugging Face LeRobot X-VLA Base",
+  "parameter_count": 900000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "domain_id": "{{domain_id}}",
+        "images": {
+          "image": "{{image}}",
+          "image2": "{{image2}}",
+          "image3": "{{image3}}"
+        },
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "return_chunk": "{{return_chunk}}",
+        "robot_state": "{{robot_state}}",
+        "robot_type": "{{robot_type}}"
+      },
+      "endpoint": "/v1/inference/huggingface-lerobot-xvla-base",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Pick up the object and place it at the target location.",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAACAElEQVR42u3TQQ0AAAjEsJOKBCQgnTcaaFIFS5bqgbciAQYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABMIAKGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAbAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAGUAEDgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwAFwLkuoTsZ4H69MAAAAASUVORK5CYII=",
+        "key": "image",
+        "label": "Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAACAElEQVR42u3TQQ0AAAjEsJOKBCQgnTcaaFIFS5bpgrciAQYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABMIAKGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAbAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAGUAEDgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwAFwLlqoTsaF6wR8AAAAASUVORK5CYII=",
+        "key": "image2",
+        "label": "Image 2",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAACVT/22AAABr0lEQVR42u3SAQkAAAgEsY9qBCMY3RoKgyU4Lj0FZ0UCDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDKoCBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBlUBg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBgWDgkExKBgUg4JBwaAYFAwKBsWgYFAMCgYFg2JQMCgGBYOCQTEoGBSDgkHBoBgUDIpBwaBgUAwKBgWDYlAwKAYFg4JBMSgYFIOCQcGgGBQMikHBoGBQDAoGxaBgUDAoBgWDgkExKBgUg4JBwaAYFAyKQcGgYFAMCgbFoGBQMCgGBYNiUDAoGBSDgkHBoBgUDIpBwaBgUAwKBsWgYFAwKAYFg2JQMCgYFIOCQTEoGBQMikHBoGBQDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQMCgGBYNiUDAoGBSDgkExKBgUDIpBwaAYFAwKBsWgYFAMCgYFg2JQMCgYFIOCQTEoGBQMikHBoBgUDAoG5aMFsn9PELKPO74AAAAASUVORK5CYII=",
+        "key": "image3",
+        "label": "Image 3",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "key": "robot_state",
+        "label": "8D Robot State",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "libero",
+        "key": "robot_type",
+        "label": "Robot Type",
+        "options": [
+          "libero"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 0,
+        "key": "domain_id",
+        "label": "Domain ID",
+        "max": 6,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "return_chunk",
+        "label": "Return Action Chunk",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-xvla-base@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-xvla-base@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-xvla-base@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-xvla-base@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049"
+  },
+  "release_rank": 720,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "huggingface-lerobot-xvla-base",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/lerobot/xvla-base",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "lerobot",
+    "xvla",
+    "safetensors",
+    "apache-2.0",
+    "forge-wrapper-candidate"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "base-cdb7964e-wrapper-artifactkeys-20260529t07z",
+  "version_description": "Hidden onboarding manifest for the Apache-2.0 lerobot/xvla-base checkpoint served through a Forge-owned LeRobot X-VLA HTTP wrapper. The selected image is digest-backed, pushed to all active Forge regional registries, import-smoked without hydrating weights, aligned to the pinned artifact camera/state/action contract, and now has a completed five-cell Forge GPU probe with 10 warm benchmark samples per cell plus a B300 no-actuation static action-trace preflight. Keep hidden until robot-policy simulator/HIL safety validation passes.",
+  "version_key": "base",
+  "version_label": "Base wrapper candidate"
+}

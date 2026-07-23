@@ -1,0 +1,154 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "beb02e7e29b21d76b392b5d80620e0d42fb8bbde46a7a70fb70fb7e5fd6173ab",
+  "defaultEligible": true,
+  "displayName": "Use SANA Sprint 1.6B",
+  "domain": "image-generation",
+  "downloadUrl": "/v1/model-skills/nvlabs-sana-sprint-1-6b/markdown?download=true",
+  "group": "image-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "image-generation",
+    "nvlabs-sana-sprint-1-6b"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvlabs-sana-sprint-1-6b",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A clean product render of an AI image generation workstation, crisp typography, realistic materials, studio lighting",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 7,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 2,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 8,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4.5,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 10,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-nvlabs-sana-sprint-1-6b\ndescription: Use the exact Forge model nvlabs-sana-sprint-1-6b for text to image tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use SANA Sprint 1.6B\n\n- Model slug: `nvlabs-sana-sprint-1-6b`\n- Model family: `nvlabs-sana-sprint`\n- Version: `1.6b-1024px-diffusers` (`1-6b-1024px-diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / image-generation / nvlabs-sana-sprint-1-6b`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nSANA Sprint 1.6B text-to-image generation through a reusable Diffusers wrapper.\n\n## Use this exact model when\n\n- Use this exact `nvlabs-sana-sprint-1-6b` version when the task supplies text and needs image.\n- SANA Sprint 1.6B text-to-image generation through a reusable Diffusers wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['image'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `steps` (number, optional; bounds 1..8): Steps\n- `guidance_scale` (number, optional; bounds 0..10): Guidance\n\nRequest template:\n\n```json\n{\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\"\n}\n```\n\n## Exact output\n\n- `image`\n\n## Route\n\n`POST /v1/inference/nvlabs-sana-sprint-1-6b`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvlabs-sana-sprint-1-6b` with version key `1-6b-1024px-diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvlabs-sana-sprint-1-6b` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvlabs-sana-sprint-1-6b`\n- Routes: `/v1/models/nvlabs-sana-sprint-1-6b/inference-routes`\n- Regional deployment: `/v1/models/nvlabs-sana-sprint-1-6b/regional-deployment`\n- Deployment handoff: `/v1/models/nvlabs-sana-sprint-1-6b/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/nvlabs-sana-sprint-1-6b/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/nvlabs-sana-sprint-1-6b/SKILL.md\n\n## References\n\n- [SANA Sprint 1.6B source](https://github.com/NVlabs/Sana) (repository)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvlabs-sana-sprint-1-6b/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvlabs-sana-sprint-1-6b/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvlabs-sana-sprint",
+    "modelUrl": "/v1/models/nvlabs-sana-sprint-1-6b",
+    "regionalDeploymentUrl": "/v1/models/nvlabs-sana-sprint-1-6b/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvlabs-sana-sprint-1-6b/markdown",
+  "modelFamily": "nvlabs-sana-sprint",
+  "modelSlug": "nvlabs-sana-sprint-1-6b",
+  "modelUrl": "/v1/models/nvlabs-sana-sprint-1-6b",
+  "outputFields": [
+    "image"
+  ],
+  "outputModalities": [
+    "image"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "SANA Sprint 1.6B text-to-image generation through a reusable Diffusers wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/nvlabs-sana-sprint-1-6b/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "SANA Sprint 1.6B source",
+      "url": "https://github.com/NVlabs/Sana"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/nvlabs-sana-sprint-1-6b/SKILL.md",
+  "repositoryPath": "skills/models/general/image-generation/nvlabs-sana-sprint-1-6b/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "guidance_scale": "{{guidance_scale}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 1600000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/NVlabs/Sana",
+    "tags": [
+      "image-generation",
+      "text-to-image",
+      "diffusion",
+      "sana",
+      "single-gpu"
+    ],
+    "versionLabel": "1.6B 1024px Diffusers"
+  },
+  "shortDescription": "SANA Sprint 1.6B text-to-image generation through a reusable Diffusers wrapper.",
+  "skillName": "use-forge-nvlabs-sana-sprint-1-6b",
+  "skillUrl": "/v1/model-skills/nvlabs-sana-sprint-1-6b",
+  "slug": "nvlabs-sana-sprint-1-6b",
+  "stability": "experimental",
+  "version": "1.6b-1024px-diffusers",
+  "versionKey": "1-6b-1024px-diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['image'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvlabs-sana-sprint-1-6b` version when the task supplies text and needs image.",
+    "SANA Sprint 1.6B text-to-image generation through a reusable Diffusers wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvlabs-sana-sprint-1-6b` with version key `1-6b-1024px-diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvlabs-sana-sprint-1-6b` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

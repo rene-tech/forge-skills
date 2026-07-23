@@ -1,0 +1,470 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 4096,
+      "max_position_embeddings": 131072,
+      "model_type": "qwen3",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 36,
+      "num_key_value_heads": 8,
+      "rope_scaling": {
+        "attn_factor": 0.8782488562869419,
+        "factor": 4.0,
+        "original_max_position_embeddings": 32768,
+        "rope_type": "yarn"
+      },
+      "torch_dtype": "bfloat16"
+    },
+    "artifact_evidence": "Hugging Face API reported the model as public, ungated, enabled, text-generation, transformers, license:mit, revision 6e8885a6ff5c1dc5201574c8fd700323f23c25fa, 138,184 downloads, 1,065 likes, and 8,190,735,360 BF16 safetensors parameters on 2026-05-28T14Z.",
+    "artifact_parameters": {
+      "BF16": 8190735360,
+      "total": 8190735360
+    },
+    "artifact_revision": "6e8885a6ff5c1dc5201574c8fd700323f23c25fa",
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image_size_bytes": 8669299461,
+    "container_runtime_evidence": "skopeo inspect reports docker.io/vllm/vllm-openai:v0.21.0 digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, created 2026-05-15T05:00:10Z, vLLM build commit ad7125a431e176d4161099480a66f0169609a690, CUDA_VERSION=13.0.2, VLLM_ENABLE_CUDA_COMPATIBILITY=0, and TORCH_CUDA_ARCH_LIST=7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_for_initial_reasoning_chat_candidate",
+    "cycle_20260528T11Z_fallback_attempted": {
+      "reason": "The 08Z RTX6000 reprobe blocker was rechecked through live GPU inventory. Current US inventory exposed B200 but no RTX6000 cell, so a targeted RTX6000 Qwen reprobe could not advance more materially than the DeepSeek hidden upsert plus four-cell probe.",
+      "slug": "qwen-qwen3-0-6b-vllm-cuda13",
+      "status": "blocked_before_reprobe"
+    },
+    "cycle_20260528T14Z_fallback_attempted": {
+      "reason": "Already has an onboarding manifest but remains less publish-ready than DeepSeek because L40S OOM classification and NIM-specific mirror/auth provenance would require a longer publish gate.",
+      "slug": "mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+      "status": "not_selected"
+    },
+    "fallback_candidate_attempted": {
+      "reason": "Existing draft candidate remains blocked on authenticated NGC digest resolution and regional mirroring for nvcr.io/nim/mistralai/mistral-small-4-119b-2603:1.7.0-variant.",
+      "slug": "mistralai-mistral-small-4-119b-2603-nim",
+      "status": "blocked_before_probe"
+    },
+    "latest_matrix_probe": {
+      "generated_at": "2026-05-28T11:21:02Z",
+      "model_time_source": "client_wall_ms",
+      "report_json": "docs/model-onboarding/general/deepseek-ai-deepseek-r1-0528-qwen3-8b-vllm-cuda13-20260528T11Z-matrix.json",
+      "report_md": "docs/model-onboarding/general/deepseek-ai-deepseek-r1-0528-qwen3-8b-vllm-cuda13-20260528T11Z-matrix.md",
+      "request": "chat completions reasoning prompt, max_tokens=1024, temperature=0.6, top_p=0.95",
+      "results": [
+        {
+          "gpu_type": "B200",
+          "region": "us-central1",
+          "request_ms_p50": 4202,
+          "request_ms_p95": 4206,
+          "request_ms_samples": 10,
+          "startup_ms": 407395,
+          "status": "supported",
+          "tokens_per_second": 254.88,
+          "vram_measured_gb": 156.5
+        },
+        {
+          "gpu_type": "B300",
+          "region": "uk-south1",
+          "request_ms_p50": 4096,
+          "request_ms_p95": 4098,
+          "request_ms_samples": 10,
+          "startup_ms": 143646,
+          "status": "supported",
+          "tokens_per_second": 261.47,
+          "vram_measured_gb": 235.19
+        },
+        {
+          "gpu_type": "H200",
+          "region": "eu-north2",
+          "request_ms_p50": 5490,
+          "request_ms_p95": 5493,
+          "request_ms_samples": 10,
+          "startup_ms": 147158,
+          "status": "supported",
+          "tokens_per_second": 195.08,
+          "vram_measured_gb": 122.47
+        },
+        {
+          "gpu_type": "L40S",
+          "region": "eu-north1",
+          "request_ms_p50": 22322,
+          "request_ms_p95": 22326,
+          "request_ms_samples": 10,
+          "startup_ms": 641637,
+          "status": "supported",
+          "tokens_per_second": 47.98,
+          "vram_measured_gb": 38.44
+        }
+      ],
+      "unsupported_or_unprobed": [
+        {
+          "gpu_type": "RTX6000",
+          "reason": "No current RTX6000 inventory cell was present during the 2026-05-28T11Z health check; the 08Z Qwen3 RTX6000 carry-forward remains blocked by US RTX6000 taint/inventory churn.",
+          "status": "unprobed"
+        }
+      ]
+    },
+    "license_evidence": "The Hugging Face model card, API metadata, and repository LICENSE report MIT licensing for DeepSeek-R1-0528-Qwen3-8B; the Qwen3 base family is Apache-2.0.",
+    "next_probe_targets": [
+      "RTX6000/us-central1"
+    ],
+    "onboarding_state": "active_testing_nondefault_four_cell_matrix_supported_rtx6000_unprobed_current_inventory_absent",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260528T14Z": {
+      "playground_change": "Use non-streaming JSON output because the validated vLLM response currently exposes reasoning under choices[0].message.reasoning with message.content=null.",
+      "reason": "B200, B300, H200, and L40S already have supported 10-run warm matrix evidence on the same mirrored CUDA 13 vLLM digest; RTX6000 remains explicitly disabled rather than advertised.",
+      "status": "promote_to_active_testing_nondefault"
+    },
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_evidence": {
+      "eu-north1": "skopeo inspect cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0 returned sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "eu-north2": "skopeo inspect cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0 returned sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "uk-south1": "skopeo inspect cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0 returned sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "us-central1": "skopeo inspect cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0 returned sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+    },
+    "regional_mirror_verified_at": "2026-05-28T14:06:00Z",
+    "runtime_evidence": "The Hugging Face model page includes a vLLM serving example for deepseek-ai/DeepSeek-R1-0528-Qwen3-8B. vLLM 0.21.0 reasoning-output docs list DeepSeek R1 series support with parser name deepseek_r1 and Qwen3 series support separately.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "source_evidence": [
+      "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "https://huggingface.co/api/models/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B/raw/main/config.json",
+      "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B/raw/main/LICENSE",
+      "https://docs.vllm.ai/en/v0.21.0/features/reasoning_outputs/"
+    ],
+    "validation_commands": [
+      "curl -fsSL --max-time 30 https://huggingface.co/api/models/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B | jq '{id, private, gated, disabled, pipeline_tag, library_name, license:.cardData.license, tags:[.tags[]? | select(test(\"license:|safetensors|text-generation|transformers|vllm|qwen|deepseek|endpoints_compatible\"))], sha, downloads, likes, siblings_count:(.siblings|length), safetensors}'",
+      "curl -fsSL --max-time 30 https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B/raw/main/config.json | jq '{architectures, model_type, torch_dtype, max_position_embeddings, num_hidden_layers, hidden_size, num_attention_heads, num_key_value_heads, vocab_size, rope_scaling}'",
+      "skopeo inspect --no-tags docker://docker.io/vllm/vllm-openai:v0.21.0 | jq '{Name,Digest,Created,Architecture,Os,Layers:(.Layers|length)}'",
+      "skopeo inspect --no-tags docker://cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0",
+      "skopeo inspect --no-tags docker://cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0",
+      "skopeo inspect --no-tags docker://cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0",
+      "skopeo inspect --no-tags docker://cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0",
+      "jq empty docs/model-manifests/deepseek-ai-deepseek-r1-0528-qwen3-8b-vllm-cuda13.json",
+      ".venv312/bin/python scripts/upsert_model.py docs/model-manifests/deepseek-ai-deepseek-r1-0528-qwen3-8b-vllm-cuda13.json --dry-run"
+    ]
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "reasoning",
+    "instruction",
+    "code",
+    "math",
+    "long_context",
+    "deepseek",
+    "qwen3",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-28T11:05:08.373465+00:00",
+  "default_eligible": false,
+  "description": "DeepSeek R1 0528 Qwen3 8B is a public, non-gated MIT reasoning-oriented text-generation model distilled from DeepSeek-R1-0528 into a Qwen3 8B base model. Hugging Face metadata refreshed on 2026-05-28T14Z reports private=false, gated=false, disabled=false, pipeline_tag=text-generation, library_name=transformers, license=mit, revision 6e8885a6ff5c1dc5201574c8fd700323f23c25fa, Qwen3ForCausalLM architecture, 131,072 max positions, and 8,190,735,360 BF16 safetensors parameters. The model card documents vLLM serving for deepseek-ai/DeepSeek-R1-0528-Qwen3-8B and reports the 8B distillation as state-of-the-art among open-source models on AIME 2024 at release time. This Forge profile reuses the already mirrored official vLLM 0.21.0 CUDA 13 OpenAI-compatible image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, caps served context to 32,768 tokens for bounded first probes, enables the vLLM deepseek_r1 reasoning parser, clears unnecessary Hugging Face token env for this public ungated artifact, and stores Hugging Face and vLLM caches under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. The 2026-05-28T11Z hidden matrix probe validated B200, B300, H200, and L40S with 10 measured warm requests per cell; RTX6000 remains disabled because no current RTX6000 inventory cell was available. The 2026-05-28T14Z publication pass switched the playground to non-streaming JSON output so vLLM responses with message.reasoning and message.content=null remain visible until the web streaming parser grows first-class reasoning-delta rendering.",
+  "family_id": "9bca3888-5eb2-403c-a0c0-89ba1a62bff9",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.88",
+      "--max-num-seqs",
+      "8",
+      "--reasoning-parser",
+      "deepseek_r1"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T11:13:27.129675+00:00",
+      "region": "us-central1",
+      "request_ms": 4202,
+      "request_ms_p50": 4202,
+      "request_ms_p95": 4206,
+      "request_ms_p99": 4207,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 407395,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 254.88,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 156.5,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.26
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T11:20:26.656659+00:00",
+      "region": "uk-south1",
+      "request_ms": 4096,
+      "request_ms_p50": 4096,
+      "request_ms_p95": 4098,
+      "request_ms_p99": 4098,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 143646,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 261.47,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 235.19,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.26
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T11:17:08.072927+00:00",
+      "region": "eu-north2",
+      "request_ms": 5490,
+      "request_ms_p50": 5490,
+      "request_ms_p95": 5493,
+      "request_ms_p99": 5493,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 147158,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 195.08,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.47,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.26
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T11:21:02.038753+00:00",
+      "region": "eu-north1",
+      "request_ms": 22322,
+      "request_ms_p50": 22322,
+      "request_ms_p95": 22326,
+      "request_ms_p99": 22327,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 641637,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 47.98,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 38.44,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.26
+    }
+  ],
+  "gpu_type": null,
+  "id": "6789521b-e413-4167-98d1-610b0cb14aa5",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit; qwen3 base apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "deepseek-ai-deepseek-r1-0528-qwen3-8b",
+  "name": "DeepSeek R1 0528 Qwen3 8B",
+  "parameter_count": 8190735360,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+    },
+    "input_fields": [
+      {
+        "default": "Reason carefully, then give a concise final answer: A rollout has 80 validation checks. Three fifths pass, 9 fail, and the rest are waiting on logs. How many checks are waiting on logs?",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "reasoning_chat",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.6,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 8192,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 48,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "deepseek-ai-deepseek-r1-0528-qwen3-8b-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "reasoning",
+    "instruction",
+    "coding",
+    "math",
+    "long-context",
+    "deepseek",
+    "qwen3",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13",
+  "version_description": "DeepSeek R1 0528 Qwen3 8B served by the official vLLM OpenAI-compatible CUDA 13 image as an active testing, non-default reasoning model.",
+  "version_key": "vllm-0-21-0-cuda13",
+  "version_label": "vLLM 0.21.0 CUDA 13"
+}

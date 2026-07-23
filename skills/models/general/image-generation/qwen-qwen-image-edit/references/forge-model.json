@@ -1,0 +1,309 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "image_generation",
+    "image_editing",
+    "qwen",
+    "multilingual",
+    "text",
+    "vision",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/qwen/qwen-image-edit:1.0.0-variant",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-17T02:40:47.678200+00:00",
+  "default_eligible": true,
+  "description": "Qwen-Image-Edit Visual GenAI NIM for prompt-driven image editing on a single 80GB GPU.",
+  "family_id": "eecaf1b9-f782-4145-bb9b-c734710d1a08",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 80.0,
+    "runtime_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface/hub",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "NIM_ALLOW_UNCHECKED_GENERATION": "true",
+      "NIM_ENABLE_WARMUP": "0",
+      "NIM_MODEL_VERSION": "qwen-image-edit-2511"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-02T07:33:41.100452+00:00",
+      "region": "us-central1",
+      "request_ms": 3428,
+      "request_ms_p50": 3428,
+      "request_ms_p95": 3428,
+      "request_ms_p99": 3428,
+      "request_ms_samples": 1,
+      "startup_ms_first": 121871,
+      "startup_ms_probe": 671406,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 6,
+      "total_warm_starts": 5,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "B300 unavailable for current NVIDIA Qwen NIM runtime: bundled Triton/ptxas rejects sm_103a (ptxas fatal: Value sm_103a is not defined for gpu-name).",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-17T04:02:28.101338+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:49:48.477674+00:00",
+      "region": "eu-north2",
+      "request_ms": 4049,
+      "request_ms_p50": 4049,
+      "request_ms_p95": 4049,
+      "request_ms_p99": 4049,
+      "request_ms_samples": 1,
+      "startup_ms_first": 213639,
+      "startup_ms_probe": 77327,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": "503: cold_start_failed: RuntimeError: pod_start_failure:pod_succeeded:model:Completed:logs:ERROR 2026-05-17 03:30:23.300 nimutils.py:79] self.init_device_and_model() ERROR 2026-05-17 03:30:23.300 nimutils.py:79] File \"/usr/local/lib/python3.12/dist-packages/sglang/multimodal_gen/runtime/managers/gpu_worker.py\", line 136, in init_device_and_model ERROR 2026-05-17 03:30:23.300 nimutils.py:79] self.pipeline = build_pipeline(self.server_args) ERROR 2026-05-17 03:30:23.300 nimutils.py:79] ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ERROR 2026-05-17 03:30:23.300 nimutils.py:79] File \"/usr/local/lib/python3.12/dist-packages/sglang/multimodal_gen/runtime/pipelines_core/__init__.py\", line 78, in build_pipeline ERROR 2026-05-17 03:30:23.300 nimutils.py:79] pipeline = pipeline_cls(model_path, server_args) ERROR 2026-05-17 03:30:23.300 nimutils.py:79] ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ERROR 2026-05-17 03:30:23.300 nimutils.py:79] File \"/usr/local/lib/python3.12/dist-packages/sglang/multimodal_gen/runtime",
+      "last_failed_at": "2026-05-17T03:30:44.998412+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-17T03:27:46.459395+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 2,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-19T15:52:43.123272+00:00",
+      "region": "us-central1",
+      "request_ms": 5949,
+      "request_ms_p50": 5949,
+      "request_ms_p95": 5949,
+      "request_ms_p99": 5949,
+      "request_ms_samples": 1,
+      "startup_ms_first": 186483,
+      "startup_ms_probe": 107269,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": "B200",
+  "id": "6f048c57-9c84-4b27-b7c2-35811b1192ca",
+  "keep_warm": true,
+  "keep_warm_gpu_type": "B200",
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "image"
+  ],
+  "model_family": "qwen-qwen-image-edit",
+  "name": "Qwen-Image-Edit",
+  "parameter_count": 20000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "disable_safety_checker": "{{disable_safety_checker}}",
+        "image": [
+          "{{image}}"
+        ],
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}",
+        "steps": "{{steps}}"
+      },
+      "endpoint": "/v1/inference/qwen-qwen-image-edit",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Transform the input image into a polished watercolor illustration",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/*",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAAT0lEQVR42u3PQQkAAAgEsItqFKMZzQi+hcEKLNXzWgQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQELgvywgGHuIjfVAAAAABJRU5ErkJggg==",
+        "key": "image",
+        "label": "Input Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "disable_safety_checker",
+        "label": "Disable safety checker",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "png",
+      "type": "image"
+    },
+    "parameter_controls": [
+      {
+        "default": 0,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 5,
+        "key": "steps",
+        "label": "Steps",
+        "max": 20,
+        "min": 5,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "settings_schema": {
+      "optional": [
+        "disable_safety_checker",
+        "seed",
+        "steps"
+      ],
+      "required": [
+        "prompt",
+        "image"
+      ]
+    },
+    "type": "image_generation"
+  },
+  "quantization": "nim-profile",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-qwen-qwen-image-edit:1.0.0-variant",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-qwen-qwen-image-edit:1.0.0-variant",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-qwen-qwen-image-edit:1.0.0-variant",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-qwen-qwen-image-edit:1.0.0-variant"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-qwen-image-edit",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+  "stability": "experimental",
+  "status": "starting",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2"
+  ],
+  "tags": [
+    "image-generation",
+    "image-editing",
+    "qwen",
+    "multilingual"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "1.0.0",
+  "version_description": null,
+  "version_key": "1-0-0",
+  "version_label": "1.0.0"
+}

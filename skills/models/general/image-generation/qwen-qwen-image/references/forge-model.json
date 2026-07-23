@@ -1,0 +1,263 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "image_generation",
+    "text_to_image",
+    "image_editing",
+    "qwen",
+    "multilingual",
+    "text",
+    "vision",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/qwen/qwen-image:1.0.0-variant",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-17T02:40:51.797845+00:00",
+  "default_eligible": true,
+  "description": "Qwen-Image Visual GenAI NIM for high-quality multilingual text-to-image generation, with the container default pinned to the qwen-image-2512 model version.",
+  "family_id": "976a91ca-247b-4adc-980f-e61f4d70dd6a",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 80.0,
+    "runtime_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface/hub",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "NIM_ENABLE_WARMUP": "0",
+      "NIM_MODEL_VERSION": "qwen-image-2512"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:03:31.070184+00:00",
+      "region": "us-central1",
+      "request_ms": 7506,
+      "request_ms_p50": 7506,
+      "request_ms_p95": 7506,
+      "request_ms_p99": 7506,
+      "request_ms_samples": 1,
+      "startup_ms_first": 118270,
+      "startup_ms_probe": 118270,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "B300 unavailable for current NVIDIA Qwen NIM runtime: bundled Triton/ptxas rejects sm_103a (ptxas fatal: Value sm_103a is not defined for gpu-name).",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-17T04:02:28.101338+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:03:47.431920+00:00",
+      "region": "eu-north2",
+      "request_ms": 10710,
+      "request_ms_p50": 10710,
+      "request_ms_p95": 10710,
+      "request_ms_p99": 10710,
+      "request_ms_samples": 1,
+      "startup_ms_first": 115622,
+      "startup_ms_probe": 115622,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "503: cold_start_failed: RuntimeError: pod_start_failure:pod_not_found",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-17T04:55:37.012547+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:04:43.655182+00:00",
+      "region": "us-central1",
+      "request_ms": 18366,
+      "request_ms_p50": 18366,
+      "request_ms_p95": 18366,
+      "request_ms_p99": 18366,
+      "request_ms_samples": 1,
+      "startup_ms_first": 207122,
+      "startup_ms_probe": 207122,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "99479be8-716a-4248-8a0b-68e34e42a1f6",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "image"
+  ],
+  "model_family": "qwen-qwen-image",
+  "name": "Qwen-Image",
+  "parameter_count": 20000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}"
+      },
+      "endpoint": "/v1/inference/qwen-qwen-image",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "A bilingual poster that says 'Nebius Forge' and 'Image Generation' with crisp typography and a clean modern layout",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "png",
+      "type": "image"
+    },
+    "parameter_controls": [
+      {
+        "default": 0,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "image_generation"
+  },
+  "quantization": "nim-profile",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-qwen-qwen-image:1.0.0-variant",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-qwen-qwen-image:1.0.0-variant",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-qwen-qwen-image:1.0.0-variant",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-qwen-qwen-image:1.0.0-variant"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-qwen-image",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2"
+  ],
+  "tags": [
+    "image-generation",
+    "text-to-image",
+    "image-editing",
+    "qwen",
+    "multilingual"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "1.0.0",
+  "version_description": null,
+  "version_key": "1-0-0",
+  "version_label": "1.0.0"
+}

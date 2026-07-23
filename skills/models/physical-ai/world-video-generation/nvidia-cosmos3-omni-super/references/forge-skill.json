@@ -1,0 +1,252 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "cdb05bb05004e666cb982a956e9fb20c99f33f9857faea00974ddbe56ddd36e2",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos 3 Omni (Super)",
+  "domain": "world-video-generation",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos3-omni-super/markdown?download=true",
+  "group": "world-video-generation",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "world-video-generation",
+    "nvidia-cosmos3-omni-super"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos3-omni",
+  "inputFields": [
+    {
+      "choices": [
+        "text2image",
+        "text2video",
+        "image2video"
+      ],
+      "default": "text2image",
+      "fieldType": "select",
+      "key": "model_mode",
+      "label": "Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "A humanoid robot opens a sliding glass door, steps into a lab, and reaches toward a tray of tools.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "vision_path",
+      "label": "Conditioning Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "256",
+        "480",
+        "720",
+        "1080"
+      ],
+      "default": "256",
+      "fieldType": "select",
+      "key": "resolution",
+      "label": "Resolution",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "1,1",
+        "4,3",
+        "3,4",
+        "16,9",
+        "9,16"
+      ],
+      "default": "1,1",
+      "fieldType": "select",
+      "key": "aspect_ratio",
+      "label": "Aspect Ratio",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 200,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 24,
+      "fieldType": "number",
+      "key": "fps",
+      "label": "FPS",
+      "maximum": 30,
+      "minimum": 10,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4,
+      "fieldType": "number",
+      "key": "num_steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4,
+      "fieldType": "slider",
+      "key": "guidance",
+      "label": "Guidance",
+      "maximum": 7,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "shift",
+      "label": "Shift",
+      "maximum": 20,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 42,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 2147483647,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos3-omni-super\ndescription: Use the exact Forge model nvidia-cosmos3-omni-super for text, image to image, video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos 3 Omni (Super)\n\n- Model slug: `nvidia-cosmos3-omni-super`\n- Model family: `nvidia-cosmos3-omni`\n- Version: `super-bf16-ea` (`super-bf16`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / world-video-generation / nvidia-cosmos3-omni-super`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `nvidia-software-model-evaluation-license`\n\n## Purpose\n\nEarly-access Cosmos 3 Omni Super world-generation model served through a Forge CUDA 13 wrapper.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos3-omni-super` version when the task supplies text, image and needs image, video.\n- Early-access Cosmos 3 Omni Super world-generation model served through a Forge CUDA 13 wrapper.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image', 'video'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `model_mode` (select, optional): Mode\n- `prompt` (textarea, optional): Prompt\n- `vision_path` (file_upload, optional): Conditioning Image\n- `resolution` (select, optional): Resolution\n- `aspect_ratio` (select, optional): Aspect Ratio\n- `num_frames` (number, optional; bounds 1..200): Frames\n- `fps` (number, optional; bounds 10..30): FPS\n- `num_steps` (number, optional; bounds 1..50): Steps\n- `guidance` (slider, optional; bounds 0..7): Guidance\n- `shift` (number, optional; bounds 0..20): Shift\n- `seed` (number, optional; bounds 0..2147483647): Seed\n\nRequest template:\n\n```json\n{\n  \"aspect_ratio\": \"{{aspect_ratio}}\",\n  \"fps\": \"{{fps}}\",\n  \"guidance\": \"{{guidance}}\",\n  \"model_mode\": \"{{model_mode}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_steps\": \"{{num_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"resolution\": \"{{resolution}}\",\n  \"seed\": \"{{seed}}\",\n  \"shift\": \"{{shift}}\",\n  \"vision_path\": \"{{vision_path}}\"\n}\n```\n\n## Exact output\n\n- `image`\n- `video`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos3-omni`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos3-omni-super` with version key `super-bf16`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos3-omni` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos3-omni-super`\n- Routes: `/v1/models/nvidia-cosmos3-omni-super/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos3-omni-super/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos3-omni-super/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-super/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-super/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos 3 Omni (Super) source](https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super) (model-card)\n",
+  "license": "nvidia-software-model-evaluation-license",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos3-omni-super/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos3-omni-super/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos3-omni",
+    "modelUrl": "/v1/models/nvidia-cosmos3-omni-super",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos3-omni-super/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos3-omni-super/markdown",
+  "modelFamily": "nvidia-cosmos3-omni",
+  "modelSlug": "nvidia-cosmos3-omni-super",
+  "modelUrl": "/v1/models/nvidia-cosmos3-omni-super",
+  "outputFields": [
+    "image",
+    "video"
+  ],
+  "outputModalities": [
+    "image",
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Early-access Cosmos 3 Omni Super world-generation model served through a Forge CUDA 13 wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-super/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Cosmos 3 Omni (Super) source",
+      "url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-super/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-super/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "aspect_ratio": "{{aspect_ratio}}",
+    "fps": "{{fps}}",
+    "guidance": "{{guidance}}",
+    "model_mode": "{{model_mode}}",
+    "num_frames": "{{num_frames}}",
+    "num_steps": "{{num_steps}}",
+    "prompt": "{{prompt}}",
+    "resolution": "{{resolution}}",
+    "seed": "{{seed}}",
+    "shift": "{{shift}}",
+    "vision_path": "{{vision_path}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 32000000000,
+    "quantization": "bf16",
+    "requiresHfToken": true,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super",
+    "tags": [
+      "physical-ai",
+      "cosmos",
+      "cosmos3",
+      "world-foundation-model",
+      "text-to-image",
+      "text-to-video",
+      "image-to-video",
+      "early-access"
+    ],
+    "versionLabel": "Super BF16 EA"
+  },
+  "shortDescription": "Early-access Cosmos 3 Omni Super world-generation model served through a Forge CUDA 13 wrapper.",
+  "skillName": "use-forge-nvidia-cosmos3-omni-super",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos3-omni-super",
+  "slug": "nvidia-cosmos3-omni-super",
+  "stability": "experimental",
+  "version": "super-bf16-ea",
+  "versionKey": "super-bf16",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image', 'video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos3-omni-super` version when the task supplies text, image and needs image, video.",
+    "Early-access Cosmos 3 Omni Super world-generation model served through a Forge CUDA 13 wrapper.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos3-omni-super` with version key `super-bf16`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos3-omni` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

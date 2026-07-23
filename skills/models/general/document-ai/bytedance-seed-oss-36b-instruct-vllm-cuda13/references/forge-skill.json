@@ -1,0 +1,183 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "01b2f13e7bcee7cd78ba1dc6988a16521ca7f29b78f44ca523de17faeb70fd33",
+  "defaultEligible": false,
+  "displayName": "Use Seed-OSS 36B Instruct",
+  "domain": "document-ai",
+  "downloadUrl": "/v1/model-skills/bytedance-seed-oss-36b-instruct-vllm-cuda13/markdown?download=true",
+  "group": "document-ai",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "document-ai",
+    "bytedance-seed-oss-36b-instruct-vllm-cuda13"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "You are helping review a pull request. Summarize the likely bug, propose the smallest safe fix, and list two tests to add.\n\nThe retry loop should try three times, but production logs show it exits after the first timeout.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "thinking_budget",
+      "label": "Thinking Budget",
+      "maximum": 8192,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.7,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.95,
+      "fieldType": "number",
+      "key": "top_p",
+      "label": "Top P",
+      "maximum": 1,
+      "minimum": 0.01,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 768,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-bytedance-seed-oss-36b-instruct-vllm-cuda13\ndescription: Use the exact Forge model bytedance-seed-oss-36b-instruct-vllm-cuda13 for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Seed-OSS 36B Instruct\n\n- Model slug: `bytedance-seed-oss-36b-instruct-vllm-cuda13`\n- Model family: `bytedance-seed-oss-36b-instruct`\n- Version: `vllm-0.22.0-cuda13-hidden` (`vllm-0-22-0-cuda13-hidden`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / document-ai / bytedance-seed-oss-36b-instruct-vllm-cuda13`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nSeed-OSS 36B Instruct is a public Apache-2.0 dense causal language model from ByteDance Seed for long-context reasoning, coding, agentic workflows, tool-use style prompts, and international English/Chinese usage.\n\n## Use this exact model when\n\n- Use this exact `bytedance-seed-oss-36b-instruct-vllm-cuda13` version when the task supplies text and needs text.\n- Seed-OSS 36B Instruct is a public Apache-2.0 dense causal language model from ByteDance Seed for long-context reasoning, coding, agentic workflows, tool-use style prompts, and international English/Chinese usage.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `thinking_budget` (number, optional; bounds 0..8192): Thinking Budget\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `top_p` (number, optional; bounds 0.01..1): Top P\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"chat_template_kwargs\": {\n    \"thinking_budget\": \"{{thinking_budget}}\"\n  },\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"{{prompt}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\",\n  \"top_p\": \"{{top_p}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `bytedance-seed-oss-36b-instruct-vllm-cuda13` with version key `vllm-0-22-0-cuda13-hidden`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13`\n- Routes: `/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13/inference-routes`\n- Regional deployment: `/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13/regional-deployment`\n- Deployment handoff: `/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/bytedance-seed-oss-36b-instruct-vllm-cuda13/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/bytedance-seed-oss-36b-instruct-vllm-cuda13/SKILL.md\n\n## References\n\n- [Seed-OSS 36B Instruct source](https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13/deploy",
+    "inferenceRoutesUrl": "/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/bytedance-seed-oss-36b-instruct",
+    "modelUrl": "/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13",
+    "regionalDeploymentUrl": "/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/bytedance-seed-oss-36b-instruct-vllm-cuda13/markdown",
+  "modelFamily": "bytedance-seed-oss-36b-instruct",
+  "modelSlug": "bytedance-seed-oss-36b-instruct-vllm-cuda13",
+  "modelUrl": "/v1/models/bytedance-seed-oss-36b-instruct-vllm-cuda13",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Seed-OSS 36B Instruct is a public Apache-2.0 dense causal language model from ByteDance Seed for long-context reasoning, coding, agentic workflows, tool-use style prompts, and international English/Chinese usage.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/bytedance-seed-oss-36b-instruct-vllm-cuda13/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Seed-OSS 36B Instruct source",
+      "url": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/bytedance-seed-oss-36b-instruct-vllm-cuda13/SKILL.md",
+  "repositoryPath": "skills/models/general/document-ai/bytedance-seed-oss-36b-instruct-vllm-cuda13/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "chat_template_kwargs": {
+      "thinking_budget": "{{thinking_budget}}"
+    },
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "{{prompt}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": true,
+    "temperature": "{{temperature}}",
+    "top_p": "{{top_p}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 36151104512,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+    "tags": [
+      "llm",
+      "chat",
+      "reasoning",
+      "agentic",
+      "coding",
+      "tool-calling",
+      "long-context",
+      "seed-oss",
+      "bytedance",
+      "vllm",
+      "cuda13",
+      "blackwell",
+      "hidden-onboarding"
+    ],
+    "versionLabel": "vLLM 0.22.0 CUDA 13 Hidden"
+  },
+  "shortDescription": "Seed-OSS 36B Instruct is a public Apache-2.0 dense causal language model from ByteDance Seed for long-context reasoning, coding, agentic workflows, tool-use style prompts, and international English/Chinese usage.",
+  "skillName": "use-forge-bytedance-seed-oss-36b-instruct-vllm-cuda13",
+  "skillUrl": "/v1/model-skills/bytedance-seed-oss-36b-instruct-vllm-cuda13",
+  "slug": "bytedance-seed-oss-36b-instruct-vllm-cuda13",
+  "stability": "testing",
+  "version": "vllm-0.22.0-cuda13-hidden",
+  "versionKey": "vllm-0-22-0-cuda13-hidden",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `bytedance-seed-oss-36b-instruct-vllm-cuda13` version when the task supplies text and needs text.",
+    "Seed-OSS 36B Instruct is a public Apache-2.0 dense causal language model from ByteDance Seed for long-context reasoning, coding, agentic workflows, tool-use style prompts, and international English/Chinese usage.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `bytedance-seed-oss-36b-instruct-vllm-cuda13` with version key `vllm-0-22-0-cuda13-hidden`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

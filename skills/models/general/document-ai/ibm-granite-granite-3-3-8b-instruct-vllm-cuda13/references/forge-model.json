@@ -1,0 +1,623 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "GraniteForCausalLM"
+      ],
+      "hidden_size": 4096,
+      "intermediate_size": 12800,
+      "max_position_embeddings": 131072,
+      "model_type": "granite",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 40,
+      "num_key_value_heads": 8,
+      "torch_dtype": "bfloat16",
+      "vocab_size": 49159
+    },
+    "artifact_downloads_checked": 70798,
+    "artifact_last_modified": "2025-05-12T06:39:42.000Z",
+    "artifact_likes_checked": 155,
+    "artifact_parameters": {
+      "BF16": 8170864640,
+      "total": 8170864640
+    },
+    "artifact_revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+    "blockers": [
+      "NVIDIA NIM container inspection requires nvcr.io authentication in this environment; use the validated vLLM CUDA 13 profile or provide NGC credentials for a separate NIM-based profile.",
+      "Served context is capped at 32768 tokens for initial validation; native 128K exposure needs a separate long-context probe."
+    ],
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, and XDG caches are pointed at /opt/nim/.cache paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights.",
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image_size_bytes": 8669299461,
+    "container_runtime_evidence": "skopeo inspect --no-tags docker://docker.io/vllm/vllm-openai:v0.21.0 completed on 2026-05-27T17Z and returned digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, created 2026-05-15T05:00:10Z, vLLM build commit ad7125a431e176d4161099480a66f0169609a690, CUDA 13 runtime metadata, and 26 layers.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_after_nim_oci_inspection_required_auth",
+    "db_readback_20260527T17Z": {
+      "default_eligible": false,
+      "denormalized_latency_fields": "request_ms, request_ms_p50, request_ms_p95, request_ms_p99, and request_ms_samples were populated for all six support rows.",
+      "is_latest": true,
+      "model_status": "active",
+      "request_ms_samples_per_row": 10,
+      "stability": "testing",
+      "support_rows": 6
+    },
+    "fallback_attempted": {
+      "forge_owned_wrapper": "Not built because the official vLLM OpenAI-compatible image contains a built-in GraniteForCausalLM implementation and is already mirrored to all active Forge regions at a verified digest.",
+      "nvidia_nim_docs": "NVIDIA NIM LLM model table lists Granite 3.3 8B Instruct as ibm-granite/granite-3.3-8b-instruct version 1.8.4.",
+      "nvidia_nim_oci_inspect": "skopeo inspect --no-tags docker://nvcr.io/nim/ibm-granite/granite-3.3-8b-instruct:1.8.4 failed with authentication required on 2026-05-27T17Z, so the NIM container was not selected or mirrored in this cycle."
+    },
+    "kernel_dispatch_audit": {
+      "runtime_logs": "Retained B200 startup logs showed vLLM resolved GraniteForCausalLM with trust_remote_code=False, selected FLASHINFER attention with HND KV cache layout, loaded four safetensor shards, and started /v1/chat/completions. B300 completed 10 warm measured requests successfully but its pod was cleaned up by the probe before logs were retained.",
+      "static_scan": "vLLM 0.21.0 registry maps GraniteForCausalLM to the built-in granite implementation; the granite.py static scan found no explicit compute-capability, SM, FP8, FP4, cuDNN, FlashAttention, Triton, CUTLASS, xFormers, or NATTEN architecture guard."
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 6,
+      "cells_failed": {},
+      "cells_pending": [],
+      "cells_supported": {
+        "B200/us-central1": {
+          "gpu_node": "computeinstance-u00pcaq2skr11my6gh",
+          "pod_name": "forge-probe-ibm-granite-granite-3-3--b200-us-central1-bbc570",
+          "request_ms_p50": 1805,
+          "request_ms_p95": 1917,
+          "request_ms_samples": [
+            1860,
+            1782,
+            1811,
+            1811,
+            1744,
+            1699,
+            1777,
+            1902,
+            1930,
+            1799
+          ],
+          "startup_ms": 412443,
+          "tokens_per_second": 289.75,
+          "vram_used_gb": 156.82
+        },
+        "B300/uk-south1": {
+          "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod_name": "forge-probe-ibm-granite-granite-3-3--b300-uk-south1-5fd403",
+          "request_ms_p50": 1707,
+          "request_ms_p95": 1820,
+          "request_ms_samples": [
+            1763,
+            1684,
+            1714,
+            1713,
+            1647,
+            1601,
+            1680,
+            1804,
+            1833,
+            1701
+          ],
+          "startup_ms": 149433,
+          "tokens_per_second": 306.39,
+          "vram_used_gb": 235.48
+        },
+        "H200/eu-north2": {
+          "gpu_node": "computeinstance-e02hg4b4tftehffqzr",
+          "pod_name": "forge-probe-ibm-granite-granite-3-3--h200-eu-north2-8a23fa",
+          "request_ms_p50": 2413,
+          "request_ms_p95": 2691,
+          "request_ms_samples": [
+            2380,
+            2582,
+            2443,
+            2086,
+            2482,
+            2781,
+            2286,
+            2414,
+            2412,
+            2199
+          ],
+          "startup_ms": 125778,
+          "tokens_per_second": 203.07,
+          "vram_used_gb": 122.86
+        },
+        "H200/us-central1": {
+          "gpu_node": "computeinstance-u00j74skk9tzrwbgrz",
+          "pod_name": "forge-probe-ibm-granite-granite-3-3--h200-us-central1-efc27a",
+          "request_ms_p50": 2448,
+          "request_ms_p95": 2720,
+          "request_ms_samples": [
+            2411,
+            2612,
+            2475,
+            2117,
+            2519,
+            2808,
+            2319,
+            2449,
+            2446,
+            2233
+          ],
+          "startup_ms": 397306,
+          "tokens_per_second": 200.16,
+          "vram_used_gb": 122.86
+        },
+        "L40S/eu-north1": {
+          "gpu_node": "computeinstance-e00df18tkn1sh37ez7",
+          "pod_name": "forge-probe-ibm-granite-granite-3-3--l40s-eu-north1-f20c76",
+          "request_ms_p50": 9008,
+          "request_ms_p95": 10082,
+          "request_ms_samples": [
+            9414,
+            7857,
+            8996,
+            8856,
+            8416,
+            9902,
+            9090,
+            10230,
+            9020,
+            8741
+          ],
+          "startup_ms": 132291,
+          "tokens_per_second": 55.62,
+          "vram_used_gb": 38.74
+        },
+        "RTX6000/us-central1": {
+          "gpu_node": "computeinstance-u00herx5eh92p0gv95",
+          "pod_name": "forge-probe-ibm-granite-granite-3-3--rtx6000-us-central1-8aa8c4",
+          "request_ms_p50": 5332,
+          "request_ms_p95": 5738,
+          "request_ms_samples": [
+            5338,
+            5120,
+            5407,
+            5327,
+            4895,
+            5389,
+            5438,
+            5983,
+            5084,
+            4908
+          ],
+          "startup_ms": 180983,
+          "tokens_per_second": 94.34,
+          "vram_used_gb": 83.34
+        }
+      },
+      "report_markdown": [
+        "docs/model-onboarding/general/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13-20260527T17Z-matrix.md"
+      ],
+      "reports": [
+        "docs/model-onboarding/general/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13-20260527T17Z-matrix.json"
+      ],
+      "request_time_source": "client_wall_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; the model card links Apache 2.0 and describes permissively licensed plus synthetic training data sources.",
+    "live_upsert_20260527T17Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13.json --keep-existing-family-latest",
+      "status": "succeeded_hidden_onboarding_default_ineligible"
+    },
+    "onboarding_state": "six_cell_supported_promoted_active_testing_non_default",
+    "planned_probe_command": "completed_20260527T17Z_full_six_cell_matrix",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "active_testing_non_default_after_supervisor_review",
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_verified_at": "2026-05-27T17Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "Hugging Face config reports GraniteForCausalLM with no remote-code requirement. The vLLM 0.21.0 model registry maps GraniteForCausalLM to the built-in granite implementation, and the vLLM granite.py implementation is present in the same release branch.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "selection_rationale": "Selected as a non-HCLS, non-physical general instruction model with IBM provenance, public ungated access, Apache-2.0 licensing, 128K native context, a one-GPU vLLM serving path, and low overlap with the active Qwen/Phi/OLMo onboarding streams.",
+    "source_evidence": [
+      "https://huggingface.co/api/models/ibm-granite/granite-3.3-8b-instruct",
+      "https://huggingface.co/ibm-granite/granite-3.3-8b-instruct",
+      "https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/raw/main/config.json",
+      "https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/raw/main/README.md",
+      "https://docs.nvidia.com/nim/large-language-models/1.13.0/_include/models.html",
+      "https://raw.githubusercontent.com/vllm-project/vllm/v0.21.0/vllm/model_executor/models/registry.py",
+      "https://raw.githubusercontent.com/vllm-project/vllm/v0.21.0/vllm/model_executor/models/granite.py"
+    ],
+    "supervisor_live_upsert_20260527T17Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13.json --keep-existing-family-latest",
+      "status": "succeeded_active_testing_default_ineligible"
+    },
+    "supervisor_product_review_20260527T17Z": {
+      "decision": "promote_to_active_testing_non_default",
+      "reason": "Apache-2.0 public ungated artifact, no remote-code requirement, existing digest-pinned four-region vLLM CUDA 13 mirrors, six supported GPU cells, and 10 warm measured requests per supported cell. Native 128K context remains capped to the validated 32768-token serving profile."
+    },
+    "validation_commands": [
+      "git fetch --prune origin && git status --short --branch && git rev-list --left-right --count HEAD...origin/main",
+      "curl -fsSL --max-time 30 https://huggingface.co/api/models/ibm-granite/granite-3.3-8b-instruct | jq '{id, private, gated, disabled, pipeline_tag, library_name, license:.cardData.license, sha, lastModified, downloads, likes, safetensors}'",
+      "curl -fsSL --max-time 30 https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/raw/main/config.json | jq '{architectures, model_type, torch_dtype, max_position_embeddings, num_hidden_layers, num_attention_heads, num_key_value_heads, hidden_size, intermediate_size, vocab_size}'",
+      "curl -fsSL --max-time 30 https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/raw/main/README.md | rg -n -i 'license|apache|vllm|granite-3.3|context|128|serving|model card|transformers'",
+      "curl -fsSL --max-time 30 https://docs.nvidia.com/nim/large-language-models/1.13.0/_include/models.html | rg -n 'Granite 3\\.3 8B Instruct|ibm-granite/granite-3\\.3-8b-instruct|1\\.8\\.4'",
+      "skopeo inspect --no-tags docker://nvcr.io/nim/ibm-granite/granite-3.3-8b-instruct:1.8.4",
+      "skopeo inspect --no-tags docker://docker.io/vllm/vllm-openai:v0.21.0 | jq '{Name, Digest, Created, Architecture, Os, Labels: .Labels, Layers: (.Layers|length)}'",
+      "for ref in cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0 cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0 cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0 cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0; do printf '%s\\t' \"$ref\"; skopeo inspect --no-tags \"docker://$ref\" | jq -r '.Digest'; done",
+      "curl -fsSL --max-time 30 https://raw.githubusercontent.com/vllm-project/vllm/v0.21.0/vllm/model_executor/models/registry.py | rg -n 'Granite|granite'",
+      "jq empty manifests/models/general/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13.json --dry-run",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q tests/test_onboarding_manifests.py -k granite_3_3_8b -p no:cacheprovider"
+    ]
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "reasoning",
+    "code",
+    "summarization",
+    "long_context",
+    "enterprise",
+    "granite",
+    "ibm",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-27T17:09:32.126533+00:00",
+  "default_eligible": false,
+  "description": "IBM Granite 3.3 8B Instruct is a public Apache-2.0 text-generation model for enterprise-style instruction following, coding, reasoning, structured summaries, and long-context document or meeting summarization. Hugging Face API metadata refreshed on 2026-05-27T17Z reports private=false, gated=false, disabled=false, pipeline_tag=text-generation, library_name=transformers, revision 51dd4bc2ade4059a6bd87649d68aa11e4fb2529b, and 8,170,864,640 BF16 safetensors parameters. The model config reports GraniteForCausalLM, model_type=granite, BF16 dtype, 40 layers, 32 attention heads, 8 KV heads, hidden size 4096, intermediate size 12800, vocab size 49159, and 131072 max positions. The model card documents 128K context, improved reasoning and instruction-following capabilities, coding and long-context use cases, permissively licensed and synthetic training data sources, and Apache 2.0 licensing. NVIDIA NIM model tables list ibm-granite/granite-3.3-8b-instruct version 1.8.4, but direct OCI inspection of nvcr.io/nim/ibm-granite/granite-3.3-8b-instruct:1.8.4 returned authentication required during this cycle, so this Forge profile reuses the already mirrored official vLLM 0.21.0 CUDA 13 OpenAI-compatible image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9. The profile caps served context to 32768 tokens for first validation, clears unnecessary Hugging Face token env for this public ungated artifact, and stores Hugging Face and vLLM caches under /opt/nim/.cache paths backed by Forge shared /mnt/data cache.",
+  "family_id": "5bfc26aa-45c3-4d74-93eb-4f5bda4d36ef",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "ibm-granite/granite-3.3-8b-instruct",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "ibm-granite/granite-3.3-8b-instruct",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.88",
+      "--max-num-seqs",
+      "8"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:17:13.484290+00:00",
+      "region": "us-central1",
+      "request_ms": 1805,
+      "request_ms_p50": 1805,
+      "request_ms_p95": 1917,
+      "request_ms_p99": 1927,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 412443,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 289.75,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 156.82,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.22
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:20:08.758668+00:00",
+      "region": "uk-south1",
+      "request_ms": 1707,
+      "request_ms_p50": 1707,
+      "request_ms_p95": 1820,
+      "request_ms_p99": 1830,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 149433,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 306.39,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 235.48,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.22
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:19:47.007409+00:00",
+      "region": "eu-north2",
+      "request_ms": 2413,
+      "request_ms_p50": 2413,
+      "request_ms_p95": 2691,
+      "request_ms_p99": 2763,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 125778,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 203.07,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.86,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.22
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:17:06.342999+00:00",
+      "region": "us-central1",
+      "request_ms": 2448,
+      "request_ms_p50": 2448,
+      "request_ms_p95": 2720,
+      "request_ms_p99": 2790,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 397306,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 200.16,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.86,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.22
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:18:56.757502+00:00",
+      "region": "eu-north1",
+      "request_ms": 9008,
+      "request_ms_p50": 9008,
+      "request_ms_p95": 10082,
+      "request_ms_p99": 10200,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 132291,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 55.62,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 38.74,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.22
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:14:42.589656+00:00",
+      "region": "us-central1",
+      "request_ms": 5332,
+      "request_ms_p50": 5332,
+      "request_ms_p95": 5738,
+      "request_ms_p99": 5934,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 180983,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 94.34,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 83.34,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.22
+    }
+  ],
+  "gpu_type": null,
+  "id": "88afd947-9824-47e6-a554-01547a33fc74",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "ibm-granite-granite-3-3-8b-instruct",
+  "name": "Granite 3.3 8B Instruct",
+  "parameter_count": 8170864640,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "ibm-granite/granite-3.3-8b-instruct"
+    },
+    "input_fields": [
+      {
+        "default": "Summarize this product incident for an engineering manager: a batch job missed its 02:00 UTC deadline after a schema migration, retry workers recovered by 02:37 UTC, and one customer-facing dashboard showed stale metrics for 31 minutes. Include impact, likely cause, and two follow-up actions.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "chat",
+      "type": "markdown"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.4,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 768,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 47,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "ibm-granite-granite-3-3-8b-instruct-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/ibm-granite/granite-3.3-8b-instruct",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction",
+    "reasoning",
+    "coding",
+    "summarization",
+    "long-context",
+    "enterprise",
+    "granite",
+    "ibm",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13",
+  "version_description": "IBM Granite 3.3 8B Instruct served by the already mirrored vLLM OpenAI-compatible CUDA 13 image as a non-default testing profile for Apache-2.0 general instruction following, coding, reasoning, and long-context summarization.",
+  "version_key": "vllm-0-21-0-cuda13",
+  "version_label": "vLLM 0.21.0 CUDA 13"
+}

@@ -1,0 +1,166 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "a9d94be7633ce87a78d39fd077b2c7342f7608a7786e5b065b3c047a8cb93309",
+  "defaultEligible": true,
+  "displayName": "Use Mochi 1 Preview",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/genmo-mochi-1-preview/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "genmo-mochi-1-preview"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/genmo-mochi-1-preview",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A cinematic slow pan across a dense rack of GPU servers, status lights reflecting on brushed metal, smooth realistic motion",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 33,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 16,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Steps",
+      "maximum": 64,
+      "minimum": 4,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4.5,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 49,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 85,
+      "minimum": 25,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-genmo-mochi-1-preview\ndescription: Use the exact Forge model genmo-mochi-1-preview for text to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Mochi 1 Preview\n\n- Model slug: `genmo-mochi-1-preview`\n- Model family: `genmo-mochi`\n- Version: `preview-bf16-diffusers` (`preview-bf16-diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / genmo-mochi-1-preview`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nMochi 1 Preview text-to-video generation through the Forge Diffusers wrapper.\n\n## Use this exact model when\n\n- Use this exact `genmo-mochi-1-preview` version when the task supplies text and needs video.\n- Mochi 1 Preview text-to-video generation through the Forge Diffusers wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_inference_steps` (number, optional; bounds 4..64): Steps\n- `guidance_scale` (number, optional; bounds 1..10): Guidance\n- `num_frames` (number, optional; bounds 25..85): Frames\n\nRequest template:\n\n```json\n{\n  \"fps\": 30,\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\"\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/genmo-mochi-1-preview`\n\n## Workflow\n\n1. Load this skill and pin model slug `genmo-mochi-1-preview` with version key `preview-bf16-diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/genmo-mochi-1-preview` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/genmo-mochi-1-preview`\n- Routes: `/v1/models/genmo-mochi-1-preview/inference-routes`\n- Regional deployment: `/v1/models/genmo-mochi-1-preview/regional-deployment`\n- Deployment handoff: `/v1/models/genmo-mochi-1-preview/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/genmo-mochi-1-preview/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/genmo-mochi-1-preview/SKILL.md\n\n## References\n\n- [Mochi 1 Preview source](https://github.com/genmoai/mochi) (repository)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/genmo-mochi-1-preview/deploy",
+    "inferenceRoutesUrl": "/v1/models/genmo-mochi-1-preview/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/genmo-mochi",
+    "modelUrl": "/v1/models/genmo-mochi-1-preview",
+    "regionalDeploymentUrl": "/v1/models/genmo-mochi-1-preview/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/genmo-mochi-1-preview/markdown",
+  "modelFamily": "genmo-mochi",
+  "modelSlug": "genmo-mochi-1-preview",
+  "modelUrl": "/v1/models/genmo-mochi-1-preview",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Mochi 1 Preview text-to-video generation through the Forge Diffusers wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/genmo-mochi-1-preview/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "Mochi 1 Preview source",
+      "url": "https://github.com/genmoai/mochi"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/genmo-mochi-1-preview/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/genmo-mochi-1-preview/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "fps": 30,
+    "guidance_scale": "{{guidance_scale}}",
+    "num_frames": "{{num_frames}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/genmoai/mochi",
+    "tags": [
+      "video-generation",
+      "text-to-video",
+      "diffusion",
+      "mochi",
+      "single-gpu"
+    ],
+    "versionLabel": "Preview BF16 Diffusers"
+  },
+  "shortDescription": "Mochi 1 Preview text-to-video generation through the Forge Diffusers wrapper.",
+  "skillName": "use-forge-genmo-mochi-1-preview",
+  "skillUrl": "/v1/model-skills/genmo-mochi-1-preview",
+  "slug": "genmo-mochi-1-preview",
+  "stability": "experimental",
+  "version": "preview-bf16-diffusers",
+  "versionKey": "preview-bf16-diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `genmo-mochi-1-preview` version when the task supplies text and needs video.",
+    "Mochi 1 Preview text-to-video generation through the Forge Diffusers wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `genmo-mochi-1-preview` with version key `preview-bf16-diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/genmo-mochi-1-preview` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "benchmark_scores": {
+    "b200_text2image_warm_p50_ms": 826,
+    "b300_text2image_warm_p50_ms": 826,
+    "h200_text2image_warm_p50_ms": 888,
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "text2image_benchmark_runs": 10,
+    "text2image_benchmark_source": "client_wall_ms"
+  },
+  "capabilities": [
+    "physical_ai",
+    "cosmos",
+    "cosmos3",
+    "world_foundation_model",
+    "text_to_image",
+    "text_to_video",
+    "image_to_video",
+    "early_access",
+    "text",
+    "vision",
+    "video",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos3-omni:ea-20260521-cu130-r5@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+  "container_image_size_bytes": 9564000759,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-21T20:02:19.471173+00:00",
+  "default_eligible": false,
+  "description": "Early-access Cosmos 3 Omni Super world-generation model served through a Forge CUDA 13 wrapper. It supports text-to-image, text-to-video, and image-to-video modes with image/video outputs rendered and downloadable in Forge.",
+  "family_id": "9e685afc-0004-4895-854c-f38c1fbf0a3a",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "COSMOS3_CFGP_SIZE": "1",
+      "COSMOS3_CP_SIZE": "1",
+      "COSMOS3_DEVICE_MEMORY_UTILIZATION": "0.75",
+      "COSMOS3_DP_REPLICATE_SIZE": "1",
+      "COSMOS3_DP_SHARD_SIZE": "1",
+      "COSMOS3_GUARDRAILS": "false",
+      "COSMOS3_MODEL_ID": "Cosmos3-Super",
+      "COSMOS3_MODEL_KIND": "omni",
+      "COSMOS3_PARALLELISM_PRESET": "latency",
+      "COSMOS3_USE_CUDA_GRAPHS": "false",
+      "COSMOS3_VARIANT": "super",
+      "COSMOS3_WORLD_SIZE": "1"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 128.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "us-central1",
+      "request_ms": 826,
+      "request_ms_p50": 826,
+      "request_ms_p95": 835,
+      "request_ms_p99": 838,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 66155,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.21,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 59.6
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "uk-south1",
+      "request_ms": 826,
+      "request_ms_p50": 826,
+      "request_ms_p95": 843,
+      "request_ms_p99": 846,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 655164,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.21,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 59.6
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "eu-north2",
+      "request_ms": 888,
+      "request_ms_p50": 888,
+      "request_ms_p95": 908,
+      "request_ms_p99": 909,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 205052,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.12,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 59.6
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "CUDA OOM loading Cosmos3-Super on one L40S: 44.39 GiB total, 44.27 GiB in use, failed allocating 250 MiB during OmniMoTModel construction.",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:32:17.661744+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "oom",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 59.6
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": "CUDA OOM loading Cosmos3-Super on one RTX6000: 94.97 GiB total, 94.93 GiB in use, failed allocating 80 MiB during OmniMoTModel construction.",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:32:18.136618+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "oom",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 59.6
+    }
+  ],
+  "gpu_type": null,
+  "id": "2d298a9e-9c78-4890-b745-35acf621fe25",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-software-model-evaluation-license",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "image",
+    "video"
+  ],
+  "model_family": "nvidia-cosmos3-omni",
+  "name": "NVIDIA Cosmos 3 Omni (Super)",
+  "parameter_count": 32000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "aspect_ratio": "{{aspect_ratio}}",
+        "fps": "{{fps}}",
+        "guidance": "{{guidance}}",
+        "model_mode": "{{model_mode}}",
+        "num_frames": "{{num_frames}}",
+        "num_steps": "{{num_steps}}",
+        "prompt": "{{prompt}}",
+        "resolution": "{{resolution}}",
+        "seed": "{{seed}}",
+        "shift": "{{shift}}",
+        "vision_path": "{{vision_path}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos3-omni",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "text2image",
+        "key": "model_mode",
+        "label": "Mode",
+        "options": [
+          "text2image",
+          "text2video",
+          "image2video"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "A humanoid robot opens a sliding glass door, steps into a lab, and reaches toward a tray of tools.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "",
+        "key": "vision_path",
+        "label": "Conditioning Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": "256",
+        "key": "resolution",
+        "label": "Resolution",
+        "options": [
+          "256",
+          "480",
+          "720",
+          "1080"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "1,1",
+        "key": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "options": [
+          "1,1",
+          "4,3",
+          "3,4",
+          "16,9",
+          "9,16"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "image_video",
+      "type": "custom"
+    },
+    "parameter_controls": [
+      {
+        "default": 1,
+        "key": "num_frames",
+        "label": "Frames",
+        "max": 200,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 24,
+        "key": "fps",
+        "label": "FPS",
+        "max": 30,
+        "min": 10,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 4,
+        "key": "num_steps",
+        "label": "Steps",
+        "max": 50,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 4,
+        "key": "guidance",
+        "label": "Guidance",
+        "max": 7,
+        "min": 0,
+        "step": 0.1,
+        "type": "slider"
+      },
+      {
+        "default": 5,
+        "key": "shift",
+        "label": "Shift",
+        "max": 20,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 42,
+        "key": "seed",
+        "label": "Seed",
+        "max": 2147483647,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "settings_schema": {
+      "conditional_required": [
+        {
+          "required": [
+            "vision_path"
+          ],
+          "when": {
+            "model_mode": "image2video"
+          }
+        }
+      ],
+      "optional": [
+        "vision_path",
+        "resolution",
+        "aspect_ratio",
+        "fps",
+        "num_frames",
+        "num_steps",
+        "guidance",
+        "shift",
+        "seed"
+      ],
+      "required": [
+        "model_mode",
+        "prompt"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e"
+  },
+  "release_rank": 20,
+  "requires_hf_token": true,
+  "single_region_risk": false,
+  "slug": "nvidia-cosmos3-omni-super",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "cosmos",
+    "cosmos3",
+    "world-foundation-model",
+    "text-to-image",
+    "text-to-video",
+    "image-to-video",
+    "early-access"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "super-bf16-ea",
+  "version_description": "Early-access Cosmos 3 Omni Super checkpoint served by the Forge-owned CUDA 13 wrapper with text-to-image, text-to-video, and image-to-video modes.",
+  "version_key": "super-bf16",
+  "version_label": "Super BF16 EA"
+}

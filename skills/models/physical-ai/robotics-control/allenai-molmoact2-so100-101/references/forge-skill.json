@@ -1,0 +1,193 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "52481c4e744b258b284a47c73987ebfa97cb04dae460b77e3a8e602ee1210a4d",
+  "defaultEligible": false,
+  "displayName": "Use AllenAI MolmoAct2 SO100/101",
+  "domain": "robotics-control",
+  "downloadUrl": "/v1/model-skills/allenai-molmoact2-so100-101/markdown?download=true",
+  "group": "robotics-control",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "robotics-control",
+    "allenai-molmoact2-so100-101"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/allenai-molmoact2-so100-101",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Move the arm towards the lemon, grasp it, lift it up, and drop it into the red bowl.",
+      "fieldType": "textarea",
+      "key": "instruction",
+      "label": "Instruction",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+      "fieldType": "file_upload",
+      "key": "top_cam",
+      "label": "Realsense Top RGB",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+      "fieldType": "file_upload",
+      "key": "side_cam",
+      "label": "Realsense Side RGB",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        -0.52734375,
+        189.140625,
+        181.40625,
+        60.64453125,
+        -3.603515625,
+        1.0971786975860596
+      ],
+      "fieldType": "json_editor",
+      "key": "robot_state",
+      "label": "6D SO100/101 State",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 10,
+      "fieldType": "number",
+      "key": "num_steps",
+      "label": "Flow Steps",
+      "maximum": 50,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "enable_cuda_graph",
+      "label": "CUDA Graph",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "instructions": "---\nname: use-forge-allenai-molmoact2-so100-101\ndescription: Use the exact Forge model allenai-molmoact2-so100-101 for text, image, robot_state to robot_action, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use AllenAI MolmoAct2 SO100/101\n\n- Model slug: `allenai-molmoact2-so100-101`\n- Model family: `allenai-molmoact2`\n- Version: `so100-101-152569f-wrapper-20260529t03z` (`so100-101`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / robotics-control / allenai-molmoact2-so100-101`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `Apache-2.0`\n\n## Purpose\n\nMolmoAct2-SO100_101 is AllenAI's MolmoAct2 checkpoint fine-tuned for SO-100/101 single-arm robot policy inference.\n\n## Use this exact model when\n\n- Use this exact `allenai-molmoact2-so100-101` version when the task supplies text, image, robot_state and needs robot_action, json.\n- MolmoAct2-SO100_101 is AllenAI's MolmoAct2 checkpoint fine-tuned for SO-100/101 single-arm robot policy inference.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `instruction` (textarea, optional): Instruction\n- `top_cam` (file_upload, optional): Realsense Top RGB\n- `side_cam` (file_upload, optional): Realsense Side RGB\n- `robot_state` (json_editor, optional): 6D SO100/101 State\n- `num_steps` (number, optional; bounds 1..50): Flow Steps\n- `enable_cuda_graph` (checkbox, optional): CUDA Graph\n\nRequest template:\n\n```json\n{\n  \"enable_cuda_graph\": \"{{enable_cuda_graph}}\",\n  \"images\": {\n    \"side\": \"{{side_cam}}\",\n    \"top\": \"{{top_cam}}\"\n  },\n  \"instruction\": \"{{instruction}}\",\n  \"model\": \"{{model_slug}}\",\n  \"num_steps\": \"{{num_steps}}\",\n  \"robot_state\": \"{{robot_state}}\"\n}\n```\n\n## Exact output\n\n- `robot_action`\n- `json`\n\n## Route\n\n`POST /v1/inference/allenai-molmoact2-so100-101`\n\n## Workflow\n\n1. Load this skill and pin model slug `allenai-molmoact2-so100-101` with version key `so100-101`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/allenai-molmoact2-so100-101` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/allenai-molmoact2-so100-101`\n- Routes: `/v1/models/allenai-molmoact2-so100-101/inference-routes`\n- Regional deployment: `/v1/models/allenai-molmoact2-so100-101/regional-deployment`\n- Deployment handoff: `/v1/models/allenai-molmoact2-so100-101/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/allenai-molmoact2-so100-101/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/allenai-molmoact2-so100-101/SKILL.md\n\n## References\n\n- [AllenAI MolmoAct2 SO100/101 source](https://huggingface.co/allenai/MolmoAct2-SO100_101) (model-card)\n",
+  "license": "Apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/allenai-molmoact2-so100-101/deploy",
+    "inferenceRoutesUrl": "/v1/models/allenai-molmoact2-so100-101/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/allenai-molmoact2",
+    "modelUrl": "/v1/models/allenai-molmoact2-so100-101",
+    "regionalDeploymentUrl": "/v1/models/allenai-molmoact2-so100-101/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/allenai-molmoact2-so100-101/markdown",
+  "modelFamily": "allenai-molmoact2",
+  "modelSlug": "allenai-molmoact2-so100-101",
+  "modelUrl": "/v1/models/allenai-molmoact2-so100-101",
+  "outputFields": [
+    "robot_action",
+    "json"
+  ],
+  "outputModalities": [
+    "robot_action",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "MolmoAct2-SO100_101 is AllenAI's MolmoAct2 checkpoint fine-tuned for SO-100/101 single-arm robot policy inference.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/allenai-molmoact2-so100-101/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "AllenAI MolmoAct2 SO100/101 source",
+      "url": "https://huggingface.co/allenai/MolmoAct2-SO100_101"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/allenai-molmoact2-so100-101/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/robotics-control/allenai-molmoact2-so100-101/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "enable_cuda_graph": "{{enable_cuda_graph}}",
+    "images": {
+      "side": "{{side_cam}}",
+      "top": "{{top_cam}}"
+    },
+    "instruction": "{{instruction}}",
+    "model": "{{model_slug}}",
+    "num_steps": "{{num_steps}}",
+    "robot_state": "{{robot_state}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 5485309424,
+    "quantization": "bf16-runtime",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/allenai/MolmoAct2-SO100_101",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "robot-policy",
+      "vision-language-action",
+      "molmoact2",
+      "so100",
+      "so101",
+      "forge-wrapper-candidate"
+    ],
+    "versionLabel": "SO100/101 wrapper candidate"
+  },
+  "shortDescription": "MolmoAct2-SO100_101 is AllenAI's MolmoAct2 checkpoint fine-tuned for SO-100/101 single-arm robot policy inference.",
+  "skillName": "use-forge-allenai-molmoact2-so100-101",
+  "skillUrl": "/v1/model-skills/allenai-molmoact2-so100-101",
+  "slug": "allenai-molmoact2-so100-101",
+  "stability": "experimental",
+  "version": "so100-101-152569f-wrapper-20260529t03z",
+  "versionKey": "so100-101",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `allenai-molmoact2-so100-101` version when the task supplies text, image, robot_state and needs robot_action, json.",
+    "MolmoAct2-SO100_101 is AllenAI's MolmoAct2 checkpoint fine-tuned for SO-100/101 single-arm robot policy inference.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `allenai-molmoact2-so100-101` with version key `so100-101`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/allenai-molmoact2-so100-101` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,869 @@
+{
+  "benchmark_scores": {
+    "artifact_disabled": false,
+    "artifact_files_observed": [
+      ".gitattributes",
+      "BMC_CLIP_CF.pt",
+      "README.md"
+    ],
+    "artifact_gated": false,
+    "artifact_last_modified": "2025-01-17T03:25:13.000Z",
+    "artifact_license": "mit",
+    "artifact_private": false,
+    "artifact_sha": "c882d526f3d5cb9073035435dd66f6a374ca6515",
+    "artifact_source": "https://huggingface.co/BIOMEDICA/BMC_CLIP_CF",
+    "build_attempt_20260527T01Z": {
+      "cleanup": "Deleted job forge-build-biomedica-bmc-clip-c-4dbc6585 and configmap forge-build-context-4dbc6585 from nebius-mk8s-forge-us/forge-models.",
+      "failure_classification": "admission_policy_denied_kaniko_pod",
+      "failure_evidence": "ValidatingAdmissionPolicy forge-deny-writable-root-filesystem-forge-pods denied pod creation because Forge namespace containers must set readOnlyRootFilesystem=true and mount explicit writable volumes.",
+      "first_attempt": "Local helper validation rejected directory-style --include values for services/models/common and services/models/hcls/biomedica_bmc_clip_cf.",
+      "region": "us-central1",
+      "second_attempt_configmap": "forge-build-context-4dbc6585",
+      "second_attempt_job": "forge-build-biomedica-bmc-clip-c-4dbc6585",
+      "status": "blocked_before_pod_start"
+    },
+    "build_attempt_20260527T04Z": {
+      "kaniko_retry": {
+        "configmap": "forge-build-context-3e30a6b5",
+        "failure_classification": "kaniko_readonly_kaniko_dir",
+        "failure_evidence": "Kaniko exited with error resolving dockerfile path: copying dockerfile: creating file: open /kaniko/Dockerfile: read-only file system.",
+        "helper_issue": "scripts/build_wrapper_via_k8s_job.py printed build succeeded and exited 0 because its log success check matched Kaniko help text after the failure; crane digest verified the tag did not exist.",
+        "job": "forge-build-biomedica-bmc-clip-c-3e30a6b5",
+        "region": "us-central1",
+        "status": "failed_before_build"
+      },
+      "local_buildx_fallback": {
+        "command": "docker buildx build --progress=plain --push --tag <four regional refs> --file services/models/hcls/biomedica_bmc_clip_cf/Dockerfile .",
+        "compressed_layer_size_bytes": 4273762810,
+        "container_smoke": {
+          "checkpoint_sha256_guard": "enabled",
+          "compileall": "passed",
+          "open_clip_version": "2.32.0",
+          "torch_version": "2.7.1+cu128",
+          "torch_weights_only_numpy_scalar_allowlist": "enabled"
+        },
+        "digest": "sha256:c88435e1c80a12508126db6e12fa6f15ec535ab2dab23f21aaa30e3e44baf68d",
+        "regions_verified": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ],
+        "status": "pushed",
+        "tag": "wrapper-20260527t04z-safe"
+      }
+    },
+    "checkpoint_filename": "BMC_CLIP_CF.pt",
+    "checkpoint_sha256": "fbbf956aab2af68273b26797bdcde4dc61304ab819512b7e4bfe174058919664",
+    "checkpoint_size_bytes": 5131964946,
+    "container_decision": {
+      "official_serving_container_found": false,
+      "search_summary": "Current web search found the Hugging Face checkpoint, BIOMEDICA project page, OpenCLIP training repository, and generic CLIP/model-runner containers, but no pullable official BMC-CLIP CF serving OCI image with Forge-compatible health and inference endpoints.",
+      "selected_path": "forge_owned_openclip_fastapi_wrapper"
+    },
+    "current_onboarding_state": "acknowledgement_enforcing_wrapper_live_upserted_five_cell_matrix_supported_pending_hcls_product_safety_review",
+    "gpu_probe_status": {
+      "cells_oom": 0,
+      "cells_other_error": 0,
+      "cells_supported": 5,
+      "cells_unavailable": 0,
+      "embedding_dimensions": 768,
+      "reason": "The hidden full-matrix probe completed B200, B300, H200, L40S, and RTX6000 with 3 warmups plus 10 measured classify requests per cell and live-upserted each cell as supported.",
+      "report_json": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T05Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T05Z-full-matrix.md",
+      "request_time_source": "model_time_ms",
+      "response_status": 200,
+      "results": {
+        "B200/us-central1": {
+          "request_ms": 9,
+          "startup_ms": 196722,
+          "vram_used_gb": 2.45
+        },
+        "B300/uk-south1": {
+          "request_ms": 9,
+          "startup_ms": 214312,
+          "vram_used_gb": 2.45
+        },
+        "H200/eu-north2": {
+          "request_ms": 10,
+          "startup_ms": 223048,
+          "vram_used_gb": 2.36
+        },
+        "L40S/eu-north1": {
+          "request_ms": 14,
+          "startup_ms": 193790,
+          "vram_used_gb": 2.18
+        },
+        "RTX6000/us-central1": {
+          "request_ms": 10,
+          "startup_ms": 219756,
+          "vram_used_gb": 2.33
+        }
+      },
+      "scope": "full_matrix_3_warmups_10_measured",
+      "status": "supported"
+    },
+    "healthcare_safety_gate": {
+      "allowed_scope": "Nonclinical biomedical image representation, retrieval, and zero-shot labeling research with user-provided images and labels.",
+      "cleared_requirements": [
+        "Representative non-PHI 10-example corpus benchmark across all five supported GPU cells",
+        "Research-only UX/disclaimer copy and acknowledgement field checked into manifest",
+        "Runtime-side acknowledgement enforcement built, pushed, mirrored, and container-smoked",
+        "Acknowledgement-enforcing image live-upserted and persisted on B200, B300, H200, and L40S",
+        "Acknowledgement-enforcing image RTX6000/us-central1 follow-up reprobe persisted supported on 2026-06-03T09Z"
+      ],
+      "current_routable_enablement_requirements": [
+        "Healthcare product safety review approval"
+      ],
+      "disallowed_uses": [
+        "medical advice",
+        "clinical diagnosis",
+        "patient triage",
+        "clinical decision-making",
+        "claims of diagnostic performance without validation"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "research_only_ux_packet_20260527T08Z": {
+        "decision": "copy_and_acknowledgement_ready_not_product_approved",
+        "path": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T08Z-research-ux-gate.md",
+        "publishable": false
+      },
+      "routable_enablement_requirements": [
+        "Healthcare product safety review approval",
+        "RTX6000 acknowledgement-image reprobe when that cell is in live inventory"
+      ],
+      "safety_review_packet_20260527T06Z": {
+        "decision": "technical_intake_ready_not_product_approved",
+        "path": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T06Z-safety-corpus.md",
+        "publishable": false
+      },
+      "safety_review_packet_20260527T07Z": {
+        "decision": "technical_evidence_complete_not_product_approved",
+        "path": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T07Z-non-phi-corpus-matrix.md",
+        "publishable": false
+      }
+    },
+    "onboarding_state": "acknowledgement_enforcing_wrapper_live_upserted_four_cell_matrix_supported_pending_rtx6000_inventory_and_hcls_product_safety_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_blocker": "Regional wrapper images exist, the 10-example non-PHI synthetic corpus benchmark is complete, 2026-05-27T08Z checked in research-only UX/disclaimer copy, and 2026-05-29T18Z rebuilt/mirrored/live-upserted a runtime-side acknowledgement-enforcing image with persisted B200, B300, H200, and L40S support. The 2026-06-03T09Z RTX6000/us-central1 acknowledgement-image reprobe also persisted supported on the same digest. Routable/default publication remains blocked on HCLS product safety review approval.",
+    "regional_mirror_recheck_20260527T08Z": {
+      "checked_at": "2026-05-27T08:00:00Z",
+      "command": "crane digest <each regional wrapper-20260527t04z-safe ref>",
+      "digest": "sha256:c88435e1c80a12508126db6e12fa6f15ec535ab2dab23f21aaa30e3e44baf68d",
+      "public_route_check": {
+        "status": "404_hidden_onboarding_not_public",
+        "url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/biomedica-bmc-clip-cf"
+      },
+      "status": "verified_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:c88435e1c80a12508126db6e12fa6f15ec535ab2dab23f21aaa30e3e44baf68d",
+        "eu-north2": "sha256:c88435e1c80a12508126db6e12fa6f15ec535ab2dab23f21aaa30e3e44baf68d",
+        "uk-south1": "sha256:c88435e1c80a12508126db6e12fa6f15ec535ab2dab23f21aaa30e3e44baf68d",
+        "us-central1": "sha256:c88435e1c80a12508126db6e12fa6f15ec535ab2dab23f21aaa30e3e44baf68d"
+      }
+    },
+    "representative_non_phi_corpus_20260527T06Z": {
+      "benchmark_status": "superseded_by_supported_20260527T07Z_corpus_matrix",
+      "examples_planned": 10,
+      "modality_areas": [
+        "histopathology",
+        "radiology",
+        "microscopy",
+        "ophthalmology",
+        "dermatology",
+        "cell biology",
+        "surgery/endoscopy",
+        "molecular biology",
+        "parasitology"
+      ],
+      "next_benchmark_requirement": "Fulfilled by docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T07Z-non-phi-corpus-matrix.json; keep separate from clinical performance validation.",
+      "path": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T06Z-safety-corpus.md",
+      "phi_policy": "Use synthetic images or public explicitly de-identified teaching images only; reject EXIF, patient metadata, and patient-specific prompts.",
+      "status": "specified_then_fulfilled_by_20260527T07Z"
+    },
+    "representative_non_phi_corpus_20260527T07Z": {
+      "cells_other_error": 0,
+      "cells_probe_pending": 0,
+      "cells_supported": 5,
+      "corpus_type": "deterministic_synthetic_non_phi_png",
+      "examples_per_cell": 10,
+      "measured_repeats_per_example": 3,
+      "measured_requests_per_cell": 30,
+      "persisted_model_gpu_support": false,
+      "phi_policy": "Synthetic PNG images only; no PHI, no EXIF, no external patient or teaching images.",
+      "publication_interpretation": "Endpoint, latency, and synthetic corpus correctness evidence only; not diagnostic accuracy, sensitivity, specificity, or clinical suitability evidence.",
+      "report_json": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T07Z-non-phi-corpus-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T07Z-non-phi-corpus-matrix.md",
+      "request_time_source": "model_time_ms",
+      "results": {
+        "B200/us-central1": {
+          "request_ms_max": 13,
+          "request_ms_min": 9,
+          "request_ms_p50": 9,
+          "startup_ms": 205492,
+          "vram_used_gb": 2.45
+        },
+        "B300/uk-south1": {
+          "request_ms_max": 45,
+          "request_ms_min": 9,
+          "request_ms_p50": 9,
+          "startup_ms": 21172,
+          "vram_used_gb": 2.45
+        },
+        "H200/eu-north2": {
+          "request_ms_max": 12,
+          "request_ms_min": 10,
+          "request_ms_p50": 10,
+          "startup_ms": 208780,
+          "vram_used_gb": 2.36
+        },
+        "L40S/eu-north1": {
+          "request_ms_max": 252,
+          "request_ms_min": 14,
+          "request_ms_p50": 15,
+          "startup_ms": 173320,
+          "vram_used_gb": 2.18
+        },
+        "RTX6000/us-central1": {
+          "request_ms_max": 15,
+          "request_ms_min": 10,
+          "request_ms_p50": 11,
+          "startup_ms": 228762,
+          "vram_used_gb": 2.33
+        }
+      },
+      "status": "supported",
+      "warmup_runs_per_cell": 3
+    },
+    "research_checked_at": "2026-05-27T01:00:00Z",
+    "research_only_ux_20260527T08Z": {
+      "acknowledgement_default": true,
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical image representation, retrieval, and zero-shot labeling research with user-provided images and labels.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical diagnosis",
+        "patient triage",
+        "clinical decision-making",
+        "diagnostic performance claims without validation"
+      ],
+      "next_gate": "HCLS product safety reviewer approval plus wrapper rebuild/mirror/probe if source enforcement is required before routable use",
+      "path": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T08Z-research-ux-gate.md",
+      "publication_decision": "keep_hidden_onboarding",
+      "safety_notice_locations": [
+        "playground_config.safety_notice",
+        "playground_config.parameter_controls",
+        "api_mapping.body_template",
+        "wrapper response research_use metadata after next rebuild"
+      ],
+      "status": "manifest_copy_ready_pending_product_safety_approval",
+      "wrapper_source_enforcement": "services/models/hcls/biomedica_bmc_clip_cf/runtime.py requires research_use_acknowledgement=true in the next rebuilt image"
+    },
+    "runtime_ack_enforcement_20260529T18Z": {
+      "build_helper_blocker": {
+        "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/build_wrapper_via_k8s_job.py --image-name biomedica-bmc-clip-cf --dockerfile services/models/hcls/biomedica_bmc_clip_cf/Dockerfile --include services/models/common/__init__.py --include services/models/common/app.py --include services/models/common/cache.py --include services/models/common/health.py --include services/models/hcls/__init__.py --region us-central1 --tag wrapper-20260529t18z-ack --timeout 7200 --keep-failed-job",
+        "evidence": "bootstrap-kaniko failed before build with cp: can't stat '/kaniko-image/kaniko/.': No such file or directory; job and configmap were deleted.",
+        "failure_classification": "kaniko_bootstrap_image_volume_path_missing",
+        "fallback": "Local Docker Buildx build and push to all four regional registries succeeded."
+      },
+      "compressed_layer_size_bytes": 4273813858,
+      "container_smoke": {
+        "acknowledgement_missing": "rejected_with_research_use_acknowledgement_must_be_true",
+        "acknowledgement_true": "accepted",
+        "compileall": "passed"
+      },
+      "direct_probe_fallback_20260529T18Z": {
+        "fallback": "Repeated direct probes with --ephemeral-cache-volumes and region-specific digest-pinned image refs.",
+        "first_failure": "Kubernetes 403 before pod creation with default hostPath cache volumes",
+        "first_report_json": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260529T18Z-ack-us-central1.json",
+        "reports": [
+          "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260529T18Z-ack-us-central1-ephemeral.json",
+          "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260529T18Z-ack-eu-north1.json",
+          "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260529T18Z-ack-eu-north2.json",
+          "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260529T18Z-ack-uk-south1.json"
+        ],
+        "status": "b200_supported_after_hostpath_admission_fallback"
+      },
+      "live_upsert": {
+        "command": "POSTGRES_URL=<redacted from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/biomedica-bmc-clip-cf.json --keep-existing-family-latest",
+        "status": "succeeded"
+      },
+      "local_image_id": "sha256:272e93952e548e1af43d312041fb9fd0460ae1768fabf5e20c86ba8d79baa113",
+      "local_size_bytes": 7754414611,
+      "persisted_matrix_probe": {
+        "benchmark_runs_per_cell": 10,
+        "cache_volume_mode": "emptyDir",
+        "cells_not_in_live_inventory": [
+          "RTX6000/us-central1"
+        ],
+        "cells_oom": 0,
+        "cells_other_error": 0,
+        "cells_supported": 4,
+        "cells_unavailable": 0,
+        "report_json": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260529T18Z-ack-full-matrix.json",
+        "report_md": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260529T18Z-ack-full-matrix.md",
+        "request_body": "1x1 synthetic PNG, three generic biomedical labels, research_use_acknowledgement=true",
+        "request_time_source": "model_time_ms",
+        "results": {
+          "B200/us-central1": {
+            "request_ms": 10,
+            "startup_ms": 112921,
+            "vram_used_gb": 2.45
+          },
+          "B300/uk-south1": {
+            "request_ms": 9,
+            "startup_ms": 110770,
+            "vram_used_gb": 2.45
+          },
+          "H200/eu-north2": {
+            "request_ms": 10,
+            "startup_ms": 341430,
+            "vram_used_gb": 2.36
+          },
+          "L40S/eu-north1": {
+            "request_ms": 14,
+            "startup_ms": 126397,
+            "vram_used_gb": 2.18
+          }
+        },
+        "status": "supported",
+        "warmup_runs_per_cell": 3
+      },
+      "regional_digest_verification": {
+        "eu-north1": "sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+        "eu-north2": "sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+        "uk-south1": "sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+        "us-central1": "sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186"
+      },
+      "registry_digest": "sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+      "rtx6000_followup_probe_20260603T09Z": {
+        "benchmark_runs": 10,
+        "cache_volume_mode": "emptyDir",
+        "cluster_id": "mk8scluster-u00eyp43c8have384b",
+        "gpu_cell": "RTX6000/us-central1",
+        "gpu_node": "computeinstance-u00a3t95z7kn7yq89h",
+        "image_digest": "sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+        "persisted": true,
+        "pod_name": "forge-probe-biomedica-bmc-clip-cf-rtx6000-us-central1-1b3217",
+        "report_json": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260603Tcycle-rtx6000-ack.json",
+        "report_md": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260603Tcycle-rtx6000-ack.md",
+        "request_body": "1x1 synthetic PNG, three generic biomedical labels, research_use_acknowledgement=true",
+        "request_ms": 11,
+        "request_ms_samples": [
+          11,
+          11,
+          11,
+          11,
+          11,
+          10,
+          11,
+          11,
+          11,
+          10
+        ],
+        "request_time_source": "model_time_ms",
+        "response_status": 200,
+        "startup_ms": 354131,
+        "status": "supported",
+        "vram_used_gb": 2.33,
+        "warmup_runs": 3
+      },
+      "status": "live_upserted_four_cell_matrix_supported",
+      "tag": "wrapper-20260529t18z-ack"
+    },
+    "validation_commands_20260527T07Z": [
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_live_health_snapshot.py --stale-pod-hours 6",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python - <<'PY' ... fetch_inventory(DEFAULT_BASE_URL, DEFAULT_COMPUTE_KUBECONFIG, 'forge-models') ... PY",
+      "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python - <<'PY' ... one-off BIOMEDICA non-PHI corpus runner writing docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T07Z-non-phi-corpus-matrix.{json,md} ... PY"
+    ],
+    "validation_commands_planned": [
+      "docker buildx build --progress=plain --push --tag cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/biomedica-bmc-clip-cf:wrapper-20260529t18z-ack --tag cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/biomedica-bmc-clip-cf:wrapper-20260529t18z-ack --tag cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/biomedica-bmc-clip-cf:wrapper-20260529t18z-ack --tag cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/biomedica-bmc-clip-cf:wrapper-20260529t18z-ack --file services/models/hcls/biomedica_bmc_clip_cf/Dockerfile .",
+      "crane digest <each regional wrapper-20260529t18z-ack ref>",
+      "docker run --rm --entrypoint python cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/biomedica-bmc-clip-cf:wrapper-20260529t18z-ack -m compileall /app/services/models/hcls/biomedica_bmc_clip_cf /app/services/models/common",
+      "docker run --rm --entrypoint bash cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/biomedica-bmc-clip-cf:wrapper-20260529t18z-ack -lc 'python - <<\"PY\" ... verify missing research_use_acknowledgement is rejected and true acknowledgement is accepted ... PY'",
+      ".venv312/bin/python scripts/upsert_model.py manifests/models/hcls/biomedica-bmc-clip-cf.json --dry-run",
+      ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug biomedica-bmc-clip-cf --include-status onboarding --timeout 1800 --warmup-runs 3 --benchmark-runs 10"
+    ],
+    "warm_benchmark_protocol_20260527T06Z": {
+      "cells": 5,
+      "measured_runs_per_cell": 10,
+      "report_json": "docs/model-onboarding/hcls/biomedica-bmc-clip-cf-20260527T05Z-full-matrix.json",
+      "request_payload_limitation": "The 05Z matrix used the manifest default 1x1 synthetic PNG and three generic modality labels. Treat it as compatibility and latency evidence, not representative biomedical corpus evidence.",
+      "status": "verified_from_05z_report",
+      "timing_source": "model_time_ms",
+      "warmup_runs_per_cell": 3
+    },
+    "wrapper_source": {
+      "api": "/v1/inference/biomedica-bmc-clip-cf",
+      "cache_strategy": "Small runtime image; checkpoint, Hugging Face cache, XDG cache, Torch cache, and home all route to /mnt/data with a wrapper-level file lock around checkpoint hydration.",
+      "dockerfile": "services/models/hcls/biomedica_bmc_clip_cf/Dockerfile",
+      "health_routes": [
+        "/health",
+        "/healthz",
+        "/v1/health/ready"
+      ],
+      "modes": [
+        "classify",
+        "similarity",
+        "embed_image",
+        "embed_text"
+      ],
+      "path": "services/models/hcls/biomedica_bmc_clip_cf"
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "biomedical_imaging",
+    "vision_language",
+    "clip",
+    "zero_shot_classification",
+    "retrieval",
+    "open_source",
+    "mit",
+    "forge_wrapper",
+    "vision",
+    "text",
+    "embedding",
+    "classification",
+    "similarity",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/biomedica-bmc-clip-cf:wrapper-20260529t18z-ack@sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+  "container_image_size_bytes": 4273813858,
+  "context_window": 77,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-27T04:10:26.534614+00:00",
+  "default_eligible": true,
+  "description": "BIOMEDICA BMC-CLIP CF is a biomedical CLIP-style vision-language model released with the CVPR 2025 BIOMEDICA work. The upstream project reports broad biomedical image coverage across pathology, radiology, ophthalmology, dermatology, surgery, molecular biology, parasitology, and cell biology, with concept-filtered BMCA-CLIP-CF outperforming BioMedCLIP on most reported general biomedical imaging classification subsets. The Hugging Face artifact is public, ungated, disabled=false, MIT-licensed, and pinned here at commit c882d526f3d5cb9073035435dd66f6a374ca6515 with checkpoint SHA256 fbbf956aab2af68273b26797bdcde4dc61304ab819512b7e4bfe174058919664. Forge did not find an official serving container, so this hidden entry uses a Forge-owned OpenCLIP/FastAPI wrapper that hydrates the 5.13 GB checkpoint into /mnt/data and exposes image-text classification, similarity, and embedding modes. The 2026-05-27T04Z Docker Buildx fallback built and pushed the wrapper to all active Forge regional registries; the follow-up safe-load image digest sha256:c88435e1c80a12508126db6e12fa6f15ec535ab2dab23f21aaa30e3e44baf68d verifies the pinned checkpoint hash and allowlists NumPy scalar checkpoint metadata for PyTorch 2.6+ weights-only loading. The 2026-05-27T05Z hidden full-matrix probe completed on B200, B300, H200, L40S, and RTX6000 with 3 warmups and 10 measured classify requests per cell; all cells returned HTTP 200 with 768-dimensional embeddings and model_time_ms timing. The 2026-05-27T07Z corpus probe added deterministic synthetic non-PHI PNG examples covering histopathology, radiology, microscopy, ophthalmology, dermatology, cell biology, surgery/endoscopy, molecular biology, and parasitology; all five cells supported 30 measured model_time_ms samples. The 2026-05-27T08Z pass adds research-only UX copy and a request acknowledgement field to the manifest. The 2026-05-29T18Z pass rebuilt that source into digest sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186, mirrored it to all four active Forge regional registries, verified the container rejects requests without research_use_acknowledgement=true while accepting acknowledged research requests, live-upserted the hidden row, and persisted B200/B300/H200/L40S support for the new image. The 2026-06-03T09Z RTX6000/us-central1 acknowledgement-image reprobe passed and persisted on the same digest with startup 354131 ms, model_time_ms p50 11 ms, and 2.33 GB VRAM. It is not a clinical diagnostic service and must remain hidden until healthcare product safety review confirms the allowed nonclinical research scope and approves routable use.",
+  "family_id": "b7086656-eb6e-43b0-900b-56ed0431c342",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BMC_CLIP_ALLOW_REMOTE_DOWNLOAD": "true",
+      "BMC_CLIP_CACHE_ROOT": "/mnt/data/biomedica/bmc-clip-cf",
+      "BMC_CLIP_CHECKPOINT_FILENAME": "BMC_CLIP_CF.pt",
+      "BMC_CLIP_CHECKPOINT_SHA256": "fbbf956aab2af68273b26797bdcde4dc61304ab819512b7e4bfe174058919664",
+      "BMC_CLIP_DEVICE": "auto",
+      "BMC_CLIP_HF_REVISION": "c882d526f3d5cb9073035435dd66f6a374ca6515",
+      "BMC_CLIP_MODEL_ARCH": "ViT-L-14",
+      "BMC_CLIP_MODEL_ID": "BIOMEDICA/BMC_CLIP_CF",
+      "BMC_CLIP_MODEL_SLUG": "biomedica-bmc-clip-cf",
+      "HF_HOME": "/mnt/data/hf-cache/biomedica-bmc-clip-cf",
+      "HOME": "/mnt/data/home/biomedica-bmc-clip-cf",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/biomedica-bmc-clip-cf/hub",
+      "TORCH_HOME": "/mnt/data/biomedica/bmc-clip-cf/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/biomedica-bmc-clip-cf/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/biomedica/bmc-clip-cf/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 10001,
+    "container_run_as_user": 10001,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T18:27:24.618726+00:00",
+      "region": "us-central1",
+      "request_ms": 10,
+      "request_ms_p50": 9,
+      "request_ms_p95": 10,
+      "request_ms_p99": 8590,
+      "request_ms_samples": 21,
+      "startup_ms_first": null,
+      "startup_ms_probe": 112921,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.45,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T18:27:38.704920+00:00",
+      "region": "uk-south1",
+      "request_ms": 9,
+      "request_ms_p50": 9,
+      "request_ms_p95": 9,
+      "request_ms_p99": 9,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 110770,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.45,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:model:CreateContainerConfigError:container has runAsNonRoot and image will run as root (pod: \"forge-probe-biomedica-bmc-clip-cf-h100-eu-north1-08ef16_forge-models(265de1e8-8b28-4d35-800a-3652c814697c)\", container: model)",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:16:38.380826+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:model:CreateContainerConfigError:container has runAsNonRoot and image will run as root (pod: \"forge-probe-biomedica-bmc-clip-cf-h200-eu-north1-600a4c_forge-models(571fb047-211e-4a5e-8ed5-af9635f012d1)\", container: model)",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:19:03.322460+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T18:31:11.609066+00:00",
+      "region": "eu-north2",
+      "request_ms": 10,
+      "request_ms_p50": 10,
+      "request_ms_p95": 11,
+      "request_ms_p99": 11,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 341430,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.36,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:model:CreateContainerConfigError:container has runAsNonRoot and image will run as root (pod: \"forge-probe-biomedica-bmc-clip-cf-h200-us-central1-26d064_forge-models(66f5d980-f3b7-49be-a6d5-1b5eccf2a298)\", container: model)",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:19:21.197537+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T18:27:36.972971+00:00",
+      "region": "eu-north1",
+      "request_ms": 14,
+      "request_ms_p50": 14,
+      "request_ms_p95": 15,
+      "request_ms_p99": 15,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 126397,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T09:09:18.233297+00:00",
+      "region": "us-central1",
+      "request_ms": 11,
+      "request_ms_p50": 10,
+      "request_ms_p95": 11,
+      "request_ms_p99": 11,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 354131,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.33,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.59
+    }
+  ],
+  "gpu_type": null,
+  "id": "b550e983-c156-4cf2-b774-692dd3ff20c5",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "image",
+    "text"
+  ],
+  "modality_output": [
+    "embedding",
+    "classification",
+    "similarity",
+    "json"
+  ],
+  "model_family": "biomedica-bmc-clip",
+  "name": "BIOMEDICA BMC-CLIP CF",
+  "parameter_count": 428000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "image_base64": "{{image_base64}}",
+        "mode": "{{mode}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "return_embeddings": "{{return_embeddings}}",
+        "texts": "{{texts}}",
+        "top_k": "{{top_k}}"
+      },
+      "endpoint": "/v1/inference/biomedica-bmc-clip-cf",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "classify",
+        "key": "mode",
+        "label": "Mode",
+        "options": [
+          "classify",
+          "similarity",
+          "embed_image",
+          "embed_text"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGOor68HAAL+AX66JXAlAAAAAElFTkSuQmCC",
+        "key": "image_base64",
+        "label": "Image",
+        "type": "image_base64",
+        "visible": true
+      },
+      {
+        "default": "[\"a histopathology image\", \"a radiology image\", \"a microscopy image\"]",
+        "key": "texts",
+        "label": "Candidate labels or captions",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "top_labels, similarity scores, probabilities, and optional image/text embeddings",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 3,
+        "key": "top_k",
+        "label": "Top labels",
+        "max": 64,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": false,
+        "key": "return_embeddings",
+        "label": "Return embeddings",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox"
+      }
+    ],
+    "runtime": {
+      "artifact_revision": "c882d526f3d5cb9073035435dd66f6a374ca6515",
+      "base_image": "docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+      "cache_target": "/mnt/data/biomedica/bmc-clip-cf",
+      "checkpoint_filename": "BMC_CLIP_CF.pt",
+      "checkpoint_sha256": "fbbf956aab2af68273b26797bdcde4dc61304ab819512b7e4bfe174058919664",
+      "checkpoint_size_bytes": 5131964946,
+      "kind": "biomedical_clip",
+      "model_arch": "ViT-L-14",
+      "model_id": "BIOMEDICA/BMC_CLIP_CF",
+      "package": "open_clip_torch",
+      "package_version": "2.32.0",
+      "planned_image_name": "biomedica-bmc-clip-cf",
+      "wrapper_dockerfile": "services/models/hcls/biomedica_bmc_clip_cf/Dockerfile",
+      "wrapper_path": "services/models/hcls/biomedica_bmc_clip_cf",
+      "wrapper_status": "acknowledgement_enforcing_image_live_upserted_five_cell_matrix_supported_pending_hcls_product_safety_review"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical image representation, retrieval, and zero-shot labeling research with user-provided images and labels.",
+      "body": "Use only for nonclinical biomedical image representation, retrieval, and zero-shot labeling research with user-provided images and labels. Do not use for medical advice, clinical diagnosis, patient triage, treatment, clinical decision-making, or diagnostic performance claims.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical diagnosis",
+        "patient triage",
+        "clinical decision-making",
+        "diagnostic performance claims without validation"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical image representation"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "top_k",
+        "return_embeddings"
+      ],
+      "required": [
+        "mode",
+        "image_base64",
+        "texts",
+        "research_use_acknowledgement"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/biomedica-bmc-clip-cf@sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/biomedica-bmc-clip-cf@sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/biomedica-bmc-clip-cf@sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/biomedica-bmc-clip-cf@sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186"
+  },
+  "release_rank": 10,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "biomedica-bmc-clip-cf",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/BIOMEDICA/BMC_CLIP_CF",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical-imaging",
+    "vision-language",
+    "clip",
+    "zero-shot-classification",
+    "retrieval",
+    "open-source",
+    "mit",
+    "forge-wrapper"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "bmc-clip-cf-wrapper-20260529t18z-ack",
+  "version_description": "Hidden onboarding manifest for BIOMEDICA/BMC_CLIP_CF, a MIT-licensed CVPR 2025 biomedical image-text CLIP checkpoint. No official OCI serving container was found during the 2026-05-27T01Z research pass, so Forge-owned FastAPI wrapper source and Dockerfile now exist under services/models/hcls/biomedica_bmc_clip_cf. The 2026-05-27T04Z local Docker Buildx fallback built the same wrapper and pushed digest-pinned regional images to all active Forge registries. The 2026-05-27T05Z hidden full-matrix probe completed 3 warmups plus 10 measured classify requests on B200, B300, H200, L40S, and RTX6000, all supported with model_time_ms samples. The 2026-05-27T07Z non-PHI synthetic biomedical corpus probe reused that digest and completed 10 examples with 3 measured repeats per example across all five supported cells. The 2026-05-27T08Z pass reverified all four regional image digests, confirmed the public route is still hidden, and added machine-readable research-only UX/disclaimer copy plus an acknowledgement field. The 2026-05-29T18Z pass rebuilt and pushed an acknowledgement-enforcing wrapper image to all four active registries at digest sha256:3715eb9a4e9c8b18899fba64b392b0a0ee75fe7fcbcee6b475662fcae6865186; container compile and acknowledgement smoke checks passed, the manifest was live-upserted, and the B200/B300/H200/L40S live inventory cells passed persisted probes. The 2026-06-03T09Z RTX6000/us-central1 acknowledgement-image reprobe also passed and persisted with 3 warmups plus 10 measured model_time_ms requests. The model remains deliberately default-ineligible and onboarding-only until HCLS product safety review approves routable use.",
+  "version_key": "wrapper-20260529t18z-ack",
+  "version_label": "BMC-CLIP CF via Forge OpenCLIP wrapper with acknowledgement enforcement"
+}

@@ -1,0 +1,168 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "98179f450a5c0dbb96f4f3ac8f70ff4b591604f7a3d4bb13925bdc6d3502feec",
+  "defaultEligible": false,
+  "displayName": "Use OLMo-2 1B Instruct",
+  "domain": "language",
+  "downloadUrl": "/v1/model-skills/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/markdown?download=true",
+  "group": "language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "language",
+    "allenai-olmo-2-0425-1b-instruct-vllm-cuda13"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Write a concise engineering handoff for this incident note and include one likely root cause and two next checks:\n\nA small-model probe reached readiness but returned slower first responses after a fresh cache hydrate. No OOM event was recorded.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.4,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.95,
+      "fieldType": "number",
+      "key": "top_p",
+      "label": "Top P",
+      "maximum": 1,
+      "minimum": 0.01,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 2048,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-allenai-olmo-2-0425-1b-instruct-vllm-cuda13\ndescription: Use the exact Forge model allenai-olmo-2-0425-1b-instruct-vllm-cuda13 for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use OLMo-2 1B Instruct\n\n- Model slug: `allenai-olmo-2-0425-1b-instruct-vllm-cuda13`\n- Model family: `allenai-olmo-2-0425-1b-instruct`\n- Version: `vllm-0.21.0-cuda13` (`vllm-0-21-0-cuda13`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / language / allenai-olmo-2-0425-1b-instruct-vllm-cuda13`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nAllenAI OLMo-2 1B Instruct is a public Apache-2.0 compact instruction-following text-generation model derived from the OLMo-2 0425 1B line and post-trained with supervised fine-tuning, DPO, and RLVR data for chat, math, GSM8K-style reasoning, and IFEval-style instruction following.\n\n## Use this exact model when\n\n- Use this exact `allenai-olmo-2-0425-1b-instruct-vllm-cuda13` version when the task supplies text and needs text.\n- AllenAI OLMo-2 1B Instruct is a public Apache-2.0 compact instruction-following text-generation model derived from the OLMo-2 0425 1B line and post-trained with supervised fine-tuning, DPO, and RLVR data for chat, math, GSM8K-style reasoning, and IFEval-style instruction following.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `top_p` (number, optional; bounds 0.01..1): Top P\n- `max_tokens` (number, optional; bounds 1..2048): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"{{prompt}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": false,\n  \"temperature\": \"{{temperature}}\",\n  \"top_p\": \"{{top_p}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `allenai-olmo-2-0425-1b-instruct-vllm-cuda13` with version key `vllm-0-21-0-cuda13`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 4096.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13`\n- Routes: `/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/inference-routes`\n- Regional deployment: `/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/regional-deployment`\n- Deployment handoff: `/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/SKILL.md\n\n## References\n\n- [OLMo-2 1B Instruct source](https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 4096."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/deploy",
+    "inferenceRoutesUrl": "/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/allenai-olmo-2-0425-1b-instruct",
+    "modelUrl": "/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13",
+    "regionalDeploymentUrl": "/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/markdown",
+  "modelFamily": "allenai-olmo-2-0425-1b-instruct",
+  "modelSlug": "allenai-olmo-2-0425-1b-instruct-vllm-cuda13",
+  "modelUrl": "/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "AllenAI OLMo-2 1B Instruct is a public Apache-2.0 compact instruction-following text-generation model derived from the OLMo-2 0425 1B line and post-trained with supervised fine-tuning, DPO, and RLVR data for chat, math, GSM8K-style reasoning, and IFEval-style instruction following.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "OLMo-2 1B Instruct source",
+      "url": "https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/SKILL.md",
+  "repositoryPath": "skills/models/general/language/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "{{prompt}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": false,
+    "temperature": "{{temperature}}",
+    "top_p": "{{top_p}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 4096,
+    "parameterCount": 1484916736,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct",
+    "tags": [
+      "llm",
+      "chat",
+      "instruction",
+      "math",
+      "english",
+      "small-model",
+      "olmo",
+      "allenai",
+      "vllm",
+      "cuda13",
+      "blackwell"
+    ],
+    "versionLabel": "vLLM 0.21.0 CUDA 13"
+  },
+  "shortDescription": "AllenAI OLMo-2 1B Instruct is a public Apache-2.0 compact instruction-following text-generation model derived from the OLMo-2 0425 1B line and post-trained with supervised fine-tuning, DPO, and RLVR data for chat, math, GSM8K-style reasoning, and IFEval-style instruction following.",
+  "skillName": "use-forge-allenai-olmo-2-0425-1b-instruct-vllm-cuda13",
+  "skillUrl": "/v1/model-skills/allenai-olmo-2-0425-1b-instruct-vllm-cuda13",
+  "slug": "allenai-olmo-2-0425-1b-instruct-vllm-cuda13",
+  "stability": "testing",
+  "version": "vllm-0.21.0-cuda13",
+  "versionKey": "vllm-0-21-0-cuda13",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `allenai-olmo-2-0425-1b-instruct-vllm-cuda13` version when the task supplies text and needs text.",
+    "AllenAI OLMo-2 1B Instruct is a public Apache-2.0 compact instruction-following text-generation model derived from the OLMo-2 0425 1B line and post-trained with supervised fine-tuning, DPO, and RLVR data for chat, math, GSM8K-style reasoning, and IFEval-style instruction following.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `allenai-olmo-2-0425-1b-instruct-vllm-cuda13` with version key `vllm-0-21-0-cuda13`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

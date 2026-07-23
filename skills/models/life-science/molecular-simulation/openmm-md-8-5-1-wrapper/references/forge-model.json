@@ -1,0 +1,1502 @@
+{
+  "benchmark_scores": {
+    "b200_context_cache_optimization": {
+      "baseline_b200_model_p50_ms": 374,
+      "baseline_model_samples_ms": [
+        381,
+        382,
+        373,
+        370,
+        331,
+        376,
+        373,
+        377,
+        380,
+        363
+      ],
+      "baseline_report_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260602T1616Z-b200-baseline.json",
+      "baseline_report_md": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260602T1616Z-b200-baseline.md",
+      "checked_at": "2026-06-02T16:26:54Z",
+      "diagnosis": "Direct B200 phase timing showed the previous CUDA hot path spent about 192 ms per request constructing a new OpenMM CUDA Context while integrator.step(100) took about 1.7 ms.",
+      "gpu": "B200",
+      "node": "computeinstance-u00pyd1rnq28tmd2b2",
+      "optimized_b200_model_p50_ms": 3,
+      "optimized_model_samples_ms": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "optimized_report_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260602T1625Z-b200ctx-b200-probe.json",
+      "optimized_report_md": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260602T1625Z-b200ctx-b200-probe.md",
+      "optimized_response_evidence": "response preview records platform=CUDA and context_cache.hit=true",
+      "region": "us-central1"
+    },
+    "cache_strategy": "OpenMM runtime cache/home directories are scoped under /tmp/openmm/openmm-md-8-5-1-wrapper and /tmp/home/openmm-md-8-5-1-wrapper so the non-root image works with Forge read-only-rootfs pods. The runtime also keeps up to 16 in-process OpenMM Context objects keyed by system/platform/precision/thermostat parameters to avoid repeated CUDA Context construction.",
+    "container_search": {
+      "dockerhub_openmm_current_official": "No current official OpenMM HTTP serving image was identified; the public install route remains conda-forge.",
+      "legacy_uvarc_openmm": "Docker Hub image exists for OpenMM 7.5.0 but is more than five years old and not selected.",
+      "official_serving_container_found": false
+    },
+    "container_source_decision": "Build a Forge-owned HTTP wrapper using conda-forge openmm=8.5.1 on the digest-pinned NVIDIA CUDA 12.8.1 runtime because upstream OpenMM is primarily distributed as packages, not as a current HTTP-serving OCI image. The 2026-06-02 B200 optimization keeps a small LRU of OpenMM Context objects for repeated parameter sets, the 2026-06-04 non-root build reports simulated_ns/ns_per_day, and the 2026-06-04 profiler pass exposes explicit cutoff and Verlet integrator modes.",
+    "current_live_matrix_probe_20260604T11Z": {
+      "benchmark_runs_per_supported_cell": 10,
+      "cells": 7,
+      "checked_at": "2026-06-04T11:06:58.963234+00:00",
+      "gpu_execution_confirmed": "response previews recorded platform=CUDA; current non-root throughput image returned model_time_ms plus ns_per_day fields on every schedulable cell",
+      "image_digest": "sha256:b845256b43214ec3c434c9ed43db8ffd624eb8951182fc14a691193656b717c0",
+      "model_time_ms_by_cell": [
+        {
+          "gpu_type": "B200",
+          "model_p50_ms": 3,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 82540,
+          "status": "supported",
+          "vram_used_gb": 0.62,
+          "warm_samples": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 90571,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "H100",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 16199,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 85750,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "L40S",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 2377,
+          "status": "supported",
+          "vram_used_gb": 0.43,
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north2",
+          "startup_ms": 2379,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "B300",
+          "model_p50_ms": 3,
+          "model_time_source": "model_time_ms",
+          "region": "uk-south1",
+          "startup_ms": 1843,
+          "status": "supported",
+          "vram_used_gb": 0.62,
+          "warm_samples": [
+            3,
+            4,
+            4,
+            3,
+            4,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        }
+      ],
+      "oom": 0,
+      "other_error": 0,
+      "probe_pending": 0,
+      "report_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604T11Z-nonroot-throughput-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604T11Z-nonroot-throughput-full-matrix.md",
+      "rtx6000_status": "No schedulable RTX6000 cell was present in live Forge inventory during the 2026-06-04T11Z current-image matrix; RTX6000 compatibility remains backed by the earlier 8-cell full matrix.",
+      "status": "current_live_inventory_supported_on_nonroot_throughput_image",
+      "supported": 7,
+      "unavailable": 0,
+      "warmup_runs_per_cell": 3
+    },
+    "current_live_matrix_probe_20260604T12Z": {
+      "benchmark_runs_per_supported_cell": 5,
+      "cells": 7,
+      "checked_at": "2026-06-04T11:57:32.629107+00:00",
+      "gpu_execution_confirmed": "response previews recorded platform=CUDA plus integrator=LangevinMiddle on the final digest; all 7 schedulable cells returned model_time_ms and ns_per_day.",
+      "image_digest": "sha256:cc421becbb72338fbe9de045b83dd557e49a0f659d79164992496cbc9930eb2e",
+      "model_time_ms_by_cell": [
+        {
+          "gpu_type": "B200",
+          "model_p50_ms": 3,
+          "ns_per_day": 5760000.0,
+          "region": "us-central1",
+          "samples_ms": [
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.62
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "ns_per_day": 8640000.0,
+          "region": "us-central1",
+          "samples_ms": [
+            2,
+            2,
+            3,
+            2,
+            2
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "H100",
+          "model_p50_ms": 2,
+          "ns_per_day": 8640000.0,
+          "region": "eu-north1",
+          "samples_ms": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "ns_per_day": 8640000.0,
+          "region": "eu-north1",
+          "samples_ms": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "L40S",
+          "model_p50_ms": 2,
+          "ns_per_day": 8640000.0,
+          "region": "eu-north1",
+          "samples_ms": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.43
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "ns_per_day": 8640000.0,
+          "region": "eu-north2",
+          "samples_ms": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "B300",
+          "model_p50_ms": 3,
+          "ns_per_day": 5760000.0,
+          "region": "uk-south1",
+          "samples_ms": [
+            3,
+            3,
+            3,
+            3,
+            4
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.62
+        }
+      ],
+      "oom": 0,
+      "other_error": 0,
+      "probe_pending": 0,
+      "report_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Tverlet-image-current-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Tverlet-image-current-matrix.md",
+      "status": "current_live_inventory_supported_on_final_profiler_optimized_image",
+      "supported": 7,
+      "unavailable": 0,
+      "warmup_runs_per_cell": 2
+    },
+    "full_matrix_probe": {
+      "benchmark_runs_per_supported_cell": 10,
+      "cells": 8,
+      "checked_at": "2026-06-02T16:32:39.799002+00:00",
+      "gpu_execution_confirmed": "response previews recorded platform=CUDA; optimized B200 probe recorded context_cache.hit=true and the full matrix recorded 2-3 ms hot model time on every supported cell",
+      "model_time_ms_by_cell": [
+        {
+          "gpu_type": "B200",
+          "model_p50_ms": 3,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 89997,
+          "status": "supported",
+          "vram_used_gb": 0.62,
+          "wall_samples_ms": [
+            161,
+            161,
+            161,
+            161,
+            161,
+            161,
+            160,
+            160,
+            160,
+            161
+          ],
+          "warm_samples": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "gpu_type": "B300",
+          "model_p50_ms": 3,
+          "model_time_source": "model_time_ms",
+          "region": "uk-south1",
+          "startup_ms": 14595,
+          "status": "supported",
+          "vram_used_gb": 0.62,
+          "wall_samples_ms": [
+            70,
+            70,
+            70,
+            69,
+            69,
+            70,
+            70,
+            70,
+            70,
+            70
+          ],
+          "warm_samples": [
+            3,
+            4,
+            3,
+            3,
+            3,
+            3,
+            4,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "gpu_type": "H100",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 92178,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "wall_samples_ms": [
+            89,
+            90,
+            90,
+            89,
+            91,
+            91,
+            90,
+            91,
+            90,
+            90
+          ],
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 85022,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "wall_samples_ms": [
+            94,
+            94,
+            95,
+            94,
+            94,
+            94,
+            94,
+            94,
+            95,
+            94
+          ],
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north2",
+          "startup_ms": 93055,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "wall_samples_ms": [
+            102,
+            103,
+            103,
+            104,
+            102,
+            103,
+            102,
+            103,
+            103,
+            103
+          ],
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 89628,
+          "status": "supported",
+          "vram_used_gb": 0.52,
+          "wall_samples_ms": [
+            166,
+            166,
+            166,
+            166,
+            168,
+            165,
+            166,
+            166,
+            166,
+            165
+          ],
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "L40S",
+          "model_p50_ms": 2,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 15969,
+          "status": "supported",
+          "vram_used_gb": 0.43,
+          "wall_samples_ms": [
+            95,
+            95,
+            96,
+            96,
+            96,
+            95,
+            95,
+            96,
+            96,
+            96
+          ],
+          "warm_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "gpu_type": "RTX6000",
+          "model_p50_ms": 3,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 98195,
+          "status": "supported",
+          "vram_used_gb": 0.55,
+          "wall_samples_ms": [
+            161,
+            161,
+            161,
+            161,
+            161,
+            161,
+            161,
+            162,
+            162,
+            161
+          ],
+          "warm_samples": [
+            3,
+            4,
+            3,
+            3,
+            4,
+            3,
+            3,
+            4,
+            4,
+            3
+          ]
+        }
+      ],
+      "oom": 0,
+      "other_error": 0,
+      "probe_pending": 0,
+      "report_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260602T1630Z-b200ctx-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260602T1630Z-b200ctx-full-matrix.md",
+      "status": "all_available_gpu_region_cells_supported_after_b200_context_cache_optimization",
+      "supported": 8,
+      "unavailable": 0,
+      "warmup_runs_per_cell": 3
+    },
+    "local_wrapper_build": {
+      "checked_at": "2026-06-04T11:56:00Z",
+      "default_smoke": {
+        "request": {
+          "integrators_checked": [
+            "LangevinMiddle",
+            "Verlet"
+          ],
+          "nonbonded_method": "NoCutoff",
+          "particle_count": 8,
+          "platform": "CPU",
+          "research_use_acknowledgement": true,
+          "steps": 5
+        },
+        "result": "CPU smoke passed for default NVT and explicit NVE integrator modes",
+        "selected_platform": "CPU"
+      },
+      "image": "forge-local/openmm-md-8-5-1-wrapper:20260604-verlet-profiler",
+      "local_image_id": "sha256:aa9ebcfa823bd8ab8c1b90efd5e944754f71f9b5b8e79973dffb5bc8db5070b3",
+      "local_image_size_bytes": 5493954073,
+      "readiness": "Local read-only-root CPU smoke ran as uid 10001 for both LangevinMiddle and Verlet integrators; live Forge probes confirmed CUDA platform on all 7 schedulable GPU cells.",
+      "status": "local_image_built_readonly_root_cpu_smoke_passed_final_verlet_profiler_runtime"
+    },
+    "onboarding_state": "active_b200_context_cache_optimized_full_gpu_matrix_supported_and_benchmarked",
+    "profiler_optimization_20260604T12Z": {
+      "benchmark_payload": {
+        "ensemble": "NVE",
+        "integrator": "Verlet",
+        "nonbonded_method": "NoCutoff",
+        "particle_count": 4096,
+        "precision": "single",
+        "return_state": false,
+        "simulated_ns": 0.2,
+        "steps": 100000
+      },
+      "checked_at": "2026-06-04T12:00:30Z",
+      "cpu_profile": {
+        "b300_direct_verlet_1m_steps": {
+          "ms": 36771,
+          "ns_per_day": 4699.355,
+          "sampled_cpu_millicores": [
+            374,
+            374,
+            1001,
+            1001,
+            1001,
+            800
+          ],
+          "sampled_memory_mib": 76
+        },
+        "h200_direct_verlet_1m_steps": {
+          "ms": 30721,
+          "ns_per_day": 5624.817,
+          "sampled_cpu_millicores": [
+            987,
+            987,
+            987,
+            1001
+          ],
+          "sampled_memory_mib": 73
+        }
+      },
+      "fastest_observed_by_gpu": [
+        {
+          "gpu_type": "B200",
+          "model_p50_ms": 3715,
+          "ns_per_day": 4651.413,
+          "region": "us-central1",
+          "samples_ms": [
+            3715,
+            3715,
+            3712,
+            3714,
+            3716
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.61
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 3027,
+          "ns_per_day": 5708.622,
+          "region": "eu-north1",
+          "samples_ms": [
+            3027,
+            3026,
+            3028,
+            3027,
+            3028
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "H100",
+          "model_p50_ms": 3095,
+          "ns_per_day": 5583.199,
+          "region": "eu-north1",
+          "samples_ms": [
+            3096,
+            3095,
+            3095,
+            3095,
+            3096
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "L40S",
+          "model_p50_ms": 3123,
+          "ns_per_day": 5533.141,
+          "region": "eu-north1",
+          "samples_ms": [
+            3112,
+            3098,
+            3136,
+            3130,
+            3123
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.43
+        },
+        {
+          "gpu_type": "B300",
+          "model_p50_ms": 3673,
+          "ns_per_day": 4704.601,
+          "region": "uk-south1",
+          "samples_ms": [
+            3674,
+            3673,
+            3672,
+            3673,
+            3674
+          ],
+          "status": "supported",
+          "vram_used_gb": 0.61
+        }
+      ],
+      "improvements_vs_previous_langevinmiddle_best": [
+        {
+          "gpu_type": "B200",
+          "percent_gain": 12.97,
+          "previous_integrator": "LangevinMiddle",
+          "previous_ns_per_day": 4117.23,
+          "relative_speedup": 1.13,
+          "verlet_ns_per_day": 4651.413
+        },
+        {
+          "gpu_type": "B300",
+          "percent_gain": 13.45,
+          "previous_integrator": "LangevinMiddle",
+          "previous_ns_per_day": 4146.87,
+          "relative_speedup": 1.134,
+          "verlet_ns_per_day": 4704.601
+        },
+        {
+          "gpu_type": "H100",
+          "percent_gain": 10.18,
+          "previous_integrator": "LangevinMiddle",
+          "previous_ns_per_day": 5067.45,
+          "relative_speedup": 1.102,
+          "verlet_ns_per_day": 5583.199
+        },
+        {
+          "gpu_type": "H200",
+          "percent_gain": 9.88,
+          "previous_integrator": "LangevinMiddle",
+          "previous_ns_per_day": 5195.43,
+          "relative_speedup": 1.099,
+          "verlet_ns_per_day": 5708.622
+        },
+        {
+          "gpu_type": "L40S",
+          "percent_gain": 4.48,
+          "previous_integrator": "LangevinMiddle",
+          "previous_ns_per_day": 5295.74,
+          "relative_speedup": 1.045,
+          "verlet_ns_per_day": 5533.141
+        }
+      ],
+      "profiler_artifacts": {
+        "b300_nsys_stats": "docs/model-onboarding/hcls/openmm-profiler-20260604/b300/nsys-stats-b300.txt",
+        "h200_nsys_stats": "docs/model-onboarding/hcls/openmm-profiler-20260604/h200/nsys-stats-h200.txt",
+        "raw_capture_policy": "Large .nsys-rep, .ncu-rep, and .sqlite profiler captures are retained only as local operator artifacts; committed evidence uses extracted text and JSON summaries."
+      },
+      "rejected_optimizations": {
+        "cuda_use_blocking_sync_false": {
+          "b300_false_ns_per_day": 4153.846,
+          "b300_true_ns_per_day": 4161.85,
+          "h200_false_ns_per_day": 5106.383,
+          "h200_true_ns_per_day": 5212.67
+        },
+        "cutoff_nonperiodic": "Both 1.2 nm and 0.8 nm cutoff modes were slower than NoCutoff for this small argon lattice because neighbor-list/cutoff overhead outweighed the reduced pair work."
+      },
+      "reports": {
+        "cutoff_nonperiodic_0p8_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-100k-cutoff-nonperiodic-0p8-single.json",
+        "cutoff_nonperiodic_1p2_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-100k-cutoff-nonperiodic-1p2-single.json",
+        "final_image_current_matrix_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Tverlet-image-current-matrix.json",
+        "final_image_current_matrix_md": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Tverlet-image-current-matrix.md",
+        "verlet_100k_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-100k-nocutoff-verlet-single.json",
+        "verlet_100k_md": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-100k-nocutoff-verlet-single.md"
+      },
+      "status": "verlet_integrator_mode_added_after_nsight_profiler_and_endpoint_benchmarking",
+      "summary_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Tprofiler-optimization-summary.json",
+      "technical_interpretation": "Nsight Systems showed NoCutoff computeNonbonded remained the dominant GPU kernel family and cutoff neighbor-list modes were slower for this 4096-particle argon lattice. The accepted speedup is an explicit Verlet/NVE mode that removes Langevin thermostat/random-number work; use it only when NVE dynamics are scientifically acceptable. For NVT/Langevin simulations, keep LangevinMiddle and expect the previous NoCutoff single/mixed throughput numbers."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_blockers": [],
+    "publication_decision": "active_user_ready_after_context_cache_nonroot_throughput_metrics_and_openmm_gpu_optimization",
+    "regional_mirror": {
+      "checked_at": "2026-06-04T11:56:30Z",
+      "image_tag": "20260604-verlet-profiler",
+      "manifest_digest": "sha256:cc421becbb72338fbe9de045b83dd557e49a0f659d79164992496cbc9930eb2e",
+      "regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ],
+      "status": "all_active_regions_pushed_and_verified_final_verlet_profiler_image"
+    },
+    "research_checked_at": "2026-06-04T11:00:00Z",
+    "throughput_optimization_20260604": {
+      "benchmark_system": {
+        "engine": "OpenMM 8.5.1",
+        "friction_per_ps": 1,
+        "nonbonded_method": "NoCutoff",
+        "particle_count": 4096,
+        "reason_for_return_state_false": "Disables final coordinate and energy readback so GPU integration throughput is measured rather than host-device transfer and serialization.",
+        "return_state": false,
+        "temperature_k": 120,
+        "timestep_fs": 2,
+        "wrapper_system": "argon_lennard_jones"
+      },
+      "checked_at": "2026-06-04T11:00:27Z",
+      "cpu_profile": {
+        "h200_eu_north1_single": {
+          "integration_ns_per_day": 5152.67,
+          "ns_per_day": 4983.85,
+          "request_ms": 34672,
+          "sampled_cpu_millicores": [
+            1091,
+            1091,
+            1091,
+            1002
+          ],
+          "sampled_memory_mib": 98
+        },
+        "interpretation": "The optimized OpenMM wrapper is GPU-bound for the integration section but still keeps about one CPU core active for the Python/OpenMM driver path during long requests.",
+        "l40s_eu_north1_mixed": {
+          "integration_ns_per_day": 5260.11,
+          "ns_per_day": 5043.49,
+          "request_ms": 34262,
+          "sampled_cpu_millicores": [
+            1075,
+            1083,
+            1001,
+            1001
+          ],
+          "sampled_memory_mib": 96
+        },
+        "method": "kubectl top pods --containers sampled during 1,000,000-step requests on kept probe pods."
+      },
+      "exact_gromacs_input_status": "The original genomics benchmark inputs available locally are GROMACS .tpr files for 1AKI and IDRF. OpenMM does not run .tpr directly through this wrapper, so exact molecule-for-molecule OpenMM runs need matching OpenMM-readable topology and coordinates such as GROMACS .top plus .gro, AMBER prmtop/inpcrd, CHARMM psf/pdb, or equivalent prepared OpenMM system files.",
+      "fastest_observed_by_gpu": [
+        {
+          "gpu_type": "L40S",
+          "model_p50_ms": 3263,
+          "ns_per_day": 5295.74,
+          "precision": "mixed",
+          "region": "eu-north1",
+          "samples_ms": [
+            3263,
+            3257,
+            3283
+          ],
+          "simulated_ns": 0.2,
+          "steps": 100000,
+          "vram_used_gb": 0.43
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 3326,
+          "ns_per_day": 5195.43,
+          "precision": "single",
+          "region": "us-central1",
+          "samples_ms": [
+            3327,
+            3326,
+            3323
+          ],
+          "simulated_ns": 0.2,
+          "steps": 100000,
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "H100",
+          "model_p50_ms": 3410,
+          "ns_per_day": 5067.45,
+          "precision": "single",
+          "region": "eu-north1",
+          "samples_ms": [
+            3410,
+            3410,
+            3410
+          ],
+          "simulated_ns": 0.2,
+          "steps": 100000,
+          "vram_used_gb": 0.52
+        },
+        {
+          "gpu_type": "B300",
+          "model_p50_ms": 4167,
+          "ns_per_day": 4146.87,
+          "precision": "single",
+          "region": "uk-south1",
+          "samples_ms": [
+            4167,
+            4167,
+            4167
+          ],
+          "simulated_ns": 0.2,
+          "steps": 100000,
+          "vram_used_gb": 0.62
+        },
+        {
+          "gpu_type": "B200",
+          "model_p50_ms": 4197,
+          "ns_per_day": 4117.23,
+          "precision": "single",
+          "region": "us-central1",
+          "samples_ms": [
+            4199,
+            4197,
+            4194
+          ],
+          "simulated_ns": 0.2,
+          "steps": 100000,
+          "vram_used_gb": 0.62
+        }
+      ],
+      "latency_bound_probe_observation": {
+        "argon4096_10k_mixed": "The 10000-step mixed run showed L40S at 333 ms / 5189 ns/day, H200 at 344-350 ms / 4937-5023 ns/day, H100 at 355 ms / 4868 ns/day, B200 at 421 ms / 4105 ns/day, and B300 at 439 ms / 3936 ns/day.",
+        "argon4096_10k_single": "The 10000-step single run improved most cells: L40S 326 ms / 5301 ns/day, H200 338-347 ms / 4980-5112 ns/day, H100 344 ms / 5023 ns/day, B300 419 ms / 4124 ns/day, and B200 423 ms / 4085 ns/day.",
+        "argon4096_1k_mixed": "The 1000-step request simulated only 0.002 ns and produced 40-45 ms model p50 across available GPUs, so it was dominated by fixed request/runtime overhead."
+      },
+      "precision_tuning": {
+        "double_precision": "Not benchmarked for the optimized setting because this bounded LJ smoke workload is intended for throughput comparison, not high-accuracy production science.",
+        "mixed_precision": "Fastest on L40S in the 100k-step sustained run and still the safer default when energy conservation is more important than peak speed.",
+        "single_precision": "Fastest on H200, H100, B300, and B200 in the 100k-step sustained run."
+      },
+      "reports": {
+        "argon4096_100k_mixed_available_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-100ksteps-mixed-available-gpus.json",
+        "argon4096_100k_single_available_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-100ksteps-single-available-gpus.json",
+        "argon4096_10k_mixed_available_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-10ksteps-available-gpus.json",
+        "argon4096_10k_single_available_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-10ksteps-single-available-gpus.json",
+        "argon4096_1k_mixed_available_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-available-gpus.json",
+        "argon4096_1k_mixed_l40s_rtx6000_attempt_json": "docs/model-onboarding/hcls/openmm-md-8-5-1-wrapper-20260604Targon4096-l40s-rtx6000.json",
+        "cpu_profile_h200_json": "tmp/openmm-bench-20260604/openmm-cpu-profile-h200-1msteps.json",
+        "cpu_profile_l40s_json": "tmp/openmm-bench-20260604/openmm-cpu-profile-l40s-1msteps.json"
+      },
+      "rtx6000_status": {
+        "compatibility": "Earlier OpenMM support evidence exists, so RTX6000 remains marked compatible.",
+        "current_throughput_probe_status": "No schedulable RTX6000 cell was present in live Forge inventory during the 2026-06-04 throughput optimization run. The explicit L40S/RTX6000 probe discovered only L40S/eu-north1.",
+        "rerun_when_available": "Rerun the same 100000-step single and mixed argon4096 requests on RTX6000/us-central1 when inventory exposes RTX6000 again."
+      },
+      "status": "available_gpu_openmm_argon_lj_throughput_optimized_with_ns_day_reporting",
+      "technical_interpretation": "This OpenMM wrapper currently benchmarks a small 4096-particle NoCutoff Lennard-Jones system, not a large PME biomolecular workload. It does not use tensor cores, and at this size it is governed by OpenMM CUDA kernel behavior, launch/driver overhead, and host orchestration rather than Blackwell-specific AI throughput. That is why L40S and H200 outperform B200/B300 here, while larger or different OpenMM workloads may change the ranking."
+    },
+    "upstream_license": "MIT and LGPL components",
+    "upstream_release": {
+      "published_at": "2026-04-10",
+      "version": "8.5.1"
+    },
+    "upstream_sources": {
+      "conda_forge_install": "https://openmm.org/",
+      "openmm_github": "https://github.com/openmm/openmm",
+      "openmm_home": "https://openmm.org/"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "molecular_dynamics",
+    "simulation",
+    "openmm",
+    "cuda",
+    "conda_forge",
+    "forge_wrapper",
+    "open_source",
+    "mit",
+    "simulation_parameters",
+    "structured_output",
+    "trajectory",
+    "energy",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmm-md-8-5-1-wrapper:20260604-verlet-profiler@sha256:cc421becbb72338fbe9de045b83dd557e49a0f659d79164992496cbc9930eb2e",
+  "container_image_size_bytes": 5493932475,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-02T15:26:21.396722+00:00",
+  "default_eligible": true,
+  "description": "OpenMM Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations. Upstream OpenMM is a Python/C++ toolkit for GPU-accelerated molecular simulation and this wrapper installs OpenMM 8.5.1 from conda-forge into a CUDA 12 runtime. The HTTP runtime executes a small argon Lennard-Jones example with configurable particle count, step count, platform, precision, nonbonded method, cutoff distance, integrator, and optional final-state readback. The 2026-06-04 build runs as a non-root Forge runtime user, reports simulated_ns and ns_per_day, reuses bounded OpenMM Context caches to remove repeated CUDA context-construction overhead for hot workloads, and exposes cutoff plus Verlet integrator modes for profiler-driven throughput experiments.",
+  "family_id": "8156913b-cb7f-4461-bda6-67fdff8b4728",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H100": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "HOME": "/tmp/home/openmm-md-8-5-1-wrapper",
+      "OPENMM_CACHE_ROOT": "/tmp/openmm/openmm-md-8-5-1-wrapper",
+      "OPENMM_CONTEXT_CACHE_SIZE": "16",
+      "OPENMM_CUDA_PRECISION": "mixed",
+      "OPENMM_DEFAULT_PLATFORM": "auto",
+      "OPENMM_MODEL_SLUG": "openmm-md-8-5-1-wrapper"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 10001,
+    "container_run_as_user": 10001,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T11:57:26.910642+00:00",
+      "region": "us-central1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 855,
+      "request_ms_p99": 869,
+      "request_ms_samples": 45,
+      "startup_ms_first": null,
+      "startup_ms_probe": 3319,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.62,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T11:57:28.348985+00:00",
+      "region": "uk-south1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 403,
+      "request_ms_p99": 422,
+      "request_ms_samples": 45,
+      "startup_ms_first": null,
+      "startup_ms_probe": 12785,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.62,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T11:57:18.961708+00:00",
+      "region": "eu-north1",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 203,
+      "request_ms_p99": 207,
+      "request_ms_samples": 45,
+      "startup_ms_first": null,
+      "startup_ms_probe": 2269,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T11:57:18.165136+00:00",
+      "region": "eu-north1",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 204,
+      "request_ms_p99": 208,
+      "request_ms_samples": 45,
+      "startup_ms_first": null,
+      "startup_ms_probe": 2160,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T11:57:32.152078+00:00",
+      "region": "eu-north2",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 196,
+      "request_ms_p99": 200,
+      "request_ms_samples": 45,
+      "startup_ms_first": null,
+      "startup_ms_probe": 15957,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T11:57:26.917817+00:00",
+      "region": "us-central1",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 191,
+      "request_ms_p99": 195,
+      "request_ms_samples": 45,
+      "startup_ms_first": null,
+      "startup_ms_probe": 3321,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T11:57:23.054723+00:00",
+      "region": "eu-north1",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 186,
+      "request_ms_p99": 189,
+      "request_ms_samples": 45,
+      "startup_ms_first": null,
+      "startup_ms_probe": 2340,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T16:31:09.941368+00:00",
+      "region": "us-central1",
+      "request_ms": 3,
+      "request_ms_p50": 130,
+      "request_ms_p95": 270,
+      "request_ms_p99": 275,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 98195,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.55,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "5ddc4449-9521-446f-9a45-93aa3f650db5",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "MIT and LGPL components; NVIDIA CUDA container terms",
+  "modality_input": [
+    "simulation_parameters",
+    "json"
+  ],
+  "modality_output": [
+    "trajectory",
+    "energy",
+    "json"
+  ],
+  "model_family": "openmm-md",
+  "name": "OpenMM Molecular Dynamics",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "cutoff_nm": "{{cutoff_nm}}",
+        "friction_per_ps": "{{friction_per_ps}}",
+        "integrator": "{{integrator}}",
+        "nonbonded_method": "{{nonbonded_method}}",
+        "particle_count": "{{particle_count}}",
+        "platform": "{{platform}}",
+        "precision": "{{precision}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "return_state": "{{return_state}}",
+        "steps": "{{steps}}",
+        "temperature_k": "{{temperature_k}}",
+        "timestep_fs": "{{timestep_fs}}"
+      },
+      "endpoint": "/v1/inference/openmm-md-8-5-1-wrapper",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": 8,
+        "key": "particle_count",
+        "label": "Particles",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json with energy terms, position preview, selected platform, context_cache hit state, and model_time_ms",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 100,
+        "key": "steps",
+        "label": "Steps",
+        "max": 1000000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 2,
+        "key": "timestep_fs",
+        "label": "Timestep (fs)",
+        "max": 10,
+        "min": 0.1,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 120,
+        "key": "temperature_k",
+        "label": "Temperature (K)",
+        "max": 1000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "friction_per_ps",
+        "label": "Friction (1/ps)",
+        "max": 100,
+        "min": 0.001,
+        "step": 0.001,
+        "type": "number"
+      },
+      {
+        "default": "NoCutoff",
+        "key": "nonbonded_method",
+        "label": "Nonbonded method",
+        "options": [
+          "NoCutoff",
+          "CutoffNonPeriodic",
+          "CutoffPeriodic"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": 1.2,
+        "key": "cutoff_nm",
+        "label": "Cutoff (nm)",
+        "max": 5,
+        "min": 0.1,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": "LangevinMiddle",
+        "key": "integrator",
+        "label": "Integrator",
+        "options": [
+          "LangevinMiddle",
+          "Verlet"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "auto",
+        "key": "platform",
+        "label": "Platform",
+        "options": [
+          "auto",
+          "CUDA",
+          "CPU"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "mixed",
+        "key": "precision",
+        "label": "CUDA precision",
+        "options": [
+          "mixed",
+          "single",
+          "double"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "return_state",
+        "label": "Return final state",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-use acknowledgement",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "base_image": "docker.io/nvidia/cuda:12.8.1-cudnn-runtime-ubuntu24.04@sha256:ac55d124da4882b497f732d8dfd9a702d5447a5f29d08d56da6f64f0a1eb34bc",
+      "cache_target": "/tmp/openmm/openmm-md-8-5-1-wrapper",
+      "context_cache_size": 16,
+      "engine": "openmm",
+      "engine_version": "8.5.1",
+      "kind": "molecular_dynamics",
+      "optimization": "bounded_openmm_context_lru_cache_for_hot_cuda_requests_ns_day_throughput_reporting_optional_cutoff_nonbonded_path_and_explicit_verlet_integrator_mode",
+      "package_source": "conda-forge",
+      "wrapper_dockerfile": "services/models/hcls/openmm_md/Dockerfile",
+      "wrapper_path": "services/models/hcls/openmm_md"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "particle_count",
+        "steps",
+        "timestep_fs",
+        "temperature_k",
+        "friction_per_ps",
+        "nonbonded_method",
+        "cutoff_nm",
+        "integrator",
+        "platform",
+        "precision",
+        "return_state"
+      ],
+      "required": [
+        "research_use_acknowledgement"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/openmm-md-8-5-1-wrapper@sha256:cc421becbb72338fbe9de045b83dd557e49a0f659d79164992496cbc9930eb2e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/openmm-md-8-5-1-wrapper@sha256:cc421becbb72338fbe9de045b83dd557e49a0f659d79164992496cbc9930eb2e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/openmm-md-8-5-1-wrapper@sha256:cc421becbb72338fbe9de045b83dd557e49a0f659d79164992496cbc9930eb2e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmm-md-8-5-1-wrapper@sha256:cc421becbb72338fbe9de045b83dd557e49a0f659d79164992496cbc9930eb2e"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "openmm-md-8-5-1-wrapper",
+  "source": "custom_container",
+  "source_url": "https://github.com/openmm/openmm",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "molecular-dynamics",
+    "simulation",
+    "openmm",
+    "cuda",
+    "conda-forge",
+    "forge-wrapper",
+    "open-source",
+    "mit"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "8.5.1-cuda12-wrapper-profiler-optimized-20260604",
+  "version_description": "Active Forge-owned HTTP wrapper around OpenMM 8.5.1 from conda-forge on a CUDA 12 runtime. This build keeps a bounded LRU cache of OpenMM Context objects, runs as a non-root Forge runtime user, reports MD throughput in ns/day, and exposes cutoff nonbonded plus Verlet integrator modes for profiler-driven GPU throughput experiments.",
+  "version_key": "8-5-1-cuda12-wrapper-profiler-optimized-20260604",
+  "version_label": "OpenMM 8.5.1 profiled throughput wrapper"
+}

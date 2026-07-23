@@ -1,0 +1,447 @@
+{
+  "benchmark_scores": {
+    "artifact_commit": "5a5a776300a41aaa681dd7ff0106608ef2bc90db",
+    "artifact_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "artifact_parameters": {
+      "BF16": 636948480,
+      "F8_E4M3": 29896998912,
+      "total": 30533947392
+    },
+    "b200_terminal_diagnostic_13z": {
+      "checked_at": "2026-05-26T13:09:06Z",
+      "cleanup": "The retained diagnostic pod was deleted after log and describe inspection.",
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "diagnosis": "B200 is not blocked by scheduling, image pull, cache mount, or readiness timing. The container starts and fails during vLLM startup profile_run when Torch Inductor executes torch.ops._C.cutlass_scaled_mm.default for Qwen3MoeForCausalLM and raises RuntimeError: dispatch_scaled_mm at /workspace/csrc/libtorch_stable/quantization/w8a8/cutlass/c3x/scaled_mm_helper.hpp:17.",
+      "exit_code": 1,
+      "gpu_node": "computeinstance-u00jhdp9s4m52fxf5k",
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+      "pod_name": "forge-probe-qwen-qwen3-30b-a3b-instr-b200-us-central1-3090fb",
+      "reports": [
+        "docs/model-onboarding/general/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13-20260526T13Z-b200-diagnostic.json",
+        "docs/model-onboarding/general/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13-20260526T13Z-b200-diagnostic.md"
+      ],
+      "status": "other_error"
+    },
+    "b300_deepgemm_probe": {
+      "benchmark_runs": 10,
+      "checked_at": "2026-05-26T12:14:22Z",
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+      "pod_name": "forge-probe-qwen-qwen3-30b-a3b-instr-b300-uk-south1-f63b73",
+      "reports": [
+        "docs/model-onboarding/general/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13-20260526T12Z-b300-deepgemm.json",
+        "docs/model-onboarding/general/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13-20260526T12Z-b300-deepgemm.md"
+      ],
+      "request_ms_p50": 1452,
+      "request_time_source": "client_wall_ms",
+      "startup_ms": 162551,
+      "status": "supported",
+      "tokens_per_second": 168.04,
+      "vram_used_gb": 241.39
+    },
+    "blockers": [
+      "B200/us-central1 remains disabled: 2026-05-26T13Z retained diagnostic reproduced the startup failure and captured the terminal traceback in Torch/vLLM CUTLASS scaled_mm dispatch during Qwen3MoeForCausalLM profile_run. Next retry should use a newer vLLM/Torch/CUTLASS stack, a Forge-owned image that avoids the failing B200 scaled_mm path, or a BF16/non-FP8 fallback manifest.",
+      "The upstream 262K and 1M long-context modes are not advertised here; validate separate long-context profiles before raising the served context window."
+    ],
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, and XDG caches are pointed at /opt/nim/.cache paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image",
+    "fallback_attempted": "Checked the BF16 base artifact and prepared a dry-runable BF16 manifest first, then selected the FP8 sibling for the committed manifest because the model card explicitly supports vLLM with the FP8 checkpoint and the artifact is more practical for first-pass Forge probes. The 2026-05-26T12Z B300 default FP8 MoE path failed when FlashInfer tried to create cubin symlinks under a read-only package directory; setting VLLM_USE_FLASHINFER_MOE_FP8=0 with VLLM_USE_DEEP_GEMM=1 and VLLM_MOE_USE_DEEP_GEMM=1 switched FP8 MoE to DeepGEMM and produced supported B300 evidence. The BF16 source remains a fallback if additional FP8 cells fail.",
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells_failed": {
+        "B200/us-central1": {
+          "failure": "2026-05-26T13Z retained diagnostic scheduled on B200/us-central1, started the same vLLM 0.21.0 CUDA 13 DeepGEMM fallback image, and exited before readiness with pod_start_failure:pod_failed. Logs captured a terminal RuntimeError during determine_available_memory/profile_run: the compiled Qwen3Moe path called torch.ops._C.cutlass_scaled_mm.default and failed at /workspace/csrc/libtorch_stable/quantization/w8a8/cutlass/c3x/scaled_mm_helper.hpp:17.",
+          "status": "other_error"
+        }
+      },
+      "cells_supported": {
+        "B300/uk-south1": {
+          "fp8_moe_backend": "DEEPGEMM",
+          "request_ms_p50": 1452,
+          "startup_ms": 162551,
+          "status": "supported",
+          "tokens_per_second": 168.04,
+          "vram_used_gb": 241.39
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 877,
+          "startup_ms": 250295,
+          "status": "supported",
+          "tokens_per_second": 296.47,
+          "vram_used_gb": 126.23
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 1656,
+          "startup_ms": 180248,
+          "status": "supported",
+          "tokens_per_second": 145.53,
+          "vram_used_gb": 40.26
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 1248,
+          "startup_ms": 680813,
+          "status": "supported",
+          "tokens_per_second": 205.93,
+          "vram_used_gb": 85.9
+        }
+      },
+      "cleanup": "The 12Z B300 supported probe cleaned up normally. The 13Z retained B200 diagnostic pod forge-probe-qwen-qwen3-30b-a3b-instr-b200-us-central1-3090fb was inspected and deleted; no forge-models probe pods remained afterward.",
+      "normal_report_written": true,
+      "recorded_at": "2026-05-26T13Z",
+      "request_time_source": "client_wall_ms",
+      "status": "partial_supported_with_b300_deepgemm_followup_and_b200_terminal_cutlass_scaled_mm_failure",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; Hugging Face API reports private=false and gated=false.",
+    "onboarding_state": "h200_l40s_rtx6000_b300_supported_b200_runtime_failed",
+    "public_artifact_verified_at": "2026-05-26T03:00:00Z",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "regional_mirror_verified_at": "2026-05-26T03:00:00Z",
+    "runtime_evidence": "The Hugging Face model card documents vLLM serving for Qwen/Qwen3-30B-A3B-Instruct-2507-FP8, recommends vLLM >=0.8.5, and says the FP8 checkpoint can be used with transformers, sglang, and vLLM as the original BF16 model. The reused vLLM 0.21.0 Docker image is an OpenAI-compatible runtime with entrypoint [\"vllm\", \"serve\"], CUDA_VERSION=13.0.2, and TORCH_CUDA_ARCH_LIST including 10.0 and 12.0+PTX.",
+    "source_evidence": [
+      "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+      "https://huggingface.co/api/models/Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+      "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507-FP8/raw/main/config.json",
+      "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507"
+    ]
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "agentic",
+    "code",
+    "tool_calling",
+    "multilingual",
+    "long_context",
+    "moe",
+    "qwen",
+    "qwen3",
+    "fp8",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-26T11:05:27.446186+00:00",
+  "default_eligible": false,
+  "description": "Qwen3 30B A3B Instruct 2507 FP8 is a public Apache-2.0 non-thinking MoE chat model for general instruction following, coding, multilingual knowledge, long-context understanding, and tool-use style prompts. Hugging Face API metadata refreshed on 2026-05-26 reports private=false, gated=false, disabled=false, commit 5a5a776300a41aaa681dd7ff0106608ef2bc90db, qwen3_moe architecture, Qwen3MoeForCausalLM, 30,533,947,392 safetensors parameters, F8_E4M3 plus BF16 tensors, and text-generation usage. The model card documents 30.5B total parameters, 3.3B activated parameters, 128 experts with 8 active experts, a native 262,144-token context, Apache-2.0 licensing, fine-grained FP8 quantization with 128x128 weight blocks, and OpenAI-compatible vLLM/SGLang serving. This Forge profile reuses the already mirrored official vLLM 0.21.0 CUDA 13 image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, caps served context to 32,768 tokens for bounded first probes, clears unnecessary Hugging Face token env for this public ungated artifact, records H200, L40S, and RTX6000 as supported from the 2026-05-26T11Z partial matrix, and adds B300 support from the 2026-05-26T12Z DeepGEMM fallback probe. B200 remains disabled because the 2026-05-26T13Z retained diagnostic reproduced the failure on a fresh B200 node and captured the startup traceback: vLLM reaches Qwen3MoeForCausalLM profile_run, then Torch Inductor executes torch.ops._C.cutlass_scaled_mm.default and aborts with RuntimeError: dispatch_scaled_mm at /workspace/csrc/libtorch_stable/quantization/w8a8/cutlass/c3x/scaled_mm_helper.hpp:17.",
+  "family_id": "dece4161-c938-49fa-b74c-80a3af990331",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.9",
+      "--max-num-seqs",
+      "4",
+      "--enable-prefix-caching"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "VLLM_MOE_USE_DEEP_GEMM": "1",
+      "VLLM_USE_DEEP_GEMM": "1",
+      "VLLM_USE_FLASHINFER_MOE_FP8": "0",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T13:09:06.224014+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 28.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T12:14:22.123938+00:00",
+      "region": "uk-south1",
+      "request_ms": 1452,
+      "request_ms_p50": 1452,
+      "request_ms_p95": 1576,
+      "request_ms_p99": 1599,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 162551,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 168.04,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 241.39,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 28.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T11:13:42.210426+00:00",
+      "region": "eu-north2",
+      "request_ms": 877,
+      "request_ms_p50": 877,
+      "request_ms_p95": 919,
+      "request_ms_p99": 929,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 250295,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 296.47,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 126.23,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 28.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T11:09:16.744892+00:00",
+      "region": "eu-north1",
+      "request_ms": 1656,
+      "request_ms_p50": 1656,
+      "request_ms_p95": 1770,
+      "request_ms_p99": 1792,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 180248,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 145.53,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 40.26,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 28.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T11:18:11.862924+00:00",
+      "region": "us-central1",
+      "request_ms": 1248,
+      "request_ms_p50": 1248,
+      "request_ms_p95": 1293,
+      "request_ms_p99": 1295,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 680813,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 205.93,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 85.9,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 28.44
+    }
+  ],
+  "gpu_type": null,
+  "id": "99cdd927-2080-473d-b0e5-b698c8a3cd49",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "qwen-qwen3-30b-a3b-instruct-2507",
+  "name": "Qwen3 30B A3B Instruct 2507 FP8",
+  "parameter_count": 30533947392,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8"
+    },
+    "input_fields": [
+      {
+        "default": "You are reviewing a model deployment plan. Summarize the main risk, list two validation steps, and give one concise recommendation:\\n\\nA new 30B-A3B FP8 MoE chat model will reuse an existing vLLM CUDA 13 image, hydrate public safetensors from Hugging Face into the shared cache, and start with a 32K context cap before broader long-context probes.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "chat",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.8,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 512,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "fp8",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "release_rank": 44,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction",
+    "agentic",
+    "coding",
+    "tool-calling",
+    "multilingual",
+    "long-context",
+    "moe",
+    "qwen",
+    "qwen3",
+    "fp8",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-30T13:36:47.739590+00:00",
+  "version": "fp8-vllm-0.21.0-cuda13",
+  "version_description": "Qwen3 30B A3B Instruct 2507 FP8 served by the official vLLM OpenAI-compatible CUDA 13 Docker image as a hidden non-default Forge onboarding candidate. A 2026-05-26T11Z partial matrix validated H200, L40S, and RTX6000; the 2026-05-26T12Z B300 probe is supported after disabling FlashInfer FP8 MoE and forcing DeepGEMM. B200 remains disabled after the 2026-05-26T13Z retained diagnostic isolated the terminal failure to Torch/vLLM CUTLASS scaled_mm dispatch during startup profile_run.",
+  "version_key": "fp8-vllm-0-21-0-cuda13",
+  "version_label": "FP8 vLLM 0.21.0 CUDA 13"
+}

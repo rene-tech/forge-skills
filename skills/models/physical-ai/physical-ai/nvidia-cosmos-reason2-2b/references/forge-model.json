@@ -1,0 +1,334 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "temporary_publication_exception_current": {
+      "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+      "accepted_by_user": true,
+      "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+      "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+      "rollback": "Set model and family status back to onboarding for these slugs/families.",
+      "scope": "temporary_restore_to_catalog_visibility"
+    },
+    "temporary_publication_exceptions": [
+      {
+        "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+        "accepted_by_user": true,
+        "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+        "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+        "rollback": "Set model and family status back to onboarding for these slugs/families.",
+        "scope": "temporary_restore_to_catalog_visibility"
+      }
+    ]
+  },
+  "capabilities": [
+    "physical_ai",
+    "reasoning",
+    "robotics",
+    "vision_language",
+    "video_understanding",
+    "text",
+    "vision",
+    "video",
+    "openai_compatible",
+    "chat",
+    "text_generation",
+    "streaming"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/cosmos-reason2-2b:1.6.0",
+  "container_image_size_bytes": null,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-05T03:49:58.963143+00:00",
+  "default_eligible": false,
+  "description": "Downloadable Cosmos Reason2 2B NIM for physical-world image/video reasoning. It is useful as a lower-latency annotator and QA model for robotics and autonomous-driving data curation.",
+  "family_id": "0f0c7feb-a443-4e06-8f31-ff789db6b9d1",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_DISABLE_CUDA_GRAPH": "1",
+      "NIM_ENABLE_WARMUP": "0",
+      "NIM_KVCACHE_PERCENT": "0.50",
+      "NIM_MAX_MODEL_LEN": "32768",
+      "NIM_PASSTHROUGH_ARGS": "--skip-mm-profiling"
+    },
+    "runtime_env_by_gpu": {
+      "B300": {
+        "NIM_KVCACHE_PERCENT": "0.25"
+      },
+      "H200": {
+        "NIM_KVCACHE_PERCENT": "0.30"
+      }
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-05T17:19:37.712355+00:00",
+      "region": "us-central1",
+      "request_ms": 556,
+      "request_ms_p50": 637,
+      "request_ms_p95": 710,
+      "request_ms_p99": 716,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 368062,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 293.17,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 162.01,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-15T05:03:32.378791+00:00",
+      "observed_success_rate": 0.8571,
+      "probed_at": "2026-05-15T06:37:59.577301+00:00",
+      "region": "uk-south1",
+      "request_ms": 9016,
+      "request_ms_p50": 7274,
+      "request_ms_p95": 8740,
+      "request_ms_p99": 8961,
+      "request_ms_samples": 6,
+      "startup_ms_first": 443066,
+      "startup_ms_probe": 260492,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 21.52,
+      "total_failures": 1,
+      "total_starts": 6,
+      "total_warm_starts": 5,
+      "vram_measured_gb": 241.38,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-15T05:03:44.242932+00:00",
+      "observed_success_rate": 0.8,
+      "probed_at": "2026-05-15T06:43:07.403003+00:00",
+      "region": "eu-north2",
+      "request_ms": 6065,
+      "request_ms_p50": 6109,
+      "request_ms_p95": 6343,
+      "request_ms_p99": 6370,
+      "request_ms_samples": 4,
+      "startup_ms_first": 190323,
+      "startup_ms_probe": 197169,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 47.82,
+      "total_failures": 1,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 126.06,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": "2026-05-15T05:03:44.242932+00:00",
+      "observed_success_rate": 0.8,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 780,
+      "request_ms_p95": 782,
+      "request_ms_p99": 783,
+      "request_ms_samples": 10,
+      "startup_ms_first": 190323,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 126.06,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:10:27.805287+00:00",
+      "region": "eu-north1",
+      "request_ms": 6954,
+      "request_ms_p50": 6906,
+      "request_ms_p95": 6949,
+      "request_ms_p99": 6953,
+      "request_ms_samples": 2,
+      "startup_ms_first": 248026,
+      "startup_ms_probe": 259814,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 33.94,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 39.03,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:36:47.308047+00:00",
+      "region": "us-central1",
+      "request_ms": 8661,
+      "request_ms_p50": 8661,
+      "request_ms_p95": 9498,
+      "request_ms_p99": 9572,
+      "request_ms_samples": 3,
+      "startup_ms_first": 187246,
+      "startup_ms_probe": 188479,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 32.44,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 85.66,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    }
+  ],
+  "gpu_type": null,
+  "id": "c229f5dd-0d98-465a-bb7e-00c3d00a8a12",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-open-model-license",
+  "modality_input": [
+    "text",
+    "image",
+    "video"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "nvidia-cosmos-reason2",
+  "name": "NVIDIA Cosmos Reason 2 (2B)",
+  "parameter_count": 2000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": "{{messages}}",
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "nvidia/cosmos-reason2-2b"
+    },
+    "input_fields": [
+      {
+        "default": "Given a rainy dashcam clip, list the physical cues that show the road is wet and explain how they affect autonomous-driving perception.",
+        "key": "messages",
+        "label": "Prompt",
+        "type": "chat_history",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "slider"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "slider"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-cosmos-reason2-2b:1.6.0",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-cosmos-reason2-2b:1.6.0",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-cosmos-reason2-2b:1.6.0",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-cosmos-reason2-2b:1.6.0"
+  },
+  "release_rank": 90,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-cosmos-reason2-2b",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/cosmos-reason2-8b/modelcard",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "reasoning",
+    "robotics",
+    "vision-language",
+    "video-understanding"
+  ],
+  "updated_at": "2026-06-08T12:03:11.003816+00:00",
+  "version": "2b",
+  "version_description": "Smaller Cosmos Reason2 VLM for lower-latency physical reasoning on images and videos, packaged as NVIDIA NIM 1.6.0.",
+  "version_key": "2b",
+  "version_label": "2B"
+}

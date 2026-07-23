@@ -1,0 +1,160 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "ab505d471b7a5e5d801407515a754978e26e22eb997f9b4e075de82ed7a0c783",
+  "defaultEligible": true,
+  "displayName": "Use NVIDIA GLiNER PII",
+  "domain": "multimodal-and-specialized",
+  "downloadUrl": "/v1/model-skills/nvidia-gliner-pii-nim/markdown?download=true",
+  "group": "multimodal-and-specialized",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "multimodal-and-specialized",
+    "nvidia-gliner-pii-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "John Doe can be reached at john.doe@example.com or +1 555 0100 in New York.",
+      "fieldType": "textarea",
+      "key": "messages",
+      "label": "Input text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.5,
+      "fieldType": "number",
+      "key": "threshold",
+      "label": "Threshold",
+      "maximum": 1,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 384,
+      "fieldType": "number",
+      "key": "chunk_length",
+      "label": "Chunk length",
+      "maximum": 2048,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 128,
+      "fieldType": "number",
+      "key": "overlap",
+      "label": "Overlap",
+      "maximum": 512,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-gliner-pii-nim\ndescription: Use the exact Forge model nvidia-gliner-pii-nim for text to entities tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA GLiNER PII\n\n- Model slug: `nvidia-gliner-pii-nim`\n- Model family: `nvidia-gliner-pii`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / multimodal-and-specialized / nvidia-gliner-pii-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `nvidia-open-model-license; apache-2.0`\n\n## Purpose\n\nNVIDIA GLiNER PII NIM for extracting personally identifiable information spans from text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave5.\n\n## Use this exact model when\n\n- Use this exact `nvidia-gliner-pii-nim` version when the task supplies text and needs entities.\n- NVIDIA GLiNER PII NIM for extracting personally identifiable information spans from text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave5.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['entities'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `messages` (textarea, optional): Input text\n- `threshold` (number, optional; bounds 0..1): Threshold\n- `chunk_length` (number, optional; bounds 1..2048): Chunk length\n- `overlap` (number, optional; bounds 0..512): Overlap\n\nRequest template:\n\n```json\n{\n  \"chunk_length\": \"{{chunk_length}}\",\n  \"flat_ner\": false,\n  \"messages\": [\n    {\n      \"content\": \"{{messages}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"overlap\": \"{{overlap}}\",\n  \"threshold\": \"{{threshold}}\"\n}\n```\n\n## Exact output\n\n- `entities`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-gliner-pii-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 2048.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-gliner-pii-nim`\n- Routes: `/v1/models/nvidia-gliner-pii-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-gliner-pii-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-gliner-pii-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/multimodal-and-specialized/nvidia-gliner-pii-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/multimodal-and-specialized/nvidia-gliner-pii-nim/SKILL.md\n\n## References\n\n- [NVIDIA GLiNER PII source](https://build.nvidia.com/nvidia/gliner-pii) (model-card)\n",
+  "license": "nvidia-open-model-license; apache-2.0",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 2048."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-gliner-pii-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-gliner-pii-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-gliner-pii",
+    "modelUrl": "/v1/models/nvidia-gliner-pii-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-gliner-pii-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-gliner-pii-nim/markdown",
+  "modelFamily": "nvidia-gliner-pii",
+  "modelSlug": "nvidia-gliner-pii-nim",
+  "modelUrl": "/v1/models/nvidia-gliner-pii-nim",
+  "outputFields": [
+    "entities"
+  ],
+  "outputModalities": [
+    "entities"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA GLiNER PII NIM for extracting personally identifiable information spans from text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave5.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/multimodal-and-specialized/nvidia-gliner-pii-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA GLiNER PII source",
+      "url": "https://build.nvidia.com/nvidia/gliner-pii"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/multimodal-and-specialized/nvidia-gliner-pii-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/multimodal-and-specialized/nvidia-gliner-pii-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "chunk_length": "{{chunk_length}}",
+    "flat_ner": false,
+    "messages": [
+      {
+        "content": "{{messages}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "overlap": "{{overlap}}",
+    "threshold": "{{threshold}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 2048,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/gliner-pii",
+    "tags": [
+      "pii-detection",
+      "entity-extraction",
+      "nvidia-nim"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "NVIDIA GLiNER PII NIM for extracting personally identifiable information spans from text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave5.",
+  "skillName": "use-forge-nvidia-gliner-pii-nim",
+  "skillUrl": "/v1/model-skills/nvidia-gliner-pii-nim",
+  "slug": "nvidia-gliner-pii-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['entities'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-gliner-pii-nim` version when the task supplies text and needs entities.",
+    "NVIDIA GLiNER PII NIM for extracting personally identifiable information spans from text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave5.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-gliner-pii-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

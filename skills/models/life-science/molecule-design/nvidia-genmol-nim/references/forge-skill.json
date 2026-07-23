@@ -1,0 +1,194 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "c012d7f66c952f0aea6477edbfffe599b6909d98e8eebb69b26c7e4247ef8f1b",
+  "defaultEligible": true,
+  "displayName": "Use GenMol",
+  "domain": "molecule-design",
+  "downloadUrl": "/v1/model-skills/nvidia-genmol-nim/markdown?download=true",
+  "group": "molecule-design",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "molecule-design",
+    "nvidia-genmol-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/generate",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "C124CN3C1.S3(=O)(=O)CC.C4C#N.[*{20-20}]",
+      "fieldType": "textarea",
+      "key": "smiles",
+      "label": "SMILES or SAFE sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "QED",
+        "LogP"
+      ],
+      "default": "QED",
+      "fieldType": "select",
+      "key": "scoring",
+      "label": "Scoring",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "unique",
+      "label": "Unique molecules only",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 30,
+      "fieldType": "number",
+      "key": "num_molecules",
+      "label": "Number of molecules",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 10,
+      "minimum": 0.01,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "noise",
+      "label": "Noise",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "step_size",
+      "label": "Diffusion step size",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "molecule"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-genmol-nim\ndescription: Use the exact Forge model nvidia-genmol-nim for molecule to molecule, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use GenMol\n\n- Model slug: `nvidia-genmol-nim`\n- Model family: `nvidia-genmol`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / molecule-design / nvidia-genmol-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `nvidia-ai-foundation-models-community/mit`\n\n## Purpose\n\nNVIDIA GenMol NIM for fragment-based molecular generation with SMILES or SAFE input.\n\n## Use this exact model when\n\n- Use this exact `nvidia-genmol-nim` version when the task supplies molecule and needs molecule, json.\n- NVIDIA GenMol NIM for fragment-based molecular generation with SMILES or SAFE input.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['molecule'] \u2192 ['molecule', 'json'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `smiles` (textarea, optional): SMILES or SAFE sequence\n- `scoring` (select, optional): Scoring\n- `unique` (checkbox, optional): Unique molecules only\n- `num_molecules` (number, optional; bounds 1..1000): Number of molecules\n- `temperature` (number, optional; bounds 0.01..10): Temperature\n- `noise` (number, optional; bounds 0..2): Noise\n- `step_size` (number, optional; bounds 1..10): Diffusion step size\n\nRequest template:\n\n```json\n{\n  \"noise\": \"{{noise}}\",\n  \"num_molecules\": \"{{num_molecules}}\",\n  \"scoring\": \"{{scoring}}\",\n  \"smiles\": \"{{smiles}}\",\n  \"step_size\": \"{{step_size}}\",\n  \"temperature\": \"{{temperature}}\",\n  \"unique\": \"{{unique}}\"\n}\n```\n\n## Exact output\n\n- `molecule`\n- `json`\n\n## Route\n\n`POST /generate`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-genmol-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /generate` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-genmol-nim`\n- Routes: `/v1/models/nvidia-genmol-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-genmol-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-genmol-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecule-design/nvidia-genmol-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecule-design/nvidia-genmol-nim/SKILL.md\n\n## References\n\n- [GenMol source](https://build.nvidia.com/nvidia/genmol-generate) (model-card)\n",
+  "license": "nvidia-ai-foundation-models-community/mit",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-genmol-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-genmol-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-genmol",
+    "modelUrl": "/v1/models/nvidia-genmol-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-genmol-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-genmol-nim/markdown",
+  "modelFamily": "nvidia-genmol",
+  "modelSlug": "nvidia-genmol-nim",
+  "modelUrl": "/v1/models/nvidia-genmol-nim",
+  "outputFields": [
+    "molecule",
+    "json"
+  ],
+  "outputModalities": [
+    "molecule",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA GenMol NIM for fragment-based molecular generation with SMILES or SAFE input.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecule-design/nvidia-genmol-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "GenMol source",
+      "url": "https://build.nvidia.com/nvidia/genmol-generate"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecule-design/nvidia-genmol-nim/SKILL.md",
+  "repositoryPath": "skills/models/life-science/molecule-design/nvidia-genmol-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "noise": "{{noise}}",
+    "num_molecules": "{{num_molecules}}",
+    "scoring": "{{scoring}}",
+    "smiles": "{{smiles}}",
+    "step_size": "{{step_size}}",
+    "temperature": "{{temperature}}",
+    "unique": "{{unique}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/genmol-generate",
+    "tags": [
+      "life-science",
+      "biology",
+      "chemistry",
+      "drug-discovery",
+      "molecule-generation",
+      "nvidia-nim"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "NVIDIA GenMol NIM for fragment-based molecular generation with SMILES or SAFE input.",
+  "skillName": "use-forge-nvidia-genmol-nim",
+  "skillUrl": "/v1/model-skills/nvidia-genmol-nim",
+  "slug": "nvidia-genmol-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['molecule'] \u2192 ['molecule', 'json'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-genmol-nim` version when the task supplies molecule and needs molecule, json.",
+    "NVIDIA GenMol NIM for fragment-based molecular generation with SMILES or SAFE input.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-genmol-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /generate` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

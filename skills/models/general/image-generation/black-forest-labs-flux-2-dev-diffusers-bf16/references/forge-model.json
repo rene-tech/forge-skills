@@ -1,0 +1,641 @@
+{
+  "benchmark_scores": {
+    "artifact_metadata_20260603T0905Z": {
+      "disabled": false,
+      "downloads": 320657,
+      "gated": "auto",
+      "hf_model": "black-forest-labs/FLUX.2-dev",
+      "key_artifacts": {
+        "ae.safetensors": {
+          "sha256": "868fe7b343cc8f3a19dbcfcafbc3d5f888802be3f89bd81b65b3621a066ce8f3",
+          "size_bytes": 336211292
+        },
+        "flux2-dev.safetensors": {
+          "sha256": "6159a3f19f829c8e84ba6e9996b7afaf7c0a5f3428677f5b37445778a320d275",
+          "size_bytes": 64446596128
+        },
+        "vae/diffusion_pytorch_model.safetensors": {
+          "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+          "size_bytes": 336213556
+        }
+      },
+      "last_modified": "2026-02-17T15:56:06.000Z",
+      "library_name": "diffusers",
+      "license": "other",
+      "license_name": "flux-non-commercial-license",
+      "likes": 1720,
+      "pipeline_tag": "image-to-image",
+      "private": false,
+      "raw_readme_without_auth": "401",
+      "revision": "26afe3a78bb242c0a8bb181dcc8937bb16e5c66c"
+    },
+    "cache_strategy": {
+      "envs": [
+        "HF_HOME",
+        "HUGGINGFACE_HUB_CACHE",
+        "TRANSFORMERS_CACHE",
+        "DIFFUSERS_CACHE",
+        "TORCH_HOME",
+        "XDG_CACHE_HOME"
+      ],
+      "root": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16",
+      "status": "wrapper_configured"
+    },
+    "container_source_decision_20260603T0905Z": {
+      "docker_hub_search": {
+        "official_or_vendor_match_found": false,
+        "query": "flux2-dev",
+        "top_repos": [
+          "i8iky/flux2-dev",
+          "dudushot/flux2-dev",
+          "pastawater/image-gen-flux2-dev",
+          "thebrandonhenry/flux2-api"
+        ]
+      },
+      "reason": "HF model card/raw README is gated without accepted auth, no official serving container was identified from the accessible HF metadata, and Docker Hub search for flux2-dev returned unaffiliated zero-star images rather than a trustworthy vendor container.",
+      "selected": "forge_owned_diffusers_wrapper"
+    },
+    "full_probe_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug black-forest-labs-flux-2-dev-diffusers-bf16 --include-status onboarding --timeout 14400 --request-timeout 3600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1",
+    "gpu_matrix_20260603T112125Z": {
+      "blackwell_summary": {
+        "B200/us-central1_request_ms_p50": 16106,
+        "B300/uk-south1_request_ms_p50": 15728
+      },
+      "model_time_source": "x-model-time-ms",
+      "oom_cells": {
+        "L40S/eu-north1": {
+          "error": "CUDA out of memory while allocating 1.25 GiB on a 44.39 GiB GPU.",
+          "vram_measured_gb": 43.98
+        }
+      },
+      "request": "1024x1024, 28 steps, guidance_scale=4.0, seed=0, text-to-image",
+      "supported_cells": {
+        "B200/us-central1": {
+          "mode": "resident",
+          "request_ms_p50": 16106,
+          "samples": 10,
+          "startup_ms": 219123,
+          "vram_measured_gb": 111.45
+        },
+        "B300/uk-south1": {
+          "mode": "resident",
+          "request_ms_p50": 15728,
+          "samples": 10,
+          "startup_ms": 781778,
+          "vram_measured_gb": 110.05
+        },
+        "H100/eu-north1": {
+          "mode": "cpu_offload",
+          "request_ms_p50": 94143,
+          "samples": 10,
+          "startup_ms": 499775,
+          "vram_measured_gb": 0.73
+        },
+        "H200/eu-north1": {
+          "mode": "resident",
+          "request_ms_p50": 21985,
+          "samples": 10,
+          "startup_ms": 233353,
+          "vram_measured_gb": 111.35
+        },
+        "H200/eu-north2": {
+          "mode": "resident",
+          "request_ms_p50": 22231,
+          "samples": 10,
+          "startup_ms": 495061,
+          "vram_measured_gb": 111.35
+        },
+        "H200/us-central1": {
+          "mode": "resident",
+          "request_ms_p50": 22210,
+          "samples": 10,
+          "startup_ms": 225618,
+          "vram_measured_gb": 111.35
+        },
+        "RTX6000/us-central1": {
+          "mode": "cpu_offload",
+          "request_ms_p50": 112928,
+          "samples": 10,
+          "startup_ms": 194410,
+          "vram_measured_gb": 0.7
+        }
+      }
+    },
+    "initial_b200_smoke_probe_20260603T092125Z": {
+      "note": "Cold first-run hydration probe before the persisted full matrix.",
+      "persisted": false,
+      "request_ms": 17378,
+      "startup_ms": 539967,
+      "status": "supported",
+      "vram_measured_gb": 111.45
+    },
+    "local_container_probe_20260603T0905Z": {
+      "base_image": "pytorch/pytorch:2.9.1-cuda12.8-cudnn9-runtime",
+      "build": "passed_from_cache",
+      "create_app_route_count": 10,
+      "diffusers_commit": "4c77dcdbac6c75c8a1fdfaa1657c70f8930c8f3e",
+      "image": "forge-local/forge-flux2-dev-diffusers-bf16:20260603-pytorch291-cuda128-bf16-v1",
+      "image_id": "sha256:7608fd3102154b7d8086337266a0c9c3e1f5d00d6b31bae5f6cb06bf829ebee7",
+      "imports": [
+        "Flux2Pipeline",
+        "Mistral3ForConditionalGeneration",
+        "PixtralProcessor"
+      ],
+      "py_compile": "passed",
+      "size_bytes": 8296349976,
+      "unit_tests": "7 passed"
+    },
+    "mirror_status": {
+      "container_digest": "sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+      "regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-flux2-dev-diffusers-bf16:20260603-pytorch291-cuda128-bf16-v1@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-flux2-dev-diffusers-bf16:20260603-pytorch291-cuda128-bf16-v1@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-flux2-dev-diffusers-bf16:20260603-pytorch291-cuda128-bf16-v1@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-flux2-dev-diffusers-bf16:20260603-pytorch291-cuda128-bf16-v1@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918"
+      },
+      "status": "mirrored"
+    },
+    "onboarding_state": "completed_promoted_active",
+    "probe_status": {
+      "benchmark_runs": 10,
+      "cells": 8,
+      "generated_at": "2026-06-03T11:21:25.864369+00:00",
+      "json_report": "tmp/parallel-matrix/black-forest-labs-flux-2-dev-diffusers-bf16-20260603T112125Z.json",
+      "markdown_report": "tmp/parallel-matrix/black-forest-labs-flux-2-dev-diffusers-bf16-20260603T112125Z.md",
+      "oom": 1,
+      "other_error": 0,
+      "status": "completed",
+      "supported": 7,
+      "unavailable": 0,
+      "warmup_runs": 3
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publish_status": {
+      "reason": "Active and user-selectable, but kept out of default routing because the upstream artifact is gated/non-commercial and low-VRAM cells require slow CPU offload or OOM.",
+      "status": "active_default_ineligible"
+    },
+    "readiness_state": "active_full_gpu_matrix_supported_and_benchmarked",
+    "regional_mirror_verification": {
+      "eu-north1": "sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+      "eu-north2": "sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+      "uk-south1": "sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+      "us-central1": "sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918"
+    }
+  },
+  "capabilities": [
+    "image_generation",
+    "image_editing",
+    "text_to_image",
+    "image_to_image",
+    "diffusion",
+    "flux",
+    "flux2",
+    "black_forest_labs",
+    "diffusers",
+    "bfloat16",
+    "cuda12_8",
+    "blackwell_candidate",
+    "gated",
+    "non_commercial",
+    "forge_wrapper",
+    "text",
+    "vision",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-flux2-dev-diffusers-bf16:20260603-pytorch291-cuda128-bf16-v1@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+  "container_image_size_bytes": 8296349976,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-03T09:11:26.558738+00:00",
+  "default_eligible": false,
+  "description": "FLUX.2 Dev is a gated, non-commercial Black Forest Labs image generation and editing model served through a Forge-owned Diffusers Flux2Pipeline BF16 wrapper. Hugging Face API metadata checked on 2026-06-03T09:05:09Z reports private=false, gated=auto, disabled=false, pipeline_tag=image-to-image, library_name=diffusers, revision 26afe3a78bb242c0a8bb181dcc8937bb16e5c66c, lastModified 2026-02-17T15:56:06.000Z, downloads=320657, likes=1720, license=other, and license_name=flux-non-commercial-license. The model has large safetensors artifacts including flux2-dev.safetensors at 64,446,596,128 bytes plus sharded transformer and text-encoder weights, so the selected wrapper writes Hugging Face, Diffusers, Torch, and XDG caches under /mnt/data. The container build based on pytorch/pytorch:2.9.1-cuda12.8-cudnn9-runtime and Diffusers commit 4c77dcdbac6c75c8a1fdfaa1657c70f8930c8f3e succeeded with image ID sha256:7608fd3102154b7d8086337266a0c9c3e1f5d00d6b31bae5f6cb06bf829ebee7, size 8,296,349,976 bytes, and mirrored digest sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918 in all active Forge regional registries. The 2026-06-03 GPU matrix supports B200, B300, H200, H100, and RTX6000, with L40S marked OOM. B200 and B300 are the preferred runtime targets for user-facing generation latency.",
+  "family_id": "094b098d-a7a3-4812-ae93-dd1ed4b8e1a9",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H100": true,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "DIFFUSERS_CACHE": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16/diffusers",
+      "FLUX2_DEV_CACHE_ROOT": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16",
+      "FLUX2_DEV_DEFAULT_GUIDANCE_SCALE": "4.0",
+      "FLUX2_DEV_DEFAULT_HEIGHT": "1024",
+      "FLUX2_DEV_DEFAULT_STEPS": "28",
+      "FLUX2_DEV_DEFAULT_WIDTH": "1024",
+      "FLUX2_DEV_DEVICE_MODE": "auto",
+      "FLUX2_DEV_MODEL_ID": "black-forest-labs/FLUX.2-dev",
+      "FLUX2_DEV_MODEL_SLUG": "black-forest-labs-flux-2-dev-diffusers-bf16",
+      "FLUX2_DEV_PIPELINE_CLASS": "Flux2Pipeline",
+      "FLUX2_DEV_RESIDENT_MIN_VRAM_GB": "120",
+      "FLUX2_DEV_TORCH_DTYPE": "bfloat16",
+      "HF_HOME": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16/huggingface",
+      "HF_HUB_ENABLE_HF_TRANSFER": "1",
+      "HOME": "/tmp",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16/huggingface/hub",
+      "TORCH_HOME": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16/huggingface",
+      "XDG_CACHE_HOME": "/mnt/data/forge-model-cache/flux2-dev-diffusers-bf16/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 120.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T09:29:53.305906+00:00",
+      "region": "us-central1",
+      "request_ms": 16106,
+      "request_ms_p50": 16106,
+      "request_ms_p95": 17116,
+      "request_ms_p99": 17116,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 219123,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 111.45,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T11:21:24.996665+00:00",
+      "region": "uk-south1",
+      "request_ms": 15728,
+      "request_ms_p50": 15728,
+      "request_ms_p95": 16772,
+      "request_ms_p99": 16905,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 781778,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 110.05,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T10:37:33.570803+00:00",
+      "region": "eu-north1",
+      "request_ms": 94143,
+      "request_ms_p50": 94143,
+      "request_ms_p95": 97024,
+      "request_ms_p99": 97517,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 499775,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.73,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T10:46:44.865835+00:00",
+      "region": "eu-north1",
+      "request_ms": 21985,
+      "request_ms_p50": 21985,
+      "request_ms_p95": 24341,
+      "request_ms_p99": 24753,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 233353,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 111.35,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T11:04:05.317377+00:00",
+      "region": "eu-north2",
+      "request_ms": 22231,
+      "request_ms_p50": 22231,
+      "request_ms_p95": 23480,
+      "request_ms_p99": 23602,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 495061,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 111.35,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T09:39:05.495611+00:00",
+      "region": "us-central1",
+      "request_ms": 22210,
+      "request_ms_p50": 22210,
+      "request_ms_p95": 23223,
+      "request_ms_p99": 23237,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 225618,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 111.35,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "{\"detail\":\"CUDA out of memory. Tried to allocate 1.25 GiB. GPU 0 has a total capacity of 44.39 GiB of which 423.38 MiB is free. Including non-PyTorch memory, this process has 43.97 GiB memory in use. Of the allocated memory 43.48 GiB is allocated by PyTorch, and 10.08 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T10:50:40.254885+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "oom",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 43.98,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T10:07:56.423463+00:00",
+      "region": "us-central1",
+      "request_ms": 112928,
+      "request_ms_p50": 112928,
+      "request_ms_p95": 118193,
+      "request_ms_p99": 119428,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 194410,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.7,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "1cf03280-f0ae-4793-a076-bba1c615360c",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "flux-non-commercial-license",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "image"
+  ],
+  "model_family": "black-forest-labs-flux-2-dev",
+  "name": "FLUX.2 Dev",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "aspect_ratio": "{{aspect_ratio}}",
+        "caption_upsample_temperature": "{{caption_upsample_temperature}}",
+        "guidance_scale": "{{guidance_scale}}",
+        "height": "{{height}}",
+        "image": "{{input_image}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}",
+        "steps": "{{steps}}",
+        "width": "{{width}}"
+      },
+      "endpoint": "/v1/inference/black-forest-labs-flux-2-dev-diffusers-bf16",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "A photorealistic editorial product image of a compact GPU workstation on a clean lab bench, realistic materials, softbox lighting, sharp details, no text",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "",
+        "key": "input_image",
+        "label": "Input image",
+        "type": "file_upload",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "png",
+      "type": "image"
+    },
+    "parameter_controls": [
+      {
+        "default": "1:1",
+        "key": "aspect_ratio",
+        "label": "Aspect ratio",
+        "options": [
+          "1:1",
+          "4:3",
+          "3:2",
+          "16:9",
+          "3:4",
+          "2:3",
+          "9:16"
+        ],
+        "type": "select"
+      },
+      {
+        "default": 0,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 28,
+        "key": "steps",
+        "label": "Steps",
+        "max": 80,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 4,
+        "key": "guidance_scale",
+        "label": "Guidance",
+        "max": 20,
+        "min": 0,
+        "step": 0.25,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "width",
+        "label": "Width",
+        "max": 1536,
+        "min": 256,
+        "step": 16,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "height",
+        "label": "Height",
+        "max": 1536,
+        "min": 256,
+        "step": 16,
+        "type": "number"
+      },
+      {
+        "default": 0.2,
+        "key": "caption_upsample_temperature",
+        "label": "Caption temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "image_generation"
+  },
+  "quantization": "bfloat16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-flux2-dev-diffusers-bf16@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-flux2-dev-diffusers-bf16@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-flux2-dev-diffusers-bf16@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-flux2-dev-diffusers-bf16@sha256:2a033f066904c01d1377b00aa28773fdea0e131da03f51b01ab0bde448acb918"
+  },
+  "release_rank": 145,
+  "requires_hf_token": true,
+  "single_region_risk": false,
+  "slug": "black-forest-labs-flux-2-dev-diffusers-bf16",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "image-generation",
+    "image-editing",
+    "text-to-image",
+    "image-to-image",
+    "diffusion",
+    "flux",
+    "flux2",
+    "black-forest-labs",
+    "diffusers",
+    "bfloat16",
+    "cuda12.8",
+    "blackwell-candidate",
+    "gated",
+    "non-commercial",
+    "forge-wrapper"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "diffusers-bf16-pytorch2.9.1-cuda12.8-v1",
+  "version_description": "Forge-owned PyTorch 2.9.1 / CUDA 12.8 Diffusers BF16 wrapper for black-forest-labs/FLUX.2-dev. The container is mirrored to all active Forge regional registries and has a persisted 8-cell GPU matrix with 10 measured image-generation runs on every supported cell. B200, B300, H200, H100, and RTX6000 are supported; L40S is marked OOM.",
+  "version_key": "diffusers-bf16",
+  "version_label": "Diffusers BF16"
+}

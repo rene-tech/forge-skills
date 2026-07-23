@@ -1,0 +1,216 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "8f103a818b2daef39b0c53197331d2614766431f2726b05a97dc55e0a5c4b978",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA MAISI",
+  "domain": "medical-imaging",
+  "downloadUrl": "/v1/model-skills/nvidia-maisi-nim/markdown?download=true",
+  "group": "medical-imaging",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "medical-imaging",
+    "nvidia-maisi-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/maisi/run",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "[\"abdomen\"]",
+      "fieldType": "json_editor",
+      "key": "body_region",
+      "label": "Body regions JSON array",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": "[\"liver\", \"spleen\"]",
+      "fieldType": "json_editor",
+      "key": "anatomy_list",
+      "label": "Anatomies JSON array",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "num_output_samples",
+      "label": "Number of output samples",
+      "maximum": 1,
+      "minimum": 1,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": 20,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Inference steps",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "[256, 256, 128]",
+      "fieldType": "json_editor",
+      "key": "output_size",
+      "label": "Output size [x,y,z]",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "[1.0, 1.0, 1.0]",
+      "fieldType": "json_editor",
+      "key": "spacing",
+      "label": "Spacing [x,y,z]",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        ".nii.gz",
+        ".nii",
+        ".nrrd",
+        ".dcm"
+      ],
+      "default": ".nii.gz",
+      "fieldType": "select",
+      "key": "image_output_ext",
+      "label": "Image output extension",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        ".nii.gz",
+        ".nii",
+        ".nrrd",
+        ".dcm"
+      ],
+      "default": ".nii.gz",
+      "fieldType": "select",
+      "key": "label_output_ext",
+      "label": "Label output extension",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "structured"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-maisi-nim\ndescription: Use the exact Forge model nvidia-maisi-nim for structured to image, segmentation, file tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA MAISI\n\n- Model slug: `nvidia-maisi-nim`\n- Model family: `nvidia-maisi`\n- Version: `1.0.1` (`nim-1-0-1-latest-digest`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / medical-imaging / nvidia-maisi-nim`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `NVIDIA software and model evaluation license agreement; NVIDIA NIM terms`\n\n## Purpose\n\nNVIDIA MAISI is a medical-imaging NIM for generating synthetic 3D CT volumes and paired segmentation labels from requested body regions, anatomies, voxel spacing, and output-size controls.\n\n## Use this exact model when\n\n- Use this exact `nvidia-maisi-nim` version when the task supplies structured and needs image, segmentation, file.\n- NVIDIA MAISI is a medical-imaging NIM for generating synthetic 3D CT volumes and paired segmentation labels from requested body regions, anatomies, voxel spacing, and output-size controls.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['structured'] \u2192 ['image', 'segmentation', 'file'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `body_region` (json_editor, required): Body regions JSON array\n- `anatomy_list` (json_editor, optional): Anatomies JSON array\n- `num_output_samples` (number, required; bounds 1..1): Number of output samples\n- `num_inference_steps` (number, optional; bounds 1..1000): Inference steps\n- `output_size` (json_editor, optional): Output size [x,y,z]\n- `spacing` (json_editor, optional): Spacing [x,y,z]\n- `image_output_ext` (select, optional): Image output extension\n- `label_output_ext` (select, optional): Label output extension\n\nRequest template:\n\n```json\n{\n  \"anatomy_list\": \"{{anatomy_list}}\",\n  \"body_region\": \"{{body_region}}\",\n  \"image_output_ext\": \"{{image_output_ext}}\",\n  \"label_output_ext\": \"{{label_output_ext}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"num_output_samples\": \"{{num_output_samples}}\",\n  \"output_size\": \"{{output_size}}\",\n  \"spacing\": \"{{spacing}}\"\n}\n```\n\n## Exact output\n\n- `image`\n- `segmentation`\n- `file`\n\n## Route\n\n`POST /v1/maisi/run`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-maisi-nim` with version key `nim-1-0-1-latest-digest`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/maisi/run` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-maisi-nim`\n- Routes: `/v1/models/nvidia-maisi-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-maisi-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-maisi-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/medical-imaging/nvidia-maisi-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/medical-imaging/nvidia-maisi-nim/SKILL.md\n\n## References\n\n- [NVIDIA MAISI source](https://docs.nvidia.com/nim/medical/maisi/latest/) (model-card)\n",
+  "license": "NVIDIA software and model evaluation license agreement; NVIDIA NIM terms",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-maisi-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-maisi-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-maisi",
+    "modelUrl": "/v1/models/nvidia-maisi-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-maisi-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-maisi-nim/markdown",
+  "modelFamily": "nvidia-maisi",
+  "modelSlug": "nvidia-maisi-nim",
+  "modelUrl": "/v1/models/nvidia-maisi-nim",
+  "outputFields": [
+    "image",
+    "segmentation",
+    "file"
+  ],
+  "outputModalities": [
+    "image",
+    "segmentation",
+    "file"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA MAISI is a medical-imaging NIM for generating synthetic 3D CT volumes and paired segmentation labels from requested body regions, anatomies, voxel spacing, and output-size controls.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/medical-imaging/nvidia-maisi-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA MAISI source",
+      "url": "https://docs.nvidia.com/nim/medical/maisi/latest/"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/medical-imaging/nvidia-maisi-nim/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/medical-imaging/nvidia-maisi-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "anatomy_list": "{{anatomy_list}}",
+    "body_region": "{{body_region}}",
+    "image_output_ext": "{{image_output_ext}}",
+    "label_output_ext": "{{label_output_ext}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "num_output_samples": "{{num_output_samples}}",
+    "output_size": "{{output_size}}",
+    "spacing": "{{spacing}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "fp32",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/medical/maisi/latest/",
+    "tags": [
+      "healthcare",
+      "medical-imaging",
+      "synthetic-data",
+      "ct",
+      "segmentation",
+      "3d-medical-image",
+      "maisi",
+      "nvidia-nim",
+      "publication-hold"
+    ],
+    "versionLabel": "NIM latest / MAISI 1.0.1"
+  },
+  "shortDescription": "NVIDIA MAISI is a medical-imaging NIM for generating synthetic 3D CT volumes and paired segmentation labels from requested body regions, anatomies, voxel spacing, and output-size controls.",
+  "skillName": "use-forge-nvidia-maisi-nim",
+  "skillUrl": "/v1/model-skills/nvidia-maisi-nim",
+  "slug": "nvidia-maisi-nim",
+  "stability": "experimental",
+  "version": "1.0.1",
+  "versionKey": "nim-1-0-1-latest-digest",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['structured'] \u2192 ['image', 'segmentation', 'file'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-maisi-nim` version when the task supplies structured and needs image, segmentation, file.",
+    "NVIDIA MAISI is a medical-imaging NIM for generating synthetic 3D CT volumes and paired segmentation labels from requested body regions, anatomies, voxel spacing, and output-size controls.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-maisi-nim` with version key `nim-1-0-1-latest-digest`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/maisi/run` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

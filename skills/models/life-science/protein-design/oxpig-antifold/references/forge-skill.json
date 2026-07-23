@@ -1,0 +1,276 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "cbc18fc40250defe711bd95345f40d3342d536c1882a1edd42bf28e57dc757bc",
+  "defaultEligible": true,
+  "displayName": "Use AntiFold",
+  "domain": "protein-design",
+  "downloadUrl": "/v1/model-skills/oxpig-antifold/markdown?download=true",
+  "group": "protein-design",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "protein-design",
+    "oxpig-antifold"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/oxpig-antifold",
+  "inputFields": [
+    {
+      "choices": [
+        "antibody",
+        "nanobody"
+      ],
+      "default": "antibody",
+      "fieldType": "select",
+      "key": "task",
+      "label": "Task",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "pdb",
+      "label": "Input antibody PDB",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": "H",
+      "fieldType": "text",
+      "key": "heavy_chain",
+      "label": "Heavy chain ID",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": "L",
+      "fieldType": "text",
+      "key": "light_chain",
+      "label": "Light chain ID",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "include_antigen",
+      "label": "Include antigen context",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "text",
+      "key": "antigen_chain",
+      "label": "Antigen chain ID",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "[\"CDR1\", \"CDR2\", \"CDR3\"]",
+      "fieldType": "json_editor",
+      "key": "regions",
+      "label": "Regions to mutate",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "select_custom_residues",
+      "label": "Select custom residues",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "text",
+      "key": "custom_heavy_residues",
+      "label": "Custom heavy residues",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "text",
+      "key": "custom_light_residues",
+      "label": "Custom light residues",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "none",
+        "alphafold",
+        "chai"
+      ],
+      "default": "none",
+      "fieldType": "select",
+      "key": "verify_sequences",
+      "label": "Verify sequences",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 2,
+      "fieldType": "number",
+      "key": "num_sequences",
+      "label": "Number of sequences",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 1,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "num_batches",
+      "label": "Batches",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "structure"
+  ],
+  "instructions": "---\nname: use-forge-oxpig-antifold\ndescription: Use the exact Forge model oxpig-antifold for structure to sequence, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use AntiFold\n\n- Model slug: `oxpig-antifold`\n- Model family: `oxpig-antifold`\n- Version: `latest` (`latest`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / protein-design / oxpig-antifold`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `bsd-3-clause`\n\n## Purpose\n\nOpen-source AntiFold onboarding manifest for antibody and nanobody inverse folding.\n\n## Use this exact model when\n\n- Use this exact `oxpig-antifold` version when the task supplies structure and needs sequence, json.\n- Open-source AntiFold onboarding manifest for antibody and nanobody inverse folding.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['structure'] \u2192 ['sequence', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `task` (select, required): Task\n- `pdb` (textarea, required): Input antibody PDB\n- `heavy_chain` (text, required): Heavy chain ID\n- `light_chain` (text, optional): Light chain ID\n- `include_antigen` (checkbox, optional): Include antigen context\n- `antigen_chain` (text, optional): Antigen chain ID\n- `regions` (json_editor, required): Regions to mutate\n- `select_custom_residues` (checkbox, optional): Select custom residues\n- `custom_heavy_residues` (text, optional): Custom heavy residues\n- `custom_light_residues` (text, optional): Custom light residues\n- `verify_sequences` (select, optional): Verify sequences\n- `num_sequences` (number, optional; bounds 1..1000): Number of sequences\n- `temperature` (number, optional; bounds 0..1): Temperature\n- `num_batches` (number, optional; bounds 1..1000): Batches\n\nRequest template:\n\n```json\n{\n  \"antigen_chain\": \"{{antigen_chain}}\",\n  \"custom_heavy_residues\": \"{{custom_heavy_residues}}\",\n  \"custom_light_residues\": \"{{custom_light_residues}}\",\n  \"heavy_chain\": \"{{heavy_chain}}\",\n  \"include_antigen\": \"{{include_antigen}}\",\n  \"light_chain\": \"{{light_chain}}\",\n  \"num_batches\": \"{{num_batches}}\",\n  \"num_sequences\": \"{{num_sequences}}\",\n  \"pdb\": \"{{pdb}}\",\n  \"regions\": \"{{regions}}\",\n  \"select_custom_residues\": \"{{select_custom_residues}}\",\n  \"task\": \"{{task}}\",\n  \"temperature\": \"{{temperature}}\",\n  \"verify_sequences\": \"{{verify_sequences}}\"\n}\n```\n\n## Exact output\n\n- `sequence`\n- `json`\n\n## Route\n\n`POST /v1/inference/oxpig-antifold`\n\n## Workflow\n\n1. Load this skill and pin model slug `oxpig-antifold` with version key `latest`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/oxpig-antifold` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/oxpig-antifold`\n- Routes: `/v1/models/oxpig-antifold/inference-routes`\n- Regional deployment: `/v1/models/oxpig-antifold/regional-deployment`\n- Deployment handoff: `/v1/models/oxpig-antifold/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-design/oxpig-antifold/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-design/oxpig-antifold/SKILL.md\n\n## References\n\n- [AntiFold source](https://github.com/oxpig/AntiFold) (repository)\n",
+  "license": "bsd-3-clause",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/oxpig-antifold/deploy",
+    "inferenceRoutesUrl": "/v1/models/oxpig-antifold/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/oxpig-antifold",
+    "modelUrl": "/v1/models/oxpig-antifold",
+    "regionalDeploymentUrl": "/v1/models/oxpig-antifold/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/oxpig-antifold/markdown",
+  "modelFamily": "oxpig-antifold",
+  "modelSlug": "oxpig-antifold",
+  "modelUrl": "/v1/models/oxpig-antifold",
+  "outputFields": [
+    "sequence",
+    "json"
+  ],
+  "outputModalities": [
+    "sequence",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Open-source AntiFold onboarding manifest for antibody and nanobody inverse folding.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-design/oxpig-antifold/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "AntiFold source",
+      "url": "https://github.com/oxpig/AntiFold"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-design/oxpig-antifold/SKILL.md",
+  "repositoryPath": "skills/models/life-science/protein-design/oxpig-antifold/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "antigen_chain": "{{antigen_chain}}",
+    "custom_heavy_residues": "{{custom_heavy_residues}}",
+    "custom_light_residues": "{{custom_light_residues}}",
+    "heavy_chain": "{{heavy_chain}}",
+    "include_antigen": "{{include_antigen}}",
+    "light_chain": "{{light_chain}}",
+    "num_batches": "{{num_batches}}",
+    "num_sequences": "{{num_sequences}}",
+    "pdb": "{{pdb}}",
+    "regions": "{{regions}}",
+    "select_custom_residues": "{{select_custom_residues}}",
+    "task": "{{task}}",
+    "temperature": "{{temperature}}",
+    "verify_sequences": "{{verify_sequences}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/oxpig/AntiFold",
+    "tags": [
+      "life-science",
+      "biology",
+      "antibody",
+      "nanobody",
+      "inverse-folding",
+      "sequence-design",
+      "open-source",
+      "tamarind-reference"
+    ],
+    "versionLabel": "latest"
+  },
+  "shortDescription": "Open-source AntiFold onboarding manifest for antibody and nanobody inverse folding.",
+  "skillName": "use-forge-oxpig-antifold",
+  "skillUrl": "/v1/model-skills/oxpig-antifold",
+  "slug": "oxpig-antifold",
+  "stability": "testing",
+  "version": "latest",
+  "versionKey": "latest",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['structure'] \u2192 ['sequence', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `oxpig-antifold` version when the task supplies structure and needs sequence, json.",
+    "Open-source AntiFold onboarding manifest for antibody and nanobody inverse folding.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `oxpig-antifold` with version key `latest`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/oxpig-antifold` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

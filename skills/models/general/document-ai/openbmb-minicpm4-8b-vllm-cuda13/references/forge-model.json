@@ -1,0 +1,555 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "MiniCPMForCausalLM"
+      ],
+      "auto_map": {
+        "AutoConfig": "configuration_minicpm.MiniCPMConfig",
+        "AutoModelForCausalLM": "modeling_minicpm.MiniCPMForCausalLM"
+      },
+      "hidden_size": 4096,
+      "max_position_embeddings": 32768,
+      "model_type": "minicpm",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 32,
+      "num_key_value_heads": 2,
+      "torch_dtype": "bfloat16",
+      "vocab_size": 73448
+    },
+    "artifact_downloads_checked": 26463,
+    "artifact_last_modified": "2025-10-24T08:32:25.000Z",
+    "artifact_likes_checked": 284,
+    "artifact_parameters": {
+      "BF16": 8185253888,
+      "total": 8185253888
+    },
+    "artifact_revision": "bb2ae14cf59d4ca769c4e42ece54cc3b82a58ef7",
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face hub, Transformers model cache, vLLM, and XDG caches are pointed at /opt/nim/.cache paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights. HF_MODULES_CACHE is isolated to /tmp/huggingface/modules because the 08Z B200 diagnostic showed Transformers remote-code module creation could not write /opt/nim/.cache/huggingface/modules/transformers_modules/openbmb on at least one non-Blackwell node.",
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image_size_bytes": 8669266122,
+    "container_runtime_evidence": {
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+      "vllm_build_commit": "ad7125a431e176d4161099480a66f0169609a690",
+      "vllm_enable_cuda_compatibility": "0"
+    },
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_for_hidden_text_chat_onboarding_candidate",
+    "fallback_attempted": {
+      "forge_owned_wrapper": "Not built because the official vLLM OpenAI-compatible image documents MiniCPM serving and is already mirrored to all active Forge regions at a verified digest.",
+      "minicpm_v_4_5": "Evaluated openbmb/MiniCPM-V-4_5 as an Apache-2.0 vLLM VLM fallback, but deferred it because the local qwen-qwen3-vl-4b-instruct-vllm-cuda13 profile is already blocked at live multimodal startup and MiniCPM4-8B has a simpler text-only OpenAI-compatible path.",
+      "nvidia_nim_probe": "Current web search for NVIDIA NIM, nvcr.io, and MiniCPM4 returned general NIM documentation and no MiniCPM4-specific NIM container, so no model-specific NIM path was selected."
+    },
+    "generation_config": {
+      "bos_token_id": 1,
+      "eos_token_id": [
+        2,
+        73440
+      ],
+      "pad_token_id": 2,
+      "temperature": 0.8,
+      "top_p": 0.8
+    },
+    "license_evidence": "Hugging Face API and model-card metadata report license:apache-2.0; Hugging Face API reports private=false, gated=false, and disabled=false. The README license section states that the repository and MiniCPM models are released under Apache-2.0.",
+    "live_probe_plan": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openbmb-minicpm4-8b-vllm-cuda13 --include-status onboarding --gpu B200 --region us-central1 --gpu H200 --region eu-north2 --gpu L40S --region eu-north1 --gpu RTX6000 --region us-central1 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T08Z-reprobe.json --report-md docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T08Z-reprobe.md",
+      "status": "b300_supported_nonblackwell_reprobe_needed_after_hf_modules_cache_fix"
+    },
+    "live_probe_plan_20260529T10Z": {
+      "completed_command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openbmb-minicpm4-8b-vllm-cuda13 --include-status onboarding --gpu L40S --region eu-north1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-l40s-reprobe.json --report-md docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-l40s-reprobe.md",
+      "remaining": "Review publication/default-eligibility policy before public listing; top-level gpu_compatibility now matches hidden live support rows.",
+      "status": "full_hidden_matrix_supported_publication_review_needed"
+    },
+    "onboarding_state": "live_hidden_b300_supported_nonblackwell_blocked_hf_modules_cache_reprobe_needed",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_gate": "Keep status=onboarding and default_eligible=false for this cycle. The hidden live matrix is clean across B200, B300, H200, L40S, and RTX6000, top-level gpu_compatibility matches those support rows, and publication-readiness has been recorded, but public/default publication still needs product review.",
+    "publication_review_20260529T-current": {
+      "held_back": "Keep status=onboarding and default_eligible=false until product review explicitly approves public/default exposure.",
+      "state_advance": "Recorded publication-review readiness after the hidden matrix completed across B200, B300, H200, L40S, and RTX6000. Existing experimental stability is preserved to match the current manifest test contract until product review approves a public/default state change.",
+      "validation_required_before_live_upsert": "Run scripts/upsert_model.py dry-run after this manifest refresh; live upsert can reuse --keep-existing-family-latest once product review completes."
+    },
+    "regional_mirror_digest": "sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "regional_mirror_verified_at": "2026-05-29T07:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "The Hugging Face model page shows `vllm serve \"openbmb/MiniCPM4-8B\"` and OpenAI-compatible `/v1/chat/completions` usage. The detailed README vLLM section uses trust_remote_code=True for vLLM LLM loading, notes chat API callers should set add_special_tokens=true, and vLLM 0.21.0 supported-model docs list MiniCPMForCausalLM.",
+    "secret_policy": "This public, ungated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so the runtime does not receive unnecessary platform Hugging Face credentials.",
+    "selection_rationale": "Selected as a new non-HCLS, non-physical, permissively licensed general text model that is not already in the Forge manifest catalog, reuses an existing mirrored OpenAI-compatible runtime, and is lower risk than adding another multimodal model before resolving the current Qwen3-VL startup blocker.",
+    "source_evidence": [
+      "https://huggingface.co/openbmb/MiniCPM4-8B",
+      "https://huggingface.co/api/models/openbmb/MiniCPM4-8B",
+      "https://huggingface.co/openbmb/MiniCPM4-8B/raw/main/config.json",
+      "https://huggingface.co/openbmb/MiniCPM4-8B/raw/main/README.md",
+      "https://docs.vllm.ai/en/v0.21.0/models/supported_models/",
+      "https://hub.docker.com/r/vllm/vllm-openai/tags"
+    ],
+    "validation_commands_completed": [
+      "jq empty manifests/models/general/openbmb-minicpm4-8b-vllm-cuda13.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/openbmb-minicpm4-8b-vllm-cuda13.json --dry-run",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/security/check_model_server_image_gate.py manifests/models/general/openbmb-minicpm4-8b-vllm-cuda13.json --format json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q tests/test_general_minicpm4_manifest.py -p no:cacheprovider",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/openbmb-minicpm4-8b-vllm-cuda13.json --keep-existing-family-latest",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openbmb-minicpm4-8b-vllm-cuda13 --include-status onboarding --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T08Z-matrix.json --report-md docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T08Z-matrix.md",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python - <<'PY' ... query models, model_gpu_support, and probe_latency_history for openbmb-minicpm4-8b-vllm-cuda13 ... PY",
+      "kubectl --context nebius-mk8s-forge-us -n forge-models logs forge-probe-openbmb-minicpm4-8b-vllm-b200-us-central1-e945b7 --tail=120",
+      "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openbmb-minicpm4-8b-vllm-cuda13 --include-status onboarding --gpu L40S --region eu-north1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-l40s-reprobe.json --report-md docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-l40s-reprobe.md"
+    ],
+    "validation_results_20260529T07Z": {
+      "live_probe": "not_run",
+      "live_upsert": "not_run",
+      "manifest_json": "passed",
+      "model_server_image_gate": "passed_no_findings",
+      "pytest": "tests/test_general_minicpm4_manifest.py passed: 1 passed in 0.44s",
+      "upsert_dry_run": "passed; normalized payload written to /tmp/openbmb-minicpm4-8b-upsert-dry-run.json"
+    },
+    "validation_results_20260529T08Z": {
+      "B200_us_central1": {
+        "cleanup": "force deleted the interrupted probe pod after preserving describe/log evidence",
+        "image_pull_seconds": 283.376,
+        "node": "computeinstance-u00zzte1mv6kjap6dg",
+        "pod": "forge-probe-openbmb-minicpm4-8b-vllm-b200-us-central1-e945b7",
+        "runtime_log_blocker": "PermissionError: [Errno 13] Permission denied: '/opt/nim/.cache/huggingface/modules/transformers_modules/openbmb'",
+        "status": "interrupted_during_wrap_up"
+      },
+      "B300_uk_south1": {
+        "probed_at": "2026-05-29T08:07:52Z",
+        "request_ms": 1442,
+        "request_ms_p50": 1442,
+        "request_ms_p95": 1893,
+        "request_ms_p99": 2042,
+        "request_ms_samples": 10,
+        "startup_ms": 143156,
+        "status": "supported",
+        "tokens_per_second": 329.4,
+        "vram_measured_gb": 213.84
+      },
+      "H200_eu_north2": {
+        "last_error": "RuntimeError: pod_start_failure:model:terminated:Error",
+        "probed_at": "2026-05-29T08:05:07Z",
+        "status": "other_error"
+      },
+      "L40S_eu_north1": {
+        "last_error": "RuntimeError: pod_start_failure:pod_failed",
+        "probed_at": "2026-05-29T08:05:13Z",
+        "status": "other_error"
+      },
+      "RTX6000_us_central1": {
+        "last_error": "RuntimeError: pod_start_failure:pod_failed",
+        "probed_at": "2026-05-29T08:05:09Z",
+        "status": "other_error"
+      },
+      "live_upsert": "passed; hidden onboarding row updated with --keep-existing-family-latest",
+      "probe_status": "partial; interrupted on user wrap-up request after B300 completed and failed non-Blackwell cells had persisted support rows; report files were not emitted by the interrupted script, so this manifest and docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T08Z-partial-matrix.* preserve the evidence"
+    },
+    "validation_results_20260529T10Z": {
+      "B200_us_central1": {
+        "model_time_source": "client_wall_ms",
+        "probed_at": "2026-05-29T09:12:54Z",
+        "request_ms": 1539,
+        "request_ms_p50": 1539,
+        "request_ms_p95": 1988,
+        "request_ms_p99": 2137,
+        "request_ms_samples": 10,
+        "startup_ms": 430712,
+        "status": "supported",
+        "tokens_per_second": 308.64,
+        "vram_measured_gb": 142.4
+      },
+      "B300_uk_south1": {
+        "model_time_source": "client_wall_ms",
+        "probed_at": "2026-05-29T08:07:52Z",
+        "request_ms": 1442,
+        "request_ms_p50": 1442,
+        "request_ms_p95": 1893,
+        "request_ms_p99": 2042,
+        "request_ms_samples": 10,
+        "startup_ms": 143156,
+        "status": "supported",
+        "tokens_per_second": 329.4,
+        "vram_measured_gb": 213.84
+      },
+      "H200_eu_north2": {
+        "model_time_source": "client_wall_ms",
+        "probed_at": "2026-05-29T09:07:46Z",
+        "request_ms": 1886,
+        "request_ms_p50": 1886,
+        "request_ms_p95": 2866,
+        "request_ms_p99": 3060,
+        "request_ms_samples": 10,
+        "startup_ms": 119818,
+        "status": "supported",
+        "tokens_per_second": 296.92,
+        "vram_measured_gb": 111.55
+      },
+      "L40S_eu_north1": {
+        "model_time_source": "client_wall_ms",
+        "probed_at": "2026-05-29T10:09:34Z",
+        "request_ms": 7578,
+        "request_ms_p50": 7578,
+        "request_ms_p95": 9668,
+        "request_ms_p99": 9981,
+        "request_ms_samples": 10,
+        "startup_ms": 111939,
+        "status": "supported",
+        "tokens_per_second": 46.58,
+        "vram_measured_gb": 35.05
+      },
+      "RTX6000_us_central1": {
+        "model_time_source": "client_wall_ms",
+        "probed_at": "2026-05-29T09:15:20Z",
+        "request_ms": 4887,
+        "request_ms_p50": 4887,
+        "request_ms_p95": 6298,
+        "request_ms_p99": 6508,
+        "request_ms_samples": 10,
+        "startup_ms": 502410,
+        "status": "supported",
+        "tokens_per_second": 76.73,
+        "vram_measured_gb": 75.6
+      },
+      "artifacts": [
+        "docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-l40s-reprobe.json",
+        "docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-l40s-reprobe.md",
+        "docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-matrix.json",
+        "docs/model-onboarding/general/openbmb-minicpm4-8b-vllm-cuda13-20260529T10Z-matrix.md"
+      ],
+      "live_db_readback": "passed; model remains status=onboarding, stability=experimental, default_eligible=false, is_latest=true",
+      "probe_status": "complete; B200, B300, H200, L40S, and RTX6000 all have supported model_gpu_support rows with 10 warm measured samples each"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "long_context",
+    "minicpm",
+    "openbmb",
+    "english",
+    "chinese",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+  "container_image_size_bytes": 8669266122,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-29T08:04:31.056854+00:00",
+  "default_eligible": false,
+  "description": "MiniCPM4 8B is a public Apache-2.0 OpenBMB text-generation model for English/Chinese chat, instruction following, long-context summarization, and efficient edge-oriented general LLM workloads. Hugging Face API metadata checked on 2026-05-29T07Z reports private=false, gated=false, disabled=false, pipeline_tag=text-generation, library_name=transformers, license=apache-2.0, revision bb2ae14cf59d4ca769c4e42ece54cc3b82a58ef7, lastModified 2025-10-24T08:32:25Z, and 8,185,253,888 BF16 safetensors parameters. The artifact config reports MiniCPMForCausalLM, model_type=minicpm, BF16 dtype, 32 layers, 32 attention heads, 2 KV heads, hidden size 4096, 73,448 vocab entries, 32,768 max positions, and an auto_map remote-code contract. The upstream model card documents OpenAI-compatible vLLM serving for openbmb/MiniCPM4-8B, notes that vLLM chat should send add_special_tokens=true, and states that MiniCPM4 natively supports 32,768-token context with optional longer-context RoPE modifications. This Forge profile intentionally uses the native 32K context only, enables --trust-remote-code, reuses the already mirrored official vLLM 0.21.0 CUDA 13 image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, clears unnecessary Hugging Face token env for this public ungated artifact, stores Hugging Face hub and vLLM caches under /opt/nim/.cache paths backed by Forge shared /mnt/data cache, and moves Transformers dynamic modules to a writable /tmp path after the 08Z B200 diagnostic found PermissionError under /opt/nim/.cache/huggingface/modules. The 10Z L40S reprobe confirmed that cache mitigation and completed a five-cell hidden support matrix; keep hidden onboarding and default-ineligible until publication review.",
+  "family_id": "f21eadf8-e61f-4a96-ad75-94c28e310286",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "openbmb/MiniCPM4-8B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "openbmb/MiniCPM4-8B",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.8",
+      "--max-num-seqs",
+      "4",
+      "--trust-remote-code"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_MODULES_CACHE": "/tmp/huggingface/modules",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:12:54.516832+00:00",
+      "region": "us-central1",
+      "request_ms": 1539,
+      "request_ms_p50": 1539,
+      "request_ms_p95": 1988,
+      "request_ms_p99": 2137,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 430712,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 308.64,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 142.4,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.25
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T08:07:52.063686+00:00",
+      "region": "uk-south1",
+      "request_ms": 1442,
+      "request_ms_p50": 1442,
+      "request_ms_p95": 1893,
+      "request_ms_p99": 2042,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 143156,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 329.4,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 213.84,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.25
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:07:46.158237+00:00",
+      "region": "eu-north2",
+      "request_ms": 1886,
+      "request_ms_p50": 1886,
+      "request_ms_p95": 2866,
+      "request_ms_p99": 3060,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 119818,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 296.92,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 111.55,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.25
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T10:09:34.884585+00:00",
+      "region": "eu-north1",
+      "request_ms": 7578,
+      "request_ms_p50": 7578,
+      "request_ms_p95": 9668,
+      "request_ms_p99": 9981,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 111939,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 46.58,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 35.05,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.25
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:15:20.177109+00:00",
+      "region": "us-central1",
+      "request_ms": 4887,
+      "request_ms_p50": 4887,
+      "request_ms_p95": 6298,
+      "request_ms_p99": 6508,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 502410,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 76.73,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 75.6,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.25
+    }
+  ],
+  "gpu_type": null,
+  "id": "3686a2b0-c268-49ea-80b0-a3f28d56dff2",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "openbmb-minicpm4-8b",
+  "name": "MiniCPM4 8B",
+  "parameter_count": 8185253888,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "add_special_tokens": true,
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "openbmb/MiniCPM4-8B"
+    },
+    "input_fields": [
+      {
+        "default": "Write a concise engineering handoff for this probe note. Include likely cause, impact, and next action:\n\nA vLLM CUDA 13 candidate uses remote-code MiniCPM architecture, a public Apache-2.0 artifact, and a 32K context cap. It has not yet been live-probed on Forge GPUs.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "chat",
+      "type": "markdown"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.7,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.8,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "release_rank": 60,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "openbmb-minicpm4-8b-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/openbmb/MiniCPM4-8B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction",
+    "long-context",
+    "minicpm",
+    "openbmb",
+    "english",
+    "chinese",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-30T13:36:41.498156+00:00",
+  "version": "vllm-0.21.0-cuda13",
+  "version_description": "Hidden onboarding profile for OpenBMB MiniCPM4 8B served by the already mirrored vLLM CUDA 13 OpenAI-compatible image. The 2026-05-29T10Z live readback and L40S reprobe validate all five active GPU cells, but the row stays hidden/default-ineligible pending publication review.",
+  "version_key": "vllm-0-21-0-cuda13",
+  "version_label": "vLLM 0.21.0 CUDA 13"
+}

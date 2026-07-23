@@ -1,0 +1,566 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "MistralForCausalLM"
+      ],
+      "auto_map": null,
+      "head_dim": 128,
+      "hidden_size": 5120,
+      "intermediate_size": 32768,
+      "max_position_embeddings": 131072,
+      "model_type": "mistral",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 40,
+      "num_key_value_heads": 8,
+      "torch_dtype": "bfloat16",
+      "vocab_size": 131072
+    },
+    "artifact_evidence": "Hugging Face API reported mistralai/Devstral-Small-2507 as public, ungated, enabled, mistral-common, license:apache-2.0, revision bd165ab26cebbcc2eea2c4ecbfc07f3ac42b3c39, 41,483 downloads, 365 likes, and 23,572,403,200 BF16 safetensors parameters on 2026-06-02.",
+    "artifact_last_modified": "2025-08-18T08:14:29.000Z",
+    "artifact_parameters": {
+      "BF16": 23572403200,
+      "total": 23572403200
+    },
+    "artifact_revision": "bd165ab26cebbcc2eea2c4ecbfc07f3ac42b3c39",
+    "blockers": [
+      "Default routing remains blocked by default_eligible=false; this is a testing non-default publication only.",
+      "The upstream vLLM command recommends tensor-parallel-size 2. This Forge profile intentionally uses a TP1 fallback because the visible B300, H200, and RTX6000 cells expose one allocatable GPU per model node; TP2 remains unclaimed until two same-SKU GPUs can schedule in one target cell.",
+      "L40S/eu-north1 TP1 is not supported for this BF16 one-GPU profile: the 2026-06-03T03Z keep-pod diagnostic captured CUDA OOM during model load on a 44.39 GiB L40S.",
+      "The B200 tool-call smoke proves vLLM's Mistral parser emits a structured read_file tool call for a forced tool_choice request, but multi-turn tool-result continuation is still unbenchmarked."
+    ],
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, and XDG caches are pointed at /opt/nim/.cache paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights.",
+    "container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "container_image_size_bytes": 9219894117,
+    "container_runtime_evidence": {
+      "architecture": "amd64",
+      "created": "2026-05-29T06:57:18.414235433Z",
+      "cuda_version": "13.0.2",
+      "image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "layers": 31,
+      "os": "linux",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+      "vllm_build_commit": "799c3afa5d5b17b676d04e0b58a5628943bb4003",
+      "vllm_build_pipeline": "019d130e-464e-4ff7-b84b-492992c0c06b",
+      "vllm_enable_cuda_compatibility": "0"
+    },
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_22_0_cuda13_image_for_tp1_fallback_after_tp2_node_shape_blocker_and_cve_2026_48746_report_only_review",
+    "fallbacks": {
+      "gguf_or_ollama": "Rejected for Forge GPU onboarding because those routes are optimized for local/CPU or quantized usage rather than current Forge GPU scheduler contracts.",
+      "h200_tp2": "Attempted after B200 placement blocked; H200/eu-north2 hit the same two-GPU capacity blocker before startup.",
+      "l40s_smaller_variant": "If L40S coverage is required, create a separate quantized or smaller-context Devstral variant instead of claiming support for the BF16 TP1 profile.",
+      "mistral_inference": "Kept as a fallback runtime from the model card, but it would require a Forge-owned wrapper and loses the lower-integration-cost OpenAI-compatible vLLM path.",
+      "single_gpu_vllm": "Selected as the active testing non-default profile because current Forge compute cells expose one allocatable GPU per model node. The 2026-06-03T01Z H200/eu-north2, 2026-06-03T02Z B300/uk-south1 plus RTX6000/us-central1, and 2026-06-03T03Z B200/us-central1 warm probes passed; the 2026-06-03T04Z B200 no-persist forced tool-call smoke also passed."
+    },
+    "license_evidence": "Hugging Face API and model-card metadata report license=apache-2.0; the model card states Apache 2.0 allows commercial and non-commercial usage and modification.",
+    "onboarding_state": "active_testing_vllm_0_22_tp1_supported_b200_b300_h200_rtx6000_l40s_oom_tool_call_smoke",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "regional_mirror_verified_at": "2026-06-02T23:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "The Devstral Small 2507 model card recommends vLLM >= 0.9.1, mistral-common >= 1.7.0, a ready-to-go vLLM Docker image, and launch flags: vllm serve mistralai/Devstral-Small-2507 --tokenizer_mode mistral --config_format mistral --load_format mistral --tool-call-parser mistral --enable-auto-tool-choice --tensor-parallel-size 2. The selected Forge image is the official vLLM 0.22.0 CUDA 13 digest mirrored to all active Forge regions on 2026-06-02T23Z. Security gate context: CVE-2026-48746 / GHSA-94f4-hr76-p5j6 affects vLLM OpenAI-compatible API exposure in >=v0.3.0,<v0.22.0, so this profile is above the remediation floor before active testing publication. The 2026-06-03T00Z runtime fallback changes tensor-parallel-size to 1 because current Forge H200/B300/RTX6000 cells are one-GPU node pools. B200, B300, H200, and RTX6000 now have TP1 startup, 3 warmups, and 10 measured coding-chat request evidence; L40S remains unclaimed after a keep-pod diagnostic showed CUDA OOM during BF16 model load on a 44.39 GiB GPU. The 2026-06-03T04Z B200 forced tool-call smoke confirmed the vLLM Mistral parser emits an OpenAI-compatible read_file tool call.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "selection_rationale": "Selected as a missing generally useful Forge model because the current general manifest set has Mistral Small 3.2 chat/VLM but no Devstral coding-agent profile. Devstral adds an Apache-2.0, public, text-only software-engineering agent model with explicit vLLM tool-calling guidance.",
+    "source_evidence": [
+      "https://huggingface.co/mistralai/Devstral-Small-2507",
+      "https://huggingface.co/api/models/mistralai/Devstral-Small-2507?blobs=true",
+      "https://huggingface.co/mistralai/Devstral-Small-2507/raw/main/README.md",
+      "https://huggingface.co/mistralai/Devstral-Small-2507/raw/main/config.json",
+      "https://huggingface.co/mistralai/Devstral-Small-2507/raw/main/params.json",
+      "https://hub.docker.com/r/vllm/vllm-openai/tags",
+      "https://github.com/vllm-project/vllm/security/advisories/GHSA-94f4-hr76-p5j6"
+    ],
+    "validation_20260602T22Z_worker": {
+      "b200_us_central1_tp2_probe": "blocked_before_startup_failed_scheduling_8_insufficient_nvidia_gpu_autoscaler_max_node_group_size_reached",
+      "git_origin_main": "even_0_0_after_fetch",
+      "h200_eu_north2_tp2_fallback_probe": "blocked_before_startup_failed_scheduling_8_insufficient_nvidia_gpu_autoscaler_max_node_group_size_reached",
+      "hf_api_metadata": "passed_public_ungated_apache_2_revision_bd165ab26cebbcc2eea2c4ecbfc07f3ac42b3c39_downloads_41483_likes_365",
+      "hf_config": "passed_mistral_bf16_131072_positions_no_auto_map",
+      "hf_params_json": "passed_dim_5120_layers_40_heads_32_kv_heads_8",
+      "hidden_live_upsert": "passed_with_keep_existing_family_latest",
+      "jq_manifest": "passed",
+      "live_db_readback": "passed_status_onboarding_stability_experimental_default_eligible_false_gpu_count_2_no_support_rows",
+      "model_server_image_gate": "passed_no_findings",
+      "probe_cleanup": "passed_pending_probe_pods_removed_by_runner_after_interrupt",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_all_gpu_flags_false",
+      "skopeo_vllm_image_inspect": "passed_digest_sha256_a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "upsert_model_dry_run": "passed"
+    },
+    "validation_20260602T23Z_worker": {
+      "focused_tests": "passed_74_tests_test_onboarding_manifests_and_test_vllm_manifest_version_gate",
+      "forge_onboarding_workflow_dry_run": "passed_skip_mirror_skip_matrix_skip_genai_perf_plan_upsert_only",
+      "git_origin_main": "even_0_0_after_fetch",
+      "jq_manifest": "passed",
+      "model_server_image_gate": "passed_no_findings",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_all_gpu_flags_false",
+      "regional_vllm_0_22_0_digest_check": "passed_all_four_active_regions_match_sha256_0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "regional_vllm_0_22_0_mirror": "passed_mirror_via_k8s_job_all_four_regions",
+      "upsert_model_dry_run": "passed",
+      "upstream_vllm_0_22_0_inspect": "passed_digest_sha256_0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416_created_2026_05_29_cuda_13_0_2_build_799c3afa5d5b17b676d04e0b58a5628943bb4003",
+      "vllm_image_gate_report_only": "passed_no_findings_with_include_openai_auth_bypass_and_include_onboarding_rce",
+      "vllm_image_gate_required": "passed_no_findings"
+    },
+    "validation_20260602Tcurrent": {
+      "git_diff_check": "passed",
+      "git_origin_main": "even_0_0_after_fetch",
+      "hf_api_metadata": "passed_public_ungated_apache_2_revision_bd165ab26cebbcc2eea2c4ecbfc07f3ac42b3c39",
+      "hf_config": "passed_mistral_bf16_131072_positions_no_auto_map",
+      "hf_params_json": "passed_dim_5120_layers_40_heads_32_kv_heads_8",
+      "jq_manifest": "passed",
+      "live_probe": "not_run_hidden_manifest_not_live_upserted_and_tp2_probe_needs_deliberate_capacity",
+      "model_server_image_gate": "passed_no_findings",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_all_gpu_flags_false",
+      "regional_mirror_digest_check": "passed_all_four_active_regions_match_sha256_a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "skopeo_vllm_image_inspect": "passed_digest_sha256_a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9_cuda_13_0_2_arch_list_sm100_sm120_ptx",
+      "upsert_model_dry_run": "passed"
+    },
+    "validation_20260603T00Z_supervisor": {
+      "hidden_live_upsert_h200_tp1": "passed_with_keep_existing_family_latest",
+      "live_db_readback": "passed_status_onboarding_stability_experimental_default_eligible_false_gpu_count_1_min_gpus_1_tensor_parallel_size_1_digest_sha256_0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416_support_rows_0",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_all_gpu_flags_false_until_h200_tp1_warm_probe_passes",
+      "upsert_model_dry_run": "passed"
+    },
+    "validation_20260603T00Z_worker": {
+      "git_origin_main": "even_0_0_after_fetch",
+      "hidden_live_upsert_vllm_0_22_tp2": "passed_readback_status_onboarding_default_eligible_false_gpu_count_2_digest_sha256_0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "probe_cleanup": "passed_pending_h200_tp2_probe_pod_removed_after_interrupt",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_until_successful_warm_probe_matrix",
+      "runtime_fallback_decision": "switch_hidden_row_to_h200_first_tensor_parallel_size_1_for_warm_probe_without_publication_or_default_eligibility",
+      "tp2_capacity_probe_h200_eu_north2": "blocked_before_startup_failed_scheduling_8_insufficient_nvidia_gpu_current_nodes_have_one_allocatable_gpu_each"
+    },
+    "validation_20260603T02Z_worker": {
+      "b200_us_central1_probe": "blocked_probe_pending_pod_evicted_node_low_ephemeral_storage_after_image_pull_threshold_13201150967_available_12846980Ki",
+      "b300_uk_south1_tp1_probe": "passed_supported_startup_712894_ms_3_warmups_10_measured_requests_client_wall_p50_616_ms_samples_598_581_581_633_597_633_640_580_633_633_tps_358_77_vram_235_05_gb_flashinfer_hnd_kv_cache",
+      "git_origin_main": "even_0_0_after_fetch",
+      "hidden_live_upsert_vllm_0_22_tp1": "passed",
+      "l40s_eu_north1_probe": "failed_other_error_pod_start_failure_pod_failed",
+      "model_server_image_gate": "passed_no_findings",
+      "probe_report_json": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T02Z-remaining-cells.json",
+      "probe_report_md": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T02Z-remaining-cells.md",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_until_b200_ephemeral_storage_blocker_and_l40s_start_failure_are_resolved_or_explicit_partial_gpu_release_is_approved",
+      "remaining_cells_probe_command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug mistralai-devstral-small-2507-vllm-cuda13 --include-status onboarding --gpu B200 --gpu B300 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 2 --report-json docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T02Z-remaining-cells.json --report-md docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T02Z-remaining-cells.md",
+      "rtx6000_us_central1_tp1_probe": "passed_supported_startup_774105_ms_3_warmups_10_measured_requests_client_wall_p50_2209_ms_samples_2146_2079_2077_2277_2142_2276_2272_2071_2272_2272_tps_100_05_vram_82_98_gb_flashattention_2",
+      "upsert_model_dry_run": "passed",
+      "vllm_image_gate_report_only": "passed_no_findings_with_include_openai_auth_bypass_and_include_onboarding_rce"
+    },
+    "validation_20260603T03Z_worker": {
+      "b200_probe_report_json": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T03Z-b200-reprobe.json",
+      "b200_probe_report_md": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T03Z-b200-reprobe.md",
+      "b200_us_central1_tp1_reprobe": "passed_supported_startup_398112_ms_3_warmups_10_measured_requests_client_wall_p50_710_ms_samples_692_675_675_727_694_727_727_675_727_728_tps_311_27_vram_155_96_gb",
+      "git_origin_main": "even_0_0",
+      "health_check": "passed_public_api_health_ok_all_four_regions_operational_inventory_b200_us_central1_8_free_l40s_eu_north1_6_free_no_stale_probe_cleanup_candidates",
+      "hidden_db_readback": "passed_support_rows_b200_b300_h200_rtx6000_supported_each_10_samples_l40s_other_error_from_prior_persisted_probe",
+      "hidden_live_upsert_post_b200": "passed_with_keep_existing_family_latest",
+      "l40s_eu_north1_keep_pod_diagnostic": "reproduced_other_error_pod_start_failure_pod_failed_no_persist_keep_pod_then_deleted_after_log_capture",
+      "l40s_oom_evidence": "vllm_0_22_started_flashattention_2_then_failed_model_load_with_cuda_out_of_memory_trying_to_allocate_1_25_gib_on_l40s_total_44_39_gib_1_11_gib_free_43_27_gib_in_use",
+      "l40s_probe_report_json": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T03Z-l40s-diagnostic.json",
+      "l40s_probe_report_md": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T03Z-l40s-diagnostic.md",
+      "post_edit_validation": "passed_jq_empty_upsert_model_dry_run_model_server_image_gate_vllm_image_gate_git_diff_check",
+      "post_upsert_readback": "passed_status_onboarding_stability_experimental_default_eligible_false_gpu_compatibility_b200_b300_h200_rtx6000_true_l40s_false_onboarding_state_hidden_manifest_vllm_0_22_tp1_supported_b200_b300_h200_rtx6000_l40s_oom",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_until_l40s_oom_is_marked_or_an_explicit_partial_gpu_release_policy_is_approved_and_tool_call_behavior_is_reviewed"
+    },
+    "validation_20260603T04Z_worker": {
+      "b200_tool_call_smoke": "passed_supported_no_persist_startup_383758_ms_one_measured_request_client_wall_2067_ms_tps_61_93_vram_156_06_gb",
+      "b200_tool_call_smoke_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug mistralai-devstral-small-2507-vllm-cuda13 --include-status onboarding --gpu B200 --region us-central1 --timeout 1500 --request-timeout 180 --warmup-runs 0 --benchmark-runs 1 --max-parallel 1 --no-persist --request-json <forced_read_file_tool_call_request> --report-json docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T04Z-b200-tool-call-smoke.json --report-md docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T04Z-b200-tool-call-smoke.md",
+      "git_origin_main": "even_0_0_after_fetch",
+      "probe_report_json": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T04Z-b200-tool-call-smoke.json",
+      "probe_report_md": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T04Z-b200-tool-call-smoke.md",
+      "publication_decision": "promote_repo_manifest_to_active_testing_non_default_with_b200_b300_h200_rtx6000_supported_l40s_false_default_eligible_false",
+      "tool_call_parser_evidence": "response_preview_contains_openai_tool_calls_read_file_arguments_path_src_retry_py_with_content_null_and_function_call_null"
+    },
+    "validation_20260603Tcycle_worker": {
+      "capacity_check": "passed_eu_north2_h200_had_8_ready_allocatable_one_gpu_nodes_zero_pods_requesting_nvidia_gpu_and_control_plane_pods_ready_before_probe",
+      "h200_eu_north2_tp1_probe": "passed_supported_startup_535831_ms_3_warmups_10_measured_requests_client_wall_p50_891_ms_samples_866_841_840_916_866_916_917_841_918_917_tps_248_04_vram_122_06_gb",
+      "probe_report_json": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T-cycle-h200-tp1.json",
+      "probe_report_md": "docs/model-onboarding/general/mistralai-devstral-small-2507-vllm-cuda13-20260603T-cycle-h200-tp1.md",
+      "publication_decision": "do_not_publish_keep_onboarding_experimental_default_ineligible_until_non_h200_cells_or_explicit_h200_only_release_policy_is_reviewed",
+      "runtime_observability": "vllm_0_22_started_with_tensor_parallel_size_1_flashattention_3_flashinfer_sampling_weight_download_100_04_s_weight_load_17_80_s_model_memory_43_94_gib_kv_cache_76_98_gib_504464_tokens"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "code",
+    "agentic_coding",
+    "software_engineering",
+    "tool_calling",
+    "long_context",
+    "mistral",
+    "devstral",
+    "vllm",
+    "cuda13",
+    "tp1",
+    "multi_cell",
+    "active_testing",
+    "partial_gpu",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 9219894117,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-02T22:04:24.511155+00:00",
+  "default_eligible": false,
+  "description": "Devstral Small 1.1 2507 is a public Apache-2.0 text-only coding and software-engineering agent model from Mistral AI and All Hands AI. Hugging Face API metadata checked on 2026-06-02 reports private=false, gated=false, disabled=false, library_name=mistral-common, license:apache-2.0, revision bd165ab26cebbcc2eea2c4ecbfc07f3ac42b3c39, lastModified 2025-08-18T08:14:29Z, and 23,572,403,200 BF16 safetensors parameters. The upstream card describes Devstral as an agentic coding model with Mistral function-calling support, 24-language coverage, a 128K context window, and recommended vLLM serving via tokenizer_mode/config_format/load_format mistral plus tool-call-parser mistral and tensor-parallel-size 2. This active testing non-default Forge profile uses the mirrored official vLLM 0.22.0 CUDA 13 image digest sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416, replacing the earlier vLLM 0.21.0 draft image so the path is above the CVE-2026-48746 / GHSA-94f4-hr76-p5j6 affected range before publication. It caps served context to 32768 tokens, clears Hugging Face token environment variables because the artifact is public and ungated, and stores Hugging Face, Transformers, vLLM, and XDG caches under /opt/nim/.cache paths backed by Forge shared /mnt/data cache. The 2026-06-02T22Z worker live-upserted the prior TP2 draft as hidden onboarding and verified DB readback, but B200/us-central1 and H200/eu-north2 TP2 probes were blocked by current two-GPU placement capacity. The 2026-06-02T23Z worker mirrored and dry-run validated the vLLM 0.22.0 manifest update. The 2026-06-03T00Z worker rechecked compute inventory and found current B300/H200/RTX6000 cells are one-GPU node pools, so this row uses an explicit tensor-parallel-size 1 fallback. The 2026-06-03T01Z H200/eu-north2 TP1 probe completed startup, 3 warmups, and 10 measured coding-chat requests on the v0.22.0 digest. The 2026-06-03T02Z remaining-cell probe added supported B300/uk-south1 and RTX6000/us-central1 rows on the same digest. The 2026-06-03T03Z B200/us-central1 reprobe succeeded on a different B200 node and persisted a supported row; the same cycle classified L40S/eu-north1 as one-GPU BF16 CUDA OOM during model load. The 2026-06-03T04Z no-persist B200 tool-call smoke forced the Mistral parser to call a read_file function and the response preview contained a structured OpenAI tool_calls entry with arguments {\"path\":\"src/retry.py\"}.",
+  "family_id": "06d71b4a-c721-4c0b-8513-3c2cecfaec4e",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "mistralai/Devstral-Small-2507",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "mistralai/Devstral-Small-2507",
+      "--tokenizer-mode",
+      "mistral",
+      "--config-format",
+      "mistral",
+      "--load-format",
+      "mistral",
+      "--tool-call-parser",
+      "mistral",
+      "--enable-auto-tool-choice",
+      "--tensor-parallel-size",
+      "1",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.88",
+      "--max-num-seqs",
+      "4"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "gpu_count": 1,
+    "min_gpus": 1,
+    "min_vram_gb": 120.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T03:12:57.646985+00:00",
+      "region": "us-central1",
+      "request_ms": 710,
+      "request_ms_p50": 710,
+      "request_ms_p95": 728,
+      "request_ms_p99": 728,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 398112,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 311.27,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 155.96,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 43.91
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T02:29:45.529962+00:00",
+      "region": "uk-south1",
+      "request_ms": 616,
+      "request_ms_p50": 616,
+      "request_ms_p95": 637,
+      "request_ms_p99": 639,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 712894,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 358.77,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 235.05,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 43.91
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T01:13:10.711083+00:00",
+      "region": "eu-north2",
+      "request_ms": 891,
+      "request_ms_p50": 891,
+      "request_ms_p95": 918,
+      "request_ms_p99": 918,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 535831,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 248.04,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.06,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 43.91
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T02:17:39.844344+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 43.91
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T02:17:56.006054+00:00",
+      "region": "us-central1",
+      "request_ms": 2209,
+      "request_ms_p50": 2209,
+      "request_ms_p95": 2277,
+      "request_ms_p99": 2277,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 774105,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 100.05,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 82.98,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 43.91
+    }
+  ],
+  "gpu_type": null,
+  "id": "5531baba-4eae-48d2-adeb-2e6e7a95e527",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "mistralai-devstral-small-2507",
+  "name": "Devstral Small 1.1 2507",
+  "parameter_count": 23572403200,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "You are Devstral Small 1.1, a coding and software-engineering agent model. Prefer concise, actionable answers and emit tool calls only when a provided tool is useful.",
+            "role": "system"
+          },
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "tool_choice": "auto",
+        "tools": "{{tools}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "mistralai/Devstral-Small-2507"
+    },
+    "input_fields": [
+      {
+        "default": "You are helping repair a repository. Identify the likely bug, propose the smallest patch, and list two regression tests.\\n\\nA retry helper should try three times, but production logs show it returns after the first TimeoutError.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": [
+          {
+            "function": {
+              "description": "Read a repository file by path.",
+              "name": "read_file",
+              "parameters": {
+                "properties": {
+                  "path": {
+                    "description": "Repository-relative file path.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "type": "object"
+              }
+            },
+            "type": "function"
+          }
+        ],
+        "key": "tools",
+        "label": "Tool definitions",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "code_chat",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.15,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 8192,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 78,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "mistralai-devstral-small-2507-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/mistralai/Devstral-Small-2507",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "coding",
+    "agentic-coding",
+    "software-engineering",
+    "tool-calling",
+    "long-context",
+    "mistral",
+    "devstral",
+    "vllm",
+    "cuda13",
+    "tp1",
+    "multi-cell",
+    "active-testing",
+    "partial-gpu"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.22.0-cuda13-tp1",
+  "version_description": "Active testing non-default profile for mistralai/Devstral-Small-2507 served by the mirrored vLLM 0.22.0 CUDA 13 OpenAI-compatible image with Mistral-format launch flags and a single-GPU TP1 fallback validated on B200, B300, H200, and RTX6000.",
+  "version_key": "vllm-0-22-0-cuda13-tp1",
+  "version_label": "vLLM 0.22.0 CUDA 13 TP1"
+}

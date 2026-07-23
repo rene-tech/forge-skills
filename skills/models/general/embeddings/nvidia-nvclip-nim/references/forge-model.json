@@ -1,0 +1,293 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "embedding",
+    "vision_language",
+    "retrieval",
+    "nvidia_nim",
+    "text",
+    "vision",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/nvclip:latest",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T15:20:29.208408+00:00",
+  "default_eligible": true,
+  "description": "NVIDIA NVCLIP NIM for multimodal text/image embeddings; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave7.",
+  "family_id": "db9b5483-cfc0-4722-818c-715eee38aff4",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-13T01:15:41.727300+00:00",
+      "region": "us-central1",
+      "request_ms": 3145,
+      "request_ms_p50": 3145,
+      "request_ms_p95": 3145,
+      "request_ms_p99": 3145,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 860066,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 24.48,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:46:13.362218+00:00",
+      "region": "uk-south1",
+      "request_ms": 2557,
+      "request_ms_p50": 2456,
+      "request_ms_p95": 2547,
+      "request_ms_p99": 2555,
+      "request_ms_samples": 2,
+      "startup_ms_first": 104726,
+      "startup_ms_probe": 104726,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 30.11,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:50:13.188325+00:00",
+      "region": "eu-north2",
+      "request_ms": 454,
+      "request_ms_p50": 454,
+      "request_ms_p95": 617,
+      "request_ms_p99": 631,
+      "request_ms_samples": 3,
+      "startup_ms_first": 735112,
+      "startup_ms_probe": 87629,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 169.6,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 806,
+      "request_ms_p95": 806,
+      "request_ms_p99": 806,
+      "request_ms_samples": 1,
+      "startup_ms_first": 735112,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:22:25.367671+00:00",
+      "region": "eu-north1",
+      "request_ms": 194,
+      "request_ms_p50": 269,
+      "request_ms_p95": 336,
+      "request_ms_p99": 342,
+      "request_ms_samples": 2,
+      "startup_ms_first": 718462,
+      "startup_ms_probe": 36139,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 396.91,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-12T20:51:34.342341+00:00",
+      "observed_success_rate": 0.5,
+      "probed_at": "2026-05-15T06:53:56.942355+00:00",
+      "region": "us-central1",
+      "request_ms": 2960,
+      "request_ms_p50": 2960,
+      "request_ms_p95": 3144,
+      "request_ms_p99": 3160,
+      "request_ms_samples": 3,
+      "startup_ms_first": 641488,
+      "startup_ms_probe": 117808,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 26.01,
+      "total_failures": 2,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "681ff513-bc44-4740-9a58-d17260270748",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-nim; third-party model license",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "nvidia-nvclip",
+  "name": "Nvidia Nvclip",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "float",
+        "input": [
+          "{{input}}"
+        ],
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "nvidia/nvclip"
+    },
+    "input_fields": [
+      {
+        "default": "A small red flower",
+        "key": "input",
+        "label": "Text input",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII=",
+        "key": "image_url",
+        "label": "Optional image URL or data URL",
+        "type": "text",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "embedding",
+      "type": "json"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "multimodal_embeddings"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-nvclip:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-nvclip:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-nvclip:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-nvclip:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-nvclip-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/nvclip",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "embedding",
+    "vision-language",
+    "retrieval",
+    "nvidia-nim"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

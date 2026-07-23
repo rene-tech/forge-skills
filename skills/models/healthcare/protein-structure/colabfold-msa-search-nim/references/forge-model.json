@@ -1,0 +1,312 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "biology",
+    "biotech",
+    "life_science",
+    "protein",
+    "msa",
+    "colabfold",
+    "nvidia_nim",
+    "sequence",
+    "alignment",
+    "healthcare"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/colabfold/msa-search:latest",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T16:09:43.343316+00:00",
+  "default_eligible": true,
+  "description": "ColabFold MSA Search NIM for fast GPU-accelerated multiple sequence alignment search from biological protein sequences.",
+  "family_id": "d978dbcb-341a-41c9-9854-3f46791e523d",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    },
+    "runtime_env_by_gpu": {
+      "B300": {
+        "NIM_DISABLE_GPU_SERVER": "true",
+        "NIM_MODEL_PROFILE": "3087b7ea46d601200c1f90c9246a7aa344e487056286497515900b0924d7853a"
+      }
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-30T16:23:24.763894+00:00",
+      "region": "us-central1",
+      "request_ms": 3233,
+      "request_ms_p50": 3233,
+      "request_ms_p95": 3233,
+      "request_ms_p99": 3233,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 770086,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 50.87,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-14T22:32:47.032595+00:00",
+      "observed_success_rate": 0.6667,
+      "probed_at": "2026-05-15T00:08:49.231535+00:00",
+      "region": "uk-south1",
+      "request_ms": 12424,
+      "request_ms_p50": 249,
+      "request_ms_p95": 11206,
+      "request_ms_p99": 12180,
+      "request_ms_samples": 3,
+      "startup_ms_first": 186672,
+      "startup_ms_probe": 5506,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T05:11:20.208925+00:00",
+      "region": "eu-north2",
+      "request_ms": 2626,
+      "request_ms_p50": 2626,
+      "request_ms_p95": 9898,
+      "request_ms_p99": 10056,
+      "request_ms_samples": 7,
+      "startup_ms_first": 34162,
+      "startup_ms_probe": 16456,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 50.31,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-04-28T17:27:57.879102+00:00",
+      "region": "us-central1",
+      "request_ms": 2696,
+      "request_ms_p50": 2696,
+      "request_ms_p95": 2696,
+      "request_ms_p99": 2696,
+      "request_ms_samples": 1,
+      "startup_ms_first": 34162,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 50.31,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-30T19:02:10.003027+00:00",
+      "region": "eu-north1",
+      "request_ms": 4313,
+      "request_ms_p50": 4313,
+      "request_ms_p95": 4313,
+      "request_ms_p99": 4313,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 44.22,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-15T05:56:47.519341+00:00",
+      "region": "us-central1",
+      "request_ms": 15635,
+      "request_ms_p50": 15635,
+      "request_ms_p95": 15635,
+      "request_ms_p99": 15635,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 36000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "7f688165-6ce8-46df-a766-0ef61e3bd869",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "MIT; NVIDIA NIM terms",
+  "modality_input": [
+    "sequence"
+  ],
+  "modality_output": [
+    "alignment"
+  ],
+  "model_family": "colabfold-msa-search",
+  "name": "ColabFold MSA Search",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "e_value": "{{e_value}}",
+        "iterations": "{{iterations}}",
+        "output_alignment_formats": [
+          "a3m",
+          "fasta"
+        ],
+        "sequence": "{{sequence}}"
+      },
+      "endpoint": "/biology/colabfold/msa-search/predict",
+      "method": "POST",
+      "upstream_model_id": "colabfold/msa-search"
+    },
+    "input_fields": [
+      {
+        "default": "SGSMKTAISLPDETFDRVSRRASELGMSRSEFFTKAAQR",
+        "key": "sequence",
+        "label": "Protein sequence",
+        "type": "protein_sequence",
+        "visible": true
+      },
+      {
+        "default": 0.0001,
+        "key": "e_value",
+        "label": "E-value threshold",
+        "type": "number",
+        "visible": true
+      },
+      {
+        "default": 1,
+        "key": "iterations",
+        "label": "Search iterations",
+        "type": "number",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "a3m/fasta alignment",
+      "type": "json"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-colabfold-msa-search:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-colabfold-msa-search:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-colabfold-msa-search:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-colabfold-msa-search:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "colabfold-msa-search-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/colabfold/msa-search",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "biology",
+    "biotech",
+    "life-science",
+    "protein",
+    "msa",
+    "colabfold",
+    "nvidia-nim"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "latest",
+  "version_description": null,
+  "version_key": "latest",
+  "version_label": "latest"
+}

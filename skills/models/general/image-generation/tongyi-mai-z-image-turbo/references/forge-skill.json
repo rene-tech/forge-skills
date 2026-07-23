@@ -1,0 +1,178 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "356999e783b3e0f047728b8be714a31235c1c579e91b7a5e088ba03ab6fae67e",
+  "defaultEligible": true,
+  "displayName": "Use Z-Image Turbo",
+  "domain": "image-generation",
+  "downloadUrl": "/v1/model-skills/tongyi-mai-z-image-turbo/markdown?download=true",
+  "group": "image-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "image-generation",
+    "tongyi-mai-z-image-turbo"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/tongyi-mai-z-image-turbo",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A bilingual poster for a cloud GPU image generation platform, crisp product typography, photorealistic workstation, English and Chinese text, studio lighting",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 42,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 8,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 20,
+      "minimum": 4,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 6,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "width",
+      "label": "Width",
+      "maximum": 1536,
+      "minimum": 512,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "height",
+      "label": "Height",
+      "maximum": 1536,
+      "minimum": 512,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-tongyi-mai-z-image-turbo\ndescription: Use the exact Forge model tongyi-mai-z-image-turbo for text to image tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Z-Image Turbo\n\n- Model slug: `tongyi-mai-z-image-turbo`\n- Model family: `tongyi-mai-z-image`\n- Version: `turbo-diffusers` (`turbo-diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / image-generation / tongyi-mai-z-image-turbo`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nZ-Image Turbo text-to-image generation through the Forge Diffusers wrapper.\n\n## Use this exact model when\n\n- Use this exact `tongyi-mai-z-image-turbo` version when the task supplies text and needs image.\n- Z-Image Turbo text-to-image generation through the Forge Diffusers wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['image'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `steps` (number, optional; bounds 4..20): Steps\n- `guidance_scale` (number, optional; bounds 0..6): Guidance\n- `width` (number, optional; bounds 512..1536): Width\n- `height` (number, optional; bounds 512..1536): Height\n\nRequest template:\n\n```json\n{\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"height\": \"{{height}}\",\n  \"max_sequence_length\": 512,\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\",\n  \"width\": \"{{width}}\"\n}\n```\n\n## Exact output\n\n- `image`\n\n## Route\n\n`POST /v1/inference/tongyi-mai-z-image-turbo`\n\n## Workflow\n\n1. Load this skill and pin model slug `tongyi-mai-z-image-turbo` with version key `turbo-diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/tongyi-mai-z-image-turbo` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/tongyi-mai-z-image-turbo`\n- Routes: `/v1/models/tongyi-mai-z-image-turbo/inference-routes`\n- Regional deployment: `/v1/models/tongyi-mai-z-image-turbo/regional-deployment`\n- Deployment handoff: `/v1/models/tongyi-mai-z-image-turbo/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/tongyi-mai-z-image-turbo/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/tongyi-mai-z-image-turbo/SKILL.md\n\n## References\n\n- [Z-Image Turbo source](https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/tongyi-mai-z-image-turbo/deploy",
+    "inferenceRoutesUrl": "/v1/models/tongyi-mai-z-image-turbo/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/tongyi-mai-z-image",
+    "modelUrl": "/v1/models/tongyi-mai-z-image-turbo",
+    "regionalDeploymentUrl": "/v1/models/tongyi-mai-z-image-turbo/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/tongyi-mai-z-image-turbo/markdown",
+  "modelFamily": "tongyi-mai-z-image",
+  "modelSlug": "tongyi-mai-z-image-turbo",
+  "modelUrl": "/v1/models/tongyi-mai-z-image-turbo",
+  "outputFields": [
+    "image"
+  ],
+  "outputModalities": [
+    "image"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Z-Image Turbo text-to-image generation through the Forge Diffusers wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/tongyi-mai-z-image-turbo/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Z-Image Turbo source",
+      "url": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/tongyi-mai-z-image-turbo/SKILL.md",
+  "repositoryPath": "skills/models/general/image-generation/tongyi-mai-z-image-turbo/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "guidance_scale": "{{guidance_scale}}",
+    "height": "{{height}}",
+    "max_sequence_length": 512,
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}",
+    "width": "{{width}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 6000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image",
+    "tags": [
+      "image-generation",
+      "text-to-image",
+      "diffusion",
+      "z-image",
+      "single-gpu"
+    ],
+    "versionLabel": "Turbo Diffusers"
+  },
+  "shortDescription": "Z-Image Turbo text-to-image generation through the Forge Diffusers wrapper.",
+  "skillName": "use-forge-tongyi-mai-z-image-turbo",
+  "skillUrl": "/v1/model-skills/tongyi-mai-z-image-turbo",
+  "slug": "tongyi-mai-z-image-turbo",
+  "stability": "experimental",
+  "version": "turbo-diffusers",
+  "versionKey": "turbo-diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['image'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `tongyi-mai-z-image-turbo` version when the task supplies text and needs image.",
+    "Z-Image Turbo text-to-image generation through the Forge Diffusers wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `tongyi-mai-z-image-turbo` with version key `turbo-diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/tongyi-mai-z-image-turbo` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

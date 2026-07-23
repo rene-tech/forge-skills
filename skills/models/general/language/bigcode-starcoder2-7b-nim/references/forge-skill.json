@@ -1,0 +1,144 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "d16701965b926ab53e591b8333bf85a63a7e4c9d803faa140d6dfefdbb005234",
+  "defaultEligible": true,
+  "displayName": "Use BigCode StarCoder2 7B",
+  "domain": "language",
+  "downloadUrl": "/v1/model-skills/bigcode-starcoder2-7b-nim/markdown?download=true",
+  "group": "language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "language",
+    "bigcode-starcoder2-7b-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Write a concise Python function that validates regional model mirror names and returns invalid entries.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-bigcode-starcoder2-7b-nim\ndescription: Use the exact Forge model bigcode-starcoder2-7b-nim for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use BigCode StarCoder2 7B\n\n- Model slug: `bigcode-starcoder2-7b-nim`\n- Model family: `bigcode-starcoder2-7b`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / language / bigcode-starcoder2-7b-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `bigcode-openrail-m`\n\n## Purpose\n\nBigCode StarCoder2 7B packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.\n\n## Use this exact model when\n\n- Use this exact `bigcode-starcoder2-7b-nim` version when the task supplies text and needs text.\n- BigCode StarCoder2 7B packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"model\": \"{{model_slug}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `bigcode-starcoder2-7b-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 4096.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/bigcode-starcoder2-7b-nim`\n- Routes: `/v1/models/bigcode-starcoder2-7b-nim/inference-routes`\n- Regional deployment: `/v1/models/bigcode-starcoder2-7b-nim/regional-deployment`\n- Deployment handoff: `/v1/models/bigcode-starcoder2-7b-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/bigcode-starcoder2-7b-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/bigcode-starcoder2-7b-nim/SKILL.md\n\n## References\n\n- [BigCode StarCoder2 7B source](https://build.nvidia.com/bigcode/starcoder2-7b) (model-card)\n",
+  "license": "bigcode-openrail-m",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 4096."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/bigcode-starcoder2-7b-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/bigcode-starcoder2-7b-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/bigcode-starcoder2-7b",
+    "modelUrl": "/v1/models/bigcode-starcoder2-7b-nim",
+    "regionalDeploymentUrl": "/v1/models/bigcode-starcoder2-7b-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/bigcode-starcoder2-7b-nim/markdown",
+  "modelFamily": "bigcode-starcoder2-7b",
+  "modelSlug": "bigcode-starcoder2-7b-nim",
+  "modelUrl": "/v1/models/bigcode-starcoder2-7b-nim",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "BigCode StarCoder2 7B packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/bigcode-starcoder2-7b-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "BigCode StarCoder2 7B source",
+      "url": "https://build.nvidia.com/bigcode/starcoder2-7b"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/bigcode-starcoder2-7b-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/language/bigcode-starcoder2-7b-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "model": "{{model_slug}}",
+    "prompt": "{{prompt}}",
+    "stream": true,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 4096,
+    "parameterCount": 7000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/bigcode/starcoder2-7b",
+    "tags": [
+      "code",
+      "llm",
+      "completion"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "BigCode StarCoder2 7B packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.",
+  "skillName": "use-forge-bigcode-starcoder2-7b-nim",
+  "skillUrl": "/v1/model-skills/bigcode-starcoder2-7b-nim",
+  "slug": "bigcode-starcoder2-7b-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `bigcode-starcoder2-7b-nim` version when the task supplies text and needs text.",
+    "BigCode StarCoder2 7B packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `bigcode-starcoder2-7b-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

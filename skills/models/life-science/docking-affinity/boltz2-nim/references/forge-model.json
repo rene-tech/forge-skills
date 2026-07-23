@@ -1,0 +1,812 @@
+{
+  "benchmark_scores": {
+    "artifact_license": "mit",
+    "artifact_release": "v2.2.1",
+    "artifact_release_published_at": "2025-09-08T16:00:36Z",
+    "artifact_source": "https://github.com/jwohlwend/boltz",
+    "blackwell_investigation_20260630T1306Z": {
+      "benchmark_protocol": "No-persist active-row probe with 3 warmups plus 20 measured real Boltz2 prediction requests per live GPU cell.",
+      "cells": {
+        "B200/us-central1": {
+          "request_ms_p50": 1157,
+          "request_ms_samples": 20,
+          "startup_ms": 102616,
+          "status": "supported",
+          "vram_used_gb": 7.09
+        },
+        "B300/uk-south1": {
+          "request_ms_p50": 994,
+          "request_ms_samples": 20,
+          "startup_ms": 198303,
+          "status": "supported",
+          "vram_used_gb": 7.17
+        },
+        "H100/eu-north1": {
+          "request_ms_p50": 1055,
+          "request_ms_samples": 20,
+          "startup_ms": 543348,
+          "status": "supported",
+          "vram_used_gb": 7.7
+        },
+        "H200/eu-north1": {
+          "request_ms_p50": 1070,
+          "request_ms_samples": 20,
+          "startup_ms": 777612,
+          "status": "supported",
+          "vram_used_gb": 7.42
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 1106,
+          "request_ms_samples": 20,
+          "startup_ms": 117451,
+          "status": "supported",
+          "vram_used_gb": 7.42
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 1298,
+          "request_ms_samples": 20,
+          "startup_ms": 108777,
+          "status": "supported",
+          "vram_used_gb": 7.65
+        },
+        "RTX6000/us-central1": {
+          "error": "RuntimeError: pod_start_failure:pod_failed",
+          "status": "other_error"
+        }
+      },
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 /home/tux/forge/.venv312/bin/python scripts/probe_model_parallel_matrix.py --slug boltz2-nim --base-url https://forge.nebius.cloud --compute-kubeconfig /home/tux/forge/tmp/forge-compute-kubeconfig.json --timeout 3600 --request-timeout 900 --warmup-runs 3 --benchmark-runs 20 --max-parallel 7 --no-persist --report-json docs/model-onboarding/hcls/boltz2-nim-20260630T1306Z-nopersist-fresh-matrix.json --report-md docs/model-onboarding/hcls/boltz2-nim-20260630T1306Z-nopersist-fresh-matrix.md",
+      "public_host": "https://forge.nebius.cloud",
+      "report_json": "docs/model-onboarding/hcls/boltz2-nim-20260630T1306Z-nopersist-fresh-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/boltz2-nim-20260630T1306Z-nopersist-fresh-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "result": "B300/uk-south1 was fastest in the fresh comparable run. The previous H100-fastest display came from ranking by rolling request_ms_p50, which was stale for B300 because older slower May samples remained in probe_latency_history.",
+      "source_variant_decision": "Do not build a source-based Blackwell variant for this task. NIM 1.7.0 already measures fastest on B300; the implemented product fix is to rank/display latest request_ms before rolling request_ms_p50 while retaining p50/p95/p99 as context.",
+      "status": "fresh_no_persist_matrix_b300_fastest_no_source_variant_needed",
+      "summary_md": "docs/model-onboarding/hcls/boltz2-nim-20260630T1306Z-blackwell-investigation.md",
+      "tls_note": "The documented legacy host https://forge.eu-north1.osmo.nebius.cloud failed hostname verification during the investigation; https://forge.nebius.cloud was the verifiable public API host."
+    },
+    "cache_strategy": "Forge scheduler mounts /mnt/data/forge-weights at /opt/nim/.cache for NIM images. NIM_CACHE_PATH stays /opt/nim/.cache so first-start model hydration is reused across pod restarts.",
+    "container_config_20260531T09Z": {
+      "architecture": "amd64",
+      "backend_type_env": "pytorch",
+      "base_image_env": "nvcr.io/nvidia/pytorch:25.12-py3",
+      "created": "2026-05-17T12:54:55.472161278Z",
+      "image_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mit-boltz2:1.7.0@sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+      "labels": {
+        "CUDA_VERSION": "13.1.0.036",
+        "com.nvidia.cudnn.version": "9.17.0.29",
+        "com.nvidia.nim.base_image": "nvcr.io/nvstaging/nim/boltz2-base:1.7.0-rc.20260515071554",
+        "com.nvidia.nim.category": "Healthcare",
+        "com.nvidia.nim.model": "mit/boltz2",
+        "com.nvidia.nim.type": "bionemo",
+        "com.nvidia.nim.version": "1.7.0",
+        "com.nvidia.pytorch.version": "2.10.0a0+b4e4ee8",
+        "com.nvidia.tensorrt.version": "10.14.1.48+cuda13.0"
+      },
+      "triton_attestation_status": "not_found_in_crane_config_labels",
+      "triton_release_label": null,
+      "user": "nvs:1000"
+    },
+    "container_source_decision": "Selected NVIDIA NIM over building a new Forge wrapper because NVIDIA documents a downloadable Boltz-2 container, TensorRT/PyTorch runtime, commercial-ready model card, and support for Ampere, Hopper, Lovelace, and Blackwell. The open-source Boltz package remains the fallback if NIM credentials or terms block deployment.",
+    "current_cycle3_validation_20260531T10Z": {
+      "container_config_digest_evidence": {
+        "backend_type_env": "pytorch",
+        "base_image_env": "nvcr.io/nvidia/pytorch:25.12-py3",
+        "command": "crane config cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mit-boltz2:1.7.0@sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec | jq '{created, architecture, os, config:{User:.config.User,Env:.config.Env,Labels:.config.Labels}, rootfs:{type:.rootfs.type,layers:(.rootfs.diff_ids|length)}}'",
+        "rootfs_layers": 110,
+        "status": "captured",
+        "triton_server_release_evidence": "not_found_in_config_labels_or_direct_release_env",
+        "user": "nvs:1000"
+      },
+      "hidden_image_gate_scan": {
+        "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/security/check_model_server_image_gate.py manifests/models/hcls/boltz2-nim.json --format json",
+        "finding_count": 0,
+        "note": "This confirms the hidden onboarding manifest is allowed to remain demoted; the gate does not assert public/default Triton safety unless public signals are present.",
+        "status": "passed_empty_findings"
+      },
+      "regional_digest_recheck": {
+        "command": "jq -r '.regional_container_images | to_entries[] | [.key,.value] | @tsv' manifests/models/hcls/boltz2-nim.json | while IFS=$'\\t' read -r region ref; do printf '%s\\t' \"$region\"; timeout 60s crane digest \"$ref\" || true; done",
+        "digest": "sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+        "regions": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ],
+        "status": "all_regions_same_digest"
+      },
+      "rtx6000_probe": {
+        "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug boltz2-nim --include-status onboarding --gpu RTX6000 --region us-central1 --timeout 3600 --request-timeout 900 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/boltz2-nim-20260531Tcurrent-cycle3-rtx6000.json --report-md docs/model-onboarding/hcls/boltz2-nim-20260531Tcurrent-cycle3-rtx6000.md",
+        "output": "No inventory cells matched the requested filters.",
+        "report_status": "not_created_probe_exited_before_cell_selection",
+        "status": "blocked_no_current_inventory_cell"
+      },
+      "simulated_publication_gate": {
+        "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python - <<'PY' ... find_model_server_image_gate_violations after setting status=active and default_eligible=true ... PY",
+        "detail": "NIM image tag does not prove the embedded Triton release; add model_server_image_gate evidence for r26.03+ bound to the published image ref or digest, or demote the manifest before publication.",
+        "reason": "nim_image_without_fixed_triton_attestation",
+        "status": "blocked"
+      }
+    },
+    "direct_upstream_digest_check": {
+      "checked_at": "2026-05-29T20:04:00Z",
+      "commands": [
+        "crane digest nvcr.io/nim/mit/boltz2:latest",
+        "crane digest nvcr.io/nim/mit/boltz2:1.7.0"
+      ],
+      "credential_env_present": "not_printed",
+      "digest": "sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+      "latest_digest": "sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+      "status": "resolved_without_printing_credentials",
+      "versioned_digest": "sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec"
+    },
+    "documented_versioned_container_ref": "nvcr.io/nim/mit/boltz2:1.7.0",
+    "focused_probe_this_cycle": {
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug boltz2-nim --gpu B200 --region us-central1 --timeout 1800 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --report-json /tmp/hcls-boltz2-nim-b200-us-20260522T0508Z.json --report-md /tmp/hcls-boltz2-nim-b200-us-20260522T0508Z.md",
+      "started_at": "2026-05-22T05:08:00Z",
+      "status": "stale_previous_cycle_no_report_in_repo"
+    },
+    "full_matrix_20260531T09Z": {
+      "benchmark_protocol": "3 warmups plus 10 measured real protein prediction requests per supported cell",
+      "cache_volume_mode": "hostPath",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug boltz2-nim --include-status onboarding --timeout 3600 --request-timeout 900 --warmup-runs 3 --benchmark-runs 10 --max-parallel 3 --report-json docs/model-onboarding/hcls/boltz2-nim-20260531T09Z-full-matrix.json --report-md docs/model-onboarding/hcls/boltz2-nim-20260531T09Z-full-matrix.md",
+      "inventory_cells": [
+        "B200/us-central1",
+        "B300/uk-south1",
+        "H100/eu-north1",
+        "H200/eu-north2",
+        "L40S/eu-north1"
+      ],
+      "report_json": "docs/model-onboarding/hcls/boltz2-nim-20260531T09Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/boltz2-nim-20260531T09Z-full-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "results": {
+        "B200/us-central1": {
+          "request_ms_p50": 1156,
+          "request_ms_samples": 10,
+          "startup_ms": 604829,
+          "status": "supported",
+          "vram_used_gb": 7.09
+        },
+        "B300/uk-south1": {
+          "dispatch_evidence": "B300 startup logs selected profile tags backend=trt, compute_capability=10.3, gpu=NVIDIA-B300-SXM6-AC, precision=bf16, tp=1, v=1.7.0.",
+          "request_ms_p50": 999,
+          "request_ms_samples": 10,
+          "startup_ms": 697023,
+          "status": "supported",
+          "vram_used_gb": 7.17
+        },
+        "H100/eu-north1": {
+          "measurement_source": "client_wall_ms",
+          "report_md": "docs/model-onboarding/hcls/boltz2-nim-20260604T06Z-h100.md",
+          "request_ms_p50": 1006,
+          "request_ms_samples": 10,
+          "startup_ms": 615613,
+          "status": "supported",
+          "vram_used_gb": 7.7
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 1014,
+          "request_ms_samples": 10,
+          "startup_ms": 614285,
+          "status": "supported",
+          "vram_used_gb": 7.42
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 1318,
+          "request_ms_samples": 10,
+          "startup_ms": 704280,
+          "status": "supported",
+          "vram_used_gb": 7.65
+        }
+      },
+      "rtx6000_status": "not_present_in_current_inventory",
+      "status": "five_cell_supported"
+    },
+    "live_catalog_snapshot": {
+      "checked_at": "2026-05-23T13:03:26Z",
+      "container_image": "nvcr.io/nim/mit/boltz2:latest",
+      "default_eligible": true,
+      "keep_warm": true,
+      "public_model_api_gpu_compatibility_visible": false,
+      "regional_image_tag": "models/nim-mit-boltz2:latest",
+      "status": "warm"
+    },
+    "live_gpu_support_snapshot": {
+      "B200/us-central1": {
+        "probed_at": "2026-05-17T04:07:17.986673+00:00",
+        "request_ms_p50": 1153,
+        "request_ms_samples": 1,
+        "startup_ms_first": 107028,
+        "startup_ms_probe": 68851,
+        "status": "supported",
+        "vram_used_gb": 7.09
+      },
+      "B300/uk-south1": {
+        "probed_at": "2026-05-17T04:25:37.052346+00:00",
+        "request_ms_p50": 2167,
+        "request_ms_p95": 14883,
+        "request_ms_samples": 17,
+        "startup_ms_first": 587922,
+        "startup_ms_probe": 49994,
+        "status": "supported",
+        "vram_used_gb": 5.04
+      },
+      "H200/eu-north2": {
+        "probed_at": "2026-05-15T06:41:11.617738+00:00",
+        "request_ms_p50": 1882,
+        "request_ms_p95": 1885,
+        "request_ms_samples": 3,
+        "startup_ms_first": 99487,
+        "startup_ms_probe": 76504,
+        "status": "supported",
+        "vram_used_gb": 7.62
+      },
+      "L40S/eu-north1": {
+        "probed_at": "2026-05-19T05:16:50.237492+00:00",
+        "request_ms_p50": 2420,
+        "request_ms_p95": 2585,
+        "request_ms_samples": 2,
+        "startup_ms_first": 94197,
+        "startup_ms_probe": 88221,
+        "status": "supported",
+        "vram_used_gb": 7.61
+      },
+      "RTX6000/us-central1": {
+        "probed_at": "2026-05-15T06:43:01.732963+00:00",
+        "request_ms_p50": 2484,
+        "request_ms_p95": 2563,
+        "request_ms_samples": 2,
+        "startup_ms_first": 120583,
+        "startup_ms_probe": 70166,
+        "status": "supported",
+        "vram_used_gb": 7.09
+      }
+    },
+    "live_upsert_20260531T09Z": {
+      "container_image": "nvcr.io/nim/mit/boltz2:1.7.0",
+      "default_eligible": false,
+      "regional_digest": "sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+      "row_status": "onboarding",
+      "status": "succeeded"
+    },
+    "model_server_image_gate": {
+      "evidence": "Verified the OCI image config for this digest via crane: BACKEND_TYPE=pytorch, com.nvidia.pytorch.version=2.10.0a0+b4e4ee8, com.nvidia.nim.version=1.7.0, NIMTOOLS_VERSION=1.9.0, com.nvidia.nim.type=bionemo, base nvcr.io/nvstaging/nim/boltz2-base:1.7.0-rc.20260515071554. No NVIDIA Triton Inference Server runtime is present (no tritonserver); the only TRITON_* env vars are PyTorch's OpenAI-Triton kernel-compiler paths, unrelated to NVIDIA Security Bulletin 5828. Not in the affected Triton Inference Server surface.",
+      "validated_at": "2026-06-30",
+      "validated_by": "forge operator (image OCI config inspection)",
+      "validated_image_digest": "sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+      "validated_no_triton_server": true,
+      "validated_runtime_backend": "pytorch"
+    },
+    "nvidia_docs_latest_checked": {
+      "cache_path": "/opt/nim/.cache",
+      "checked_at": "2026-05-31T09:00:00Z",
+      "container_ref": "nvcr.io/nim/mit/boltz2:1.7.0",
+      "docs_last_updated": "2026-05-19",
+      "docs_version": "1.7.0",
+      "ngc_api_key_required": true,
+      "notes": "NVIDIA docs identify nvcr.io/nim/mit/boltz2:<version> as the container path, use 1.7.0 examples, keep NIM_CACHE_PATH defaulted to /opt/nim/.cache, require NGC_API_KEY for model artifact access, and document first-start model downloads into persistent storage. Upstream Boltz remains v2.2.1 on PyPI with the same wheel and sdist hashes already recorded.",
+      "source_urls": [
+        "https://docs.nvidia.com/nim/bionemo/boltz2/1.7.0/configure.html",
+        "https://docs.nvidia.com/nim/bionemo/boltz2/latest/deploy-helm.html",
+        "https://github.com/jwohlwend/boltz",
+        "https://pypi.org/pypi/boltz/json"
+      ]
+    },
+    "nvidia_model_card": "https://build.nvidia.com/mit/boltz2",
+    "nvidia_model_version": "Boltz2 v2.2.1",
+    "nvidia_release_date": "2026-05-13",
+    "onboarding_state": "live_upserted_five_cell_matrix_supported_pending_rtx6000_inventory_and_triton_attestation",
+    "previous_documented_versioned_container_ref": "nvcr.io/nim/mit/boltz2:1.6.0",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "pypi_package": "boltz",
+    "pypi_sdist_sha256": "355a033ce2b49543a927470d585136794521d8639b2eeb5a1818d74dc3e513c3",
+    "pypi_version": "2.2.1",
+    "pypi_wheel_sha256": "b8c62bbdede1922931d9203118f62c858f11aa699bf91fd4c05a5ed6a6d8b4fc",
+    "regional_mirror_digest": "sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+    "regional_mirror_manifest": {
+      "manifests": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "schemaVersion": 2
+    },
+    "regional_mirror_tags": {
+      "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-mit-boltz2:1.7.0",
+      "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-mit-boltz2:1.7.0",
+      "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-mit-boltz2:1.7.0",
+      "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mit-boltz2:1.7.0"
+    },
+    "regional_mirror_verified_at": "2026-05-29T20:04:00Z",
+    "remaining_validation_gaps": [
+      "RTX6000 was not present in the 2026-05-31T09Z discovered inventory; a 2026-05-31T10Z RTX6000/us-central1 retry exited before report creation with no matching inventory cells.",
+      "Public/default eligibility still needs image-bound Triton r26.03+ evidence after NVIDIA Security Bulletin 5828, or a security-owner decision that this NIM image is outside the affected Triton surface. The 2026-05-31T10Z simulated public/default gate remains blocked with reason nim_image_without_fixed_triton_attestation."
+    ],
+    "research_checked_at": "2026-05-31T09:00:00Z",
+    "security_demotion": {
+      "checked_at": "2026-05-31T10:03:56Z",
+      "reason": "Public/default NIM image publication requires immutable or digest-bound refs plus image-bound Triton r26.03+ evidence after NVIDIA Security Bulletin 5828.",
+      "required_before_repromotion": [
+        "Bind model_server_image_gate evidence for Triton r26.03+ to the published image ref or digest, or record a security-owner decision that Boltz2 NIM 1.7.0 is not using the affected Triton surface.",
+        "Probe RTX6000 when a current inventory cell is available, or explicitly classify it unavailable for this version."
+      ],
+      "sources": [
+        "https://nvidia.custhelp.com/app/answers/detail/a_id/5828/~/security-bulletin%3A-nvidia-triton-inference-server---may-2026"
+      ],
+      "status": "demoted_pending_triton_attestation"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "protein",
+    "structure_prediction",
+    "protein_ligand",
+    "docking",
+    "affinity",
+    "nvidia_nim",
+    "bionemo",
+    "commercial_ready",
+    "protein_sequence",
+    "nucleotide_sequence",
+    "molecule",
+    "restraints",
+    "structured_output",
+    "protein_structure",
+    "confidence"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/mit/boltz2:1.7.0",
+  "container_image_size_bytes": null,
+  "context_window": 4096,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-20T14:39:52.669244+00:00",
+  "default_eligible": false,
+  "description": "Boltz-2 NIM is NVIDIA's packaged Boltz-2 structural-biology service for protein, nucleic-acid, ligand, restraint, structure, and binding-affinity prediction. NVIDIA's current Boltz-2 NIM 1.7.0 docs identify nvcr.io/nim/mit/boltz2:1.7.0, NGC_API_KEY, /opt/nim/.cache, and port 8000 as the runtime contract. The upstream Boltz v2.2.1 code and weights are MIT licensed; NIM use is also governed by NVIDIA model and service terms. This Forge manifest uses the digest-pinned regional nim-mit-boltz2:1.7.0 mirrors created and verified on 2026-05-29 and live-upserted on 2026-05-31T09Z. A fresh current-inventory probe on 2026-05-31T09Z validated B200/us-central1, B300/uk-south1, H200/eu-north2, and L40S/eu-north1 with 3 warmups plus 10 measured warm requests per cell. The 2026-06-04T06Z H100/eu-north1 probe validated the same digest with 3 warmups plus 10 measured warm requests. B300 logs selected the SM103 TensorRT bf16 profile for NVIDIA-B300-SXM6-AC. RTX6000 was not exposed by the 09Z current inventory, and a 10Z RTX6000/us-central1 retry returned no matching inventory cells, so RTX6000 remains intentionally unclassified for this 1.7.0 digest. Publish/default eligibility still requires image-bound Triton r26.03+ attestation or a security decision that this NIM image is outside the affected Triton surface; a simulated public/default gate check on 2026-05-31T10Z still blocks with nim_image_without_fixed_triton_attestation.",
+  "family_id": "fa1eb5ff-2ad6-4fdc-96bb-0edeba7dfb38",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H100": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "NIM_CACHE_PATH": "/opt/nim/.cache",
+      "NIM_ENABLE_WARMUP": "0",
+      "NIM_HTTP_API_PORT": "8000",
+      "NIM_TELEMETRY_MODE": "0"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 1000,
+    "container_run_as_user": 1000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-31T09:15:29.533244+00:00",
+      "region": "us-central1",
+      "request_ms": 1156,
+      "request_ms_p50": 1156,
+      "request_ms_p95": 1243,
+      "request_ms_p99": 1305,
+      "request_ms_samples": 11,
+      "startup_ms_first": 107028,
+      "startup_ms_probe": 604829,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 5,
+      "total_warm_starts": 4,
+      "vram_measured_gb": 7.09,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-04-22T18:13:33.882382+00:00",
+      "observed_success_rate": 0.875,
+      "probed_at": "2026-06-30T15:18:47.822498+00:00",
+      "region": "uk-south1",
+      "request_ms": 999,
+      "request_ms_p50": 2155,
+      "request_ms_p95": 14674,
+      "request_ms_p99": 14965,
+      "request_ms_samples": 27,
+      "startup_ms_first": 587922,
+      "startup_ms_probe": 64349,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 7,
+      "total_warm_starts": 6,
+      "vram_measured_gb": 7.17,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T06:16:57.368912+00:00",
+      "region": "eu-north1",
+      "request_ms": 1006,
+      "request_ms_p50": 1006,
+      "request_ms_p95": 1012,
+      "request_ms_p99": 1012,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 615613,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.7,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-31T09:15:35.370689+00:00",
+      "region": "eu-north2",
+      "request_ms": 1014,
+      "request_ms_p50": 1014,
+      "request_ms_p95": 1883,
+      "request_ms_p99": 1885,
+      "request_ms_samples": 13,
+      "startup_ms_first": 99487,
+      "startup_ms_probe": 614285,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 7.42,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:22:22.310139+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 1252,
+      "request_ms_p95": 1252,
+      "request_ms_p99": 1252,
+      "request_ms_samples": 1,
+      "startup_ms_first": 99487,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 7.62,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-01T08:33:28.028111+00:00",
+      "region": "eu-north1",
+      "request_ms": 1318,
+      "request_ms_p50": 1318,
+      "request_ms_p95": 2402,
+      "request_ms_p99": 2563,
+      "request_ms_samples": 12,
+      "startup_ms_first": 94197,
+      "startup_ms_probe": 610025,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 7.65,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:43:01.732963+00:00",
+      "region": "us-central1",
+      "request_ms": 2396,
+      "request_ms_p50": 2484,
+      "request_ms_p95": 2563,
+      "request_ms_p99": 2570,
+      "request_ms_samples": 2,
+      "startup_ms_first": 120583,
+      "startup_ms_probe": 70166,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 7.09,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "8bb5b7a1-29fb-456c-bbf7-3f052b9a3b96",
+  "keep_warm": true,
+  "keep_warm_gpu_type": "B300",
+  "license": "MIT; NVIDIA Community Model License; NVIDIA NIM terms",
+  "modality_input": [
+    "protein_sequence",
+    "nucleotide_sequence",
+    "molecule",
+    "restraints",
+    "json"
+  ],
+  "modality_output": [
+    "structure",
+    "affinity",
+    "confidence",
+    "json"
+  ],
+  "model_family": "mit-boltz2",
+  "name": "Boltz-2 NIM",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "concatenate_msas": "{{concatenate_msas}}",
+        "constraints": "{{constraints}}",
+        "diffusion_samples": "{{diffusion_samples}}",
+        "diffusion_samples_affinity": "{{diffusion_samples_affinity}}",
+        "ligands": "{{ligands}}",
+        "output_format": "{{output_format}}",
+        "polymers": "{{polymers}}",
+        "recycling_steps": "{{recycling_steps}}",
+        "sampling_steps": "{{sampling_steps}}",
+        "sampling_steps_affinity": "{{sampling_steps_affinity}}",
+        "step_scale": "{{step_scale}}",
+        "without_potentials": "{{without_potentials}}",
+        "write_full_pae": "{{write_full_pae}}"
+      },
+      "endpoint": "/biology/mit/boltz2/predict",
+      "method": "POST",
+      "upstream_model_id": "mit/boltz2"
+    },
+    "input_fields": [
+      {
+        "default": [
+          {
+            "id": "A",
+            "molecule_type": "protein",
+            "sequence": "MKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVF"
+          }
+        ],
+        "key": "polymers",
+        "label": "Polymer chains",
+        "type": "polymer_list",
+        "visible": true
+      },
+      {
+        "default": "[]",
+        "key": "ligands",
+        "label": "Ligands",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "[]",
+        "key": "constraints",
+        "label": "Pocket or bond constraints",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "mmcif",
+        "key": "output_format",
+        "label": "Output format",
+        "options": [
+          "mmcif"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "without_potentials",
+        "label": "Disable inference-time potentials",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "concatenate_msas",
+        "label": "Concatenate MSAs",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "write_full_pae",
+        "label": "Return full PAE matrix",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "mmcif with confidence and optional affinity metrics",
+      "type": "structure_3d"
+    },
+    "parameter_controls": [
+      {
+        "default": 3,
+        "key": "recycling_steps",
+        "label": "Recycling steps",
+        "max": 10,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 50,
+        "key": "sampling_steps",
+        "label": "Sampling steps",
+        "max": 1000,
+        "min": 10,
+        "step": 10,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "diffusion_samples",
+        "label": "Diffusion samples",
+        "max": 25,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 1.638,
+        "key": "step_scale",
+        "label": "Step scale",
+        "max": 5,
+        "min": 0.5,
+        "step": 0.001,
+        "type": "number"
+      },
+      {
+        "default": 200,
+        "key": "sampling_steps_affinity",
+        "label": "Affinity sampling steps",
+        "max": 1000,
+        "min": 10,
+        "step": 10,
+        "type": "number"
+      },
+      {
+        "default": 5,
+        "key": "diffusion_samples_affinity",
+        "label": "Affinity diffusion samples",
+        "max": 10,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_mount": "/opt/nim/.cache",
+      "forge_cache_target": "/mnt/data/forge-weights",
+      "kind": "nvidia_nim",
+      "nim_id": "mit/boltz2",
+      "readiness_path": "/v1/health/ready"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "ligands",
+        "constraints",
+        "output_format",
+        "without_potentials",
+        "concatenate_msas",
+        "write_full_pae",
+        "recycling_steps",
+        "sampling_steps",
+        "diffusion_samples",
+        "step_scale",
+        "sampling_steps_affinity",
+        "diffusion_samples_affinity"
+      ],
+      "required": [
+        "polymers"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-mit-boltz2:1.7.0@sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-mit-boltz2:1.7.0@sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-mit-boltz2:1.7.0@sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mit-boltz2:1.7.0@sha256:be26244d021af2d496e2074c4aa8664b300238eec2c81d2d64749d54b49b2dec"
+  },
+  "release_rank": 40,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "boltz2-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/mit/boltz2",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "protein",
+    "structure-prediction",
+    "protein-ligand",
+    "docking",
+    "affinity",
+    "nvidia-nim",
+    "bionemo",
+    "commercial-ready"
+  ],
+  "updated_at": "2026-06-30T13:35:30.807148+00:00",
+  "version": "1.7.0",
+  "version_description": "NVIDIA NIM 1.7.0 packaging for MIT/Recursion Boltz-2 structure and affinity prediction. The 2026-05-31T09Z cycle live-upserted this hidden onboarding row and ran a fresh digest-pinned four-cell matrix with 3 warmups plus 10 measured requests on B200, B300, H200, and L40S. The 2026-06-04T06Z cycle added H100/eu-north1 support with the same 3-warmup/10-run protocol. The 2026-05-31T10Z cycle retried RTX6000/us-central1, but the probe inventory still had no matching cell. Promoted to the public preview catalog on 2026-06-30 after attesting (via image OCI-config inspection) that this NIM runs a PyTorch backend with no NVIDIA Triton Inference Server, so it is outside the surface of NVIDIA Security Bulletin 5828. RTX6000 remains classified unsupported pending an inventory cell.",
+  "version_key": "1-7-0",
+  "version_label": "NIM 1.7.0 / Boltz2 v2.2.1"
+}

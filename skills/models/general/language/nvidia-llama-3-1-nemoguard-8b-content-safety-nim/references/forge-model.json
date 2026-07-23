@@ -1,0 +1,308 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "safety",
+    "text_generation",
+    "chat",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/llama-3.1-nemoguard-8b-content-safety:latest",
+  "container_image_size_bytes": null,
+  "context_window": 4096,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-27T07:56:53.733160+00:00",
+  "default_eligible": true,
+  "description": "NVIDIA Llama 3.1 NemoGuard 8B Content Safety packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.",
+  "family_id": "66966725-5498-4690-b802-d524614ab2b1",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    },
+    "runtime_env_by_gpu": {
+      "B300": {
+        "NIM_DISABLE_CUDA_GRAPH": "1",
+        "NIM_MAX_MODEL_LEN": "8192",
+        "NIM_MODEL_PROFILE": "4f904d571fe60ff24695b5ee2aa42da58cb460787a968f1e8a09f5a7e862728d"
+      }
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-12T19:46:12.222855+00:00",
+      "region": "us-central1",
+      "request_ms": 631,
+      "request_ms_p50": 631,
+      "request_ms_p95": 631,
+      "request_ms_p99": 631,
+      "request_ms_samples": 1,
+      "startup_ms_first": 1203418,
+      "startup_ms_probe": 1765370,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 153.72,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks B300 unsupported",
+      "last_failed_at": "2026-05-14T23:11:40.633666+00:00",
+      "observed_success_rate": 0.25,
+      "probed_at": "2026-05-15T01:59:56.963023+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": 332,
+      "request_ms_p95": 340,
+      "request_ms_p99": 341,
+      "request_ms_samples": 2,
+      "startup_ms_first": 117440,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:14:42.237714+00:00",
+      "region": "eu-north2",
+      "request_ms": 633,
+      "request_ms_p50": 489,
+      "request_ms_p95": 619,
+      "request_ms_p99": 630,
+      "request_ms_samples": 3,
+      "startup_ms_first": 182750,
+      "startup_ms_probe": 87507,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 199.05,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 128.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 182750,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 128.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:14:45.690760+00:00",
+      "region": "eu-north1",
+      "request_ms": 1502,
+      "request_ms_p50": 638,
+      "request_ms_p95": 1416,
+      "request_ms_p99": 1485,
+      "request_ms_samples": 3,
+      "startup_ms_first": 232282,
+      "startup_ms_probe": 106155,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 83.89,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 42.06,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:13:33.257529+00:00",
+      "region": "us-central1",
+      "request_ms": 886,
+      "request_ms_p50": 888,
+      "request_ms_p95": 892,
+      "request_ms_p99": 893,
+      "request_ms_samples": 3,
+      "startup_ms_first": 172851,
+      "startup_ms_probe": 90205,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 111.74,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 87.64,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    }
+  ],
+  "gpu_type": null,
+  "id": "1a6629b5-bc05-4ad9-b8eb-dbec60a8f304",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-ai-foundation-models-community-license",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "nvidia-llama-3-1-nemoguard-8b-content-safety",
+  "name": "NVIDIA Llama 3.1 NemoGuard 8B Content Safety",
+  "parameter_count": 8000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": "{{messages}}",
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "nvidia/llama-3.1-nemoguard-8b-content-safety"
+    },
+    "input_fields": [
+      {
+        "default": "Classify whether this user request is safe: 'Explain how to rotate a Kubernetes image pull secret without revealing credentials.' Return a short rationale.",
+        "key": "messages",
+        "label": "Prompt",
+        "type": "chat_history",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "markdown",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-llama-3.1-nemoguard-8b-content-safety:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-llama-3.1-nemoguard-8b-content-safety:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-llama-3.1-nemoguard-8b-content-safety:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-llama-3.1-nemoguard-8b-content-safety:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-llama-3-1-nemoguard-8b-content-safety-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/llama-3.1-nemoguard-8b-content-safety",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "safety",
+    "llm",
+    "chat"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

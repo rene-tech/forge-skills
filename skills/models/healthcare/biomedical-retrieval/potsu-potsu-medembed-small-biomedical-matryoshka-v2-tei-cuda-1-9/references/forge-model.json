@@ -1,0 +1,477 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+    "artifact_checked_at": "2026-05-28T17:00:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "embedding_dimension": 384,
+      "hidden_size": 384,
+      "max_sequence_length": 512,
+      "model_type": "bert",
+      "normalize": true,
+      "pooling": "cls"
+    },
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 0,
+    "artifact_evidence": "Hugging Face API returned private=false, gated=false, disabled=false, cardData.license=apache-2.0, library_name=sentence-transformers, pipeline_tag=sentence-similarity, text-embeddings-inference/endpoints_compatible tags, revision 0e64af8703721ac187772ae93658360a80d72496, and safetensors total 33,360,000 F32 parameters. The model card reports 384-dimensional embeddings and 512-token maximum sequence length; 1_Pooling/config.json reports pooling_mode_cls_token=true and pooling_mode_mean_tokens=false.",
+    "artifact_files": {
+      "1_Pooling/config.json": {
+        "size_bytes": 296
+      },
+      "config.json": {
+        "size_bytes": 661
+      },
+      "model.safetensors": {
+        "sha256": "69e5f332d9299f246122b77cea7579ca2c2e9b2e1b1de8da82b66e7b6c04b199",
+        "size_bytes": 133462128
+      },
+      "modules.json": {
+        "size_bytes": 349
+      },
+      "sentence_bert_config.json": {
+        "size_bytes": 53
+      }
+    },
+    "artifact_gated": false,
+    "artifact_license": "apache-2.0",
+    "artifact_parameters": {
+      "F32": 33360000,
+      "total": 33360000
+    },
+    "artifact_private": false,
+    "artifact_sha": "0e64af8703721ac187772ae93658360a80d72496",
+    "artifact_source": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+    "b300_probe_20260528T21Z": {
+      "benchmark_runs_completed": 0,
+      "classification": "Do not route this TEI CUDA 1.9.3 row to B300/SM103.",
+      "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "diagnostic_probe": {
+        "cleanup": "Deleted kept diagnostic pod from nebius-mk8s-forge-uk/forge-models after log capture.",
+        "container_log_tail": "cuda compute cap 103 is not supported",
+        "error": "RuntimeError: pod_start_failure:pod_failed",
+        "node": "computeinstance-e03pgjfcbewdwmac02",
+        "pod_name": "forge-probe-potsu-potsu-medembed-sma-b300-uk-south1-8cf183",
+        "report_json": "docs/operations/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T21Z-b300-keep.json",
+        "report_md": "docs/operations/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T21Z-b300-keep.md",
+        "status": "other_error"
+      },
+      "gpu_type": "B300",
+      "initial_probe": {
+        "error": "RuntimeError: pod_start_failure:pod_failed",
+        "node": "computeinstance-e03cdt2m6dscactrnd",
+        "pod_name": "forge-probe-potsu-potsu-medembed-sma-b300-uk-south1-a23a7b",
+        "report_json": "docs/operations/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T21Z-b300.json",
+        "report_md": "docs/operations/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T21Z-b300.md",
+        "status": "other_error"
+      },
+      "inventory_free_gpus": 8,
+      "region": "uk-south1",
+      "runtime": "tei_cuda_1_9_3",
+      "status": "unsupported_runtime_incompatibility",
+      "warmup_runs_completed": 0
+    },
+    "blockers": [
+      "RTX6000 was requested in the 2026-05-28T20Z non-B300 matrix but was not returned by live probe inventory.",
+      "B300/SM103 requires a separate vLLM CUDA 13 pooling fallback or other Blackwell-compatible runtime before routing.",
+      "Embedding parity and healthcare product safety review are required before publication or default routing."
+    ],
+    "container_config_snapshot_20260528T17Z": {
+      "architecture": "amd64",
+      "created": "2026-03-23T09:18:22.111980354Z",
+      "cuda_version": "12.9.1",
+      "image_version": "cuda-1.9.3",
+      "license": "Apache-2.0",
+      "os": "linux",
+      "source": "https://github.com/huggingface/text-embeddings-inference"
+    },
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+    "container_license_evidence": "skopeo inspect --config for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 reports org.opencontainers.image.licenses=Apache-2.0 and org.opencontainers.image.source=https://github.com/huggingface/text-embeddings-inference.",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image_for_openai_compatible_embeddings",
+    "fallback_attempted": {
+      "b300_runtime_fallback": "B300/SM103 was rejected by TEI CUDA 1.9.3 on 2026-05-28T21Z. Use the existing vLLM CUDA 13 pooling fallback pattern from PubMedBERT/MedEmbed before any B300 route is enabled.",
+      "forge_owned_wrapper": "Not built because the existing TEI CUDA image already exposes the required OpenAI-compatible /v1/embeddings endpoint.",
+      "nvidia_nim": "No model-specific NIM image was found or needed for this sentence-transformers embedding workload."
+    },
+    "l40s_probe_20260528T17Z": {
+      "benchmark_runs": 10,
+      "gpu_type": "L40S",
+      "model_time_source": "client_wall_ms",
+      "region": "eu-north1",
+      "report_json": "docs/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T17Z-l40s-probe.json",
+      "report_md": "docs/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T17Z-l40s-probe.md",
+      "request_ms_p50": 93,
+      "startup_ms": 216828,
+      "status": "supported",
+      "tokens_per_second": 559.14,
+      "vram_used_gb": 0.54,
+      "warmup_runs": 3
+    },
+    "non_b300_probe_20260528T20Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200/us-central1": {
+          "node": "computeinstance-u00nqv8qsd3nb1s3bb",
+          "pod_name": "forge-probe-potsu-potsu-medembed-sma-b200-us-central1-8a4945",
+          "request_ms_p50": 158,
+          "request_ms_samples": [
+            158,
+            158,
+            158,
+            158,
+            159,
+            159,
+            158,
+            158,
+            158,
+            158
+          ],
+          "startup_ms": 276850,
+          "tokens_per_second": 329.11,
+          "vram_used_gb": 0.81
+        },
+        "H200/eu-north2": {
+          "node": "computeinstance-e02xkjz43xcbx889xb",
+          "pod_name": "forge-probe-potsu-potsu-medembed-sma-h200-eu-north2-0fb0a7",
+          "request_ms_p50": 101,
+          "request_ms_samples": [
+            101,
+            101,
+            101,
+            101,
+            101,
+            101,
+            101,
+            101,
+            101,
+            101
+          ],
+          "startup_ms": 201593,
+          "tokens_per_second": 514.85,
+          "vram_used_gb": 0.71
+        }
+      },
+      "inventory_seen": [
+        "B200/us-central1",
+        "H200/eu-north2"
+      ],
+      "model_status": "onboarding",
+      "report_json": "docs/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T20Z-non-b300-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9-20260528T20Z-non-b300-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "rtx6000_status": "not_returned_by_probe_inventory_for_requested_non_b300_run",
+      "status": "b200_h200_supported_rtx6000_not_in_inventory",
+      "warmup_runs": 3
+    },
+    "onboarding_state": "hidden_live_upserted_b200_h200_l40s_supported_b300_tei_unsupported_pending_rtx6000_inventory_b300_fallback_parity_and_safety_review",
+    "probe_plan": {
+      "b300_classification": "completed_20260528T21Z_for_B300_uk_south1; TEI CUDA 1.9.3 failed before readiness and logged `cuda compute cap 103 is not supported`, so this row remains B300=false.",
+      "first_smoke": "completed_20260528T17Z_l40s_eu_north1_with_3_warmups_10_benchmark_runs",
+      "non_b300_matrix": "completed_20260528T20Z_for_B200_us-central1_and_H200_eu-north2; RTX6000 was requested but not returned by probe inventory",
+      "parity_gate": "Compare embedding dimension, normalization, and nearest-neighbor ordering against local sentence-transformers output and existing MedEmbed rows before publication."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_recheck_20260528T17Z": {
+      "eu-north1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "eu-north2": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "uk-south1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "us-central1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+    },
+    "regional_mirror_status": "verified_existing_all_four_regions_20260528T17Z",
+    "runtime_plan": {
+      "cache_strategy": "HF_HOME and HUGGINGFACE_HUB_CACHE point at /mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/tei-cuda-1.9.3 so model, tokenizer, and TEI artifacts survive pod restarts and do not fill the container filesystem.",
+      "endpoint": "/v1/embeddings",
+      "pooling": "sentence_transformers_cls_pooling_from_1_Pooling_config",
+      "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so TEI does not receive unnecessary platform Hugging Face credentials.",
+      "served_model_name": "potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "medical_literature",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence_transformers",
+    "matryoshka",
+    "tei",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-28T17:10:08.936075+00:00",
+  "default_eligible": false,
+  "description": "MedEmbed Small Biomedical Matryoshka v2 is a public Apache-2.0 sentence-transformers embedding model for biomedical semantic similarity and retrieval. Hugging Face metadata checked on 2026-05-28 reports private=false, gated=false, disabled=false, library_name=sentence-transformers, pipeline_tag=sentence-similarity, endpoints_compatible, text-embeddings-inference, revision 0e64af8703721ac187772ae93658360a80d72496, and 33,360,000 F32 safetensors parameters. The model card describes a 384-dimensional dense vector space, 512-token maximum sequence length, cosine similarity, CLS pooling, and Matryoshka training for lower-dimensional retrieval tradeoffs. This hidden Forge candidate reuses the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a across all active Forge regions, stores TEI/Hugging Face cache paths under shared /mnt/data, and clears inherited Hugging Face token env vars because the artifact is public and ungated. The 2026-05-28T17Z L40S/eu-north1 probe and 2026-05-28T20Z B200/us-central1 plus H200/eu-north2 probes passed with 3 warmups and 10 measured embedding requests per cell. The 2026-05-28T21Z B300/uk-south1 TEI classification failed before readiness, and the kept diagnostic pod logged `cuda compute cap 103 is not supported`, matching adjacent TEI CUDA 1.9.3 embedding rows. Keep hidden/default-ineligible until RTX6000 inventory, a separate B300 fallback decision, embedding parity against existing MedEmbed rows, and healthcare product safety review are complete.",
+  "family_id": "4f03db51-a296-452a-af1d-edf58bbf3f47",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/tei-cuda-1.9.3",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/tei-cuda-1.9.3/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T20:08:11.512253+00:00",
+      "region": "us-central1",
+      "request_ms": 158,
+      "request_ms_p50": 158,
+      "request_ms_p95": 159,
+      "request_ms_p99": 159,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 276850,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 329.11,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.81,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T21:08:12.047783+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T20:06:55.012536+00:00",
+      "region": "eu-north2",
+      "request_ms": 101,
+      "request_ms_p50": 101,
+      "request_ms_p95": 101,
+      "request_ms_p99": 101,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 201593,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 514.85,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T17:18:41.386353+00:00",
+      "region": "eu-north1",
+      "request_ms": 93,
+      "request_ms_p50": 93,
+      "request_ms_p95": 94,
+      "request_ms_p99": 94,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 216828,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 559.14,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.54,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "a823f472-b9ee-4982-a5db-9dd93b0f6319",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "potsu-potsu-medembed-small-biomedical-matryoshka",
+  "name": "MedEmbed Small Biomedical Matryoshka v2",
+  "parameter_count": 33360000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+    },
+    "input_fields": [
+      {
+        "default": "Query: How does telomerase activity relate to cancer vaccine targets?\n\nPassage: GV1001 is a 16-amino-acid vaccine peptide derived from the human telomerase reverse transcriptase sequence and has been studied as a cancer vaccine candidate.",
+        "key": "input",
+        "label": "Biomedical text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/tei-cuda-1.9.3",
+      "embedding_dimension": 384,
+      "kind": "tei_embeddings",
+      "matryoshka_dimensions": [
+        384,
+        256,
+        128,
+        64
+      ],
+      "model_id": "potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "model_revision": "0e64af8703721ac187772ae93658360a80d72496",
+      "pooling": "cls",
+      "served_model_name": "potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+    },
+    "safety_notice": {
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation.",
+      "body": "Use only for nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": false,
+      "severity": "warning",
+      "title": "Research-only biomedical retrieval embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 58,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical",
+    "medical-literature",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence-transformers",
+    "matryoshka",
+    "tei",
+    "open-source"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-0e64af8-tei-cuda-1.9.3",
+  "version_description": "Hidden onboarding manifest for an Apache-2.0 384-dimensional biomedical Matryoshka sentence-transformer served by the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image. L40S/eu-north1, B200/us-central1, and H200/eu-north2 have passed hidden 3-warmup/10-measured embedding probes; B300/SM103 is classified unsupported for this TEI runtime after a 2026-05-28T21Z diagnostic logged `cuda compute cap 103 is not supported`. Keep hidden until RTX6000 inventory, embedding parity, a B300 fallback decision, and HCLS product review are complete.",
+  "version_key": "hf-0e64af8-tei-cuda-1-9-3",
+  "version_label": "HF 0e64af8 via TEI CUDA 1.9.3"
+}

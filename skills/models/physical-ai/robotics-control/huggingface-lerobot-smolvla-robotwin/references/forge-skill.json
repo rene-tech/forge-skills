@@ -1,0 +1,217 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "60f917272f486e13018489b64d8da90288624c91e9284efb9f261e844e8be7d7",
+  "defaultEligible": false,
+  "displayName": "Use Hugging Face LeRobot SmolVLA RobotWin",
+  "domain": "robotics-control",
+  "downloadUrl": "/v1/model-skills/huggingface-lerobot-smolvla-robotwin/markdown?download=true",
+  "group": "robotics-control",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "robotics-control",
+    "huggingface-lerobot-smolvla-robotwin"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/huggingface-lerobot-smolvla-robotwin",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Pick up the object and place it at the target location.",
+      "fieldType": "textarea",
+      "key": "instruction",
+      "label": "Instruction",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "cam_high_image",
+      "label": "High Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "cam_left_wrist_image",
+      "label": "Left Wrist Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "cam_right_wrist_image",
+      "label": "Right Wrist Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fieldType": "json_editor",
+      "key": "robot_state",
+      "label": "14D Robot State",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "so100_follower",
+        "so101_follower"
+      ],
+      "default": "so100_follower",
+      "fieldType": "select",
+      "key": "robot_type",
+      "label": "Robot Type",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "return_chunk",
+      "label": "Return Action Chunk",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "instructions": "---\nname: use-forge-huggingface-lerobot-smolvla-robotwin\ndescription: Use the exact Forge model huggingface-lerobot-smolvla-robotwin for text, image, robot_state to robot_action, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Hugging Face LeRobot SmolVLA RobotWin\n\n- Model slug: `huggingface-lerobot-smolvla-robotwin`\n- Model family: `huggingface-lerobot-smolvla`\n- Version: `robotwin-967623a-wrapper-candidate-20260528t09z` (`robotwin`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / robotics-control / huggingface-lerobot-smolvla-robotwin`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nSmolVLA RobotWin is an Apache-2.0 LeRobot SmolVLA policy checkpoint fine-tuned from lerobot/smolvla_base on the pepijn223/robotwin_unified_v3 dataset.\n\n## Use this exact model when\n\n- Use this exact `huggingface-lerobot-smolvla-robotwin` version when the task supplies text, image, robot_state and needs robot_action, json.\n- SmolVLA RobotWin is an Apache-2.0 LeRobot SmolVLA policy checkpoint fine-tuned from lerobot/smolvla_base on the pepijn223/robotwin_unified_v3 dataset.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `instruction` (textarea, optional): Instruction\n- `cam_high_image` (file_upload, optional): High Camera Image\n- `cam_left_wrist_image` (file_upload, optional): Left Wrist Camera Image\n- `cam_right_wrist_image` (file_upload, optional): Right Wrist Camera Image\n- `robot_state` (json_editor, optional): 14D Robot State\n- `robot_type` (select, optional): Robot Type\n- `return_chunk` (checkbox, optional): Return Action Chunk\n\nRequest template:\n\n```json\n{\n  \"images\": {\n    \"cam_high\": \"{{cam_high_image}}\",\n    \"cam_left_wrist\": \"{{cam_left_wrist_image}}\",\n    \"cam_right_wrist\": \"{{cam_right_wrist_image}}\"\n  },\n  \"instruction\": \"{{instruction}}\",\n  \"model\": \"{{model_slug}}\",\n  \"return_chunk\": \"{{return_chunk}}\",\n  \"robot_state\": \"{{robot_state}}\",\n  \"robot_type\": \"{{robot_type}}\"\n}\n```\n\n## Exact output\n\n- `robot_action`\n- `json`\n\n## Route\n\n`POST /v1/inference/huggingface-lerobot-smolvla-robotwin`\n\n## Workflow\n\n1. Load this skill and pin model slug `huggingface-lerobot-smolvla-robotwin` with version key `robotwin`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/huggingface-lerobot-smolvla-robotwin` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/huggingface-lerobot-smolvla-robotwin`\n- Routes: `/v1/models/huggingface-lerobot-smolvla-robotwin/inference-routes`\n- Regional deployment: `/v1/models/huggingface-lerobot-smolvla-robotwin/regional-deployment`\n- Deployment handoff: `/v1/models/huggingface-lerobot-smolvla-robotwin/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-robotwin/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-robotwin/SKILL.md\n\n## References\n\n- [Hugging Face LeRobot SmolVLA RobotWin source](https://huggingface.co/lerobot/smolvla_robotwin) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/huggingface-lerobot-smolvla-robotwin/deploy",
+    "inferenceRoutesUrl": "/v1/models/huggingface-lerobot-smolvla-robotwin/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/huggingface-lerobot-smolvla",
+    "modelUrl": "/v1/models/huggingface-lerobot-smolvla-robotwin",
+    "regionalDeploymentUrl": "/v1/models/huggingface-lerobot-smolvla-robotwin/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/huggingface-lerobot-smolvla-robotwin/markdown",
+  "modelFamily": "huggingface-lerobot-smolvla",
+  "modelSlug": "huggingface-lerobot-smolvla-robotwin",
+  "modelUrl": "/v1/models/huggingface-lerobot-smolvla-robotwin",
+  "outputFields": [
+    "robot_action",
+    "json"
+  ],
+  "outputModalities": [
+    "robot_action",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "SmolVLA RobotWin is an Apache-2.0 LeRobot SmolVLA policy checkpoint fine-tuned from lerobot/smolvla_base on the pepijn223/robotwin_unified_v3 dataset.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-robotwin/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Hugging Face LeRobot SmolVLA RobotWin source",
+      "url": "https://huggingface.co/lerobot/smolvla_robotwin"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-robotwin/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-robotwin/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "images": {
+      "cam_high": "{{cam_high_image}}",
+      "cam_left_wrist": "{{cam_left_wrist_image}}",
+      "cam_right_wrist": "{{cam_right_wrist_image}}"
+    },
+    "instruction": "{{instruction}}",
+    "model": "{{model_slug}}",
+    "return_chunk": "{{return_chunk}}",
+    "robot_state": "{{robot_state}}",
+    "robot_type": "{{robot_type}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 450000000,
+    "quantization": "fp32",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/lerobot/smolvla_robotwin",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "robot-policy",
+      "vision-language-action",
+      "lerobot",
+      "smolvla",
+      "robotwin",
+      "safetensors",
+      "apache-2.0",
+      "forge-wrapper-candidate"
+    ],
+    "versionLabel": "RobotWin wrapper candidate"
+  },
+  "shortDescription": "SmolVLA RobotWin is an Apache-2.0 LeRobot SmolVLA policy checkpoint fine-tuned from lerobot/smolvla_base on the pepijn223/robotwin_unified_v3 dataset.",
+  "skillName": "use-forge-huggingface-lerobot-smolvla-robotwin",
+  "skillUrl": "/v1/model-skills/huggingface-lerobot-smolvla-robotwin",
+  "slug": "huggingface-lerobot-smolvla-robotwin",
+  "stability": "testing",
+  "version": "robotwin-967623a-wrapper-candidate-20260528t09z",
+  "versionKey": "robotwin",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `huggingface-lerobot-smolvla-robotwin` version when the task supplies text, image, robot_state and needs robot_action, json.",
+    "SmolVLA RobotWin is an Apache-2.0 LeRobot SmolVLA policy checkpoint fine-tuned from lerobot/smolvla_base on the pepijn223/robotwin_unified_v3 dataset.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `huggingface-lerobot-smolvla-robotwin` with version key `robotwin`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/huggingface-lerobot-smolvla-robotwin` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "45399f17a8cb93e6d1e362ae7f1170ee1b625f102a38790d67c488722ccc31c7",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Nemotron Nano 12B V2 VL",
+  "domain": "vision-language",
+  "downloadUrl": "/v1/model-skills/nvidia-nemotron-nano-12b-v2-vl-nim/markdown?download=true",
+  "group": "vision-language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "vision-language",
+    "nvidia-nemotron-nano-12b-v2-vl-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Describe the image and identify any visible text or layout details in two concise bullets.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAJ0lEQVR42mN4pqCFFSlX3MGKGEY10ESD1pYorOjrJRusaFQDTTQAAD//eJDqUy8IAAAAAElFTkSuQmCC",
+      "fieldType": "text",
+      "key": "image_url",
+      "label": "Image URL or data URL",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "/no_think",
+        "/think"
+      ],
+      "default": "/no_think",
+      "fieldType": "select",
+      "key": "reasoning_mode",
+      "label": "Reasoning Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.1,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-nemotron-nano-12b-v2-vl-nim\ndescription: Use the exact Forge model nvidia-nemotron-nano-12b-v2-vl-nim for text, image to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Nemotron Nano 12B V2 VL\n\n- Model slug: `nvidia-nemotron-nano-12b-v2-vl-nim`\n- Model family: `nvidia-nemotron-nano-12b-v2-vl`\n- Version: `1.5.0` (`nim-1-5-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / vision-language / nvidia-nemotron-nano-12b-v2-vl-nim`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `nvidia-open-model-license; nvidia-nim-container-terms`\n\n## Purpose\n\nNVIDIA Nemotron Nano 12B V2 VL is a commercial-ready vision-language reasoning model for document intelligence, visual question answering, OCR-style extraction, image summarization, and multimodal chat.\n\n## Use this exact model when\n\n- Use this exact `nvidia-nemotron-nano-12b-v2-vl-nim` version when the task supplies text, image and needs text.\n- NVIDIA Nemotron Nano 12B V2 VL is a commercial-ready vision-language reasoning model for document intelligence, visual question answering, OCR-style extraction, image summarization, and multimodal chat.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `image_url` (text, optional): Image URL or data URL\n- `reasoning_mode` (select, optional): Reasoning Mode\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"{{reasoning_mode}}\",\n      \"role\": \"system\"\n    },\n    {\n      \"content\": [\n        {\n          \"text\": \"{{prompt}}\",\n          \"type\": \"text\"\n        },\n        {\n          \"image_url\": {\n            \"url\": \"{{image_url}}\"\n          },\n          \"type\": \"image_url\"\n        }\n      ],\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": false,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-nemotron-nano-12b-v2-vl-nim` with version key `nim-1-5-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 131072.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim`\n- Routes: `/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/nvidia-nemotron-nano-12b-v2-vl-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/nvidia-nemotron-nano-12b-v2-vl-nim/SKILL.md\n\n## References\n\n- [NVIDIA Nemotron Nano 12B V2 VL source](https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl/modelcard) (model-card)\n",
+  "license": "nvidia-open-model-license; nvidia-nim-container-terms",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 131072."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-nemotron-nano-12b-v2-vl",
+    "modelUrl": "/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-nemotron-nano-12b-v2-vl-nim/markdown",
+  "modelFamily": "nvidia-nemotron-nano-12b-v2-vl",
+  "modelSlug": "nvidia-nemotron-nano-12b-v2-vl-nim",
+  "modelUrl": "/v1/models/nvidia-nemotron-nano-12b-v2-vl-nim",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA Nemotron Nano 12B V2 VL is a commercial-ready vision-language reasoning model for document intelligence, visual question answering, OCR-style extraction, image summarization, and multimodal chat.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/nvidia-nemotron-nano-12b-v2-vl-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Nemotron Nano 12B V2 VL source",
+      "url": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl/modelcard"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/nvidia-nemotron-nano-12b-v2-vl-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/vision-language/nvidia-nemotron-nano-12b-v2-vl-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "{{reasoning_mode}}",
+        "role": "system"
+      },
+      {
+        "content": [
+          {
+            "text": "{{prompt}}",
+            "type": "text"
+          },
+          {
+            "image_url": {
+              "url": "{{image_url}}"
+            },
+            "type": "image_url"
+          }
+        ],
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": false,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 131072,
+    "parameterCount": 13181860352,
+    "quantization": "nim-auto-bf16-fp8",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl/modelcard",
+    "tags": [
+      "vlm",
+      "vision-language",
+      "chat",
+      "document-understanding",
+      "visual-question-answering",
+      "ocr",
+      "reasoning",
+      "nvidia-nim",
+      "nemotron"
+    ],
+    "versionLabel": "NIM 1.5.0"
+  },
+  "shortDescription": "NVIDIA Nemotron Nano 12B V2 VL is a commercial-ready vision-language reasoning model for document intelligence, visual question answering, OCR-style extraction, image summarization, and multimodal chat.",
+  "skillName": "use-forge-nvidia-nemotron-nano-12b-v2-vl-nim",
+  "skillUrl": "/v1/model-skills/nvidia-nemotron-nano-12b-v2-vl-nim",
+  "slug": "nvidia-nemotron-nano-12b-v2-vl-nim",
+  "stability": "testing",
+  "version": "1.5.0",
+  "versionKey": "nim-1-5-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-nemotron-nano-12b-v2-vl-nim` version when the task supplies text, image and needs text.",
+    "NVIDIA Nemotron Nano 12B V2 VL is a commercial-ready vision-language reasoning model for document intelligence, visual question answering, OCR-style extraction, image summarization, and multimodal chat.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-nemotron-nano-12b-v2-vl-nim` with version key `nim-1-5-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

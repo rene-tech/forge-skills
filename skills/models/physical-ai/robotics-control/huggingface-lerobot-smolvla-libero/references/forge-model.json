@@ -1,0 +1,829 @@
+{
+  "benchmark_scores": {
+    "artifact_files_checked": [
+      "README.md",
+      "config.json",
+      "model.safetensors",
+      "policy_preprocessor.json",
+      "policy_postprocessor.json",
+      "policy_preprocessor_step_5_normalizer_processor.safetensors",
+      "policy_postprocessor_step_0_unnormalizer_processor.safetensors"
+    ],
+    "b200_exact_digest_probe_20260526T12Z": {
+      "benchmark_runs": 10,
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "gpu": "B200",
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "model_time_source": "query_time_ms",
+      "node": "computeinstance-u00nrjmrxjs2gtf3z9",
+      "pod_name": "forge-probe-huggingface-lerobot-smol-b200-us-central1-876cef",
+      "previous_blocker_resolution": "The 2026-05-25T00Z uninitialized-node blocker was cleared: the 12Z pod scheduled, pulled the exact patched digest, became Ready, and completed all warmup and measured requests.",
+      "probe_upsert": "scripts/probe_model_parallel_matrix.py upserted B200/us-central1 as supported at 2026-05-26T12:10:12Z",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-libero-20260526T12Z-b200-exact-digest.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-libero-20260526T12Z-b200-exact-digest.md",
+      "request_ms_p50": 2,
+      "request_ms_samples": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "response_status": 200,
+      "startup_ms": 267216,
+      "status": "supported",
+      "vram_used_gb": 1.71,
+      "warmup_model_ms": [
+        10745,
+        2,
+        2
+      ]
+    },
+    "b200_http_smoke_20260524T18Z": {
+      "benchmark_runs": 1,
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "endpoint_path": "/v1/inference/huggingface-lerobot-smolvla-libero",
+      "gpu": "B200",
+      "model_time_source": "query_time_ms",
+      "node": "computeinstance-u00a0c0ew3h02t0xrz",
+      "pod_name": "forge-probe-huggingface-lerobot-smol-b200-us-central1-2c63a8",
+      "region": "us-central1",
+      "report_json": "docs/supervisor/model-onboarding/physical-ai-smolvla-libero-20260524T18Z-b200-smoke.json",
+      "report_md": "docs/supervisor/model-onboarding/physical-ai-smolvla-libero-20260524T18Z-b200-smoke.md",
+      "request_ms": 1658,
+      "response_action_shape": [
+        1,
+        7
+      ],
+      "response_status": 200,
+      "startup_ms": 26450,
+      "status": "supported",
+      "vram_used_gb": 1.71,
+      "warmup_runs": 0
+    },
+    "b200_reprobe_attempt_20260524T21Z": {
+      "benchmark_runs_completed": 0,
+      "cleanup": "Probe process was terminated before the 1800s timeout and the pending pod was deleted with kubectl --context nebius-mk8s-forge-us -n forge-models delete pod forge-probe-huggingface-lerobot-smol-b200-us-central1-b6f761 --ignore-not-found --wait=true.",
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "gpu": "B200",
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "inventory_observation": "B200/us-central1 was observed in public inventory with total_gpus=2, free_gpus=2, used_gpus=0 before the probe; follow-up inventory at 21Z omitted B200.",
+      "model_time_source": null,
+      "pod_name": "forge-probe-huggingface-lerobot-smol-b200-us-central1-b6f761",
+      "probe_command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 ./.venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-smolvla-libero --include-status onboarding --gpu B200 --region us-central1 --timeout 1800 --request-timeout 360 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/physical-ai/smolvla-libero-20260524T21Z-b200-reprobe.json --report-md docs/model-onboarding/physical-ai/smolvla-libero-20260524T21Z-b200-reprobe.md",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T21Z-b200-unschedulable.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T21Z.md",
+      "scheduling_events": [
+        {
+          "message": "0/9 nodes are available: 1 node(s) had untolerated taint {forge.nebius.com/utility: true}, 8 node(s) didn't match Pod's node affinity/selector. preemption: 0/9 nodes are available: 9 Preemption is not helpful for scheduling.",
+          "reason": "FailedScheduling"
+        },
+        {
+          "message": "pod didn't trigger scale-up: 3 node(s) didn't match Pod's node affinity/selector, 1 max node group size reached",
+          "reason": "NotTriggerScaleUp"
+        }
+      ],
+      "status": "unavailable_unschedulable_no_benchmark",
+      "vram_used_gb": null
+    },
+    "b200_reprobe_attempt_20260525T00Z": {
+      "benchmark_runs_completed": 0,
+      "cleanup": "The local probe process was terminated after the pod remained Pending for about five minutes, and only the SmolVLA probe pod was deleted. Other workers' pods and node taints were not modified.",
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "gpu": "B200",
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "inventory_observation": "Public inventory at 2026-05-25T00Z reported B200/us-central1 with total_gpus=2, used_gpus=0, free_gpus=2.",
+      "model_time_source": null,
+      "node_state": "Both B200 nodes were Ready, labeled nebius.com/gpu-name=B200 and topology.kubernetes.io/region=us-central1, and had nvidia.com/gpu=1 allocatable, but both still had node.cluster.x-k8s.io/uninitialized:NoSchedule.",
+      "pod_name": "forge-probe-huggingface-lerobot-smol-b200-us-central1-ee6a31",
+      "probe_command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 ./.venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-smolvla-libero --gpu B200 --region us-central1 --timeout 1800 --request-timeout 360 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/physical-ai/smolvla-libero-20260525T00Z-b200-reprobe.json --report-md docs/model-onboarding/physical-ai/smolvla-libero-20260525T00Z-b200-reprobe.md",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-libero-20260525T00Z-b200-uninitialized.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-libero-20260525T00Z-b200-uninitialized.md",
+      "scheduling_events": [
+        {
+          "message": "0/11 nodes are available: 1 node(s) had untolerated taint {forge.nebius.com/utility: true}, 2 node(s) had untolerated taint {node.cluster.x-k8s.io/uninitialized: }, 8 node(s) didn't match Pod's node affinity/selector. preemption: 0/11 nodes are available: 11 Preemption is not helpful for scheduling.",
+          "reason": "FailedScheduling"
+        },
+        {
+          "message": "pod didn't trigger scale-up: 3 node(s) didn't match Pod's node affinity/selector, 1 max node group size reached",
+          "reason": "NotTriggerScaleUp"
+        }
+      ],
+      "status": "blocked_cluster_nodes_uninitialized_no_benchmark",
+      "vram_used_gb": null
+    },
+    "b300_cudnn_failure_20260524T20Z": {
+      "cleanup": "retained diagnostic pod deleted after logs and events were captured",
+      "failure": "torch.nn.functional.scaled_dot_product_attention raised cuDNN Frontend error: No valid execution plans built.",
+      "gpu": "B300",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "pod_name": "forge-probe-huggingface-lerobot-smol-b300-uk-south1-293f40",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T20Z-b300-reprobe.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T20Z-b300-reprobe.md",
+      "status": "reproduced_on_dynamic_state_17z_image"
+    },
+    "b300_sm103_sdp_probe_20260524T20Z": {
+      "benchmark_runs": 10,
+      "cleanup": "retained patched probe pod deleted after health, logs, and report were captured",
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu": "B300",
+      "health_backend": {
+        "compute_capability": [
+          10,
+          3
+        ],
+        "cudnn_sdp_enabled": false,
+        "flash_sdp_enabled": true,
+        "math_sdp_enabled": true,
+        "mem_efficient_sdp_enabled": true
+      },
+      "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "model_time_source": "query_time_ms",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "pod_name": "forge-probe-huggingface-lerobot-smol-b300-uk-south1-b1ef72",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T20Z-b300-sm103-sdpa.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T20Z-b300-sm103-sdpa.md",
+      "request_ms_p50": 2,
+      "request_ms_samples": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "response_action_shape": [
+        1,
+        7
+      ],
+      "response_status": 200,
+      "startup_ms": 21253,
+      "status": "supported",
+      "vram_used_gb": 1.71,
+      "warmup_runs": 3
+    },
+    "base_model": "lerobot/smolvla_base",
+    "blockers": [],
+    "cache_root": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero",
+    "checked_at": "2026-05-26T12:10:13Z",
+    "container_decision": "Reuse the Forge-owned SmolVLA wrapper image because the public LeRobot GPU image is a shell/training image and exposes no Forge HTTP inference API. Configure the wrapper for this checkpoint through FORGE_MODEL_SLUG, FORGE_MODEL_ID, FORGE_CACHE_ROOT, and SMOLVLA_STATE_DIM=8.",
+    "dataset": "lerobot/libero",
+    "direct_b200_frame_diagnostic_20260524T17Z": {
+      "job": "smolvla-libero-b200-frame8-20260524t17z",
+      "load_ms": 22990,
+      "measured_model_ms": 2,
+      "node": "computeinstance-u00b4h1tpngn23jf6b",
+      "output_shape": [
+        1,
+        7
+      ],
+      "state_dim": 8,
+      "status": "succeeded",
+      "warmup_model_ms": 8896
+    },
+    "forge_wrapper_path": "services/models/physical-ai/huggingface_lerobot_smolvla_base",
+    "hf_library_name": "lerobot",
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "lerobot/smolvla_libero",
+    "hf_model_license": "apache-2.0",
+    "hf_model_private": false,
+    "hf_model_sha": "31d453f7edd78c839a8bbc39744a292686daf0de",
+    "hf_pipeline_tag": "robotics",
+    "live_probe_status": "five_cell_supported_b200_exact_digest",
+    "model_safetensors_sha256": "9a9f6413e42c0f332fccbce9a0dc796af2790f82cf002f791cdbf7e01e1afca8",
+    "model_safetensors_size_bytes": 906712520,
+    "official_serving_container_found": false,
+    "onboarding_state": "active_nondefault_five_cell_supported_b200_exact_digest_12z",
+    "patched_live_matrix_20260524T20Z": {
+      "b200_status": "unschedulable_then_absent_at_2026-05-24T21Z",
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B300/uk-south1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-b300-uk-south1-f34cb3",
+          "request_ms_p50": 2,
+          "request_ms_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "startup_ms": 20842,
+          "status": "supported",
+          "vram_used_gb": 1.71
+        },
+        "H200/eu-north2": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e02vy282wq84sh9er9",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-h200-eu-north2-5b4d15",
+          "request_ms_p50": 2,
+          "request_ms_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3,
+            2,
+            2
+          ],
+          "startup_ms": 269978,
+          "status": "supported",
+          "vram_used_gb": 1.63
+        },
+        "L40S/eu-north1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e00df18tkn1sh37ez7",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-l40s-eu-north1-a1046c",
+          "request_ms_p50": 3,
+          "request_ms_samples": [
+            3,
+            4,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "startup_ms": 249032,
+          "status": "supported",
+          "vram_used_gb": 1.44
+        },
+        "RTX6000/us-central1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-u00q8qwvq3rkqfsn5j",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-rtx6000-us-central1-3a2541",
+          "request_ms_p50": 3,
+          "request_ms_samples": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "startup_ms": 26739,
+          "status": "supported",
+          "vram_used_gb": 1.58
+        }
+      },
+      "inventory_cells": [
+        "RTX6000/us-central1",
+        "L40S/eu-north1",
+        "H200/eu-north2",
+        "B300/uk-south1"
+      ],
+      "model_time_source": "query_time_ms",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T20Z-patched-live-matrix.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T20Z-patched-live-matrix.md",
+      "status": "supported_all_current_inventory_cells",
+      "warmup_runs": 3
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_20260524T22Z": {
+      "b200_support_row": {
+        "reason": "The prior B200 support row came from the 18Z dynamic-state digest smoke, not the 20Z patched digest. It was explicitly marked unavailable at 22Z because B200 was absent from public inventory and the 21Z exact-digest B200 pod could not schedule.",
+        "request_ms_samples": 0,
+        "status": "unavailable"
+      },
+      "default_eligible": false,
+      "public_route": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/huggingface-lerobot-smolvla-libero",
+      "public_route_http_status": 200,
+      "public_runtime_status_after_stale_state_clear": "cold",
+      "stability": "testing",
+      "stale_runtime_state_cleanup": "scripts/clear_pod_state.py huggingface-lerobot-smolvla-libero deleted one stale scheduler key after the public route reported starting with no live model pod.",
+      "status": "active_nondefault_live",
+      "supported_live_cells": [
+        "B300/uk-south1",
+        "H200/eu-north2",
+        "L40S/eu-north1",
+        "RTX6000/us-central1"
+      ],
+      "upsert_command": "POSTGRES_URL from forge-platform-secrets; scripts/upsert_model.py manifests/models/physical_ai/huggingface-lerobot-smolvla-libero.json"
+    },
+    "regional_mirror_20260524T18Z": {
+      "digest": "sha256:7a5b4a1c54cf82d5bccdab7c5de6b05e78e5f87bcf87e301fac137210680e23c",
+      "mirror_command": "scripts/mirror_via_k8s_job.py --upstream cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-dynamic-state-17z@sha256:7a5b4a1c54cf82d5bccdab7c5de6b05e78e5f87bcf87e301fac137210680e23c --wait",
+      "plain_tag_note": "Before the 18Z mirror repair, only the us-central1 plain tag resolved; EU and UK plain tag and digest lookups returned MANIFEST_UNKNOWN. The mirror helper repaired the digest-qualified refs recorded in this manifest.",
+      "status": "succeeded_digest_qualified_refs",
+      "verified_regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ]
+    },
+    "regional_mirror_20260524T20Z": {
+      "digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "mirror_command": "scripts/mirror_via_k8s_job.py --upstream cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e --wait",
+      "status": "succeeded_digest_verified_all_regions",
+      "verified_regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ]
+    },
+    "upstream_source_license": "Apache-2.0",
+    "upstream_source_repo": "https://github.com/huggingface/lerobot",
+    "visible_matrix_20260524T22Z": {
+      "b200_status": "absent_from_public_inventory_at_2026-05-24T22Z",
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B300/uk-south1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-b300-uk-south1-4000c7",
+          "request_ms_p50": 2,
+          "request_ms_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "startup_ms": 258758,
+          "status": "supported",
+          "vram_used_gb": 1.71
+        },
+        "H200/eu-north2": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e02xkjz43xcbx889xb",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-h200-eu-north2-2afc56",
+          "request_ms_p50": 2,
+          "request_ms_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "startup_ms": 23088,
+          "status": "supported",
+          "vram_used_gb": 1.63
+        },
+        "L40S/eu-north1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e00knmqbn7kxszaff1",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-l40s-eu-north1-cd5e24",
+          "request_ms_p50": 3,
+          "request_ms_samples": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "startup_ms": 29558,
+          "status": "supported",
+          "vram_used_gb": 1.44
+        },
+        "RTX6000/us-central1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-u00hap2htj7q8wn7fc",
+          "pod_name": "forge-probe-huggingface-lerobot-smol-rtx6000-us-central1-a5a8d5",
+          "request_ms_p50": 2,
+          "request_ms_samples": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "startup_ms": 289194,
+          "status": "supported",
+          "vram_used_gb": 1.58
+        }
+      },
+      "inventory_cells": [
+        "RTX6000/us-central1",
+        "L40S/eu-north1",
+        "H200/eu-north2",
+        "B300/uk-south1"
+      ],
+      "model_time_source": "query_time_ms",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T22Z-visible-matrix.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-libero-20260524T22Z-visible-matrix.md",
+      "status": "supported_all_current_inventory_cells",
+      "warmup_runs": 3
+    },
+    "wrapper_build_20260524T17Z": {
+      "digest": "sha256:7a5b4a1c54cf82d5bccdab7c5de6b05e78e5f87bcf87e301fac137210680e23c",
+      "image_id_prefix": "73f73fd346da",
+      "kaniko_fallback_reason": "The cluster Kaniko build forge-build-forge-huggingface-le-c2cddf88 failed before wrapper copy with chown /etc/gshadow: operation not permitted.",
+      "regional_tag": "gpu-wrapper-dynamic-state-17z",
+      "source_tag": "forge-local/huggingface-lerobot-smolvla-base:dynamic-state-20260524t17z",
+      "status": "succeeded_local_build_push"
+    },
+    "wrapper_build_20260524T20Z": {
+      "compressed_size_bytes": 5693682815,
+      "digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "kaniko_attempt": {
+        "configmap": "forge-build-context-820a1c06",
+        "failure": "failed to get filesystem from image: chown /etc/gshadow: operation not permitted",
+        "job": "forge-build-forge-huggingface-le-820a1c06",
+        "status": "failed_cleaned_up"
+      },
+      "local_image_id": "sha256:065163e658a4946720b9041697cb4d953f9c659c015e0c6a7814dc7f49a28653",
+      "patch": "Disable torch.backends.cuda cuDNN SDPA on compute capability 10.3 while leaving Flash, memory-efficient, and math SDPA enabled.",
+      "regional_tag": "gpu-wrapper-sm103-sdpa-20z",
+      "source_tag": "forge-local/huggingface-lerobot-smolvla-base:sm103-sdpa-20260524t20z",
+      "status": "succeeded_local_build_push_after_kaniko_base_unpack_failure",
+      "uncompressed_size_bytes": 12027857858
+    }
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "lerobot",
+    "smolvla",
+    "libero",
+    "forge_wrapper_candidate",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+  "container_image_size_bytes": 5693682815,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-24T18:05:38.597411+00:00",
+  "default_eligible": false,
+  "description": "SmolVLA Libero is a compact LeRobot vision-language-action policy checkpoint trained for LIBERO-style manipulation. It maps multi-view camera observations, an 8D robot state, and a natural-language instruction into continuous robot actions. This active non-default testing entry has Apache-2.0 model metadata, a digest-backed Forge HTTP wrapper image mirrored into all Forge regions, and patched-digest 3-warmup/10-run HTTP probes supporting B200, B300, H200, L40S, and RTX6000. It remains non-default because it is a robot policy and should not become a default route without simulation, HIL, or external safety approval.",
+  "family_id": "fc4fe20b-1a2b-4887-add2-bc6197f66862",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero",
+      "FORGE_MODEL_ID": "lerobot/smolvla_libero",
+      "FORGE_MODEL_SLUG": "huggingface-lerobot-smolvla-libero",
+      "HF_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero/huggingface/hub",
+      "SMOLVLA_CAMERA_KEYS": "camera1,camera2,camera3",
+      "SMOLVLA_DEVICE": "cuda",
+      "SMOLVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+      "SMOLVLA_ROBOT_TYPE": "so100_follower",
+      "SMOLVLA_STATE_DIM": "8",
+      "TORCH_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-libero/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T12:10:12.455212+00:00",
+      "region": "us-central1",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 830,
+      "request_ms_p99": 1492,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 267216,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T22:11:02.946271+00:00",
+      "region": "uk-south1",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 2,
+      "request_ms_p99": 2,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 258758,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T22:06:05.047187+00:00",
+      "region": "eu-north2",
+      "request_ms": 2,
+      "request_ms_p50": 2,
+      "request_ms_p95": 2,
+      "request_ms_p99": 3,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 23088,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T22:05:37.652539+00:00",
+      "region": "eu-north1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 3,
+      "request_ms_p99": 4,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 29558,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.44,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T22:09:58.812172+00:00",
+      "region": "us-central1",
+      "request_ms": 2,
+      "request_ms_p50": 3,
+      "request_ms_p95": 3,
+      "request_ms_p99": 3,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 289194,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    }
+  ],
+  "gpu_type": null,
+  "id": "37cb4fc9-745e-4e70-a669-8a234df7374f",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "huggingface-lerobot-smolvla",
+  "name": "Hugging Face LeRobot SmolVLA Libero",
+  "parameter_count": 450000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "images": {
+          "camera1": "{{camera1_image}}",
+          "camera2": "{{camera2_image}}",
+          "camera3": "{{camera3_image}}"
+        },
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "return_chunk": "{{return_chunk}}",
+        "robot_state": "{{robot_state}}",
+        "robot_type": "{{robot_type}}"
+      },
+      "endpoint": "/v1/inference/huggingface-lerobot-smolvla-libero",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Pick up the red cube and place it in the target bowl.",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "camera1_image",
+        "label": "Camera 1 Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "camera2_image",
+        "label": "Camera 2 Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "camera3_image",
+        "label": "Camera 3 Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "key": "robot_state",
+        "label": "8D Robot State",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "so100_follower",
+        "key": "robot_type",
+        "label": "Robot Type",
+        "options": [
+          "so100_follower",
+          "so101_follower"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": false,
+        "key": "return_chunk",
+        "label": "Return Action Chunk",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+  },
+  "release_rank": 80,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "huggingface-lerobot-smolvla-libero",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/lerobot/smolvla_libero",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "lerobot",
+    "smolvla",
+    "libero",
+    "forge-wrapper-candidate"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "libero-31d453f-sm103-sdpa-20z",
+  "version_description": "Active non-default testing manifest for the Apache-2.0 lerobot/smolvla_libero checkpoint served through the shared Forge SmolVLA HTTP wrapper. The 2026-05-24T20Z wrapper image keeps the dynamic slug/model/cache/state-dimension overrides and disables PyTorch cuDNN SDPA on B300/SM103 after the 17Z image reproduced a cuDNN Frontend no-plan failure. The patched digest is mirrored in all Forge regions and passed 3-warmup/10-run HTTP probes on B300, H200, L40S, RTX6000, and, as of 2026-05-26T12Z, B200/us-central1.",
+  "version_key": "libero",
+  "version_label": "Libero wrapper active non-default"
+}

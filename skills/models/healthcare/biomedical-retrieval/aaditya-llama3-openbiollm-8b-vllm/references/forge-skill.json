@@ -1,0 +1,155 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "6942629b2aedc21000b3b5a7034b8f08c7c7c4a8bea2fc64d694b2f469cdaa44",
+  "defaultEligible": false,
+  "displayName": "Use Llama3 OpenBioLLM 8B",
+  "domain": "biomedical-retrieval",
+  "downloadUrl": "/v1/model-skills/aaditya-llama3-openbiollm-8b-vllm/markdown?download=true",
+  "group": "biomedical-retrieval",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-retrieval",
+    "aaditya-llama3-openbiollm-8b-vllm"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nYou are OpenBioLLM running in a Forge onboarding safety gate. Answer only for nonclinical biomedical research, literature triage, and scientific workflow drafting. Do not provide medical advice, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nFor nonclinical biomedical literature triage, summarize how large language models can help compare gene-disease association evidence. Include two limitations and avoid diagnosis, treatment, or patient-specific recommendations.<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Llama 3 Instruct Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 1024,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-aaditya-llama3-openbiollm-8b-vllm\ndescription: Use the exact Forge model aaditya-llama3-openbiollm-8b-vllm for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Llama3 OpenBioLLM 8B\n\n- Model slug: `aaditya-llama3-openbiollm-8b-vllm`\n- Model family: `aaditya-llama3-openbiollm-8b`\n- Version: `70d6bb5` (`hf-70d6bb5-vllm-0-21-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-retrieval / aaditya-llama3-openbiollm-8b-vllm`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `llama3`\n\n## Purpose\n\nLlama3 OpenBioLLM 8B is a public biomedical instruction-tuned Llama 3 8B derivative intended for biomedical question answering and research workflows.\n\n## Use this exact model when\n\n- Use this exact `aaditya-llama3-openbiollm-8b-vllm` version when the task supplies text and needs text.\n- Llama3 OpenBioLLM 8B is a public biomedical instruction-tuned Llama 3 8B derivative intended for biomedical question answering and research workflows.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Llama 3 Instruct Prompt\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..1024): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"model\": \"{{model_slug}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"stop\": [\n    \"<|eot_id|>\",\n    \"<|end_of_text|>\"\n  ],\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `aaditya-llama3-openbiollm-8b-vllm` with version key `hf-70d6bb5-vllm-0-21-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 8192.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/aaditya-llama3-openbiollm-8b-vllm`\n- Routes: `/v1/models/aaditya-llama3-openbiollm-8b-vllm/inference-routes`\n- Regional deployment: `/v1/models/aaditya-llama3-openbiollm-8b-vllm/regional-deployment`\n- Deployment handoff: `/v1/models/aaditya-llama3-openbiollm-8b-vllm/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/aaditya-llama3-openbiollm-8b-vllm/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/aaditya-llama3-openbiollm-8b-vllm/SKILL.md\n\n## References\n\n- [Llama3 OpenBioLLM 8B source](https://huggingface.co/aaditya/Llama3-OpenBioLLM-8B) (model-card)\n",
+  "license": "llama3",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 8192."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/aaditya-llama3-openbiollm-8b-vllm/deploy",
+    "inferenceRoutesUrl": "/v1/models/aaditya-llama3-openbiollm-8b-vllm/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/aaditya-llama3-openbiollm-8b",
+    "modelUrl": "/v1/models/aaditya-llama3-openbiollm-8b-vllm",
+    "regionalDeploymentUrl": "/v1/models/aaditya-llama3-openbiollm-8b-vllm/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/aaditya-llama3-openbiollm-8b-vllm/markdown",
+  "modelFamily": "aaditya-llama3-openbiollm-8b",
+  "modelSlug": "aaditya-llama3-openbiollm-8b-vllm",
+  "modelUrl": "/v1/models/aaditya-llama3-openbiollm-8b-vllm",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Llama3 OpenBioLLM 8B is a public biomedical instruction-tuned Llama 3 8B derivative intended for biomedical question answering and research workflows.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/aaditya-llama3-openbiollm-8b-vllm/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Llama3 OpenBioLLM 8B source",
+      "url": "https://huggingface.co/aaditya/Llama3-OpenBioLLM-8B"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/aaditya-llama3-openbiollm-8b-vllm/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-retrieval/aaditya-llama3-openbiollm-8b-vllm/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "model": "{{model_slug}}",
+    "prompt": "{{prompt}}",
+    "stop": [
+      "<|eot_id|>",
+      "<|end_of_text|>"
+    ],
+    "stream": true,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 8192,
+    "parameterCount": 8000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/aaditya/Llama3-OpenBioLLM-8B",
+    "tags": [
+      "healthcare",
+      "life-science",
+      "biomedical",
+      "medical",
+      "biology",
+      "language-model",
+      "chat",
+      "llama-3",
+      "vllm",
+      "research-only"
+    ],
+    "versionLabel": "HF 70d6bb5 via vLLM 0.21.0"
+  },
+  "shortDescription": "Llama3 OpenBioLLM 8B is a public biomedical instruction-tuned Llama 3 8B derivative intended for biomedical question answering and research workflows.",
+  "skillName": "use-forge-aaditya-llama3-openbiollm-8b-vllm",
+  "skillUrl": "/v1/model-skills/aaditya-llama3-openbiollm-8b-vllm",
+  "slug": "aaditya-llama3-openbiollm-8b-vllm",
+  "stability": "testing",
+  "version": "70d6bb5",
+  "versionKey": "hf-70d6bb5-vllm-0-21-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `aaditya-llama3-openbiollm-8b-vllm` version when the task supplies text and needs text.",
+    "Llama3 OpenBioLLM 8B is a public biomedical instruction-tuned Llama 3 8B derivative intended for biomedical question answering and research workflows.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `aaditya-llama3-openbiollm-8b-vllm` with version key `hf-70d6bb5-vllm-0-21-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

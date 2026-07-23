@@ -1,0 +1,472 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "NomicBertModel"
+      ],
+      "max_seq_length": 512,
+      "model_type": "nomic_bert",
+      "moe_every_n_layers": 2,
+      "moe_top_k": 2,
+      "n_embd": 768,
+      "n_head": 12,
+      "n_layer": 12,
+      "n_positions": 2048,
+      "num_experts": 8,
+      "torch_dtype": "float32"
+    },
+    "artifact_evidence": "Hugging Face API reports nomic-ai/nomic-embed-text-v2-moe as public, ungated, enabled, Apache-2.0, sentence-transformers, safetensors, custom_code, text-embeddings-inference, and endpoints_compatible.",
+    "artifact_files": {
+      "config_blob": "12045d4abeeaf7495a8f05d1b14a32dd7028287f",
+      "model.safetensors_size_bytes": 1901187232,
+      "weights_blob": "f29c6d579caf47e22e852e1cd1ae5dc63b513871"
+    },
+    "artifact_parameters": {
+      "active": 305000000,
+      "total": 475000000
+    },
+    "artifact_revision": "1066b6599d099fbb93dfcb64f9c37a7c9e503e85",
+    "b200_smoke_20260527T15Z": {
+      "benchmark_samples": 1,
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "gpu_node": "computeinstance-u00db1ktza1d7qtn81",
+      "image_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "model_time_source": "client_wall_ms",
+      "probe_upserted_live_support": true,
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260527T15Z-b200-smoke.json",
+      "report_md": "docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260527T15Z-b200-smoke.md",
+      "request_ms": 179,
+      "response_status": 200,
+      "startup_ms": 349738,
+      "status": "supported",
+      "tokens_per_second": 184.36,
+      "vram_used_gb": 1.71,
+      "warmup_samples": 1
+    },
+    "b300_diagnostic_20260528T15Z": {
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "exit_code": 1,
+      "gpu_type": "B300",
+      "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference:cuda-1.9@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "log_tail": "cuda compute cap 103 is not supported",
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "pod": "forge-probe-nomic-ai-nomic-embed-tex-b300-uk-south1-795333",
+      "probe_command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9 --include-status onboarding --gpu B300 --region uk-south1 --timeout 900 --request-timeout 120 --warmup-runs 0 --benchmark-runs 1 --max-parallel 1 --keep-pods --report-json docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T15Z-b300-diagnostic.json --report-md docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T15Z-b300-diagnostic.md",
+      "probe_upserted_live_support": true,
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T15Z-b300-diagnostic.json",
+      "report_md": "docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T15Z-b300-diagnostic.md",
+      "retained_pod_cleaned_up": true,
+      "status": "other_error"
+    },
+    "blockers": [
+      "B300/uk-south1 remains disabled until a newer SM103-capable TEI runtime or Forge-owned wrapper is validated.",
+      "Keep default_eligible=false until product accepts non-B300 default coverage or B300 support is added.",
+      "Matryoshka dimension truncation is not exposed in the Forge playground until the selected TEI runtime request shape is validated for this model."
+    ],
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_license_evidence": "skopeo inspect labels for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 report org.opencontainers.image.licenses=Apache-2.0, org.opencontainers.image.version=cuda-1.9.3, org.opencontainers.image.revision=06670157fb6c1523482219bdb2d1660277d38088, and created=2026-03-23T09:18:22Z.",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image",
+    "executed_probe_command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9 --include-status onboarding --gpu B200 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T01Z-non-b300-matrix.json --report-md docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T01Z-non-b300-matrix.md",
+    "latest_matrix_probe": {
+      "b300_blocker": "Pinned TEI CUDA 1.9.3 image lacks an SM103/B300 runtime path for this model; the 2026-05-28T15Z retained B300 diagnostic exited at entrypoint with cuda compute cap 103 is not supported.",
+      "benchmark_runs": 10,
+      "cells_blocked": [
+        "B300/uk-south1"
+      ],
+      "cells_supported": {
+        "B200/us-central1": {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00vkvvrt96bbjxpa5",
+          "request_ms_p50": 168,
+          "request_ms_samples": [
+            167,
+            168,
+            168,
+            167,
+            169,
+            168,
+            167,
+            167,
+            166,
+            168
+          ],
+          "startup_ms": 268830,
+          "tokens_per_second": 196.43,
+          "vram_used_gb": 1.71
+        },
+        "H200/eu-north2": {
+          "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+          "node": "computeinstance-e02hg4b4tftehffqzr",
+          "request_ms_p50": 108,
+          "request_ms_samples": [
+            108,
+            108,
+            107,
+            107,
+            109,
+            108,
+            108,
+            108,
+            107,
+            107
+          ],
+          "startup_ms": 325104,
+          "tokens_per_second": 305.56,
+          "vram_used_gb": 1.65
+        },
+        "L40S/eu-north1": {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "node": "computeinstance-e00df18tkn1sh37ez7",
+          "request_ms_p50": 106,
+          "request_ms_samples": [
+            105,
+            106,
+            105,
+            106,
+            106,
+            106,
+            106,
+            108,
+            106,
+            105
+          ],
+          "startup_ms": 248859,
+          "tokens_per_second": 311.32,
+          "vram_used_gb": 1.47
+        },
+        "RTX6000/us-central1": {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00q2bv4rkq7sth2vf",
+          "request_ms_p50": 166,
+          "request_ms_samples": [
+            166,
+            166,
+            167,
+            165,
+            165,
+            165,
+            166,
+            165,
+            166,
+            165
+          ],
+          "startup_ms": 354003,
+          "tokens_per_second": 198.8,
+          "vram_used_gb": 1.59
+        }
+      },
+      "endpoint": "/v1/embeddings",
+      "generated_at": "2026-05-28T01:11:12Z",
+      "probe_upserted_live_support": true,
+      "report_json": "docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T01Z-non-b300-matrix.json",
+      "report_md": "docs/model-onboarding/general/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9-20260528T01Z-non-b300-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "status": "partial_supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face model card and API cardData report license:apache-2.0; TEI image labels report Apache-2.0.",
+    "onboarding_state": "active_testing_nondefault_b200_h200_l40s_rtx6000_supported_b300_sm103_entrypoint_incompatible",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260528T15Z": {
+      "b300_policy": "Keep gpu_compatibility.B300=false until an SM103-capable TEI or Forge-owned embedding runtime is validated.",
+      "default_eligible": false,
+      "reason": "B200, H200, L40S, and RTX6000 have 10 measured warm embedding requests on the pinned TEI CUDA 1.9.3 digest, and B300 is directly classified as SM103 entrypoint-incompatible instead of left ambiguous.",
+      "status": "promote_to_active_testing_nondefault"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-28T01Z",
+    "runtime_evidence": "The TEI README documents ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 Docker serving with --model-id and lists NomicBERT plus the exact nomic-ai/nomic-embed-text-v2-moe model among supported text embedding models.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "source_evidence": [
+      "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+      "https://huggingface.co/api/models/nomic-ai/nomic-embed-text-v2-moe?blobs=true",
+      "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/raw/main/config.json",
+      "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/raw/main/modules.json",
+      "https://github.com/huggingface/text-embeddings-inference",
+      "https://github.com/huggingface/text-embeddings-inference/pkgs/container/text-embeddings-inference"
+    ]
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "mixture_of_experts",
+    "matryoshka",
+    "nomic",
+    "huggingface",
+    "tei",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-27T15:03:55.193384+00:00",
+  "default_eligible": false,
+  "description": "Nomic Embed Text v2 MoE is a public Apache-2.0 multilingual text embedding model for retrieval, RAG indexing, semantic search, and clustering. Hugging Face API metadata refreshed on 2026-05-28T01Z reports private=false, gated=false, disabled=false, license:apache-2.0, sentence-transformers usage, safetensors weights, a 1.90 GB model.safetensors artifact, and text-embeddings-inference/endpoints_compatible tags at revision 1066b6599d099fbb93dfcb64f9c37a7c9e503e85. The model card describes 475M total parameters, 305M active parameters during inference, 8 experts with top-2 routing, 768-dimensional Matryoshka embeddings that can be truncated to 256 dimensions, 512-token maximum input length, around 100 supported languages, and required search_query/search_document prefixes. This Forge active testing profile reuses the already mirrored TEI CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, clears unnecessary Hugging Face token environment variables for the public artifact, and stores Hugging Face cache under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. A 2026-05-28T01Z standard non-B300 matrix validated B200/us-central1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 3 warmup requests and 10 measured OpenAI-compatible embedding requests per cell. B300 remains disabled because the 2026-05-28T15Z retained diagnostic pod scheduled on B300/uk-south1 and exited before readiness with `cuda compute cap 103 is not supported` from the pinned TEI CUDA 1.9.3 image.",
+  "family_id": "f504467f-1b31-4121-bef1-fbdfe28c8486",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "nomic-ai/nomic-embed-text-v2-moe",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "nomic-ai/nomic-embed-text-v2-moe"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T01:09:46.619377+00:00",
+      "region": "us-central1",
+      "request_ms": 168,
+      "request_ms_p50": 168,
+      "request_ms_p95": 174,
+      "request_ms_p99": 178,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 268830,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 196.43,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T15:04:42.728757+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T01:10:41.488346+00:00",
+      "region": "eu-north2",
+      "request_ms": 108,
+      "request_ms_p50": 108,
+      "request_ms_p95": 109,
+      "request_ms_p99": 109,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 325104,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 305.56,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.65,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T01:09:25.330263+00:00",
+      "region": "eu-north1",
+      "request_ms": 106,
+      "request_ms_p50": 106,
+      "request_ms_p95": 107,
+      "request_ms_p99": 108,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 248859,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 311.32,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.47,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T01:11:11.779625+00:00",
+      "region": "us-central1",
+      "request_ms": 166,
+      "request_ms_p50": 166,
+      "request_ms_p95": 167,
+      "request_ms_p99": 167,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 354003,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 198.8,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.59,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "d9272869-2457-4aa0-b00c-c7a5a3ae0aa4",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "nomic-ai-nomic-embed-text-v2-moe",
+  "name": "Nomic Embed Text v2 MoE",
+  "parameter_count": 475000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "nomic-ai/nomic-embed-text-v2-moe"
+    },
+    "input_fields": [
+      {
+        "default": "search_query: How can multilingual embeddings improve support-ticket retrieval across English, Spanish, and Japanese knowledge bases?",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      }
+    ],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 66,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "mixture-of-experts",
+    "matryoshka",
+    "nomic",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for Nomic Embed Text v2 MoE as an active testing, non-default embedding profile.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

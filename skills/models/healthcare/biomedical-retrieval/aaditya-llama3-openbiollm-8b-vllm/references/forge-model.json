@@ -1,0 +1,801 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "LlamaForCausalLM"
+      ],
+      "max_position_embeddings": 8192,
+      "model_type": "llama",
+      "torch_dtype": "bfloat16",
+      "vocab_size": 128256
+    },
+    "artifact_disabled": false,
+    "artifact_gated": false,
+    "artifact_license": "llama3",
+    "artifact_private": false,
+    "artifact_sha": "70d6bb521cab6ca755b675ade38831eedf89d31c",
+    "artifact_source": "https://huggingface.co/aaditya/Llama3-OpenBioLLM-8B",
+    "b200_chat_endpoint_probe_20260524T06Z": {
+      "error": "missing_tokenizer_chat_template",
+      "error_detail": "As of transformers v4.44, default chat template is no longer allowed, so you must provide a chat template if the tokenizer does not define one.",
+      "gpu_type": "B200",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T06Z-b200-smoke.json",
+      "report_md": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T06Z-b200-smoke.md",
+      "request_endpoint": "/v1/chat/completions",
+      "response_status": 400,
+      "status": "other_error",
+      "vram_used_gb": 152.52
+    },
+    "b200_completions_probe_20260524T06Z": {
+      "gpu_type": "B200",
+      "node": "computeinstance-u00trmcw3k8b89x53m",
+      "pod_name": "forge-probe-aaditya-llama3-openbioll-b200-us-central1-2c12af",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T06Z-b200-completions-smoke.json",
+      "report_md": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T06Z-b200-completions-smoke.md",
+      "request_ms_p50": 167,
+      "request_ms_samples": [
+        166,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        168,
+        167,
+        166
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 610365,
+      "status": "supported",
+      "tokens_per_second": 221.56,
+      "vram_used_gb": 152.52
+    },
+    "b200_instruct_prompt_probe_20260524T08Z": {
+      "gpu_type": "B200",
+      "node": "computeinstance-u00w0dttgfzej44hh3",
+      "pod_name": "forge-probe-aaditya-llama3-openbioll-b200-us-central1-a9acdd",
+      "prompt_contract": "explicit_llama3_instruct_envelope_via_completions_endpoint",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T08Z-b200-instruct-smoke.json",
+      "report_md": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T08Z-b200-instruct-smoke.md",
+      "request_ms_p50": 898,
+      "request_ms_samples": [
+        812,
+        983,
+        881,
+        946,
+        622,
+        1024,
+        915,
+        859,
+        1008,
+        824
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_nonempty": true,
+      "response_status": 200,
+      "startup_ms": 619986,
+      "status": "supported",
+      "stop": [
+        "<|eot_id|>",
+        "<|end_of_text|>"
+      ],
+      "tokens_per_second": 315.14,
+      "vram_used_gb": 152.52
+    },
+    "container_source_decision": "reuse_existing_digest_pinned_vllm_openai_0_21_0_cuda13_image",
+    "current_evidence_20260524T06Z": {
+      "docker_hub_tag": {
+        "amd64_digest": "sha256:4ac9b7c6dabc3ec762c0edef4e9245abe98373844da91cc53ee42e5c58280c5b",
+        "amd64_size_bytes": 8669266122,
+        "last_updated": "2026-05-15T06:46:48.042663Z",
+        "name": "v0.21.0"
+      },
+      "hf_api": {
+        "disabled": false,
+        "downloads": 82099,
+        "gated": false,
+        "lastModified": "2025-01-18T07:40:39.000Z",
+        "library_name": "transformers",
+        "license": "llama3",
+        "likes": 239,
+        "pipeline_tag": "text-generation",
+        "private": false,
+        "sha": "70d6bb521cab6ca755b675ade38831eedf89d31c",
+        "siblings_count": 12,
+        "weight_format": "pytorch_bin_sharded_no_safetensors_observed"
+      },
+      "hf_config": {
+        "architectures": [
+          "LlamaForCausalLM"
+        ],
+        "max_position_embeddings": 8192,
+        "model_type": "llama",
+        "torch_dtype": "bfloat16",
+        "transformers_version": "4.40.0.dev0",
+        "vocab_size": 128256
+      },
+      "regional_mirror_recheck": {
+        "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "regions": {
+          "eu-north1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+          "eu-north2": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+          "uk-south1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+          "us-central1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+        },
+        "status": "verified_all_four_regions"
+      },
+      "request_contract_decision": "Use /v1/completions because the tokenizer has no chat template and vLLM rejects /v1/chat/completions with HTTP 400.",
+      "skopeo_inspect": {
+        "architecture": "amd64",
+        "created": "2026-05-15T05:00:10.16705162Z",
+        "cuda_version": "13.0.2",
+        "layers": 26,
+        "manifest_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "os": "linux",
+        "source_label": "https://github.com/vllm-project/vllm",
+        "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+        "vllm_enable_cuda_compatibility": "0"
+      }
+    },
+    "default_routing_gate_20260608": {
+      "reason": "Active public-preview vLLM 0.21 profile lacks the required VLLM_MAX_N_SEQUENCES guard; keep visible but non-default until refreshed or guarded.",
+      "status": "default_routing_disabled_for_public_preview",
+      "updated_at": "2026-06-08T13:11:37+00:00"
+    },
+    "full_matrix_probe_20260524T07Z": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_supported": {
+        "B200/us-central1": {
+          "request_ms_p50": 168,
+          "request_ms_samples": [
+            168,
+            169,
+            169,
+            168,
+            168,
+            168,
+            168,
+            169,
+            168,
+            168
+          ],
+          "startup_ms": 604025,
+          "tokens_per_second": 220.24,
+          "vram_used_gb": 152.52
+        },
+        "B300/uk-south1": {
+          "request_ms_p50": 74,
+          "request_ms_samples": [
+            73,
+            74,
+            73,
+            74,
+            74,
+            74,
+            74,
+            74,
+            74,
+            75
+          ],
+          "startup_ms": 156074,
+          "tokens_per_second": 500.0,
+          "vram_used_gb": 228.46
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 109,
+          "request_ms_samples": [
+            109,
+            109,
+            109,
+            109,
+            109,
+            109,
+            109,
+            109,
+            109,
+            109
+          ],
+          "startup_ms": 602963,
+          "tokens_per_second": 339.45,
+          "vram_used_gb": 119.83
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 117,
+          "request_ms_samples": [
+            117,
+            117,
+            116,
+            116,
+            117,
+            117,
+            117,
+            117,
+            116,
+            117
+          ],
+          "startup_ms": 118003,
+          "tokens_per_second": 316.24,
+          "vram_used_gb": 37.73
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 177,
+          "request_ms_samples": [
+            177,
+            178,
+            177,
+            177,
+            177,
+            177,
+            177,
+            177,
+            177,
+            177
+          ],
+          "startup_ms": 143024,
+          "tokens_per_second": 209.04,
+          "vram_used_gb": 81.4
+        }
+      },
+      "endpoint": "/v1/completions",
+      "live_support_upsert": true,
+      "model_status": "onboarding",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "quality_note": "The plain completion prompt returned HTTP 200 on all cells but response previews contained empty completion text; this was classified as a prompt-contract quality blocker, not a runtime/GPU support failure.",
+      "report_json": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T07Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T07Z-full-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "healthcare_safety_gate": {
+      "allowed_scope": "Nonclinical biomedical literature triage, research summarization, and scientific workflow drafting.",
+      "checked_at": "2026-05-24T06:04:00Z",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "Healthcare product safety review approval",
+        "Llama 3 license review for Forge distribution and customer-facing use",
+        "Customer-facing nonclinical positioning copy"
+      ]
+    },
+    "hf_api_checked_at": "2026-05-24T06:04:00Z",
+    "hf_downloads_at_check": 82099,
+    "hf_likes_at_check": 239,
+    "latest_onboarding_state": "five_cell_matrix_supported_all_instruct_prompt_nonempty_pending_license_safety",
+    "non_b200_instruct_prompt_probe_20260524T10Z": {
+      "benchmark_runs": 10,
+      "cells": 4,
+      "cells_supported": {
+        "B300/uk-south1": {
+          "request_ms_p50": 815,
+          "request_ms_samples": [
+            729,
+            901,
+            799,
+            865,
+            537,
+            942,
+            831,
+            777,
+            927,
+            740
+          ],
+          "startup_ms": 91904,
+          "tokens_per_second": 347.24,
+          "vram_used_gb": 228.46
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 1026,
+          "request_ms_samples": [
+            1266,
+            778,
+            674,
+            969,
+            1210,
+            713,
+            1386,
+            1115,
+            709,
+            1083
+          ],
+          "startup_ms": 610770,
+          "tokens_per_second": 292.4,
+          "vram_used_gb": 119.7
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 4750,
+          "request_ms_samples": [
+            4804,
+            4484,
+            4932,
+            5123,
+            4697,
+            3909,
+            4101,
+            4655,
+            4867,
+            4952
+          ],
+          "startup_ms": 83953,
+          "tokens_per_second": 69.89,
+          "vram_used_gb": 38.25
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 2512,
+          "request_ms_samples": [
+            1984,
+            3085,
+            3105,
+            2484,
+            2951,
+            2333,
+            2745,
+            2253,
+            2539,
+            1852
+          ],
+          "startup_ms": 120010,
+          "tokens_per_second": 99.92,
+          "vram_used_gb": 81.4
+        }
+      },
+      "endpoint": "/v1/completions",
+      "live_support_upsert": true,
+      "model_status": "onboarding",
+      "prompt_contract": "explicit_llama3_instruct_envelope_via_completions_endpoint",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "report_json": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T10Z-non-b200-instruct-reprobe.json",
+      "report_md": "docs/model-onboarding/hcls/aaditya-llama3-openbiollm-8b-vllm-20260524T10Z-non-b200-instruct-reprobe.md",
+      "request_time_source": "client_wall_ms",
+      "response_nonempty": true,
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "onboarding_state": "five_cell_matrix_supported_b200_instruct_prompt_nonempty_pending_license_safety",
+    "probe_blockers": [
+      "Keep hidden until Llama 3 license review and healthcare product safety review approve routable/customer-facing use."
+    ],
+    "prompt_contract_resolution": [
+      "The 2026-05-24T06Z B200 chat-completions smoke reached vLLM but failed with HTTP 400 because the tokenizer lacks a chat template.",
+      "The 2026-05-24T07Z five-cell /v1/completions matrix passed on B200, B300, H200, L40S, and RTX6000, but the plain prompt returned empty completion text.",
+      "The 2026-05-24T08Z and 2026-05-24T10Z instruct-envelope /v1/completions reprobes returned non-empty text across B200, B300, H200, L40S, and RTX6000."
+    ],
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "regional_mirror_refs": {
+      "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1",
+      "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1",
+      "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1",
+      "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1"
+    },
+    "regional_mirror_verified_at": "2026-05-24T06:05:00Z",
+    "runtime_image": "docker.io/vllm/vllm-openai:v0.22.1",
+    "runtime_image_amd64_digest": "sha256:4ac9b7c6dabc3ec762c0edef4e9245abe98373844da91cc53ee42e5c58280c5b",
+    "runtime_image_amd64_size_bytes": 8669266122,
+    "runtime_image_checked_at": "2026-05-24T06:05:00Z",
+    "runtime_image_evidence": {
+      "architecture": "amd64",
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "layers": 26,
+      "os": "linux",
+      "source_label": "https://github.com/vllm-project/vllm",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+      "vllm_enable_cuda_compatibility": "0"
+    },
+    "runtime_image_manifest_digest": "sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "medical",
+    "biology",
+    "language_model",
+    "chat",
+    "llama_3",
+    "vllm",
+    "research_only",
+    "text",
+    "openai_compatible",
+    "completion",
+    "text_generation",
+    "streaming"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+  "container_image_size_bytes": 8669266122,
+  "context_window": 8192,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-24T05:14:10.936799+00:00",
+  "default_eligible": false,
+  "description": "Llama3 OpenBioLLM 8B is a public biomedical instruction-tuned Llama 3 8B derivative intended for biomedical question answering and research workflows. This Forge onboarding manifest keeps the model hidden and non-default while license and safety review work proceed. Hugging Face API metadata checked on 2026-05-24 reports private=false, gated=false, disabled=false, license=llama3, commit 70d6bb521cab6ca755b675ade38831eedf89d31c, LlamaForCausalLM architecture, bfloat16 weights, and 8192 position embeddings. The selected container is the already mirrored vLLM 0.21.0 CUDA 13 OpenAI-compatible image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9. A 2026-05-24 B200 smoke reached vLLM but the chat-completions request failed because the tokenizer has no chat template, so the manifest now uses /v1/completions with an explicit Llama 3 instruct prompt envelope and stop tokens. B200, B300, H200, L40S, and RTX6000 now have supported probe evidence with non-empty instruct-envelope completions. The default playground prompt is limited to nonclinical biomedical literature triage. The model must not be used for medical advice, clinical decision-making, diagnosis, treatment, triage, or patient-specific interpretation.",
+  "family_id": "1c29e847-39bb-4eba-9fb1-5e1f5aa3f47b",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "--model",
+      "aaditya/Llama3-OpenBioLLM-8B",
+      "--served-model-name",
+      "aaditya-llama3-openbiollm-8b-vllm",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--download-dir",
+      "/mnt/data/hf-cache/aaditya-llama3-openbiollm-8b-vllm",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "4096",
+      "--gpu-memory-utilization",
+      "0.85"
+    ],
+    "container_env": {
+      "HF_HOME": "/mnt/data/hf-cache",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/transformers",
+      "VLLM_CACHE_ROOT": "/mnt/data/vllm-cache/aaditya-llama3-openbiollm-8b-vllm",
+      "XDG_CACHE_HOME": "/mnt/data/cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 32.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T08:15:31.314476+00:00",
+      "region": "us-central1",
+      "request_ms": 898,
+      "request_ms_p50": 168,
+      "request_ms_p95": 997,
+      "request_ms_p99": 1019,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 619986,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 315.14,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 152.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:06:36.162592+00:00",
+      "region": "uk-south1",
+      "request_ms": 815,
+      "request_ms_p50": 306,
+      "request_ms_p95": 928,
+      "request_ms_p99": 939,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 91904,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 347.24,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 228.46,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": "ApiException: (422)\nReason: Unprocessable Entity\nHTTP response headers: HTTPHeaderDict({'Audit-Id': '1b446d93-8f50-4a84-9dc6-20ebb5dcf360', 'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'Warning': '299 - \"would violate PodSecurity \\\\\"baseline:v1.33\\\\\": hostPath volumes (volumes \\\\\"shared-data\\\\\", \\\\\"nim-cache\\\\\")\"', 'X-Kubernetes-Pf-Flowschema-Uid': 'd1686236-3960-49a4-8029-02bf65ca7622', 'X-Kubernetes-Pf-Prioritylevel-Uid': '00e0abb3-5692-4c2b-b83f-d566518dec78', 'Da",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:13:24.859067+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "ApiException: (422)\nReason: Unprocessable Entity\nHTTP response headers: HTTPHeaderDict({'Audit-Id': '26201071-7631-43c8-9742-40bd6bacfcf0', 'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'Warning': '299 - \"would violate PodSecurity \\\\\"baseline:v1.33\\\\\": hostPath volumes (volumes \\\\\"shared-data\\\\\", \\\\\"nim-cache\\\\\")\"', 'X-Kubernetes-Pf-Flowschema-Uid': 'd1686236-3960-49a4-8029-02bf65ca7622', 'X-Kubernetes-Pf-Prioritylevel-Uid': '00e0abb3-5692-4c2b-b83f-d566518dec78', 'Da",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:13:24.342233+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:15:18.445019+00:00",
+      "region": "eu-north2",
+      "request_ms": 1026,
+      "request_ms_p50": 392,
+      "request_ms_p95": 1272,
+      "request_ms_p99": 1363,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 610770,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 292.4,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 119.7,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "ApiException: (422)\nReason: Unprocessable Entity\nHTTP response headers: HTTPHeaderDict({'Audit-Id': '3989e836-af53-4bce-babf-a8f6aff34ef0', 'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'Warning': '299 - \"would violate PodSecurity \\\\\"baseline:v1.33\\\\\": hostPath volumes (volumes \\\\\"shared-data\\\\\", \\\\\"nim-cache\\\\\")\"', 'X-Kubernetes-Pf-Flowschema-Uid': 'f1dbae13-bec9-4c53-ae75-197ff1de7395', 'X-Kubernetes-Pf-Prioritylevel-Uid': '3a4962a5-4229-4333-a03f-9e79f7012255', 'Da",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:13:25.064290+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:07:14.497068+00:00",
+      "region": "eu-north1",
+      "request_ms": 4750,
+      "request_ms_p50": 2013,
+      "request_ms_p95": 4961,
+      "request_ms_p99": 5091,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 83953,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 69.89,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 38.25,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:07:58.330453+00:00",
+      "region": "us-central1",
+      "request_ms": 2512,
+      "request_ms_p50": 1015,
+      "request_ms_p95": 3086,
+      "request_ms_p99": 3101,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 120010,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 99.92,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 81.4,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    }
+  ],
+  "gpu_type": null,
+  "id": "1a2050cf-5b87-4dd5-82bd-3fffbc306fea",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "llama3",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "aaditya-llama3-openbiollm-8b",
+  "name": "Llama3 OpenBioLLM 8B",
+  "parameter_count": 8000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "stop": [
+          "<|eot_id|>",
+          "<|end_of_text|>"
+        ],
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/completions",
+      "method": "POST",
+      "upstream_model_id": "aaditya-llama3-openbiollm-8b-vllm"
+    },
+    "input_fields": [
+      {
+        "default": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nYou are OpenBioLLM running in a Forge onboarding safety gate. Answer only for nonclinical biomedical research, literature triage, and scientific workflow drafting. Do not provide medical advice, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nFor nonclinical biomedical literature triage, summarize how large language models can help compare gene-disease association evidence. Include two limitations and avoid diagnosis, treatment, or patient-specific recommendations.<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+        "key": "prompt",
+        "label": "Llama 3 Instruct Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "markdown",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 1024,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/hf-cache/aaditya-llama3-openbiollm-8b-vllm",
+      "kind": "vllm_openai",
+      "model_id": "aaditya/Llama3-OpenBioLLM-8B",
+      "model_revision": "70d6bb521cab6ca755b675ade38831eedf89d31c",
+      "served_model_name": "aaditya-llama3-openbiollm-8b-vllm"
+    },
+    "schema_version": 1,
+    "type": "completion"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "release_rank": 34,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "aaditya-llama3-openbiollm-8b-vllm",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/aaditya/Llama3-OpenBioLLM-8B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical",
+    "medical",
+    "biology",
+    "language-model",
+    "chat",
+    "llama-3",
+    "vllm",
+    "research-only"
+  ],
+  "updated_at": "2026-06-30T13:36:31.063146+00:00",
+  "version": "70d6bb5",
+  "version_description": "aaditya/Llama3-OpenBioLLM-8B served through the stock vLLM OpenAI-compatible CUDA 13 container with Forge request model aligned to the vLLM served model name. The tokenizer does not define a chat template for current vLLM/Transformers, so Forge probes use the OpenAI completions endpoint with an explicit Llama 3 instruct prompt envelope. The instruct-envelope contract now has non-empty response evidence on B200, B300, H200, L40S, and RTX6000.",
+  "version_key": "hf-70d6bb5-vllm-0-21-0",
+  "version_label": "HF 70d6bb5 via vLLM 0.21.0"
+}

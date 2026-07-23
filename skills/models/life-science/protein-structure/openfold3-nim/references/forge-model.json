@@ -1,0 +1,892 @@
+{
+  "benchmark_scores": {
+    "api_reference": "https://docs.api.nvidia.com/nim/reference/openfold-openfold3",
+    "artifact_license": "nvidia_open_model_license_with_apache_2_0_additional_information",
+    "artifact_source": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/",
+    "b200_l40s_reprobe_20260525T00Z": {
+      "b200_us_central1": {
+        "fallback_attempted": "captured the scheduler event, deleted the pending probe pod to avoid waiting for the full 4200 second timeout, and treated B200 as unclassified rather than unsupported",
+        "pod": "forge-probe-openfold3-nim-b200-us-central1-722268",
+        "scheduler_event": "0/11 nodes are available: 1 node(s) had untolerated taint {forge.nebius.com/utility: true}, 2 node(s) had untolerated taint {node.cluster.x-k8s.io/uninitialized: }, 8 node(s) didn't match Pod's node affinity/selector; autoscaler did not trigger scale-up because the max node group size was reached",
+        "status": "capacity_blocked_before_runtime"
+      },
+      "checked_at": "2026-05-25T00:08:37Z",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openfold3-nim --include-status active --include-status onboarding --gpu B200 --gpu L40S --timeout 4200 --request-timeout 1200 --warmup-runs 3 --benchmark-runs 10 --max-parallel 2 --report-json docs/model-onboarding/hcls/openfold3-nim-20260525T00Z-b200-l40s-reprobe.json --report-md docs/model-onboarding/hcls/openfold3-nim-20260525T00Z-b200-l40s-reprobe.md",
+      "l40s_eu_north1": {
+        "benchmark_request_ms": 13208,
+        "benchmark_runs": 10,
+        "evidence": [
+          "pod reached readiness with the existing /tmp command override and OUTPUT_DIR=/tmp/openfold-output",
+          "all 3 warmups and 10 measured requests returned HTTP 200",
+          "response preview contained ranked PDB ATOM records for request forge-openfold3"
+        ],
+        "model_time_source": "client_wall_ms",
+        "node": "computeinstance-e00df18tkn1sh37ez7",
+        "pod": "forge-probe-openfold3-nim-l40s-eu-north1-d2bf50",
+        "request_ms_samples": [
+          13184,
+          13326,
+          13320,
+          13206,
+          13374,
+          13115,
+          13172,
+          13432,
+          13210,
+          13170
+        ],
+        "startup_ms": 100086,
+        "status": "supported",
+        "vram_used_gb": 2.86,
+        "warmup_runs": 3
+      },
+      "report_json": "docs/model-onboarding/hcls/openfold3-nim-20260525T00Z-b200-l40s-reprobe.json",
+      "report_md": "docs/model-onboarding/hcls/openfold3-nim-20260525T00Z-b200-l40s-reprobe.md"
+    },
+    "b200_reprobe_20260525T21Z": {
+      "benchmark_request_ms": 9196,
+      "benchmark_runs": 10,
+      "checked_at": "2026-05-25T21:16:27Z",
+      "cleanup": "Retained probe pod deleted after evidence capture; a follow-up selector returned no OpenFold3 probe pods.",
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "command": "POSTGRES_URL loaded from forge-platform-secrets; PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openfold3-nim --include-status active --include-status onboarding --gpu B200 --region us-central1 --timeout 4200 --request-timeout 1200 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --keep-pods --report-json docs/model-onboarding/hcls/openfold3-nim-20260525T21Z-b200-reprobe.json --report-md docs/model-onboarding/hcls/openfold3-nim-20260525T21Z-b200-reprobe.md",
+      "evidence": [
+        "the 21Z pod scheduled on B200 capacity, replacing the prior 00Z capacity blocker",
+        "the model image pulled successfully in 9m4.706s with image size 10378705991 bytes",
+        "prepare-nim-cache completed and mounted writable /opt/nim/workspace, /opt/nim/.cache, and /tmp",
+        "NIM detected B200 SM100, selected profile 54456e96e7d568a4f8f49d045d8b1e14f5c29d4a6118355e90e8c9d86928adf9, and reused cached B200 TensorRT artifacts",
+        "all 3 warmups and 10 measured requests returned HTTP 200 with ranked PDB ATOM records for request forge-openfold3"
+      ],
+      "gpu": "B200",
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-openfold-openfold3:latest@sha256:d28705986996ae674e9104714a91ca21baab4897bf3176bdd32efdb867604150",
+      "image_pull_ms": 544706,
+      "live_support_row": {
+        "probed_at": "2026-05-25T21:16:26.152110Z",
+        "request_ms": 9196,
+        "request_ms_p50": 9205,
+        "request_ms_p95": 9564,
+        "request_ms_samples": 11,
+        "status": "supported"
+      },
+      "model_time_source": "client_wall_ms",
+      "node": "computeinstance-u00e2shgqf66h7hg9m",
+      "pod": "forge-probe-openfold3-nim-b200-us-central1-0e8a76",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/hcls/openfold3-nim-20260525T21Z-b200-reprobe.json",
+      "report_md": "docs/model-onboarding/hcls/openfold3-nim-20260525T21Z-b200-reprobe.md",
+      "request_ms_samples": [
+        8944,
+        8985,
+        9661,
+        9187,
+        9255,
+        9135,
+        9024,
+        9248,
+        9354,
+        9205
+      ],
+      "response_status": 200,
+      "startup_ms": 625886,
+      "status": "supported",
+      "vram_used_gb": 3.03,
+      "warmup_runs": 3
+    },
+    "b300_baseline_diagnostic_20260525T23Z": {
+      "checked_at": "2026-05-25T23:25:20Z",
+      "cleanup": "Deleted retained stock probe pod plus manual baseline and inspector pods; follow-up should verify no 23Z OpenFold3 diagnostic pods remain.",
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "fallback_discovery": {
+        "baseline_difference": "runner_inference_baseline.yml sets use_cueq_triangle_kernels: false; runner_inference_cueq.yml sets it true.",
+        "method": "hardened no-GPU inspector pod on the same node using the already mirrored image",
+        "runner_args": [
+          "runner_inference_baseline.yml",
+          "runner_inference_cueq.yml"
+        ],
+        "selection_logic": "di.py uses runner_inference_baseline.yml when NIM_OPTIMIZED_BACKEND=torch_baseline, otherwise it defaults to runner_inference_cueq.yml unless RUNNER_ARGS_PATH is explicitly set."
+      },
+      "gpu": "B300",
+      "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-openfold-openfold3:latest@sha256:d28705986996ae674e9104714a91ca21baab4897bf3176bdd32efdb867604150",
+      "live_support_row_after_stock_probe": {
+        "last_error": "RuntimeError: pod_start_failure:pod_failed",
+        "probed_at": "2026-05-25T23:14:29.495154Z",
+        "request_ms": null,
+        "request_ms_samples": 0,
+        "status": "other_error"
+      },
+      "manual_baseline_probe": {
+        "benchmark_request_ms": 13600,
+        "benchmark_runs": 10,
+        "container_start_to_ready_ms": 76000,
+        "env_overrides": {
+          "NIM_OPTIMIZED_BACKEND": "torch_baseline",
+          "RUNNER_ARGS_PATH": "/opt/nim/runner_args/runner_inference_baseline.yml"
+        },
+        "image_pull_ms": 487,
+        "max_request_ms": 13779,
+        "mean_request_ms": 13627,
+        "min_request_ms": 13531,
+        "model_time_source": "manual_in_pod_client_wall_ms",
+        "one_request_status": 200,
+        "pod": "openfold3-b300-baseline-23z",
+        "request_ms_samples": [
+          13595,
+          13531,
+          13737,
+          13606,
+          13716,
+          13548,
+          13624,
+          13577,
+          13558,
+          13779
+        ],
+        "response_evidence": "all measured requests returned HTTP 200, about 10.7 KB responses, and PDB ATOM output",
+        "status": "diagnostic_supported_not_matrix_supported",
+        "warmup_request_ms_samples": [
+          13698,
+          13645,
+          13657
+        ],
+        "warmup_runs": 3
+      },
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "recommendation": "Do not flip gpu_compatibility.B300 on the current global manifest. Productize the torch_baseline path as a B300-specific variant or scheduler/runtime override, then run the standard 3 warmup plus 10 measured probe before publishing B300 support.",
+      "region": "uk-south1",
+      "stock_probe": {
+        "container_exit_code": 134,
+        "evidence": [
+          "NIM detected nvidia b300 sxm6 ac with SM 103 and 268 GB device memory",
+          "profile selector found zero SM103 profiles and selected default profile 1893d0e15bbf50353e4482f25814cdc29c36ae8983b0b734fff862c0249c394b",
+          "TensorRT pairformer and token-transformer engine paths were absent, so NIM fell back from trt to torch",
+          "runner args stayed on /opt/nim/runner_args/runner_inference_cueq.yml",
+          "startup benchmark aborted in cuequivariance_ops.triton with LLVM ERROR: Cannot select: intrinsic %llvm.nvvm.tcgen05.wait.st"
+        ],
+        "failure": "SM103 profile missing; default cueq torch fallback aborts with LLVM ERROR: Cannot select: intrinsic %llvm.nvvm.tcgen05.wait.st",
+        "image_pull_ms": 504475,
+        "pod": "forge-probe-openfold3-nim-b300-uk-south1-0d8298",
+        "report_json": "docs/model-onboarding/hcls/openfold3-nim-20260525T23Z-b300-diagnostic.json",
+        "report_md": "docs/model-onboarding/hcls/openfold3-nim-20260525T23Z-b300-diagnostic.md",
+        "status": "other_error"
+      }
+    },
+    "b300_baseline_variant_decision_20260526T02Z": {
+      "baseline_slug": "openfold3-nim-b300-baseline",
+      "canonical_manifest_contract": "Keep openfold3-nim gpu_compatibility.B300=false and advertise B300 support only through openfold3-nim-b300-baseline until scheduler or catalog variant selection can choose runtime variants per GPU.",
+      "decision": "keep_separate_hidden_b300_variant",
+      "publication_change": "none_hidden_onboarding_default_ineligible",
+      "reason": "The stock NIM path remains supported on H200, B200, L40S, and RTX6000, but B300 SM103 falls through to the cueq torch path and aborts. The torch_baseline override is B300-specific and should not replace the faster stock TensorRT/profile paths on other GPUs.",
+      "standard_probe": {
+        "benchmark_request_ms": 13544,
+        "benchmark_runs": 10,
+        "gpu": "B300",
+        "model_time_source": "client_wall_ms",
+        "region": "uk-south1",
+        "report_json": "docs/model-onboarding/hcls/openfold3-nim-b300-baseline-20260526T00Z-b300-standard-probe.json",
+        "report_md": "docs/model-onboarding/hcls/openfold3-nim-b300-baseline-20260526T00Z-b300-standard-probe.md",
+        "status": "supported",
+        "vram_used_gb": 2.3
+      }
+    },
+    "cache_strategy": "Forge should mount /mnt/data/nim-cache/openfold3/1.4.0 at /opt/nim/.cache. NVIDIA documents NIM_CACHE_PATH=/opt/nim/.cache and first-start model-parameter hydration into that cache. Keep NIM telemetry disabled with NIM_TELEMETRY_MODE=0.",
+    "container_source_decision": "Selected the official NVIDIA NIM instead of building a Forge wrapper because NVIDIA publishes a maintained downloadable container, health endpoints, a documented /biology/openfold/openfold3/predict API, supported GPU matrix, and cache guidance.",
+    "direct_upstream_digest_check": {
+      "checked_at": "2026-05-24T18:02:34Z",
+      "commands": [
+        "crane digest nvcr.io/nim/openfold/openfold3:latest",
+        "crane manifest nvcr.io/nim/openfold/openfold3:latest"
+      ],
+      "error": "401 Unauthorized from nvcr.io; no NGC registry credentials were available to this worker",
+      "status": "blocked_without_ngc_auth"
+    },
+    "documented_gpu_support": {
+      "B200": "documented_supported",
+      "B300": "forge_supported_20260625_native_sm103_profile",
+      "H100": "forge_supported_20260625_native_h100_profile",
+      "H200": "documented_supported",
+      "L40S": "documented_supported",
+      "RTX6000": "pending_forge_sku_mapping_because_docs_name_rtx_pro_6000_blackwell_workstation_edition"
+    },
+    "h200_output_dir_reprobe": {
+      "benchmark_request_ms": 10168,
+      "benchmark_runs": 10,
+      "checked_at": "2026-05-24T21:07:26Z",
+      "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+      "evidence": [
+        "prepare-nim-cache init container completed successfully",
+        "NIM reused cached H200 profile artifacts under /opt/nim/.cache/ngc/hub/models--nim--openfold--openfold3/snapshots/1.4.0-gpuh200_sm90_v1",
+        "the command override started the stock NIM entrypoint from /tmp",
+        "OUTPUT_DIR=/tmp/openfold-output allowed MSA, query JSON, and response JSON writes",
+        "the response preview contained ranked PDB ATOM records for request forge-openfold3"
+      ],
+      "gpu": "H200",
+      "image": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-openfold-openfold3:latest@sha256:d28705986996ae674e9104714a91ca21baab4897bf3176bdd32efdb867604150",
+      "model_time_source": "client_wall_ms",
+      "node": "computeinstance-e02bf73e3ecaj6cvh5",
+      "pod": "forge-probe-openfold3-nim-h200-eu-north2-872c88",
+      "region": "eu-north2",
+      "report_json": "docs/model-onboarding/hcls/openfold3-nim-20260524T21Z-h200-output-dir-reprobe.json",
+      "report_md": "docs/model-onboarding/hcls/openfold3-nim-20260524T21Z-h200-output-dir-reprobe.md",
+      "request_ms_samples": [
+        10008,
+        10182,
+        10172,
+        10163,
+        10198,
+        10221,
+        10106,
+        10087,
+        10192,
+        10064
+      ],
+      "response_status": 200,
+      "startup_ms": 85978,
+      "status": "supported",
+      "vram_used_gb": 3.12,
+      "warmup_runs": 3
+    },
+    "image_config_snapshot": {
+      "backend_type": "pytorch",
+      "base_image": "nvcr.io/nvstaging/nim/bionemo-nim-base:openfold3-1.5.0-rc1",
+      "checked_at": "2026-06-25T13:25:00Z",
+      "created": "2026-06-04T03:30:57Z",
+      "cuda_version": "13.1.0.036",
+      "nim_name": "openfold-3",
+      "nim_version_label": "1.5.0-rc1",
+      "nimtools_version": "1.6.1",
+      "pytorch_version": "2.10.0a0+b4e4ee8"
+    },
+    "latest_matrix_probe_20260625T1454Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200/us-central1": {
+          "probed_at": "2026-06-25T14:19:16.764412+00:00",
+          "request_ms_p50": 7544,
+          "request_ms_p95": 7594,
+          "request_ms_samples": 10,
+          "startup_ms": 249379,
+          "status": "supported",
+          "vram_used_gb": 2.33
+        },
+        "B300/uk-south1": {
+          "probed_at": "2026-06-25T14:12:48.978316+00:00",
+          "request_ms_p50": 8266,
+          "request_ms_p95": 8682,
+          "request_ms_samples": 10,
+          "startup_ms": 547434,
+          "status": "supported",
+          "vram_used_gb": 2.34
+        },
+        "H100/eu-north1": {
+          "probed_at": "2026-06-25T14:50:43.447188+00:00",
+          "request_ms_p50": 9149,
+          "request_ms_p95": 9425,
+          "request_ms_samples": 10,
+          "startup_ms": 622113,
+          "status": "supported",
+          "vram_used_gb": 2.46
+        },
+        "H200/eu-north1": {
+          "probed_at": "2026-06-25T14:24:51.581894+00:00",
+          "request_ms_p50": 8116,
+          "request_ms_p95": 8524,
+          "request_ms_samples": 10,
+          "startup_ms": 575763,
+          "status": "supported",
+          "vram_used_gb": 2.56
+        },
+        "H200/eu-north2": {
+          "probed_at": "2026-06-25T14:54:31.742996+00:00",
+          "request_ms_p50": 8771,
+          "request_ms_p95": 8882,
+          "request_ms_samples": 10,
+          "startup_ms": 95616,
+          "status": "supported",
+          "vram_used_gb": 2.56
+        },
+        "L40S/eu-north1": {
+          "probed_at": "2026-06-25T14:27:03.634990+00:00",
+          "request_ms_p50": 11142,
+          "request_ms_p95": 11218,
+          "request_ms_samples": 10,
+          "startup_ms": 668909,
+          "status": "supported",
+          "vram_used_gb": 2.17
+        },
+        "RTX6000/us-central1": {
+          "probed_at": "2026-06-25T14:28:19.910746+00:00",
+          "request_ms_p50": 9158,
+          "request_ms_p95": 9213,
+          "request_ms_samples": 10,
+          "startup_ms": 771737,
+          "status": "supported",
+          "vram_used_gb": 2.27
+        }
+      },
+      "checked_at": "2026-06-25T14:54:32Z",
+      "image_digest": "sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+      "nim_version": "1.5.0-rc1",
+      "profile_evidence": {
+        "B200": "NIM selected native B200 TensorRT profile with compute_capability=10.0.",
+        "B300": "NIM selected native B300 TensorRT profile with compute_capability=10.3, replacing the old missing-SM103 failure path.",
+        "H100": "NIM selected native H100 TensorRT profile with compute_capability=9.0 and gpu=NVIDIA-H100-80GB-HBM3.",
+        "H200": "NIM selected native H200 TensorRT profile with compute_capability=9.0 in both eu-north1 and eu-north2.",
+        "L40S": "NIM selected native L40S TensorRT profile with compute_capability=8.9.",
+        "RTX6000": "NIM selected native RTX PRO 6000 Blackwell TensorRT profile with compute_capability=12.0."
+      },
+      "reports": [
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1401Z-b300-security-upgrade.json",
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1401Z-b300-security-upgrade.md",
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1414Z-non-b300-security-upgrade.json",
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1414Z-non-b300-security-upgrade.md",
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1438Z-h100-security-upgrade.json",
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1438Z-h100-security-upgrade.md",
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1450Z-h200-eu-north2-security-upgrade.json",
+        "docs/model-onboarding/hcls/openfold3-nim-20260625T1450Z-h200-eu-north2-security-upgrade.md"
+      ],
+      "request_payload": "single protein sequence MKTVRQERLKSIVR with query-only A3M MSA, diffusion_samples=1, output_format=pdb",
+      "request_time_source": "client_wall_ms",
+      "runner_note": "The B300, H100, and H200/eu-north2 probes wrote normal JSON/Markdown reports. The initial non-B300 runner persisted B200, H200/eu-north1, L40S, and RTX6000 support rows, then was interrupted after cleanup while an HTTP request wait remained open, so its operator note records the live DB rows instead of a runner-generated combined report.",
+      "warmup_runs": 3
+    },
+    "model_card": "https://build.nvidia.com/openfold/openfold3",
+    "model_server_image_gate": {
+      "evidence": "Forge operator mirrored nvcr.io/nim/openfold/openfold3:latest on 2026-06-25 and verified the OCI config for this digest: com.nvidia.nim.version=1.5.0-rc1, NIMTOOLS_VERSION=1.6.1, BACKEND_TYPE=pytorch, CUDA 13.1, and PyTorch 2.10.0a0; no Triton server runtime is used by this NIM image.",
+      "validated_at": "2026-06-25",
+      "validated_image_digest": "sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+      "validated_no_triton_server": true,
+      "validated_runtime_backend": "pytorch"
+    },
+    "nvidia_nim_version": "1.5.0-rc1",
+    "nvidia_release_notes_checked": {
+      "checked_at": "2026-05-24T18:02:00Z",
+      "docs_last_updated": "2026-03-16",
+      "latest_release": "1.4.0",
+      "noted_changes": [
+        "GH200 support",
+        "RTX PRO 6000 Blackwell Workstation Edition support",
+        "Slurm support",
+        "new OpenFold lab checkpoint"
+      ]
+    },
+    "onboarding_state": "regional_mirrors_verified_h200_l40s_rtx6000_b200_supported_b300_stock_runtime_blocked_separate_baseline_variant_supported_hidden",
+    "planned_probe": {
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openfold3-nim --include-status active --include-status onboarding --gpu H200 --region eu-north2 --timeout 3600 --request-timeout 900 --warmup-runs 3 --benchmark-runs 10 --report-json docs/model-onboarding/hcls/openfold3-nim-20260524T21Z-h200-output-dir-reprobe.json --report-md docs/model-onboarding/hcls/openfold3-nim-20260524T21Z-h200-output-dir-reprobe.md",
+      "request_mode": "single protein sequence with query-only A3M MSA, diffusion_samples=1, output_format=pdb",
+      "status": "completed_h200_supported"
+    },
+    "post_scheduler_fix_probe_attempt": {
+      "checked_at": "2026-05-24T20:20:00Z",
+      "evidence": [
+        "prepare-nim-cache init container completed successfully",
+        "OpenFold3 NIM selected H200 SM90 profile 50acc112b309b65257b2281797808b00a5416cfc69e25eba79d47c31599de64b",
+        "NIM reused cached H200 artifacts under /opt/nim/.cache/ngc/hub/models--nim--openfold--openfold3/snapshots/1.4.0-gpuh200_sm90_v1",
+        "NIM materialized workspace to /opt/nim/workspace",
+        "initial inference startup failed with OSError Errno 30 read-only file system creating relative msa_output",
+        "after starting from /tmp, inference startup failed with OSError Errno 30 read-only file system creating default OUTPUT_DIR /opt/nim/output",
+        "/opt/nim/api/di.py provides an OUTPUT_DIR environment override and defaults to /opt/nim/output"
+      ],
+      "fallback_attempted": "stage manifest-only command and environment override to preserve the stock container, change working directory to writable /tmp, and set OUTPUT_DIR=/tmp/openfold-output before executing SERVER_START_SCRIPT_PATH",
+      "gpu": "H200",
+      "pod": "forge-probe-openfold3-nim-h200-eu-north2-b04685",
+      "region": "eu-north2",
+      "scheduler_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/forge-scheduler:supervisor-nim-workspace-20260524T19Z",
+      "status": "startup_blocked_before_readiness"
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+    "regional_mirror_manifest": {
+      "amd64_manifest_digest": "sha256:7f01096d37848124cbe26e1045c98dcdc6f926ebce189bfb04b106f6e5f368ac",
+      "arm64_manifest_digest": "sha256:e7424499cfea50e04c8cb1141e9e523dd9df5c96b935d1cdc200d1c9e6a6e242",
+      "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ],
+      "schemaVersion": 2
+    },
+    "regional_mirror_verified_at": "2026-06-25T13:25:00Z",
+    "remaining_validation_gaps": [
+      "Direct upstream nvcr.io digest inspection is blocked without NGC registry credentials.",
+      "Expose model-family variant selection or scheduler per-GPU runtime selection before making B300 customer-routable from the canonical OpenFold3 family."
+    ],
+    "research_checked_at": "2026-05-24T18:02:00Z",
+    "security_gate_remediation_20260625": {
+      "docs_release_checked": "NVIDIA OpenFold3 latest release notes checked on 2026-06-25 describe the June 2026 1.5.0 release; OCI labels on the mirrored image report 1.5.0-rc1.",
+      "fresh_probe_summary": "B200/us-central1, B300/uk-south1, H100/eu-north1, H200/eu-north1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 all supported on the 1.5.0-rc1 digest with 10 measured requests each.",
+      "new_digest": "sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+      "new_nim_version": "1.5.0-rc1",
+      "previous_digest": "sha256:d28705986996ae674e9104714a91ca21baab4897bf3176bdd32efdb867604150",
+      "status": "upgraded_and_reprobed_all_current_gpu_region_cells"
+    },
+    "visible_cell_probe_20260524T22Z": {
+      "b300_uk_south1": {
+        "failure": "pod_start_failure:pod_failed",
+        "fallback_evidence": "NIM detected SM103 B300, found zero SM103 profiles, selected the default profile, fell back from TRT to torch because TensorRT engine paths were absent, and the pod failed before readiness.",
+        "status": "other_error"
+      },
+      "checked_at": "2026-05-24T22:17:14Z",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openfold3-nim --include-status active --include-status onboarding --gpu B300 --gpu L40S --gpu RTX6000 --timeout 3600 --request-timeout 900 --warmup-runs 3 --benchmark-runs 10 --max-parallel 3 --report-json docs/model-onboarding/hcls/openfold3-nim-20260524T22Z-b300-l40s-rtx6000-matrix.json --report-md docs/model-onboarding/hcls/openfold3-nim-20260524T22Z-b300-l40s-rtx6000-matrix.md",
+      "l40s_eu_north1": {
+        "fallback_evidence": "The pod reached readiness and produced three warm PDB responses, but the probe client raised ReadError while reading the response stream before the measured 10-run benchmark completed.",
+        "status": "other_error",
+        "warmup_request_ms_samples": [
+          13699,
+          13293,
+          13509
+        ]
+      },
+      "report_json": "docs/model-onboarding/hcls/openfold3-nim-20260524T22Z-b300-l40s-rtx6000-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openfold3-nim-20260524T22Z-b300-l40s-rtx6000-matrix.md",
+      "rtx6000_us_central1": {
+        "benchmark_request_ms": 11728,
+        "benchmark_runs": 10,
+        "model_time_source": "client_wall_ms",
+        "request_ms_samples": [
+          11496,
+          11821,
+          11688,
+          11703,
+          11816,
+          11505,
+          11715,
+          11911,
+          11742,
+          11935
+        ],
+        "startup_ms": 634882,
+        "status": "supported",
+        "vram_used_gb": 2.99,
+        "warmup_runs": 3
+      }
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "protein",
+    "dna",
+    "rna",
+    "ligand",
+    "structure_prediction",
+    "biomolecular_complex",
+    "nvidia_nim",
+    "openfold",
+    "blackwell_candidate",
+    "protein_sequence",
+    "nucleotide_sequence",
+    "molecule",
+    "msa",
+    "template",
+    "structured_output",
+    "protein_structure",
+    "confidence",
+    "pdb",
+    "cif"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/openfold/openfold3@sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+  "container_image_size_bytes": 10378590465,
+  "context_window": 4096,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-20T14:39:52.663606+00:00",
+  "default_eligible": false,
+  "description": "OpenFold3 NIM is NVIDIA's packaged OpenFold3 biomolecular complex structure-prediction service. It accepts protein, DNA, RNA, ligand, MSA, and template-guided inputs and returns ranked PDB or CIF structures with confidence metrics. The public NVIDIA docs list NIM 1.4.0, the nvcr.io/nim/openfold/openfold3:latest container, the /biology/openfold/openfold3/predict endpoint, /v1/health/ready health checks, and a single-GPU support matrix that includes H200, B200, L40S, and RTX PRO 6000 Blackwell Workstation Edition. The 2026-05-24T21Z H200 reprobe confirmed Forge can start the stock image from writable /tmp with OUTPUT_DIR=/tmp/openfold-output, reuse cached H200 artifacts, reach readiness, and complete warm PDB predictions with a 10.168 s median client-wall request time. The 2026-05-24T22Z RTX6000 reprobe completed the same 3 warmups plus 10 measured PDB predictions with an 11.728 s median client-wall request time and 2.99 GB VRAM. The 2026-05-25T00Z L40S reprobe completed 3 warmups plus 10 measured PDB predictions with a 13.208 s median client-wall request time and 2.86 GB VRAM. The 2026-05-25T21Z B200 reprobe completed 3 warmups plus 10 measured PDB predictions with a 9.196 s median client-wall request time and 3.03 GB VRAM, so H200, L40S, RTX6000, and B200 are now supported by live Forge evidence. The 2026-05-25T23Z B300 diagnostic showed the stock cueq fallback aborts on SM103, while a manual torch_baseline fallback can serve PDB predictions on B300 with a 13.600 s median client-wall request time. The 2026-05-26T01Z standard probe confirmed that fallback as the separate hidden openfold3-nim-b300-baseline variant, so this stock manifest intentionally keeps gpu_compatibility.B300=false and remains the canonical row for H200, B200, L40S, and RTX6000. The workflow is for nonclinical biomolecular research and computer-aided discovery support, not clinical decision-making or patient-specific guidance.",
+  "family_id": "8b3b97dc-28f8-4b1c-a319-35767294c70d",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H100": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "cd /tmp && exec \"$SERVER_START_SCRIPT_PATH\""
+    ],
+    "container_command": [
+      "/bin/bash",
+      "-lc"
+    ],
+    "container_env": {
+      "NIM_CACHE_PATH": "/opt/nim/.cache",
+      "NIM_HTTP_API_PORT": "8000",
+      "NIM_HTTP_PORT": "8000",
+      "NIM_OPTIMIZED_BACKEND": "trt",
+      "NIM_TELEMETRY_MODE": "0",
+      "OUTPUT_DIR": "/tmp/openfold-output"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 1000,
+    "container_run_as_user": 1000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-25T14:19:16.764412+00:00",
+      "region": "us-central1",
+      "request_ms": 7544,
+      "request_ms_p50": 7544,
+      "request_ms_p95": 7594,
+      "request_ms_p99": 7601,
+      "request_ms_samples": 10,
+      "startup_ms_first": 186236,
+      "startup_ms_probe": 249379,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 2.33,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.69
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-13T16:19:31.194483+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-06-25T14:12:48.978316+00:00",
+      "region": "uk-south1",
+      "request_ms": 8266,
+      "request_ms_p50": 8266,
+      "request_ms_p95": 8682,
+      "request_ms_p99": 8706,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 547434,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 4,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.34,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.69
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-25T14:50:43.447188+00:00",
+      "region": "eu-north1",
+      "request_ms": 9149,
+      "request_ms_p50": 9149,
+      "request_ms_p95": 9425,
+      "request_ms_p99": 9428,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 622113,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.46,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.69
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-25T14:24:51.581894+00:00",
+      "region": "eu-north1",
+      "request_ms": 8116,
+      "request_ms_p50": 8116,
+      "request_ms_p95": 8524,
+      "request_ms_p99": 8573,
+      "request_ms_samples": 10,
+      "startup_ms_first": 88319,
+      "startup_ms_probe": 575763,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 2.56,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.69
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-25T14:54:31.742996+00:00",
+      "region": "eu-north2",
+      "request_ms": 8771,
+      "request_ms_p50": 8771,
+      "request_ms_p95": 8882,
+      "request_ms_p99": 8886,
+      "request_ms_samples": 10,
+      "startup_ms_first": 88319,
+      "startup_ms_probe": 95616,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 2.56,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.69
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-25T14:27:03.634990+00:00",
+      "region": "eu-north1",
+      "request_ms": 11142,
+      "request_ms_p50": 11142,
+      "request_ms_p95": 11218,
+      "request_ms_p99": 11243,
+      "request_ms_samples": 10,
+      "startup_ms_first": 109964,
+      "startup_ms_probe": 668909,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 2.17,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.69
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-25T14:28:19.910746+00:00",
+      "region": "us-central1",
+      "request_ms": 9158,
+      "request_ms_p50": 9158,
+      "request_ms_p95": 9213,
+      "request_ms_p99": 9215,
+      "request_ms_samples": 10,
+      "startup_ms_first": 78208,
+      "startup_ms_probe": 771737,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 5,
+      "total_warm_starts": 4,
+      "vram_measured_gb": 2.27,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.69
+    }
+  ],
+  "gpu_type": null,
+  "id": "4f8cc2ae-7ac6-4821-b285-154943e14ce9",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "NVIDIA Open Model License; Apache-2.0 additional information; NVIDIA NIM terms",
+  "modality_input": [
+    "protein_sequence",
+    "nucleotide_sequence",
+    "molecule",
+    "msa",
+    "template",
+    "json"
+  ],
+  "modality_output": [
+    "structure",
+    "confidence",
+    "pdb",
+    "cif",
+    "json"
+  ],
+  "model_family": "openfold3",
+  "name": "OpenFold3 NIM",
+  "parameter_count": 368000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "inputs": [
+          {
+            "diffusion_samples": "{{diffusion_samples}}",
+            "input_id": "primary",
+            "molecules": [
+              {
+                "id": "{{chain_id}}",
+                "msa": {
+                  "main": {
+                    "a3m": {
+                      "alignment": "{{msa_a3m}}",
+                      "format": "a3m"
+                    }
+                  }
+                },
+                "sequence": "{{sequence}}",
+                "type": "protein"
+              }
+            ],
+            "output_format": "{{output_format}}"
+          }
+        ],
+        "request_id": "forge-openfold3"
+      },
+      "endpoint": "/biology/openfold/openfold3/predict",
+      "method": "POST",
+      "upstream_model_id": "openfold/openfold3"
+    },
+    "input_fields": [
+      {
+        "default": "MKTVRQERLKSIVR",
+        "key": "sequence",
+        "label": "Protein sequence",
+        "type": "protein_sequence",
+        "visible": true
+      },
+      {
+        "default": "A",
+        "key": "chain_id",
+        "label": "Chain ID",
+        "type": "text",
+        "visible": true
+      },
+      {
+        "default": ">query\nMKTVRQERLKSIVR",
+        "key": "msa_a3m",
+        "label": "A3M MSA",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "pdb",
+        "key": "output_format",
+        "label": "Output format",
+        "options": [
+          "pdb",
+          "cif"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "PDB or CIF structure with confidence metrics",
+      "type": "structure_3d"
+    },
+    "parameter_controls": [
+      {
+        "default": 1,
+        "key": "diffusion_samples",
+        "label": "Diffusion samples",
+        "max": 5,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "backend": "trt",
+      "cache_mount": "/opt/nim/.cache",
+      "direct_upstream_digest_status": "blocked_without_ngc_auth",
+      "forge_cache_target": "/mnt/data/nim-cache/openfold3/1.4.0",
+      "kind": "nvidia_nim",
+      "liveness_path": "/v1/health/live",
+      "metrics_path": "/v1/metrics",
+      "mirror_status": "regional_mirrors_digest_verified",
+      "nim_id": "openfold/openfold3",
+      "nim_version": "1.4.0",
+      "readiness_path": "/v1/health/ready"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "chain_id",
+        "msa_a3m",
+        "output_format",
+        "diffusion_samples"
+      ],
+      "required": [
+        "sequence"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-openfold-openfold3@sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-openfold-openfold3@sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-openfold-openfold3@sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-openfold-openfold3@sha256:6286cc7c02247ed3efe42f0f1af6c2f6f6a680b1e5cae669512c44b636aa42d2"
+  },
+  "release_rank": 70,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "openfold3-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "protein",
+    "dna",
+    "rna",
+    "ligand",
+    "structure-prediction",
+    "biomolecular-complex",
+    "nvidia-nim",
+    "openfold",
+    "blackwell-candidate"
+  ],
+  "updated_at": "2026-06-25T14:57:27.647596+00:00",
+  "version": "1.5.0-rc1",
+  "version_description": "OpenFold3 NIM upgraded on 2026-06-25 to the newly mirrored 1.5.0-rc1 image digest for NIM security remediation. Fresh Forge probes on 2026-06-25 validated every current GPU/region inventory cell (B200/us-central1, B300/uk-south1, H100/eu-north1, H200/eu-north1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1) with 3 warmups plus 10 measured PDB prediction requests per cell.",
+  "version_key": "nim-1-5-0-rc1-security-upgrade",
+  "version_label": "NIM 1.5.0-rc1"
+}

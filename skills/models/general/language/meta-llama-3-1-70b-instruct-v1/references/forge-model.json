@@ -1,0 +1,302 @@
+{
+  "benchmark_scores": {
+    "mmlu": 0.83,
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming",
+    "long_context"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/meta/llama-3.1-70b-instruct:latest",
+  "container_image_size_bytes": null,
+  "context_window": 131072,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-16T10:24:50.581378+00:00",
+  "default_eligible": true,
+  "description": "Flagship general-purpose chat model for instruction following and structured generation.",
+  "family_id": "d8e9c966-2c34-4fea-b4bd-fc08a07636d9",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 80.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-04-22T18:16:14.783803+00:00",
+      "observed_success_rate": 0.25,
+      "probed_at": "2026-05-05T17:17:20.487031+00:00",
+      "region": "us-central1",
+      "request_ms": 3982,
+      "request_ms_p50": 3982,
+      "request_ms_p95": 3982,
+      "request_ms_p99": 3982,
+      "request_ms_samples": 1,
+      "startup_ms_first": 665377,
+      "startup_ms_probe": 662899,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 75.84,
+      "total_failures": 3,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 162.41,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 65.19
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-04-22T18:16:49.869777+00:00",
+      "observed_success_rate": 0.25,
+      "probed_at": "2026-05-15T02:33:27.047531+00:00",
+      "region": "uk-south1",
+      "request_ms": 4321,
+      "request_ms_p50": 3915,
+      "request_ms_p95": 4098,
+      "request_ms_p99": 4276,
+      "request_ms_samples": 12,
+      "startup_ms_first": 11000,
+      "startup_ms_probe": 11000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 69.89,
+      "total_failures": 3,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 242.92,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 65.19
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:57:13.370650+00:00",
+      "region": "eu-north2",
+      "request_ms": 5310,
+      "request_ms_p50": 5322,
+      "request_ms_p95": 66786,
+      "request_ms_p99": 83173,
+      "request_ms_samples": 6,
+      "startup_ms_first": 856747,
+      "startup_ms_probe": 103961,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 56.87,
+      "total_failures": 0,
+      "total_starts": 8,
+      "total_warm_starts": 7,
+      "vram_measured_gb": 127.72,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 65.19
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:22:22.310139+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 856747,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 8,
+      "total_warm_starts": 7,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 65.19
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": "503: cold_start_failed: RuntimeError: pod_start_failure:pod_succeeded:model:Completed:logs:sr/local/lib/python3.12/dist-packages/vllm/tracing/otel.py\", line 178, in sync_wrapper (APIServer pid=60)     return func(*args, **kwargs) (APIServer pid=60)            ^^^^^^^^^^^^^^^^^^^^^ (APIServer pid=60)   File \"/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core_client.py\", line 924, in __init__ (APIServer pid=60)     super().__init__( (APIServer pid=60)   File \"/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core_client.py\", line 583, in __init__ (APIServer pid=60)     with launch_core_engines( (APIServer pid=60)          ^^^^^^^^^^^^^^^^^^^^ (APIServer pid=60)   File \"/usr/lib/python3.12/contextlib.py\", line 144, in __exit__ (APIServer pid=60)     next(self.gen) (APIServer pid=60)   File \"/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/utils.py\", line 972, in launch_core_engines (APIServer pid=60)     wait_for_engine_startup( (APIServer pid=60)   File \"/usr/local/li",
+      "last_failed_at": "2026-05-14T22:36:08.800875+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-14T22:26:34.538680+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 4,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 65.19
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks RTX6000 unsupported",
+      "last_failed_at": "2026-04-22T18:17:58.787792+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T17:00:37.478631+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 65.19
+    }
+  ],
+  "gpu_type": null,
+  "id": "5f1be5df-124c-463d-888b-3c76e5b57c52",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "llama-3.1-community",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "meta-llama-3.1-70b-instruct",
+  "name": "Meta Llama 3.1 70B Instruct",
+  "parameter_count": 70000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": "{{messages}}",
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "meta/llama-3.1-70b-instruct"
+    },
+    "input_fields": [
+      {
+        "default": "Explain why cold starts matter for public inference systems.",
+        "key": "messages",
+        "label": "Prompt",
+        "type": "chat_history",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.7,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2.0,
+        "min": 0.0,
+        "step": 0.1,
+        "type": "slider"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "slider"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "fp8",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-meta-llama-3.1-70b-instruct:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-meta-llama-3.1-70b-instruct:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-meta-llama-3.1-70b-instruct:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-meta-llama-3.1-70b-instruct:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "meta-llama-3.1-70b-instruct-v1",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

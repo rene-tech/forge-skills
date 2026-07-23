@@ -1,0 +1,459 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/EMBO/soda-vec-dot-std-cov-losses",
+    "artifact_checked_at": "2026-05-28T14:00:00Z",
+    "artifact_config": {
+      "architectures": [
+        "ModernBertModel"
+      ],
+      "hidden_size": 768,
+      "max_position_embeddings": 8192,
+      "model_type": "modernbert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 22,
+      "pooling": "mean",
+      "pooling_normalized": false,
+      "sentence_transformers_max_seq_length": 512,
+      "torch_dtype": "float32"
+    },
+    "artifact_disabled": false,
+    "artifact_evidence_20260528T14Z": "Hugging Face API returned private=false, gated=false, disabled=false, cardData.license=mit, pipeline_tag=feature-extraction, library_name=sentence-transformers, revision ec602c16dd5e973d36128ba03bd430927c21754a, and safetensors total 149,014,272 F32 parameters. Raw modules.json contains Transformer and Pooling modules; 1_Pooling/config.json has pooling_mode_mean_tokens=true and no Normalize module; sentence_bert_config.json pins max_seq_length=512.",
+    "artifact_gated": false,
+    "artifact_license": "mit",
+    "artifact_parameters": {
+      "F32": 149014272,
+      "total": 149014272
+    },
+    "artifact_private": false,
+    "artifact_sha": "ec602c16dd5e973d36128ba03bd430927c21754a",
+    "artifact_source": "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses",
+    "b300_normalized_probe_20260528T15Z": {
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "gpu_type": "B300",
+      "pooler_config": {
+        "pooling_type": "MEAN",
+        "use_activation": true
+      },
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-vllm-cuda13-20260528T15Z-normalized-b300.json",
+      "report_md": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-vllm-cuda13-20260528T15Z-normalized-b300.md",
+      "request_ms_p50": 68,
+      "request_ms_p95": 73,
+      "request_ms_samples": [
+        68,
+        68,
+        68,
+        69,
+        68,
+        68,
+        69,
+        68,
+        68,
+        73
+      ],
+      "request_time_source": "client_wall_ms",
+      "startup_ms": 59820,
+      "status": "supported",
+      "tokens_per_second": 735.29,
+      "vram_used_gb": 1.21
+    },
+    "container_config_snapshot_20260528T14Z": {
+      "architecture": "amd64",
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "entrypoint": [
+        "vllm",
+        "serve"
+      ],
+      "image_version": "vllm/vllm-openai:v0.22.1",
+      "layer_size_bytes": 8669299461,
+      "os": "linux",
+      "source": "https://github.com/vllm-project/vllm",
+      "source_revision": "ad7125a431e176d4161099480a66f0169609a690",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX"
+    },
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+    "container_license_evidence": "The vLLM upstream repository is Apache-2.0 licensed; the selected OCI config labels point to https://github.com/vllm-project/vllm at revision ad7125a431e176d4161099480a66f0169609a690.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_as_sm103_fallback_candidate_after_tei_cuda_1_9_3_rejected_b300",
+    "embedding_parity_20260528T15Z": {
+      "corpus_scope": "synthetic non-PHI HCLS biomedical/life-science retrieval texts plus one nonmedical control",
+      "corpus_size": 10,
+      "initial_unactivated_report_json": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T15Z-tei-vllm-parity.json",
+      "initial_unactivated_report_md": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T15Z-tei-vllm-parity.md",
+      "initial_unactivated_result": {
+        "blocker": "vLLM use_activation=false preserved embedding direction but returned raw mean-pooled vectors while TEI returned unit-norm OpenAI embeddings.",
+        "max_abs_delta_unit": 0.0004001723,
+        "max_raw_abs_delta": 7.2185834462,
+        "mean_raw_cosine": 0.9999991208,
+        "mean_tei_norm": 1.0000000005,
+        "mean_vllm_norm": 33.1378096252,
+        "min_raw_cosine": 0.9999929217,
+        "passed_directional_gate": true
+      },
+      "normalized_report_json": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T15Z-tei-vllm-normalized-parity.json",
+      "normalized_report_md": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T15Z-tei-vllm-normalized-parity.md",
+      "normalized_result": {
+        "max_abs_delta_raw": 0.0004001741,
+        "max_abs_delta_unit": 0.0004001733,
+        "max_norm_delta": 8.55e-08,
+        "mean_raw_cosine": 0.9999991208,
+        "mean_tei_norm": 1.0000000005,
+        "mean_vllm_norm": 0.9999999968,
+        "min_raw_cosine": 0.9999929217,
+        "passed": true,
+        "pooler_config": {
+          "pooling_type": "MEAN",
+          "use_activation": true
+        }
+      }
+    },
+    "fallback_reason": {
+      "blocked_runtime": "embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9",
+      "blocked_runtime_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "blocked_runtime_failure": "B300/uk-south1 pod runtime startup failure: cuda compute cap 103 is not supported.",
+      "selected_fallback": "vLLM 0.21.0 CUDA 13 pooling profile using an already mirrored digest."
+    },
+    "hcls_safety_gate_20260528T18Z": {
+      "allowed_scope": "Nonclinical biomedical and life-science literature retrieval, clustering, semantic search, and RAG evaluation.",
+      "cleared_requirements": [
+        "MIT model artifact with Apache-2.0 ModernBERT base license evidence",
+        "Existing vLLM 0.21.0 CUDA 13 image digest mirrored in all four active Forge regions",
+        "Hidden B300 probe with 3 warmups and 10 measured embedding requests",
+        "Normalized TEI/vLLM parity passed on 10 synthetic non-PHI HCLS retrieval/control texts",
+        "Research-only acknowledgement and hidden public-route check recorded without changing the OpenAI embeddings request body"
+      ],
+      "default_eligible": false,
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "HCLS product safety review approval",
+        "Product decision on whether this B300-only fallback remains a separate hidden row or folds into the broader SODA-VEC runtime family route",
+        "Non-B300 cells remain served by the TEI CUDA 1.9.3 companion row rather than this fallback"
+      ],
+      "safe_to_publish": false,
+      "safety_routing_packet_20260528T18Z": {
+        "decision": "technical_evidence_complete_not_product_approved",
+        "publishable": false,
+        "report_json": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T18Z-safety-routing-gate.json",
+        "report_md": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T18Z-safety-routing-gate.md"
+      }
+    },
+    "license_evidence": {
+      "base_model": "answerdotai/ModernBERT-base",
+      "base_model_license": "Hugging Face API cardData.license=apache-2.0 for answerdotai/ModernBERT-base.",
+      "model_license": "Hugging Face API cardData.license=mit and tags include license:mit."
+    },
+    "live_probe_results_20260528T14Z": {
+      "B300/uk-south1": {
+        "backend_log": "Resolved architecture: ModernBertModel; Using FLASH_ATTN attention backend; Using FlashAttention version 4; torch.compile cache under /mnt/data/vllm/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13.",
+        "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+        "image_pull_ms": 314624,
+        "report": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-vllm-cuda13-20260528T14Z-b300.md",
+        "request_ms_p50": 81,
+        "request_ms_p95": 84,
+        "request_ms_samples": 10,
+        "startup_ms": 449507,
+        "status": "supported",
+        "timing_source": "client_wall_ms",
+        "tokens_per_second": 617.28,
+        "vram_used_gb": 1.27
+      }
+    },
+    "onboarding_state": "canonical_hcls_manifest_hidden_vllm_cuda13_b300_supported_normalized_parity_passed_pending_hcls_safety_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_recheck_20260528T14Z": {
+      "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      }
+    },
+    "research_only_routing_gate_20260528T18Z": {
+      "acknowledgement_default": true,
+      "acknowledgement_field": "research_use_acknowledgement",
+      "public_route_check": {
+        "response_detail": "model_not_found",
+        "status": "404_hidden_onboarding_not_public",
+        "url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13"
+      },
+      "publication_decision": "keep_hidden_onboarding",
+      "request_body_unchanged": true,
+      "status": "copy_and_route_gate_ready_not_product_approved"
+    },
+    "runtime_plan": {
+      "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, VLLM_CACHE_ROOT, and XDG_CACHE_HOME are versioned under /mnt/data for first-run model hydration and vLLM artifacts.",
+      "endpoint": "/v1/embeddings",
+      "pooler_config": {
+        "pooling_type": "MEAN",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so vLLM does not receive unnecessary platform Hugging Face credentials.",
+      "served_model_name": "EMBO/soda-vec-dot-std-cov-losses"
+    },
+    "source_evidence": [
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses",
+      "https://huggingface.co/api/models/EMBO/soda-vec-dot-std-cov-losses",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/README.md",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/config.json",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/modules.json",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/1_Pooling/config.json",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/sentence_bert_config.json",
+      "https://huggingface.co/api/models/answerdotai/ModernBERT-base",
+      "https://hub.docker.com/r/vllm/vllm-openai",
+      "https://github.com/vllm-project/vllm"
+    ],
+    "validation_state": {
+      "embedding_parity": "passed_directional_and_normalized_output_20260528T15Z",
+      "gpu_probe": "b300_uk_south1_supported_normalized_3_warmup_10run_20260528T15Z",
+      "live_upsert": "succeeded_hidden_activation_fix_20260528T15Z",
+      "manifest_schema": "validated_by_scripts_upsert_model_dry_run_20260528T15Z",
+      "publication_decision": "keep_hidden_onboarding_default_ineligible"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "healthcare",
+    "scientific_literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence_transformers",
+    "modernbert",
+    "vllm",
+    "blackwell",
+    "sm103_candidate",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-28T14:08:00.808796+00:00",
+  "default_eligible": false,
+  "description": "EMBO SODA-VEC Dot/Std/Cov is a MIT-licensed sentence-transformers ModernBERT biomedical and life-science literature embedding model trained on PubMed Central title-abstract pairs with a VICReg-style dot, standard deviation, and covariance objective. The existing hidden TEI CUDA 1.9.3 Forge row has passed B200/us-central1, H200/eu-north2, and L40S/eu-north1 probes with 10 measured embedding requests each, but repeated B300/uk-south1 startup diagnostics failed with `cuda compute cap 103 is not supported`. This separate hidden fallback row reuses the already mirrored official vLLM 0.21.0 CUDA 13 image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, launches it with `--runner pooling`, and selects MEAN pooling with activation enabled because the 2026-05-28T15Z TEI/vLLM parity capture showed the earlier unactivated vLLM profile was directionally equivalent but returned raw mean-pooled vectors while TEI returned unit-norm OpenAI embeddings. The Hugging Face API recheck on 2026-05-28T14Z reported the artifact public, ungated, enabled, MIT licensed, sentence-transformers based, feature-extraction tagged, revision ec602c16dd5e973d36128ba03bd430927c21754a, and safetensors-backed with 149,014,272 F32 parameters. The corrected 2026-05-28T15Z B300/uk-south1 hidden probe passed with 3 warmups and 10 measured requests, 59.820 s startup, 68 ms client-wall p50, 735.29 tokens/s, 1.21 GB VRAM, and normalized TEI/vLLM parity over 10 synthetic non-PHI HCLS retrieval texts: min cosine 0.9999929217, mean TEI norm 1.0000000005, mean vLLM norm 0.9999999968, max norm delta 0.0000000855, and max raw vector delta 0.0004001741. Keep this row hidden/onboarding/default-ineligible until HCLS product safety approval is complete.",
+  "family_id": "211dbbe6-97fa-418c-9ae9-462902eed617",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": true,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "EMBO/soda-vec-dot-std-cov-losses",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "EMBO/soda-vec-dot-std-cov-losses",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "float16",
+      "--max-model-len",
+      "512",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.35",
+      "--max-num-seqs",
+      "32",
+      "--pooler-config",
+      "{\"pooling_type\":\"MEAN\",\"use_activation\":true}"
+    ],
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13/hub",
+      "VLLM_CACHE_ROOT": "/mnt/data/vllm/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13",
+      "XDG_CACHE_HOME": "/mnt/data/vllm/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T15:13:55.637673+00:00",
+      "region": "uk-south1",
+      "request_ms": 68,
+      "request_ms_p50": 78,
+      "request_ms_p95": 84,
+      "request_ms_p99": 84,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 59820,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 735.29,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.21,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "afaf0adb-3ae8-40c8-8129-8dcce7153e87",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "embo-soda-vec-dot-std-cov-losses",
+  "name": "EMBO SODA-VEC Dot/Std/Cov",
+  "parameter_count": 149014272,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "EMBO/soda-vec-dot-std-cov-losses"
+    },
+    "input_fields": [
+      {
+        "default": "Query: CRISPR-Cas9 editing in human induced pluripotent stem cells\n\nCandidate abstract: Genome editing workflows use CRISPR-Cas nucleases to introduce targeted DNA changes, enabling functional studies of disease-associated variants in cellular models.",
+        "key": "input",
+        "label": "Biomedical literature text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13",
+      "kind": "vllm_pooling_embeddings",
+      "model_id": "EMBO/soda-vec-dot-std-cov-losses",
+      "model_revision": "ec602c16dd5e973d36128ba03bd430927c21754a",
+      "pooler_config": {
+        "pooling_type": "MEAN",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "served_model_name": "EMBO/soda-vec-dot-std-cov-losses",
+      "vllm_cache_target": "/mnt/data/vllm/embo-soda-vec-dot-std-cov-losses/vllm-0.21.0-cuda13"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical and life-science literature retrieval, clustering, semantic search, and RAG evaluation.",
+      "body": "Use for nonclinical biomedical and life-science literature search, clustering, semantic similarity, and RAG evaluation. Do not use for medical advice, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical literature embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "release_rank": 58,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "embo-soda-vec-dot-std-cov-losses-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "healthcare",
+    "biomedical",
+    "scientific-literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence-transformers",
+    "modernbert",
+    "vllm",
+    "blackwell",
+    "sm103-candidate",
+    "open-source"
+  ],
+  "updated_at": "2026-06-30T13:36:37.429890+00:00",
+  "version": "hf-ec602c1-vllm-0.21.0-cuda13-pooling",
+  "version_description": "Hidden B300 fallback manifest for EMBO SODA-VEC biomedical and life-science literature embeddings using the already mirrored vLLM 0.21.0 CUDA 13 image in pooling mode after the TEI CUDA 1.9.3 runtime rejected B300/SM103 at startup. This row stays separate from the canonical TEI non-B300 runtime until product review decides runtime-family presentation.",
+  "version_key": "hf-ec602c1-vllm-0-21-0-cuda13-pooling",
+  "version_label": "HF ec602c1 via vLLM 0.21 CUDA 13 pooling"
+}

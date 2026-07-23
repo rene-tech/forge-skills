@@ -1,0 +1,558 @@
+{
+  "benchmark_scores": {
+    "artifact_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "artifact_metadata_20260528T21Z": {
+      "architecture": "ModernBertForSequenceClassification",
+      "disabled": false,
+      "gated": false,
+      "hidden_size": 768,
+      "library_name": "transformers",
+      "license": "apache-2.0",
+      "max_position_embeddings": 8192,
+      "model_type": "modernbert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 22,
+      "pipeline_tag": "text-ranking",
+      "private": false,
+      "torch_dtype": "float32",
+      "vocab_size": 50368
+    },
+    "artifact_refreshed_at": "2026-05-28T21:00:00Z",
+    "artifact_revision": "f7481e6055501a30fb19d090657df9ec1f79ab2c",
+    "b200_us_central1_probe": {
+      "latency_samples_ms": [
+        160,
+        161,
+        160,
+        166,
+        160,
+        160,
+        162,
+        160,
+        160,
+        160
+      ],
+      "model_p50_ms": 160,
+      "probed_at": "2026-05-22T01:10:32Z",
+      "source": "client_wall_ms",
+      "startup_ms": 302601,
+      "status": "supported",
+      "vram_gb": 1.02
+    },
+    "b300_uk_south1_probe": {
+      "cleanup": "Retained failed pod was deleted after log capture.",
+      "container_exit_code": 1,
+      "diagnostic_status": "classified_runtime_incompatible_sm103",
+      "failure_reason": "pod_start_failure:pod_failed",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "pod_name": "forge-probe-alibaba-nlp-gte-reranker-b300-uk-south1-d0493c",
+      "probed_at": "2026-05-28T21:10:54Z",
+      "report_json": "docs/operations/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260528T21Z-b300-keep.json",
+      "report_md": "docs/operations/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260528T21Z-b300-keep.md",
+      "retained_pod_log": "cuda compute cap 103 is not supported",
+      "status": "other_error"
+    },
+    "blockers": [
+      "B300/uk-south1 needs a newer TEI image or Forge-owned wrapper with an SM103 dispatch path; the pinned TEI CUDA 1.9.3 entrypoint supports SM75, SM80-89, SM90, SM100, and SM120 only.",
+      "GenAI-Perf OpenAI-compatible rerank path is not used for this manifest because TEI documents native /rerank and tracks OpenAI rerank compatibility separately."
+    ],
+    "container_source_decision": "reuse_existing_mirrored_tei_cuda_1_9_image",
+    "current_matrix_probe_20260528T21Z": {
+      "benchmark_runs": 10,
+      "cells_failed": {
+        "B300/uk-south1": {
+          "error_detail": "RuntimeError: pod_start_failure:pod_failed",
+          "node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod_name": "forge-probe-alibaba-nlp-gte-reranker-b300-uk-south1-bd15be",
+          "status": "other_error"
+        }
+      },
+      "cells_supported": {
+        "B200/us-central1": {
+          "latency_samples_ms": [
+            162,
+            163,
+            162,
+            160,
+            163,
+            161,
+            160,
+            160,
+            161,
+            160
+          ],
+          "model_p50_ms": 161,
+          "node": "computeinstance-u00zkz99pntyv0e1ss",
+          "pod_name": "forge-probe-alibaba-nlp-gte-reranker-b200-us-central1-4af494",
+          "startup_ms": 268835,
+          "vram_gb": 1.02
+        },
+        "H200/eu-north2": {
+          "latency_samples_ms": [
+            101,
+            109,
+            103,
+            102,
+            100,
+            102,
+            103,
+            99,
+            99,
+            101
+          ],
+          "model_p50_ms": 102,
+          "node": "computeinstance-e02vy282wq84sh9er9",
+          "pod_name": "forge-probe-alibaba-nlp-gte-reranker-h200-eu-north2-1c67ce",
+          "startup_ms": 307693,
+          "vram_gb": 0.93
+        },
+        "L40S/eu-north1": {
+          "latency_samples_ms": [
+            101,
+            104,
+            103,
+            99,
+            103,
+            101,
+            101,
+            101,
+            101,
+            101
+          ],
+          "model_p50_ms": 101,
+          "node": "computeinstance-e00df18tkn1sh37ez7",
+          "pod_name": "forge-probe-alibaba-nlp-gte-reranker-l40s-eu-north1-08cfee",
+          "startup_ms": 206746,
+          "vram_gb": 0.75
+        }
+      },
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9 --include-status onboarding --gpu B200 --gpu H200 --gpu L40S --gpu B300 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json docs/operations/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260528T21Z-current-matrix.json --report-md docs/operations/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260528T21Z-current-matrix.md",
+      "model_status_at_probe": "onboarding",
+      "probed_at": "2026-05-28T21:09:49Z",
+      "report_json": "docs/operations/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260528T21Z-current-matrix.json",
+      "report_md": "docs/operations/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260528T21Z-current-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "rtx6000_current_inventory": "RTX6000 was not returned by the 2026-05-28T21Z public inventory, so this cycle retained the prior 2026-05-24 supported RTX6000 evidence.",
+      "status": "three_supported_one_runtime_incompatible",
+      "warmup_runs": 3
+    },
+    "h200_eu_north2_probe": {
+      "latency_samples_ms": [
+        121,
+        121,
+        126
+      ],
+      "model_p50_ms": 121,
+      "probed_at": "2026-05-22T00:25:42Z",
+      "source": "client_wall_ms",
+      "startup_ms": 304243,
+      "status": "supported",
+      "vram_gb": 0.93
+    },
+    "l40s_eu_north1_probe": {
+      "latency_samples_ms": [
+        102,
+        103,
+        102,
+        102,
+        102,
+        101,
+        102,
+        101,
+        102,
+        102
+      ],
+      "model_p50_ms": 102,
+      "probed_at": "2026-05-22T01:10:32Z",
+      "source": "client_wall_ms",
+      "startup_ms": 333173,
+      "status": "supported",
+      "vram_gb": 0.75
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; TEI image labels report Apache-2.0.",
+    "live_upsert_20260528T21Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9.json --keep-existing-family-latest",
+      "public_route": {
+        "http_status": 200,
+        "url": "https://forge.eu-north1.osmo.nebius.cloud/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9"
+      },
+      "readback": {
+        "default_eligible": false,
+        "is_latest": true,
+        "stability": "testing",
+        "status": "active",
+        "support_rows": {
+          "B200/us-central1": {
+            "request_ms": 161,
+            "startup_ms": 268835,
+            "status": "supported",
+            "vram_gb": 1.02
+          },
+          "B300/uk-south1": {
+            "last_error": "RuntimeError: pod_start_failure:pod_failed",
+            "status": "other_error"
+          },
+          "H200/eu-north2": {
+            "request_ms": 102,
+            "startup_ms": 307693,
+            "status": "supported",
+            "vram_gb": 0.93
+          },
+          "L40S/eu-north1": {
+            "request_ms": 101,
+            "startup_ms": 206746,
+            "status": "supported",
+            "vram_gb": 0.75
+          },
+          "RTX6000/us-central1": {
+            "request_ms": 162,
+            "startup_ms": 354069,
+            "status": "supported",
+            "vram_gb": 0.9
+          }
+        }
+      },
+      "result": "succeeded",
+      "returned_slug": "alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9"
+    },
+    "onboarding_state": "active_testing_b200_h200_l40s_rtx6000_supported_b300_sm103_runtime_incompatible",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260528T21Z": "Promote to active/testing/non-default for B200, H200, L40S, and prior RTX6000 support. Keep B300 disabled for this pinned TEI CUDA 1.9.3 profile until an SM103-capable TEI image or Forge-owned wrapper is selected, mirrored, and benchmarked.",
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-28T21:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "rtx6000_us_central1_probe": {
+      "cache_volume_mode": "emptyDir",
+      "latency_samples_ms": [
+        161,
+        162,
+        163,
+        162,
+        161,
+        161,
+        164,
+        162,
+        161,
+        161
+      ],
+      "model_p50_ms": 162,
+      "node": "computeinstance-u00hap2htj7q8wn7fc",
+      "pod_name": "forge-probe-alibaba-nlp-gte-reranker-rtx6000-us-central1-98776e",
+      "prior_failure": {
+        "failure_reason": "kubernetes_admission_rejected: PodSecurity baseline would reject hostPath volumes shared-data and nim-cache before pod creation",
+        "probed_at": "2026-05-24T05:02:42Z",
+        "status": "other_error"
+      },
+      "probed_at": "2026-05-24T06:12:23Z",
+      "report_json": "docs/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260524T06Z-rtx6000-emptydir.json",
+      "report_md": "docs/model-onboarding/general/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9-20260524T06Z-rtx6000-emptydir.md",
+      "source": "client_wall_ms",
+      "startup_ms": 354069,
+      "status": "supported",
+      "vram_gb": 0.9
+    },
+    "runtime_evidence": "Model card and TEI docs document deployment with ghcr.io/huggingface/text-embeddings-inference and POST /rerank.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials."
+  },
+  "capabilities": [
+    "rerank",
+    "retrieval",
+    "rag",
+    "modernbert",
+    "gte",
+    "english",
+    "huggingface",
+    "tei",
+    "text",
+    "ranking",
+    "general"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 8192,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-22T00:14:59.797590+00:00",
+  "default_eligible": false,
+  "description": "Alibaba-NLP gte-reranker-modernbert-base served by Hugging Face Text Embeddings Inference CUDA 1.9 for English retrieval reranking. The upstream model is Apache-2.0, has 149M parameters, supports 8192-token inputs, and documents TEI deployment through the native /rerank endpoint. Hugging Face metadata refreshed on 2026-05-28T21Z reports private=false, gated=false, disabled=false, pipeline_tag=text-ranking, license=apache-2.0, revision f7481e6055501a30fb19d090657df9ec1f79ab2c, and TEI/safetensors tags. This active testing profile reuses the already mirrored TEI CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a and keeps Hugging Face caches under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights for normal probes. The 2026-05-28T21Z available-cell matrix supports B200/us-central1, H200/eu-north2, and L40S/eu-north1 with 3 warmups and 10 measured /rerank requests each; prior RTX6000/us-central1 support remains from the 2026-05-24 emptyDir cache probe path because that cluster rejected the standard hostPath template. B300/uk-south1 remains disabled because the retained 2026-05-28T21Z diagnostic pod exited with `cuda compute cap 103 is not supported`.",
+  "family_id": "d89ccc50-734c-43f9-983b-964c81081ef0",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "Alibaba-NLP/gte-reranker-modernbert-base",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "Alibaba-NLP/gte-reranker-modernbert-base"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T21:09:11.725034+00:00",
+      "region": "us-central1",
+      "request_ms": 161,
+      "request_ms_p50": 161,
+      "request_ms_p95": 163,
+      "request_ms_p99": 163,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 268835,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.02,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T21:11:01.519400+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T21:09:49.200230+00:00",
+      "region": "eu-north2",
+      "request_ms": 102,
+      "request_ms_p50": 102,
+      "request_ms_p95": 115,
+      "request_ms_p99": 120,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 307693,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.93,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T21:08:08.180200+00:00",
+      "region": "eu-north1",
+      "request_ms": 101,
+      "request_ms_p50": 101,
+      "request_ms_p95": 104,
+      "request_ms_p99": 104,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 206746,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.75,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T06:12:22.211931+00:00",
+      "region": "us-central1",
+      "request_ms": 162,
+      "request_ms_p50": 162,
+      "request_ms_p95": 332,
+      "request_ms_p99": 466,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 354069,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.9,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "885c96ce-1e71-4d30-9a4c-9709d5e1e8db",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "ranking"
+  ],
+  "model_family": "alibaba-nlp-gte-reranker-modernbert-base",
+  "name": "GTE Reranker ModernBERT Base",
+  "parameter_count": 149000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "query": "{{query}}",
+        "raw_scores": "{{raw_scores}}",
+        "return_text": "{{return_text}}",
+        "texts": "{{texts}}",
+        "truncate": true,
+        "truncation_direction": "right"
+      },
+      "endpoint": "/rerank",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "How do shared model caches reduce inference cold starts?",
+        "key": "query",
+        "label": "Query",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": [
+          "A shared cache keeps downloaded weights and runtime artifacts on durable storage so later pods can reuse them instead of hydrating from scratch.",
+          "Cold starts are usually dominated by frontend CSS parsing and browser layout.",
+          "Rerankers compare a query with candidate passages and assign relevance scores for retrieval pipelines."
+        ],
+        "key": "texts",
+        "label": "Candidate texts",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "raw_scores",
+        "label": "Raw scores",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "return_text",
+        "label": "Return text",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "ranking_scores",
+      "type": "json"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "rerank"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 50,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "rerank",
+    "retrieval",
+    "rag",
+    "modernbert",
+    "gte",
+    "english",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for Alibaba-NLP gte-reranker-modernbert-base.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

@@ -1,0 +1,544 @@
+{
+  "benchmark_scores": {
+    "b200_text2image_warm_p50_ms": 666,
+    "b300_text2image_warm_p50_ms": 528,
+    "h200_text2image_warm_p50_ms": 579,
+    "l40s_text2image_warm_p50_ms": 638,
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "rtx6000_text2image_warm_p50_ms": 867,
+    "text2image_benchmark_runs": 10,
+    "text2image_benchmark_source": "client_wall_ms"
+  },
+  "capabilities": [
+    "physical_ai",
+    "cosmos",
+    "cosmos3",
+    "world_foundation_model",
+    "text_to_image",
+    "text_to_video",
+    "image_to_video",
+    "forward_dynamics",
+    "inverse_dynamics",
+    "robotics_policy",
+    "early_access",
+    "text",
+    "vision",
+    "video",
+    "action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos3-omni:ea-20260521-cu130-r5@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+  "container_image_size_bytes": 9564000759,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-21T20:02:17.664720+00:00",
+  "default_eligible": true,
+  "description": "Early-access Cosmos 3 Omni Nano world-generation and action model served through a Forge CUDA 13 wrapper. It supports text-to-image, text-to-video, image-to-video, forward dynamics, inverse dynamics, and policy modes; image/video outputs are rendered in Forge and action outputs return JSON.",
+  "family_id": "9e685afc-0004-4895-854c-f38c1fbf0a3a",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "COSMOS3_CFGP_SIZE": "1",
+      "COSMOS3_CP_SIZE": "1",
+      "COSMOS3_DEVICE_MEMORY_UTILIZATION": "0.75",
+      "COSMOS3_DP_REPLICATE_SIZE": "1",
+      "COSMOS3_DP_SHARD_SIZE": "1",
+      "COSMOS3_GUARDRAILS": "false",
+      "COSMOS3_MODEL_ID": "Cosmos3-Nano",
+      "COSMOS3_MODEL_KIND": "omni",
+      "COSMOS3_PARALLELISM_PRESET": "latency",
+      "COSMOS3_USE_CUDA_GRAPHS": "false",
+      "COSMOS3_VARIANT": "nano",
+      "COSMOS3_WORLD_SIZE": "1"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "us-central1",
+      "request_ms": 666,
+      "request_ms_p50": 666,
+      "request_ms_p95": 681,
+      "request_ms_p99": 683,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 51651,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 31.25,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "uk-south1",
+      "request_ms": 528,
+      "request_ms_p50": 528,
+      "request_ms_p95": 536,
+      "request_ms_p99": 536,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 106231,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 31.25,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "eu-north2",
+      "request_ms": 579,
+      "request_ms_p50": 579,
+      "request_ms_p95": 589,
+      "request_ms_p99": 591,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 65977,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 31.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "eu-north1",
+      "request_ms": 638,
+      "request_ms_p50": 638,
+      "request_ms_p95": 646,
+      "request_ms_p99": 649,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 64159,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 30.81,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": "",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T22:58:38.309094+00:00",
+      "region": "us-central1",
+      "request_ms": 867,
+      "request_ms_p50": 867,
+      "request_ms_p95": 907,
+      "request_ms_p99": 917,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 632420,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 31.07,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    }
+  ],
+  "gpu_type": null,
+  "id": "606ff6fc-6d31-4d67-a613-77a44034501e",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-software-model-evaluation-license",
+  "modality_input": [
+    "text",
+    "image",
+    "video",
+    "action"
+  ],
+  "modality_output": [
+    "image",
+    "video",
+    "json"
+  ],
+  "model_family": "nvidia-cosmos3-omni",
+  "name": "NVIDIA Cosmos 3 Omni (Nano)",
+  "parameter_count": 8000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "action_chunk_size": "{{action_chunk_size}}",
+        "action_state": "{{action_state}}",
+        "aspect_ratio": "{{aspect_ratio}}",
+        "domain_name": "{{domain_name}}",
+        "fps": "{{fps}}",
+        "guidance": "{{guidance}}",
+        "image_size": "{{image_size}}",
+        "model_mode": "{{model_mode}}",
+        "num_frames": "{{num_frames}}",
+        "num_steps": "{{num_steps}}",
+        "prompt": "{{prompt}}",
+        "raw_action_dim": "{{raw_action_dim}}",
+        "resolution": "{{resolution}}",
+        "seed": "{{seed}}",
+        "shift": "{{shift}}",
+        "vision_path": "{{vision_path}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos3-omni",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "text2image",
+        "key": "model_mode",
+        "label": "Mode",
+        "options": [
+          "text2image",
+          "text2video",
+          "image2video",
+          "forward_dynamics",
+          "inverse_dynamics",
+          "policy"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "A warehouse robot carefully navigates around a reflective glass door while soft morning light enters the room.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp,video/mp4,video/webm,video/quicktime",
+        "default": "",
+        "key": "vision_path",
+        "label": "Conditioning Image or Video",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": {
+          "actions": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "key": "action_state",
+        "label": "Action Sequence JSON",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "domain_name",
+        "label": "Action Domain",
+        "type": "text",
+        "visible": true
+      },
+      {
+        "default": "256",
+        "key": "resolution",
+        "label": "Resolution",
+        "options": [
+          "256",
+          "480",
+          "720",
+          "1080"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "1,1",
+        "key": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "options": [
+          "1,1",
+          "4,3",
+          "3,4",
+          "16,9",
+          "9,16"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "image_video_json",
+      "type": "custom"
+    },
+    "parameter_controls": [
+      {
+        "default": 1,
+        "key": "num_frames",
+        "label": "Frames",
+        "max": 200,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 24,
+        "key": "fps",
+        "label": "FPS",
+        "max": 30,
+        "min": 10,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 4,
+        "key": "num_steps",
+        "label": "Steps",
+        "max": 50,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 4,
+        "key": "guidance",
+        "label": "Guidance",
+        "max": 7,
+        "min": 0,
+        "step": 0.1,
+        "type": "slider"
+      },
+      {
+        "default": 5,
+        "key": "shift",
+        "label": "Shift",
+        "max": 20,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 42,
+        "key": "seed",
+        "label": "Seed",
+        "max": 2147483647,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 16,
+        "key": "raw_action_dim",
+        "label": "Raw Action Dim",
+        "max": 1024,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 16,
+        "key": "action_chunk_size",
+        "label": "Action Chunk Size",
+        "max": 128,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "image_size",
+        "label": "Action Image Size",
+        "max": 1024,
+        "min": 64,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "settings_schema": {
+      "conditional_required": [
+        {
+          "required": [
+            "vision_path"
+          ],
+          "when": {
+            "model_mode": "image2video"
+          }
+        },
+        {
+          "required": [
+            "vision_path",
+            "action_state",
+            "domain_name",
+            "action_chunk_size",
+            "image_size"
+          ],
+          "when": {
+            "model_mode": "forward_dynamics"
+          }
+        },
+        {
+          "required": [
+            "vision_path",
+            "raw_action_dim",
+            "domain_name",
+            "action_chunk_size",
+            "image_size"
+          ],
+          "when": {
+            "model_mode": "inverse_dynamics"
+          }
+        },
+        {
+          "required": [
+            "vision_path",
+            "raw_action_dim",
+            "domain_name",
+            "action_chunk_size",
+            "image_size"
+          ],
+          "when": {
+            "model_mode": "policy"
+          }
+        }
+      ],
+      "optional": [
+        "vision_path",
+        "action_state",
+        "domain_name",
+        "raw_action_dim",
+        "action_chunk_size",
+        "image_size",
+        "resolution",
+        "aspect_ratio",
+        "fps",
+        "num_frames",
+        "num_steps",
+        "guidance",
+        "shift",
+        "seed"
+      ],
+      "required": [
+        "model_mode",
+        "prompt"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-cosmos3-omni@sha256:3f23426dd6ec0fe1438e1df1a387eb919b7034067c5bb6737793d264d616a15e"
+  },
+  "release_rank": 10,
+  "requires_hf_token": true,
+  "single_region_risk": false,
+  "slug": "nvidia-cosmos3-omni-nano",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "cosmos",
+    "cosmos3",
+    "world-foundation-model",
+    "text-to-image",
+    "text-to-video",
+    "image-to-video",
+    "forward-dynamics",
+    "inverse-dynamics",
+    "policy",
+    "early-access"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "nano-bf16-ea",
+  "version_description": "Early-access Cosmos 3 Omni Nano checkpoint served by the Forge-owned CUDA 13 wrapper with text-to-image, text-to-video, image-to-video, and action-generation modes.",
+  "version_key": "nano-bf16",
+  "version_label": "Nano BF16 EA"
+}

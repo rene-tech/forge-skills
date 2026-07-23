@@ -1,0 +1,423 @@
+{
+  "benchmark_scores": {
+    "artifact_refresh_20260528T02Z": {
+      "hf_api": {
+        "disabled": false,
+        "gated": false,
+        "last_modified": "2025-12-22T10:16:55.000Z",
+        "library_name": "vllm",
+        "license": "apache-2.0",
+        "private": false,
+        "revision": "95a6d26c4bfb886c58daf9d3f7332c857cb27b43",
+        "safetensors_bf16_parameters": 24011361280
+      },
+      "hf_readme_evidence": "The model card recommends vLLM, Apache-2.0 licensing, low temperature such as 0.15, vision and function-calling usage, and approximately 55 GB GPU RAM for BF16/FP16 serving.",
+      "nvidia_support_matrix": {
+        "compute_capability_note": "NVIDIA VLM NIM generic configuration requires compute capability >= 7.0, or >= 8.0 for bfloat16.",
+        "disk_space_gb": 50,
+        "generic_gpu_memory_gb": 68,
+        "precision": "BF16",
+        "vlm_release": "1.3.1"
+      },
+      "source_evidence": [
+        "https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+        "https://huggingface.co/api/models/mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+        "https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506/raw/main/README.md",
+        "https://docs.nvidia.com/nim/vision-language-models/1.7.0/support-matrix.html#mistral-small-3-2-matrix",
+        "https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/mistral-small-3-2/api.html"
+      ]
+    },
+    "l40s_oom_classification_20260525T23Z": {
+      "classification_basis": "Manual supervisor classification from the 2026-05-25T21Z kept-pod triage addendum: the NIM profile selected vllm-bf16-tp1-pp1 on one NVIDIA L40S, then vLLM raised torch.OutOfMemoryError after using 43.21 GiB of 44.39 GiB usable GPU memory while trying to allocate another 1.25 GiB.",
+      "compatibility_flag": false,
+      "evidence_artifacts": [
+        "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260525T21Z-l40s-oom-reprobe.json",
+        "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260525T21Z-l40s-oom-reprobe.md",
+        "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260525T23Z-l40s-oom-classification.json",
+        "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260525T23Z-l40s-oom-classification.md"
+      ],
+      "gpu": "L40S",
+      "probe_classifier_followup": "Probe code should map pod_start_failure with CUDA OOM log signatures to oom, but this manifest records the terminal support decision without changing platform code.",
+      "publication_impact": "L40S OOM is now a terminal unsupported cell for this profile. It blocks default eligibility and L40S routing, but does not invalidate the existing B200/H200 supported evidence.",
+      "raw_probe_status": "other_error",
+      "region": "eu-north1",
+      "rerun_gate": "Do not rerun L40S unless a lower-memory, quantized, reduced-context, or multi-GPU NIM profile is selected.",
+      "status": "oom",
+      "support_decision": "keep_l40s_disabled_for_single_gpu_bf16_nim_profile"
+    },
+    "l40s_reprobe_20260525T21Z": {
+      "classifier_gap": "The current probe report still persisted other_error even though kept-pod model logs contain CUDA out of memory signatures.",
+      "expected_terminal_status": "oom",
+      "gpu": "L40S",
+      "image_pull_ms": 621615,
+      "node": "computeinstance-e00rbwdyfy2va3jj09",
+      "normalized_status": "oom",
+      "pod": "forge-probe-mistralai-mistral-small--l40s-eu-north1-58010f",
+      "probe_error_detail": "RuntimeError: pod_start_failure:pod_failed",
+      "region": "eu-north1",
+      "report_json": "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260525T21Z-l40s-oom-reprobe.json",
+      "report_md": "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260525T21Z-l40s-oom-reprobe.md",
+      "runtime_profile": "vllm-bf16-tp1-pp1",
+      "runtime_root_cause": "torch.OutOfMemoryError while loading on a single NVIDIA L40S: tried to allocate 1.25 GiB with 44.39 GiB total capacity, 1.17 GiB free, and 43.21 GiB already in use.",
+      "status": "other_error",
+      "support_decision": "unsupported_terminal_oom"
+    },
+    "model_server_image_gate": {
+      "evidence": "Forge operator verified the OCI config for this digest: labels report com.nvidia.nim.version=1.3.1.rc3 and runtime env includes VLLM_WORKER_MULTIPROC_METHOD=spawn plus VLLM_ATTENTION_BACKEND=FLASH_ATTN; no Triton server runtime is used by this VLM NIM image.",
+      "validated_at": "2026-06-25",
+      "validated_image_digest": "sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+      "validated_no_triton_server": true,
+      "validated_runtime_backend": "vllm"
+    },
+    "onboarding_state": "b200_h200_supported_b300_l40s_rtx6000_terminal_blockers",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_refresh_20260528T02Z": {
+      "architecture": "amd64",
+      "container_digest": "sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+      "created": "2025-08-06T21:39:38.209375773Z",
+      "image_size_bytes": 12733072143,
+      "labels": {
+        "com.nvidia.nim.model": "mistralai/mistral-small-3.2-24b-instruct-2506",
+        "com.nvidia.nim.type": "llm",
+        "com.nvidia.nim.version": "1.3.1.rc3"
+      },
+      "layers": 105,
+      "os": "linux",
+      "regions_verified": {
+        "eu-north1": "sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+        "eu-north2": "sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+        "uk-south1": "sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+        "us-central1": "sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c"
+      }
+    },
+    "rtx6000_reprobe_20260528T02Z": {
+      "compute_capability": [
+        12,
+        0
+      ],
+      "container_image_size_bytes": 12733072143,
+      "gpu": "RTX6000",
+      "image_pull_ms": 671623,
+      "live_support_row_after_correction": {
+        "request_ms_samples": 0,
+        "status": "other_error"
+      },
+      "node": "computeinstance-u00wwny590gq5dcyh9",
+      "pod": "forge-probe-mistralai-mistral-small--rtx6000-us-central1-2bf9bf",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260528T-current-rtx6000.json",
+      "report_md": "docs/model-onboarding/general/mistralai-mistral-small-3-2-24b-instruct-2506-nim-20260528T-current-rtx6000.md",
+      "rerun_gate": "Do not rerun RTX6000 on NIM 1.3.1 unless a newer NIM/vLLM image, a patched Flash Attention/Triton build for Blackwell SM120, or a different runtime profile is selected.",
+      "runtime_backend": "Flash Attention backend on V1 engine",
+      "runtime_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "runtime_profile": "vllm-bf16-tp1-pp1",
+      "runtime_root_cause": "After loading the safetensors shard, vLLM raised RuntimeError: CUDA error: no kernel image is available for execution on the device, and /v1/health/ready remained HTTP 503.",
+      "script_outcome": "probe_interrupted_after_terminal_kernel_error_to_free_gpu",
+      "status": "other_error",
+      "support_decision": "keep_rtx6000_disabled_for_nim_1_3_1_bf16_profile"
+    },
+    "security_gate_remediation_20260625": {
+      "digest": "sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+      "status": "digest_pinned_regional_refs_and_runtime_attested"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "vision_language",
+    "tool_calling",
+    "instruction",
+    "multilingual",
+    "nvidia_nim",
+    "text",
+    "vision",
+    "general",
+    "openai_compatible",
+    "long_context"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/mistralai/mistral-small-3.2-24b-instruct-2506:1.3.1",
+  "container_image_size_bytes": 12732994278,
+  "context_window": 131072,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-21T00:03:37.309507+00:00",
+  "default_eligible": false,
+  "description": "Mistral Small 3.2 24B Instruct 2506 packaged as NVIDIA's VLM NIM. It provides Apache-2.0 text and image chat with improved instruction following, lower repetition, and more robust function-calling behavior than Mistral Small 3.1. This onboarding entry has verified regional image mirrors plus focused H200/eu-north2 and B200/us-central1 probes. B300/uk-south1 currently fails during NIM 1.3.1 Triton startup on SM103. RTX6000/us-central1 now has terminal NIM 1.3.1 evidence: the 2026-05-28T02Z reprobe selected vllm-bf16-tp1-pp1 on an RTX PRO 6000 Blackwell GPU with compute capability 12.0, chose Flash Attention, loaded the safetensors shard, then raised RuntimeError: CUDA error: no kernel image is available for execution on the device while /v1/health/ready remained 503. L40S/eu-north1 selects the same vllm-bf16-tp1-pp1 profile and fails before readiness with CUDA OOM on the single 48 GB-class GPU; the 2026-05-25T21Z L40S reprobe persisted raw status other_error, but 2026-05-25T23Z supervisor classification normalizes that kept-pod log evidence to terminal OOM for routing and publication gating. Keep L40S and RTX6000 unsupported unless a lower-memory, quantized, reduced-context, multi-GPU, or newer NIM/vLLM profile is validated.",
+  "family_id": "571b77ec-80b5-4366-b54f-8069e6040b94",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 68.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T05:19:56.826279+00:00",
+      "region": "us-central1",
+      "request_ms": 546,
+      "request_ms_p50": 546,
+      "request_ms_p95": 546,
+      "request_ms_p99": 546,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 940541,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 109.89,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 161.2,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 44.7
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed\n7446:00295] [25] /opt/nim/llm/.venv/bin/python3(PyObject_Vectorcall+0x35)[0x549985]\n[forge-probe-mistralai-mistral-small--b300-uk-south1-d57446:00295] [26] /opt/nim/llm/.venv/bin/python3(_PyEval_EvalFrameDefault+0xadf)[0x5d6b2f]\n[forge-probe-mistralai-mistral-small--b300-uk-south1-d57446:00295] [27] /opt/nim/llm/.venv/bin/python3(PyObject_Call+0x119)[0x54b1b9]\n[forge-probe-mistralai-mistral-small--b300-uk-south1-d57446:00295] [28] /opt/nim/llm/.venv/bin",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T05:22:41.220959+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 44.7
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T18:17:04.829204+00:00",
+      "region": "eu-north2",
+      "request_ms": 600,
+      "request_ms_p50": 577,
+      "request_ms_p95": 598,
+      "request_ms_p99": 600,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 784229,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 83.33,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 126.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 44.7
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "L40S/eu-north1 terminal OOM classification from 2026-05-25 kept-pod logs: NIM selected vllm-bf16-tp1-pp1 on one NVIDIA L40S and vLLM raised torch.OutOfMemoryError after using 43.21 GiB of 44.39 GiB usable memory while trying to allocate another 1.25 GiB.",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T02:29:49.739028+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "oom",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 44.7
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": "RTX6000/us-central1 2026-05-28 diagnostic: NIM 1.3.1 selected vllm-bf16-tp1-pp1 on NVIDIA RTX PRO 6000 Blackwell Server Edition compute_capability [12, 0], used Flash Attention, loaded safetensors, then vLLM raised RuntimeError: CUDA error: no kernel image is available for execution on the device; /v1/health/ready stayed 503.",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T02:24:34.633065+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 44.7
+    }
+  ],
+  "gpu_type": null,
+  "id": "cc0cbeea-7f60-4875-aa16-de899ff8cb62",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "mistralai-mistral-small-3-2-24b-instruct-2506",
+  "name": "Mistral Small 3.2 24B Instruct 2506",
+  "parameter_count": 24000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": [
+              {
+                "text": "{{prompt}}",
+                "type": "text"
+              },
+              {
+                "image_url": {
+                  "url": "{{image_url}}"
+                },
+                "type": "image_url"
+              }
+            ],
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "mistralai/mistral-small-3.2-24b-instruct-2506"
+    },
+    "input_fields": [
+      {
+        "default": "Describe the image and identify the visible colors and layout in two concise bullets.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAJ0lEQVR42mN4pqCFFSlX3MGKGEY10ESD1pYorOjrJRusaFQDTTQAAD//eJDqUy8IAAAAAElFTkSuQmCC",
+        "key": "image_url",
+        "label": "Image URL or data URL",
+        "type": "text",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "vision_chat",
+      "type": "markdown"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.15,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "vision_chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-mistralai-mistral-small-3.2-24b-instruct-2506:1.3.1@sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-mistralai-mistral-small-3.2-24b-instruct-2506:1.3.1@sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-mistralai-mistral-small-3.2-24b-instruct-2506:1.3.1@sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mistralai-mistral-small-3.2-24b-instruct-2506:1.3.1@sha256:c49a4c8ff468178d6a4866b1e34400d2160f92a4e099819d05930846b27bfe8c"
+  },
+  "release_rank": 70,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/mistral-small-3-2/api.html",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "vision-language",
+    "function-calling",
+    "instruction",
+    "multilingual",
+    "nvidia-nim"
+  ],
+  "updated_at": "2026-06-25T14:00:53.047130+00:00",
+  "version": "1.3.1",
+  "version_description": "NVIDIA VLM NIM release 1.3.1 for Mistral Small 3.2 24B Instruct 2506.",
+  "version_key": "nim-1-3-1",
+  "version_label": "NIM 1.3.1"
+}

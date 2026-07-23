@@ -1,0 +1,597 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Qwen2_5_VLForConditionalGeneration"
+      ],
+      "auto_map": null,
+      "hidden_size": 3584,
+      "max_position_embeddings": 128000,
+      "model_type": "qwen2_5_vl",
+      "num_attention_heads": 28,
+      "num_hidden_layers": 28,
+      "num_key_value_heads": 4,
+      "torch_dtype": "bfloat16",
+      "vision_depth": 32,
+      "vision_hidden_size": 1280,
+      "vision_patch_size": 14,
+      "vision_spatial_merge_size": 2
+    },
+    "artifact_downloads_checked": 15523,
+    "artifact_evidence": "Hugging Face API reported microsoft/Fara-7B as public, ungated, enabled, image-text-to-text, transformers, license:mit, revision 2b5558315618e2cce8c617aaa0078d0a8d81d2d9, 15,523 downloads, and 604 likes on 2026-05-31. Prior config inspection recorded 8,292,166,656 BF16 safetensors parameters and no auto_map.",
+    "artifact_last_modified": "2026-05-19T15:37:05.000Z",
+    "artifact_likes_checked": 604,
+    "artifact_parameters": {
+      "BF16": 8292166656
+    },
+    "artifact_revision": "2b5558315618e2cce8c617aaa0078d0a8d81d2d9",
+    "blockers": [],
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, and XDG caches are pointed at /opt/nim/.cache paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights.",
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image_size_bytes": 8669299461,
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_for_initial_qwen2_5_vl_computer_use_probe",
+    "current_research_20260602T08Z": {
+      "artifact_config": {
+        "architectures": [
+          "Qwen2_5_VLForConditionalGeneration"
+        ],
+        "auto_map": null,
+        "max_position_embeddings": 128000,
+        "model_type": "qwen2_5_vl",
+        "torch_dtype": "bfloat16"
+      },
+      "huggingface_api": {
+        "disabled": false,
+        "gated": false,
+        "last_modified": "2026-05-19T15:37:05.000Z",
+        "library_name": "transformers",
+        "license": "mit",
+        "pipeline_tag": "image-text-to-text",
+        "private": false,
+        "revision": "2b5558315618e2cce8c617aaa0078d0a8d81d2d9",
+        "safetensors_parameters_bf16": 8292166656
+      },
+      "publication_recommendation": "keep_active_testing_non_default; do not make default-eligible until computer-use safety copy and live model-page UX are reviewed",
+      "regional_digest_recheck": {
+        "checked_at": "2026-06-02T08:00:00Z",
+        "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "regions": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ]
+      },
+      "runtime_evidence": "Hugging Face and the Microsoft GitHub repository still document direct vLLM serving for microsoft/Fara-7B; vLLM stable supported-model docs still list Qwen2_5_VLForConditionalGeneration.",
+      "status": "refreshed_no_manifest_demote_needed"
+    },
+    "license_evidence": "Hugging Face model card metadata reports license:mit and the model card states License: MIT for Fara-7B.",
+    "media_guard_reprobe_20260531_cycle2": {
+      "cell": "B200/us-central1",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-fara-7b-vllm-cuda13 --include-status active --gpu B200 --region us-central1 --timeout 2400 --request-timeout 600 --warmup-runs 1 --benchmark-runs 1 --max-parallel 1",
+      "measurement_source": "client_wall_ms",
+      "report_json": "docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-b200-media-guard.json",
+      "report_md": "docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-b200-media-guard.md",
+      "request_ms": 415,
+      "request_status": 200,
+      "semantic_smoke": "The response described the raw.githubusercontent.com PyTorch image, identified no visible browser controls or links, and returned a safe no-op tool-call style action.",
+      "startup_ms": 72881,
+      "status": "passed",
+      "tokens_per_second": 643.37,
+      "vram_used_gb": 155.63
+    },
+    "media_url_safety": [
+      "The active manifest sets --allowed-media-domains to raw.githubusercontent.com for the default public image URL.",
+      "The active manifest sets VLLM_MEDIA_URL_ALLOW_REDIRECTS=0 so redirects cannot bypass the media domain allowlist.",
+      "The first profile exposes one image and sets video limit to zero; video should be a separate variant after payload, decoder, benchmark, and remote-media policy validation."
+    ],
+    "onboarding_state": "active_testing_non_default_five_gpu_supported_media_guard_validated",
+    "probe_results_20260531_cycle2": {
+      "cells": {
+        "B200/us-central1": {
+          "measurement_source": "client_wall_ms",
+          "request_ms_p50": 446,
+          "startup_ms": 88300,
+          "status": "supported",
+          "tokens_per_second": 1221.97,
+          "vram_used_gb": 155.69,
+          "warm_samples_ms": [
+            453,
+            458,
+            447,
+            443,
+            457,
+            443,
+            445,
+            445,
+            439,
+            446
+          ]
+        },
+        "B300/uk-south1": {
+          "measurement_source": "client_wall_ms",
+          "request_ms_p50": 390,
+          "startup_ms": 182935,
+          "status": "supported",
+          "tokens_per_second": 1397.44,
+          "vram_used_gb": 234.27,
+          "warm_samples_ms": [
+            394,
+            387,
+            402,
+            399,
+            386,
+            385,
+            400,
+            384,
+            401,
+            383
+          ]
+        },
+        "H200/eu-north2": {
+          "measurement_source": "client_wall_ms",
+          "request_ms_p50": 533,
+          "startup_ms": 415603,
+          "status": "supported",
+          "tokens_per_second": 1022.51,
+          "vram_used_gb": 121.7,
+          "warm_samples_ms": [
+            542,
+            535,
+            528,
+            529,
+            543,
+            531,
+            542,
+            530,
+            543,
+            528
+          ]
+        },
+        "L40S/eu-north1": {
+          "measurement_source": "client_wall_ms",
+          "request_ms_p50": 1368,
+          "startup_ms": 165707,
+          "status": "supported",
+          "tokens_per_second": 399.12,
+          "vram_used_gb": 37.55,
+          "warm_samples_ms": [
+            1388,
+            1386,
+            1349,
+            1365,
+            1367,
+            1367,
+            1403,
+            1388,
+            1368,
+            1365
+          ]
+        },
+        "RTX6000/us-central1": {
+          "measurement_source": "client_wall_ms",
+          "request_ms_p50": 858,
+          "startup_ms": 547962,
+          "status": "supported",
+          "tokens_per_second": 635.2,
+          "vram_used_gb": 82.24,
+          "warm_samples_ms": [
+            892,
+            867,
+            864,
+            856,
+            893,
+            856,
+            858,
+            856,
+            857,
+            853
+          ]
+        }
+      },
+      "commands": [
+        "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-fara-7b-vllm-cuda13 --include-status onboarding --gpu B200 --region us-central1 --timeout 2400 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --keep-pods --report-json docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-b200.json --report-md docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-b200.md",
+        "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-fara-7b-vllm-cuda13 --include-status onboarding --gpu B300 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 2 --report-json docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-remaining-matrix.json --report-md docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-remaining-matrix.md"
+      ],
+      "measurement_note": "All request_ms values are median warm client_wall_ms because the generic vLLM OpenAI-compatible endpoint did not expose a separate model-time header.",
+      "reports": [
+        "docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-b200.json",
+        "docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-b200.md",
+        "docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-remaining-matrix.json",
+        "docs/model-onboarding/general/microsoft-fara-7b-vllm-cuda13-20260531T-cycle2-remaining-matrix.md"
+      ],
+      "semantic_smoke": "B200 response_status=200 and response preview included a natural-language action explanation followed by a <tool_call> computer action, validating OpenAI-compatible multimodal image_url handling and Fara action-output text shape for the default harmless screenshot request."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publish_gate": {
+      "decision": "passed_for_active_testing_non_default",
+      "default_eligible": false,
+      "default_route_gate": "Do not make this default-eligible until product review signs off on computer-use agent positioning and the live model page is checked.",
+      "rationale": "The artifact is public, ungated, MIT-licensed, and uses a mirrored digest-pinned vLLM CUDA 13 image. Dry-run validation passed, image gate returned no findings, live upsert succeeded, and all five Forge GPU cells completed 3 warmups plus 10 measured real multimodal chat requests."
+    },
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_verified_at": "2026-05-30T00:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "Fara-7B model card documents vllm serve microsoft/Fara-7B --port 5000 --dtype auto and notes tensor-parallel-size 2 may be needed if memory is insufficient. The config uses the vLLM-supported Qwen2_5_VLForConditionalGeneration architecture and has no auto_map. skopeo inspect of docker.io/vllm/vllm-openai:v0.21.0 on 2026-05-31 returned digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, created 2026-05-15T05:00:10Z, CUDA_VERSION=13.0.2, image-default VLLM_ENABLE_CUDA_COMPATIBILITY=0, TORCH_CUDA_ARCH_LIST='7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX', and 26 layers. This manifest deliberately does not override that compatibility mode because the earlier CUDA 13 Fara probe forced VLLM_ENABLE_CUDA_COMPATIBILITY=1 and failed before readiness with cudaGetDeviceCount error 803 on H200 plus startup failure on B200.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "source_evidence": [
+      "https://huggingface.co/microsoft/Fara-7B",
+      "https://huggingface.co/api/models/microsoft/Fara-7B?blobs=true",
+      "https://huggingface.co/microsoft/Fara-7B/raw/main/config.json",
+      "https://github.com/microsoft/fara",
+      "https://docs.vllm.ai/en/latest/models/supported_models/"
+    ]
+  },
+  "capabilities": [
+    "vlm",
+    "vision_language",
+    "computer_use",
+    "agentic",
+    "browser_automation",
+    "screenshot",
+    "action_prediction",
+    "qwen2_5_vl",
+    "microsoft",
+    "mit",
+    "vllm",
+    "cuda13",
+    "text",
+    "vision",
+    "general",
+    "openai_compatible",
+    "chat",
+    "text_generation"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-30T19:10:11.654970+00:00",
+  "default_eligible": false,
+  "description": "Microsoft Fara-7B is a public, ungated MIT-licensed 7B vision-language computer-use agent model. The model takes a user goal, browser screenshot, and action history text, then emits reasoning plus a tool-call style next action for web automation tasks while stopping at critical points that require user permission or sensitive information. Hugging Face metadata refreshed on 2026-05-31 reports private=false, gated=false, disabled=false, pipeline_tag=image-text-to-text, library_name=transformers, revision 2b5558315618e2cce8c617aaa0078d0a8d81d2d9, and license:mit. The artifact config reports Qwen2_5_VLForConditionalGeneration, model_type=qwen2_5_vl, bfloat16, 128,000 max positions, no auto_map, and no custom remote-code requirement. This Forge profile reuses the already mirrored official vLLM 0.21.0 CUDA 13 OpenAI-compatible image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, leaves the image default VLLM_ENABLE_CUDA_COMPATIBILITY=0 path in place, caps first serving to 32,768 tokens and one image per prompt, clears Hugging Face token env for this public artifact, allowlists raw.githubusercontent.com for remote image fetches, disables media URL redirects, and stores Hugging Face/vLLM caches under /opt/nim/.cache paths backed by Forge shared /mnt/data cache. The 2026-05-31 cycle2 probes supported B200, B300, H200, L40S, and RTX6000 with 3 warmups plus 10 measured requests per cell; the row is active/testing and not default-eligible.",
+  "family_id": "9ca4b59f-5b03-40df-9638-bc2a9c8693af",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "microsoft/Fara-7B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "microsoft/Fara-7B",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--limit-mm-per-prompt",
+      "{\"image\":1,\"video\":0}",
+      "--gpu-memory-utilization",
+      "0.88",
+      "--max-num-seqs",
+      "4",
+      "--allowed-media-domains",
+      "raw.githubusercontent.com"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "VLLM_MEDIA_URL_ALLOW_REDIRECTS": "0",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T03:37:35.619417+00:00",
+      "region": "us-central1",
+      "request_ms": 415,
+      "request_ms_p50": 445,
+      "request_ms_p95": 458,
+      "request_ms_p99": 458,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 72881,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 643.37,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 155.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.45
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T03:21:05.522901+00:00",
+      "region": "uk-south1",
+      "request_ms": 390,
+      "request_ms_p50": 390,
+      "request_ms_p95": 402,
+      "request_ms_p99": 402,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 182935,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1397.44,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 234.27,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.45
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T03:18:08.840993+00:00",
+      "region": "eu-north2",
+      "request_ms": 533,
+      "request_ms_p50": 533,
+      "request_ms_p95": 543,
+      "request_ms_p99": 543,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 415603,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1022.51,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 121.7,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.45
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T03:11:01.371177+00:00",
+      "region": "eu-north1",
+      "request_ms": 1368,
+      "request_ms_p50": 1368,
+      "request_ms_p95": 1396,
+      "request_ms_p99": 1402,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 165707,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 399.12,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 37.55,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.45
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T03:17:53.223017+00:00",
+      "region": "us-central1",
+      "request_ms": 858,
+      "request_ms_p50": 858,
+      "request_ms_p95": 893,
+      "request_ms_p99": 893,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 547962,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 635.2,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 82.24,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 15.45
+    }
+  ],
+  "gpu_type": null,
+  "id": "4175a9b8-2768-45b5-8b41-302ea145f89b",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "microsoft-fara-7b",
+  "name": "Fara-7B",
+  "parameter_count": 8292166656,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "You are a web automation agent that performs actions on websites to fulfill user requests by calling tools. Stop before checkout, booking, purchase, calls, email, orders, personal data entry, payment, sign-in, job applications, or any other critical point requiring user permission or sensitive information.",
+            "role": "system"
+          },
+          {
+            "content": [
+              {
+                "text": "{{task}}",
+                "type": "text"
+              },
+              {
+                "image_url": {
+                  "url": "{{image_url}}"
+                },
+                "type": "image_url"
+              }
+            ],
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "microsoft/Fara-7B"
+    },
+    "input_fields": [
+      {
+        "default": "Describe the visible sample image. If there is no browser control or call-to-action, return a safe no-op browser action and explain why no click is needed.",
+        "key": "task",
+        "label": "Task",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "https://raw.githubusercontent.com/github/explore/main/topics/pytorch/pytorch.png",
+        "key": "image_url",
+        "label": "Screenshot URL or data URL",
+        "type": "text",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "computer_use_action_text",
+      "type": "markdown"
+    },
+    "parameter_controls": [
+      {
+        "default": 1e-06,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 768,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "vision_chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 36,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "microsoft-fara-7b-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/microsoft/Fara-7B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "vlm",
+    "vision-language",
+    "computer-use",
+    "agentic",
+    "browser-automation",
+    "screenshot",
+    "action-prediction",
+    "qwen2.5-vl",
+    "microsoft",
+    "mit",
+    "vllm",
+    "cuda13"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13-vision-chat-probe",
+  "version_description": "Non-default testing profile for Microsoft Fara-7B served by the already mirrored vLLM OpenAI-compatible CUDA 13 image with a bounded one-image computer-use prompt.",
+  "version_key": "vllm-0-21-0-cuda13-vision-chat-probe",
+  "version_label": "vLLM 0.21.0 CUDA 13 vision chat"
+}

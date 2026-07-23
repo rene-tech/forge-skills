@@ -1,0 +1,603 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Olmo3ForCausalLM"
+      ],
+      "auto_map": null,
+      "hidden_size": 4096,
+      "intermediate_size": 11008,
+      "max_position_embeddings": 65536,
+      "model_type": "olmo3",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 32,
+      "num_key_value_heads": 32,
+      "rope_scaling": {
+        "attention_factor": 1.2079441541679836,
+        "factor": 8.0,
+        "original_max_position_embeddings": 8192,
+        "rope_type": "yarn"
+      },
+      "vocab_size": 100278
+    },
+    "artifact_downloads_checked": 247662,
+    "artifact_last_modified": "2026-01-05T16:23:38.000Z",
+    "artifact_likes_checked": 129,
+    "artifact_parameters": {
+      "BF16": 7298011136
+    },
+    "artifact_revision": "096bb5469fe34348bc88d851a69edb3bf6f40df4",
+    "artifact_storage_bytes": 14596022272,
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, and XDG caches are pointed at /opt/nim/.cache paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights.",
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image_size_bytes": 8669299461,
+    "container_runtime_evidence": {
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "revision": "ad7125a431e176d4161099480a66f0169609a690",
+      "source": "https://github.com/vllm-project/vllm",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+      "vllm_enable_cuda_compatibility": "0"
+    },
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_for_initial_general_chat_candidate",
+    "fallback_attempted": {
+      "alternate_runtime": "Ollama/quantized community artifacts were not selected because the existing Forge GPU matrix workflow already supports the mirrored vLLM CUDA 13 runtime path.",
+      "forge_owned_wrapper": "Not built because the official vLLM OpenAI-compatible image documents Olmo3ForCausalLM support and is already mirrored to all active Forge regions at a verified digest.",
+      "nvidia_nim_probe": "Current web search did not find a model-specific NVIDIA NIM or nvcr.io image for OLMo 3 7B Instruct."
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_pending": [],
+      "cells_supported": {
+        "B200/us-central1": {
+          "node": "computeinstance-u00jt6wekmrm7dfwjd",
+          "pod": "forge-probe-allenai-olmo-3-7b-instru-b200-us-central1-48cabd",
+          "request_ms_p50": 900,
+          "request_ms_samples": [
+            771,
+            916,
+            999,
+            790,
+            979,
+            968,
+            760,
+            922,
+            880,
+            884
+          ],
+          "startup_ms": 478360,
+          "tokens_per_second": 317.78,
+          "vram_used_gb": 142.59
+        },
+        "B300/uk-south1": {
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod": "forge-probe-allenai-olmo-3-7b-instru-b300-uk-south1-7e576b",
+          "request_ms_p50": 814,
+          "request_ms_samples": [
+            683,
+            831,
+            915,
+            703,
+            893,
+            882,
+            672,
+            834,
+            793,
+            798
+          ],
+          "startup_ms": 117427,
+          "tokens_per_second": 351.35,
+          "vram_used_gb": 214.05
+        },
+        "H200/eu-north2": {
+          "node": "computeinstance-e02bf73e3ecaj6cvh5",
+          "pod": "forge-probe-allenai-olmo-3-7b-instru-h200-eu-north2-f38b00",
+          "request_ms_p50": 1184,
+          "request_ms_samples": [
+            1172,
+            872,
+            1069,
+            1151,
+            1176,
+            1196,
+            1489,
+            1353,
+            1406,
+            1191
+          ],
+          "startup_ms": 395522,
+          "tokens_per_second": 263.51,
+          "vram_used_gb": 111.66
+        },
+        "L40S/eu-north1": {
+          "node": "computeinstance-e00zfvvbpd91rkzq5b",
+          "pod": "forge-probe-allenai-olmo-3-7b-instru-l40s-eu-north1-e75b90",
+          "request_ms_p50": 4155,
+          "request_ms_samples": [
+            4420,
+            3890,
+            2969,
+            4773,
+            3067,
+            4518,
+            4577,
+            3438,
+            3713,
+            4538
+          ],
+          "startup_ms": 531151,
+          "tokens_per_second": 76.29,
+          "vram_used_gb": 35.19
+        },
+        "RTX6000/us-central1": {
+          "node": "computeinstance-u00e9918jr0msnq135",
+          "pod": "forge-probe-allenai-olmo-3-7b-instru-rtx6000-us-central1-9600dc",
+          "request_ms_p50": 2464,
+          "request_ms_samples": [
+            2670,
+            2605,
+            2564,
+            1837,
+            2845,
+            2365,
+            2969,
+            2113,
+            2134,
+            2124
+          ],
+          "startup_ms": 559566,
+          "tokens_per_second": 112.42,
+          "vram_used_gb": 75.79
+        }
+      },
+      "endpoint": "/v1/chat/completions",
+      "generated_at": "2026-05-30T15:14:42.876182+00:00",
+      "report_json": "docs/model-onboarding/general/allenai-olmo-3-7b-instruct-vllm-cuda13-20260530T15Z-matrix.json",
+      "report_md": "docs/model-onboarding/general/allenai-olmo-3-7b-instruct-vllm-cuda13-20260530T15Z-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "status": "full_supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; the model card states the model is licensed under Apache 2.0.",
+    "live_publication_20260530T16Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/allenai-olmo-3-7b-instruct-vllm-cuda13.json --keep-existing-family-latest",
+      "db_readback": {
+        "default_eligible": false,
+        "is_latest": true,
+        "stability": "testing",
+        "status": "active",
+        "support_rows": {
+          "B200/us-central1": {
+            "request_ms_p50": 900,
+            "request_ms_p95": 990,
+            "request_ms_p99": 997,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 317.78,
+            "vram_measured_gb": 142.59
+          },
+          "B300/uk-south1": {
+            "request_ms_p50": 814,
+            "request_ms_p95": 905,
+            "request_ms_p99": 913,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 351.35,
+            "vram_measured_gb": 214.05
+          },
+          "H200/eu-north2": {
+            "request_ms_p50": 1184,
+            "request_ms_p95": 1452,
+            "request_ms_p99": 1482,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 263.51,
+            "vram_measured_gb": 111.66
+          },
+          "L40S/eu-north1": {
+            "request_ms_p50": 4155,
+            "request_ms_p95": 4685,
+            "request_ms_p99": 4755,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 76.29,
+            "vram_measured_gb": 35.19
+          },
+          "RTX6000/us-central1": {
+            "request_ms_p50": 2464,
+            "request_ms_p95": 2913,
+            "request_ms_p99": 2958,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 112.42,
+            "vram_measured_gb": 75.79
+          }
+        }
+      },
+      "result": "succeeded"
+    },
+    "onboarding_state": "published_active_testing_non_default_full_five_cell_supported",
+    "planned_probe_command": "completed_20260530T15Z_full_matrix",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260530T15Z": {
+      "default_routing": "default_eligible remains false; this does not change default general chat routing.",
+      "remaining_constraints": [
+        "Native 65,536-token context remains unclaimed; this first Forge profile is capped at 32,768 tokens.",
+        "The probe report used client wall time because the OpenAI-compatible vLLM response did not expose separate model execution timing."
+      ],
+      "state_advance": "Source manifest advanced from onboarding/experimental with no GPU claims to active/testing/non-default after a five-cell live matrix passed."
+    },
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_verified_at": "2026-05-30T14:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "The OLMo 3 model card includes a vLLM example for allenai/Olmo-3-7B-Instruct. vLLM 0.21.0 supported-model documentation lists Olmo3ForCausalLM with allenai/Olmo-3-7B-Instruct as an example. The artifact has no auto_map, so this manifest does not enable trust_remote_code.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "selection_rationale": "Selected as a non-HCLS, non-physical, non-Qwen general model that fills the OLMo 3 gap in Forge, has fully open Apache-2.0 licensing, public ungated BF16 artifacts, strong 7B utility claims, and an existing one-GPU vLLM serving path.",
+    "source_evidence": [
+      "https://huggingface.co/allenai/Olmo-3-7B-Instruct",
+      "https://huggingface.co/api/models/allenai/Olmo-3-7B-Instruct?blobs=true",
+      "https://huggingface.co/allenai/Olmo-3-7B-Instruct/raw/main/config.json",
+      "https://huggingface.co/allenai/Olmo-3-7B-Instruct/raw/main/model.safetensors.index.json",
+      "https://huggingface.co/allenai/Olmo-3-7B-Instruct/raw/main/chat_template.jinja",
+      "https://docs.vllm.ai/en/v0.21.0/models/supported_models/"
+    ]
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "reasoning",
+    "code",
+    "tool_calling",
+    "long_context",
+    "english",
+    "olmo",
+    "allenai",
+    "open_science",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-30T15:04:29.435537+00:00",
+  "default_eligible": false,
+  "description": "AllenAI OLMo 3 7B Instruct is a public, ungated Apache-2.0 English instruction-following model in the fully open OLMo 3 family, aimed at chat, tool-use style prompts, coding, math, general reasoning, and long-context workflows. Live Hugging Face metadata checked on 2026-05-30T14Z reports private=false, gated=false, disabled=false, pipeline_tag=text-generation, library_name=transformers, revision 096bb5469fe34348bc88d851a69edb3bf6f40df4, license:apache-2.0, and 7,298,011,136 BF16 safetensors parameters. The artifact config reports Olmo3ForCausalLM, model_type=olmo3, 65,536 native max positions with YaRN rope scaling from 8,192, 32 layers, 32 attention heads, 32 KV heads, hidden size 4096, intermediate size 11008, vocab size 100278, and no auto_map. This Forge profile reuses the already mirrored official vLLM 0.21.0 CUDA 13 OpenAI-compatible image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, caps first serving to 32,768 tokens for bounded probes, clears unnecessary Hugging Face token env for this public artifact, and stores Hugging Face/vLLM caches under /opt/nim/.cache paths backed by Forge shared /mnt/data cache. The 2026-05-30T15Z live matrix validated B200, B300, H200, L40S, and RTX6000 with 3 warmups and 10 measured warm chat-completion requests per cell, so this source manifest is advanced to active/testing/non-default while leaving default routing unchanged.",
+  "family_id": "016f984e-43de-4ad5-acc0-b75edbcd7ec5",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "allenai/Olmo-3-7B-Instruct",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "allenai/Olmo-3-7B-Instruct",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.8",
+      "--max-num-seqs",
+      "8"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T15:13:06.012108+00:00",
+      "region": "us-central1",
+      "request_ms": 900,
+      "request_ms_p50": 900,
+      "request_ms_p95": 990,
+      "request_ms_p99": 997,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 478360,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 317.78,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 142.59,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T15:13:55.628467+00:00",
+      "region": "uk-south1",
+      "request_ms": 814,
+      "request_ms_p50": 814,
+      "request_ms_p95": 905,
+      "request_ms_p99": 913,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 117427,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 351.35,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 214.05,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T15:11:44.885443+00:00",
+      "region": "eu-north2",
+      "request_ms": 1184,
+      "request_ms_p50": 1184,
+      "request_ms_p95": 1452,
+      "request_ms_p99": 1482,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 395522,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 263.51,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 111.66,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T15:14:36.644354+00:00",
+      "region": "eu-north1",
+      "request_ms": 4155,
+      "request_ms_p50": 4155,
+      "request_ms_p95": 4685,
+      "request_ms_p99": 4755,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 531151,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 76.29,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 35.19,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T15:14:42.352005+00:00",
+      "region": "us-central1",
+      "request_ms": 2464,
+      "request_ms_p50": 2464,
+      "request_ms_p95": 2913,
+      "request_ms_p99": 2958,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 559566,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 112.42,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 75.79,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.59
+    }
+  ],
+  "gpu_type": null,
+  "id": "376c8abc-cc66-4aad-a108-dddc45f32854",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "allenai-olmo-3-7b-instruct",
+  "name": "OLMo 3 7B Instruct",
+  "parameter_count": 7298011136,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "allenai/Olmo-3-7B-Instruct"
+    },
+    "input_fields": [
+      {
+        "default": "Draft a concise engineering handoff for this rollout note. Include one likely risk and two validation steps:\n\nA fully open 7B instruction model is being staged on the CUDA 13 vLLM image with a bounded 32K context window before any default routing decision.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "chat",
+      "type": "markdown"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.6,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 8192,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 45,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "allenai-olmo-3-7b-instruct-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/allenai/Olmo-3-7B-Instruct",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction",
+    "reasoning",
+    "coding",
+    "tool-use",
+    "long-context",
+    "english",
+    "olmo",
+    "allenai",
+    "open-science",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13",
+  "version_description": "AllenAI OLMo 3 7B Instruct served by the already mirrored vLLM OpenAI-compatible CUDA 13 image as an active, testing, non-default general chat model after the 2026-05-30T15Z five-cell matrix probe.",
+  "version_key": "vllm-0-21-0-cuda13",
+  "version_label": "vLLM 0.21.0 CUDA 13"
+}

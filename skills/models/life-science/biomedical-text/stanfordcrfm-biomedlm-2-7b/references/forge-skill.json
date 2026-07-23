@@ -1,0 +1,143 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "030f8af04421415a286e212b29f966360afb757a9885a85c9c26b26cb22607de",
+  "defaultEligible": false,
+  "displayName": "Use BioMedLM 2.7B",
+  "domain": "biomedical-text",
+  "downloadUrl": "/v1/model-skills/stanfordcrfm-biomedlm-2-7b/markdown?download=true",
+  "group": "biomedical-text",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "biomedical-text",
+    "stanfordcrfm-biomedlm-2-7b"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/stanfordcrfm-biomedlm-2-7b",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Summarize why protein sequence embeddings are useful in drug discovery.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 96,
+      "fieldType": "number",
+      "key": "max_new_tokens",
+      "label": "Max new tokens",
+      "maximum": 512,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.7,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-stanfordcrfm-biomedlm-2-7b\ndescription: Use the exact Forge model stanfordcrfm-biomedlm-2-7b for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use BioMedLM 2.7B\n\n- Model slug: `stanfordcrfm-biomedlm-2-7b`\n- Model family: `stanfordcrfm-biomedlm`\n- Version: `2.7b` (`2-7b`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / biomedical-text / stanfordcrfm-biomedlm-2-7b`\n- Stability: `stable`\n- Default eligible: `false`\n- License: `bigscience-bloom-rail-1.0`\n\n## Purpose\n\nStanford CRFM BioMedLM 2.7B biomedical text generation wrapper.\n\n## Use this exact model when\n\n- Use this exact `stanfordcrfm-biomedlm-2-7b` version when the task supplies text and needs text.\n- Stanford CRFM BioMedLM 2.7B biomedical text generation wrapper.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `stable` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `max_new_tokens` (number, optional; bounds 1..512): Max new tokens\n- `temperature` (number, optional; bounds 0..2): Temperature\n\nRequest template:\n\n```json\n{\n  \"max_new_tokens\": \"{{max_new_tokens}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/inference/stanfordcrfm-biomedlm-2-7b`\n\n## Workflow\n\n1. Load this skill and pin model slug `stanfordcrfm-biomedlm-2-7b` with version key `2-7b`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/stanfordcrfm-biomedlm-2-7b` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 1024.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/stanfordcrfm-biomedlm-2-7b`\n- Routes: `/v1/models/stanfordcrfm-biomedlm-2-7b/inference-routes`\n- Regional deployment: `/v1/models/stanfordcrfm-biomedlm-2-7b/regional-deployment`\n- Deployment handoff: `/v1/models/stanfordcrfm-biomedlm-2-7b/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/biomedical-text/stanfordcrfm-biomedlm-2-7b/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/biomedical-text/stanfordcrfm-biomedlm-2-7b/SKILL.md\n\n## References\n\n- [BioMedLM 2.7B source](https://huggingface.co/stanford-crfm/BioMedLM) (model-card)\n",
+  "license": "bigscience-bloom-rail-1.0",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 1024."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b/deploy",
+    "inferenceRoutesUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/stanfordcrfm-biomedlm",
+    "modelUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b",
+    "regionalDeploymentUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/stanfordcrfm-biomedlm-2-7b/markdown",
+  "modelFamily": "stanfordcrfm-biomedlm",
+  "modelSlug": "stanfordcrfm-biomedlm-2-7b",
+  "modelUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Stanford CRFM BioMedLM 2.7B biomedical text generation wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/biomedical-text/stanfordcrfm-biomedlm-2-7b/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "BioMedLM 2.7B source",
+      "url": "https://huggingface.co/stanford-crfm/BioMedLM"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/biomedical-text/stanfordcrfm-biomedlm-2-7b/SKILL.md",
+  "repositoryPath": "skills/models/life-science/biomedical-text/stanfordcrfm-biomedlm-2-7b/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_new_tokens": "{{max_new_tokens}}",
+    "prompt": "{{prompt}}",
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1024,
+    "parameterCount": 2700000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/stanford-crfm/BioMedLM",
+    "tags": [
+      "life-science",
+      "biomedical",
+      "language-model",
+      "generation"
+    ],
+    "versionLabel": "2.7b"
+  },
+  "shortDescription": "Stanford CRFM BioMedLM 2.7B biomedical text generation wrapper.",
+  "skillName": "use-forge-stanfordcrfm-biomedlm-2-7b",
+  "skillUrl": "/v1/model-skills/stanfordcrfm-biomedlm-2-7b",
+  "slug": "stanfordcrfm-biomedlm-2-7b",
+  "stability": "stable",
+  "version": "2.7b",
+  "versionKey": "2-7b",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `stable` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `stanfordcrfm-biomedlm-2-7b` version when the task supplies text and needs text.",
+    "Stanford CRFM BioMedLM 2.7B biomedical text generation wrapper.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `stanfordcrfm-biomedlm-2-7b` with version key `2-7b`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/stanfordcrfm-biomedlm-2-7b` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

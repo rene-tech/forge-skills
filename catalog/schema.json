@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forge portable model skill catalog",
+  "type": "object",
+  "required": ["schemaVersion", "models", "total"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "generatedAt": {"type": "string", "format": "date-time"},
+    "sourceApi": {"type": "string", "format": "uri"},
+    "total": {"type": "integer", "minimum": 0},
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "slug", "skillName", "path", "category", "group", "modelFamily",
+          "versionKey", "inputModalities", "outputModalities",
+          "researchStatus", "contentSha256"
+        ],
+        "properties": {
+          "slug": {"type": "string"},
+          "skillName": {"type": "string", "maxLength": 63},
+          "path": {"type": "string"},
+          "category": {"type": "string"},
+          "group": {"type": "string"},
+          "modelFamily": {"type": "string"},
+          "versionKey": {"type": "string"},
+          "inputModalities": {"type": "array", "items": {"type": "string"}},
+          "outputModalities": {"type": "array", "items": {"type": "string"}},
+          "researchStatus": {
+            "enum": ["reviewed", "source-linked", "pending-review"]
+          },
+          "contentSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

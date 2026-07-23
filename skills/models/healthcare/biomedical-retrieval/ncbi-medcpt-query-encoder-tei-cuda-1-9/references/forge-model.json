@@ -1,0 +1,610 @@
+{
+  "benchmark_scores": {
+    "article_side_preflight_20260529T13Z": {
+      "article_encoder": {
+        "api": "https://huggingface.co/api/models/ncbi/MedCPT-Article-Encoder",
+        "disabled": false,
+        "endpoints_compatible_tag_present": true,
+        "gated": false,
+        "license_file_evidence": "NCBI/NLM United States Government Work; freely available to the public with no U.S. Government restriction on use or reproduction.",
+        "license_name": "public-domain",
+        "private": false,
+        "safetensors_total_f32_parameters": 109482240,
+        "sha": "d05a736da4bb84ee4057b7f7999485be6ed85465",
+        "source": "https://huggingface.co/ncbi/MedCPT-Article-Encoder",
+        "text_embeddings_inference_tag_present": true,
+        "tokenizer_json_present": true
+      },
+      "checked_at": "2026-05-29T13:04:04Z",
+      "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "evidence_json": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T13Z-article-side-preflight.json",
+      "evidence_md": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T13Z-article-side-preflight.md",
+      "fallback": "Use NCBI precomputed PubMed article embeddings for article-side retrieval, or add a scoped article-encoder wrapper that accepts title and abstract fields, tokenizes them as a pair, normalizes CLS embeddings, then builds, mirrors, dry-runs, hidden-upserts, and probes a separate row.",
+      "publication_decision": "keep_query_encoder_hidden_onboarding_default_ineligible",
+      "regional_mirror_recheck_20260529T13Z": {
+        "eu-north1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "eu-north2": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "uk-south1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "us-central1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+      },
+      "serving_blocker": "The Article Encoder model card tokenizes each article as a title/abstract text pair. The current Forge OpenAI-compatible TEI embedding manifest maps one input string or a string batch, so staging an Article Encoder row through that contract would either embed title and abstract separately or require lossy concatenation instead of the documented paired sequence.",
+      "status": "article_encoder_artifact_license_and_mirrors_verified_manifest_blocked_by_pair_input_contract"
+    },
+    "artifact_api": "https://huggingface.co/api/models/ncbi/MedCPT-Query-Encoder",
+    "artifact_checked_at": "2026-05-29T04:00:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "embedding_dimension": 768,
+      "hidden_size": 768,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_hidden_layers": 12,
+      "pooling": "cls",
+      "readme_query_max_length": 64,
+      "transformers_version": "4.34.0"
+    },
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 382757,
+    "artifact_evidence": "Hugging Face API returned private=false, gated=false, disabled=false, license_name=public-domain, library_name=transformers, pipeline_tag=feature-extraction, tags including text-embeddings-inference and endpoints_compatible, revision d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc, and safetensors total 109,482,240 F32 parameters. The model card says the query encoder embeds short texts and uses last_hidden_state[:, 0, :] as the representation.",
+    "artifact_files_observed": [
+      "LICENSE",
+      "README.md",
+      "added_tokens.json",
+      "config.json",
+      "model.safetensors",
+      "pytorch_model.bin",
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer_config.json",
+      "vocab.txt"
+    ],
+    "artifact_gated": false,
+    "artifact_last_modified": "2023-12-03T00:45:30.000Z",
+    "artifact_license": "public-domain",
+    "artifact_likes_observed": 61,
+    "artifact_parameters": {
+      "F32": 109482240,
+      "total": 109482240
+    },
+    "artifact_private": false,
+    "artifact_recheck_20260529T07Z": {
+      "checked_at": "2026-05-29T07:04:12Z",
+      "config_hidden_size": 768,
+      "config_max_position_embeddings": 512,
+      "disabled": false,
+      "downloads_observed": 382757,
+      "gated": false,
+      "last_modified": "2023-12-03T00:45:30.000Z",
+      "library_name": "transformers",
+      "license_link": "LICENSE",
+      "license_name": "public-domain",
+      "likes_observed": 61,
+      "pipeline_tag": "feature-extraction",
+      "private": false,
+      "safetensors_total_f32_parameters": 109482240,
+      "sha": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc",
+      "status": "unchanged_public_ungated_artifact",
+      "tokenizer_json_present": true
+    },
+    "artifact_recheck_20260529T09Z": {
+      "checked_at": "2026-05-29T09:03:00Z",
+      "disabled": false,
+      "downloads_observed": 392688,
+      "gated": false,
+      "last_modified": "2023-12-03T00:45:30.000Z",
+      "library_name": "transformers",
+      "license_link": "LICENSE",
+      "license_name": "public-domain",
+      "likes_observed": 61,
+      "pipeline_tag": "feature-extraction",
+      "private": false,
+      "safetensors_total_f32_parameters": 109482240,
+      "sha": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc",
+      "status": "unchanged_public_ungated_artifact",
+      "tokenizer_json_present": true
+    },
+    "artifact_recheck_20260529T10Z": {
+      "card_license": "other",
+      "checked_at": "2026-05-29T10:00:00Z",
+      "disabled": false,
+      "downloads_observed": 392688,
+      "endpoints_compatible_tag_present": true,
+      "gated": false,
+      "library_name": "transformers",
+      "license_file_evidence": "NCBI/NLM United States Government Work; freely available to the public with no U.S. Government restriction on use or reproduction.",
+      "likes_observed": 61,
+      "pipeline_tag": "feature-extraction",
+      "private": false,
+      "safetensors_total_f32_parameters": 109482240,
+      "sha": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc",
+      "status": "unchanged_public_ungated_artifact",
+      "text_embeddings_inference_tag_present": true
+    },
+    "artifact_sha": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc",
+    "artifact_source": "https://huggingface.co/ncbi/MedCPT-Query-Encoder",
+    "b300_diagnostic_20260529T09Z": {
+      "exit_code": 1,
+      "fallback": "use a newer TEI runtime or vLLM/CUDA13 embedding runtime before enabling B300",
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "pod": "forge-probe-ncbi-medcpt-query-encode-b300-uk-south1-18e80c",
+      "report_json": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T09Z-b300-diagnostic.json",
+      "report_md": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T09Z-b300-diagnostic.md",
+      "status": "sm103_runtime_rejected_by_pinned_tei_cuda_1_9_3",
+      "terminal_log": "cuda compute cap 103 is not supported"
+    },
+    "cls_parity_20260529T10Z": {
+      "corpus": "10 synthetic non-PHI biomedical retrieval queries plus one nonmedical control",
+      "dimension": 768,
+      "max_abs_delta_vs_direct_unit_cls": 0.0032963447,
+      "mean_direct_raw_cls_norm": 11.9323803395,
+      "mean_tei_norm": 1.0000000008,
+      "min_cosine_tei_vs_direct_cls": 0.9999862475,
+      "raw_scale_parity": false,
+      "reference_pooling": "last_hidden_state[:,0,:]",
+      "reference_runtime": "direct_transformers_cpu_inside_sapbert_wrapper_image",
+      "report_json": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T10Z-cls-parity.json",
+      "report_md": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T10Z-cls-parity.md",
+      "routing_implication": "Normalize article-side MedCPT embeddings or serve the Article Encoder through the same TEI/OpenAI normalization policy before public query-to-article ranking.",
+      "status": "directional_cls_parity_passed_raw_scale_differs_by_tei_normalization",
+      "tei_probe_json": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T10Z-parity-pod.json",
+      "tei_probe_md": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T10Z-parity-pod.md"
+    },
+    "container_config_snapshot_20260529T04Z": {
+      "architecture": "amd64",
+      "created": "2026-03-23T09:18:22.111980354Z",
+      "cuda_version": "12.9.1",
+      "image_version": "cuda-1.9.3",
+      "license": "Apache-2.0",
+      "os": "linux",
+      "source": "https://github.com/huggingface/text-embeddings-inference",
+      "upstream_default_cache": "/data"
+    },
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+    "container_license_evidence": "crane config for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 reports org.opencontainers.image.licenses=Apache-2.0, org.opencontainers.image.version=cuda-1.9.3, and org.opencontainers.image.source=https://github.com/huggingface/text-embeddings-inference.",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image_for_openai_compatible_embeddings",
+    "gpu_compatibility_basis": {
+      "B200": "supported_20260529T09Z_standard_probe_10_measured_client_wall_p50_157ms",
+      "B300": "unsupported_20260529T09Z_tei_cuda_1_9_3_sm103_exit_cuda_compute_cap_103_not_supported",
+      "H200": "supported_20260529T09Z_standard_probe_10_measured_client_wall_p50_105ms",
+      "L40S": "supported_20260529T09Z_standard_probe_10_measured_client_wall_p50_94ms",
+      "RTX6000": "supported_20260529T09Z_standard_probe_10_measured_client_wall_p50_159ms"
+    },
+    "hcls_routing_gate_20260529T07Z": {
+      "cleared_requirements": [
+        "public ungated artifact license evidence",
+        "digest-pinned mirrored TEI CUDA 1.9.3 image in all four active regions",
+        "shared /mnt/data Hugging Face cache configuration",
+        "OpenAI-compatible /v1/embeddings manifest body with explicit upstream model id"
+      ],
+      "evidence_json": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T07Z-routing-gate.json",
+      "evidence_md": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T07Z-routing-gate.md",
+      "public_publication": "do_not_publish_until_live_upsert_cls_parity_gpu_matrix_article_strategy_and_hcls_safety_approval",
+      "remaining_blockers": [
+        "CLS pooling parity against direct Transformers output not run",
+        "B300 requires newer TEI or vLLM/CUDA13 fallback because pinned TEI CUDA 1.9.3 exits on SM103",
+        "MedCPT Article Encoder publication or corpus strategy not selected",
+        "HCLS product safety approval not complete"
+      ],
+      "status": "research_only_hidden_onboarding"
+    },
+    "hcls_routing_gate_20260529T10Z": {
+      "cleared_requirements": [
+        "public ungated artifact license evidence",
+        "digest-pinned mirrored TEI CUDA 1.9.3 image in all four active regions",
+        "four supported non-B300 GPU cells with 10 measured requests each",
+        "directional CLS parity against direct Transformers output over non-PHI HCLS texts"
+      ],
+      "public_publication": "do_not_publish_until_article_normalization_strategy_b300_runtime_choice_and_hcls_safety_approval",
+      "remaining_blockers": [
+        "B300 requires newer TEI or vLLM/CUDA13 fallback because pinned TEI CUDA 1.9.3 exits on SM103",
+        "MedCPT Article Encoder publication or corpus strategy must use the same unit-normalized embedding policy",
+        "HCLS product safety approval not complete"
+      ],
+      "status": "research_only_hidden_onboarding_directional_cls_parity_captured"
+    },
+    "matrix_probe_20260529T09Z": {
+      "benchmark_runs": 10,
+      "cells": {
+        "B200_us-central1": {
+          "request_ms_p50": 157,
+          "startup_ms": 294648,
+          "status": "supported",
+          "tokens_per_second": 82.8,
+          "vram_used_gb": 0.96
+        },
+        "B300_uk-south1": {
+          "error": "pod_start_failure:pod_failed",
+          "status": "other_error",
+          "terminal_log": "cuda compute cap 103 is not supported"
+        },
+        "H200_eu-north2": {
+          "request_ms_p50": 105,
+          "startup_ms": 303141,
+          "status": "supported",
+          "tokens_per_second": 123.81,
+          "vram_used_gb": 0.86
+        },
+        "L40S_eu-north1": {
+          "request_ms_p50": 94,
+          "startup_ms": 234551,
+          "status": "supported",
+          "tokens_per_second": 138.3,
+          "vram_used_gb": 0.69
+        },
+        "RTX6000_us-central1": {
+          "request_ms_p50": 159,
+          "startup_ms": 348404,
+          "status": "supported",
+          "tokens_per_second": 81.76,
+          "vram_used_gb": 0.84
+        }
+      },
+      "report_json": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T09Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/ncbi-medcpt-query-encoder-tei-cuda-1-9-20260529T09Z-full-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "status": "four_supported_one_b300_runtime_error",
+      "warmup_runs": 3
+    },
+    "onboarding_state": "hidden_four_cell_matrix_supported_b300_sm103_blocked_pending_cls_parity_article_strategy_hcls_safety_review",
+    "paired_artifact_fallback": {
+      "article_encoder": "ncbi/MedCPT-Article-Encoder",
+      "article_encoder_license": "public-domain",
+      "article_encoder_sha": "d05a736da4bb84ee4057b7f7999485be6ed85465",
+      "reason_not_manifested_this_cycle": "This cycle staged the short-text query encoder first. Query-to-article production search should add the Article Encoder row or connect the published NCBI PubMed article embeddings corpus before publication."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "do_not_publish_until_article_side_normalization_or_article_encoder_strategy_and_healthcare_safety_review; keep_B300_disabled_until_sm103_capable_runtime",
+    "regional_mirror_recheck_20260529T04Z": {
+      "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "eu-north2": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "uk-south1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "us-central1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+      }
+    },
+    "regional_mirror_recheck_20260529T07Z": {
+      "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "eu-north2": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "uk-south1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "us-central1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+      }
+    },
+    "regional_mirror_recheck_20260529T09Z": {
+      "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "status": "verified_upstream_digest_still_selected",
+      "upstream": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9"
+    },
+    "regional_mirror_recheck_20260529T10Z": {
+      "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "status": "verified_upstream_digest_still_selected",
+      "upstream": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9"
+    },
+    "runtime_plan": {
+      "cache_strategy": "HF_HOME and HUGGINGFACE_HUB_CACHE point at /mnt/data/huggingface/ncbi-medcpt-query-encoder/tei-cuda-1.9.3 so model, tokenizer, and TEI artifacts survive pod restarts and do not fill the container filesystem.",
+      "endpoint": "/v1/embeddings",
+      "pooling": "cls",
+      "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so TEI does not receive unnecessary platform Hugging Face credentials.",
+      "served_model_name": "ncbi/MedCPT-Query-Encoder"
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "medical_literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic_search",
+    "bert",
+    "tei",
+    "public_domain",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-29T04:09:45.757011+00:00",
+  "default_eligible": false,
+  "description": "MedCPT Query Encoder is NCBI's public-domain biomedical dense retrieval encoder for short texts such as search queries, questions, and sentences. The Hugging Face model card describes MedCPT as a two-encoder system trained on 255M PubMed query-article pairs for semantic search, with the query encoder's last-layer CLS embedding used as a 768-dimensional representation in the same space as the MedCPT Article Encoder. Hugging Face API metadata checked on 2026-05-29 reports private=false, gated=false, disabled=false, license_name=public-domain, library_name=transformers, pipeline_tag=feature-extraction, text-embeddings-inference and endpoints_compatible tags, revision d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc, tokenizer.json present, and safetensors total 109,482,240 F32 parameters. This hidden Forge candidate reuses the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a across all active regions, explicitly sets POOLING=cls to match the model card, stores TEI/Hugging Face cache paths under shared /mnt/data, and clears inherited Hugging Face token env vars because the artifact is public and ungated. Hidden Forge probes on 2026-05-29 validated B200, H200, L40S, and RTX6000 with 3 warmups plus 10 measured requests each; B300 remains disabled because the same pinned TEI image exits immediately on SM103 with `cuda compute cap 103 is not supported`. A 2026-05-29T10Z L40S parity pass compared the kept TEI pod against direct Transformers CPU CLS pooling over 10 synthetic non-PHI retrieval/control texts: min cosine was 0.9999862475 and max unit-vector delta was 0.0032963447, while TEI returned unit-normalized vectors with mean norm 1.0000000008 versus direct raw CLS mean norm 11.9323803395. Keep the model hidden and default-ineligible until the Article Encoder/corpus path uses the same normalization policy and HCLS product safety review is complete.",
+  "family_id": "d9c3ee79-759b-4aea-bdfa-aece015dc6bb",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/mnt/data/huggingface/ncbi-medcpt-query-encoder/tei-cuda-1.9.3",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/ncbi-medcpt-query-encoder/tei-cuda-1.9.3/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "ncbi/MedCPT-Query-Encoder",
+      "POOLING": "cls",
+      "PORT": "8000",
+      "REVISION": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc",
+      "SERVED_MODEL_NAME": "ncbi/MedCPT-Query-Encoder"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:09:36.813028+00:00",
+      "region": "us-central1",
+      "request_ms": 157,
+      "request_ms_p50": 157,
+      "request_ms_p95": 158,
+      "request_ms_p99": 158,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 294648,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 82.8,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.96,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:17:07.051387+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:15:36.796205+00:00",
+      "region": "eu-north2",
+      "request_ms": 105,
+      "request_ms_p50": 104,
+      "request_ms_p95": 105,
+      "request_ms_p99": 105,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 303141,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 123.81,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.86,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T10:09:41.307251+00:00",
+      "region": "eu-north1",
+      "request_ms": 101,
+      "request_ms_p50": 94,
+      "request_ms_p95": 98,
+      "request_ms_p99": 100,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 285087,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 128.71,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.69,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T09:10:29.931196+00:00",
+      "region": "us-central1",
+      "request_ms": 159,
+      "request_ms_p50": 159,
+      "request_ms_p95": 159,
+      "request_ms_p99": 159,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 348404,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 81.76,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.84,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "4ff6b1e6-0c31-41a8-8028-369915096786",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "public-domain",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "ncbi-medcpt-query-encoder",
+  "name": "MedCPT Query Encoder",
+  "parameter_count": 109482240,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "ncbi/MedCPT-Query-Encoder"
+    },
+    "input_fields": [
+      {
+        "default": "How do PARP inhibitors affect homologous recombination deficient ovarian cancer?",
+        "key": "input",
+        "label": "Biomedical query",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/ncbi-medcpt-query-encoder/tei-cuda-1.9.3",
+      "embedding_dimension": 768,
+      "kind": "tei_embeddings",
+      "model_id": "ncbi/MedCPT-Query-Encoder",
+      "model_revision": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc",
+      "pooling": "cls",
+      "recommended_query_max_length": 64,
+      "served_model_name": "ncbi/MedCPT-Query-Encoder"
+    },
+    "safety_notice": {
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation.",
+      "body": "Use only for nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": false,
+      "severity": "warning",
+      "title": "Research-only biomedical retrieval embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 59,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "ncbi-medcpt-query-encoder-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/ncbi/MedCPT-Query-Encoder",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical",
+    "medical-literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic-search",
+    "bert",
+    "tei",
+    "public-domain",
+    "open-source"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-d83a36c-tei-cuda-1.9.3",
+  "version_description": "Hidden onboarding manifest for NCBI's public-domain MedCPT Query Encoder served by the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image. B200, H200, L40S, and RTX6000 have hidden 10-run Forge probe evidence; B300 remains disabled because this TEI build exits on SM103 with `cuda compute cap 103 is not supported`. The 2026-05-29T10Z parity pass shows TEI matches direct Transformers CLS direction but returns unit-normalized OpenAI embeddings, so keep default-ineligible until article-side normalization/routing and HCLS safety review complete.",
+  "version_key": "hf-d83a36c-tei-cuda-1-9-3",
+  "version_label": "HF d83a36c via TEI CUDA 1.9.3"
+}

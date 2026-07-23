@@ -1,0 +1,549 @@
+{
+  "benchmark_scores": {
+    "artifact_files": {
+      "config_json": {
+        "blob_id": "4c9e8c4c55b55ba980bea14a8600badcc1816efe",
+        "path": "config.json",
+        "size_bytes": 2486
+      },
+      "model_safetensors": {
+        "blob_id": "6ea486af04c0045ad9e42436eab32311ab3a9d3f",
+        "path": "model.safetensors",
+        "sha256": "96ae6628166a7dc1b41f8a2d92176c48e394988294b0b44755409acbb3f9bc2b",
+        "size_bytes": 906712520
+      },
+      "normalizer_safetensors": {
+        "blob_id": "c7d77db4e80f2a1a61789fd5145f3bf9ffafa715",
+        "path": "policy_preprocessor_step_5_normalizer_processor.safetensors",
+        "sha256": "fa18666b4621709db49c7d29108801e4ddd11c666609323413148a6c2328a620",
+        "size_bytes": 9656
+      },
+      "policy_preprocessor_json": {
+        "blob_id": "ca19aa6976301fca0d98bf00404978e77a46d89d",
+        "path": "policy_preprocessor.json",
+        "size_bytes": 2156
+      },
+      "readme_md": {
+        "blob_id": "a1949ad3ebe7e2551a997008b874e5f641d9d9e9",
+        "path": "README.md",
+        "size_bytes": 1709
+      },
+      "train_config_json": {
+        "blob_id": "509569ae63088326a76ac2c9b05d89c4857621d8",
+        "path": "train_config.json",
+        "size_bytes": 7024
+      },
+      "unnormalizer_safetensors": {
+        "blob_id": "c7d77db4e80f2a1a61789fd5145f3bf9ffafa715",
+        "path": "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+        "sha256": "fa18666b4621709db49c7d29108801e4ddd11c666609323413148a6c2328a620",
+        "size_bytes": 9656
+      }
+    },
+    "base_model": "lerobot/smolvla_base",
+    "blocked_actions": [
+      "gpu_matrix_probe",
+      "public_activation",
+      "robot_policy_safety_validation",
+      "publish"
+    ],
+    "blockers": [
+      "The worker shell did not have POSTGRES_URL or DATABASE_URL, but the supervisor resolved this by live-upserting the hidden onboarding row through the platform secret path.",
+      "A pre-upsert B200/us-central1 manifest-local probe fallback with the exact wrapper digest and --container-image-override failed before scheduling because the slug was not yet present in live active/onboarding rows.",
+      "No live exact-digest GPU probe has been run for the RoboCasa checkpoint, so all gpu_compatibility cells remain false.",
+      "The checkpoint has a config/preprocessor 6D state versus normalizer 16D state discrepancy that must be confirmed by a smoke probe.",
+      "Robot-policy safety validation requires simulator replay, HIL dry run, or external safety signoff before public/default eligibility."
+    ],
+    "cache_root": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa",
+    "candidate_discovery_20260601T03Z": {
+      "candidates_checked": {
+        "lerobot/smolvla_metaworld": "Public Apache-2.0 SmolVLA sibling, not selected because RoboCasa gives a household manipulation policy gap and richer three-camera contract.",
+        "lerobot/smolvla_robocasa": "Selected; public, ungated, safetensors, Apache-2.0 metadata, RoboCasa dataset, and wrapper-compatible artifact layout.",
+        "lerobot/smolvla_robocerebra": "Public Apache-2.0 SmolVLA sibling, not selected this cycle.",
+        "lerobot/smolvla_robomme": "Public Apache-2.0 SmolVLA sibling, not selected this cycle.",
+        "lerobot/smolvla_vlabench": "Public Apache-2.0 SmolVLA sibling, newer lastModified, but not selected because RoboCasa has a clearer household policy target for the current Forge physical-AI catalog gap.",
+        "nvidia/GR00T-N1.6-3B": "Not selected because no public Forge/NIM-compatible HTTP serving image was found and the existing GR00T wrapper endpoint is not cleanly reusable for a new slug without a wrapper change."
+      }
+    },
+    "checked_at": "2026-06-01T05:17:00Z",
+    "container_decision": "Reuse the Forge-owned SmolVLA wrapper image because it is configurable by FORGE_MODEL_SLUG, FORGE_MODEL_ID, cache root, SMOLVLA_CAMERA_KEYS, and SMOLVLA_STATE_DIM. The public Hugging Face LeRobot GPU image is a CUDA/LeRobot base image, not a Forge HTTP inference server.",
+    "current_checks_20260601T05Z": {
+      "artifact_license_container_state": "unchanged_public_ungated_apache_2_0_safetensors_digest_backed_regional_wrapper_digest",
+      "dry_run_upsert": "passed",
+      "evidence_note": "docs/model-onboarding/physical-ai/physical-ai-20260601T05Z-smolvla-robocasa-live-upsert-blocker.md",
+      "preupsert_probe_fallback_command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-smolvla-robocasa --include-status onboarding --gpu B200 --region us-central1 --container-image-override cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e --ephemeral-cache-volumes --timeout 600 --request-timeout 120 --warmup-runs 0 --benchmark-runs 1 --max-parallel 1 --no-persist --report-json docs/model-onboarding/physical-ai/physical-ai-20260601T05Z-smolvla-robocasa-b200-preupsert-probe.json --report-md docs/model-onboarding/physical-ai/physical-ai-20260601T05Z-smolvla-robocasa-b200-preupsert-probe.md",
+      "preupsert_probe_fallback_result": "failed_before_scheduling_RuntimeError_model_huggingface_lerobot_smolvla_robocasa_not_found_for_statuses_active_onboarding",
+      "public_lookup_after_upsert": "404_expected_for_onboarding_status",
+      "publication_decision": "do_not_publish_or_mark_gpu_cells_supported_until_exact_digest_probe_and_robot_policy_safety_validation_complete",
+      "supervisor_live_upsert_command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/physical_ai/huggingface-lerobot-smolvla-robocasa.json --keep-existing-family-latest",
+      "supervisor_live_upsert_result": "succeeded_hidden_onboarding",
+      "worker_live_upsert_command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/physical_ai/huggingface-lerobot-smolvla-robocasa.json --keep-existing-family-latest",
+      "worker_live_upsert_result": "failed_before_db_access_RuntimeError_POSTGRES_URL_or_DATABASE_URL_is_required"
+    },
+    "dataset": "lerobot/robocasa_target_human_unified",
+    "existing_container_search": {
+      "decision": "Do not use the public LeRobot GPU image directly because it is a shell/training image and exposes no Forge HTTP inference API. Reuse the existing Forge SmolVLA wrapper image, which adds health, inference, policy reset, /mnt/data cache wiring, and the B300/SM103 SDPA workaround.",
+      "forge_wrapper_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "upstream_gpu_image": "docker.io/huggingface/lerobot-gpu:latest",
+      "upstream_gpu_image_current_index_digest": "sha256:bc52530a9ca51582f23c03a2deeb5fe02fef67b6c818c05746fb92fa252933cd"
+    },
+    "forge_wrapper_path": "services/models/physical-ai/huggingface_lerobot_smolvla_base",
+    "hf_api_url": "https://huggingface.co/api/models/lerobot/smolvla_robocasa?blobs=true",
+    "hf_downloads_observed": 179,
+    "hf_last_modified": "2026-04-16T17:35:41.000Z",
+    "hf_library_name": "lerobot",
+    "hf_likes_observed": 1,
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "lerobot/smolvla_robocasa",
+    "hf_model_license": "apache-2.0",
+    "hf_model_private": false,
+    "hf_model_revision": "38d38bf58e1217092c5a81418fcc8eef1a7c3a6f",
+    "hf_pipeline_tag": "robotics",
+    "image_manifest_inspect_20260601T03Z": {
+      "command": "docker buildx imagetools inspect cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "media_type": "application/vnd.docker.distribution.manifest.v2+json"
+    },
+    "live_probe_status": "not_run_hidden_live_upsert_succeeded_pending_exact_digest_probe",
+    "model_spec": {
+      "action_dim": 12,
+      "chunk_size": 50,
+      "config_camera_keys": [
+        "camera1",
+        "camera2",
+        "camera3"
+      ],
+      "config_state_dim": 6,
+      "image_shape_chw": [
+        3,
+        256,
+        256
+      ],
+      "n_action_steps": 50,
+      "normalizer_state_dim": 16,
+      "policy_type": "smolvla",
+      "processor_rename_source_camera_keys": [
+        "robot0_agentview_left",
+        "robot0_agentview_right",
+        "robot0_eye_in_hand"
+      ]
+    },
+    "next_safe_commands": [
+      "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-smolvla-robocasa --include-status onboarding --gpu B200 --region us-central1 --container-image-override cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e --ephemeral-cache-volumes --timeout 1800 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --no-persist --report-json docs/model-onboarding/physical-ai/physical-ai-20260601T05Z-smolvla-robocasa-b200-probe.json --report-md docs/model-onboarding/physical-ai/physical-ai-20260601T05Z-smolvla-robocasa-b200-probe.md",
+      "Run a RoboCasa simulator replay or equivalent robot-policy safety review on the exact action traces before any public/default activation."
+    ],
+    "onboarding_state": "hidden_live_upserted_pending_exact_digest_probe_and_robot_policy_safety_validation",
+    "processor_artifact_discrepancy": {
+      "manifest_choice": "Use the pre-rename RoboCasa camera keys and a 16D robot_state so the wrapper payload matches the shipped processor statistics. This must be confirmed by the first live hidden probe before any compatibility cell is marked supported.",
+      "risk": "config.json and policy_preprocessor.json declare 6D observation.state, but the normalizer safetensors stores 16D observation.state statistics."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_digest_verification_20260601T03Z": {
+      "regional_digests": {
+        "eu-north1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "eu-north2": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "uk-south1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "us-central1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+      },
+      "status": "digest_qualified_refs_verified_all_regions",
+      "verified_regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ]
+    },
+    "selected_candidate": "lerobot/smolvla_robocasa",
+    "selected_reason": "Public ungated Apache-2.0 SmolVLA-family robotics policy checkpoint, absent from existing Forge manifests, compatible with the configurable Forge SmolVLA wrapper, and no new container build required.",
+    "selected_wrapper_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "selected_wrapper_source_manifest": "manifests/models/physical_ai/huggingface-lerobot-smolvla-libero.json",
+    "source_urls": [
+      "https://huggingface.co/lerobot/smolvla_robocasa",
+      "https://huggingface.co/api/models/lerobot/smolvla_robocasa?blobs=true",
+      "https://github.com/huggingface/lerobot",
+      "https://github.com/huggingface/lerobot/blob/main/LICENSE"
+    ],
+    "upstream_source_license": "Apache-2.0",
+    "upstream_source_main_sha": "b8ad81bf397d59dda69ccfc7e74e847f0a9d4fbf",
+    "upstream_source_pushed_at": "2026-05-31T20:35:29Z",
+    "upstream_source_repo": "https://github.com/huggingface/lerobot",
+    "upstream_source_updated_at": "2026-06-01T02:43:30Z"
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "smolvla",
+    "lerobot",
+    "robocasa",
+    "forge_wrapper_candidate",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+  "container_image_size_bytes": 5693682815,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-01T05:14:07.155386+00:00",
+  "default_eligible": false,
+  "description": "Hidden onboarding candidate for lerobot/smolvla_robocasa, a SmolVLA-family vision-language-action policy fine-tuned on the RoboCasa target-human unified dataset. It maps a language instruction, three RoboCasa camera observations, and robot state into continuous robot action traces through the shared Forge SmolVLA HTTP wrapper. The manifest records artifact/license/container evidence and an explicit /mnt/data cache plan but does not mark GPU cells supported until exact-digest live probes complete.",
+  "family_id": "fc4fe20b-1a2b-4887-add2-bc6197f66862",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa",
+      "FORGE_MODEL_ID": "lerobot/smolvla_robocasa",
+      "FORGE_MODEL_REVISION": "38d38bf58e1217092c5a81418fcc8eef1a7c3a6f",
+      "FORGE_MODEL_SLUG": "huggingface-lerobot-smolvla-robocasa",
+      "HF_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa/huggingface/hub",
+      "SMOLVLA_CAMERA_KEYS": "robot0_agentview_left,robot0_agentview_right,robot0_eye_in_hand",
+      "SMOLVLA_DEVICE": "cuda",
+      "SMOLVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+      "SMOLVLA_ROBOT_TYPE": "so100_follower",
+      "SMOLVLA_STATE_DIM": "16",
+      "TORCH_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robocasa/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T16:22:37.965222+00:00",
+      "region": "us-central1",
+      "request_ms": 148,
+      "request_ms_p50": 148,
+      "request_ms_p95": 149,
+      "request_ms_p99": 149,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 263814,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T16:30:52.656988+00:00",
+      "region": "uk-south1",
+      "request_ms": 143,
+      "request_ms_p50": 143,
+      "request_ms_p95": 145,
+      "request_ms_p99": 145,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 255177,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T17:57:13.463576+00:00",
+      "region": "eu-north1",
+      "request_ms": 180,
+      "request_ms_p50": 180,
+      "request_ms_p95": 182,
+      "request_ms_p99": 182,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 85160,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T16:26:50.323413+00:00",
+      "region": "eu-north2",
+      "request_ms": 168,
+      "request_ms_p50": 168,
+      "request_ms_p95": 176,
+      "request_ms_p99": 177,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 44619,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T16:22:57.119807+00:00",
+      "region": "us-central1",
+      "request_ms": 170,
+      "request_ms_p50": 170,
+      "request_ms_p95": 177,
+      "request_ms_p99": 178,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 271658,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T17:57:15.617861+00:00",
+      "region": "eu-north1",
+      "request_ms": 220,
+      "request_ms_p50": 220,
+      "request_ms_p95": 222,
+      "request_ms_p99": 223,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 87312,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.44,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    }
+  ],
+  "gpu_type": null,
+  "id": "b689d488-2b49-4df5-9d4e-df6b11bfd8e1",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action"
+  ],
+  "model_family": "huggingface-lerobot-smolvla",
+  "name": "Hugging Face LeRobot SmolVLA RoboCasa",
+  "parameter_count": 450000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "images": {
+          "robot0_agentview_left": "{{robot0_agentview_left_image}}",
+          "robot0_agentview_right": "{{robot0_agentview_right_image}}",
+          "robot0_eye_in_hand": "{{robot0_eye_in_hand_image}}"
+        },
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "return_chunk": "{{return_chunk}}",
+        "robot_state": "{{robot_state}}",
+        "robot_type": "{{robot_type}}"
+      },
+      "endpoint": "/v1/inference/huggingface-lerobot-smolvla-robocasa",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Open the cabinet and place the mug on the counter.",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "robot0_agentview_left_image",
+        "label": "Left Agent View",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "robot0_agentview_right_image",
+        "label": "Right Agent View",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "robot0_eye_in_hand_image",
+        "label": "Eye In Hand",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "key": "robot_state",
+        "label": "16D Robot State",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "so100_follower",
+        "key": "robot_type",
+        "label": "Robot Type",
+        "options": [
+          "so100_follower",
+          "so101_follower"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": true,
+        "key": "return_chunk",
+        "label": "Return Action Chunk",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+  },
+  "release_rank": 720,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "huggingface-lerobot-smolvla-robocasa",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/lerobot/smolvla_robocasa",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "smolvla",
+    "lerobot",
+    "robocasa",
+    "forge-wrapper-candidate"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "robocasa-38d38bf-wrapper-candidate-20260601t03z",
+  "version_description": "Hidden onboarding manifest for the Apache-2.0 lerobot/smolvla_robocasa checkpoint served through the existing Forge SmolVLA HTTP wrapper. The Hugging Face artifact is public, ungated, safetensors-backed, and declares Apache-2.0 model metadata. The selected wrapper digest is already mirrored in all active Forge regions. This manifest uses the checkpoint's processor rename source camera keys and 16D state input because the bundled normalizer safetensors stores 16D observation.state statistics even though config.json and policy_preprocessor.json declare 6D state. The 2026-06-01T05Z pass reconfirmed dry-run validity, then the supervisor live-upserted the hidden onboarding row through the platform Postgres secret path. Keep hidden until an exact-digest GPU probe and robot-policy safety validation complete.",
+  "version_key": "robocasa",
+  "version_label": "RoboCasa wrapper candidate"
+}

@@ -1,0 +1,199 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "3bc22101f6747464922e9ec337751c997ceb72c5d3c1730df77a300d39a34878",
+  "defaultEligible": true,
+  "displayName": "Use Stable Video Diffusion XT",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/stabilityai-stable-video-diffusion-img2vid-xt/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "stabilityai-stable-video-diffusion-img2vid-xt"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/stabilityai-stable-video-diffusion-img2vid-xt",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "data:image/x-portable-pixmap;base64,UDYKMTYgMTYKMjU1ChRGvhxGuiRGtixGsjRGrjxGqkRGpkxGolRGnlxGmmRGlmxGknRGjnxGioRGhoxGghROvhxOuiROtixOsjROrjxOqkROpkxOolROnlxOmmROlmxOknROjnxOioROhoxOghRWvhxWuiRWtixWsjRWrjxWqkRWpkxWolRWnlxWmmRWlmxWknRWjnxWioRWhoxWghRevhxeuiRetixesjRerjxeqkRepkxeolRenlxemmRelmxeknRejnxeioRehoxeghRmvhxmuiRmtixmsjRmrjxmqkRmpkxmolRmnlxmmmRmlmxmknRmjnxmioRmhoxmghRuvhxuuiRutixusjRurtzw+tzw+tzw+tzw+tzw+tzw+tzw+nRujnxuioRuhoxughR2vhx2uiR2tix2sjR2rtzw+njmbnjmbnjmbnjmbnjmbtzw+nR2jnx2ioR2hox2ghR+vhx+uiR+tix+sjR+rtzw+njmbnjmbnjmbnjmbnjmbtzw+nR+jnx+ioR+hox+ghSGvhyGuiSGtiyGsjSGrtzw+njmbnjmbnjmbnjmbnjmbtzw+nSGjnyGioSGhoyGghSOvhyOuiSOtiyOsjSOrtzw+njmbnjmbnjmbnjmbnjmbtzw+nSOjnyOioSOhoyOghSWvhyWuiSWtiyWsjSWrtzw+njmbnjmbnjmbnjmbnjmbtzw+nSWjnyWioSWhoyWghSevhyeuiSetiyesjSertzw+tzw+tzw+tzw+tzw+tzw+tzw+nSejnyeioSehoyeghSmvhymuiSmtiymsjSmrjymqkSmpkymolSmnlymmmSmlmymknSmjnymioSmhoymghSuvhyuuiSutiyusjSurjyuqkSupkyuolSunlyummSulmyuknSujnyuioSuhoyughS2vhy2uiS2tiy2sjS2rjy2qkS2pky2olS2nly2mmS2lmy2knS2jny2ioS2hoy2ghS+vhy+uiS+tiy+sjS+rjy+qkS+pky+olS+nly+mmS+lmy+knS+jny+ioS+hoy+gg==",
+      "fieldType": "file_upload",
+      "key": "image",
+      "label": "Input Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "Animate the input image with subtle cinematic camera motion",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 17,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 25,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Steps",
+      "maximum": 60,
+      "minimum": 10,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 7.5,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 15,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "width",
+      "label": "Width",
+      "maximum": 1536,
+      "minimum": 512,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 576,
+      "fieldType": "number",
+      "key": "height",
+      "label": "Height",
+      "maximum": 1024,
+      "minimum": 320,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 25,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 25,
+      "minimum": 14,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-stabilityai-stable-video-diffusion-img2vid-xt\ndescription: Use the exact Forge model stabilityai-stable-video-diffusion-img2vid-xt for image to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Stable Video Diffusion XT\n\n- Model slug: `stabilityai-stable-video-diffusion-img2vid-xt`\n- Model family: `stabilityai-stable-video-diffusion`\n- Version: `img2vid-xt-diffusers` (`img2vid-xt-diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / stabilityai-stable-video-diffusion-img2vid-xt`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `stability-ai-non-commercial-research-community`\n\n## Purpose\n\nStable Video Diffusion XT image-to-video generation through the Forge Diffusers media wrapper.\n\n## Use this exact model when\n\n- Use this exact `stabilityai-stable-video-diffusion-img2vid-xt` version when the task supplies image and needs video.\n- Stable Video Diffusion XT image-to-video generation through the Forge Diffusers media wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['image'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `image` (file_upload, optional): Input Image\n- `prompt` (textarea, optional): Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_inference_steps` (number, optional; bounds 10..60): Steps\n- `guidance_scale` (number, optional; bounds 1..15): Guidance\n- `width` (number, optional; bounds 512..1536): Width\n- `height` (number, optional; bounds 320..1024): Height\n- `num_frames` (number, optional; bounds 14..25): Frames\n\nRequest template:\n\n```json\n{\n  \"fps\": 7,\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"height\": \"{{height}}\",\n  \"image\": \"{{image}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"width\": \"{{width}}\"\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/stabilityai-stable-video-diffusion-img2vid-xt`\n\n## Workflow\n\n1. Load this skill and pin model slug `stabilityai-stable-video-diffusion-img2vid-xt` with version key `img2vid-xt-diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/stabilityai-stable-video-diffusion-img2vid-xt` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/stabilityai-stable-video-diffusion-img2vid-xt`\n- Routes: `/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/inference-routes`\n- Regional deployment: `/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/regional-deployment`\n- Deployment handoff: `/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/stabilityai-stable-video-diffusion-img2vid-xt/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/stabilityai-stable-video-diffusion-img2vid-xt/SKILL.md\n\n## References\n\n- [Stable Video Diffusion XT source](https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt) (model-card)\n",
+  "license": "stability-ai-non-commercial-research-community",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/deploy",
+    "inferenceRoutesUrl": "/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/stabilityai-stable-video-diffusion",
+    "modelUrl": "/v1/models/stabilityai-stable-video-diffusion-img2vid-xt",
+    "regionalDeploymentUrl": "/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/stabilityai-stable-video-diffusion-img2vid-xt/markdown",
+  "modelFamily": "stabilityai-stable-video-diffusion",
+  "modelSlug": "stabilityai-stable-video-diffusion-img2vid-xt",
+  "modelUrl": "/v1/models/stabilityai-stable-video-diffusion-img2vid-xt",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Stable Video Diffusion XT image-to-video generation through the Forge Diffusers media wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/stabilityai-stable-video-diffusion-img2vid-xt/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Stable Video Diffusion XT source",
+      "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/stabilityai-stable-video-diffusion-img2vid-xt/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/stabilityai-stable-video-diffusion-img2vid-xt/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "fps": 7,
+    "guidance_scale": "{{guidance_scale}}",
+    "height": "{{height}}",
+    "image": "{{image}}",
+    "num_frames": "{{num_frames}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "width": "{{width}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "fp16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt",
+    "tags": [
+      "video-generation",
+      "image-to-video",
+      "diffusion",
+      "stable-video-diffusion",
+      "single-gpu"
+    ],
+    "versionLabel": "Image-to-Video XT Diffusers"
+  },
+  "shortDescription": "Stable Video Diffusion XT image-to-video generation through the Forge Diffusers media wrapper.",
+  "skillName": "use-forge-stabilityai-stable-video-diffusion-img2vid-xt",
+  "skillUrl": "/v1/model-skills/stabilityai-stable-video-diffusion-img2vid-xt",
+  "slug": "stabilityai-stable-video-diffusion-img2vid-xt",
+  "stability": "experimental",
+  "version": "img2vid-xt-diffusers",
+  "versionKey": "img2vid-xt-diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['image'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `stabilityai-stable-video-diffusion-img2vid-xt` version when the task supplies image and needs video.",
+    "Stable Video Diffusion XT image-to-video generation through the Forge Diffusers media wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `stabilityai-stable-video-diffusion-img2vid-xt` with version key `img2vid-xt-diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/stabilityai-stable-video-diffusion-img2vid-xt` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

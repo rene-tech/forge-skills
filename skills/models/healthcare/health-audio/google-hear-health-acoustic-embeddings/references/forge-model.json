@@ -1,0 +1,631 @@
+{
+  "benchmark_scores": {
+    "artifact_disabled": false,
+    "artifact_file_checksums": {
+      "fingerprint.pb": {
+        "sha256": "a96364468d67f10bec29a2788f364ae47fa28ed5282eda69805d01dbeec6d548",
+        "size_bytes": 78
+      },
+      "saved_model.pb": {
+        "sha256": "7c1c40b08dadb605633c01338cee4f70eb234c922c8b8f52deaa8f3e83240dbd",
+        "size_bytes": 3981322
+      },
+      "variables/variables.data-00000-of-00001": {
+        "sha256": "08b7a1a0f63d988173d5c5d3c6a038507d93560751a956a0fa3dfb47e75eac99",
+        "size_bytes": 1212568566
+      },
+      "variables/variables.index": {
+        "etag": "f8a0b3d95abfdb25f44a15ca1ebdd4a8261a0d26",
+        "size_bytes": 6571
+      }
+    },
+    "artifact_files_observed": [
+      "saved_model.pb",
+      "fingerprint.pb",
+      "keras_metadata.pb",
+      "variables/variables.data-00000-of-00001",
+      "variables/variables.index"
+    ],
+    "artifact_gated": "auto",
+    "artifact_license": "other_health_ai_developer_foundations_terms",
+    "artifact_model_card": "https://huggingface.co/google/hear",
+    "artifact_pipeline_tag": "audio-classification",
+    "artifact_private": false,
+    "artifact_prohibited_use_policy": "https://developers.google.com/health-ai-developer-foundations/prohibited-use-policy",
+    "artifact_sha": "9b2eb2853c426676255cc6ac5804b7f1fe8e563f",
+    "artifact_source": "https://huggingface.co/google/hear",
+    "artifact_tags": [
+      "tf-keras",
+      "medical",
+      "audio",
+      "health-acoustic",
+      "license:other"
+    ],
+    "artifact_terms": "https://developers.google.com/health-ai-developer-foundations/terms",
+    "container_decision": {
+      "base_image": "docker.io/tensorflow/tensorflow:2.21.0-gpu@sha256:61fe1ce25bd26b0a38e310463a5588d4067d2d01b6bdb058a3ca4f5cf2e18f15",
+      "local_build": {
+        "audio_smoke": "844 byte synthetic WAV decoded to 16000 Hz, one segment, batch shape (1, 32000)",
+        "compile_smoke": "passed",
+        "image_id": "sha256:469aa3c5f203c1a6622319eec953867558c3fe1248a4ea2c16381b0b046cef46",
+        "pushed_digest": "sha256:87c15cc3b52e36d1ebb56de358cb84745284c046493f9fbb49a58c90d27aaf11",
+        "pushed_regions": [
+          "eu-north1",
+          "eu-north2",
+          "uk-south1",
+          "us-central1"
+        ],
+        "pushed_tag": "wrapper-gpufix-20260706t0425z",
+        "tag": "forge-local/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z",
+        "trivy_fixed_high_critical_findings": 0,
+        "trivy_scan": "tmp/trivy-google-hear-wrapper-gpufix-20260706t0425z-ignore-unfixed.json"
+      },
+      "ngc_tensorflow_base_check": "nvcr.io/nvidia/tensorflow:25.06-tf2-py3 returned 403 from crane digest; no alternate credentials were tried",
+      "official_serving_container_found": false,
+      "selected_path": "forge_owned_tensorflow_fastapi_wrapper"
+    },
+    "gpu_probe_status": {
+      "debug_report_json": "docs/model-onboarding/hcls/google-hear-health-acoustic-embeddings-20260706T0515-b200-debug.json",
+      "failed_cells": [
+        {
+          "gpu": "B200",
+          "last_error": "TensorFlow 2.21 created a B200 GPU device but reported no native compute capability 10.0a kernel binaries; PTX/XLA fallback failed Triton GEMM autotuning with 'Autotuner could not compile any configs'.",
+          "node": "computeinstance-u00f3xv5r0q6kfrsmz",
+          "region": "us-central1",
+          "status": "other_error"
+        },
+        {
+          "gpu": "B300",
+          "last_error": "Internal Server Error during inference, consistent with TensorFlow 2.21 Blackwell PTX/XLA fallback failure observed on B200.",
+          "node": "computeinstance-e03a2m7yv6kk10fr35",
+          "region": "uk-south1",
+          "status": "other_error"
+        },
+        {
+          "gpu": "RTX6000",
+          "last_error": "Internal Server Error during inference, consistent with TensorFlow 2.21 Blackwell/PTX fallback failure observed on B200.",
+          "node": "computeinstance-u00xxmwchyb48p87dk",
+          "region": "us-central1",
+          "status": "other_error"
+        }
+      ],
+      "persisted_support_rows": true,
+      "report_json": "docs/model-onboarding/hcls/google-hear-health-acoustic-embeddings-20260706T0448-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/google-hear-health-acoustic-embeddings-20260706T0448-full-matrix.md",
+      "scope": "full_matrix_3_warmups_10_measured_20260706",
+      "smoke_report_json": "docs/model-onboarding/hcls/google-hear-health-acoustic-embeddings-20260706T0435-h100-smoke-gpufix.json",
+      "status": "complete_active_catalog_matrix",
+      "summary": "Active catalog row with support persisted for H100, H200, and L40S only. B200, B300, and RTX6000 remain unsupported/failed pending a TensorFlow build with native Blackwell support or a non-XLA-compatible wrapper path.",
+      "supported_cells": [
+        {
+          "gpu": "H100",
+          "node": "computeinstance-e00x8hpfadbxqdy81e",
+          "region": "eu-north1",
+          "request_ms_p50": 12,
+          "request_ms_p95": 13,
+          "request_ms_p99": 13,
+          "samples": 10,
+          "startup_ms": 38216,
+          "vram_measured_gb": 2.61
+        },
+        {
+          "gpu": "H200",
+          "node": "computeinstance-e00aesfvmbjsr5cbaz",
+          "region": "eu-north1",
+          "request_ms_p50": 12,
+          "request_ms_p95": 13,
+          "request_ms_p99": 13,
+          "samples": 10,
+          "startup_ms": 321478,
+          "vram_measured_gb": 2.61
+        },
+        {
+          "gpu": "H200",
+          "node": "computeinstance-e02bf73e3ecaj6cvh5",
+          "region": "eu-north2",
+          "request_ms_p50": 12,
+          "request_ms_p95": 14,
+          "request_ms_p99": 14,
+          "samples": 10,
+          "startup_ms": 328040,
+          "vram_measured_gb": 2.61
+        },
+        {
+          "gpu": "H200",
+          "node": "computeinstance-u00bw4ae7r0yhjzgh6",
+          "region": "us-central1",
+          "request_ms_p50": 12,
+          "request_ms_p95": 13,
+          "request_ms_p99": 13,
+          "samples": 10,
+          "startup_ms": 319144,
+          "vram_measured_gb": 2.61
+        },
+        {
+          "gpu": "L40S",
+          "node": "computeinstance-e00knmqbn7kxszaff1",
+          "region": "eu-north1",
+          "request_ms_p50": 16,
+          "request_ms_p95": 16,
+          "request_ms_p99": 16,
+          "samples": 10,
+          "startup_ms": 337216,
+          "vram_measured_gb": 2.45
+        }
+      ]
+    },
+    "onboarding_state": "active_catalog_promoted_limited_gpu_support",
+    "publication_gate": {
+      "decision": "promoted_active_default_ineligible_limited_gpu_support_per_user_request",
+      "remaining_requirements": [
+        "Resolve Blackwell runtime support in a follow-up task before marking B200, B300, or RTX6000 compatible",
+        "HCLS product safety review before default eligibility or production/medical claims"
+      ]
+    },
+    "pytorch_artifact_observed": {
+      "download_status": "approval_required_not_used",
+      "gated": "auto",
+      "private": false,
+      "pytorch_model_bin_sha256": "d44d355816ee4315f67d7810da274409e9b1a6570325fc5ba9ae27555fd81723",
+      "pytorch_model_bin_size_bytes": 1212947234,
+      "repo": "google/hear-pytorch",
+      "sha": "f791cd42437c3e268c8ac84707e3508900f65f1a"
+    },
+    "research_checked_at": "2026-07-06T04:00:00Z",
+    "wrapper_source": {
+      "api": [
+        "/audio_embeddings",
+        "/v1/audio_embeddings",
+        "/run",
+        "/v1/inference/google-hear-health-acoustic-embeddings"
+      ],
+      "audio_url_guardrails": [
+        "HTTPS only",
+        "no credentials",
+        "port 443 or 8443 only",
+        "DNS result must not be private, loopback, link-local, multicast, reserved, or unspecified",
+        "no redirects",
+        "bounded timeout and content length"
+      ],
+      "cache_strategy": "Runtime image hydrates the official Hugging Face SavedModel into the pod-local writable /tmp scratch volume with a wrapper-level file lock. Forge enforces non-root custom model pods, and the shared /mnt/data hostPath root is not guaranteed writable by this image. The manifest requires TensorFlow GPU visibility before readiness so GPU support rows are not persisted from CPU fallback execution. TensorFlow 2.21 GPU loading uses the pip-provided NVIDIA CUDA/cuDNN 12 libraries before OS CUDA libraries to avoid stale cuda-compat driver mismatches on Forge nodes, and TF_FORCE_GPU_ALLOW_GROWTH limits eager allocation during probes.",
+      "dockerfile": "services/models/hcls/google_hear_health_acoustics/Dockerfile",
+      "health_routes": [
+        "/health",
+        "/healthz",
+        "/v1/health/ready"
+      ],
+      "path": "services/models/hcls/google_hear_health_acoustics",
+      "research_acknowledgement_required": true
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "hcls",
+    "audio",
+    "health_acoustic",
+    "embedding",
+    "research",
+    "google",
+    "tensorflow",
+    "forge_wrapper",
+    "structured_output"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z@sha256:87c15cc3b52e36d1ebb56de358cb84745284c046493f9fbb49a58c90d27aaf11",
+  "container_image_size_bytes": null,
+  "context_window": 2,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-07-06T03:37:04.199447+00:00",
+  "default_eligible": false,
+  "description": "Google HeAR (Health Acoustic Representations) is a health-acoustic embedding model from Google Health, exposed here as a research-only representation model rather than a diagnostic model or cough-type classifier. The official TensorFlow Hugging Face artifact google/hear was verified on 2026-07-06 as private=false, gated=auto, license metadata=other, pinned at commit 9b2eb2853c426676255cc6ac5804b7f1fe8e563f, and governed by Health AI Developer Foundations terms of use. The wrapper verifies saved_model.pb SHA256 7c1c40b08dadb605633c01338cee4f70eb234c922c8b8f52deaa8f3e83240dbd, fingerprint.pb SHA256 a96364468d67f10bec29a2788f364ae47fa28ed5282eda69805d01dbeec6d548, and variables/variables.data-00000-of-00001 SHA256 08b7a1a0f63d988173d5c5d3c6a038507d93560751a956a0fa3dfb47e75eac99 before loading the SavedModel. The metadata-visible PyTorch artifact google/hear-pytorch at commit f791cd42437c3e268c8ac84707e3508900f65f1a remained file-download approval-gated in this environment, so it is documented but not used. Forge did not find an official serving container with Forge-compatible readiness and embedding routes, so this row uses a Forge-owned TensorFlow/FastAPI wrapper that accepts WAV, FLAC, MP3, or OGG audio via data URI/base64 or guarded HTTPS audio_url, resamples to 16 kHz mono, windows audio into 2-second HeAR inputs, returns a bounded 512-dimensional embedding plus input duration/sample-rate metadata and model_time_ms, and rejects requests unless research_use_acknowledgement=true. The pushed image forge-local/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z compiled, decoded the synthetic WAV default into a 16 kHz one-segment HeAR batch, scanned with zero fixed HIGH/CRITICAL Trivy findings, and is digest-pinned in all active Forge regional registries. Runtime hydration uses the pod-local writable /tmp scratch volume because Forge enforces non-root custom model pods and the shared /mnt/data hostPath root is not guaranteed writable for this image. This active catalog row has persisted matrix support for H100, H200, and L40S only; B200, B300, and RTX6000 remain failed/unsupported pending TensorFlow Blackwell-compatible execution. Google HeAR embeddings are research-only and must not be used for medical advice, diagnosis, triage, treatment decisions, disease surveillance claims, or pandemic prediction without a separately validated and approved model.",
+  "family_id": "3478548b-4625-4bd9-8416-bc81e6c1500d",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H100": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "HEAR_ALLOW_REMOTE_DOWNLOAD": "true",
+      "HEAR_AUDIO_URL_MAX_BYTES": "26214400",
+      "HEAR_AUDIO_URL_TIMEOUT_S": "10",
+      "HEAR_CACHE_ROOT": "/tmp/google-hear-health-acoustic-embeddings/cache",
+      "HEAR_DEVICE": "gpu",
+      "HEAR_HF_REVISION": "9b2eb2853c426676255cc6ac5804b7f1fe8e563f",
+      "HEAR_MAX_AUDIO_BYTES": "26214400",
+      "HEAR_MAX_AUDIO_SECONDS": "16",
+      "HEAR_MAX_SEGMENTS": "8",
+      "HEAR_MODEL_ID": "google/hear",
+      "HEAR_MODEL_SLUG": "google-hear-health-acoustic-embeddings",
+      "HEAR_REQUIRE_GPU": "true",
+      "HF_HOME": "/tmp/google-hear-health-acoustic-embeddings/hf",
+      "HOME": "/tmp/google-hear-health-acoustic-embeddings/home",
+      "HUGGINGFACE_HUB_CACHE": "/tmp/google-hear-health-acoustic-embeddings/hf/hub",
+      "LD_LIBRARY_PATH": "/usr/local/lib/python3.11/dist-packages/nvidia/cudnn/lib:/usr/local/lib/python3.11/dist-packages/nvidia/cublas/lib:/usr/local/lib/python3.11/dist-packages/nvidia/cuda_runtime/lib:/usr/local/lib/python3.11/dist-packages/nvidia/cuda_cupti/lib:/usr/local/lib/python3.11/dist-packages/nvidia/cuda_nvrtc/lib:/usr/local/lib/python3.11/dist-packages/nvidia/cusolver/lib:/usr/local/lib/python3.11/dist-packages/nvidia/cusparse/lib:/usr/local/lib/python3.11/dist-packages/nvidia/curand/lib:/usr/local/lib/python3.11/dist-packages/nvidia/nccl/lib:/usr/local/lib/python3.11/dist-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/lib/x86_64-linux-gnu",
+      "TF_FORCE_GPU_ALLOW_GROWTH": "true",
+      "TRANSFORMERS_CACHE": "/tmp/google-hear-health-acoustic-embeddings/hf/transformers",
+      "XDG_CACHE_HOME": "/tmp/google-hear-health-acoustic-embeddings/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 10001,
+    "container_run_as_user": 10001,
+    "gpu_count": 1,
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": "Internal Server Error",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T04:50:52.822642+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.7,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "Internal Server Error",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T05:09:13.056386+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.7,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T04:51:43.198212+00:00",
+      "region": "eu-north1",
+      "request_ms": 12,
+      "request_ms_p50": 12,
+      "request_ms_p95": 13,
+      "request_ms_p99": 13,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 38216,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.61,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T04:57:27.523001+00:00",
+      "region": "eu-north1",
+      "request_ms": 12,
+      "request_ms_p50": 12,
+      "request_ms_p95": 13,
+      "request_ms_p99": 13,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 321478,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.61,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T05:03:11.604587+00:00",
+      "region": "eu-north2",
+      "request_ms": 12,
+      "request_ms_p50": 12,
+      "request_ms_p95": 14,
+      "request_ms_p99": 14,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 328040,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.61,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T04:50:42.443778+00:00",
+      "region": "us-central1",
+      "request_ms": 12,
+      "request_ms_p50": 12,
+      "request_ms_p95": 13,
+      "request_ms_p99": 13,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 319144,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.61,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T05:02:33.828769+00:00",
+      "region": "eu-north1",
+      "request_ms": 16,
+      "request_ms_p50": 16,
+      "request_ms_p95": 16,
+      "request_ms_p99": 16,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 337216,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.45,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": "Internal Server Error",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-06T04:56:42.122616+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "c2dd8586-62f8-46a5-98c0-bca3ea348607",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "Health AI Developer Foundations terms of use; code examples under Apache-2.0 where applicable",
+  "modality_input": [
+    "audio"
+  ],
+  "modality_output": [
+    "embedding",
+    "json"
+  ],
+  "model_family": "google-hear-health-acoustics",
+  "name": "Google HeAR Health Acoustic Embeddings",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "audio_data": "{{audio_data}}",
+        "audio_url": "{{audio_url}}",
+        "normalize": "{{normalize}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "return_metadata": "{{return_metadata}}"
+      },
+      "endpoint": "/v1/audio_embeddings",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "accept": "audio/wav,audio/flac,audio/mpeg,audio/ogg,.wav,.flac,.mp3,.ogg",
+        "default": "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YSADAABlAD4Iuw1NBIgP9xCmEvwKrgs9FL8cdxWOG4YZViQPJ8MdLSknGPEl0ybuGG8ivB7hJKEVIRquHiUY1Q9ECdgWkguyEvD/uQnsBhgGRvIj9lPt3vfC7br2Sumq7mbulOD05B/rrOF13ejaTOSj2HjgwN8r4LjY1+P96eHfweG57lvqo+bm4870ku+c9KTziP1RAhn9dvsqEIsR+QJREFAVQRIJG7AhbRxRGgwYgRqmGbwZYhwyKU4jeShgKpMnmhfWJ/EVzSFYIbobexSRCz4JkRHtBtsJlwGR/C/8wAH9+ST1HfSm8irvKes085js/d/g35Tbot2i1RHjxd5d26TkStmk3k7mk9/P4Szee+xW6S7ia+WP7JrtXPBs7Bj3qvztAJT9kQDSBIAIOgqzA5sLBx1GHFUXUx9NFjsZ5x/xJFIYNyKoK/glyy1NG1srJymSF78gziMZF+Yd4B9lHGsSNghIDzcFbQniAGj/VQDkAgQDV/RA6Z31eOpx8H/v6dwd6R3eON0Q3BLfG9iX3N7XfNQw12rgf9kq2LncCNt17ErqXN+J5OHpXO477tXznPs78pH9lvg8A9sBzg5ZE8MXTw83Fo4P8hxtIDMbxRolJTsmOiiTHh8egR4/HTIZ+BqpIVAfTidcG1wVyyI2D0QSVRi3DPEWmQ/XAw4MLwrm/mH0lfAJ/JT6GPPe8sPwOeOV4MXrb+nM3ynbQtb624blF9dO2erTEt+k1ejifOCS4P3ev+GW78vydfFQ6enrxvHT/hQD8PfpAuAAVQUlA1IQQBT5GX8TARUzGxEThyPuIrEZOR7AIIgoyyUQHdEqAyr3J/kfeh7VG1kl8hk9IRQQzgrlEAsJewd3AFj/jwLf+Pz5LP2U88zxZPCd6+LuofBE4OfnEubC607mA92N4j3nvucR5KzX89x+33bdhubF4k7ty9yV7aPiXezN55juZvV7/i7wcPkC938FOf30AOYOgwNqFYEMGRzzDb0PdRgCF4Aeexn0GgEW0ReOFt0eIiaWHxYboxwGIZQhKxJbGkESexusFfsQ7A8fD1gAKwKL+g==",
+        "key": "audio_data",
+        "label": "Audio file",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "audio_url",
+        "label": "Audio URL",
+        "type": "url",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "512-dimensional HeAR embedding, input audio metadata, embedding summary, and model_time_ms",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": false,
+        "key": "normalize",
+        "label": "Normalize embedding",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "return_metadata",
+        "label": "Return metadata",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "artifact_revision": "9b2eb2853c426676255cc6ac5804b7f1fe8e563f",
+      "base_image": "docker.io/tensorflow/tensorflow:2.21.0-gpu@sha256:61fe1ce25bd26b0a38e310463a5588d4067d2d01b6bdb058a3ca4f5cf2e18f15",
+      "cache_target": "/tmp/google-hear-health-acoustic-embeddings/cache",
+      "embedding_dimensions": 512,
+      "input_window_seconds": 2,
+      "kind": "health_acoustic_embedding",
+      "model_id": "google/hear",
+      "model_sample_rate_hz": 16000,
+      "package": "tensorflow",
+      "package_version": "2.21.0-gpu-base",
+      "planned_image_name": "google-hear-health-acoustic-embeddings",
+      "pytorch_artifact_access": "metadata_visible_file_download_approval_gated_not_used",
+      "pytorch_artifact_revision_observed": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+      "wrapper_dockerfile": "services/models/hcls/google_hear_health_acoustics/Dockerfile",
+      "wrapper_path": "services/models/hcls/google_hear_health_acoustics",
+      "wrapper_status": "active_catalog_digest_pinned_limited_gpu_support"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Research-only health-acoustic representation learning with user-provided audio.",
+      "body": "Google HeAR embeddings are research-only and must not be used for medical advice, diagnosis, triage, treatment decisions, disease surveillance claims, or pandemic prediction without a separately validated and approved model.",
+      "disallowed_uses": [
+        "medical advice",
+        "diagnosis",
+        "triage",
+        "treatment decisions",
+        "disease surveillance claims",
+        "pandemic prediction without a separately validated and approved model"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only health-acoustic representation"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "audio_url",
+        "normalize",
+        "return_metadata"
+      ],
+      "required": [
+        "audio_data",
+        "research_use_acknowledgement"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z@sha256:87c15cc3b52e36d1ebb56de358cb84745284c046493f9fbb49a58c90d27aaf11",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z@sha256:87c15cc3b52e36d1ebb56de358cb84745284c046493f9fbb49a58c90d27aaf11",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z@sha256:87c15cc3b52e36d1ebb56de358cb84745284c046493f9fbb49a58c90d27aaf11",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z@sha256:87c15cc3b52e36d1ebb56de358cb84745284c046493f9fbb49a58c90d27aaf11"
+  },
+  "release_rank": 100,
+  "requires_hf_token": true,
+  "single_region_risk": false,
+  "slug": "google-hear-health-acoustic-embeddings",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/google/hear",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "healthcare",
+    "hcls",
+    "audio",
+    "health-acoustic",
+    "embeddings",
+    "research",
+    "google",
+    "tensorflow",
+    "forge-wrapper"
+  ],
+  "updated_at": "2026-07-06T11:40:01.815965+00:00",
+  "version": "hear-tensorflow-1-0-0-wrapper-20260706",
+  "version_description": "Active catalog manifest for Google HeAR as a research-only health-acoustic embedding model. The official TensorFlow Hugging Face repository google/hear is accessible in the task environment after accepting Health AI Developer Foundations terms and is pinned to commit 9b2eb2853c426676255cc6ac5804b7f1fe8e563f. The PyTorch repository google/hear-pytorch is metadata-visible but file download is approval-gated in this environment, so this onboarding path deliberately uses google/hear and does not switch accounts, use mirrors, or substitute forks. Forge-owned FastAPI wrapper source is under services/models/hcls/google_hear_health_acoustics and exposes /audio_embeddings, /v1/audio_embeddings, /run, /v1/inference/google-hear-health-acoustic-embeddings, and /v1/health/ready. Docker build forge-local/google-hear-health-acoustic-embeddings:wrapper-gpufix-20260706t0425z produced image ID sha256:469aa3c5f203c1a6622319eec953867558c3fe1248a4ea2c16381b0b046cef46, was pushed to all active Forge regional registries at digest sha256:87c15cc3b52e36d1ebb56de358cb84745284c046493f9fbb49a58c90d27aaf11, and Trivy found zero fixed HIGH/CRITICAL vulnerabilities. Full matrix probes persisted support for H100, H200, and L40S; B200, B300, and RTX6000 remain failed/unsupported. The model is promoted to the public catalog as experimental, research-only, and default-ineligible with Blackwell cells disabled until a follow-up runtime fix validates them.",
+  "version_key": "hear-tensorflow-1-0-0-wrapper-20260706",
+  "version_label": "HeAR 1.0.0 via Forge TensorFlow wrapper"
+}

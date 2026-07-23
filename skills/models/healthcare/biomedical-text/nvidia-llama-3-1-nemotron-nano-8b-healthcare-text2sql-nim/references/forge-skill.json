@@ -1,0 +1,172 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "1862095270fdf12e527ee7015b1b076c7ec4a850cf92cae2abbb7a263897dd4c",
+  "defaultEligible": true,
+  "displayName": "Use Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL",
+  "domain": "biomedical-text",
+  "downloadUrl": "/v1/model-skills/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/markdown?download=true",
+  "group": "biomedical-text",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-text",
+    "nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Based on DDL statements, instructions, and the current date, generate a SQL query in sqlite to answer the question.\nIf the question cannot be answered using the available tables and columns in the DDL, return only: None.\nToday is 2026-05-25 00:00:00\nDDL statements:\nDROP TABLE IF EXISTS diagnosis;\nCREATE TABLE diagnosis (\n  diagnosisid INT NOT NULL PRIMARY KEY,\n  patientunitstayid INT NOT NULL,\n  diagnosisname VARCHAR(200) NOT NULL,\n  diagnosistime TIMESTAMP NOT NULL,\n  icd9code VARCHAR(100)\n);\nInstructions:\n- Use only the provided schema.\n- Return only the SQL query.\n- Do not provide medical advice or patient-specific interpretation.\nquestion: How many distinct patients have at least one diagnosis recorded?",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "DDL, instructions, and question",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "top_p",
+      "label": "Top P",
+      "maximum": 1,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 1024,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "schema"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-llama-3-1-nemotron-nano-8b-healthcare-cad98c48\ndescription: Use the exact Forge model nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim for text, schema to sql, text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL\n\n- Model slug: `nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim`\n- Model family: `nvidia-healthcare-text2sql`\n- Version: `1.15.1` (`nim-1-15-1-candidate`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-text / nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `NVIDIA AI Product/NIM; NVIDIA Open Model; Llama 3.3 Community License`\n\n## Purpose\n\nNVIDIA's Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL NIM translates natural-language healthcare analytics questions plus DDL into SQL.\n\n## Use this exact model when\n\n- Use this exact `nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim` version when the task supplies text, schema and needs sql, text.\n- NVIDIA's Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL NIM translates natural-language healthcare analytics questions plus DDL into SQL.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'schema'] \u2192 ['sql', 'text'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): DDL, instructions, and question\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `top_p` (number, optional; bounds 0..1): Top P\n- `max_tokens` (number, optional; bounds 1..1024): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"detailed thinking off. Generate SQL only for the supplied schema. Do not provide medical advice or clinical interpretation.\",\n      \"role\": \"system\"\n    },\n    {\n      \"content\": \"{{prompt}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\",\n  \"top_p\": \"{{top_p}}\"\n}\n```\n\n## Exact output\n\n- `sql`\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim` with version key `nim-1-15-1-candidate`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim`\n- Routes: `/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-text/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-text/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/SKILL.md\n\n## References\n\n- [Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL source](https://docs.nvidia.com/nim/large-language-models/1.15.0/text-to-sql-model.html) (model-card)\n",
+  "license": "NVIDIA AI Product/NIM; NVIDIA Open Model; Llama 3.3 Community License",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-healthcare-text2sql",
+    "modelUrl": "/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/markdown",
+  "modelFamily": "nvidia-healthcare-text2sql",
+  "modelSlug": "nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+  "modelUrl": "/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+  "outputFields": [
+    "sql",
+    "text"
+  ],
+  "outputModalities": [
+    "sql",
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA's Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL NIM translates natural-language healthcare analytics questions plus DDL into SQL.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-text/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL source",
+      "url": "https://docs.nvidia.com/nim/large-language-models/1.15.0/text-to-sql-model.html"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-text/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-text/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "detailed thinking off. Generate SQL only for the supplied schema. Do not provide medical advice or clinical interpretation.",
+        "role": "system"
+      },
+      {
+        "content": "{{prompt}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": true,
+    "temperature": "{{temperature}}",
+    "top_p": "{{top_p}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 8000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/large-language-models/1.15.0/text-to-sql-model.html",
+    "tags": [
+      "healthcare",
+      "clinical-analytics",
+      "text-to-sql",
+      "llm",
+      "chat",
+      "nvidia-nim",
+      "mirrored",
+      "digest-pinned",
+      "research-only"
+    ],
+    "versionLabel": "NIM 1.15.1"
+  },
+  "shortDescription": "NVIDIA's Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL NIM translates natural-language healthcare analytics questions plus DDL into SQL.",
+  "skillName": "use-forge-nvidia-llama-3-1-nemotron-nano-8b-healthcare-cad98c48",
+  "skillUrl": "/v1/model-skills/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+  "slug": "nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+  "stability": "testing",
+  "version": "1.15.1",
+  "versionKey": "nim-1-15-1-candidate",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'schema'] \u2192 ['sql', 'text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim` version when the task supplies text, schema and needs sql, text.",
+    "NVIDIA's Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL NIM translates natural-language healthcare analytics questions plus DDL into SQL.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim` with version key `nim-1-15-1-candidate`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

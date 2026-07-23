@@ -1,0 +1,141 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "da5dae3a9b5afa96a28735e06eff961ad46246c99816f6ed12ef162613ac898f",
+  "defaultEligible": false,
+  "displayName": "Use Nucleotide Transformer v2 500M Multi-Species DNA Embeddings",
+  "domain": "genomics",
+  "downloadUrl": "/v1/model-skills/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/markdown?download=true",
+  "group": "genomics",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "genomics",
+    "instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "ACGTGTCAGTGATCGTAGCTAGCTAGCTAGCTA",
+      "fieldType": "textarea",
+      "key": "sequence",
+      "label": "DNA sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_length",
+      "label": "Max sequence length",
+      "maximum": 1000,
+      "minimum": 32,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "dna_sequence"
+  ],
+  "instructions": "---\nname: use-forge-instadeep-nucleotide-transformer-v2-500m-mul-8de8ff3a\ndescription: Use the exact Forge model instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding for dna_sequence to embedding, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Nucleotide Transformer v2 500M Multi-Species DNA Embeddings\n\n- Model slug: `instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding`\n- Model family: `instadeep-nucleotide-transformer-v2-500m-multi-species`\n- Version: `hf-main-clawbio-dna-mlm-20260605` (`hf-main-clawbio-dna-mlm-20260605`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / genomics / instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `cc-by-nc-sa-4.0`\n\n## Purpose\n\nInstaDeep Nucleotide Transformer v2 500M multi-species is a DNA foundation model for sequence representation and regulatory/genomics tasks.\n\n## Use this exact model when\n\n- Use this exact `instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding` version when the task supplies dna_sequence and needs embedding, json.\n- InstaDeep Nucleotide Transformer v2 500M multi-species is a DNA foundation model for sequence representation and regulatory/genomics tasks.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['dna_sequence'] \u2192 ['embedding', 'json'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (textarea, required): DNA sequence\n- `max_length` (number, optional; bounds 32..1000): Max sequence length\n\nRequest template:\n\n```json\n{\n  \"max_length\": \"{{max_length}}\",\n  \"sequence\": \"{{sequence}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n- `json`\n\n## Route\n\n`POST /v1/inference/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding`\n\n## Workflow\n\n1. Load this skill and pin model slug `instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding` with version key `hf-main-clawbio-dna-mlm-20260605`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 1000.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding`\n- Routes: `/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/inference-routes`\n- Regional deployment: `/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/regional-deployment`\n- Deployment handoff: `/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/genomics/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/genomics/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/SKILL.md\n\n## References\n\n- [Nucleotide Transformer v2 500M Multi-Species DNA Embeddings source](https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species) (model-card)\n",
+  "license": "cc-by-nc-sa-4.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 1000."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/deploy",
+    "inferenceRoutesUrl": "/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/instadeep-nucleotide-transformer-v2-500m-multi-species",
+    "modelUrl": "/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+    "regionalDeploymentUrl": "/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/markdown",
+  "modelFamily": "instadeep-nucleotide-transformer-v2-500m-multi-species",
+  "modelSlug": "instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+  "modelUrl": "/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+  "outputFields": [
+    "embedding",
+    "json"
+  ],
+  "outputModalities": [
+    "embedding",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "InstaDeep Nucleotide Transformer v2 500M multi-species is a DNA foundation model for sequence representation and regulatory/genomics tasks.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/genomics/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Nucleotide Transformer v2 500M Multi-Species DNA Embeddings source",
+      "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/genomics/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/SKILL.md",
+  "repositoryPath": "skills/models/life-science/genomics/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_length": "{{max_length}}",
+    "sequence": "{{sequence}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1000,
+    "parameterCount": 500000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+    "tags": [
+      "life-science",
+      "biology",
+      "genomics",
+      "dna",
+      "embedding",
+      "sequence",
+      "nucleotide-transformer",
+      "transformers",
+      "custom-code",
+      "forge-wrapper",
+      "clawbio"
+    ],
+    "versionLabel": "HF main via Forge life-science DNA wrapper"
+  },
+  "shortDescription": "InstaDeep Nucleotide Transformer v2 500M multi-species is a DNA foundation model for sequence representation and regulatory/genomics tasks.",
+  "skillName": "use-forge-instadeep-nucleotide-transformer-v2-500m-mul-8de8ff3a",
+  "skillUrl": "/v1/model-skills/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+  "slug": "instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+  "stability": "experimental",
+  "version": "hf-main-clawbio-dna-mlm-20260605",
+  "versionKey": "hf-main-clawbio-dna-mlm-20260605",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['dna_sequence'] \u2192 ['embedding', 'json'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding` version when the task supplies dna_sequence and needs embedding, json.",
+    "InstaDeep Nucleotide Transformer v2 500M multi-species is a DNA foundation model for sequence representation and regulatory/genomics tasks.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding` with version key `hf-main-clawbio-dna-mlm-20260605`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

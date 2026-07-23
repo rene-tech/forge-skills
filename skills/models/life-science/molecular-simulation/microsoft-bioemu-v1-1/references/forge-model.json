@@ -1,0 +1,1028 @@
+{
+  "benchmark_scores": {
+    "artifact_disabled": false,
+    "artifact_files_observed": [
+      "checkpoints/bioemu-v1.0/checkpoint.ckpt",
+      "checkpoints/bioemu-v1.0/config.yaml",
+      "checkpoints/bioemu-v1.1/checkpoint.ckpt",
+      "checkpoints/bioemu-v1.1/config.yaml",
+      "checkpoints/bioemu-v1.2/checkpoint.ckpt",
+      "checkpoints/bioemu-v1.2/config.yaml"
+    ],
+    "artifact_gated": false,
+    "artifact_license": "mit",
+    "artifact_private": false,
+    "artifact_sha": "1fec9d4473a9da04f5e60026a70d7a93fb893e9e",
+    "artifact_source": "https://huggingface.co/microsoft/bioemu",
+    "base_image": {
+      "digest": "sha256:7db0e1bf4b1ac274ea09cf6358ab516f8a5c7d3d0e02311bed445f7e236a5d80",
+      "ref": "docker.io/pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime"
+    },
+    "blockers": [
+      "No official public BioEmu serving container exists for direct mirroring.",
+      "B200/us-central1, B300/uk-south1, and RTX6000/us-central1 return HTTP 500/Internal Server Error on the first BioEmu request with the currently deployed digest-pinned wrapper images and no measured samples.",
+      "The 2026-05-23T11Z AlphaFold FP32 diagnostic image validates B200/us-central1 and is now mirrored to all Forge regions, but it is not yet promoted into regional_container_images.",
+      "The 2026-05-23T18Z B300/uk-south1 probe against the same mirrored AlphaFold FP32 diagnostic digest still fails with bioemu.sample exit code 1 inside JAX concatenate, so the B200 FP32 fix is not sufficient for B300/SM103.",
+      "HCLS product safety copy review is still required before default routing or public activation."
+    ],
+    "cache_strategy": "Route HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, TORCH_HOME, XDG_CACHE_HOME, HOME, BioEmu embedding cache, SO(3) cache, AlphaFold2/ColabFold default ~/.cache/colabfold, and generated outputs under /mnt/data. Do not bake model checkpoints or AlphaFold2 weights into the image.",
+    "container_search": {
+      "docker_hub_microsoft_bioemu_latest": "unauthorized_or_absent",
+      "docker_search": "Only zero-star community images found; no official Microsoft image identified.",
+      "ghcr_microsoft_bioemu_latest": "denied_or_absent",
+      "mcr_azureml_curated_bioemu_latest": "manifest_unknown_404",
+      "mcr_bioemu_latest": "manifest_unknown_404",
+      "official_serving_container_found": false
+    },
+    "container_source_decision": "No official public serving OCI image was identified. Build a Forge-owned FastAPI wrapper on a digest-pinned PyTorch CUDA 12.8 runtime image and install the pinned bioemu[cuda]==1.3.1 PyPI artifact.",
+    "diagnostic_images": {
+      "b200_alphafold_fp32": {
+        "benchmark_probe": {
+          "gpu_cell": "B200/us-central1",
+          "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.md",
+          "request_ms_p50": 7696,
+          "request_ms_samples": [
+            8370,
+            8731,
+            8573,
+            8601,
+            7636,
+            7694,
+            7671,
+            7673,
+            7653,
+            7698
+          ],
+          "request_time_source": "model_time_ms",
+          "startup_ms": 34139,
+          "status": "supported",
+          "warmup_ms_samples": [
+            7781,
+            7748,
+            8127
+          ]
+        },
+        "build_arg": "BIOEMU_ALPHAFOLD_DIAGNOSTIC_MODE=alphafold-fp32",
+        "checked_at": "2026-05-23T11:09:43Z",
+        "digest": "sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "mirror_status": "mirrored_all_regions_not_promoted_to_regional_container_images",
+        "publication_decision": "keep_hidden_until_diagnostic_image_is_promoted_and_reprobed_as_active_image_set",
+        "region": "us-central1",
+        "smoke_probe": {
+          "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-diagnostic.json",
+          "request_ms": 40201,
+          "request_time_source": "model_time_ms",
+          "startup_ms": 173120,
+          "status": "supported"
+        },
+        "status": "b200_supported_full_benchmark_not_promoted",
+        "tag": "20260523-af2-fp32-diagnostic"
+      },
+      "b300_alphafold_fp32": {
+        "build_arg": "BIOEMU_ALPHAFOLD_DIAGNOSTIC_MODE=alphafold-fp32",
+        "checked_at": "2026-05-23T18:06:47Z",
+        "digest": "sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "mirror_status": "mirrored_all_regions_not_promoted_to_regional_container_images",
+        "publication_decision": "keep_hidden_until_b300_failure_is_root-caused_and_active_image_set_is_reprobed",
+        "region": "uk-south1",
+        "smoke_probe": {
+          "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+          "error_summary": "bioemu.sample failed with exit code 1 inside jax._src.numpy.lax_numpy.concatenate; no measured samples were produced.",
+          "gpu_cell": "B300/uk-south1",
+          "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod_name": "forge-probe-microsoft-bioemu-v1-1-b300-uk-south1-6abe9e",
+          "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T18Z-b300-af2-fp32-diagnostic.json",
+          "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T18Z-b300-af2-fp32-diagnostic.md",
+          "request_ms_samples": [],
+          "request_time_source": null,
+          "response_status": 500,
+          "status": "other_error",
+          "vram_used_gb": 0.0
+        },
+        "status": "b300_failed_single_request_not_promoted",
+        "tag": "20260523-af2-fp32-diagnostic"
+      }
+    },
+    "diagnostic_patch": {
+      "b200_evidence_basis": "01Z B200 pod events show the digest-pinned deployed image scheduled, pulled, created, and started successfully before probe cleanup; the persisted response remained HTTP 500/Internal Server Error with no stderr detail. The 11Z diagnostic override image passed on B200 after forcing the BioEmu AlphaFold path to FP32.",
+      "checked_at": "2026-05-23T02Z",
+      "paths": [
+        "services/models/hcls/microsoft_bioemu_v1_1/runtime.py",
+        "services/models/hcls/microsoft_bioemu_v1_1/main.py",
+        "tests/test_bioemu_wrapper.py"
+      ],
+      "status": "af2_fp32_diagnostic_built_and_b200_benchmarked",
+      "summary": "BioEmu subprocess failures now raise BioEmuExecutionError and return redacted JSON detail containing exit_code, stdout_tail, and stderr_tail. The follow-on AlphaFold FP32 diagnostic image validated B200/us-central1 with 10 measured warm samples, proving the original B200 failure is specific to the BF16/F16 AlphaFold lowering path in the deployed image."
+    },
+    "expected_wrapper_contract": {
+      "method": "POST",
+      "payload_transform": "Validate a protein monomer sequence or optional A3M text, write deterministic request directories under /mnt/data/model-outputs/microsoft-bioemu-v1-1, call python -m bioemu.sample with model_name, num_samples, filter_samples, denoiser_type, batch_size_100, base_seed, cache_embeds_dir, and cache_so3_dir, then return artifact metadata and a zip archive.",
+      "request_path": "/v1/inference/microsoft-bioemu-v1-1",
+      "response_shape": "Return request id, sequence length, requested samples, generated FASTA/PDB/XTC/NPZ/ZIP artifact metadata, stdout/stderr tails, and model_time_ms/inference_time_ms. Source wrapper diagnostic patch staged 2026-05-23T02Z returns redacted structured bioemu_sample_failed detail for BioEmu subprocess exits instead of a bare FastAPI Internal Server Error."
+    },
+    "failed_gpu_cells": {
+      "B200/us-central1": {
+        "checked_at": "2026-05-23T01:09:40Z",
+        "error_detail": "Internal Server Error",
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T01Z-b200.json",
+        "response_status": 500,
+        "status": "other_error"
+      },
+      "B300/uk-south1": {
+        "checked_at": "2026-05-23T09:09:46Z",
+        "error_detail": "Internal Server Error",
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-b300.json",
+        "response_status": 500,
+        "status": "other_error"
+      },
+      "RTX6000/us-central1": {
+        "checked_at": "2026-05-23T09:13:55Z",
+        "error_detail": "Internal Server Error",
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-rtx6000.json",
+        "response_status": 500,
+        "status": "other_error"
+      }
+    },
+    "github_release": {
+      "published_at": "2026-04-15T13:20:33Z",
+      "tag": "v1.3.1",
+      "url": "https://github.com/microsoft/bioemu/releases/tag/v1.3.1"
+    },
+    "hcls_safety_gate": {
+      "allowed_scope": "Nonclinical protein monomer conformational ensemble sampling, free-energy hypothesis generation, cryptic-pocket research, and research workflow prototyping.",
+      "disallowed_uses": [
+        "clinical diagnosis or treatment recommendations",
+        "patient-specific medical decision-making",
+        "new protein sequence generation claims",
+        "protein-protein interaction or small-molecule interaction modeling",
+        "claims of therapeutic efficacy without experimental validation"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "Forge wrapper image built and digest-pinned",
+        "regional Forge mirrors verified by digest",
+        "live GPU probe matrix completed with real FASTA/PDB/XTC outputs",
+        "HCLS product safety copy reviewed before default routing"
+      ]
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 1,
+      "cells_supported": {
+        "B200/us-central1": {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "free_gpus": 8,
+          "gpu_node": "computeinstance-u00v6qsxjnq7h14ysy",
+          "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+          "note": "This is a container-image-override diagnostic result for the us-central1 AlphaFold FP32 image, not evidence that the currently mirrored 20260522-wrapper image is fixed. Keep gpu_compatibility.B200 false until the diagnostic image is promoted to the active regional image set and reprobed.",
+          "pod_name": "forge-probe-microsoft-bioemu-v1-1-b200-us-central1-60eb1e",
+          "request_ms_p50": 7696,
+          "request_ms_samples": [
+            8370,
+            8731,
+            8573,
+            8601,
+            7636,
+            7694,
+            7671,
+            7673,
+            7653,
+            7698
+          ],
+          "response_status": 200,
+          "startup_ms": 34139,
+          "total_gpus": 8,
+          "vram_used_gb": 0.0,
+          "warmup_ms_samples": [
+            7781,
+            7748,
+            8127
+          ]
+        }
+      },
+      "checked_at": "2026-05-23T11:09:43Z",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-bioemu-v1-1 --include-status onboarding --gpu B200 --region us-central1 --max-parallel 1 --timeout 3000 --request-timeout 3000 --warmup-runs 3 --benchmark-runs 10 --container-image-override cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f --report-json docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.json --report-md docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.md",
+      "container_image_override": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+      "not_active_image_set": true,
+      "remaining_cells_unprobed": [],
+      "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.json",
+      "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.md",
+      "request_body": {
+        "a3m": "",
+        "base_seed": 101,
+        "batch_size_100": 10,
+        "denoiser_type": "dpm",
+        "filter_samples": "true",
+        "model_name": "bioemu-v1.1",
+        "num_samples": 10,
+        "sequence": "GYDPETGTWG"
+      },
+      "request_time_source": "model_time_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "matrix_probe_history": [
+      {
+        "benchmark_runs": 10,
+        "cells": 1,
+        "cells_supported": {
+          "H200/eu-north2": {
+            "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+            "gpu_node": "computeinstance-e02fa1dvbwvhme53cq",
+            "image": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/hcls-microsoft-bioemu-v1-1@sha256:b178568d96f1f292009d6ec90299426fe3884dd5c98c28cbe97c5fe5f532854a",
+            "note": "First warmup took 115106 ms and included first-run cache or setup overhead; p50 uses the 10 measured warm model_time_ms samples.",
+            "output_artifacts_verified": [
+              "bioemu_samples.zip",
+              "request.json",
+              "samples/batch_0000000_0000010.npz",
+              "samples/samples.xtc",
+              "samples/sequence.fasta",
+              "samples/topology.pdb"
+            ],
+            "pod_name": "forge-probe-microsoft-bioemu-v1-1-h200-eu-north2-8e4336",
+            "request_ms_p50": 6203,
+            "request_ms_samples": [
+              6160,
+              6115,
+              6354,
+              6097,
+              6220,
+              6373,
+              6186,
+              6135,
+              6284,
+              6242
+            ],
+            "response_status": 200,
+            "startup_ms": 194708,
+            "vram_used_gb": 0.0,
+            "warmup_ms_samples": [
+              115106,
+              6128,
+              6223
+            ]
+          }
+        },
+        "checked_at": "2026-05-22T23:14:09Z",
+        "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-bioemu-v1-1 --include-status onboarding --gpu H200 --region eu-north2 --max-parallel 1 --timeout 2400 --request-timeout 2400 --warmup-runs 3 --benchmark-runs 10 --report-json tmp/parallel-matrix/microsoft-bioemu-v1-1-20260522T23Z-h200.json --report-md tmp/parallel-matrix/microsoft-bioemu-v1-1-20260522T23Z-h200.md",
+        "remaining_cells_unprobed": [
+          "B300/uk-south1",
+          "L40S/eu-north1",
+          "RTX6000/us-central1"
+        ],
+        "report_json": "tmp/parallel-matrix/microsoft-bioemu-v1-1-20260522T23Z-h200.json",
+        "report_md": "tmp/parallel-matrix/microsoft-bioemu-v1-1-20260522T23Z-h200.md",
+        "request_body": {
+          "a3m": "",
+          "base_seed": 101,
+          "batch_size_100": 10,
+          "denoiser_type": "dpm",
+          "filter_samples": "true",
+          "model_name": "bioemu-v1.1",
+          "num_samples": 10,
+          "sequence": "GYDPETGTWG"
+        },
+        "request_time_source": "model_time_ms",
+        "status": "supported",
+        "unavailable_or_not_in_inventory": {
+          "B200": "No B200 cell was present in the 2026-05-22T23Z GPU inventory used for this bounded probe."
+        },
+        "warmup_runs": 3
+      },
+      {
+        "benchmark_runs": 10,
+        "cells": 1,
+        "cells_supported": {
+          "L40S/eu-north1": {
+            "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+            "gpu_node": "computeinstance-e00df18tkn1sh37ez7",
+            "image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/hcls-microsoft-bioemu-v1-1@sha256:482d358bb2c4082fc6c558aec4a78c8841ae3972b5ec8c1e429f82a160249d80",
+            "note": "First warmup took 148857 ms and included first-run cache or setup overhead; p50 uses the 10 measured warm model_time_ms samples.",
+            "pod_name": "forge-probe-microsoft-bioemu-v1-1-l40s-eu-north1-32e118",
+            "request_ms_p50": 7243,
+            "request_ms_samples": [
+              7260,
+              7212,
+              7226,
+              7146,
+              7263,
+              7128,
+              7323,
+              7200,
+              7363,
+              7305
+            ],
+            "response_preview_artifact_metadata_seen": [
+              "batch_0000000_0000010.npz",
+              "/mnt/data/model-outputs/microsoft-bioemu-v1-1"
+            ],
+            "response_status": 200,
+            "startup_ms": 193372,
+            "vram_used_gb": 0.0,
+            "warmup_ms_samples": [
+              148857,
+              7268,
+              7213
+            ]
+          }
+        },
+        "checked_at": "2026-05-23T00:11:15Z",
+        "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-bioemu-v1-1 --include-status onboarding --gpu L40S --region eu-north1 --max-parallel 1 --timeout 3000 --request-timeout 3000 --warmup-runs 3 --benchmark-runs 10 --report-json docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T00Z-l40s.json --report-md docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T00Z-l40s.md",
+        "remaining_cells_unprobed": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "RTX6000/us-central1"
+        ],
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T00Z-l40s.json",
+        "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T00Z-l40s.md",
+        "request_body": {
+          "a3m": "",
+          "base_seed": 101,
+          "batch_size_100": 10,
+          "denoiser_type": "dpm",
+          "filter_samples": "true",
+          "model_name": "bioemu-v1.1",
+          "num_samples": 10,
+          "sequence": "GYDPETGTWG"
+        },
+        "request_time_source": "model_time_ms",
+        "status": "supported",
+        "warmup_runs": 3
+      },
+      {
+        "benchmark_runs": 10,
+        "cells": 1,
+        "cells_failed": {
+          "B200/us-central1": {
+            "cluster_id": "mk8scluster-u00eyp43c8have384b",
+            "error_detail": "Internal Server Error",
+            "free_gpus": 7,
+            "gpu_node": "computeinstance-u00fk9k1z4kdj059re",
+            "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe",
+            "note": "Public health and inventory were operational before the probe, with B200/us-central1 showing 7 free GPUs. The probe pod scheduled, pulled the digest-pinned image, became ready, then the first benchmark request returned HTTP 500 before any measured samples were collected.",
+            "pod_name": "forge-probe-microsoft-bioemu-v1-1-b200-us-central1-8d10ab",
+            "request_ms_p50": null,
+            "request_ms_samples": [],
+            "response_status": 500,
+            "startup_ms": null,
+            "total_gpus": 7,
+            "vram_used_gb": 0.0,
+            "warmup_ms_samples": []
+          }
+        },
+        "checked_at": "2026-05-23T01:09:40Z",
+        "command": "PYTHONUNBUFFERED=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-bioemu-v1-1 --include-status onboarding --gpu B200 --region us-central1 --max-parallel 1 --timeout 3000 --request-timeout 3000 --warmup-runs 3 --benchmark-runs 10 --report-json docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T01Z-b200.json --report-md docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T01Z-b200.md",
+        "remaining_cells_unprobed": [
+          "B300/uk-south1",
+          "RTX6000/us-central1"
+        ],
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T01Z-b200.json",
+        "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T01Z-b200.md",
+        "request_body": {
+          "a3m": "",
+          "base_seed": 101,
+          "batch_size_100": 10,
+          "denoiser_type": "dpm",
+          "filter_samples": "true",
+          "model_name": "bioemu-v1.1",
+          "num_samples": 10,
+          "sequence": "GYDPETGTWG"
+        },
+        "request_time_source": null,
+        "status": "other_error",
+        "warmup_runs": 3
+      },
+      {
+        "benchmark_runs": 10,
+        "cells": 1,
+        "cells_failed": {
+          "B300/uk-south1": {
+            "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+            "error_detail": "Internal Server Error",
+            "free_gpus": 8,
+            "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+            "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/hcls-microsoft-bioemu-v1-1@sha256:10e021358a5f43b0c2950e8d43872512c3bce17ef46f950c0c50a1283e801d0b",
+            "note": "Public health and inventory were operational before the probe, with B300/uk-south1 showing 8 free GPUs. The first benchmark request returned HTTP 500 before any measured samples were collected.",
+            "pod_name": "forge-probe-microsoft-bioemu-v1-1-b300-uk-south1-059f5f",
+            "request_ms_p50": null,
+            "request_ms_samples": [],
+            "response_status": 500,
+            "startup_ms": null,
+            "total_gpus": 8,
+            "vram_used_gb": 0.0,
+            "warmup_ms_samples": []
+          }
+        },
+        "checked_at": "2026-05-23T09:09:46Z",
+        "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-bioemu-v1-1 --include-status onboarding --gpu B300 --region uk-south1 --max-parallel 1 --timeout 3000 --request-timeout 3000 --warmup-runs 3 --benchmark-runs 10 --report-json docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-b300.json --report-md docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-b300.md",
+        "remaining_cells_unprobed": [
+          "RTX6000/us-central1"
+        ],
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-b300.json",
+        "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-b300.md",
+        "request_body": {
+          "a3m": "",
+          "base_seed": 101,
+          "batch_size_100": 10,
+          "denoiser_type": "dpm",
+          "filter_samples": "true",
+          "model_name": "bioemu-v1.1",
+          "num_samples": 10,
+          "sequence": "GYDPETGTWG"
+        },
+        "request_time_source": null,
+        "status": "other_error",
+        "warmup_runs": 3
+      },
+      {
+        "benchmark_runs": 10,
+        "cells": 1,
+        "cells_failed": {
+          "RTX6000/us-central1": {
+            "cluster_id": "mk8scluster-u00eyp43c8have384b",
+            "error_detail": "Internal Server Error",
+            "free_gpus": 8,
+            "gpu_node": "computeinstance-u00njrrgkdfs962g7w",
+            "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe",
+            "note": "Public health and inventory were operational before the probe, with RTX6000/us-central1 showing 8 free GPUs. The first benchmark request returned HTTP 500 before any measured samples were collected.",
+            "pod_name": "forge-probe-microsoft-bioemu-v1-1-rtx6000-us-central1-1b4b82",
+            "request_ms_p50": null,
+            "request_ms_samples": [],
+            "response_status": 500,
+            "startup_ms": null,
+            "total_gpus": 8,
+            "vram_used_gb": 0.0,
+            "warmup_ms_samples": []
+          }
+        },
+        "checked_at": "2026-05-23T09:13:55Z",
+        "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-bioemu-v1-1 --include-status onboarding --gpu RTX6000 --region us-central1 --max-parallel 1 --timeout 3000 --request-timeout 3000 --warmup-runs 3 --benchmark-runs 10 --report-json docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-rtx6000.json --report-md docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-rtx6000.md",
+        "remaining_cells_unprobed": [],
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-rtx6000.json",
+        "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T09Z-rtx6000.md",
+        "request_body": {
+          "a3m": "",
+          "base_seed": 101,
+          "batch_size_100": 10,
+          "denoiser_type": "dpm",
+          "filter_samples": "true",
+          "model_name": "bioemu-v1.1",
+          "num_samples": 10,
+          "sequence": "GYDPETGTWG"
+        },
+        "request_time_source": null,
+        "status": "other_error",
+        "warmup_runs": 3
+      },
+      {
+        "benchmark_runs": 10,
+        "cells": 1,
+        "cells_supported": {
+          "B200/us-central1": {
+            "cluster_id": "mk8scluster-u00eyp43c8have384b",
+            "gpu_node": "computeinstance-u00v6qsxjnq7h14ysy",
+            "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+            "note": "Diagnostic container-image-override result only; not yet the active mirrored BioEmu image set.",
+            "pod_name": "forge-probe-microsoft-bioemu-v1-1-b200-us-central1-60eb1e",
+            "request_ms_p50": 7696,
+            "request_ms_samples": [
+              8370,
+              8731,
+              8573,
+              8601,
+              7636,
+              7694,
+              7671,
+              7673,
+              7653,
+              7698
+            ],
+            "response_status": 200,
+            "startup_ms": 34139,
+            "vram_used_gb": 0.0,
+            "warmup_ms_samples": [
+              7781,
+              7748,
+              8127
+            ]
+          }
+        },
+        "checked_at": "2026-05-23T11:09:43Z",
+        "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-bioemu-v1-1 --include-status onboarding --gpu B200 --region us-central1 --max-parallel 1 --timeout 3000 --request-timeout 3000 --warmup-runs 3 --benchmark-runs 10 --container-image-override cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f --report-json docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.json --report-md docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.md",
+        "container_image_override": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "remaining_cells_unprobed": [],
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.json",
+        "report_md": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T11Z-b200-af2-fp32-benchmark.md",
+        "request_body": {
+          "a3m": "",
+          "base_seed": 101,
+          "batch_size_100": 10,
+          "denoiser_type": "dpm",
+          "filter_samples": "true",
+          "model_name": "bioemu-v1.1",
+          "num_samples": 10,
+          "sequence": "GYDPETGTWG"
+        },
+        "request_time_source": "model_time_ms",
+        "status": "supported",
+        "warmup_runs": 3
+      }
+    ],
+    "onboarding_state": "h200_l40s_supported_deployed_image_b200_af2_fp32_diagnostic_supported_mirrored_pending_active_image_reprobe",
+    "planned_wrapper_mirror_checks": {
+      "checked_at": "2026-05-22T23:05:00Z",
+      "status": "all_active_regions_digest_verified",
+      "summary": "us-central1 resolves to sha256:f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe and passed an import-smoke job. eu-north1 resolves to sha256:482d358bb2c4082fc6c558aec4a78c8841ae3972b5ec8c1e429f82a160249d80, eu-north2 resolves to sha256:b178568d96f1f292009d6ec90299426fe3884dd5c98c28cbe97c5fe5f532854a, and uk-south1 resolves to sha256:10e021358a5f43b0c2950e8d43872512c3bce17ef46f950c0c50a1283e801d0b.",
+      "tag": "20260522-wrapper"
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "pypi_package": {
+      "name": "bioemu",
+      "published_at": "2026-04-15T13:44:41.966666Z",
+      "requires_python": ">=3.10",
+      "sdist_sha256": "3ae65d09aaf381fcf6a4232af7f0f45b50886352bcfdcc044f2a477351c63644",
+      "version": "1.3.1",
+      "wheel_sha256": "a1df4466030059c60eed33a36ea6494f9d86fba08e49937ed86d272cb62a0de5"
+    },
+    "regional_image_digests": {
+      "checked_at": "2026-05-22T23:05:00Z",
+      "digests": {
+        "eu-north1": "sha256:482d358bb2c4082fc6c558aec4a78c8841ae3972b5ec8c1e429f82a160249d80",
+        "eu-north2": "sha256:b178568d96f1f292009d6ec90299426fe3884dd5c98c28cbe97c5fe5f532854a",
+        "uk-south1": "sha256:10e021358a5f43b0c2950e8d43872512c3bce17ef46f950c0c50a1283e801d0b",
+        "us-central1": "sha256:f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe"
+      },
+      "tag": "20260522-wrapper"
+    },
+    "regional_mirror_20260523T12Z": {
+      "active_image_set": false,
+      "completed_at": "2026-05-23T12:19:14Z",
+      "digest": "sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+      "next_step": "Promote these diagnostic refs into regional_container_images only with a fresh active-image matrix probe.",
+      "source": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1:20260523-af2-fp32-diagnostic@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+      "started_at": "2026-05-23T12:17:42Z",
+      "status": "succeeded",
+      "tag": "20260523-af2-fp32-diagnostic",
+      "targets": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/hcls-microsoft-bioemu-v1-1:20260523-af2-fp32-diagnostic@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/hcls-microsoft-bioemu-v1-1:20260523-af2-fp32-diagnostic@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/hcls-microsoft-bioemu-v1-1:20260523-af2-fp32-diagnostic@sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f"
+      },
+      "verified_regions": {
+        "eu-north1": "sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "eu-north2": "sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "uk-south1": "sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f",
+        "us-central1": "sha256:c8a33657add762774aac9031d4f072a1c65a751dab96be877238f4374d9c8d6f"
+      }
+    },
+    "research_checked_at": "2026-05-23T09:14:00Z",
+    "staged_wrapper": {
+      "base_image": "docker.io/pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime@sha256:7db0e1bf4b1ac274ea09cf6358ab516f8a5c7d3d0e02311bed445f7e236a5d80",
+      "dockerfile": "services/models/hcls/microsoft_bioemu_v1_1/Dockerfile",
+      "not_published_reason": "regional wrapper images are digest-pinned and H200/eu-north2 plus L40S/eu-north1 are supported, but B200/us-central1, B300/uk-south1, and RTX6000/us-central1 return HTTP 500 on the first request with the deployed wrapper images. The AlphaFold FP32 diagnostic image validates B200 and is mirrored to all Forge regions, but it is not promoted as the active image set, and HCLS safety review remains incomplete.",
+      "path": "services/models/hcls/microsoft_bioemu_v1_1",
+      "pypi_package": "bioemu[cuda]==1.3.1",
+      "serves": "/v1/inference/microsoft-bioemu-v1-1"
+    },
+    "validated_gpu_cells": {
+      "H200/eu-north2": {
+        "checked_at": "2026-05-22T23:14:09Z",
+        "report_json": "tmp/parallel-matrix/microsoft-bioemu-v1-1-20260522T23Z-h200.json",
+        "request_ms_p50": 6203,
+        "request_time_source": "model_time_ms",
+        "startup_ms": 194708,
+        "status": "supported"
+      },
+      "L40S/eu-north1": {
+        "checked_at": "2026-05-23T00:11:15Z",
+        "report_json": "docs/model-onboarding/hcls/microsoft-bioemu-v1-1-20260523T00Z-l40s.json",
+        "request_ms_p50": 7243,
+        "request_time_source": "model_time_ms",
+        "startup_ms": 193372,
+        "status": "supported"
+      }
+    },
+    "validation": {
+      "default_request_body": "resolved_and_command_built_2026-05-22T14:10:00Z",
+      "dockerfile_buildx_check": "passed_no_warnings_2026-05-22T15Z",
+      "focused_bioemu_wrapper_tests": "passed_8_tests_2026-05-23T02Z_with_structured_subprocess_diagnostics",
+      "focused_hcls_manifest_tests": "passed_14_tests_2026-05-23T11Z_with_bioemu_diagnostic_image_guard_coverage",
+      "gpu_probe": "passed_2026-05-22T23Z_h200_eu_north2_supported_3_warmups_10_measured_samples_p50_6203ms_real_fasta_pdb_xtc_outputs; passed_2026-05-23T00Z_l40s_eu_north1_supported_3_warmups_10_measured_samples_p50_7243ms_http_200_artifact_metadata; failed_2026-05-23T01Z_b200_us_central1_http_500_internal_server_error_no_measured_samples; failed_2026-05-23T09Z_b300_uk_south1_http_500_internal_server_error_no_measured_samples; failed_2026-05-23T09Z_rtx6000_us_central1_http_500_internal_server_error_no_measured_samples; passed_2026-05-23T11Z_b200_us_central1_alphafold_fp32_diagnostic_override_3_warmups_10_measured_samples_p50_7696ms_model_time_ms; failed_2026-05-23T18Z_b300_uk_south1_alphafold_fp32_diagnostic_override_exit_1_jax_concatenate_no_measured_samples",
+      "hidden_upsert": "passed_2026-05-23T11Z_onboarding_row_stayed_experimental_default_ineligible_latest_probe_diagnostic_supported_not_active_image_set",
+      "regional_digest_pinning": "passed_2026-05-22T23Z_all_active_regions_resolve_by_digest",
+      "upsert_dry_run": "passed_2026-05-23T11Z_after_b200_alphafold_fp32_diagnostic_metadata_update",
+      "upstream_sequence_validation_alignment": "wrapper_now_rejects_noncanonical_residues_matching_bioemu_v1_3_1_seq_io_iupacprotein_2026-05-22T15Z",
+      "us_central1_import_smoke": "passed_2026-05-22T17Z_bioemu_1_3_1_wrapper_slug_imported",
+      "us_central1_wrapper_build": "passed_2026-05-22T17Z_digest_sha256_f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe",
+      "wrapper_fasta_text_normalization": "single_record_pasted_fasta_text_resolves_to_sequence_before_bioemu_sample_2026-05-22T15Z",
+      "wrapper_fastapi_fake_runtime": "passed_2026-05-22T14:10:00Z",
+      "wrapper_py_compile": "passed_2026-05-23T02Z_after_structured_subprocess_diagnostics_patch"
+    },
+    "wrapper_build": {
+      "build_context_configmap": "forge-build-context-32a88456",
+      "build_job": "forge-build-hcls-microsoft-bioem-32a88456",
+      "checked_at": "2026-05-22T17:18:00Z",
+      "compressed_layer_bytes": 5146767770,
+      "digest": "sha256:f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe",
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1:20260522-wrapper",
+      "layer_count": 6,
+      "manifest_media_type": "application/vnd.docker.distribution.manifest.v2+json",
+      "pulled_image_size_bytes": 5146774747,
+      "runtime_import_smoke": {
+        "job": "bioemu-import-smoke-20260522t17z-r2",
+        "node": "computeinstance-u00dq0dps2sawgw83q",
+        "result": "passed",
+        "stdout": "{'bioemu': '1.3.1', 'slug': 'microsoft-bioemu-v1-1'}"
+      },
+      "status": "us_central1_built_and_digest_verified",
+      "tag": "20260522-wrapper"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "protein",
+    "structure",
+    "ensemble",
+    "molecular_dynamics",
+    "bioemu",
+    "forge_wrapper",
+    "open_source",
+    "mit",
+    "protein_sequence",
+    "msa",
+    "structure_ensemble",
+    "trajectory",
+    "pdb",
+    "xtc",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe",
+  "container_image_size_bytes": 5146774747,
+  "context_window": 1024,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-22T17:30:08.977630+00:00",
+  "default_eligible": false,
+  "description": "BioEmu v1.1 is a Microsoft Research AI for Science protein monomer conformational ensemble sampler. Upstream documents MIT licensing, Linux Python 3.10+ package support, BioEmu v1.1 as the checkpoint used for the Science paper, and outputs consisting of FASTA, topology PDB, and XTC trajectory files. This Forge entry is deliberately hidden: no official portable serving OCI image was found, so Forge wrapper code now exists under services/models/hcls/microsoft_bioemu_v1_1. The wrapper image has been built, digest-pinned across all active Forge regions, import-smoked in us-central1, hidden-probed on H200/eu-north2 with real sequence.fasta, topology.pdb, samples.xtc, npz, and zip outputs and on L40S/eu-north1 with HTTP 200 BioEmu artifact metadata and 10 measured warm model_time_ms samples. The deployed-image matrix is classified as failing on B200/us-central1, B300/uk-south1, and RTX6000/us-central1 because each returned HTTP 500/Internal Server Error on the first request with no measured benchmark samples. The 2026-05-23T11Z B200 AlphaFold FP32 diagnostic override image passed a full 3-warmup/10-measured probe with p50 7696 ms model_time_ms, proving the B200 blocker is fixable by the FP32 AlphaFold patch; the 12Z cycle mirrored that diagnostic image to every Forge region, but it still needs promotion and a fresh active-image matrix before B200 can be represented as supported in gpu_compatibility. Runtime caches for Hugging Face model files, AlphaFold2/ColabFold weights, embeddings, SO(3) precomputations, and outputs are routed under /mnt/data. The model is for nonclinical protein monomer research and is not intended for clinical decision-making, new protein sequence generation, protein-protein interaction modeling, or small-molecule interaction modeling.",
+  "family_id": "80bec256-881a-4a93-a656-91919c8d1052",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BIOEMU_CACHE_ROOT": "/mnt/data/bioemu/microsoft-bioemu-v1-1",
+      "BIOEMU_MODEL_NAME": "bioemu-v1.1",
+      "BIOEMU_MODEL_SLUG": "microsoft-bioemu-v1-1",
+      "BIOEMU_OUTPUT_ROOT": "/mnt/data/model-outputs/microsoft-bioemu-v1-1",
+      "BIOEMU_TIMEOUT_SECONDS": "7200",
+      "HF_HOME": "/mnt/data/hf-cache/microsoft-bioemu-v1-1",
+      "HOME": "/mnt/data/home/microsoft-bioemu-v1-1",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/microsoft-bioemu-v1-1/hub",
+      "TORCH_HOME": "/mnt/data/bioemu/microsoft-bioemu-v1-1/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/microsoft-bioemu-v1-1/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/bioemu/microsoft-bioemu-v1-1/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T11:09:42.817605+00:00",
+      "region": "us-central1",
+      "request_ms": 7696,
+      "request_ms_p50": 23948,
+      "request_ms_p95": 38576,
+      "request_ms_p99": 39876,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 34139,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "{\"detail\":{\"error\":\"bioemu_sample_failed\",\"message\":\"bioemu.sample failed with exit code 1:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/opt/conda/lib/python3.11/site-packages/jax/_src/numpy/lax_numpy.py\\\", line 4640, in concatenate\\n    arrays_out = [lax.concatenate(arrays_out[i:i+k], axis)\\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/opt/conda/lib/python3.11/site-packages/jax/_src/numpy/lax_numpy.py\\\", line 4640, in <listcomp>\\n    arrays_out = [la",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T18:06:47.093635+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-22T23:14:08.566651+00:00",
+      "region": "eu-north2",
+      "request_ms": 6203,
+      "request_ms_p50": 6203,
+      "request_ms_p95": 6203,
+      "request_ms_p99": 6203,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 194708,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T00:11:14.651355+00:00",
+      "region": "eu-north1",
+      "request_ms": 7243,
+      "request_ms_p50": 7243,
+      "request_ms_p95": 7243,
+      "request_ms_p99": 7243,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 193372,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": "Internal Server Error",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T09:13:54.822527+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.12
+    }
+  ],
+  "gpu_type": null,
+  "id": "8bb6efe7-eaa1-49b8-883b-34e7a1dfcacd",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "protein_sequence",
+    "msa"
+  ],
+  "modality_output": [
+    "structure_ensemble",
+    "trajectory",
+    "pdb",
+    "xtc",
+    "json"
+  ],
+  "model_family": "microsoft-bioemu",
+  "name": "BioEmu v1.1",
+  "parameter_count": 31400000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "a3m": "{{a3m}}",
+        "base_seed": "{{base_seed}}",
+        "batch_size_100": "{{batch_size_100}}",
+        "denoiser_type": "{{denoiser_type}}",
+        "filter_samples": "{{filter_samples}}",
+        "model_name": "{{model_name}}",
+        "num_samples": "{{num_samples}}",
+        "sequence": "{{sequence}}"
+      },
+      "endpoint": "/v1/inference/microsoft-bioemu-v1-1",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "GYDPETGTWG",
+        "key": "sequence",
+        "label": "Protein sequence",
+        "type": "protein_sequence",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "a3m",
+        "label": "A3M alignment",
+        "type": "textarea",
+        "visible": false
+      }
+    ],
+    "output_display": {
+      "format_hint": "zip archive plus generated sequence.fasta, topology.pdb, samples.xtc, and batch npz metadata",
+      "type": "file"
+    },
+    "parameter_controls": [
+      {
+        "default": 10,
+        "key": "num_samples",
+        "label": "Samples",
+        "max": 1000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": "bioemu-v1.1",
+        "key": "model_name",
+        "label": "Checkpoint",
+        "options": [
+          "bioemu-v1.1",
+          "bioemu-v1.0",
+          "bioemu-v1.2"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "true",
+        "key": "filter_samples",
+        "label": "Filter unphysical samples",
+        "options": [
+          "true",
+          "false"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "dpm",
+        "key": "denoiser_type",
+        "label": "Denoiser",
+        "options": [
+          "dpm",
+          "heun"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": 10,
+        "key": "batch_size_100",
+        "label": "Batch size at 100 aa",
+        "max": 100,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 101,
+        "key": "base_seed",
+        "label": "Base seed",
+        "max": 4294967295,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "artifact_revision": "1fec9d4473a9da04f5e60026a70d7a93fb893e9e",
+      "base_image": "docker.io/pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime@sha256:7db0e1bf4b1ac274ea09cf6358ab516f8a5c7d3d0e02311bed445f7e236a5d80",
+      "cache_target": "/mnt/data/bioemu/microsoft-bioemu-v1-1",
+      "kind": "bioemu_sample",
+      "model_id": "microsoft/bioemu",
+      "model_name": "bioemu-v1.1",
+      "package": "bioemu",
+      "package_version": "1.3.1",
+      "planned_image_name": "hcls-microsoft-bioemu-v1-1",
+      "wrapper_dockerfile": "services/models/hcls/microsoft_bioemu_v1_1/Dockerfile",
+      "wrapper_path": "services/models/hcls/microsoft_bioemu_v1_1",
+      "wrapper_status": "h200_l40s_supported_deployed_image_b200_b300_rtx6000_failed_b200_af2_fp32_diagnostic_supported_mirrored_pending_active_image_reprobe"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "a3m",
+        "num_samples",
+        "model_name",
+        "filter_samples",
+        "denoiser_type",
+        "batch_size_100",
+        "base_seed"
+      ],
+      "required": [
+        "sequence"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/hcls-microsoft-bioemu-v1-1@sha256:482d358bb2c4082fc6c558aec4a78c8841ae3972b5ec8c1e429f82a160249d80",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/hcls-microsoft-bioemu-v1-1@sha256:b178568d96f1f292009d6ec90299426fe3884dd5c98c28cbe97c5fe5f532854a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/hcls-microsoft-bioemu-v1-1@sha256:10e021358a5f43b0c2950e8d43872512c3bce17ef46f950c0c50a1283e801d0b",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-microsoft-bioemu-v1-1@sha256:f233b41448b1a0ca261aa51255679e845dba02505e5a2ebab5536ca04fe19ffe"
+  },
+  "release_rank": 80,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "microsoft-bioemu-v1-1",
+  "source": "custom_container",
+  "source_url": "https://github.com/microsoft/bioemu",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "protein",
+    "structure",
+    "ensemble",
+    "molecular-dynamics",
+    "bioemu",
+    "forge-wrapper",
+    "open-source",
+    "mit"
+  ],
+  "updated_at": "2026-06-08T12:03:11.003816+00:00",
+  "version": "bioemu-v1.1-via-bioemu-1.3.1-wrapper",
+  "version_description": "Microsoft BioEmu v1.1 protein conformational ensemble sampling with a Forge HTTP wrapper built, import-smoked in us-central1, digest-pinned in all active regions, hidden-probed as supported on H200/eu-north2 and L40S/eu-north1, and hidden-probed as failing with HTTP 500 on B200/us-central1, B300/uk-south1, and RTX6000/us-central1 for the deployed image set. The AlphaFold FP32 diagnostic image validates B200 with 10 measured warm model_time_ms samples and is now mirrored to all Forge regions, but it is not yet promoted as the active regional image set.",
+  "version_key": "bioemu-v1-1-bioemu-1-3-1-wrapper",
+  "version_label": "BioEmu v1.1 via bioemu 1.3.1 Forge wrapper"
+}

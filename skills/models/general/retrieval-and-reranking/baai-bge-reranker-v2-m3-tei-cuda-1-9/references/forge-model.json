@@ -1,0 +1,452 @@
+{
+  "benchmark_scores": {
+    "artifact_commit": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "artifact_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "b200_us_central1_probe": {
+      "latency_samples_ms": [
+        195,
+        191,
+        192,
+        203,
+        192,
+        188,
+        184,
+        183,
+        185,
+        186
+      ],
+      "model_p50_ms": 190,
+      "node": "computeinstance-u00wfy5ev18z7fgpy4",
+      "pod_name": "forge-probe-baai-bge-reranker-v2-m3--b200-us-central1-904328",
+      "probed_at": "2026-05-22T16:10:16Z",
+      "response_status": 200,
+      "source": "client_wall_ms",
+      "startup_ms": 320557,
+      "status": "supported",
+      "vram_gb": 1.84
+    },
+    "b300_sm103_entrypoint_audit": {
+      "audited_at": "2026-05-22T19:07:00Z",
+      "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "entrypoint": "./entrypoint.sh",
+      "finding": "The TEI CUDA 1.9.3 entrypoint reads nvidia-smi compute_cap and dispatches only 75, 80-89, 90, 100, and 120. B300 reports SM103/compute_cap=103, which falls through to the unsupported branch and exits 1 before the server starts.",
+      "image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+      "next_step": "Keep B300 disabled for this image until upstream TEI adds an SM103 router or Forge builds and mirrors a B300-capable wrapper variant."
+    },
+    "b300_uk_south1_probe": {
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "failure_reason": "pod_start_failure:pod_failed; retained pod exited code 1 immediately on a healthy B300 node. Logs/events remain RBAC-forbidden, but image audit shows TEI cuda-1.9 entrypoint does not dispatch SM103.",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "pod_name": "forge-probe-baai-bge-reranker-v2-m3--b300-uk-south1-daffac",
+      "previous_failure": {
+        "failure_reason": "pod_start_failure:pod_failed",
+        "node": "computeinstance-e03cdt2m6dscactrnd",
+        "pod_name": "forge-probe-baai-bge-reranker-v2-m3--b300-uk-south1-57dcee",
+        "probed_at": "2026-05-22T16:10:16Z"
+      },
+      "probed_at": "2026-05-22T19:04:15Z",
+      "report_json": "tmp/parallel-matrix/baai-bge-reranker-v2-m3-tei-cuda-1-9-b300-20260522T19Z.json",
+      "report_md": "tmp/parallel-matrix/baai-bge-reranker-v2-m3-tei-cuda-1-9-b300-20260522T19Z.md",
+      "status": "other_error"
+    },
+    "blockers": [
+      "Keep hidden and non-default until RTX6000 is probed or explicitly marked unavailable and a B300-capable TEI image or Forge-owned wrapper is selected and probed.",
+      "B300/uk-south1 is blocked for this pinned TEI CUDA 1.9.3 image because the entrypoint has no SM103 compute-capability dispatch branch.",
+      "Probe request timing source is client_wall_ms because TEI native /rerank does not expose model execution timing in the response.",
+      "Pod logs and events were not accessible through the compute kubeconfig during triage: pods/log and events reads were forbidden for system:serviceaccount:forge-models:forge-scheduler-remote.",
+      "GenAI-Perf OpenAI-compatible rerank benchmarking was not used because this manifest targets TEI's native /rerank endpoint."
+    ],
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_image_after_nvcr_nim_manifest_auth_required",
+    "default_payload_quality_probe": {
+      "cell": "L40S/eu-north1",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug baai-bge-reranker-v2-m3-tei-cuda-1-9 --include-status onboarding --gpu L40S --region eu-north1 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1",
+      "latency_samples_ms": [
+        91,
+        92,
+        92,
+        92,
+        91,
+        91,
+        90,
+        89,
+        88,
+        90
+      ],
+      "model_p50_ms": 91,
+      "node": "computeinstance-e00knmqbn7kxszaff1",
+      "pod_name": "forge-probe-baai-bge-reranker-v2-m3--l40s-eu-north1-189fd8",
+      "probed_at": "2026-05-22T17:08:13Z",
+      "report_json": "tmp/parallel-matrix/baai-bge-reranker-v2-m3-tei-cuda-1-9-quality-20260522T17Z.json",
+      "report_md": "tmp/parallel-matrix/baai-bge-reranker-v2-m3-tei-cuda-1-9-quality-20260522T17Z.md",
+      "response_preview_indices": [
+        0,
+        1,
+        2
+      ],
+      "response_status": 200,
+      "second_result_score": 3.676463e-05,
+      "source": "client_wall_ms",
+      "startup_ms": 207228,
+      "status": "supported",
+      "top_result_index": 0,
+      "top_result_score": 0.9923638,
+      "vram_gb": 1.57
+    },
+    "h200_eu_north2_probe": {
+      "latency_samples_ms": [
+        102,
+        103,
+        103,
+        102,
+        109,
+        103,
+        105,
+        103,
+        102,
+        102
+      ],
+      "model_p50_ms": 103,
+      "node": "computeinstance-e02qrr5b7wych6gj31",
+      "pod_name": "forge-probe-baai-bge-reranker-v2-m3--h200-eu-north2-d7319a",
+      "probed_at": "2026-05-22T16:10:16Z",
+      "response_status": 200,
+      "source": "client_wall_ms",
+      "startup_ms": 376555,
+      "status": "supported",
+      "vram_gb": 1.74
+    },
+    "l40s_eu_north1_probe": {
+      "latency_samples_ms": [
+        98,
+        96,
+        98,
+        97,
+        97,
+        98,
+        98,
+        98,
+        98,
+        97
+      ],
+      "model_p50_ms": 98,
+      "node": "computeinstance-e00knmqbn7kxszaff1",
+      "pod_name": "forge-probe-baai-bge-reranker-v2-m3--l40s-eu-north1-3c8819",
+      "probed_at": "2026-05-22T16:10:16Z",
+      "response_status": 200,
+      "source": "client_wall_ms",
+      "startup_ms": 255392,
+      "status": "supported",
+      "vram_gb": 1.57
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 4,
+      "cells_failed": [
+        "B300/uk-south1"
+      ],
+      "cells_not_discovered": [
+        "RTX6000/us-central1"
+      ],
+      "cells_supported": [
+        "B200/us-central1",
+        "H200/eu-north2",
+        "L40S/eu-north1"
+      ],
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug baai-bge-reranker-v2-m3-tei-cuda-1-9 --include-status onboarding --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 5",
+      "probed_at": "2026-05-22T16:10:16Z",
+      "report_json": "tmp/parallel-matrix/baai-bge-reranker-v2-m3-tei-cuda-1-9-20260522T161016Z.json",
+      "report_md": "tmp/parallel-matrix/baai-bge-reranker-v2-m3-tei-cuda-1-9-20260522T161016Z.md",
+      "request_time_source": "client_wall_ms",
+      "status": "partial_supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; TEI image labels report Apache-2.0.",
+    "onboarding_state": "b200_h200_l40s_supported_b300_sm103_entrypoint_incompatible_rtx6000_unprobed",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-22T14:04:36Z",
+    "rtx6000_us_central1_probe": {
+      "failure_reason": "RTX6000 was not returned by the 15Z probe inventory.",
+      "probed_at": "2026-05-22T16:10:16Z",
+      "status": "not_discovered"
+    },
+    "runtime_evidence": "The Hugging Face model card tags the artifact as text-embeddings-inference compatible. The selected TEI CUDA 1.9.3 image exposes the native rerank serving path used by existing Forge TEI reranker manifests.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "source_evidence": [
+      "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+      "https://huggingface.co/BAAI/bge-reranker-v2-m3/raw/main/config.json",
+      "https://huggingface.co/BAAI/bge-reranker-v2-m3/raw/main/README.md",
+      "https://github.com/huggingface/text-embeddings-inference"
+    ]
+  },
+  "capabilities": [
+    "rerank",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "bge",
+    "xlm_roberta",
+    "huggingface",
+    "tei",
+    "text",
+    "ranking",
+    "general"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110096066,
+  "context_window": 8192,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-22T16:03:40.162007+00:00",
+  "default_eligible": false,
+  "description": "BAAI bge-reranker-v2-m3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual retrieval reranking. Hugging Face API metadata reports private=false, gated=false, disabled=false, Apache-2.0 license metadata, text-classification pipeline usage, XLMRobertaForSequenceClassification architecture, and 567,755,777 safetensors parameters. The model card describes bge-reranker-v2-m3 as a lightweight multilingual reranker that scores query-passage pairs directly and is easy to deploy for retrieval pipelines. This onboarding entry reuses the already mirrored TEI CUDA 1.9 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, serves the native /rerank endpoint, clears unnecessary Hugging Face token env for this public artifact, and stores Hugging Face caches under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. Live Forge probes now support B200/us-central1, H200/eu-north2, and L40S/eu-north1; B300/uk-south1 returned pod_failed on 15Z and 19Z, and image audit shows the TEI CUDA 1.9 entrypoint lacks an SM103 dispatch branch, so B300 remains disabled until a B300-capable TEI image or Forge-owned wrapper is validated. RTX6000 was not in the discovered inventory and remains disabled until probed or explicitly marked unavailable.",
+  "family_id": "46e3a92b-7b6d-494f-be7c-26832be2e357",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "BAAI/bge-reranker-v2-m3",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "BAAI/bge-reranker-v2-m3"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-22T16:09:21.885708+00:00",
+      "region": "us-central1",
+      "request_ms": 190,
+      "request_ms_p50": 190,
+      "request_ms_p95": 190,
+      "request_ms_p99": 190,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 320557,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.84,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-22T19:04:15.052083+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-22T16:10:16.116680+00:00",
+      "region": "eu-north2",
+      "request_ms": 103,
+      "request_ms_p50": 103,
+      "request_ms_p95": 103,
+      "request_ms_p99": 103,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 376555,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.74,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-22T17:08:12.589870+00:00",
+      "region": "eu-north1",
+      "request_ms": 91,
+      "request_ms_p50": 94,
+      "request_ms_p95": 98,
+      "request_ms_p99": 98,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 207228,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.57,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "c73b79ee-8521-494f-beb5-fecbb3dbe323",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "ranking"
+  ],
+  "model_family": "baai-bge-reranker-v2-m3",
+  "name": "BGE Reranker v2 M3",
+  "parameter_count": 567755777,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "query": "{{query}}",
+        "raw_scores": "{{raw_scores}}",
+        "return_text": "{{return_text}}",
+        "texts": "{{texts}}",
+        "truncate": true,
+        "truncation_direction": "right"
+      },
+      "endpoint": "/rerank",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "What does a reranker do in a retrieval pipeline?",
+        "key": "query",
+        "label": "Query",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": [
+          "A reranker receives a query and candidate passages from an initial retrieval step, scores each query-passage pair, and orders the passages by relevance.",
+          "A shared model cache stores downloaded weights and compiled runtime artifacts on durable storage so later pods can avoid first-run hydration.",
+          "Browser CSS controls typography, layout, and responsive styling for a web application."
+        ],
+        "key": "texts",
+        "label": "Candidate texts",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "raw_scores",
+        "label": "Raw scores",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "return_text",
+        "label": "Return text",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "ranking_scores",
+      "type": "json"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "rerank"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 52,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "baai-bge-reranker-v2-m3-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "rerank",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "bge",
+    "xlm-roberta",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for BAAI bge-reranker-v2-m3.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

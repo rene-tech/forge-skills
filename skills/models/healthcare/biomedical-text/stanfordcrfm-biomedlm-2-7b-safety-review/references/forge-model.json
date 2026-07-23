@@ -1,0 +1,306 @@
+{
+  "benchmark_scores": {
+    "artifact_gated": false,
+    "artifact_license": "bigscience-bloom-rail-1.0",
+    "artifact_sha": "3e1a0abb814b8398bc34b4b6680ecf2c26d6a66f",
+    "artifact_source": "https://huggingface.co/stanford-crfm/BioMedLM",
+    "b200_smoke_probe_20260603T13Z": {
+      "benchmark_runs": 10,
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "generated_at": "2026-06-03T13:11:33.047887+00:00",
+      "gpu_type": "B200",
+      "image_size_bytes": 4887990760,
+      "live_support_upsert": true,
+      "node": "computeinstance-u00vt164gz6kawcfeb",
+      "pod_name": "forge-probe-stanfordcrfm-biomedlm-2--b200-us-central1-501152",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "region": "us-central1",
+      "remaining_matrix_cells": [
+        "B300/uk-south1",
+        "H200/eu-north2",
+        "L40S/eu-north1",
+        "RTX6000/us-central1"
+      ],
+      "report_json": "docs/model-onboarding/hcls/stanfordcrfm-biomedlm-2-7b-safety-review-20260603T13Z-b200-smoke.json",
+      "report_md": "docs/model-onboarding/hcls/stanfordcrfm-biomedlm-2-7b-safety-review-20260603T13Z-b200-smoke.md",
+      "request_ms_p50": 1043,
+      "request_ms_p95": 1142,
+      "request_ms_samples": [
+        1054,
+        1108,
+        1044,
+        1040,
+        1169,
+        1025,
+        1042,
+        1022,
+        1099,
+        993
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_evidence": "HTTP 200 text-generation JSON for the nonclinical literature-triage default prompt; response preview included generated text and model slug.",
+      "response_status": 200,
+      "startup_ms": 216823,
+      "status": "supported",
+      "vram_used_gb": 5.72,
+      "warmup_runs": 3
+    },
+    "blockers": [
+      "Only B200/us-central1 has passed a Forge onboarding benchmark for this manifest; B300, H200, L40S, and RTX6000 remain unclassified.",
+      "Healthcare product safety review is required before making this biomedical text generation model routable.",
+      "The upstream model card recommends against production natural-language generation and the license restricts medical advice and medical results interpretation."
+    ],
+    "cache_alignment_20260603T13Z": {
+      "hf_home": "/mnt/data/hf-cache/stanfordcrfm-biomedlm-2-7b-safety-review",
+      "reason": "Avoid repeated model hydration into the container filesystem during Forge probes and future matrix work.",
+      "status": "manifest_env_routes_hf_transformers_torch_xdg_and_home_to_mnt_data"
+    },
+    "hf_api_checked_at": "2026-05-21T18:04:10Z",
+    "hf_api_refresh_20260603T13Z": {
+      "disabled": false,
+      "downloads": 11020,
+      "effect": "artifact_license_and_revision_unchanged_public_ungated_enabled",
+      "gated": false,
+      "last_modified": "2024-03-28T13:57:14.000Z",
+      "library_name": "transformers",
+      "license": "bigscience-bloom-rail-1.0",
+      "pipeline_tag": "text-generation",
+      "private": false,
+      "sha": "3e1a0abb814b8398bc34b4b6680ecf2c26d6a66f"
+    },
+    "hf_downloads_at_check": 4322,
+    "onboarding_state": "b200_supported_pending_remaining_gpu_matrix_product_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "research_use_contract_20260603T13Z": {
+      "allowed_scope": "Nonclinical biomedical literature triage, research summarization, and scientific workflow drafting.",
+      "publication_decision": "keep_hidden_onboarding_default_ineligible",
+      "status": "manifest_requires_research_use_acknowledgement"
+    },
+    "runtime_image_digests": {
+      "eu-north1": "sha256:69c5ab5ce79089506e8d869cb37c247a86f12acf839eeb4fdcb49636e262ff3f",
+      "eu-north2": "sha256:6aa2b5a543ac65abeefa6a8c07e0104395fbc7c8bd16ec1d7cf3c71f99b132d7",
+      "uk-south1": "sha256:cac05bdb9c3bef42e99af8472b33c55b751a94dec58f251ecb87253e99dee970",
+      "us-central1": "sha256:0c86f583e15764ec49a1658c2e17d9b7ce90ff9c4c17ead044f18dfe695a2420"
+    },
+    "runtime_image_family": "life-science-stanfordcrfm-biomedlm-2-7b:20260426-fix2"
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "language_model",
+    "text_generation",
+    "custom_container",
+    "forge_wrapper",
+    "research_only",
+    "text",
+    "custom_inference"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-stanfordcrfm-biomedlm-2-7b:20260426-fix2@sha256:0c86f583e15764ec49a1658c2e17d9b7ce90ff9c4c17ead044f18dfe695a2420",
+  "container_image_size_bytes": 4887990760,
+  "context_window": 1024,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-21T18:12:26.192278+00:00",
+  "default_eligible": false,
+  "description": "BioMedLM 2.7B is a Stanford CRFM and MosaicML biomedical GPT-style language model trained on PubMed abstracts and full-text data from The Pile. This Forge entry is a non-routable onboarding manifest for the existing Forge-owned life-science transformer wrapper and digest-verified regional images. The 2026-06-03T13Z pass refreshed the public Hugging Face artifact state, moved wrapper caches from the image filesystem to /mnt/data, added an explicit research-use acknowledgement to the playground request contract, live-upserted the hidden row, and completed the first B200/us-central1 onboarding benchmark with 3 warmups and 10 measured requests. The upstream model card says the model is research-oriented and strongly recommends against production natural-language generation use; the BLOOM Open RAIL-M license also restricts medical advice and medical results interpretation. Keep this entry non-public until Forge completes safety/product review and the remaining GPU matrix validation.",
+  "family_id": "04b17f1a-745e-4f37-b64d-fa80074905a6",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BIO_MAX_LENGTH": "1024",
+      "BIO_MAX_NEW_TOKENS": "96",
+      "BIO_MODEL_ID": "stanford-crfm/BioMedLM",
+      "BIO_MODEL_KIND": "biomed_lm",
+      "BIO_MODEL_SLUG": "stanfordcrfm-biomedlm-2-7b-safety-review",
+      "BIO_TORCH_DTYPE": "auto",
+      "HF_HOME": "/mnt/data/hf-cache/stanfordcrfm-biomedlm-2-7b-safety-review",
+      "HOME": "/mnt/data/home/stanfordcrfm-biomedlm-2-7b-safety-review",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/stanfordcrfm-biomedlm-2-7b-safety-review/hub",
+      "TORCH_HOME": "/mnt/data/stanfordcrfm-biomedlm-2-7b-safety-review/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/stanfordcrfm-biomedlm-2-7b-safety-review/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/stanfordcrfm-biomedlm-2-7b-safety-review/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T13:11:32.145404+00:00",
+      "region": "us-central1",
+      "request_ms": 1043,
+      "request_ms_p50": 1043,
+      "request_ms_p95": 1142,
+      "request_ms_p99": 1164,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 216823,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 5.72,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.03
+    }
+  ],
+  "gpu_type": null,
+  "id": "3e960562-3649-4662-a355-59952f7892ff",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "bigscience-bloom-rail-1.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "stanfordcrfm-biomedlm",
+  "name": "BioMedLM 2.7B",
+  "parameter_count": 2700000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_new_tokens": "{{max_new_tokens}}",
+        "prompt": "{{prompt}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/inference/stanfordcrfm-biomedlm-2-7b-safety-review",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Summarize why biomedical language models can help literature triage, and list two limitations.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 96,
+        "key": "max_new_tokens",
+        "label": "Max new tokens",
+        "max": 512,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/hf-cache/stanfordcrfm-biomedlm-2-7b-safety-review",
+      "kind": "biomed_lm",
+      "model_id": "stanford-crfm/BioMedLM",
+      "model_revision": "3e1a0abb814b8398bc34b4b6680ecf2c26d6a66f",
+      "served_model_name": "stanfordcrfm-biomedlm-2-7b-safety-review"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical literature triage, research summarization, and scientific workflow drafting.",
+      "body": "Use only for nonclinical biomedical literature triage, research summarization, and scientific workflow drafting. Do not use for medical advice, diagnosis, treatment, triage, medication recommendations, clinical decision-making, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical text generation"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "max_new_tokens",
+        "temperature"
+      ],
+      "required": [
+        "prompt",
+        "research_use_acknowledgement"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/life-science-stanfordcrfm-biomedlm-2-7b@sha256:69c5ab5ce79089506e8d869cb37c247a86f12acf839eeb4fdcb49636e262ff3f",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/life-science-stanfordcrfm-biomedlm-2-7b@sha256:6aa2b5a543ac65abeefa6a8c07e0104395fbc7c8bd16ec1d7cf3c71f99b132d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/life-science-stanfordcrfm-biomedlm-2-7b@sha256:cac05bdb9c3bef42e99af8472b33c55b751a94dec58f251ecb87253e99dee970",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-stanfordcrfm-biomedlm-2-7b@sha256:0c86f583e15764ec49a1658c2e17d9b7ce90ff9c4c17ead044f18dfe695a2420"
+  },
+  "release_rank": 45,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "stanfordcrfm-biomedlm-2-7b-safety-review",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/stanford-crfm/BioMedLM",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical",
+    "language-model",
+    "text-generation",
+    "custom-container",
+    "forge-wrapper",
+    "research-only"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-3e1a0ab-wrapper-20260426-fix2",
+  "version_description": "Stanford CRFM BioMedLM 2.7B served by the Forge life-science transformer wrapper.",
+  "version_key": "hf-3e1a0ab-life-science-20260426-fix2",
+  "version_label": "HF 3e1a0ab via Forge life-science wrapper"
+}

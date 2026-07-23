@@ -1,0 +1,300 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "document_parsing",
+    "ocr",
+    "retrieval",
+    "nvidia_nim",
+    "document",
+    "vision",
+    "text",
+    "layout",
+    "general",
+    "openai_compatible",
+    "chat",
+    "text_generation"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/nemoretriever-parse:latest",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T13:02:02.819223+00:00",
+  "default_eligible": true,
+  "description": "NVIDIA NeMo Retriever Parse NIM for document parsing and OCR-style extraction; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+  "family_id": "281956cb-92c6-4cb1-8568-6d4d836698b5",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks B200 unsupported",
+      "last_failed_at": "2026-05-12T23:19:51.186564+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks B300 unsupported",
+      "last_failed_at": "2026-05-12T23:21:40.382328+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-12T19:26:00.635195+00:00",
+      "observed_success_rate": 0.5,
+      "probed_at": "2026-05-15T06:54:05.816312+00:00",
+      "region": "eu-north2",
+      "request_ms": 1805,
+      "request_ms_p50": 1929,
+      "request_ms_p95": 2041,
+      "request_ms_p99": 2051,
+      "request_ms_samples": 2,
+      "startup_ms_first": 161918,
+      "startup_ms_probe": 161918,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 2.77,
+      "total_failures": 1,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 125.3,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": "2026-05-12T19:26:00.635195+00:00",
+      "observed_success_rate": 0.5,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 1986,
+      "request_ms_p95": 1986,
+      "request_ms_p99": 1986,
+      "request_ms_samples": 1,
+      "startup_ms_first": 161918,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-28T14:19:27.917504+00:00",
+      "region": "eu-north1",
+      "request_ms": 2365,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": 33979,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 2.11,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 39.49,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: TensorRT-LLM failed building the visual_encoder.engine on RTX6000 during NIM startup",
+      "last_failed_at": "2026-05-13T17:23:57.763548+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T17:27:50.885239+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "c3dafb3f-83d1-4b07-837d-4e2f0073f3e0",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-nim; third-party model license",
+  "modality_input": [
+    "document",
+    "image"
+  ],
+  "modality_output": [
+    "text",
+    "layout"
+  ],
+  "model_family": "nvidia-nemoretriever-parse",
+  "name": "NVIDIA NeMo Retriever Parse",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": 256,
+        "messages": [
+          {
+            "content": [
+              {
+                "image_url": {
+                  "url": "{{image_url}}"
+                },
+                "type": "image_url"
+              }
+            ],
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "nvidia/nemoretriever-parse"
+    },
+    "input_fields": [
+      {
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII=",
+        "key": "image_url",
+        "label": "Image URL or data URL",
+        "type": "text",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "parsed_document",
+      "type": "markdown"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "vision_chat"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-nemoretriever-parse:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-nemoretriever-parse:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-nemoretriever-parse:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-nemoretriever-parse:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-nemoretriever-parse-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/nemoretriever-parse",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "document-parsing",
+    "ocr",
+    "retrieval",
+    "nvidia-nim"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

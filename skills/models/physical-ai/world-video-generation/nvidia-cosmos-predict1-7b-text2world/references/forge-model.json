@@ -1,0 +1,299 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "temporary_publication_exception_current": {
+      "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+      "accepted_by_user": true,
+      "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+      "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+      "rollback": "Set model and family status back to onboarding for these slugs/families.",
+      "scope": "temporary_restore_to_catalog_visibility"
+    },
+    "temporary_publication_exceptions": [
+      {
+        "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+        "accepted_by_user": true,
+        "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+        "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+        "rollback": "Set model and family status back to onboarding for these slugs/families.",
+        "scope": "temporary_restore_to_catalog_visibility"
+      }
+    ]
+  },
+  "capabilities": [
+    "physical_ai",
+    "cosmos",
+    "world_foundation_model",
+    "synthetic_data",
+    "video_generation",
+    "text",
+    "video",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/cosmos-predict1-7b-text2world:1.0.0",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T10:06:01.888808+00:00",
+  "default_eligible": false,
+  "description": "Cosmos Predict1 NIM for text-to-world video generation. Useful for creating synthetic autonomous-driving scenes such as rare weather, lighting, and traffic variants.",
+  "family_id": "79ded8db-6072-41ef-83b5-e8abf8a0b37e",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 80.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": "503: scheduler_unreachable: RemoteProtocolError",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-15T02:14:20.977895+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "503: cold_start_failed: RuntimeError: pod_start_failure:model:log_fatal:failed to load all models:logs:ERROR 2026-05-14 23:22:50.852] |                         |         |   /opt/nim/third_party/nemo-vfm/nemo/collections/diffusion/models/dit/dit_model_7b.py(618): __init__                                                                                       | ERROR 2026-05-14 23:22:50.852] |                         |         |   /opt/nim/third_party/nemo-vfm/nemo/collections/diffusion/models/dit/dit_model_7b.py(761): __init__                                                                                       | ERROR 2026-05-14 23:22:50.852] |                         |         |   /opt/nim/third_party/nemo-vfm/nemo/collections/diffusion/models/model.py(185): configure_model                                                                                           | ERROR 2026-05-14 23:22:50.852] |                         |         |   /opt/nim/third_party/nemo-vfm/nemo/collections/llm/g",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-14T23:00:54.363855+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-12T20:07:25.318705+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T00:55:47.458796+00:00",
+      "region": "eu-north2",
+      "request_ms": 287755,
+      "request_ms_p50": 287755,
+      "request_ms_p95": 287755,
+      "request_ms_p99": 287755,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 1071,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": "2026-05-12T20:07:25.318705+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": "profile_requires_more_vram: NIM manifest requires 91268055040 bytes, larger than available L40S memory",
+      "last_failed_at": "2026-05-14T22:39:41.177578+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-14T22:50:29.262002+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "oom",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": "503: cold_start_failed: RuntimeError: pod_start_failure:model:log_fatal:failed to load all models:logs:ERROR 2026-05-14 23:12:01.223] | prompt_upsampler        | 1       | UNAVAILABLE: Internal: Stub process 'prompt_upsampler_0_0' is not healthy. | ERROR 2026-05-14 23:12:01.223] | siglip_filter           | 1       | READY                                                                      | ERROR 2026-05-14 23:12:01.223] | siglip_filter_processor | 1       | READY                                                                      | ERROR 2026-05-14 23:12:01.223] | t5                      | 1       | READY                                                                      | ERROR 2026-05-14 23:12:01.223] | t5_tokenizer            | 1       | READY                                                                      | ERROR 2026-05-14 23:12:01.223] +-------------------------+---------+----------------------------------------------------------------------------+ ERROR 2026-05-14 23:1",
+      "last_failed_at": "2026-05-14T23:12:04.500787+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-14T23:00:54.286078+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    }
+  ],
+  "gpu_type": null,
+  "id": "4038e277-1f50-45f2-a42e-059de56866df",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-ai-foundation-models-community",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "video"
+  ],
+  "model_family": "nvidia-cosmos-predict1-7b-text2world",
+  "name": "NVIDIA Cosmos Predict1 7B Text2World",
+  "parameter_count": 7000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos-predict1-7b-text2world",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "first person dashcam view from a car driving down a two lane suburban street on a rainy day, wet road, puddles, windshield wipers",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "mp4",
+      "type": "video"
+    },
+    "parameter_controls": [
+      {
+        "default": 4,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-cosmos-predict1-7b-text2world:1.0.0",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-cosmos-predict1-7b-text2world:1.0.0",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-cosmos-predict1-7b-text2world:1.0.0",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-cosmos-predict1-7b-text2world:1.0.0"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "nvidia-cosmos-predict1-7b-text2world",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "eu-north2"
+  ],
+  "tags": [
+    "physical-ai",
+    "cosmos",
+    "world-foundation-model",
+    "synthetic-data",
+    "video-generation"
+  ],
+  "updated_at": "2026-06-08T12:03:11.003816+00:00",
+  "version": "1.0.0",
+  "version_description": null,
+  "version_key": "1-0-0",
+  "version_label": "1.0.0"
+}

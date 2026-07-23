@@ -1,0 +1,785 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Mistral3ForConditionalGeneration"
+      ],
+      "generation_max_length": 262144,
+      "model_type": "mistral3",
+      "quantization_config": {
+        "activation_scheme": "static",
+        "dequantize": false,
+        "quant_method": "fp8"
+      },
+      "text_profile_exposes_vision": false,
+      "tool_calling_exposed": false
+    },
+    "artifact_files": {
+      "config.json": {
+        "hf_blob_id": "dc2540f4f6c00e131b2f29dc7e7f5fc2805c8f41",
+        "size_bytes": 1903
+      },
+      "consolidated.safetensors": {
+        "hf_blob_id": "150c86fc7b80a77a3846c46bae2d4ca50b17dcad",
+        "size_bytes": 4672089108
+      },
+      "generation_config.json": {
+        "hf_blob_id": "add11cbc06647495098ee6dd5c9cbc96841a445a",
+        "size_bytes": 131
+      },
+      "model.safetensors": {
+        "hf_blob_id": "695fd14ec5944158e4b187ebc8933ea96294419f",
+        "size_bytes": 4672099184
+      },
+      "tokenizer_config.json": {
+        "hf_blob_id": "a7843c180f2b39d43303e7eba55d2e34fd600a8f",
+        "size_bytes": 21168
+      }
+    },
+    "artifact_last_modified": "2026-01-15T11:15:08.000Z",
+    "artifact_parameters": {
+      "BF16": 822899712,
+      "F8_E4M3": 3026190336,
+      "total": 3849090048
+    },
+    "artifact_revision": "cfcb068fa7c44114cf77a462357c6cdcd2c304b4",
+    "b200_ephemeral_smoke_20260604T09Z": {
+      "benchmark_runs": 1,
+      "cache_volume_mode": "emptyDir",
+      "cluster": "mk8scluster-u00eyp43c8have384b",
+      "gpu_type": "B200",
+      "node": "computeinstance-u00g1azra7vs54h1s4",
+      "persisted": false,
+      "pod": "forge-probe-mistralai-ministral-3-3b-b200-us-central1-a89ce9",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T09Z-b200-ephemeral-smoke-rerun.json",
+      "report_md": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T09Z-b200-ephemeral-smoke-rerun.md",
+      "request_ms": 4681,
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "runtime_log_evidence": "vLLM 0.22.0 resolved PixtralForConditionalGeneration, selected FlashInfer attention, selected FlashInferFP8ScaledMMLinearKernel for Fp8LinearMethod, enabled DeepGEMM E8M0 on B200, loaded weights in 4.47 GiB, reported 120.86 GiB available KV cache memory, completed FP8 GEMM autotuning, and returned HTTP 200 for the text-chat request.",
+      "startup_ms": 625406,
+      "status": "supported_no_persist_emptydir",
+      "tokens_per_second": 47.0,
+      "vram_used_gb": 128.62,
+      "warmup_runs": 0
+    },
+    "b300_persisted_hostpath_probe_20260604T09Z": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_type": "B300",
+      "live_support_update": "probe_model_parallel_matrix reported: upserted mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 B300 uk-south1 supported",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "persisted": true,
+      "pod": "forge-probe-mistralai-ministral-3-3b-b300-uk-south1-877574",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T09Z-b300-persisted-cachepath.json",
+      "report_md": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T09Z-b300-persisted-cachepath.md",
+      "request_ms_p50": 326,
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 158256,
+      "status": "supported_persisted_hostpath",
+      "tokens_per_second": 702.45,
+      "vram_used_gb": 192.96,
+      "warmup_runs": 3
+    },
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, TorchInductor, and XDG caches are versioned under /opt/nim/.cache/forge-vllm, which maps to the reviewed shared cache volume without requiring root-owned /mnt/data writes from the main container.",
+    "candidate_selection": "Selected as a non-HCLS, non-physical-AI general instruction model because it is public, ungated, Apache-2.0, vLLM-tagged, compact FP8, and covers a Mistral-family small-model slot not already present in the general Forge catalog.",
+    "container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+    "container_license_evidence": "The vLLM source repository reports SPDX Apache-2.0 through the GitHub API and its raw LICENSE file begins with Apache License Version 2.0. skopeo inspection of docker.io/vllm/vllm-openai:v0.22.0 did not include an OCI license label, so source-repository license evidence is recorded explicitly.",
+    "container_revision": "799c3afa5d5b17b676d04e0b58a5628943bb4003",
+    "container_runtime_evidence": {
+      "created": "2026-05-29T06:57:18.414235433Z",
+      "cuda_version": "13.0.2",
+      "image_tag": "vllm/vllm-openai:v0.22.0",
+      "layers_count": 31,
+      "source": "https://github.com/vllm-project/vllm",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+      "vllm_build_commit": "799c3afa5d5b17b676d04e0b58a5628943bb4003",
+      "vllm_enable_cuda_compatibility": "0"
+    },
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_22_0_cuda13_image_for_active_testing_text_chat_profile",
+    "ephemeral_smoke_20260604T06Z": {
+      "cache_volume_mode": "emptyDir",
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 --include-status onboarding --gpu B200 --region us-central1 --ephemeral-cache-volumes --no-persist --timeout 1800 --request-timeout 300 --warmup-runs 0 --benchmark-runs 1 --max-parallel 1 --report-json /tmp/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T06Z-b200-ephemeral-smoke.json --report-md docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T06Z-b200-ephemeral-smoke.md",
+      "failure_summary": "The B200 emptyDir smoke avoided hostPath volumes but still failed before pod creation with the forge-require-run-as-non-root-forge-pods ValidatingAdmissionPolicy. The probe pod builder has pod-level seccomp but does not set pod-level runAsNonRoot:true, and shared probe code is outside the allowed write scope for this worker.",
+      "free_gpus": 7,
+      "gpu_type": "B200",
+      "region": "us-central1",
+      "report_md": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T06Z-b200-ephemeral-smoke.md",
+      "status": "no_persist_other_error_admission_blocked",
+      "total_gpus": 8
+    },
+    "expected_risks": [
+      "The upstream checkpoint is multimodal; this active Forge profile is text-only and should not be expanded to image input without a separate multimodal probe.",
+      "The model card's default 262144-token context is not part of this profile; the manifest caps served context at 32768 based on the validated text-chat matrix.",
+      "Tool calling requires the Mistral tool parser and should not be exposed until a mode-specific live probe validates tool payloads.",
+      "The selected vLLM image label did not expose an OCI license field; keep source-repository license evidence attached when promoting or rebuilding the runtime."
+    ],
+    "fallbacks_evaluated": {
+      "HuggingFaceTB/SmolLM3-3B-Base": "Deferred because it is a base checkpoint and the general Forge catalog primarily exposes chat and embedding surfaces.",
+      "Qwen/Qwen2.5-3B-Instruct": "Rejected for this cycle because Hugging Face metadata reports license=other.",
+      "allenai/OLMo-3-1B-Instruct": "Rejected because Hugging Face API returned 401 from this environment.",
+      "ibm-granite/granite-4.1-2b": "Rejected because Hugging Face API returned 401 from this environment.",
+      "openbmb/MiniCPM5-0.5B": "Rejected because Hugging Face API returned 401 from this environment.",
+      "snowflake/snowflake-arctic-embed-s-v2.0": "Rejected because Hugging Face API returned 401 from this environment."
+    },
+    "gpu_publication_policy": "The source manifest claims B200, B300, H100, H200, and L40S compatibility for the active testing text-chat profile after persisted hostPath probes. Keep default_eligible=false until product default-route review. Keep RTX6000 disabled until inventory exposes an RTX6000 cell, and keep multimodal/tool modes unexposed until mode-specific probes pass.",
+    "h100_reprobe_20260605T04Z": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 --gpu H100 --region eu-north1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260605T04Z-h100-reprobe.json --report-md docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260605T04Z-h100-reprobe.md",
+      "gpu_type": "H100",
+      "live_support_update": "probe_model_parallel_matrix reported: upserted mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 H100 eu-north1 supported",
+      "node": "computeinstance-e00thnxjnw5qxfw405",
+      "persisted": true,
+      "pod": "forge-probe-mistralai-ministral-3-3b-h100-eu-north1-740cd0",
+      "region": "eu-north1",
+      "report_json": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260605T04Z-h100-reprobe.json",
+      "report_md": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260605T04Z-h100-reprobe.md",
+      "request_ms_p50": 482,
+      "request_ms_p95": 507,
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "runtime_log_evidence": "vLLM 0.22.0 resolved PixtralForConditionalGeneration, selected CutlassFP8ScaledMMLinearKernel for Fp8LinearMethod, enabled DeepGEMM E8M0, selected FLASH_ATTN with FlashAttention 3 on H100, loaded weights in 4.47 GiB, reported 49.81 GiB available KV cache memory, completed CUDA graph capture, and returned HTTP 200 for the text-chat request.",
+      "startup_ms": 377659,
+      "status": "supported_persisted_hostpath",
+      "tokens_per_second": 448.13,
+      "vram_used_gb": 57.09,
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model-card metadata report license=apache-2.0; Hugging Face API reports private=false, gated=false, and disabled=false. The model card states the model is licensed under Apache 2.0.",
+    "live_blocker_20260604T05Z": {
+      "evidence": [
+        "POSTGRES_URL unset",
+        "DATABASE_URL unset",
+        "kubectl current-context=nebius-mk8s-forge-us-u00eyp43c8have384b",
+        "kubectl get ns forge-system returned no namespace in the current context"
+      ],
+      "fallback_attempted": "Created and dry-run validated a hidden source manifest with license, artifact, container, regional mirror, cache, and playground evidence. Live upsert and probe commands are recorded for the next worker with hosted Forge DB access.",
+      "status": "blocked"
+    },
+    "live_upsert_20260604T06Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13.json --keep-existing-family-latest",
+      "returned_slug": "mistralai-ministral-3-3b-instruct-2512-vllm-cuda13",
+      "status": "succeeded_hidden_onboarding_nondefault"
+    },
+    "live_upsert_20260604T09Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13.json --keep-existing-family-latest",
+      "returned_slug": "mistralai-ministral-3-3b-instruct-2512-vllm-cuda13",
+      "status": "succeeded_hidden_onboarding_nondefault_uid_gid_override"
+    },
+    "live_upsert_20260605T02Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13.json --keep-existing-family-latest",
+      "db_readback": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": true,
+          "B300": true,
+          "H200": true,
+          "L40S": true,
+          "RTX6000": false
+        },
+        "is_latest": true,
+        "stability": "testing",
+        "status": "active"
+      },
+      "public_api_readback": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": true,
+          "B300": true,
+          "H200": true,
+          "L40S": true,
+          "RTX6000": false
+        },
+        "stability": "testing",
+        "status_field_note": "public proxy status is runtime state and returned cold after catalog upsert"
+      },
+      "returned_slug": "mistralai-ministral-3-3b-instruct-2512-vllm-cuda13",
+      "status": "succeeded_active_testing_nondefault_text_chat"
+    },
+    "matrix_probe_20260604T06Z": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 --include-status onboarding --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json /tmp/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T06Z-matrix.json --report-md docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T06Z-matrix.md",
+      "failure_summary": "All discovered cells failed before pod creation with Kubernetes 422 admission errors. The warning included PodSecurity baseline hostPath rejection for shared-data and nim-cache volumes.",
+      "other_error": 7,
+      "persisted": true,
+      "report_md": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T06Z-matrix.md",
+      "request_body": {
+        "max_tokens": 512,
+        "messages": [
+          {
+            "content": "Draft a concise incident handoff for this note and include two concrete next checks:\n\nA vLLM CUDA 13 model probe is being staged for a compact FP8 instruct model. The first pass should validate text-only chat at a bounded 32K context before any tool or image inputs are exposed.",
+            "role": "user"
+          }
+        ],
+        "model": "mistralai/Ministral-3-3B-Instruct-2512",
+        "stream": true,
+        "temperature": 0.1,
+        "top_p": 0.95
+      },
+      "request_time_source_expected": "client_wall_ms",
+      "status": "persisted_other_error_admission_blocked",
+      "supported": 0,
+      "warmup_runs": 3
+    },
+    "onboarding_state": "active_testing_nondefault_text_chat_vllm_0_22_b200_b300_h100_h200_l40s_persisted_supported_20260605T04Z",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260605T02Z": {
+      "basis": [
+        "Current Hugging Face API refresh reports the model public, ungated, enabled, Apache-2.0, and unchanged at revision cfcb068fa7c44114cf77a462357c6cdcd2c304b4.",
+        "The selected vLLM 0.22.0 CUDA 13 image is already mirrored by matching digest sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416 into us-central1, eu-north1, eu-north2, and uk-south1.",
+        "B300/uk-south1 has a persisted hostPath probe with 3 warmups and 10 measured text-chat requests.",
+        "B200/us-central1, H200/us-central1, H200/eu-north1, H200/eu-north2, and L40S/eu-north1 have a persisted standard hostPath matrix with 3 warmups and 10 measured text-chat requests per cell.",
+        "The served contract exposes only text chat, so unvalidated image and tool modes remain intentionally disabled."
+      ],
+      "decision": "promote_active_testing_nondefault_text_chat",
+      "default_eligible": false,
+      "remaining_blockers": [
+        "default_eligible remains false until product default-route review",
+        "RTX6000 remains false until inventory exposes an RTX6000 cell for a 3-warmup/10-run probe",
+        "image input remains unexposed until a separate multimodal probe validates request mapping and latency",
+        "tool calling remains unexposed until a Mistral tool-parser probe validates tool payloads"
+      ],
+      "stability": "testing",
+      "status": "active"
+    },
+    "regional_mirror_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "regional_mirror_verified_at": "2026-06-05T02:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "remaining_standard_matrix_probe_20260604T12Z": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "cells": {
+        "B200/us-central1": {
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "request_ms_p50": 437,
+          "startup_ms": 193557,
+          "status": "supported",
+          "tokens_per_second": 475.97,
+          "vram_used_gb": 128.62
+        },
+        "H200/eu-north1": {
+          "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+          "request_ms_p50": 426,
+          "startup_ms": 416962,
+          "status": "supported",
+          "tokens_per_second": 507.04,
+          "vram_used_gb": 100.76
+        },
+        "H200/eu-north2": {
+          "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+          "request_ms_p50": 430,
+          "startup_ms": 457947,
+          "status": "supported",
+          "tokens_per_second": 502.33,
+          "vram_used_gb": 100.76
+        },
+        "H200/us-central1": {
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "request_ms_p50": 489,
+          "startup_ms": 590976,
+          "status": "supported",
+          "tokens_per_second": 449.9,
+          "vram_used_gb": 100.84
+        },
+        "L40S/eu-north1": {
+          "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+          "request_ms_p50": 1216,
+          "startup_ms": 98943,
+          "status": "supported",
+          "tokens_per_second": 172.7,
+          "vram_used_gb": 31.94
+        }
+      },
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 --include-status onboarding --gpu B200 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 2 --report-json docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T12Z-remaining-standard-matrix.json --report-md docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T12Z-remaining-standard-matrix.md",
+      "live_support_updates": [
+        "upserted mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 B200 us-central1 supported",
+        "upserted mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 H200 us-central1 supported",
+        "upserted mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 H200 eu-north1 supported",
+        "upserted mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 L40S eu-north1 supported",
+        "upserted mistralai-ministral-3-3b-instruct-2512-vllm-cuda13 H200 eu-north2 supported"
+      ],
+      "oom": 0,
+      "other_error": 0,
+      "persisted": true,
+      "probe_pending": 0,
+      "report_json": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T12Z-remaining-standard-matrix.json",
+      "report_md": "docs/model-onboarding/general/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13-20260604T12Z-remaining-standard-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "rtx6000_status": "requested_but_no_rtx6000_cell_was_present_in_discovered_inventory",
+      "status": "supported_persisted_hostpath",
+      "supported": 5,
+      "unavailable": 0,
+      "warmup_runs": 3
+    },
+    "runtime_evidence": "The model card sets library_name=vllm, recommends vLLM, requires vllm >= 0.12.0, documents Docker image usage, and shows serving with tokenizer_mode/config_format/load_format all set to mistral. The selected Forge runtime is vLLM OpenAI image v0.22.0.",
+    "runtime_security_override_20260604T09Z": {
+      "container_run_as_group": 65532,
+      "container_run_as_user": 65532,
+      "evidence": "A pre-override B200 emptyDir smoke failed after image pull with CreateContainerConfigError: container has runAsNonRoot and image will run as root. After live-upserting UID/GID 65532, the generated pod spec included runAsUser=65532 and runAsGroup=65532, the container started, and vLLM loaded the model.",
+      "reason": "The stock vLLM OpenAI image defaults to root. Forge generated model pods enforce runAsNonRoot, so the live row now carries explicit non-root UID/GID runtime settings for this stock-container profile.",
+      "status": "manifest_uid_gid_override_live_upserted"
+    },
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so the runtime does not receive unnecessary platform Hugging Face credentials.",
+    "source_evidence": [
+      "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512",
+      "https://huggingface.co/api/models/mistralai/Ministral-3-3B-Instruct-2512",
+      "https://huggingface.co/api/models/mistralai/Ministral-3-3B-Instruct-2512?blobs=true",
+      "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512/raw/main/config.json",
+      "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512/raw/main/generation_config.json",
+      "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512/raw/main/README.md",
+      "https://github.com/vllm-project/vllm",
+      "https://raw.githubusercontent.com/vllm-project/vllm/main/LICENSE",
+      "https://hub.docker.com/r/vllm/vllm-openai/tags"
+    ],
+    "supervisor_followup_20260604T06Z": {
+      "generated_pod_security_fix": "services/scheduler/services/k8s_client.py now sets pod-level runAsNonRoot:true, model-container runAsNonRoot:true, and a non-root best-effort NIM cache init container.",
+      "remaining_blocker": "Resolved in the source manifest by moving to the already mirrored docker.io/vllm/vllm-openai:v0.22.0 digest. The live hidden row still needs a metadata upsert before rerunning the B200 emptyDir smoke and full matrix.",
+      "validation": "Focused scheduler/probe tests passed, and a generated BGE TEI model pod server-side dry-run in nebius-mk8s-forge-us/forge-models passed admission with only existing hostPath and user-namespace Warn/Audit messages."
+    },
+    "validation": {
+      "b200_ephemeral_smoke": "passed_20260604T09Z_supported_no_persist_emptydir_startup_625406_request_4681_tps_47_0_vram_128_62",
+      "b300_persisted_hostpath_probe": "passed_20260604T09Z_supported_persisted_hostpath_startup_158256_request_p50_326_tps_702_45_vram_192_96",
+      "h100_reprobe": "passed_20260605T04Z_supported_persisted_hostpath_startup_377659_request_p50_482_request_p95_507_samples_10_tps_448_13_vram_57_09",
+      "hf_artifact_refresh": "passed_20260605T02Z_private_false_gated_false_disabled_false_license_apache_2_0_revision_cfcb068fa7c44114cf77a462357c6cdcd2c304b4",
+      "live_db_readback": "passed_20260605T02Z_active_testing_nondefault_is_latest_true_b200_b300_h200_l40s_true_rtx6000_false",
+      "live_upsert": "passed_20260605T02Z_returned_slug",
+      "manifest_json": "passed_20260605T02Z_jq_empty",
+      "model_server_image_gate": "passed_20260605T02Z_empty_findings",
+      "onboarding_workflow_dry_run": "passed_20260605T02Z_active_testing_nondefault_manifest",
+      "public_api_readback": "passed_20260605T02Z_testing_nondefault_gpu_map_expected_public_status_field_cold_runtime_state",
+      "remaining_standard_hostpath_matrix": "passed_20260604T12Z_supported_5_of_5_discovered_cells_b200_h200_us_h200_eu_north1_h200_eu_north2_l40s_persisted",
+      "upsert_model_dry_run": "passed_20260605T02Z_normalized_active_testing_nondefault_uid_gid_65532_b200_b300_h200_l40s_true_rtx6000_false",
+      "vllm_0_22_digest_refresh": "passed_20260605T02Z_four_regional_mirrors_match_sha256_0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "vllm_image_gate": "passed_20260605T02Z_auth_bypass_and_onboarding_rce_checks_empty_findings"
+    },
+    "vllm_0_22_manifest_refresh_20260604T08Z": {
+      "gpu_support_claim": false,
+      "next_probe": "B200 emptyDir smoke passed after live upsert and UID/GID override. B300/uk-south1 persisted hostPath probe passed after moving cache paths under /opt/nim/.cache. Next matrix should classify B200, H200, L40S, and RTX6000 with the same cache strategy before any catalog promotion.",
+      "previous_runtime": "docker.io/vllm/vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "reason": "Preferred remediation for the vLLM OpenAI-compatible auth-bypass gate is vLLM v0.22.0+; the prior live admission note reported forge-deny-affected-vllm-openai-images for this manifest's v0.21.0 runtime.",
+      "regional_mirror_reuse": {
+        "digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "regions": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ]
+      },
+      "staged_runtime": "docker.io/vllm/vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "status": "source_manifest_live_upserted_20260604T09Z"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "multilingual",
+    "agentic",
+    "json_output",
+    "long_context",
+    "small_model",
+    "fp8",
+    "mistral",
+    "ministral",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "security_refresh",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 9219894117,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-04T06:06:24.331389+00:00",
+  "default_eligible": false,
+  "description": "Ministral 3 3B Instruct 2512 is a public Apache-2.0 compact instruction model from Mistral AI for lightweight chat, multilingual generation, JSON-style extraction, and agentic prompts. Hugging Face metadata refreshed on 2026-06-05T02Z reports private=false, gated=false, disabled=false, library_name=vllm, license=apache-2.0, revision cfcb068fa7c44114cf77a462357c6cdcd2c304b4, safetensors total parameters 3,849,090,048, and tags for vllm, mistral3, mistral-common, fp8, and safetensors. The model card describes an FP8 instruct checkpoint with a 3.4B language model plus 0.4B vision encoder, multilingual support, native function calling and JSON outputting, and a 256k context window. This active Forge testing profile intentionally exposes only text chat, caps served context to 32,768 tokens for the validated product surface, leaves tool and image inputs disabled until separate validation, clears unnecessary Hugging Face token variables for this public artifact, and uses the already mirrored vLLM 0.22.0 CUDA 13 image digest sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416 with versioned Hugging Face and vLLM caches under the reviewed /opt/nim/.cache mount. The 2026-06-04T09Z live row includes explicit non-root runtime UID/GID 65532 so the stock vLLM image can satisfy Forge runAsNonRoot policy, and B300/uk-south1 passed a persisted hostPath probe with 3 warmups and 10 measured requests. The 2026-06-04T12Z remaining standard hostPath matrix persisted B200/us-central1, H200/us-central1, H200/eu-north1, H200/eu-north2, and L40S/eu-north1 as supported for the text-chat profile with 3 warmups and 10 measured requests per cell. RTX6000 was requested but not present in discovered inventory. The 2026-06-05T02Z publication pass promotes this text-chat surface to active/testing/non-default while keeping default routing, RTX6000, image input, and tool calling blocked pending separate validation.",
+  "family_id": "0e1bd41a-a1cb-4afd-8504-c32b0067f28e",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H100": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "mistralai/Ministral-3-3B-Instruct-2512",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "mistralai/Ministral-3-3B-Instruct-2512",
+      "--tokenizer-mode",
+      "mistral",
+      "--config-format",
+      "mistral",
+      "--load-format",
+      "mistral",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.72",
+      "--max-num-seqs",
+      "8"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/forge-vllm/mistralai-ministral-3-3b-instruct-2512/vllm-0.22.0-cuda13/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/forge-vllm/mistralai-ministral-3-3b-instruct-2512/vllm-0.22.0-cuda13/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "LOGNAME": "forge",
+      "TORCHINDUCTOR_CACHE_DIR": "/opt/nim/.cache/forge-vllm/mistralai-ministral-3-3b-instruct-2512/vllm-0.22.0-cuda13/torchinductor",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/forge-vllm/mistralai-ministral-3-3b-instruct-2512/vllm-0.22.0-cuda13/huggingface/hub",
+      "USER": "forge",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/forge-vllm/mistralai-ministral-3-3b-instruct-2512/vllm-0.22.0-cuda13/vllm",
+      "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+      "XDG_CACHE_HOME": "/opt/nim/.cache/forge-vllm/mistralai-ministral-3-3b-instruct-2512/vllm-0.22.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 65532,
+    "container_run_as_user": 65532,
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T12:07:32.681803+00:00",
+      "region": "us-central1",
+      "request_ms": 437,
+      "request_ms_p50": 437,
+      "request_ms_p95": 490,
+      "request_ms_p99": 493,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 193557,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 475.97,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 128.62,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.58
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T09:31:08.938106+00:00",
+      "region": "uk-south1",
+      "request_ms": 326,
+      "request_ms_p50": 326,
+      "request_ms_p95": 379,
+      "request_ms_p99": 387,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 158256,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 702.45,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 192.96,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.58
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T04:11:45.123771+00:00",
+      "region": "eu-north1",
+      "request_ms": 482,
+      "request_ms_p50": 482,
+      "request_ms_p95": 507,
+      "request_ms_p99": 507,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 377659,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 448.13,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 57.09,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.58
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T12:14:39.125688+00:00",
+      "region": "eu-north1",
+      "request_ms": 426,
+      "request_ms_p50": 426,
+      "request_ms_p95": 450,
+      "request_ms_p99": 452,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 416962,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 507.04,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 100.76,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.58
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T12:22:27.774886+00:00",
+      "region": "eu-north2",
+      "request_ms": 430,
+      "request_ms_p50": 430,
+      "request_ms_p95": 450,
+      "request_ms_p99": 450,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 457947,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 502.33,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 100.76,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.58
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T12:14:10.006929+00:00",
+      "region": "us-central1",
+      "request_ms": 489,
+      "request_ms_p50": 489,
+      "request_ms_p95": 531,
+      "request_ms_p99": 544,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 590976,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 449.9,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 100.84,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.58
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T12:16:07.371449+00:00",
+      "region": "eu-north1",
+      "request_ms": 1216,
+      "request_ms_p50": 1216,
+      "request_ms_p95": 1346,
+      "request_ms_p99": 1359,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 98943,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 172.7,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 31.94,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.58
+    }
+  ],
+  "gpu_type": null,
+  "id": "083ffcab-9ced-4263-8811-87175e3fc3d7",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "mistralai-ministral-3-3b-instruct-2512",
+  "name": "Ministral 3 3B Instruct 2512",
+  "parameter_count": 3849090048,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "mistralai/Ministral-3-3B-Instruct-2512"
+    },
+    "input_fields": [
+      {
+        "default": "Draft a concise incident handoff for this note and include two concrete next checks:\n\nA vLLM CUDA 13 model probe is being staged for a compact FP8 instruct model. The first pass should validate text-only chat at a bounded 32K context before any tool or image inputs are exposed.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "chat",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.1,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 512,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "fp8",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 93,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "mistralai-ministral-3-3b-instruct-2512-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction",
+    "multilingual",
+    "agentic",
+    "json-output",
+    "long-context",
+    "small-model",
+    "fp8",
+    "mistral",
+    "ministral",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "security-refresh"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.22.0-cuda13",
+  "version_description": "Active testing text-chat profile for Mistral AI Ministral 3 3B Instruct 2512 on the already mirrored vLLM 0.22.0 OpenAI-compatible CUDA 13 image. Vision and tool-call exposure are intentionally deferred until separate live validation.",
+  "version_key": "vllm-0-22-0-cuda13",
+  "version_label": "vLLM 0.22.0 CUDA 13"
+}

@@ -1,0 +1,654 @@
+{
+  "benchmark_scores": {
+    "b300_profile_diagnostics_20260527T20Z": {
+      "documented_1_11_0_tag": "NVIDIA NeMo Retriever Reranking NIM docs list nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2:1.11.0, but authenticated in-cluster crane copy in uk-south1 failed with MANIFEST_UNKNOWN for that exact tag on 2026-05-27T20:04Z.",
+      "latest_regional_digest": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-llama-nemotron-rerank-1b-v2:latest still resolves to sha256:cab08cc2b620235f6d75bb7ee198d13352f61ae48285524e304f2904380ea8ca.",
+      "profile_inventory": {
+        "compatible": [
+          "f7391ddbcb95b2406853526b8e489fedf20083a2420563ca3e65358ff417b10f backend:onnx model_type:onnx precision:fp16"
+        ],
+        "sm100_tensorrt_fp16": "c3caccfe9fcbc6c3d8d911cfa19992e6bf3398d38298cfa97da79ad8f5f35723 backend:trt compute_capability:10.0 precision:fp16",
+        "sm100_tensorrt_fp8": "44d1f6e283eb0365efb617f8c255e42f9d8c97fe039774c2837cdfcef54296ce backend:trt compute_capability:10.0 precision:fp8"
+      },
+      "sm100_tensorrt_fp16_override": {
+        "env": "NIM_MANIFEST_ALLOW_UNSAFE=1, NIM_MODEL_PROFILE=c3caccfe9fcbc6c3d8d911cfa19992e6bf3398d38298cfa97da79ad8f5f35723",
+        "failure": "TensorRT refused to deserialize the B200/SM100 FP16 engine on B300/SM103: engine plan file generated on incompatible device; server never reached readiness.",
+        "pod_name": "forge-rerank-b300-sm100-fp16-20z",
+        "status": "startup_failed"
+      },
+      "sm100_tensorrt_fp8_override": {
+        "env": "NIM_MANIFEST_ALLOW_UNSAFE=1, NIM_MODEL_PROFILE=44d1f6e283eb0365efb617f8c255e42f9d8c97fe039774c2837cdfcef54296ce",
+        "failure": "Pod accepted the override and began fetching b200x1-trt-fp8 assets, but did not reach readiness within the bounded worker window; stopped and cleaned up rather than leaving B300 capacity occupied.",
+        "pod_name": "forge-rerank-b300-sm100-fp8-20z",
+        "status": "bounded_startup_diagnostic_stopped"
+      }
+    },
+    "b300_profile_diagnostics_20260527T21Z": {
+      "current_wrapper_b300_reprobe": {
+        "pod_cleanup": "Deleted forge-probe-nvidia-llama-nemotron-re-b300-uk-south1-7ade48 after filtered log capture.",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T21Z-b300-reprobe.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T21Z-b300-reprobe.md",
+        "response_status": 500,
+        "status": "other_error"
+      },
+      "documented_1_11_0_tag_retry": {
+        "cleanup": "Deleted mirror-llama-nemotron-rerank-1b-v2-bd5ec2 after capturing the failure.",
+        "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/mirror_via_k8s_job.py --upstream nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2:1.11.0 --only-region uk-south1 --wait --timeout 900",
+        "failure": "Authenticated in-cluster crane copy in uk-south1 returned MANIFEST_UNKNOWN for nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2:1.11.0 on 2026-05-27T21:04Z.",
+        "status": "failed"
+      },
+      "public_docs_checked_at": "2026-05-27T21:04Z",
+      "regional_digest_checks": {
+        "latest_uk_south1": "sha256:cab08cc2b620235f6d75bb7ee198d13352f61ae48285524e304f2904380ea8ca",
+        "tag_1_11_0_uk_south1": "MANIFEST_UNKNOWN / tag not found"
+      },
+      "release_notes": "NVIDIA NeMo Retriever Reranking NIM latest release notes still list Release 1.11.0 and do not name a B300/SM103 fix for llama-nemotron-rerank-1b-v2.",
+      "support_matrix": "The latest support matrix lists nvidia/llama-nemotron-rerank-1b-v2 optimized configurations for compute capability 12.0, 10.0, 9.0, 8.9, 8.6, and 8.0, plus non-optimized sufficient-memory fallback; it does not list an optimized 10.3/B300 profile."
+    },
+    "b300_profile_diagnostics_20260527T22Z": {
+      "documented_1_11_0_tag_retry": {
+        "cleanup": "Deleted mirror-llama-nemotron-rerank-1b-v2-385a1d after capturing the failure.",
+        "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/mirror_via_k8s_job.py --upstream nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2:1.11.0 --only-region uk-south1 --wait --timeout 900",
+        "failure": "Authenticated in-cluster crane copy in uk-south1 returned MANIFEST_UNKNOWN for nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2:1.11.0 on 2026-05-27T22:04Z.",
+        "job_name": "mirror-llama-nemotron-rerank-1b-v2-385a1d",
+        "status": "failed"
+      },
+      "local_nvcr_digest_check": {
+        "command": "crane digest nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2:1.11.0",
+        "failure": "Local crane could not access nvcr.io because no matching NGC credentials were configured in this worker shell.",
+        "status": "blocked_without_local_ngc_auth"
+      },
+      "public_docs_checked_at": "2026-05-27T22:03Z",
+      "regional_digest_checks": {
+        "latest_uk_south1": "sha256:cab08cc2b620235f6d75bb7ee198d13352f61ae48285524e304f2904380ea8ca",
+        "tag_1_11_0_uk_south1": "MANIFEST_UNKNOWN / tag not found"
+      },
+      "release_notes": "NVIDIA NeMo Retriever Reranking NIM latest release notes still list Release 1.11.0 and do not name a B300/SM103 fix for llama-nemotron-rerank-1b-v2.",
+      "runtime_decision": "No 22Z B300 reprobe was run because the only newly documented upstream runtime tag remains unavailable and uk-south1 latest still resolves to the 1.10.0 digest that reproduced cudaErrorSymbolNotFound at 19Z, 20Z, and 21Z.",
+      "support_matrix": "The latest support matrix still lists optimized configurations for compute capability 12.0, 10.0, 9.0, 8.9, 8.6, and 8.0, plus a non-optimized sufficient-memory fallback; it does not list an optimized 10.3/B300 profile."
+    },
+    "base_container_digest": "sha256:cab08cc2b620235f6d75bb7ee198d13352f61ae48285524e304f2904380ea8ca",
+    "blockers": [
+      "B300/uk-south1 reaches Triton READY on the final wrapper digest but the default ranking request fails with ONNX Runtime cudaErrorSymbolNotFound on ReduceSum.",
+      "The public upstream nvcr.io digest could not be read without NGC authentication from this worker shell, so the manifest pins the verified Forge regional mirror digest.",
+      "NVIDIA's latest docs currently show a 1.11.0 launch tag, but authenticated in-cluster mirror attempts at 20Z, 21Z, and 22Z returned MANIFEST_UNKNOWN for nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2:1.11.0.",
+      "Forcing the SM100 TensorRT FP16 profile with NIM_MANIFEST_ALLOW_UNSAFE=1 fails before readiness because TensorRT rejects the plan on SM103; the SM100 FP8 override did not reach readiness within the bounded diagnostic window and was cleaned up."
+    ],
+    "build_and_probe_history_20260527T18Z": {
+      "kaniko_build_job": {
+        "failure": "scripts/build_wrapper_via_k8s_job.py pod failed before build because its /kaniko emptyDir mount masked /kaniko/executor in gcr.io/kaniko-project/executor:v1.24.0.",
+        "status": "blocked"
+      },
+      "local_buildx_push": {
+        "mirror_method": "crane copy with temporary Docker config from forge-mirror-registry-creds; credentials were not printed",
+        "pushed_us_central1_digest": "sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+        "status": "succeeded"
+      },
+      "official_nim_b200_probe": {
+        "failure": "Official NIM digest started with cached B200 TensorRT-FP8 profile, then failed under Forge readOnlyRootFilesystem when copying triton.yaml to /opt/nim/etc.",
+        "status": "other_error"
+      },
+      "wrapper_without_cmd_probe": {
+        "failure": "First wrapper fixed /opt/nim/etc but overwrote image CMD, so the pod printed the NVIDIA banner and exited without starting the server.",
+        "status": "other_error"
+      },
+      "wrapper_without_nim_repository_marker_probe": {
+        "failure": "Corrected CMD tag was first pushed under a non-NIM repository name, so Forge did not inject NIM secrets or writable /opt/nim/workspace.",
+        "status": "other_error"
+      },
+      "wrapper_without_tmp_redirect_probe": {
+        "failure": "NIM-recognized wrapper passed /opt/nim/etc, then failed creating /opt/nim/tmp/run under readOnlyRootFilesystem.",
+        "status": "other_error"
+      }
+    },
+    "container_digest": "sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+    "container_labels": {
+      "com.nvidia.nim.model": "nvidia/llama-nemotron-rerank-1b-v2",
+      "com.nvidia.nim.type": "ranking",
+      "com.nvidia.nim.version": "1.10.0",
+      "cuda_arch_list": "7.5 8.0 8.6 9.0 10.0 12.0",
+      "cuda_version": "13.0.1.012"
+    },
+    "container_source_decision": "forge_owned_read_only_root_wrapper_around_official_nvidia_nemo_retriever_reranking_nim",
+    "license_evidence": "NVIDIA Build model card states the model is governed by the NVIDIA Open Model License Agreement with additional Llama 3.2 Community Model License terms; NGC/NIM container use remains subject to NVIDIA NIM container terms.",
+    "live_probe_results": {
+      "B200": {
+        "benchmark_runs": 10,
+        "node": "computeinstance-u00pcaq2skr11my6gh",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-b200-us-central1-45b8cc",
+        "region": "us-central1",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T18Z-b200-nim-wrapper-tmp.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T18Z-b200-nim-wrapper-tmp.md",
+        "request_ms_p50": 176,
+        "request_ms_samples": [
+          175,
+          175,
+          176,
+          175,
+          175,
+          175,
+          176,
+          178,
+          177,
+          177
+        ],
+        "request_time_source": "client_wall_ms",
+        "startup_ms": 19616,
+        "status": "supported",
+        "tokens_per_second": 625.0,
+        "vram_used_gb": 3.69,
+        "warmup_runs": 3
+      },
+      "B300": {
+        "failure": "NIM server reached READY on NVIDIA B300 SXM6 AC, then the default /v1/ranking request failed inside ONNX Runtime ReduceSum with CUDA error cudaErrorSymbolNotFound:named symbol not found.",
+        "log_excerpt": "onnxruntime ReduceSum returned cudaErrorSymbolNotFound:named symbol not found after Triton reported Collecting metrics for GPU 0: NVIDIA B300 SXM6 AC and both NIM models READY.",
+        "node": "computeinstance-e03n331ngk3v1z71a4",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-b300-uk-south1-c4d370",
+        "region": "uk-south1",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.md",
+        "response_status": 500,
+        "status": "other_error",
+        "vram_used_gb": 3.95
+      },
+      "B300_20260527T20Z_repro": {
+        "failure": "B300 repro on the same wrapper digest again reached a Ready NIM/Triton server and returned HTTP 500 for the default /v1/ranking request; live logs confirmed ONNX Runtime ReduceSum cudaErrorSymbolNotFound on NVIDIA B300 SXM6 AC.",
+        "log_excerpt": "B300 auto-selected compatible profile f7391ddbcb95b2406853526b8e489fedf20083a2420563ca3e65358ff417b10f (backend:onnx, precision:fp16, tokenizer/model max length 4096), then failed at ONNX Runtime ReduceSum with cudaErrorSymbolNotFound.",
+        "node": "computeinstance-e03cdt2m6dscactrnd",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-b300-uk-south1-1f1355",
+        "region": "uk-south1",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T20Z-b300-repro.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T20Z-b300-repro.md",
+        "response_status": 500,
+        "status": "other_error",
+        "vram_used_gb": 3.82
+      },
+      "B300_20260527T21Z_reprobe": {
+        "failure": "21Z B300 reprobe on the same wrapper digest again reached a Ready NIM/Triton server, selected ONNX FP16 profile f7391ddbcb95b2406853526b8e489fedf20083a2420563ca3e65358ff417b10f, and failed the default /v1/ranking request with ONNX Runtime ReduceSum cudaErrorSymbolNotFound.",
+        "log_excerpt": "NIM_MODEL_PROFILE=f7391ddbcb95b2406853526b8e489fedf20083a2420563ca3e65358ff417b10f; Triton models READY; metrics collected for NVIDIA B300 SXM6 AC; ONNX Runtime ReduceSum returned cudaErrorSymbolNotFound.",
+        "node": "computeinstance-e03cdt2m6dscactrnd",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-b300-uk-south1-7ade48",
+        "region": "uk-south1",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T21Z-b300-reprobe.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T21Z-b300-reprobe.md",
+        "response_status": 500,
+        "status": "other_error",
+        "vram_used_gb": 3.82
+      },
+      "H200_eu-north2": {
+        "benchmark_runs": 10,
+        "node": "computeinstance-e02vy282wq84sh9er9",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-h200-eu-north2-993d5c",
+        "region": "eu-north2",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.md",
+        "request_ms_p50": 110,
+        "request_ms_samples": [
+          115,
+          110,
+          110,
+          110,
+          110,
+          108,
+          109,
+          108,
+          108,
+          107
+        ],
+        "request_time_source": "client_wall_ms",
+        "startup_ms": 78239,
+        "status": "supported",
+        "tokens_per_second": 1000.0,
+        "vram_used_gb": 3.46,
+        "warmup_runs": 3
+      },
+      "H200_us-central1": {
+        "benchmark_runs": 10,
+        "node": "computeinstance-u00f9zzs0we8mzhh5t",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-h200-us-central1-c641ee",
+        "region": "us-central1",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.md",
+        "request_ms_p50": 162,
+        "request_ms_samples": [
+          164,
+          166,
+          163,
+          163,
+          163,
+          161,
+          162,
+          161,
+          161,
+          161
+        ],
+        "request_time_source": "client_wall_ms",
+        "startup_ms": 74548,
+        "status": "supported",
+        "tokens_per_second": 679.01,
+        "vram_used_gb": 3.46,
+        "warmup_runs": 3
+      },
+      "L40S": {
+        "benchmark_runs": 10,
+        "node": "computeinstance-e00rbwdyfy2va3jj09",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-l40s-eu-north1-84b55f",
+        "region": "eu-north1",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.md",
+        "request_ms_p50": 98,
+        "request_ms_samples": [
+          98,
+          99,
+          99,
+          99,
+          99,
+          97,
+          96,
+          97,
+          97,
+          97
+        ],
+        "request_time_source": "client_wall_ms",
+        "startup_ms": 85685,
+        "status": "supported",
+        "tokens_per_second": 1122.45,
+        "vram_used_gb": 3.35,
+        "warmup_runs": 3
+      },
+      "RTX6000": {
+        "benchmark_runs": 10,
+        "node": "computeinstance-u00herx5eh92p0gv95",
+        "pod_name": "forge-probe-nvidia-llama-nemotron-re-rtx6000-us-central1-d04720",
+        "region": "us-central1",
+        "report_json": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.json",
+        "report_md": "docs/model-onboarding/general/nvidia-llama-nemotron-rerank-1b-v2-nim-20260527T19Z-remaining.md",
+        "request_ms_p50": 172,
+        "request_ms_samples": [
+          172,
+          172,
+          172,
+          172,
+          171,
+          173,
+          172,
+          173,
+          172,
+          174
+        ],
+        "request_time_source": "client_wall_ms",
+        "startup_ms": 145642,
+        "status": "supported",
+        "tokens_per_second": 639.53,
+        "vram_used_gb": 3.48,
+        "warmup_runs": 3
+      }
+    },
+    "mirror_evidence": {
+      "upstream_digest_check": "crane digest against nvcr.io returned 401 without NGC auth in this worker environment; the Forge regional mirrors were independently readable and all returned the same digest.",
+      "verified_regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ]
+    },
+    "model_server_image_gate": {
+      "evidence": "Forge operator checked NVIDIA NeMo Retriever Text Reranking NIM 1.10.0 release notes on 2026-06-25; the release notes state fixes for high and critical vulnerabilities. OCI config for this digest reports com.nvidia.nim.version=1.10.0 and runtime inspection found /opt/tritonserver/bin/tritonserver.",
+      "validated_at": "2026-06-25",
+      "validated_image_digest": "sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+      "validated_nim_release": "1.10.0",
+      "validated_vendor_security_fixes": true
+    },
+    "onboarding_state": "b200_h200_l40s_rtx6000_supported_b300_runtime_error_publication_blocked",
+    "probe_plan": "B300/SM103 remains disabled. The documented NIM 1.11.0 tag was still not pullable from nvcr.io during 21Z and 22Z authenticated mirror retries, the uk-south1 regional 1.11.0 tag is absent, and the same wrapper digest reproduced ONNX Runtime cudaErrorSymbolNotFound on B300. Next step is to obtain a real SM103-capable NVIDIA NIM/runtime refresh or build a Forge-owned ONNX Runtime/CUDA variant, then rerun the same /v1/ranking request with 3 warmups and 10 measured runs.",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_gate": {
+      "customer_impact": "Prevents B300 routing for a model that reaches readiness but fails real ranking requests; keeps default routing off until the unsupported B300 state is either fixed or explicitly accepted as a product limitation.",
+      "guarded_fields": {
+        "default_eligible": false,
+        "gpu_compatibility.B300": false,
+        "stability": "experimental",
+        "status": "onboarding"
+      },
+      "required_to_clear": [
+        "Mirror an available upstream NIM tag or Forge-owned rerank runtime with CUDA/ONNX/TensorRT support for B300/SM103.",
+        "Run B300/uk-south1 with the default /v1/ranking payload for 3 warmups and 10 measured HTTP 200 benchmark requests.",
+        "Keep gpu_compatibility.B300 false unless live_probe_results records a supported B300 row with 10 benchmark samples, or record explicit product approval for a non-B300 route."
+      ],
+      "safe_to_publish": false,
+      "status": "blocked_until_b300_sm103_runtime_supported_or_product_accepts_b300_exclusion"
+    },
+    "regional_mirror_digest": "sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+    "regional_mirror_size_bytes": 2079738628,
+    "regional_mirror_verified_at": "2026-05-27T18:25:00Z",
+    "runtime_evidence": "NVIDIA NeMo Retriever Reranking NIM docs and the NVIDIA Build deploy page document nvcr.io/nim/nvidia/llama-nemotron-rerank-1b-v2 and POST /v1/ranking with model nvidia/llama-nemotron-rerank-1b-v2.",
+    "security_gate_remediation_20260625": {
+      "digest": "sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+      "status": "vendor_fixed_nim_release_attested",
+      "vendor_release": "1.10.0"
+    },
+    "source_evidence": [
+      "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard",
+      "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/deploy",
+      "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/getting-started.html",
+      "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/support-matrix.html"
+    ],
+    "wrapper_config_digest": "sha256:04e29aec9e114110dd99f961b516d21edd462f6aa4df46e23847d8746574a1cb",
+    "wrapper_image": "services/models/nvidia_llama_nemotron_rerank_1b_v2_nim"
+  },
+  "capabilities": [
+    "retrieval",
+    "rerank",
+    "rag",
+    "multilingual",
+    "nvidia_nim",
+    "nemotron",
+    "text",
+    "ranking",
+    "general"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-forge-nvidia-llama-nemotron-rerank-1b-v2-rofs:nim-1-10-rofs-cmd-tmp-20260527t18z@sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+  "container_image_size_bytes": 2079738628,
+  "context_window": 8192,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T10:18:25.679525+00:00",
+  "default_eligible": false,
+  "description": "NVIDIA Llama Nemotron Rerank 1B v2 is a multilingual retrieval reranker that scores query/passage relevance for RAG pipelines. The NVIDIA model card describes a 1B-parameter transformer reranker with 8192-token optimized profiles and NVIDIA Open Model License plus Llama 3.2 Community License terms. The upstream NIM 1.10.0 image is usable but writes startup files under /opt/nim/etc and /opt/nim/tmp, so Forge wraps it with a minimal derivative image that redirects those paths to /tmp while keeping the NIM runtime and /v1/ranking API unchanged. The wrapper digest sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12 is mirrored into all four Forge regional registries. Live Forge probes support B200/us-central1, H200/us-central1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 10 warm measured ranking requests per successful cell. B300/uk-south1 starts the NIM server but repeated /v1/ranking probes through 2026-05-27T21Z return HTTP 500 from ONNX Runtime with cudaErrorSymbolNotFound. A 2026-05-27T22Z authenticated mirror retry confirmed NVIDIA's documented 1.11.0 tag is still unavailable, so B300 stays disabled and the manifest remains publication-blocked until a real SM103-capable runtime is mirrored and benchmarked.",
+  "family_id": "9c92b8ff-5651-4706-8b33-c15a324af035",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "NIM_CACHE_PATH": "/opt/nim/.cache",
+      "NIM_HTTP_API_PORT": "8000",
+      "NIM_TELEMETRY_MODE": "0"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T18:23:57.904724+00:00",
+      "region": "us-central1",
+      "request_ms": 176,
+      "request_ms_p50": 178,
+      "request_ms_p95": 181,
+      "request_ms_p99": 183,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 19616,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 625.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 3.69,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": "{\"object\":\"error\",\"message\":\"Something went wrong with the request.\",\"detail\":{},\"type\":\"internal_server_error\"}",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-27T21:05:52.214081+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 53753,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 3.82,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-27T19:06:02.493200+00:00",
+      "region": "eu-north2",
+      "request_ms": 110,
+      "request_ms_p50": 110,
+      "request_ms_p95": 256,
+      "request_ms_p99": 270,
+      "request_ms_samples": 12,
+      "startup_ms_first": 21000,
+      "startup_ms_probe": 78239,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1000.0,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 3.46,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-27T19:06:01.037871+00:00",
+      "region": "us-central1",
+      "request_ms": 162,
+      "request_ms_p50": 168,
+      "request_ms_p95": 173,
+      "request_ms_p99": 174,
+      "request_ms_samples": 20,
+      "startup_ms_first": 21000,
+      "startup_ms_probe": 74548,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 679.01,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 3.46,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-27T19:06:09.744787+00:00",
+      "region": "eu-north1",
+      "request_ms": 98,
+      "request_ms_p50": 97,
+      "request_ms_p95": 99,
+      "request_ms_p99": 99,
+      "request_ms_samples": 11,
+      "startup_ms_first": 23168,
+      "startup_ms_probe": 85685,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1122.45,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 3.35,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-27T19:07:11.457968+00:00",
+      "region": "us-central1",
+      "request_ms": 172,
+      "request_ms_p50": 172,
+      "request_ms_p95": 314,
+      "request_ms_p99": 425,
+      "request_ms_samples": 11,
+      "startup_ms_first": 21000,
+      "startup_ms_probe": 145642,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 639.53,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 3.48,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "58ca654e-4af3-47a8-93fd-c56ab575fc55",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-open-model-license; llama-3.2-community-license; nvidia-nim-container-terms",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "ranking"
+  ],
+  "model_family": "nvidia-llama-nemotron-rerank-1b-v2",
+  "name": "NVIDIA Llama Nemotron Rerank 1B v2",
+  "parameter_count": 1000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "model": "{{model_slug}}",
+        "passages": "{{passages}}",
+        "query": {
+          "text": "{{query}}"
+        },
+        "truncate": "{{truncate}}"
+      },
+      "endpoint": "/v1/ranking",
+      "method": "POST",
+      "upstream_model_id": "nvidia/llama-nemotron-rerank-1b-v2"
+    },
+    "input_fields": [
+      {
+        "default": "Which passage explains why regional image mirrors improve inference reliability?",
+        "key": "query",
+        "label": "Query",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": [
+          {
+            "text": "Regional container mirrors reduce dependence on a single upstream registry and keep image pulls close to the target compute cluster."
+          },
+          {
+            "text": "Reranking models compare a query with retrieved passages and assign relevance scores before final answer generation."
+          },
+          {
+            "text": "A low temperature setting makes a chat model less random, but it does not change container pull behavior."
+          }
+        ],
+        "key": "passages",
+        "label": "Candidate passages",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "ranking_scores",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": "END",
+        "key": "truncate",
+        "label": "Truncate",
+        "options": [
+          "END",
+          "NONE"
+        ],
+        "type": "select"
+      }
+    ],
+    "schema_version": 1,
+    "type": "rerank"
+  },
+  "quantization": "nim-auto-fp16-fp8",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-forge-nvidia-llama-nemotron-rerank-1b-v2-rofs:nim-1-10-rofs-cmd-tmp-20260527t18z@sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-forge-nvidia-llama-nemotron-rerank-1b-v2-rofs:nim-1-10-rofs-cmd-tmp-20260527t18z@sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-forge-nvidia-llama-nemotron-rerank-1b-v2-rofs:nim-1-10-rofs-cmd-tmp-20260527t18z@sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-forge-nvidia-llama-nemotron-rerank-1b-v2-rofs:nim-1-10-rofs-cmd-tmp-20260527t18z@sha256:a30bb55e8e8133dfd91798a1f89853d7666839f785df15ddfc39675ea770eb12"
+  },
+  "release_rank": 48,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-llama-nemotron-rerank-1b-v2-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "retrieval",
+    "rerank",
+    "rag",
+    "multilingual",
+    "nvidia-nim",
+    "nemotron"
+  ],
+  "updated_at": "2026-06-25T14:00:55.160939+00:00",
+  "version": "nim-1.10.0-rofs-wrapper-2026-05-27",
+  "version_description": "Forge read-only-root-compatible wrapper around NVIDIA NeMo Retriever Reranking NIM 1.10.0 for Llama Nemotron Rerank 1B v2.",
+  "version_key": "nim-1-10-0-rofs-wrapper-2026-05-27",
+  "version_label": "NIM 1.10.0 read-only-root wrapper"
+}

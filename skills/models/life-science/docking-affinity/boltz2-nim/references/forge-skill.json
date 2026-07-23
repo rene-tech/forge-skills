@@ -1,0 +1,306 @@
+{
+  "benchmarkClaims": [
+    {
+      "caveats": [
+        "The comparison is protocol- and hardware-dependent and is not an endpoint latency guarantee.",
+        "Performance on a new target, assay, or chemical series may differ materially."
+      ],
+      "checkedAt": "2026-07-23",
+      "conditions": "Cross-protocol summary from the paper abstract and evaluations; no Forge reproduction of the scientific benchmark is claimed.",
+      "dataset": "FEP+, CASP16, and MF-PCBA evaluations described in the paper",
+      "direction": "context-only",
+      "metric": "Affinity accuracy and computational efficiency relative to reported physics-based FEP workflows",
+      "modelScope": "Research Boltz-2 evaluation reported by the authors; the Forge endpoint packages Boltz2 v2.2.1 in NVIDIA NIM 1.7.0.",
+      "provenance": "reported",
+      "sourceKind": "paper",
+      "sourceTitle": "Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction",
+      "sourceUrl": "https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1",
+      "split": "Paper-defined evaluation protocols",
+      "value": "Authors report approaching FEP accuracy while being at least 1,000 times more computationally efficient"
+    }
+  ],
+  "benchmarkEvidenceNote": "Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "b70c307b38dc32085e7e20cfe9dabb0ffb9835f31ac3091ed3605e5543929b04",
+  "defaultEligible": false,
+  "displayName": "Use Boltz-2 NIM",
+  "domain": "docking-affinity",
+  "downloadUrl": "/v1/model-skills/boltz2-nim/markdown?download=true",
+  "group": "docking-affinity",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "docking-affinity",
+    "boltz2-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/biology/mit/boltz2/predict",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": [
+        {
+          "id": "A",
+          "molecule_type": "protein",
+          "sequence": "MKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVF"
+        }
+      ],
+      "fieldType": "polymer_list",
+      "key": "polymers",
+      "label": "Polymer chains",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": "[]",
+      "fieldType": "json_editor",
+      "key": "ligands",
+      "label": "Ligands",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "[]",
+      "fieldType": "json_editor",
+      "key": "constraints",
+      "label": "Pocket or bond constraints",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "mmcif"
+      ],
+      "default": "mmcif",
+      "fieldType": "select",
+      "key": "output_format",
+      "label": "Output format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "without_potentials",
+      "label": "Disable inference-time potentials",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "concatenate_msas",
+      "label": "Concatenate MSAs",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "write_full_pae",
+      "label": "Return full PAE matrix",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 3,
+      "fieldType": "number",
+      "key": "recycling_steps",
+      "label": "Recycling steps",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 50,
+      "fieldType": "number",
+      "key": "sampling_steps",
+      "label": "Sampling steps",
+      "maximum": 1000,
+      "minimum": 10,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "diffusion_samples",
+      "label": "Diffusion samples",
+      "maximum": 25,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1.638,
+      "fieldType": "number",
+      "key": "step_scale",
+      "label": "Step scale",
+      "maximum": 5,
+      "minimum": 0.5,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 200,
+      "fieldType": "number",
+      "key": "sampling_steps_affinity",
+      "label": "Affinity sampling steps",
+      "maximum": 1000,
+      "minimum": 10,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "diffusion_samples_affinity",
+      "label": "Affinity diffusion samples",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence",
+    "nucleotide_sequence",
+    "molecule",
+    "restraints",
+    "json"
+  ],
+  "instructions": "---\nname: use-forge-boltz2-nim\ndescription: Use the exact Forge model boltz2-nim for protein_sequence, nucleotide_sequence, molecule, restraints, json to structure, affinity, confidence, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Boltz-2 NIM\n\n- Model slug: `boltz2-nim`\n- Model family: `mit-boltz2`\n- Version: `1.7.0` (`1-7-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / docking-affinity / boltz2-nim`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `MIT; NVIDIA Community Model License; NVIDIA NIM terms`\n\n## Purpose\n\nBoltz-2 NIM is NVIDIA's packaged Boltz-2 structural-biology service for protein, nucleic-acid, ligand, restraint, structure, and binding-affinity prediction.\n\n## Use this exact model when\n\n- Use this exact `boltz2-nim` version when the task supplies protein_sequence, nucleotide_sequence, molecule, restraints, json and needs structure, affinity, confidence, json.\n- Boltz-2 NIM is NVIDIA's packaged Boltz-2 structural-biology service for protein, nucleic-acid, ligand, restraint, structure, and binding-affinity prediction.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence', 'nucleotide_sequence', 'molecule', 'restraints', 'json'] \u2192 ['structure', 'affinity', 'confidence', 'json'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `polymers` (polymer_list, required): Polymer chains\n- `ligands` (json_editor, optional): Ligands\n- `constraints` (json_editor, optional): Pocket or bond constraints\n- `output_format` (select, optional): Output format\n- `without_potentials` (checkbox, optional): Disable inference-time potentials\n- `concatenate_msas` (checkbox, optional): Concatenate MSAs\n- `write_full_pae` (checkbox, optional): Return full PAE matrix\n- `recycling_steps` (number, optional; bounds 1..10): Recycling steps\n- `sampling_steps` (number, optional; bounds 10..1000): Sampling steps\n- `diffusion_samples` (number, optional; bounds 1..25): Diffusion samples\n- `step_scale` (number, optional; bounds 0.5..5): Step scale\n- `sampling_steps_affinity` (number, optional; bounds 10..1000): Affinity sampling steps\n- `diffusion_samples_affinity` (number, optional; bounds 1..10): Affinity diffusion samples\n\nRequest template:\n\n```json\n{\n  \"concatenate_msas\": \"{{concatenate_msas}}\",\n  \"constraints\": \"{{constraints}}\",\n  \"diffusion_samples\": \"{{diffusion_samples}}\",\n  \"diffusion_samples_affinity\": \"{{diffusion_samples_affinity}}\",\n  \"ligands\": \"{{ligands}}\",\n  \"output_format\": \"{{output_format}}\",\n  \"polymers\": \"{{polymers}}\",\n  \"recycling_steps\": \"{{recycling_steps}}\",\n  \"sampling_steps\": \"{{sampling_steps}}\",\n  \"sampling_steps_affinity\": \"{{sampling_steps_affinity}}\",\n  \"step_scale\": \"{{step_scale}}\",\n  \"without_potentials\": \"{{without_potentials}}\",\n  \"write_full_pae\": \"{{write_full_pae}}\"\n}\n```\n\n## Exact output\n\n- `structure`\n- `affinity`\n- `confidence`\n- `json`\n\n## Route\n\n`POST /biology/mit/boltz2/predict`\n\n## Workflow\n\n1. Load this skill and pin model slug `boltz2-nim` with version key `1-7-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /biology/mit/boltz2/predict` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `reviewed`\n\nReviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.\n\n### Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction\n\n- Scope: Research Boltz-2 evaluation reported by the authors; the Forge endpoint packages Boltz2 v2.2.1 in NVIDIA NIM 1.7.0.\n- Dataset/split: FEP+, CASP16, and MF-PCBA evaluations described in the paper / Paper-defined evaluation protocols\n- Metric/value: Affinity accuracy and computational efficiency relative to reported physics-based FEP workflows / Authors report approaching FEP accuracy while being at least 1,000 times more computationally efficient\n- Provenance: reported\n- Conditions: Cross-protocol summary from the paper abstract and evaluations; no Forge reproduction of the scientific benchmark is claimed.\n- Caveat: The comparison is protocol- and hardware-dependent and is not an endpoint latency guarantee.\n- Caveat: Performance on a new target, assay, or chemical series may differ materially.\n- Primary source: https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.\n- Declared context/sequence window: 4096.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/boltz2-nim`\n- Routes: `/v1/models/boltz2-nim/inference-routes`\n- Regional deployment: `/v1/models/boltz2-nim/regional-deployment`\n- Deployment handoff: `/v1/models/boltz2-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/docking-affinity/boltz2-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/docking-affinity/boltz2-nim/SKILL.md\n\n## References\n\n- [Boltz-2 paper](https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1) (paper)\n- [Boltz repository](https://github.com/jwohlwend/boltz) (repository)\n- [NVIDIA Boltz-2 NIM](https://build.nvidia.com/mit/boltz2) (documentation)\n",
+  "license": "MIT; NVIDIA Community Model License; NVIDIA NIM terms",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.",
+    "Declared context/sequence window: 4096."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/boltz2-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/boltz2-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/mit-boltz2",
+    "modelUrl": "/v1/models/boltz2-nim",
+    "regionalDeploymentUrl": "/v1/models/boltz2-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/boltz2-nim/markdown",
+  "modelFamily": "mit-boltz2",
+  "modelSlug": "boltz2-nim",
+  "modelUrl": "/v1/models/boltz2-nim",
+  "outputFields": [
+    "structure",
+    "affinity",
+    "confidence",
+    "json"
+  ],
+  "outputModalities": [
+    "structure",
+    "affinity",
+    "confidence",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 1,
+  "publicEvidenceStatus": "reviewed",
+  "purpose": "Boltz-2 NIM is NVIDIA's packaged Boltz-2 structural-biology service for protein, nucleic-acid, ligand, restraint, structure, and binding-affinity prediction.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/docking-affinity/boltz2-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "paper",
+      "title": "Boltz-2 paper",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1"
+    },
+    {
+      "kind": "repository",
+      "title": "Boltz repository",
+      "url": "https://github.com/jwohlwend/boltz"
+    },
+    {
+      "kind": "documentation",
+      "title": "NVIDIA Boltz-2 NIM",
+      "url": "https://build.nvidia.com/mit/boltz2"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/docking-affinity/boltz2-nim/SKILL.md",
+  "repositoryPath": "skills/models/life-science/docking-affinity/boltz2-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "concatenate_msas": "{{concatenate_msas}}",
+    "constraints": "{{constraints}}",
+    "diffusion_samples": "{{diffusion_samples}}",
+    "diffusion_samples_affinity": "{{diffusion_samples_affinity}}",
+    "ligands": "{{ligands}}",
+    "output_format": "{{output_format}}",
+    "polymers": "{{polymers}}",
+    "recycling_steps": "{{recycling_steps}}",
+    "sampling_steps": "{{sampling_steps}}",
+    "sampling_steps_affinity": "{{sampling_steps_affinity}}",
+    "step_scale": "{{step_scale}}",
+    "without_potentials": "{{without_potentials}}",
+    "write_full_pae": "{{write_full_pae}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 4096,
+    "parameterCount": null,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/mit/boltz2",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "structure-prediction",
+      "protein-ligand",
+      "docking",
+      "affinity",
+      "nvidia-nim",
+      "bionemo",
+      "commercial-ready"
+    ],
+    "versionLabel": "NIM 1.7.0 / Boltz2 v2.2.1"
+  },
+  "shortDescription": "Boltz-2 NIM is NVIDIA's packaged Boltz-2 structural-biology service for protein, nucleic-acid, ligand, restraint, structure, and binding-affinity prediction.",
+  "skillName": "use-forge-boltz2-nim",
+  "skillUrl": "/v1/model-skills/boltz2-nim",
+  "slug": "boltz2-nim",
+  "stability": "experimental",
+  "version": "1.7.0",
+  "versionKey": "1-7-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence', 'nucleotide_sequence', 'molecule', 'restraints', 'json'] \u2192 ['structure', 'affinity', 'confidence', 'json'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `boltz2-nim` version when the task supplies protein_sequence, nucleotide_sequence, molecule, restraints, json and needs structure, affinity, confidence, json.",
+    "Boltz-2 NIM is NVIDIA's packaged Boltz-2 structural-biology service for protein, nucleic-acid, ligand, restraint, structure, and binding-affinity prediction.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `boltz2-nim` with version key `1-7-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /biology/mit/boltz2/predict` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

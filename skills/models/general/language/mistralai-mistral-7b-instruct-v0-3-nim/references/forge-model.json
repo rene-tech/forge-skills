@@ -1,0 +1,301 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/mistralai/mistral-7b-instruct-v0.3:latest",
+  "container_image_size_bytes": null,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-26T21:06:48.956187+00:00",
+  "default_eligible": true,
+  "description": "Mistral 7B Instruct v0.3 packaged as an NVIDIA NIM and mirrored into Forge regional registries.",
+  "family_id": "1636ca29-1476-49ec-88ad-16e4d9f77b33",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-12T23:50:06.493708+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T17:17:06.827663+00:00",
+      "region": "us-central1",
+      "request_ms": 1927,
+      "request_ms_p50": 1927,
+      "request_ms_p95": 1927,
+      "request_ms_p99": 1927,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 743039,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 145.3,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks B300 unsupported",
+      "last_failed_at": "2026-05-12T18:23:55.932249+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-12T23:33:07.879154+00:00",
+      "region": "eu-north2",
+      "request_ms": 1734,
+      "request_ms_p50": 1734,
+      "request_ms_p95": 1734,
+      "request_ms_p99": 1734,
+      "request_ms_samples": 1,
+      "startup_ms_first": 1168671,
+      "startup_ms_probe": 1571,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 136.1,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:22:22.310139+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 2042,
+      "request_ms_p95": 2042,
+      "request_ms_p99": 2042,
+      "request_ms_samples": 1,
+      "startup_ms_first": 1168671,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-13T01:33:18.187739+00:00",
+      "region": "eu-north1",
+      "request_ms": 4129,
+      "request_ms_p50": 4129,
+      "request_ms_p95": 4129,
+      "request_ms_p99": 4129,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 842,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 49.16,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-15T07:15:14.078638+00:00",
+      "observed_success_rate": 0.5,
+      "probed_at": "2026-05-15T07:27:57.345812+00:00",
+      "region": "us-central1",
+      "request_ms": 2757,
+      "request_ms_p50": 3057,
+      "request_ms_p95": 3593,
+      "request_ms_p99": 3641,
+      "request_ms_samples": 3,
+      "startup_ms_first": 170916,
+      "startup_ms_probe": 146000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 71.82,
+      "total_failures": 2,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    }
+  ],
+  "gpu_type": null,
+  "id": "093f0ada-7788-43a6-9c9b-12828aa07169",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "mistralai-mistral-7b-instruct-v0-3",
+  "name": "Mistral 7B Instruct v0.3",
+  "parameter_count": 7000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": "{{messages}}",
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "mistralai/mistral-7b-instruct-v0-3"
+    },
+    "input_fields": [
+      {
+        "default": "Explain in two concise paragraphs how regional model image mirrors improve cold-start reliability.",
+        "key": "messages",
+        "label": "Prompt",
+        "type": "chat_history",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "markdown",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.7,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-mistralai-mistral-7b-instruct-v0.3:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-mistralai-mistral-7b-instruct-v0.3:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-mistralai-mistral-7b-instruct-v0.3:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mistralai-mistral-7b-instruct-v0.3:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "mistralai-mistral-7b-instruct-v0-3-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

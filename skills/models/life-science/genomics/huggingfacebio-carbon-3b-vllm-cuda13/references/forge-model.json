@@ -1,0 +1,396 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "LlamaForCausalLM"
+      ],
+      "hidden_size": 3072,
+      "max_position_embeddings": 32768,
+      "model_type": "llama",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 30,
+      "tokenizer_auto_map": "tokenizer.HybridDNATokenizer",
+      "tokenizer_class": "HybridDNATokenizer",
+      "tokenizer_model_max_length": 131072,
+      "tokenizer_requires_trust_remote_code": true,
+      "vocab_size": 155776
+    },
+    "artifact_disabled": false,
+    "artifact_gated": false,
+    "artifact_license": "apache-2.0",
+    "artifact_parameters": {
+      "BF16": 3451444224,
+      "total": 3451444224
+    },
+    "artifact_private": false,
+    "artifact_revision": "fe755cb5c7498acbf630080609ef61ecc4e36c17",
+    "artifact_source": "https://huggingface.co/HuggingFaceBio/Carbon-3B",
+    "container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+    "container_image_size_bytes": 9219894117,
+    "container_source_decision": "Reuse the already mirrored digest-pinned vLLM 0.22.0 CUDA 13 OpenAI-compatible image because Carbon-3B is a stock LlamaForCausalLM checkpoint and the model card explicitly states vLLM compatibility. No Forge-owned wrapper is needed for the first hosted generation surface.",
+    "event_h200_benchmark_20260605": {
+      "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingfacebio-carbon-3b-vllm-cuda13 --include-status onboarding --gpu H200 --region eu-north2 --timeout 4200 --request-timeout 600 --warmup-runs 1 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/huggingfacebio-carbon-3b-vllm-cuda13-20260605T-event-h200-benchmark-pinned.json --report-md docs/model-onboarding/hcls/huggingfacebio-carbon-3b-vllm-cuda13-20260605T-event-h200-benchmark-pinned.md",
+      "generated_at": "2026-06-05T15:54:06Z",
+      "gpu_node": "computeinstance-e02vy282wq84sh9er9",
+      "gpu_type": "H200",
+      "model_status": "onboarding",
+      "pod_name": "forge-probe-huggingfacebio-carbon-3b-h200-eu-north2-b97ef1",
+      "publication_change": "promote_active_testing_nondefault_after_pinned_h200_benchmark",
+      "region": "eu-north2",
+      "report_json": "docs/model-onboarding/hcls/huggingfacebio-carbon-3b-vllm-cuda13-20260605T-event-h200-benchmark-pinned.json",
+      "report_md": "docs/model-onboarding/hcls/huggingfacebio-carbon-3b-vllm-cuda13-20260605T-event-h200-benchmark-pinned.md",
+      "request_ms_p50": 297,
+      "request_ms_samples": [
+        297,
+        297,
+        297,
+        298,
+        298,
+        297,
+        296,
+        297,
+        297,
+        297
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "OpenAI text_completion response from HuggingFaceBio/Carbon-3B with deterministic DNA continuation beginning with repeated A bases for the default <dna> prompt.",
+      "response_status": 200,
+      "startup_ms": 376755,
+      "status": "supported",
+      "tokens_per_second": 252.53,
+      "vram_used_gb": 115.26,
+      "warmup_ms": 3188
+    },
+    "hf_api_checked_at": "2026-06-05T16:00:00Z",
+    "hf_downloads_at_check": 6658,
+    "hf_likes_at_check": 49,
+    "onboarding_state": "active_testing_h200_eu_north2_supported_pinned_revision_20260605",
+    "planned_probe": {
+      "remaining_matrix_after_event": "Probe B200, B300, H100, L40S, and RTX6000 only after deciding whether to keep this 32K-context high-VRAM profile or add a separate lower-context Carbon route."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "regional_mirror_verified_at": "2026-06-05T16:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_contract": {
+      "cache_strategy": "Hugging Face, Transformers, vLLM, TorchInductor, and XDG caches are versioned under /opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13.",
+      "endpoint": "/v1/completions",
+      "prompt_format": "DNA prompts must be wrapped with <dna> and canonical uppercase A/C/G/T bases are expected inside the tag.",
+      "request_mode": "short nonclinical DNA prefix with max_tokens=64 for event smoke and benchmark runs",
+      "revision_flags": {
+        "code_revision": "fe755cb5c7498acbf630080609ef61ecc4e36c17",
+        "revision": "fe755cb5c7498acbf630080609ef61ecc4e36c17",
+        "tokenizer_revision": "fe755cb5c7498acbf630080609ef61ecc4e36c17"
+      },
+      "served_model_name": "HuggingFaceBio/Carbon-3B"
+    },
+    "safety_gate": {
+      "allowed_scope": "Nonclinical genomic sequence generation, scoring, and benchmark exploration.",
+      "disallowed_uses": [
+        "clinical decision-making",
+        "diagnosis",
+        "patient-specific interpretation",
+        "therapeutic efficacy claims",
+        "biosafety or containment claims",
+        "wet-lab validation claims"
+      ]
+    },
+    "secret_policy": "This public, ungated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so the runtime does not receive unnecessary platform Hugging Face credentials.",
+    "validation_state": {
+      "db_readback": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": false,
+          "B300": false,
+          "H100": false,
+          "H200": true,
+          "L40S": false,
+          "RTX6000": false
+        },
+        "is_latest": true,
+        "stability": "testing",
+        "status": "active"
+      },
+      "gpu_probe": "h200_eu_north2_10_sample_benchmark_supported_20260605",
+      "live_upsert": "succeeded_active_testing_nondefault_h200_20260605",
+      "manifest_schema": "validated_by_scripts_upsert_model_dry_run_20260605",
+      "model_server_image_gate": "passed_empty_findings_20260605",
+      "public_api_readback": {
+        "family_url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/model-families/huggingfacebio-carbon-3b",
+        "model_url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/huggingfacebio-carbon-3b-vllm-cuda13",
+        "selected_model_slug": "huggingfacebio-carbon-3b-vllm-cuda13",
+        "status": "active_testing_nondefault_h200_supported"
+      },
+      "vllm_image_gate": "passed_empty_findings_20260605"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "genomics",
+    "dna_generation",
+    "dna_sequence",
+    "foundation_model",
+    "carbon",
+    "huggingfacebio",
+    "vllm",
+    "cuda13",
+    "hosted",
+    "tested_h200",
+    "nonclinical",
+    "text",
+    "openai_compatible",
+    "completion",
+    "text_generation",
+    "streaming"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 9219894117,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-05T15:39:29.658680+00:00",
+  "default_eligible": false,
+  "description": "Carbon-3B is a public Apache-2.0 generative DNA foundation model from Hugging Face Bio. The Hugging Face API checked on 2026-06-05 reports private=false, gated=false, disabled=false, library_name=transformers, revision fe755cb5c7498acbf630080609ef61ecc4e36c17, and 3,451,444,224 BF16 safetensors parameters. Its model card describes a decoder-only autoregressive genomic model for DNA and RNA, native 32,768-token context, and vLLM compatibility. The stock model architecture is LlamaForCausalLM; the tokenizer is a custom HybridDNATokenizer that switches into 6-mer DNA mode with the <dna> tag and therefore requires tokenizer trust_remote_code. This Forge profile serves the checkpoint through the already mirrored digest-pinned vLLM 0.22.0 CUDA 13 OpenAI-compatible image, pins the model, tokenizer, and remote code revisions to the reviewed commit, clears unnecessary Hugging Face token variables for this public artifact, uses versioned caches under /opt/nim/.cache, and limits the published surface to nonclinical genomics research. H200/eu-north2 passed the pinned event benchmark on 2026-06-05 with startup_ms=376755, p50=297 ms across 10 measured requests after one warmup, tokens_per_second=252.53, and vram_used_gb=115.26.",
+  "family_id": "5792dd23-9688-409f-89db-c1cc78700e30",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H100": false,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "HuggingFaceBio/Carbon-3B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "HuggingFaceBio/Carbon-3B",
+      "--download-dir",
+      "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13/huggingface/downloads",
+      "--revision",
+      "fe755cb5c7498acbf630080609ef61ecc4e36c17",
+      "--code-revision",
+      "fe755cb5c7498acbf630080609ef61ecc4e36c17",
+      "--tokenizer-revision",
+      "fe755cb5c7498acbf630080609ef61ecc4e36c17",
+      "--trust-remote-code",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.82",
+      "--max-num-seqs",
+      "4"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "LOGNAME": "forge",
+      "TORCHINDUCTOR_CACHE_DIR": "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13/torchinductor",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13/huggingface/hub",
+      "USER": "forge",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13/vllm",
+      "VLLM_MAX_N_SEQUENCES": "4",
+      "XDG_CACHE_HOME": "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 65532,
+    "container_run_as_user": 65532,
+    "min_gpus": 1,
+    "min_vram_gb": 120.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T15:54:05.813445+00:00",
+      "region": "eu-north2",
+      "request_ms": 297,
+      "request_ms_p50": 297,
+      "request_ms_p95": 298,
+      "request_ms_p99": 298,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 376755,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 252.53,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 115.26,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 6.43
+    }
+  ],
+  "gpu_type": null,
+  "id": "cac43f84-d16d-4b96-9983-a943fc7facfc",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "dna_sequence",
+    "text"
+  ],
+  "modality_output": [
+    "dna_sequence",
+    "text"
+  ],
+  "model_family": "huggingfacebio-carbon-3b",
+  "name": "Carbon 3B",
+  "parameter_count": 3451444224,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/completions",
+      "method": "POST",
+      "upstream_model_id": "HuggingFaceBio/Carbon-3B"
+    },
+    "input_fields": [
+      {
+        "default": "<dna>ATGCGCTAGCTACGATCGATCGTAGCTAGCTAGCTAGCTACGATCGATCGTAGCTA",
+        "key": "prompt",
+        "label": "DNA prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "generated DNA/text continuation",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 1.3,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 64,
+        "key": "max_tokens",
+        "label": "Generated tokens",
+        "max": 512,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/opt/nim/.cache/forge-vllm/huggingfacebio-carbon-3b/vllm-0.22.0-cuda13",
+      "kind": "vllm_openai",
+      "model_id": "HuggingFaceBio/Carbon-3B",
+      "model_revision": "fe755cb5c7498acbf630080609ef61ecc4e36c17",
+      "served_model_name": "HuggingFaceBio/Carbon-3B",
+      "tokenizer_requires_trust_remote_code": true
+    },
+    "safety_notice": {
+      "allowed_scope": "Nonclinical genomic sequence generation, scoring, and benchmark exploration.",
+      "body": "Use only for nonclinical genomic sequence generation, scoring, and benchmark exploration. Do not use for clinical decision-making, diagnosis, patient-specific interpretation, therapeutic efficacy claims, biosafety claims, or wet-lab validation claims.",
+      "disallowed_uses": [
+        "clinical decision-making",
+        "diagnosis",
+        "patient-specific interpretation",
+        "therapeutic efficacy claims",
+        "biosafety or containment claims",
+        "wet-lab validation claims"
+      ],
+      "must_acknowledge": false,
+      "severity": "warning",
+      "title": "Nonclinical genomics research"
+    },
+    "schema_version": 1,
+    "type": "completion"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 68,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "huggingfacebio-carbon-3b-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/HuggingFaceBio/Carbon-3B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "eu-north2"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "genomics",
+    "dna-generation",
+    "dna-sequence",
+    "foundation-model",
+    "carbon",
+    "huggingfacebio",
+    "vllm",
+    "cuda13",
+    "hosted",
+    "tested-h200",
+    "nonclinical"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-fe755cb-vllm-0.22.0-cuda13",
+  "version_description": "Active testing Forge route for HuggingFaceBio/Carbon-3B, a public Apache-2.0 decoder-only genomic foundation model. Carbon-3B uses a stock LlamaForCausalLM architecture and a custom hybrid DNA tokenizer, so the vLLM profile pins --revision, --code-revision, and --tokenizer-revision to the reviewed HF commit and enables --trust-remote-code only for tokenizer loading. The 2026-06-05 pinned H200/eu-north2 benchmark passed with 10 measured requests; B200, B300, H100, L40S, and RTX6000 remain disabled until separately probed.",
+  "version_key": "hf-fe755cb-vllm-0-22-0-cuda13",
+  "version_label": "HF fe755cb via vLLM 0.22.0 CUDA 13"
+}

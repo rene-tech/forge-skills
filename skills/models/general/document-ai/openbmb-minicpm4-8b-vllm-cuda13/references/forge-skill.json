@@ -1,0 +1,169 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "bf53cedb8976bba4264a3bf2a64c8fb194c17b9e5fc2d30e26a92afc47449e0d",
+  "defaultEligible": false,
+  "displayName": "Use MiniCPM4 8B",
+  "domain": "document-ai",
+  "downloadUrl": "/v1/model-skills/openbmb-minicpm4-8b-vllm-cuda13/markdown?download=true",
+  "group": "document-ai",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "document-ai",
+    "openbmb-minicpm4-8b-vllm-cuda13"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Write a concise engineering handoff for this probe note. Include likely cause, impact, and next action:\n\nA vLLM CUDA 13 candidate uses remote-code MiniCPM architecture, a public Apache-2.0 artifact, and a 32K context cap. It has not yet been live-probed on Forge GPUs.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.7,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.8,
+      "fieldType": "number",
+      "key": "top_p",
+      "label": "Top P",
+      "maximum": 1,
+      "minimum": 0.01,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-openbmb-minicpm4-8b-vllm-cuda13\ndescription: Use the exact Forge model openbmb-minicpm4-8b-vllm-cuda13 for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use MiniCPM4 8B\n\n- Model slug: `openbmb-minicpm4-8b-vllm-cuda13`\n- Model family: `openbmb-minicpm4-8b`\n- Version: `vllm-0.21.0-cuda13` (`vllm-0-21-0-cuda13`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / document-ai / openbmb-minicpm4-8b-vllm-cuda13`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nMiniCPM4 8B is a public Apache-2.0 OpenBMB text-generation model for English/Chinese chat, instruction following, long-context summarization, and efficient edge-oriented general LLM workloads.\n\n## Use this exact model when\n\n- Use this exact `openbmb-minicpm4-8b-vllm-cuda13` version when the task supplies text and needs text.\n- MiniCPM4 8B is a public Apache-2.0 OpenBMB text-generation model for English/Chinese chat, instruction following, long-context summarization, and efficient edge-oriented general LLM workloads.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `top_p` (number, optional; bounds 0.01..1): Top P\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"add_special_tokens\": true,\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"{{prompt}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": false,\n  \"temperature\": \"{{temperature}}\",\n  \"top_p\": \"{{top_p}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `openbmb-minicpm4-8b-vllm-cuda13` with version key `vllm-0-21-0-cuda13`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/openbmb-minicpm4-8b-vllm-cuda13`\n- Routes: `/v1/models/openbmb-minicpm4-8b-vllm-cuda13/inference-routes`\n- Regional deployment: `/v1/models/openbmb-minicpm4-8b-vllm-cuda13/regional-deployment`\n- Deployment handoff: `/v1/models/openbmb-minicpm4-8b-vllm-cuda13/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/openbmb-minicpm4-8b-vllm-cuda13/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/openbmb-minicpm4-8b-vllm-cuda13/SKILL.md\n\n## References\n\n- [MiniCPM4 8B source](https://huggingface.co/openbmb/MiniCPM4-8B) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/openbmb-minicpm4-8b-vllm-cuda13/deploy",
+    "inferenceRoutesUrl": "/v1/models/openbmb-minicpm4-8b-vllm-cuda13/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/openbmb-minicpm4-8b",
+    "modelUrl": "/v1/models/openbmb-minicpm4-8b-vllm-cuda13",
+    "regionalDeploymentUrl": "/v1/models/openbmb-minicpm4-8b-vllm-cuda13/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/openbmb-minicpm4-8b-vllm-cuda13/markdown",
+  "modelFamily": "openbmb-minicpm4-8b",
+  "modelSlug": "openbmb-minicpm4-8b-vllm-cuda13",
+  "modelUrl": "/v1/models/openbmb-minicpm4-8b-vllm-cuda13",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "MiniCPM4 8B is a public Apache-2.0 OpenBMB text-generation model for English/Chinese chat, instruction following, long-context summarization, and efficient edge-oriented general LLM workloads.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/openbmb-minicpm4-8b-vllm-cuda13/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "MiniCPM4 8B source",
+      "url": "https://huggingface.co/openbmb/MiniCPM4-8B"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/openbmb-minicpm4-8b-vllm-cuda13/SKILL.md",
+  "repositoryPath": "skills/models/general/document-ai/openbmb-minicpm4-8b-vllm-cuda13/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "add_special_tokens": true,
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "{{prompt}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": false,
+    "temperature": "{{temperature}}",
+    "top_p": "{{top_p}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 8185253888,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/openbmb/MiniCPM4-8B",
+    "tags": [
+      "llm",
+      "chat",
+      "instruction",
+      "long-context",
+      "minicpm",
+      "openbmb",
+      "english",
+      "chinese",
+      "vllm",
+      "cuda13",
+      "blackwell"
+    ],
+    "versionLabel": "vLLM 0.21.0 CUDA 13"
+  },
+  "shortDescription": "MiniCPM4 8B is a public Apache-2.0 OpenBMB text-generation model for English/Chinese chat, instruction following, long-context summarization, and efficient edge-oriented general LLM workloads.",
+  "skillName": "use-forge-openbmb-minicpm4-8b-vllm-cuda13",
+  "skillUrl": "/v1/model-skills/openbmb-minicpm4-8b-vllm-cuda13",
+  "slug": "openbmb-minicpm4-8b-vllm-cuda13",
+  "stability": "testing",
+  "version": "vllm-0.21.0-cuda13",
+  "versionKey": "vllm-0-21-0-cuda13",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `openbmb-minicpm4-8b-vllm-cuda13` version when the task supplies text and needs text.",
+    "MiniCPM4 8B is a public Apache-2.0 OpenBMB text-generation model for English/Chinese chat, instruction following, long-context summarization, and efficient edge-oriented general LLM workloads.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `openbmb-minicpm4-8b-vllm-cuda13` with version key `vllm-0-21-0-cuda13`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "33d824346b714900b0a9f89539887a608f3b2138e2c5cc75270382f5c8a0eb6a",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos Embed1",
+  "domain": "physical-ai",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos-embed1/markdown?download=true",
+  "group": "physical-ai",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "physical-ai",
+    "nvidia-cosmos-embed1"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A rainy dashcam clip with wet road reflections and windshield wipers.",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Text, video URL, or data URI",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "query",
+        "bulk_text",
+        "bulk_video"
+      ],
+      "default": "query",
+      "fieldType": "select",
+      "key": "request_type",
+      "label": "Request Type",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "video"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos-embed1\ndescription: Use the exact Forge model nvidia-cosmos-embed1 for text, video to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos Embed1\n\n- Model slug: `nvidia-cosmos-embed1`\n- Model family: `nvidia-cosmos-embed1`\n- Version: `1.1.0` (`1-1-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / physical-ai / nvidia-cosmos-embed1`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `nvidia-open-model-license`\n\n## Purpose\n\nDigest-pinned onboarding manifest for the official Cosmos Embed1 1.1.0 NIM.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos-embed1` version when the task supplies text, video and needs embedding.\n- Digest-pinned onboarding manifest for the official Cosmos Embed1 1.1.0 NIM.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'video'] \u2192 ['embedding'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Text, video URL, or data URI\n- `request_type` (select, optional): Request Type\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"float\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\",\n  \"request_type\": \"{{request_type}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos-embed1` with version key `1-1-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos-embed1`\n- Routes: `/v1/models/nvidia-cosmos-embed1/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos-embed1/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos-embed1/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-embed1/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-embed1/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos Embed1 source](https://docs.nvidia.com/nim/cosmos-embed1/latest/quickstart-guide.html) (model-card)\n",
+  "license": "nvidia-open-model-license",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos-embed1/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos-embed1/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos-embed1",
+    "modelUrl": "/v1/models/nvidia-cosmos-embed1",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos-embed1/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos-embed1/markdown",
+  "modelFamily": "nvidia-cosmos-embed1",
+  "modelSlug": "nvidia-cosmos-embed1",
+  "modelUrl": "/v1/models/nvidia-cosmos-embed1",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Digest-pinned onboarding manifest for the official Cosmos Embed1 1.1.0 NIM.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-embed1/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Cosmos Embed1 source",
+      "url": "https://docs.nvidia.com/nim/cosmos-embed1/latest/quickstart-guide.html"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-embed1/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/physical-ai/nvidia-cosmos-embed1/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "float",
+    "input": "{{input}}",
+    "model": "{{model_slug}}",
+    "request_type": "{{request_type}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 1000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/cosmos-embed1/latest/quickstart-guide.html",
+    "tags": [
+      "physical-ai",
+      "cosmos",
+      "embedding",
+      "video-retrieval",
+      "dataset-curation"
+    ],
+    "versionLabel": "1.1.0"
+  },
+  "shortDescription": "Digest-pinned onboarding manifest for the official Cosmos Embed1 1.1.0 NIM.",
+  "skillName": "use-forge-nvidia-cosmos-embed1",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos-embed1",
+  "slug": "nvidia-cosmos-embed1",
+  "stability": "experimental",
+  "version": "1.1.0",
+  "versionKey": "1-1-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'video'] \u2192 ['embedding'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos-embed1` version when the task supplies text, video and needs embedding.",
+    "Digest-pinned onboarding manifest for the official Cosmos Embed1 1.1.0 NIM.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos-embed1` with version key `1-1-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "image_generation",
+    "text_to_image",
+    "diffusion",
+    "sana",
+    "single_gpu",
+    "text",
+    "vision",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-17T03:40:37.560759+00:00",
+  "default_eligible": true,
+  "description": "SANA Sprint 1.6B text-to-image generation through a reusable Diffusers wrapper. It is included as a lightweight single-GPU open image model complementing the larger NIM-backed FLUX and Qwen entries.",
+  "family_id": "8deae456-a8b5-41e7-a1dd-2a0eb86045ec",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0,
+    "runtime_env": {
+      "MEDIA_DEFAULT_GUIDANCE_SCALE": "4.5",
+      "MEDIA_DEFAULT_HEIGHT": "1024",
+      "MEDIA_DEFAULT_STEPS": "2",
+      "MEDIA_DEFAULT_WIDTH": "1024",
+      "MEDIA_ENABLE_CPU_OFFLOAD": "0",
+      "MEDIA_ENABLE_VAE_SLICING": "1",
+      "MEDIA_ENABLE_VAE_TILING": "1",
+      "MEDIA_MODEL_ID": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+      "MEDIA_MODEL_KIND": "image_diffusers",
+      "MEDIA_MODEL_SLUG": "nvlabs-sana-sprint-1-6b",
+      "MEDIA_PIPELINE_CLASS": "SanaSprintPipeline",
+      "MEDIA_TORCH_DTYPE": "bfloat16"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:44:48.859898+00:00",
+      "region": "us-central1",
+      "request_ms": 7118,
+      "request_ms_p50": 7118,
+      "request_ms_p95": 7118,
+      "request_ms_p99": 7118,
+      "request_ms_samples": 1,
+      "startup_ms_first": 26396,
+      "startup_ms_probe": 26396,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 2.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:01:21.856148+00:00",
+      "region": "uk-south1",
+      "request_ms": 15519,
+      "request_ms_p50": 15519,
+      "request_ms_p95": 15519,
+      "request_ms_p99": 15519,
+      "request_ms_samples": 1,
+      "startup_ms_first": 50299,
+      "startup_ms_probe": 25946,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 2.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:45:05.611167+00:00",
+      "region": "eu-north2",
+      "request_ms": 8158,
+      "request_ms_p50": 8158,
+      "request_ms_p95": 8158,
+      "request_ms_p99": 8158,
+      "request_ms_samples": 1,
+      "startup_ms_first": 41744,
+      "startup_ms_probe": 41744,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 2.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:44:48.371400+00:00",
+      "region": "eu-north1",
+      "request_ms": 7551,
+      "request_ms_p50": 7551,
+      "request_ms_p95": 7551,
+      "request_ms_p99": 7551,
+      "request_ms_samples": 1,
+      "startup_ms_first": 49747,
+      "startup_ms_probe": 49747,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 2.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:44:47.548609+00:00",
+      "region": "us-central1",
+      "request_ms": 5474,
+      "request_ms_p50": 5474,
+      "request_ms_p95": 5474,
+      "request_ms_p99": 5474,
+      "request_ms_samples": 1,
+      "startup_ms_first": 41762,
+      "startup_ms_probe": 41762,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 2.98
+    }
+  ],
+  "gpu_type": null,
+  "id": "e755296d-d30d-40c7-8cad-f30f917840bf",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "image"
+  ],
+  "model_family": "nvlabs-sana-sprint",
+  "name": "SANA Sprint 1.6B",
+  "parameter_count": 1600000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "guidance_scale": "{{guidance_scale}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}",
+        "steps": "{{steps}}"
+      },
+      "endpoint": "/v1/inference/nvlabs-sana-sprint-1-6b",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "A clean product render of an AI image generation workstation, crisp typography, realistic materials, studio lighting",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "png",
+      "type": "image"
+    },
+    "parameter_controls": [
+      {
+        "default": 7,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 2,
+        "key": "steps",
+        "label": "Steps",
+        "max": 8,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 4.5,
+        "key": "guidance_scale",
+        "label": "Guidance",
+        "max": 10,
+        "min": 0,
+        "step": 0.5,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "image_generation"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-media-generation-diffusers:20260517-diffusers-v6"
+  },
+  "release_rank": 140,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvlabs-sana-sprint-1-6b",
+  "source": "custom_container",
+  "source_url": "https://github.com/NVlabs/Sana",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "image-generation",
+    "text-to-image",
+    "diffusion",
+    "sana",
+    "single-gpu"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "1.6b-1024px-diffusers",
+  "version_description": null,
+  "version_key": "1-6b-1024px-diffusers",
+  "version_label": "1.6B 1024px Diffusers"
+}

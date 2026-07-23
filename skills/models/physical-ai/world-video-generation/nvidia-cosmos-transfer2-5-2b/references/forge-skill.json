@@ -1,0 +1,207 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "914e41bad134bb96a20c3257cb57d5516cc7fafa6ecd8d0c175b5cba3a879366",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos Transfer2.5 2B",
+  "domain": "world-video-generation",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos-transfer2-5-2b/markdown?download=true",
+  "group": "world-video-generation",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "world-video-generation",
+    "nvidia-cosmos-transfer2-5-2b"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos-transfer2-5-2b",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Convert the driving clip to rainy weather while preserving road geometry and object layout.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/robot_input.mp4",
+      "fieldType": "text",
+      "key": "video",
+      "label": "Video URL or base64 MP4",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "480",
+        "720"
+      ],
+      "default": "480",
+      "fieldType": "select",
+      "key": "resolution",
+      "label": "Resolution",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": {
+        "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/edge/robot_edge.mp4",
+        "control_weight": 1.0
+      },
+      "fieldType": "json_editor",
+      "key": "edge",
+      "label": "Edge Control",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": {
+        "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/seg/robot_seg.mp4",
+        "control_weight": 1.0
+      },
+      "fieldType": "json_editor",
+      "key": "seg",
+      "label": "Segmentation Control",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": {
+        "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/vis/robot_vis.mp4",
+        "control_weight": 1.0
+      },
+      "fieldType": "json_editor",
+      "key": "vis",
+      "label": "Visual Control",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": {
+        "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/depth/robot_depth.mp4",
+        "control_weight": 1.0
+      },
+      "fieldType": "json_editor",
+      "key": "depth",
+      "label": "Depth Control",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "video"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos-transfer2-5-2b\ndescription: Use the exact Forge model nvidia-cosmos-transfer2-5-2b for text, video to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos Transfer2.5 2B\n\n- Model slug: `nvidia-cosmos-transfer2-5-2b`\n- Model family: `nvidia-cosmos-transfer2-5-2b`\n- Version: `1.0.0` (`1-0-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / world-video-generation / nvidia-cosmos-transfer2-5-2b`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `nvidia-open-model-license`\n\n## Purpose\n\nHidden onboarding manifest for Cosmos Transfer2.5 NIM, a controllable physical-AI world-generation model with edge, segmentation, visual, and depth controls.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos-transfer2-5-2b` version when the task supplies text, video and needs video.\n- Hidden onboarding manifest for Cosmos Transfer2.5 NIM, a controllable physical-AI world-generation model with edge, segmentation, visual, and depth controls.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'video'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `video` (text, optional): Video URL or base64 MP4\n- `resolution` (select, optional): Resolution\n- `edge` (json_editor, optional): Edge Control\n- `seg` (json_editor, optional): Segmentation Control\n- `vis` (json_editor, optional): Visual Control\n- `depth` (json_editor, optional): Depth Control\n\nRequest template:\n\n```json\n{\n  \"depth\": \"{{depth}}\",\n  \"edge\": \"{{edge}}\",\n  \"model\": \"{{model_slug}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"resolution\": \"{{resolution}}\",\n  \"seg\": \"{{seg}}\",\n  \"video\": \"{{video}}\",\n  \"vis\": \"{{vis}}\"\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos-transfer2-5-2b`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos-transfer2-5-2b` with version key `1-0-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos-transfer2-5-2b` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos-transfer2-5-2b`\n- Routes: `/v1/models/nvidia-cosmos-transfer2-5-2b/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos-transfer2-5-2b/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos-transfer2-5-2b/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-transfer2-5-2b/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-transfer2-5-2b/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos Transfer2.5 2B source](https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard) (model-card)\n",
+  "license": "nvidia-open-model-license",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos-transfer2-5-2b/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos-transfer2-5-2b/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos-transfer2-5-2b",
+    "modelUrl": "/v1/models/nvidia-cosmos-transfer2-5-2b",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos-transfer2-5-2b/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos-transfer2-5-2b/markdown",
+  "modelFamily": "nvidia-cosmos-transfer2-5-2b",
+  "modelSlug": "nvidia-cosmos-transfer2-5-2b",
+  "modelUrl": "/v1/models/nvidia-cosmos-transfer2-5-2b",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Hidden onboarding manifest for Cosmos Transfer2.5 NIM, a controllable physical-AI world-generation model with edge, segmentation, visual, and depth controls.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-transfer2-5-2b/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Cosmos Transfer2.5 2B source",
+      "url": "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-transfer2-5-2b/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/world-video-generation/nvidia-cosmos-transfer2-5-2b/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "depth": "{{depth}}",
+    "edge": "{{edge}}",
+    "model": "{{model_slug}}",
+    "prompt": "{{prompt}}",
+    "resolution": "{{resolution}}",
+    "seg": "{{seg}}",
+    "video": "{{video}}",
+    "vis": "{{vis}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 2358047744,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+    "tags": [
+      "physical-ai",
+      "cosmos",
+      "world-model",
+      "synthetic-data",
+      "robotics",
+      "video-to-video",
+      "control-video",
+      "weather-transfer"
+    ],
+    "versionLabel": "1.0.0"
+  },
+  "shortDescription": "Hidden onboarding manifest for Cosmos Transfer2.5 NIM, a controllable physical-AI world-generation model with edge, segmentation, visual, and depth controls.",
+  "skillName": "use-forge-nvidia-cosmos-transfer2-5-2b",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos-transfer2-5-2b",
+  "slug": "nvidia-cosmos-transfer2-5-2b",
+  "stability": "experimental",
+  "version": "1.0.0",
+  "versionKey": "1-0-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'video'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos-transfer2-5-2b` version when the task supplies text, video and needs video.",
+    "Hidden onboarding manifest for Cosmos Transfer2.5 NIM, a controllable physical-AI world-generation model with edge, segmentation, visual, and depth controls.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos-transfer2-5-2b` with version key `1-0-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos-transfer2-5-2b` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

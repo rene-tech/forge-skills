@@ -1,0 +1,343 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "physical_ai",
+    "cosmos",
+    "cosmos3",
+    "reasoning",
+    "robotics",
+    "vision_language",
+    "video_understanding",
+    "early_access",
+    "text",
+    "vision",
+    "video",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos3-reasoner:ea-nano-20260529-media-hardening@sha256:55b10b9f3be9c7f68998d2acf7ea1ea6f491e84ac68897647b047594e12c9966",
+  "container_image_size_bytes": 5072716170,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-21T16:54:02.236062+00:00",
+  "default_eligible": true,
+  "description": "Early-access Cosmos 3 Nano Reasoner VLM served through a Forge-owned Qwen3-VL runtime. It accepts text prompts, image inputs, and video inputs for physical AI reasoning and returns structured text.",
+  "family_id": "2c623b4e-e41f-4134-be52-77d3226b7b5c",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "COSMOS3_MODEL_ID": "nvidia-cosmos-ea/Cosmos3-Nano-Reasoner",
+      "COSMOS3_MODEL_KIND": "reasoner",
+      "COSMOS3_VARIANT": "nano"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T14:01:37.474189+00:00",
+      "region": "us-central1",
+      "request_ms": 10858,
+      "request_ms_p50": 10874,
+      "request_ms_p95": 11115,
+      "request_ms_p99": 11212,
+      "request_ms_samples": 13,
+      "startup_ms_first": null,
+      "startup_ms_probe": 213534,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 17.3,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T14:04:07.099897+00:00",
+      "region": "uk-south1",
+      "request_ms": 10877,
+      "request_ms_p50": 10906,
+      "request_ms_p95": 12339,
+      "request_ms_p99": 12468,
+      "request_ms_samples": 13,
+      "startup_ms_first": null,
+      "startup_ms_probe": 21136,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 17.31,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-29T14:07:23.433711+00:00",
+      "region": "eu-north2",
+      "request_ms": 12392,
+      "request_ms_p50": 12370,
+      "request_ms_p95": 12505,
+      "request_ms_p99": 12520,
+      "request_ms_samples": 14,
+      "startup_ms_first": 16561,
+      "startup_ms_probe": 237252,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 17.24,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T14:08:11.168666+00:00",
+      "region": "eu-north1",
+      "request_ms": 18344,
+      "request_ms_p50": 18215,
+      "request_ms_p95": 18384,
+      "request_ms_p99": 18397,
+      "request_ms_samples": 13,
+      "startup_ms_first": null,
+      "startup_ms_probe": 214564,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 17.04,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T14:08:58.238596+00:00",
+      "region": "us-central1",
+      "request_ms": 11692,
+      "request_ms_p50": 11984,
+      "request_ms_p95": 12256,
+      "request_ms_p99": 12288,
+      "request_ms_samples": 26,
+      "startup_ms_first": null,
+      "startup_ms_probe": 213263,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 17.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    }
+  ],
+  "gpu_type": null,
+  "id": "4f660fa5-3316-48e7-b46e-aadd1e9d839c",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-software-model-evaluation-license",
+  "modality_input": [
+    "text",
+    "image",
+    "video"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "nvidia-cosmos3-reasoner",
+  "name": "NVIDIA Cosmos 3 Reasoner (Nano)",
+  "parameter_count": 8000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "image": "{{input_image}}",
+        "max_tokens": "{{max_tokens}}",
+        "messages": "{{messages}}",
+        "mode": "{{mode}}",
+        "temperature": "{{temperature}}",
+        "video": "{{input_video}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos3-reasoner",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "text",
+        "key": "mode",
+        "label": "Mode",
+        "options": [
+          "text",
+          "image",
+          "video"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "Describe the physical risks a robot should consider before moving through a crowded lab.",
+        "key": "messages",
+        "label": "Prompt",
+        "type": "chat_history",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "",
+        "key": "input_image",
+        "label": "Input Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "video/mp4,video/webm,video/quicktime",
+        "default": "",
+        "key": "input_video",
+        "label": "Input Video",
+        "type": "file_upload",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "markdown",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "slider"
+      },
+      {
+        "default": 512,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "settings_schema": {
+      "conditional_required": [
+        {
+          "required": [
+            "input_image"
+          ],
+          "when": {
+            "mode": "image"
+          }
+        },
+        {
+          "required": [
+            "input_video"
+          ],
+          "when": {
+            "mode": "video"
+          }
+        }
+      ],
+      "optional": [
+        "input_image",
+        "input_video"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos3-reasoner@sha256:55b10b9f3be9c7f68998d2acf7ea1ea6f491e84ac68897647b047594e12c9966",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-cosmos3-reasoner@sha256:55b10b9f3be9c7f68998d2acf7ea1ea6f491e84ac68897647b047594e12c9966",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-cosmos3-reasoner@sha256:55b10b9f3be9c7f68998d2acf7ea1ea6f491e84ac68897647b047594e12c9966",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-cosmos3-reasoner@sha256:55b10b9f3be9c7f68998d2acf7ea1ea6f491e84ac68897647b047594e12c9966"
+  },
+  "release_rank": 10,
+  "requires_hf_token": true,
+  "single_region_risk": false,
+  "slug": "nvidia-cosmos3-reasoner-nano",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "cosmos",
+    "cosmos3",
+    "reasoning",
+    "robotics",
+    "vision-language",
+    "video-understanding",
+    "early-access"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "nano-bf16-ea",
+  "version_description": "Early-access Cosmos 3 Nano reasoner checkpoint using a Qwen3-VL architecture, served by the Forge-owned Qwen3-VL runtime with text, image, and video reasoning inputs.",
+  "version_key": "nano-bf16",
+  "version_label": "Nano BF16 EA"
+}

@@ -1,0 +1,535 @@
+{
+  "benchmark_scores": {
+    "artifact_gated": false,
+    "artifact_license": "ltx-2-community-license-agreement",
+    "artifact_private": false,
+    "artifact_revision": "4229404625088d21c4f112eb640fb04a0900ee25",
+    "artifact_size_bytes": 157004895857,
+    "benchmark_model_time_ms_p50_by_cell": {
+      "B200/us-central1": 4063,
+      "B300/uk-south1": 4057,
+      "H100/eu-north1": 4188,
+      "H200/eu-north1": 4142,
+      "H200/eu-north2": 4146,
+      "H200/us-central1": 4150,
+      "RTX6000/us-central1": 4354
+    },
+    "benchmark_workload": {
+      "measured_runs_per_cell": 10,
+      "mode": "text2video",
+      "num_frames": 9,
+      "num_inference_steps": 1,
+      "size": "768x512",
+      "warmups_per_cell": 2
+    },
+    "license_hosting_note": "Section 3 permits third-party remote access subject to downstream notice, full terms, and use restrictions; Forge requires per-request authorization acknowledgement.",
+    "license_url": "https://huggingface.co/Lightricks/LTX-2.3/blob/4229404625088d21c4f112eb640fb04a0900ee25/LICENSE",
+    "matrix_campaign_date": "2026-07-14",
+    "model_server_image_gate": {
+      "evidence": "Forge derivative source patch, loopback runtime tests, immutable regional digest verification, and Trivy scan in docs/model-onboarding/general/video-generation-20260714",
+      "external_media_urls_allowed": false,
+      "internal_http_binding": "loopback",
+      "patched_cves": [
+        "CVE-2026-7301",
+        "CVE-2026-7302"
+      ],
+      "scheduler_transport_binding": "loopback",
+      "upload_filename_sanitization": "basename_and_dotdot_rejection",
+      "validated_at": "2026-07-14",
+      "validated_image_digest": "sha256:cb03f929aee0e32d451bd4b1e442a0900d8d08132c2877a7ddcc9e168d4c911b",
+      "validated_sglang_multimodal_security_fixes": true
+    },
+    "onboarding_state": "active_public_validated",
+    "overlay_revision": "MickJ/LTX-2.3-overlay@e0cc94f279ec16bb87c230134d40319f6ce40c5e",
+    "quality_validation": {
+      "gpu": "H200",
+      "model_time_ms": 58556,
+      "num_frames": 49,
+      "num_inference_steps": 20,
+      "region": "eu-north1",
+      "result": "video_mp4_with_audio",
+      "size": "768x512"
+    },
+    "runtime": "sglang-0.5.11-cu130",
+    "runtime_commit": "612785ffdcaf35552f1ed433a981d596ca9fe900",
+    "runtime_image_digest": "sha256:cb03f929aee0e32d451bd4b1e442a0900d8d08132c2877a7ddcc9e168d4c911b",
+    "security_scan": {
+      "critical": 0,
+      "high": 0,
+      "ignore_unfixed": true,
+      "scanner": "trivy-0.70"
+    },
+    "supported_cells": 7,
+    "unsupported_cells": 1,
+    "unsupported_evidence": {
+      "L40S/eu-north1": "exit_137_oomkilled_during_cpu_offloaded_weight_materialization"
+    }
+  },
+  "capabilities": [
+    "video_generation",
+    "text_to_video",
+    "image_to_video",
+    "audio_video",
+    "ltx_2",
+    "sglang",
+    "text",
+    "vision",
+    "video",
+    "audio",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-sglang-video:v0.5.11-cu130-r3@sha256:cb03f929aee0e32d451bd4b1e442a0900d8d08132c2877a7ddcc9e168d4c911b",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-07-14T09:28:59.956945+00:00",
+  "default_eligible": true,
+  "description": "LTX-2.3 generates video with synchronized audio from text or a starting image. This Forge version uses the one-stage 22B BF16 path with layerwise CPU offload. Use is subject to the LTX-2 Community License Agreement: entities with aggregate annual revenue of at least USD 10 million require a paid commercial license, and all users must comply with the license and acceptable-use restrictions.",
+  "family_id": "ff313f74-ec43-48d4-9c1a-8581bb579263",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H100": true,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_VIDEO_MODEL_ID": "Lightricks/LTX-2.3",
+      "FORGE_VIDEO_MODEL_REVISION": "4229404625088d21c4f112eb640fb04a0900ee25",
+      "HF_HOME": "/mnt/data/forge-weights/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/huggingface/hub",
+      "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+      "SGLANG_DIFFUSION_CACHE_ROOT": "/mnt/data/forge-weights/sglang-diffusion",
+      "SGLANG_VIDEO_OUTPUT_PATH": "/tmp/forge-video-outputs",
+      "SGLANG_VIDEO_TIMEOUT_S": "3600"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 10001,
+    "container_run_as_user": 10001,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-14T10:26:25.530401+00:00",
+      "region": "us-central1",
+      "request_ms": 4063,
+      "request_ms_p50": 4063,
+      "request_ms_p95": 4065,
+      "request_ms_p99": 4065,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 152934,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 13.31,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-14T12:16:44.936444+00:00",
+      "region": "uk-south1",
+      "request_ms": 4057,
+      "request_ms_p50": 4057,
+      "request_ms_p95": 4059,
+      "request_ms_p99": 4059,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 1306636,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 13.31,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-07-14T13:08:31.098209+00:00",
+      "region": "eu-north1",
+      "request_ms": 4188,
+      "request_ms_p50": 4188,
+      "request_ms_p95": 7879,
+      "request_ms_p99": 10638,
+      "request_ms_samples": 11,
+      "startup_ms_first": 161472,
+      "startup_ms_probe": 161472,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 13.22,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-07-14T12:23:00.087056+00:00",
+      "region": "eu-north1",
+      "request_ms": 4142,
+      "request_ms_p50": 4142,
+      "request_ms_p95": 4245,
+      "request_ms_p99": 4261,
+      "request_ms_samples": 10,
+      "startup_ms_first": 146428,
+      "startup_ms_probe": 151497,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 13.22,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-07-14T10:25:59.894485+00:00",
+      "region": "eu-north2",
+      "request_ms": 4146,
+      "request_ms_p50": 4146,
+      "request_ms_p95": 7936,
+      "request_ms_p99": 10828,
+      "request_ms_samples": 11,
+      "startup_ms_first": 146428,
+      "startup_ms_probe": 147694,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 13.22,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-07-14T10:36:41.480336+00:00",
+      "region": "us-central1",
+      "request_ms": 4150,
+      "request_ms_p50": 4150,
+      "request_ms_p95": 6934,
+      "request_ms_p99": 9156,
+      "request_ms_samples": 11,
+      "startup_ms_first": 146428,
+      "startup_ms_probe": 781397,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 13.22,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "OOMKilled (exit 137) while materializing CPU-offloaded weights on the 64 GiB L40S host",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-14T10:24:58.471641+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "oom",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-07-14T10:26:20.373187+00:00",
+      "region": "us-central1",
+      "request_ms": 4354,
+      "request_ms_p50": 4354,
+      "request_ms_p95": 4364,
+      "request_ms_p99": 4364,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 161113,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 13.16,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 40.98
+    }
+  ],
+  "gpu_type": null,
+  "id": "e40de959-8058-4765-8860-1ff71f5cf056",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "ltx-2-community-license-agreement",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "video",
+    "audio"
+  ],
+  "model_family": "lightricks-ltx-2",
+  "name": "LTX-2.3",
+  "parameter_count": 22000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "fps": "{{fps}}",
+        "guidance_scale": "{{guidance_scale}}",
+        "input_image": "{{input_image}}",
+        "license_acknowledgement": "{{license_acknowledgement}}",
+        "mode": "{{mode}}",
+        "negative_prompt": "{{negative_prompt}}",
+        "num_frames": "{{num_frames}}",
+        "num_inference_steps": "{{num_inference_steps}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}",
+        "size": "{{size}}"
+      },
+      "endpoint": "/v1/inference/lightricks-ltx-2",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "text2video",
+        "key": "mode",
+        "label": "Mode",
+        "options": [
+          "text2video",
+          "image2video"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "A cinematic wide shot of a rain-soaked city street at blue hour, slow dolly forward, realistic reflections, natural traffic ambience.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "",
+        "key": "input_image",
+        "label": "Starting Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "license_acknowledgement",
+        "label": "I accept the LTX-2 Community License and confirm this use is authorized",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": "768x512",
+        "key": "size",
+        "label": "Frame Size",
+        "options": [
+          "768x512",
+          "512x768"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "negative_prompt",
+        "label": "Negative Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "image_video_json",
+      "type": "custom"
+    },
+    "parameter_controls": [
+      {
+        "default": 49,
+        "key": "num_frames",
+        "label": "Frames",
+        "max": 121,
+        "min": 9,
+        "step": 4,
+        "type": "number"
+      },
+      {
+        "default": 24,
+        "key": "fps",
+        "label": "FPS",
+        "max": 30,
+        "min": 8,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 20,
+        "key": "num_inference_steps",
+        "label": "Inference Steps",
+        "max": 40,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 3,
+        "key": "guidance_scale",
+        "label": "Guidance",
+        "max": 20,
+        "min": 0,
+        "step": 0.1,
+        "type": "slider"
+      },
+      {
+        "default": 42,
+        "key": "seed",
+        "label": "Seed",
+        "max": 2147483647,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "settings_schema": {
+      "conditional_required": [
+        {
+          "required": [
+            "input_image"
+          ],
+          "when": {
+            "mode": "image2video"
+          }
+        }
+      ],
+      "optional": [
+        "input_image",
+        "size",
+        "num_frames",
+        "fps",
+        "num_inference_steps",
+        "guidance_scale",
+        "seed",
+        "negative_prompt"
+      ],
+      "required": [
+        "mode",
+        "prompt",
+        "license_acknowledgement"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-sglang-video:v0.5.11-cu130-r3@sha256:cb03f929aee0e32d451bd4b1e442a0900d8d08132c2877a7ddcc9e168d4c911b",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-sglang-video:v0.5.11-cu130-r3@sha256:cb03f929aee0e32d451bd4b1e442a0900d8d08132c2877a7ddcc9e168d4c911b",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-sglang-video:v0.5.11-cu130-r3@sha256:cb03f929aee0e32d451bd4b1e442a0900d8d08132c2877a7ddcc9e168d4c911b",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-sglang-video:v0.5.11-cu130-r3@sha256:cb03f929aee0e32d451bd4b1e442a0900d8d08132c2877a7ddcc9e168d4c911b"
+  },
+  "release_rank": 10,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "lightricks-ltx-2-3-sglang",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Lightricks/LTX-2.3",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "video-generation",
+    "text-to-video",
+    "image-to-video",
+    "audio-video",
+    "ltx-2",
+    "sglang"
+  ],
+  "updated_at": "2026-07-14T12:18:16.417440+00:00",
+  "version": "2.3-one-stage-sglang-0.5.11",
+  "version_description": "LTX-2.3 one-stage text-to-video and image-to-video generation with synchronized audio, served through the Forge SGLang video wrapper.",
+  "version_key": "2-3-one-stage",
+  "version_label": "2.3 One Stage"
+}

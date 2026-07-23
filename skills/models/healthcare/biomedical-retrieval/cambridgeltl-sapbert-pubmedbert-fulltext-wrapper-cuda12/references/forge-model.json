@@ -1,0 +1,645 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+    "artifact_checked_at": "2026-05-28T00:00:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "embedding_dimension": 768,
+      "hidden_size": 768,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pooling": "cls",
+      "vocab_size": 30522
+    },
+    "artifact_disabled": false,
+    "artifact_gated": false,
+    "artifact_license": "apache-2.0",
+    "artifact_parameters": {
+      "F32": 109482240,
+      "I64": 512,
+      "total": 109482752
+    },
+    "artifact_private": false,
+    "artifact_sha": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d",
+    "artifact_source": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+    "base_image": "docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+    "build_and_mirror_20260528T_cycle": {
+      "fallback": "local_docker_build_tag_push",
+      "local_image_id": "sha256:ab4d5464df39c9be124762d162fd8f2f7b7014f557e0c3075222f07f22732d83",
+      "local_image_size_bytes": 7819002481,
+      "registry_image_size_bytes": 4288792245,
+      "repo_script_attempt": {
+        "cleanup": "job and configmap deleted after diagnostic capture",
+        "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/build_wrapper_via_k8s_job.py --image-name cambridgeltl-sapbert-pubmedbert-fulltext --dockerfile services/models/hcls/sapbert_pubmedbert_fulltext/Dockerfile --include services/models/common/__init__.py --include services/models/common/app.py --include services/models/common/cache.py --include services/models/common/health.py --include services/models/hcls/__init__.py --region us-central1 --tag wrapper-cuda12-torch2100-20260630 --timeout 7200 --keep-failed-job",
+        "failure": "StartError: exec /kaniko/executor: stat /kaniko/executor: no such file or directory",
+        "pod": "forge-build-cambridgeltl-sapbert-3cc15dec-ddkkj",
+        "result": "blocked_by_kaniko_executor_shadowed_by_kaniko_emptydir_mount"
+      },
+      "tag": "wrapper-cuda12-torch2100-20260630",
+      "verified_digest": "sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+      "verified_regions": {
+        "eu-north1": "sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+        "eu-north2": "sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+        "uk-south1": "sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+        "us-central1": "sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943"
+      }
+    },
+    "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, TORCH_HOME, XDG_CACHE_HOME, and HOME point to versioned /mnt/data paths. A file lock under the same cache root serializes first-run model/tokenizer hydration.",
+    "cls_parity_20260528T07Z": {
+      "embedding_dimension": 768,
+      "evidence_report_md": "docs/model-onboarding/hcls/sapbert-slow-tokenizer-wrapper-20260528T-cycle-parity.md",
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "min_cosine": 1.0,
+      "pooling": "cls",
+      "reference": "direct Transformers AutoTokenizer(use_fast=false) and AutoModel in the pinned wrapper image",
+      "status": "passed",
+      "test_corpus": "8 synthetic non-PHI biomedical entity strings",
+      "tokenizer_backend": "slow_bert_vocab"
+    },
+    "container_digest": "sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+    "container_image_size_bytes": 4288792245,
+    "container_source_decision": "build_forge_owned_cuda12_wrapper_because_no_suitable_existing_embedding_server_handles_this_artifact_without_tokenizer_json",
+    "full_matrix_probe_20260528T06Z": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_supported": {
+        "B200/us-central1": {
+          "request_ms_p50": 3,
+          "request_ms_p95": 3,
+          "request_ms_samples": 10,
+          "startup_ms": 188826,
+          "tokens_per_second": 1666.67,
+          "vram_measured_gb": 0.99
+        },
+        "B300/uk-south1": {
+          "request_ms_p50": 3,
+          "request_ms_p95": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 168759,
+          "tokens_per_second": 1666.67,
+          "vram_measured_gb": 0.99
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 4,
+          "request_ms_p95": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 167305,
+          "tokens_per_second": 1250.0,
+          "vram_measured_gb": 0.92
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 5,
+          "request_ms_p95": 6,
+          "request_ms_samples": 10,
+          "startup_ms": 22518,
+          "tokens_per_second": 1000.0,
+          "vram_measured_gb": 0.73
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 4,
+          "request_ms_p95": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 212427,
+          "tokens_per_second": 1250.0,
+          "vram_measured_gb": 0.87
+        }
+      },
+      "focused_rtx6000_report_json": "docs/model-onboarding/hcls/sapbert-slow-tokenizer-wrapper-20260528T06Z-rtx6000.json",
+      "focused_rtx6000_report_md": "docs/model-onboarding/hcls/sapbert-slow-tokenizer-wrapper-20260528T06Z-rtx6000.md",
+      "live_readback_at": "2026-05-28T06:23:00Z",
+      "report_note": "The first all-cell run upserted B200, B300, H200, and L40S then the local runner was terminated after all Kubernetes probe pods were gone but before report serialization. RTX6000 was rerun as a focused probe and wrote the report below.",
+      "request_time_source": "model_time_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "gpu_compatibility_basis": {
+      "B200": "supported_20260528T06Z_standard_probe_10_measured",
+      "B300": "supported_20260528T06Z_standard_probe_10_measured",
+      "H200": "supported_20260528T06Z_standard_probe_10_measured",
+      "L40S": "supported_20260528T06Z_standard_probe_10_measured",
+      "RTX6000": "supported_20260528T06Z_focused_probe_10_measured"
+    },
+    "healthcare_safety_gate": {
+      "allowed_scope": "Nonclinical biomedical entity normalization, synonym retrieval, clustering, semantic search, and entity-linking evaluation.",
+      "cleared_requirements": [
+        "Research-only allowed and disallowed use copy is present in playground_config.safety_notice.",
+        "Safety notice now requires explicit research-use acknowledgement before customer-visible routing.",
+        "Five-cell GPU matrix and CLS parity evidence are complete for technical review."
+      ],
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "remaining_requirements": [
+        "Healthcare product safety review approval for customer-visible publication.",
+        "Decision on whether biomedical embedding rows may be public testing models or must remain internal-only."
+      ],
+      "research_only_routing_gate_20260528T08Z": {
+        "acknowledgement_field": "research_use_acknowledgement",
+        "decision": "copy_and_acknowledgement_ready_not_product_approved",
+        "publishable": false,
+        "report_json": "docs/model-onboarding/hcls/sapbert-slow-tokenizer-wrapper-20260528T08Z-research-routing-gate.json",
+        "report_md": "docs/model-onboarding/hcls/sapbert-slow-tokenizer-wrapper-20260528T08Z-research-routing-gate.md",
+        "safety_notice_must_acknowledge": true
+      },
+      "research_only_routing_gate_20260528T23Z": {
+        "acknowledgement_default": true,
+        "acknowledgement_field": "research_use_acknowledgement",
+        "decision": "visible_acknowledgement_control_added_not_product_approved",
+        "note": "Added the missing visible playground checkbox for the safety notice acknowledgement while keeping research_use_acknowledgement out of the OpenAI-compatible embeddings request body.",
+        "publishable": false,
+        "request_body_unchanged": true,
+        "safety_notice_must_acknowledge": true
+      }
+    },
+    "local_image_id": "sha256:ab4d5464df39c9be124762d162fd8f2f7b7014f557e0c3075222f07f22732d83",
+    "onboarding_state": "five_cell_matrix_and_cls_parity_supported_pending_hcls_safety_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "do_not_publish_until_healthcare_safety_review",
+    "registry_image_size_bytes": 4288792245,
+    "rtx6000_smoke_probe_20260528T_cycle": {
+      "benchmark_runs": 1,
+      "cleanup": "probe pod deleted by probe script",
+      "cluster": "mk8scluster-u00eyp43c8have384b",
+      "gpu_node": "computeinstance-u00q2bv4rkq7sth2vf",
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/cambridgeltl-sapbert-pubmedbert-fulltext:wrapper-cuda12-torch2100-20260630@sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+      "pod": "forge-probe-cambridgeltl-sapbert-pub-rtx6000-us-central1-1ce1b1",
+      "region": "us-central1",
+      "report_json": "docs/operations/model-onboarding/hcls/sapbert-slow-tokenizer-wrapper-20260528T-cycle-rtx6000-smoke.json",
+      "report_md": "docs/operations/model-onboarding/hcls/sapbert-slow-tokenizer-wrapper-20260528T-cycle-rtx6000-smoke.md",
+      "request_body": {
+        "encoding_format": "float",
+        "input": "Coronavirus infection",
+        "model": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+        "normalize": false
+      },
+      "request_ms_p50": 4,
+      "request_ms_samples": [
+        4
+      ],
+      "request_time_source": "model_time_ms",
+      "response_evidence": "OpenAI-compatible embedding response with pooling=cls, tokenizer_backend=slow_bert_vocab, embedding_dimensions=768, model_time_ms=4.",
+      "response_status": 200,
+      "startup_ms": 214644,
+      "status": "supported",
+      "tokens_per_second": 1250.0,
+      "vram_used_gb": 0.87,
+      "warmup_model_ms": 510
+    },
+    "runtime_stack": {
+      "fastapi": "0.136.1",
+      "huggingface_hub": "0.33.4",
+      "safetensors": "0.5.2",
+      "starlette": "1.0.1",
+      "torch": "2.10.0+cu128",
+      "transformers": "4.48.3",
+      "uvicorn": "0.34.0"
+    },
+    "secret_policy": "This public, ungated model explicitly sets HF_TOKEN and HUGGING_FACE_HUB_TOKEN to empty strings so wrapper pods do not receive unnecessary platform Hugging Face credentials.",
+    "tokenizer_fallback_reason": {
+      "blocked_runtime": "cambridgeltl-sapbert-pubmedbert-fulltext-tei-cuda-1-9",
+      "blocked_runtime_failure": "TEI CUDA 1.9.3 attempted to download tokenizer.json and exited with HTTP 404 before readiness.",
+      "selected_fallback": "Forge-owned wrapper loads AutoTokenizer(use_fast=false) from published vocab.txt/tokenizer_config.json and computes CLS embeddings with AutoModel.",
+      "tokenizer_json_head_status": 404,
+      "upstream_files": [
+        ".gitattributes",
+        "README.md",
+        "config.json",
+        "flax_model.msgpack",
+        "model.safetensors",
+        "pytorch_model.bin",
+        "special_tokens_map.json",
+        "tf_model.h5",
+        "tokenizer_config.json",
+        "vocab.txt"
+      ]
+    },
+    "validation_state_20260528T_cycle": {
+      "container_import_smoke": "passed_routes_root_embeddings_ready",
+      "embedding_parity": "passed_against_direct_transformers_cls_on_non_phi_entities",
+      "gpu_probe": "five_cell_matrix_supported_with_3_warmups_and_10_measured_requests_per_fresh_cell",
+      "hidden_upsert": "succeeded_keep_existing_family_latest",
+      "image_build": "succeeded_local_docker_fallback_after_repo_script_start_error",
+      "manifest_schema": "validated_by_scripts_upsert_model_dry_run",
+      "publication_decision": "keep_hidden_onboarding",
+      "regional_mirror": "verified_all_four_regions",
+      "wrapper_compile": "passed"
+    },
+    "wrapper_source": "services/models/hcls/sapbert_pubmedbert_fulltext"
+  },
+  "capabilities": [
+    "healthcare",
+    "entity_linking",
+    "umls",
+    "embedding",
+    "retrieval",
+    "bert",
+    "pubmedbert",
+    "huggingface",
+    "forge_wrapper",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/cambridgeltl-sapbert-pubmedbert-fulltext:wrapper-cuda12-torch2100-20260630",
+  "container_image_size_bytes": 4288792245,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-28T04:13:51.249737+00:00",
+  "default_eligible": true,
+  "description": "SapBERT PubMedBERT is an Apache-2.0 biomedical entity representation model trained with UMLS 2020AA entity names using PubMedBERT as the base model. The upstream repository is public, ungated, enabled, safetensors-backed, and tagged for biomedical feature extraction and entity linking, but it publishes vocab.txt plus tokenizer_config.json without tokenizer.json. The earlier TEI CUDA 1.9.3 candidate failed before readiness while trying to download tokenizer.json. This hidden Forge-owned wrapper is the tokenizer fallback path: it loads the same pinned revision with AutoTokenizer(use_fast=false), computes last-layer CLS embeddings through AutoModel, serves /v1/embeddings with model_time_ms and token usage, clears inherited Hugging Face token env vars, and stores Hugging Face, Transformers, Torch, XDG, and HOME caches under /mnt/data. The wrapper image is built, mirrored, live-upserted, supported across the tracked Forge GPU matrix, and passes direct-Transformers CLS parity on non-PHI biomedical entity strings. Keep onboarding/default-ineligible until HCLS product safety review approves the research-only UX.",
+  "family_id": "895540e6-1a90-4d7c-be3d-3a1e18881e72",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/cambridgeltl-sapbert-pubmedbert-fulltext/wrapper-cuda12",
+      "HF_TOKEN": "",
+      "HOME": "/mnt/data/home/cambridgeltl-sapbert-pubmedbert-fulltext",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/cambridgeltl-sapbert-pubmedbert-fulltext/wrapper-cuda12/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "SAPBERT_ALLOW_REMOTE_DOWNLOAD": "true",
+      "SAPBERT_DEVICE": "auto",
+      "SAPBERT_HF_REVISION": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d",
+      "SAPBERT_MAX_LENGTH": "512",
+      "SAPBERT_MODEL_ID": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "SAPBERT_MODEL_SLUG": "cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+      "SAPBERT_TORCH_DTYPE": "auto",
+      "SERVED_MODEL_NAME": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "TORCH_HOME": "/mnt/data/huggingface/cambridgeltl-sapbert-pubmedbert-fulltext/wrapper-cuda12/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/cambridgeltl-sapbert-pubmedbert-fulltext/wrapper-cuda12/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/huggingface/cambridgeltl-sapbert-pubmedbert-fulltext/wrapper-cuda12/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 10001,
+    "container_run_as_user": 10001,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T06:07:44.933198+00:00",
+      "region": "us-central1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 3,
+      "request_ms_p99": 3,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 188826,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1666.67,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.99,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T06:10:57.576383+00:00",
+      "region": "uk-south1",
+      "request_ms": 3,
+      "request_ms_p50": 3,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 168759,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1666.67,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.99,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:model:CreateContainerConfigError:container has runAsNonRoot and image will run as root (pod: \"forge-probe-cambridgeltl-sapbert-pub-h100-eu-north1-bc27f5_forge-models(1bb6e963-6347-432d-84bb-a0ba5090f1b5)\", container: model)",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:19:26.444262+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:model:CreateContainerConfigError:container has runAsNonRoot and image will run as root (pod: \"forge-probe-cambridgeltl-sapbert-pub-h200-eu-north1-f0fd8f_forge-models(ce8c50c8-08a5-4cb1-b168-dc190d090f24)\", container: model)",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:16:51.432704+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T06:07:47.417014+00:00",
+      "region": "eu-north2",
+      "request_ms": 4,
+      "request_ms_p50": 4,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 167305,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1250.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.92,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:model:CreateContainerConfigError:container has runAsNonRoot and image will run as root (pod: \"forge-probe-cambridgeltl-sapbert-pub-h200-us-central1-d9b3ba_forge-models(c2ead3d5-c3ce-4dd7-903d-39d9da4bd158)\", container: model)",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:19:53.173758+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T06:04:56.465168+00:00",
+      "region": "eu-north1",
+      "request_ms": 5,
+      "request_ms_p50": 5,
+      "request_ms_p95": 6,
+      "request_ms_p99": 6,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 22518,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1000.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.73,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T06:22:23.019254+00:00",
+      "region": "us-central1",
+      "request_ms": 4,
+      "request_ms_p50": 4,
+      "request_ms_p95": 4,
+      "request_ms_p99": 5,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 212427,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1250.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.87,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "edc9fbb7-375d-4101-a3c1-4e51da5df228",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "cambridgeltl-sapbert-pubmedbert-fulltext",
+  "name": "SapBERT PubMedBERT Entity Embeddings",
+  "parameter_count": 109482240,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}",
+        "normalize": "{{normalize}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+    },
+    "input_fields": [
+      {
+        "default": "Coronavirus infection",
+        "key": "input",
+        "label": "Biomedical entity name",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      },
+      {
+        "default": false,
+        "key": "normalize",
+        "label": "Normalize vector",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/cambridgeltl-sapbert-pubmedbert-fulltext/wrapper-cuda12",
+      "embedding_dimension": 768,
+      "kind": "forge_sapbert_embeddings",
+      "model_id": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "model_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d",
+      "pooling": "cls",
+      "served_model_name": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "tokenizer_backend": "slow_bert_vocab"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical entity normalization, synonym retrieval, clustering, semantic search, and entity-linking evaluation.",
+      "body": "Use only for nonclinical biomedical entity normalization, synonym retrieval, clustering, semantic search, and entity-linking evaluation. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical entity embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/cambridgeltl-sapbert-pubmedbert-fulltext:wrapper-cuda12-torch2100-20260630@sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/cambridgeltl-sapbert-pubmedbert-fulltext:wrapper-cuda12-torch2100-20260630@sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/cambridgeltl-sapbert-pubmedbert-fulltext:wrapper-cuda12-torch2100-20260630@sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/cambridgeltl-sapbert-pubmedbert-fulltext:wrapper-cuda12-torch2100-20260630@sha256:e7f0f8058692a006ef128a9bcdc1bf942e39c588e8c3c66e21ee51bf4d313943"
+  },
+  "release_rank": 52,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "biomedical",
+    "entity-linking",
+    "umls",
+    "embedding",
+    "retrieval",
+    "bert",
+    "pubmedbert",
+    "huggingface",
+    "forge-wrapper",
+    "open-source"
+  ],
+  "updated_at": "2026-06-30T13:52:16.722026+00:00",
+  "version": "hf-090663c-wrapper-cuda12-slow-tokenizer",
+  "version_description": "Hidden Forge-owned SapBERT runtime candidate that bypasses the TEI tokenizer.json blocker by loading the published vocab.txt/tokenizer_config.json through the slow BERT tokenizer path and serving OpenAI-compatible CLS embeddings.",
+  "version_key": "hf-090663c-wrapper-cuda12-slow-tokenizer",
+  "version_label": "HF 090663c Forge wrapper CUDA 12"
+}

@@ -1,0 +1,221 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "f28c18a90e67be33de86381d5dc66dae0d8abf2a96ea93b0c362a4dca04d4d6d",
+  "defaultEligible": false,
+  "displayName": "Use RAIL Berkeley Octo Small",
+  "domain": "robotics-control",
+  "downloadUrl": "/v1/model-skills/rail-berkeley-octo-small-1-5/markdown?download=true",
+  "group": "robotics-control",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "robotics-control",
+    "rail-berkeley-octo-small-1-5"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/rail-berkeley-octo-small-1-5",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "pick up the spoon",
+      "fieldType": "textarea",
+      "key": "instruction",
+      "label": "Instruction",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+      "fieldType": "file_upload",
+      "key": "image_primary_t_minus_1",
+      "label": "Primary Image T-1",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+      "fieldType": "file_upload",
+      "key": "image_primary_t",
+      "label": "Primary Image T",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+      "fieldType": "file_upload",
+      "key": "image_wrist_t_minus_1",
+      "label": "Wrist Image T-1",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+      "fieldType": "file_upload",
+      "key": "image_wrist_t",
+      "label": "Wrist Image T",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "bridge_dataset"
+      ],
+      "default": "bridge_dataset",
+      "fieldType": "select",
+      "key": "stats_key",
+      "label": "Action Statistics",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "num_samples",
+      "label": "Samples",
+      "maximum": 4,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "argmax",
+      "label": "Deterministic",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1.0,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2.0,
+      "minimum": 0.1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-rail-berkeley-octo-small-1-5\ndescription: Use the exact Forge model rail-berkeley-octo-small-1-5 for text, image to robot_action, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use RAIL Berkeley Octo Small\n\n- Model slug: `rail-berkeley-octo-small-1-5`\n- Model family: `rail-berkeley-octo`\n- Version: `small-1.5-cuda13-jax-clip-20260528tcurrent` (`small-1-5`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / robotics-control / rail-berkeley-octo-small-1-5`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `mit`\n\n## Purpose\n\nOcto Small 1.5 is a 27M-parameter transformer-based generalist robot policy trained on a mix of Open X-Embodiment robot datasets.\n\n## Use this exact model when\n\n- Use this exact `rail-berkeley-octo-small-1-5` version when the task supplies text, image and needs robot_action, json.\n- Octo Small 1.5 is a 27M-parameter transformer-based generalist robot policy trained on a mix of Open X-Embodiment robot datasets.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['robot_action', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `instruction` (textarea, optional): Instruction\n- `image_primary_t_minus_1` (file_upload, optional): Primary Image T-1\n- `image_primary_t` (file_upload, optional): Primary Image T\n- `image_wrist_t_minus_1` (file_upload, optional): Wrist Image T-1\n- `image_wrist_t` (file_upload, optional): Wrist Image T\n- `stats_key` (select, optional): Action Statistics\n- `num_samples` (number, optional; bounds 1..4): Samples\n- `argmax` (checkbox, optional): Deterministic\n- `temperature` (number, optional; bounds 0.1..2.0): Temperature\n\nRequest template:\n\n```json\n{\n  \"argmax\": \"{{argmax}}\",\n  \"image_primary_t\": \"{{image_primary_t}}\",\n  \"image_primary_t_minus_1\": \"{{image_primary_t_minus_1}}\",\n  \"image_wrist_t\": \"{{image_wrist_t}}\",\n  \"image_wrist_t_minus_1\": \"{{image_wrist_t_minus_1}}\",\n  \"language_instruction\": \"{{instruction}}\",\n  \"model\": \"{{model_slug}}\",\n  \"num_samples\": \"{{num_samples}}\",\n  \"stats_key\": \"{{stats_key}}\",\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `robot_action`\n- `json`\n\n## Route\n\n`POST /v1/inference/rail-berkeley-octo-small-1-5`\n\n## Workflow\n\n1. Load this skill and pin model slug `rail-berkeley-octo-small-1-5` with version key `small-1-5`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/rail-berkeley-octo-small-1-5` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/rail-berkeley-octo-small-1-5`\n- Routes: `/v1/models/rail-berkeley-octo-small-1-5/inference-routes`\n- Regional deployment: `/v1/models/rail-berkeley-octo-small-1-5/regional-deployment`\n- Deployment handoff: `/v1/models/rail-berkeley-octo-small-1-5/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/rail-berkeley-octo-small-1-5/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/rail-berkeley-octo-small-1-5/SKILL.md\n\n## References\n\n- [RAIL Berkeley Octo Small source](https://huggingface.co/rail-berkeley/octo-small-1.5) (model-card)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/rail-berkeley-octo-small-1-5/deploy",
+    "inferenceRoutesUrl": "/v1/models/rail-berkeley-octo-small-1-5/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/rail-berkeley-octo",
+    "modelUrl": "/v1/models/rail-berkeley-octo-small-1-5",
+    "regionalDeploymentUrl": "/v1/models/rail-berkeley-octo-small-1-5/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/rail-berkeley-octo-small-1-5/markdown",
+  "modelFamily": "rail-berkeley-octo",
+  "modelSlug": "rail-berkeley-octo-small-1-5",
+  "modelUrl": "/v1/models/rail-berkeley-octo-small-1-5",
+  "outputFields": [
+    "robot_action",
+    "json"
+  ],
+  "outputModalities": [
+    "robot_action",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Octo Small 1.5 is a 27M-parameter transformer-based generalist robot policy trained on a mix of Open X-Embodiment robot datasets.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/rail-berkeley-octo-small-1-5/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "RAIL Berkeley Octo Small source",
+      "url": "https://huggingface.co/rail-berkeley/octo-small-1.5"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/rail-berkeley-octo-small-1-5/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/robotics-control/rail-berkeley-octo-small-1-5/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "argmax": "{{argmax}}",
+    "image_primary_t": "{{image_primary_t}}",
+    "image_primary_t_minus_1": "{{image_primary_t_minus_1}}",
+    "image_wrist_t": "{{image_wrist_t}}",
+    "image_wrist_t_minus_1": "{{image_wrist_t_minus_1}}",
+    "language_instruction": "{{instruction}}",
+    "model": "{{model_slug}}",
+    "num_samples": "{{num_samples}}",
+    "stats_key": "{{stats_key}}",
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 27000000,
+    "quantization": "jax-checkpoint",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/rail-berkeley/octo-small-1.5",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "robot-policy",
+      "diffusion-policy",
+      "generalist-robot-policy",
+      "open-x-embodiment",
+      "jax",
+      "cuda13",
+      "blackwell-candidate",
+      "forge-wrapper-candidate",
+      "regional-image-mirrored"
+    ],
+    "versionLabel": "Small 1.5 CUDA 13 JAX clip shim wrapper"
+  },
+  "shortDescription": "Octo Small 1.5 is a 27M-parameter transformer-based generalist robot policy trained on a mix of Open X-Embodiment robot datasets.",
+  "skillName": "use-forge-rail-berkeley-octo-small-1-5",
+  "skillUrl": "/v1/model-skills/rail-berkeley-octo-small-1-5",
+  "slug": "rail-berkeley-octo-small-1-5",
+  "stability": "testing",
+  "version": "small-1.5-cuda13-jax-clip-20260528tcurrent",
+  "versionKey": "small-1-5",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['robot_action', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `rail-berkeley-octo-small-1-5` version when the task supplies text, image and needs robot_action, json.",
+    "Octo Small 1.5 is a 27M-parameter transformer-based generalist robot policy trained on a mix of Open X-Embodiment robot datasets.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `rail-berkeley-octo-small-1-5` with version key `small-1-5`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/rail-berkeley-octo-small-1-5` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

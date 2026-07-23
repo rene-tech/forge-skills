@@ -1,0 +1,1196 @@
+{
+  "benchmark_scores": {
+    "artifact_files": {
+      "config_json": {
+        "blob_id": "4f87e24cb4cc127dc1aaf78a06f515c659c9c231",
+        "path": "config.json",
+        "size_bytes": 2485
+      },
+      "model_safetensors": {
+        "blob_id": "cf32a4a735142fc107823082363cd2b455bc6605",
+        "path": "model.safetensors",
+        "sha256": "94b2cc4047e38b20b9abb929e9600b00da12104161c749c7e505c8587fb23e24",
+        "size_bytes": 906712520
+      },
+      "normalizer_safetensors": {
+        "blob_id": "5bd61c8e724deb3a7040b4627a07a1f7497b29a9",
+        "path": "policy_preprocessor_step_5_normalizer_processor.safetensors",
+        "sha256": "0d78b66a32f716de9512185531bc2111a128075de6cde64b0f4868046243f9f4",
+        "size_bytes": 8768
+      },
+      "policy_preprocessor_json": {
+        "blob_id": "93eb84f727c5f43900d20bf16bbc3ca8e9acd946",
+        "path": "policy_preprocessor.json",
+        "size_bytes": 2122
+      },
+      "readme_md": {
+        "blob_id": "6b32c6452772e317688bbba08a0ed47cddc0a9ed",
+        "path": "README.md",
+        "size_bytes": 1696
+      },
+      "train_config_json": {
+        "blob_id": "36dffd64185d8d7e68b96817413c038a2deddcbe",
+        "path": "train_config.json",
+        "size_bytes": 6991
+      },
+      "unnormalizer_safetensors": {
+        "blob_id": "5bd61c8e724deb3a7040b4627a07a1f7497b29a9",
+        "path": "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+        "sha256": "0d78b66a32f716de9512185531bc2111a128075de6cde64b0f4868046243f9f4",
+        "size_bytes": 8768
+      }
+    },
+    "b200_b300_retained_action_capture_20260603T02Z": {
+      "cache_volume_mode": "emptyDir",
+      "cleanup_status": "b200_and_b300_probe_pods_deleted",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "reports": {
+        "B200/us-central1": {
+          "action_dim": 7,
+          "action_steps": 50,
+          "actions_outer": 1,
+          "all_actions_finite": true,
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "full_response_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T02Z-b200-full-action-response.json",
+          "gpu_node": "computeinstance-u00m47dkr55e8yk9fb",
+          "max_action_value": 3.069903612136841,
+          "min_action_value": -2.9709293842315674,
+          "model_time_source": "query_time_ms",
+          "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T02Z-b200-noactuation-action-capture-smoke.json",
+          "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T02Z-b200-noactuation-action-capture-smoke.md",
+          "response_status": 200,
+          "retained_response_query_time_ms": 144,
+          "smoke_request_ms": 11464,
+          "startup_ms": 360911,
+          "vram_used_gb": 1.71
+        },
+        "B300/uk-south1": {
+          "action_dim": 7,
+          "action_steps": 50,
+          "actions_outer": 1,
+          "all_actions_finite": true,
+          "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+          "full_response_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T02Z-b300-full-action-response.json",
+          "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+          "max_action_value": 3.114893674850464,
+          "min_action_value": -2.9059431552886963,
+          "model_time_source": "query_time_ms",
+          "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T02Z-b300-noactuation-action-capture-smoke.json",
+          "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T02Z-b300-noactuation-action-capture-smoke.md",
+          "response_status": 200,
+          "retained_response_query_time_ms": 148,
+          "smoke_request_ms": 30153,
+          "startup_ms": 73256,
+          "vram_used_gb": 1.71
+        }
+      },
+      "status": "supported_no_persist_single_run_full_action_responses_retained"
+    },
+    "b200_no_actuation_3w10_20260603T03Z": {
+      "cache_volume_mode": "emptyDir",
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "gpu_node": "computeinstance-u00wxcgessjryks88y",
+      "gpu_type": "B200",
+      "measured_model_max_ms": 148,
+      "measured_model_mean_ms": 145.1,
+      "measured_model_min_ms": 143,
+      "measured_model_ms": [
+        145,
+        145,
+        146,
+        145,
+        143,
+        148,
+        147,
+        145,
+        143,
+        144
+      ],
+      "measured_model_p50_ms": 145,
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T03Z-b200-3w10-noactuation.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T03Z-b200-3w10-noactuation.md",
+      "request_contract": {
+        "images": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "return_chunk": true,
+        "robot_state_dimension": 7,
+        "robot_type": "so100_follower"
+      },
+      "response_status": 200,
+      "startup_ms": 399854,
+      "status": "supported_no_persist_3_warmup_10_measured_runs",
+      "vram_used_gb": 1.71,
+      "warmup_model_ms": [
+        1546,
+        149,
+        146
+      ]
+    },
+    "b300_health_contract_smoke_20260603T00Z": {
+      "cache_volume_mode": "emptyDir",
+      "cleanup_status": "probe_pod_deleted",
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+      "gpu_type": "B300",
+      "health_contract_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T00Z-b300-health-contract.json",
+      "health_contract_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T00Z-b300-health-contract.md",
+      "health_contract_observed": {
+        "action_steps": 50,
+        "camera_keys": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "chunk_size": 50,
+        "cuda_sdp_backend": {
+          "compute_capability": [
+            10,
+            3
+          ],
+          "cudnn_sdp_disabled_for_sm103": true,
+          "cudnn_sdp_enabled": false,
+          "flash_sdp_enabled": true,
+          "math_sdp_enabled": true,
+          "mem_efficient_sdp_enabled": true
+        },
+        "model_id": "lerobot/smolvla_vlabench",
+        "ready": true,
+        "state_dim": 7
+      },
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T00Z-b300-health-contract-smoke.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T00Z-b300-health-contract-smoke.md",
+      "request_ms": 31908,
+      "response_status": 200,
+      "startup_ms": 79969,
+      "status": "supported_no_persist_single_measured_run_health_contract_retained",
+      "vram_used_gb": 1.71
+    },
+    "b300_no_actuation_3w10_20260603T01Z": {
+      "cache_volume_mode": "emptyDir",
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+      "gpu_type": "B300",
+      "measured_model_max_ms": 156,
+      "measured_model_mean_ms": 148.7,
+      "measured_model_min_ms": 146,
+      "measured_model_ms": [
+        147,
+        149,
+        146,
+        146,
+        150,
+        149,
+        148,
+        148,
+        148,
+        156
+      ],
+      "measured_model_p50_ms": 148,
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T01Z-b300-3w10-noactuation.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T01Z-b300-3w10-noactuation.md",
+      "request_contract": {
+        "images": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "return_chunk": true,
+        "robot_state_dimension": 7,
+        "robot_type": "so100_follower"
+      },
+      "response_status": 200,
+      "startup_ms": 79900,
+      "status": "supported_no_persist_3_warmup_10_measured_runs",
+      "vram_used_gb": 1.71,
+      "warmup_model_ms": [
+        30926,
+        149,
+        148
+      ]
+    },
+    "b300_no_actuation_smoke_20260602T23Z": {
+      "cache_volume_mode": "emptyDir",
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "gpu_type": "B300",
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260602T23Z-b300-no-actuation-smoke.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260602T23Z-b300-no-actuation-smoke.md",
+      "request_contract": {
+        "images": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "return_chunk": true,
+        "robot_state_dimension": 7,
+        "robot_type": "so100_follower"
+      },
+      "request_ms": 32919,
+      "response_contract_observed": {
+        "action_dim": 7,
+        "model": "huggingface-lerobot-smolvla-vlabench",
+        "robot_type": "so100_follower"
+      },
+      "response_status": 200,
+      "startup_ms": 358437,
+      "status": "supported_no_persist_single_measured_run",
+      "vram_used_gb": 1.71
+    },
+    "base_model": "lerobot/smolvla_base",
+    "blocked_actions": [
+      "Do not publish or mark default_eligible=true.",
+      "Do not mark GPU compatibility supported until no-actuation evidence is persisted as support rows and robot-policy safety review approves the exact checkpoint, wrapper digest, camera contract, and 7D state.",
+      "Do not actuate or route to real robot control without VLABench simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff."
+    ],
+    "blockers": [
+      "B200/us-central1, B300/uk-south1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 have no-persist 3-warmup/10-measured results plus retained full action-response evidence, but no broader persisted multi-cell matrix or support rows exist for this checkpoint.",
+      "Processor statistics disagree with config-declared state dimension; retained health and full action-response evidence confirm the 7D runtime contract for the exact digest, but simulator/HIL safety evidence is still absent.",
+      "No VLABench simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff exists."
+    ],
+    "cache_root": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench",
+    "candidate_discovery_20260602T21Z": {
+      "candidates_checked": {
+        "lerobot/smolvla_metaworld": "Public Apache-2.0 SmolVLA sibling at revision cd6778d2cfa724c1bf5fc637490548e54d81dc4c with higher downloads, but VLABench is newer and targets a larger language-conditioned benchmark surface.",
+        "lerobot/smolvla_robocerebra": "Public Apache-2.0 SmolVLA sibling at revision 7ff416240ff73bda10a2b5dbd4245f72eaa959d0 with 906712520-byte model.safetensors; not selected this cycle.",
+        "lerobot/smolvla_robomme": "Public Apache-2.0 SmolVLA sibling at revision 0a5a0a13aed297b584b03b9de76228ee8908db6b with 906712520-byte model.safetensors; not selected because VLABench gives broader catalog coverage than another Robo* sibling this cycle.",
+        "lerobot/smolvla_vlabench": "Selected; public, ungated, safetensors-backed, Apache-2.0 metadata, VLABench dataset, and compatible with the existing configurable Forge SmolVLA wrapper after using the shipped 7D processor-stat state contract.",
+        "nvidia/Cosmos3-Nano-Policy-DROID": "Fallback from existing 2026-06-02 evidence note remains hard-blocked by OpenMDW-1.1 compliance review, no pullable policy-server image digest, and WebSocket/msgpack upstream server protocol rather than Forge HTTP inference."
+      }
+    },
+    "checked_at": "2026-06-03T15:04:11Z",
+    "container_decision": "Reuse the Forge-owned SmolVLA wrapper image because it is configurable by FORGE_MODEL_SLUG, FORGE_MODEL_ID, cache root, SMOLVLA_CAMERA_KEYS, and SMOLVLA_STATE_DIM. The public Hugging Face LeRobot GPU image is a CUDA/LeRobot base image, not a Forge HTTP inference server.",
+    "dataset": "lerobot/vlabench_unified",
+    "existing_container_search": {
+      "decision": "Do not use the public LeRobot GPU image directly because it is a shell/training image and exposes no Forge HTTP inference API. Reuse the existing Forge SmolVLA wrapper image, which adds health, inference, policy reset, /mnt/data cache wiring, and the B300/SM103 SDPA workaround.",
+      "forge_wrapper_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "ghcr_lerobot_gpu_latest": "access_denied_for_anonymous_crane_digest",
+      "ghcr_lerobot_latest": "access_denied_for_anonymous_crane_digest",
+      "upstream_gpu_image": "docker.io/huggingface/lerobot-gpu:latest",
+      "upstream_gpu_image_current_index_digest": "sha256:edbfe971f17424328254d59eb24c5d2b5a5f5732544dbedbf55e10d4e8608942"
+    },
+    "forge_wrapper_path": "services/models/physical-ai/huggingface_lerobot_smolvla_base",
+    "h200_no_actuation_3w10_20260603T05Z": {
+      "cache_volume_mode": "emptyDir",
+      "cleanup_status": "probe_pod_deleted_after_script_exit",
+      "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "gpu_node": "computeinstance-e02xmpc3hhyvpwf4qg",
+      "gpu_type": "H200",
+      "measured_model_max_ms": 174,
+      "measured_model_mean_ms": 166.8,
+      "measured_model_min_ms": 159,
+      "measured_model_ms": [
+        169,
+        168,
+        167,
+        167,
+        169,
+        174,
+        164,
+        167,
+        164,
+        159
+      ],
+      "measured_model_p50_ms": 167,
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "eu-north2",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T05Z-h200-3w10-noactuation.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T05Z-h200-3w10-noactuation.md",
+      "request_contract": {
+        "images": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "return_chunk": true,
+        "robot_state_dimension": 7,
+        "robot_type": "so100_follower"
+      },
+      "response_status": 200,
+      "startup_ms": 351962,
+      "status": "supported_no_persist_3_warmup_10_measured_runs",
+      "vram_used_gb": 1.63,
+      "warmup_model_ms": [
+        1046,
+        170,
+        167
+      ]
+    },
+    "h200_retained_action_capture_20260603T09Z": {
+      "action_dim": 7,
+      "action_steps": 50,
+      "actions_outer": 1,
+      "all_actions_finite": true,
+      "cache_volume_mode": "emptyDir",
+      "cleanup_status": "retained_probe_pod_deleted_and_local_port_forward_stopped",
+      "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "full_response_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T09Z-h200-full-action-response.json",
+      "gpu_node": "computeinstance-e02qrr5b7wych6gj31",
+      "gpu_type": "H200",
+      "health_contract_observed": {
+        "action_steps": 50,
+        "camera_keys": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "chunk_size": 50,
+        "cuda_sdp_backend": {
+          "compute_capability": [
+            9,
+            0
+          ],
+          "cudnn_sdp_enabled": true,
+          "flash_sdp_enabled": true,
+          "math_sdp_enabled": true,
+          "mem_efficient_sdp_enabled": true
+        },
+        "model_id": "lerobot/smolvla_vlabench",
+        "ready": true,
+        "state_dim": 7
+      },
+      "max_action_value": 3.2856407165527344,
+      "min_action_value": -2.7861297130584717,
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "eu-north2",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T09Z-h200-noactuation-action-capture-smoke.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T09Z-h200-noactuation-action-capture-smoke.md",
+      "response_status": 200,
+      "retained_response_query_time_ms": 168,
+      "smoke_request_ms": 1051,
+      "startup_ms": 85993,
+      "status": "supported_no_persist_single_run_full_action_response_retained",
+      "vram_used_gb": 1.63
+    },
+    "hf_api_url": "https://huggingface.co/api/models/lerobot/smolvla_vlabench?blobs=true",
+    "hf_downloads_observed": 321,
+    "hf_last_modified": "2026-04-21T12:20:27.000Z",
+    "hf_library_name": "lerobot",
+    "hf_likes_observed": 2,
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "lerobot/smolvla_vlabench",
+    "hf_model_license": "apache-2.0",
+    "hf_model_private": false,
+    "hf_model_revision": "4fd586e12dc14b04d9d606ddbb77448df4f0ff29",
+    "hf_pipeline_tag": "robotics",
+    "image_manifest_inspect_20260602T21Z": {
+      "command": "docker buildx imagetools inspect cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "media_type": "application/vnd.docker.distribution.manifest.v2+json"
+    },
+    "l40s_retained_action_capture_20260603T10Z": {
+      "action_dim": 7,
+      "action_steps": 50,
+      "actions_outer": 1,
+      "all_actions_finite": true,
+      "cache_volume_mode": "emptyDir",
+      "cleanup_status": "retained_probe_pod_deleted_and_local_port_forward_stopped",
+      "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "full_response_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T10Z-l40s-full-action-response.json",
+      "gpu_node": "computeinstance-e00df18tkn1sh37ez7",
+      "gpu_type": "L40S",
+      "health_contract_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T10Z-l40s-health-contract.json",
+      "health_contract_observed": {
+        "action_steps": 50,
+        "camera_keys": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "chunk_size": 50,
+        "cuda_sdp_backend": {
+          "compute_capability": [
+            8,
+            9
+          ],
+          "cudnn_sdp_disabled_for_sm103": false,
+          "cudnn_sdp_enabled": true,
+          "flash_sdp_enabled": true,
+          "math_sdp_enabled": true,
+          "mem_efficient_sdp_enabled": true
+        },
+        "model_id": "lerobot/smolvla_vlabench",
+        "ready": true,
+        "state_dim": 7
+      },
+      "max_action_value": 3.1290740966796875,
+      "min_action_value": -2.85514235496521,
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "eu-north1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T10Z-l40s-noactuation-action-capture-smoke.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T10Z-l40s-noactuation-action-capture-smoke.md",
+      "response_status": 200,
+      "retained_response_query_time_ms": 229,
+      "smoke_request_ms": 778,
+      "startup_ms": 86713,
+      "status": "supported_no_persist_single_run_full_action_response_retained",
+      "vram_used_gb": 1.44
+    },
+    "latest_live_probe_status": "rtx6000_us_central1_no_persist_3w10_full_action_response_retained_not_persisted",
+    "live_health_capacity_20260602T23Z": {
+      "blocked_preferred_b200_path": "public inventory exposed no B200 cell and us-central1 had long-lived Ready=Unknown nodes plus a recent B200 FailedScheduling warning",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_live_health_snapshot.py",
+      "control_rollouts": "api_scheduler_web_job_worker_oauth2_proxy_ok",
+      "public_http": "forge_root_and_models_api_200",
+      "result": "nonzero_due_to_us_central1_node_warnings_but_control_public_http_and_uk_south1_healthy",
+      "target_fallback_inventory": {
+        "free_gpus": 8,
+        "gpu_type": "B300",
+        "region": "uk-south1",
+        "total_gpus": 8
+      }
+    },
+    "live_health_capacity_20260603T00Z": {
+      "blocked_preferred_b200_path": "us-central1 still had eight long-lived Ready=Unknown nodes; B200 preferred path remained blocked",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_live_health_snapshot.py",
+      "control_rollouts": "api_scheduler_web_job_worker_oauth2_proxy_ok",
+      "public_http": "forge_root_and_models_api_200",
+      "result": "nonzero_due_to_us_central1_node_warnings_but_control_public_http_and_uk_south1_healthy",
+      "target_fallback_inventory": {
+        "free_gpus": 8,
+        "gpu_type": "B300",
+        "region": "uk-south1",
+        "total_gpus": 8
+      }
+    },
+    "live_health_capacity_20260603T01Z": {
+      "blocked_preferred_b200_path": "us-central1 still had eight Ready=Unknown nodes and recent NodeNotReady warnings; B200/us-central1 was not used this cycle",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_live_health_snapshot.py --output-json /tmp/forge_live_health_physical_ai_20260603T_cycle.json",
+      "control_rollouts": "api_scheduler_web_job_worker_oauth2_proxy_ok",
+      "public_http": "forge_root_and_models_api_200",
+      "result": "nonzero_due_to_us_central1_node_warnings_but_control_public_http_and_uk_south1_healthy",
+      "target_fallback_inventory": {
+        "free_gpus": 8,
+        "gpu_type": "B300",
+        "region": "uk-south1",
+        "total_gpus": 8
+      }
+    },
+    "live_health_capacity_20260603T02Z": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_live_health_snapshot.py",
+      "control_rollouts": "api_scheduler_web_job_worker_oauth2_proxy_ok",
+      "production_risk_decision": "No running model pods were present in us-central1 or uk-south1 forge-models before the SmolVLA probes. Proceeded with no-persist exact-digest probes and kept publication disabled.",
+      "public_http": "forge_root_and_models_api_200",
+      "result": "passed_with_control_rollouts_public_http_and_all_nodes_ready; recent us-central1 warnings observed but public inventory exposed B200/us-central1 with 8 free GPUs",
+      "target_inventory": {
+        "B200/us-central1": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "B300/uk-south1": {
+          "free_gpus": 7,
+          "total_gpus": 8
+        }
+      }
+    },
+    "live_health_capacity_20260603T05Z": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_live_health_snapshot.py --output-json /tmp/forge_live_health_physical_ai_20260603T05Z.json",
+      "compute_contexts": {
+        "nebius-mk8s-forge-eu2": {
+          "node_findings": 0,
+          "non_running_pods": 0,
+          "ok": true,
+          "old_forge_pods": 0,
+          "unready_running_pods": 0
+        },
+        "nebius-mk8s-forge-us": {
+          "node_findings": 8,
+          "non_running_pods": 0,
+          "ok": false,
+          "old_forge_pods": 0,
+          "unready_running_pods": 0
+        }
+      },
+      "control_rollouts": "api_scheduler_web_job_worker_oauth2_proxy_ok",
+      "production_risk_decision": "Use H200/eu-north2 for one no-persist exact-digest no-actuation probe. Do not use us-central1/RTX6000 while eight US nodes remain Ready=Unknown. No SmolVLA VLABench probe pods were running in eu-north2 before launch.",
+      "public_http": "forge_root_and_models_api_200",
+      "result": "nonzero_due_to_us_central1_ready_unknown_nodes_but_control_public_http_eu_north2_and_uk_south1_healthy",
+      "target_inventory": {
+        "B300/uk-south1": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "H200/eu-north2": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "L40S/eu-north1": {
+          "free_gpus": 6,
+          "total_gpus": 8
+        }
+      }
+    },
+    "live_health_capacity_20260603T11Z": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_live_health_snapshot.py --output-json /tmp/forge_live_health_physical_ai_20260603T_worker_rtx6000.json",
+      "compute_contexts": {
+        "nebius-mk8s-forge-us": {
+          "node_findings": 1,
+          "non_running_pods": 0,
+          "ok": false,
+          "old_forge_pods": 0,
+          "unready_running_pods": 0
+        }
+      },
+      "control_rollouts": "api_scheduler_web_job_worker_oauth2_proxy_ok",
+      "production_risk_decision": "Proceed with one no-persist exact-digest RTX6000/us-central1 probe on a free RTX6000 node. The active GROMACS RTX6000 pod was on computeinstance-u00rs92q6kvx1ndw3t; the SmolVLA probe scheduled on computeinstance-u00b9d93cwtrzjsr6h. The only node pressure finding was an H200 node, not the selected RTX6000 node.",
+      "public_http": "forge_root_and_models_api_200",
+      "result": "nonzero_due_to_us_central1_h200_disk_pressure_and_recent_warning_events_but_control_public_http_and_free_rtx6000_nodes_available",
+      "target_inventory": {
+        "RTX6000/us-central1": {
+          "free_nodes_observed": 7,
+          "ready_nodes_observed": 8,
+          "running_unrelated_rtx6000_pods": 1
+        }
+      }
+    },
+    "live_hidden_upsert_20260602T23Z": {
+      "command": "POSTGRES_URL sourced from forge-platform-secrets without printing; PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/physical_ai/huggingface-lerobot-smolvla-vlabench.json",
+      "default_eligible": false,
+      "gpu_compatibility_unchanged": true,
+      "result": "succeeded_hidden_onboarding",
+      "status": "onboarding"
+    },
+    "live_hidden_upsert_20260603T15Z": {
+      "command": "POSTGRES_URL sourced from forge-system/forge-platform-secrets without printing; PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/physical_ai/huggingface-lerobot-smolvla-vlabench.json",
+      "default_eligible": false,
+      "gpu_compatibility_unchanged": true,
+      "manifest_update": "Corrected stale summary state after RTX6000/us-central1 no-persist 3-warmup/10-measured benchmark and retained health/full-action evidence completed.",
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "result": "succeeded_hidden_onboarding",
+      "status": "onboarding"
+    },
+    "live_probe_status": "b300_uk_south1_no_persist_smoke_and_health_contract_supported_not_persisted",
+    "model_spec": {
+      "action_dim": 7,
+      "chunk_size": 50,
+      "config_camera_keys": [
+        "camera1",
+        "camera2",
+        "camera3"
+      ],
+      "config_state_dim": 6,
+      "image_shape_chw": [
+        3,
+        256,
+        256
+      ],
+      "n_action_steps": 50,
+      "normalizer_state_dim": 7,
+      "policy_type": "smolvla",
+      "processor_rename_source_camera_keys": [
+        "image",
+        "second_image",
+        "wrist_image"
+      ]
+    },
+    "next_safe_commands": [
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/physical_ai/huggingface-lerobot-smolvla-vlabench.json --dry-run",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q tests/test_physical_ai_manifests.py::test_smolvla_vlabench_manifest_keeps_runtime_and_safety_gates -p no:cacheprovider",
+      "If B200 inventory returns after a future outage or us-central1 health regression, keep the 2026-06-03T03Z B200 3-warmup/10-measured evidence as the current baseline and rerun B200 only if the digest, payload, or health context changes before marking any support row.",
+      "Persist hidden support-row evidence for the five validated no-actuation cells only after a live upsert path is available, then keep publication blocked pending robot-policy safety signoff.",
+      "Add VLABench simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff before any public/default promotion."
+    ],
+    "onboarding_state": "hidden_live_upserted_b200_b300_h200_l40s_rtx6000_exact_digest_no_persist_no_actuation_3warmup_10measured_supported_all_five_cells_retained_full_action_responses_keep_gpu_flags_false_pending_persisted_support_rows_and_robot_policy_safety_validation",
+    "processor_artifact_discrepancy": {
+      "manifest_choice": "Use source camera keys image, second_image, and wrist_image plus SMOLVLA_STATE_DIM=7 so the wrapper payload matches the shipped processor statistics. B300 no-persist smokes confirmed the request/response action contract for this payload, the 2026-06-03T00Z retained health payload confirmed the exact runtime uses state_dim=7 with those source camera keys, the 2026-06-03T01Z B300 3-warmup/10-measured benchmark passed, the 2026-06-03T02Z retained B200/B300 full responses confirmed finite 50x7 action chunks, the 2026-06-03T03Z B200 3-warmup/10-measured benchmark passed, the 2026-06-03T05Z H200 3-warmup/10-measured benchmark passed, the 2026-06-03T09Z retained H200 response captured the full finite action chunk from the exact digest, the 2026-06-03T10Z retained L40S response captured the full finite action chunk plus health contract from the exact digest, and the 2026-06-03T11Z RTX6000 benchmark plus retained health/full response captured the same finite action contract on the exact digest. No compatibility cell should be marked supported until the broader persisted matrix and safety gates complete.",
+      "risk": "config.json and policy_preprocessor.json declare 6D observation.state, but the normalizer safetensors stores 7D observation.state statistics and pre-rename source camera stats."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_digest_verification_20260602T21Z": {
+      "regional_digests": {
+        "eu-north1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "eu-north2": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "uk-south1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "us-central1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+      },
+      "status": "digest_qualified_refs_verified_all_regions",
+      "verified_regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ]
+    },
+    "regional_digest_verification_20260602T22Z": {
+      "regional_digests": {
+        "eu-north1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "eu-north2": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "uk-south1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "us-central1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+      },
+      "status": "digest_qualified_refs_reverified_all_regions",
+      "verified_regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ]
+    },
+    "robot_policy_safety_gate": {
+      "allowed_scope": "Technical no-actuation action-trace validation only. The Forge wrapper returns action tensors and metadata; it must not connect to a simulator controller or physical robot from the customer-facing path.",
+      "cleared_requirements": [
+        "public ungated Apache-2.0 artifact verified",
+        "digest-qualified Forge HTTP wrapper mirrored in all active regions",
+        "manifest runtime-contract gate added",
+        "retained health-payload capture confirming model_id, camera keys, state_dim, action_steps, and chunk_size on the exact digest",
+        "B300/uk-south1 exact-digest no-actuation 3-warmup/10-measured benchmark completed with p50 148 ms model time",
+        "B200/us-central1, B300/uk-south1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 retained full action responses confirmed one 50-step chunk of 7D finite numeric actions",
+        "B200/us-central1 exact-digest no-actuation 3-warmup/10-measured benchmark completed with p50 145 ms model time",
+        "H200/eu-north2 exact-digest no-actuation 3-warmup/10-measured benchmark completed with p50 167 ms model time",
+        "L40S/eu-north1 exact-digest no-actuation 3-warmup/10-measured benchmark completed with p50 237 ms model time",
+        "RTX6000/us-central1 exact-digest no-actuation 3-warmup/10-measured benchmark completed with p50 168 ms model time"
+      ],
+      "disallowed_uses": [
+        "real robot actuation",
+        "closed-loop robot control",
+        "safety-critical manipulation",
+        "claims of VLABench task success without simulator replay"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "remaining_requirements": [
+        "broader persisted 3-warmup/10-measured matrix with finite action responses on each enabled GPU cell",
+        "VLABench simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff for this exact checkpoint, wrapper digest, camera contract, and 7D state"
+      ]
+    },
+    "rtx6000_no_actuation_3w10_and_retained_action_capture_20260603T11Z": {
+      "action_dim": 7,
+      "action_steps": 50,
+      "actions_outer": 1,
+      "all_actions_finite": true,
+      "cache_volume_mode": "emptyDir",
+      "cleanup_status": "retained_probe_pod_deleted_and_local_port_forward_stopped",
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "full_response_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T11Z-rtx6000-full-action-response.json",
+      "gpu_node": "computeinstance-u00b9d93cwtrzjsr6h",
+      "gpu_type": "RTX6000",
+      "health_contract_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T11Z-rtx6000-health-contract.json",
+      "health_contract_observed": {
+        "action_steps": 50,
+        "camera_keys": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "chunk_size": 50,
+        "cuda_sdp_backend": {
+          "compute_capability": [
+            12,
+            0
+          ],
+          "cudnn_sdp_disabled_for_sm103": false,
+          "cudnn_sdp_enabled": true,
+          "flash_sdp_enabled": true,
+          "math_sdp_enabled": true,
+          "mem_efficient_sdp_enabled": true
+        },
+        "model_id": "lerobot/smolvla_vlabench",
+        "ready": true,
+        "state_dim": 7
+      },
+      "max_action_value": 3.5886456966400146,
+      "measured_model_max_ms": 174,
+      "measured_model_mean_ms": 167.8,
+      "measured_model_min_ms": 163,
+      "measured_model_ms": [
+        170,
+        170,
+        174,
+        164,
+        168,
+        169,
+        163,
+        168,
+        166,
+        166
+      ],
+      "measured_model_p50_ms": 168,
+      "min_action_value": -2.845550060272217,
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_effect": "none_keep_hidden_do_not_mark_gpu_supported",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T11Z-rtx6000-3w10-noactuation.json",
+      "report_md": "docs/model-onboarding/physical-ai/smolvla-vlabench-20260603T11Z-rtx6000-3w10-noactuation.md",
+      "response_status": 200,
+      "retained_response_query_time_ms": 166,
+      "startup_ms": 397937,
+      "status": "supported_no_persist_3_warmup_10_measured_runs_full_action_response_retained",
+      "vram_used_gb": 1.58,
+      "warmup_model_ms": [
+        784,
+        167,
+        164
+      ]
+    },
+    "runtime_contract_probe_gate_20260602T22Z": {
+      "exact_container_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "expected_wrapper_env": {
+        "FORGE_MODEL_ID": "lerobot/smolvla_vlabench",
+        "FORGE_MODEL_REVISION": "4fd586e12dc14b04d9d606ddbb77448df4f0ff29",
+        "FORGE_MODEL_SLUG": "huggingface-lerobot-smolvla-vlabench",
+        "SMOLVLA_CAMERA_KEYS": "image,second_image,wrist_image",
+        "SMOLVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+        "SMOLVLA_STATE_DIM": "7"
+      },
+      "gate_type": "exact_digest_runtime_contract",
+      "must_clear_before": [
+        "any gpu_compatibility cell set to true",
+        "3-warmup/10-measured matrix benchmark",
+        "publication or default eligibility"
+      ],
+      "promotion_decision": "keep_hidden_onboarding_until_full_matrix_and_safety_evidence_exists",
+      "required_health_observations": {
+        "action_steps": 50,
+        "camera_keys": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "chunk_size": 50,
+        "model_id": "lerobot/smolvla_vlabench",
+        "ready": true,
+        "state_dim": 7
+      },
+      "required_request_contract": {
+        "file_urls_allowed": false,
+        "images": [
+          "image",
+          "second_image",
+          "wrist_image"
+        ],
+        "instruction": "Move the object to the requested target location.",
+        "remote_media_urls_allowed": false,
+        "return_chunk": true,
+        "robot_state_dimension": 7
+      },
+      "required_response_contract": {
+        "action_dim": 7,
+        "action_summary_required": true,
+        "actions_must_be_finite": true,
+        "http_status": 200,
+        "model": "huggingface-lerobot-smolvla-vlabench",
+        "robot_type": "so100_follower"
+      },
+      "status": "b300_no_persist_smoke_and_retained_health_contract_passed_not_matrix"
+    },
+    "selected_candidate": "lerobot/smolvla_vlabench",
+    "selected_reason": "Public ungated Apache-2.0 SmolVLA-family robotics policy checkpoint, absent from existing Forge manifests, compatible with the configurable Forge SmolVLA wrapper, and useful for adding VLABench manipulation coverage without a new container build.",
+    "selected_wrapper_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "selected_wrapper_source_manifest": "manifests/models/physical_ai/huggingface-lerobot-smolvla-libero.json",
+    "source_urls": [
+      "https://huggingface.co/lerobot/smolvla_vlabench",
+      "https://huggingface.co/api/models/lerobot/smolvla_vlabench?blobs=true",
+      "https://github.com/huggingface/lerobot",
+      "https://github.com/huggingface/lerobot/blob/main/LICENSE"
+    ],
+    "upstream_source_license": "Apache-2.0",
+    "upstream_source_main_sha": "906b585826c0e34235a347554abfb94e0d65484b",
+    "upstream_source_pushed_at": "2026-06-02T17:25:16Z",
+    "upstream_source_repo": "https://github.com/huggingface/lerobot",
+    "upstream_source_updated_at": "2026-06-02T22:04:09Z"
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "smolvla",
+    "lerobot",
+    "vlabench",
+    "forge_wrapper_candidate",
+    "robot_policy_safety_pending",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+  "container_image_size_bytes": 5693682815,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-02T23:05:59.695562+00:00",
+  "default_eligible": false,
+  "description": "Hidden onboarding candidate for lerobot/smolvla_vlabench, a SmolVLA-family vision-language-action policy fine-tuned on the VLABench unified robotics dataset. It maps a natural-language instruction, three camera observations, and robot state into continuous robot action traces through the shared Forge SmolVLA HTTP wrapper. The manifest records artifact/license/container evidence, an explicit /mnt/data cache plan, and a machine-checkable runtime-contract gate for the processor discrepancy. B300/uk-south1 no-persist smokes confirmed the exact digest can start and return a finite 7D action trace for the source-camera payload, 2026-06-03T00Z retained health evidence confirmed model_id, source camera keys, state_dim=7, action_steps=50, and chunk_size=50, 2026-06-03T01Z produced a B300/uk-south1 3-warmup/10-measured no-actuation benchmark with p50 148 ms model time, 2026-06-03T02Z retained B200/us-central1 plus B300/uk-south1 full action responses confirmed finite 50x7 chunks, 2026-06-03T03Z produced a B200/us-central1 3-warmup/10-measured no-actuation benchmark with p50 145 ms model time, 2026-06-03T05Z produced an H200/eu-north2 3-warmup/10-measured no-actuation benchmark with p50 167 ms model time, 2026-06-03T09Z retained an H200/eu-north2 full action response confirming a finite 1x50x7 action chunk, 2026-06-03T10Z retained L40S/eu-north1 health plus full action evidence confirming a finite 1x50x7 action chunk, and 2026-06-03T11Z produced an RTX6000/us-central1 3-warmup/10-measured no-actuation benchmark plus retained health/full action response confirming a finite 1x50x7 action chunk. Keep hidden because no broader persisted multi-cell matrix, VLABench simulator replay, HIL dry run, or external robot-policy safety signoff has completed for this checkpoint.",
+  "family_id": "fc4fe20b-1a2b-4887-add2-bc6197f66862",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench",
+      "FORGE_MODEL_ID": "lerobot/smolvla_vlabench",
+      "FORGE_MODEL_REVISION": "4fd586e12dc14b04d9d606ddbb77448df4f0ff29",
+      "FORGE_MODEL_SLUG": "huggingface-lerobot-smolvla-vlabench",
+      "HF_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench/huggingface/hub",
+      "SMOLVLA_CAMERA_KEYS": "image,second_image,wrist_image",
+      "SMOLVLA_DEVICE": "cuda",
+      "SMOLVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+      "SMOLVLA_ROBOT_TYPE": "so100_follower",
+      "SMOLVLA_STATE_DIM": "7",
+      "TORCH_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-vlabench/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T13:10:06.189275+00:00",
+      "region": "us-central1",
+      "request_ms": 144,
+      "request_ms_p50": 146,
+      "request_ms_p95": 150,
+      "request_ms_p99": 150,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 265712,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T13:15:50.710100+00:00",
+      "region": "eu-north1",
+      "request_ms": 171,
+      "request_ms_p50": 169,
+      "request_ms_p95": 173,
+      "request_ms_p99": 174,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 30099,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T12:26:56.864705+00:00",
+      "region": "eu-north2",
+      "request_ms": 166,
+      "request_ms_p50": 166,
+      "request_ms_p95": 168,
+      "request_ms_p99": 168,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 65472,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T13:10:40.902560+00:00",
+      "region": "us-central1",
+      "request_ms": 168,
+      "request_ms_p50": 168,
+      "request_ms_p95": 173,
+      "request_ms_p99": 174,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 26815,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T13:23:11.626714+00:00",
+      "region": "eu-north1",
+      "request_ms": 236,
+      "request_ms_p50": 226,
+      "request_ms_p95": 238,
+      "request_ms_p99": 240,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 433041,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.44,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-03T13:15:14.067153+00:00",
+      "region": "us-central1",
+      "request_ms": 191,
+      "request_ms_p50": 186,
+      "request_ms_p95": 209,
+      "request_ms_p99": 213,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 264787,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    }
+  ],
+  "gpu_type": null,
+  "id": "50d3f218-f67d-4cb7-9903-e4e7b80b5aae",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "huggingface-lerobot-smolvla",
+  "name": "Hugging Face LeRobot SmolVLA VLABench",
+  "parameter_count": 450000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "images": {
+          "image": "{{image_image}}",
+          "second_image": "{{second_image_image}}",
+          "wrist_image": "{{wrist_image_image}}"
+        },
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "return_chunk": "{{return_chunk}}",
+        "robot_state": "{{robot_state}}",
+        "robot_type": "{{robot_type}}"
+      },
+      "endpoint": "/v1/inference/huggingface-lerobot-smolvla-vlabench",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Move the object to the requested target location.",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "image_image",
+        "label": "Main Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "second_image_image",
+        "label": "Second Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "wrist_image_image",
+        "label": "Wrist Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "key": "robot_state",
+        "label": "7D Robot State",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "so100_follower",
+        "key": "robot_type",
+        "label": "Robot Type",
+        "options": [
+          "so100_follower",
+          "so101_follower"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": true,
+        "key": "return_chunk",
+        "label": "Return Action Chunk",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+  },
+  "release_rank": 735,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "huggingface-lerobot-smolvla-vlabench",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/lerobot/smolvla_vlabench",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "smolvla",
+    "lerobot",
+    "vlabench",
+    "forge-wrapper-candidate",
+    "robot-policy-safety-pending"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vlabench-4fd586e-wrapper-20260602t21z",
+  "version_description": "Hidden onboarding manifest for the Apache-2.0 lerobot/smolvla_vlabench checkpoint served through the existing Forge SmolVLA HTTP wrapper. The Hugging Face artifact is public, ungated, safetensors-backed, and declares Apache-2.0 model metadata. The selected wrapper digest is already mirrored in all active Forge regions. This manifest uses the shipped processor statistics contract: source camera keys image, second_image, and wrist_image, plus a 7D robot state, because the normalizer safetensors stores 7D observation.state statistics even though config.json and policy_preprocessor.json declare 6D state. The live hidden row was upserted, B300/uk-south1 no-persist exact-digest no-actuation smokes passed, 2026-06-03T00Z retained health evidence confirmed the runtime contract, 2026-06-03T01Z B300/uk-south1 3-warmup/10-measured no-actuation benchmark passed with p50 148 ms model time, 2026-06-03T02Z retained B200/B300 full action responses confirmed finite 50x7 action chunks, 2026-06-03T03Z B200/us-central1 3-warmup/10-measured no-actuation benchmark passed with p50 145 ms model time, 2026-06-03T05Z H200/eu-north2 3-warmup/10-measured no-actuation benchmark passed with p50 167 ms model time, 2026-06-03T09Z retained H200/eu-north2 full action response confirmed one finite 50x7 chunk on the exact digest, 2026-06-03T10Z retained L40S/eu-north1 full action and health evidence confirmed one finite 50x7 chunk on the exact digest, and 2026-06-03T11Z RTX6000/us-central1 3-warmup/10-measured no-actuation benchmark plus retained health/full action response passed with p50 168 ms model time. Keep hidden until the broader persisted matrix and robot-policy safety validation complete.",
+  "version_key": "vlabench",
+  "version_label": "VLABench wrapper candidate"
+}

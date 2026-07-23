@@ -1,0 +1,183 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "e143f97b8e28a10b92ef92d0e1553a1ebf5580e69207a5d9d147be45a5635aed",
+  "defaultEligible": false,
+  "displayName": "Use FLUX.2 Klein 4B",
+  "domain": "image-generation",
+  "downloadUrl": "/v1/model-skills/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/markdown?download=true",
+  "group": "image-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "image-generation",
+    "black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A photorealistic editorial image of a compact GPU workstation in a clean studio, natural perspective, softbox lighting, realistic materials, sharp details, no text",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 16,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 8,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "width",
+      "label": "Width",
+      "maximum": 1536,
+      "minimum": 512,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "height",
+      "label": "Height",
+      "maximum": 1536,
+      "minimum": 512,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-black-forest-labs-flux-2-klein-4b-diffusers-9fecbc80\ndescription: Use the exact Forge model black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload for text to image tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use FLUX.2 Klein 4B\n\n- Model slug: `black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload`\n- Model family: `black-forest-labs-flux-2-klein-4b`\n- Version: `4b-diffusers-pytorch2.5.1-cuda12.4-cpu-offload-v1` (`4b-diffusers-cpu-offload`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / image-generation / black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nFLUX.2 Klein 4B low-VRAM Diffusers variant based on the shared PyTorch 2.5.1 CUDA 12.4 script.\n\n## Use this exact model when\n\n- Use this exact `black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload` version when the task supplies text and needs image.\n- FLUX.2 Klein 4B low-VRAM Diffusers variant based on the shared PyTorch 2.5.1 CUDA 12.4 script.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['image'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `steps` (number, optional; bounds 1..16): Steps\n- `guidance_scale` (number, optional; bounds 1..8): Guidance\n- `width` (number, optional; bounds 512..1536): Width\n- `height` (number, optional; bounds 512..1536): Height\n\nRequest template:\n\n```json\n{\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"height\": \"{{height}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\",\n  \"width\": \"{{width}}\"\n}\n```\n\n## Exact output\n\n- `image`\n\n## Route\n\n`POST /v1/inference/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload`\n\n## Workflow\n\n1. Load this skill and pin model slug `black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload` with version key `4b-diffusers-cpu-offload`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload`\n- Routes: `/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/inference-routes`\n- Regional deployment: `/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/regional-deployment`\n- Deployment handoff: `/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/SKILL.md\n\n## References\n\n- [FLUX.2 Klein 4B source](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/deploy",
+    "inferenceRoutesUrl": "/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/black-forest-labs-flux-2-klein-4b",
+    "modelUrl": "/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+    "regionalDeploymentUrl": "/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/markdown",
+  "modelFamily": "black-forest-labs-flux-2-klein-4b",
+  "modelSlug": "black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+  "modelUrl": "/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+  "outputFields": [
+    "image"
+  ],
+  "outputModalities": [
+    "image"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "FLUX.2 Klein 4B low-VRAM Diffusers variant based on the shared PyTorch 2.5.1 CUDA 12.4 script.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "FLUX.2 Klein 4B source",
+      "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/SKILL.md",
+  "repositoryPath": "skills/models/general/image-generation/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "guidance_scale": "{{guidance_scale}}",
+    "height": "{{height}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}",
+    "width": "{{width}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 4000000000,
+    "quantization": "bfloat16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+    "tags": [
+      "image-generation",
+      "text-to-image",
+      "diffusion",
+      "flux",
+      "flux2",
+      "apache-2.0",
+      "single-gpu",
+      "diffusers",
+      "cpu-offload",
+      "low-vram",
+      "pytorch-2.5.1",
+      "cuda-12.4"
+    ],
+    "versionLabel": "Diffusers CPU Offload"
+  },
+  "shortDescription": "FLUX.2 Klein 4B low-VRAM Diffusers variant based on the shared PyTorch 2.5.1 CUDA 12.4 script.",
+  "skillName": "use-forge-black-forest-labs-flux-2-klein-4b-diffusers-9fecbc80",
+  "skillUrl": "/v1/model-skills/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+  "slug": "black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+  "stability": "experimental",
+  "version": "4b-diffusers-pytorch2.5.1-cuda12.4-cpu-offload-v1",
+  "versionKey": "4b-diffusers-cpu-offload",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['image'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload` version when the task supplies text and needs image.",
+    "FLUX.2 Klein 4B low-VRAM Diffusers variant based on the shared PyTorch 2.5.1 CUDA 12.4 script.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload` with version key `4b-diffusers-cpu-offload`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

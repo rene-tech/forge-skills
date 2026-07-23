@@ -1,0 +1,179 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "4db2c53b35a7eacc19d763cf9a28d952185d77dbe63fe3af764a224e08572ece",
+  "defaultEligible": false,
+  "displayName": "Use Qwen3 14B",
+  "domain": "document-ai",
+  "downloadUrl": "/v1/model-skills/qwen-qwen3-14b-vllm/markdown?download=true",
+  "group": "document-ai",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "document-ai",
+    "qwen-qwen3-14b-vllm"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Use /think to reason briefly, then answer: A team has 9 failing tests, fixes 4, and introduces 2 new failures. How many tests are failing now?",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "enable_thinking",
+      "label": "Thinking Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.6,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.95,
+      "fieldType": "number",
+      "key": "top_p",
+      "label": "Top P",
+      "maximum": 1,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 8192,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-qwen-qwen3-14b-vllm\ndescription: Use the exact Forge model qwen-qwen3-14b-vllm for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Qwen3 14B\n\n- Model slug: `qwen-qwen3-14b-vllm`\n- Model family: `qwen-qwen3-14b`\n- Version: `vllm-0.10.2-cuda12.8` (`vllm-0-10-2-cuda12-8`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / document-ai / qwen-qwen3-14b-vllm`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nQwen3 14B is a public Apache-2.0 dense text-generation model for hybrid reasoning, instruction following, multilingual chat, agent-style prompts, and long-context summarization.\n\n## Use this exact model when\n\n- Use this exact `qwen-qwen3-14b-vllm` version when the task supplies text and needs text.\n- Qwen3 14B is a public Apache-2.0 dense text-generation model for hybrid reasoning, instruction following, multilingual chat, agent-style prompts, and long-context summarization.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `enable_thinking` (checkbox, optional): Thinking Mode\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `top_p` (number, optional; bounds 0..1): Top P\n- `max_tokens` (number, optional; bounds 1..8192): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"chat_template_kwargs\": {\n    \"enable_thinking\": \"{{enable_thinking}}\"\n  },\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"{{prompt}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\",\n  \"top_p\": \"{{top_p}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `qwen-qwen3-14b-vllm` with version key `vllm-0-10-2-cuda12-8`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/qwen-qwen3-14b-vllm`\n- Routes: `/v1/models/qwen-qwen3-14b-vllm/inference-routes`\n- Regional deployment: `/v1/models/qwen-qwen3-14b-vllm/regional-deployment`\n- Deployment handoff: `/v1/models/qwen-qwen3-14b-vllm/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/qwen-qwen3-14b-vllm/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/qwen-qwen3-14b-vllm/SKILL.md\n\n## References\n\n- [Qwen3 14B source](https://huggingface.co/Qwen/Qwen3-14B) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/qwen-qwen3-14b-vllm/deploy",
+    "inferenceRoutesUrl": "/v1/models/qwen-qwen3-14b-vllm/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/qwen-qwen3-14b",
+    "modelUrl": "/v1/models/qwen-qwen3-14b-vllm",
+    "regionalDeploymentUrl": "/v1/models/qwen-qwen3-14b-vllm/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/qwen-qwen3-14b-vllm/markdown",
+  "modelFamily": "qwen-qwen3-14b",
+  "modelSlug": "qwen-qwen3-14b-vllm",
+  "modelUrl": "/v1/models/qwen-qwen3-14b-vllm",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Qwen3 14B is a public Apache-2.0 dense text-generation model for hybrid reasoning, instruction following, multilingual chat, agent-style prompts, and long-context summarization.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/qwen-qwen3-14b-vllm/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Qwen3 14B source",
+      "url": "https://huggingface.co/Qwen/Qwen3-14B"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/qwen-qwen3-14b-vllm/SKILL.md",
+  "repositoryPath": "skills/models/general/document-ai/qwen-qwen3-14b-vllm/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "chat_template_kwargs": {
+      "enable_thinking": "{{enable_thinking}}"
+    },
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "{{prompt}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": true,
+    "temperature": "{{temperature}}",
+    "top_p": "{{top_p}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 14768307200,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/Qwen/Qwen3-14B",
+    "tags": [
+      "llm",
+      "chat",
+      "reasoning",
+      "instruction",
+      "tool-calling",
+      "multilingual",
+      "long-context",
+      "qwen",
+      "vllm"
+    ],
+    "versionLabel": "vLLM 0.10.2 CUDA 12.8"
+  },
+  "shortDescription": "Qwen3 14B is a public Apache-2.0 dense text-generation model for hybrid reasoning, instruction following, multilingual chat, agent-style prompts, and long-context summarization.",
+  "skillName": "use-forge-qwen-qwen3-14b-vllm",
+  "skillUrl": "/v1/model-skills/qwen-qwen3-14b-vllm",
+  "slug": "qwen-qwen3-14b-vllm",
+  "stability": "testing",
+  "version": "vllm-0.10.2-cuda12.8",
+  "versionKey": "vllm-0-10-2-cuda12-8",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `qwen-qwen3-14b-vllm` version when the task supplies text and needs text.",
+    "Qwen3 14B is a public Apache-2.0 dense text-generation model for hybrid reasoning, instruction following, multilingual chat, agent-style prompts, and long-context summarization.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `qwen-qwen3-14b-vllm` with version key `vllm-0-10-2-cuda12-8`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

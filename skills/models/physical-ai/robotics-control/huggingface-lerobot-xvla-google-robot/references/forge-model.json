@@ -1,0 +1,602 @@
+{
+  "benchmark_scores": {
+    "artifact_files": {
+      "config_json": {
+        "blob_id": "55a71754e484428d9e275cf5cdd947be667c6e9d",
+        "path": "config.json",
+        "size_bytes": 4558
+      },
+      "model_safetensors": {
+        "blob_id": "0ffe94e0257859515822018f66155ba8aba1440e",
+        "path": "model.safetensors",
+        "sha256": "3b1606fc5db7706910fa139fade848417999cc4ab6d85268df93b177989ea041",
+        "size_bytes": 3519073692
+      },
+      "policy_postprocessor_json": {
+        "blob_id": "9f1320da9d949b441eac7dd3e672074b98478ce9",
+        "path": "policy_postprocessor.json",
+        "size_bytes": 575
+      },
+      "policy_preprocessor_json": {
+        "blob_id": "c038aeda0cf14d69bd445b84c0dac01f1adda084",
+        "path": "policy_preprocessor.json",
+        "size_bytes": 1711
+      }
+    },
+    "blockers": [
+      "No live model_gpu_support persistence has been performed for the Google Robot checkpoint.",
+      "No simulator replay, HIL dry run, or external robot-policy safety signoff exists for the Google Robot checkpoint."
+    ],
+    "cache_root": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot",
+    "checked_at": "2026-06-01T00:11:13Z",
+    "current_checks_20260531T17Z": {
+      "b200_gpu_node": "computeinstance-u00vt164gz6kawcfeb",
+      "b200_model_time_source": "query_time_ms",
+      "b200_no_persist_probe": "supported_us_central1_3_warmup_10_measured",
+      "b200_probe_pod": "forge-probe-huggingface-lerobot-xvla-b200-us-central1-ecba9c",
+      "b200_report_json": "docs/model-onboarding/physical-ai/xvla-google-robot-20260531T17Z-b200-probe.json",
+      "b200_report_md": "docs/model-onboarding/physical-ai/xvla-google-robot-20260531T17Z-b200-probe.md",
+      "b200_request_ms": 117,
+      "b200_startup_ms": 282581,
+      "b200_vram_used_gb": 4.37,
+      "hf_recheck": "public_ungated_enabled_revision_f60504c935ba42dad4144985f48eb3ec4a2801e0_license_apache_2_0_pipeline_robotics_library_lerobot",
+      "live_hidden_upsert": "passed_status_onboarding_stability_experimental_default_eligible_false",
+      "manifest_dry_run": "passed",
+      "manifest_json_validation": "passed",
+      "official_container_checks": {
+        "docker.io/2toinf/x-vla:latest": "401_unauthorized",
+        "docker.io/lerobot/xvla:latest": "401_unauthorized",
+        "ghcr.io/2toinf/x-vla:latest": "denied"
+      },
+      "persisted_support_rows": false,
+      "publication_decision": "do_not_publish_or_default_enable_pending_remaining_gpu_probes_and_robot_policy_safety",
+      "regional_digest_checks": {
+        "eu-north1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "eu-north2": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "uk-south1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "us-central1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049"
+      },
+      "source_repo_licenses": {
+        "https://github.com/2toinf/X-VLA": "Apache-2.0",
+        "https://github.com/huggingface/lerobot": "Apache-2.0"
+      }
+    },
+    "current_checks_20260531T18Z": {
+      "cells": {
+        "B300/uk-south1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod": "forge-probe-huggingface-lerobot-xvla-b300-uk-south1-f93d23",
+          "request_ms_p50": 124,
+          "request_ms_samples": [
+            124,
+            125,
+            124,
+            124,
+            124,
+            125,
+            124,
+            124,
+            124,
+            124
+          ],
+          "startup_ms": 85427,
+          "status": "supported",
+          "vram_used_gb": 4.37
+        },
+        "H200/eu-north2": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e02xkjz43xcbx889xb",
+          "pod": "forge-probe-huggingface-lerobot-xvla-h200-eu-north2-b29267",
+          "request_ms_p50": 124,
+          "request_ms_samples": [
+            125,
+            124,
+            124,
+            124,
+            124,
+            124,
+            125,
+            124,
+            124,
+            125
+          ],
+          "startup_ms": 78836,
+          "status": "supported",
+          "vram_used_gb": 4.28
+        },
+        "L40S/eu-north1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-e00zfvvbpd91rkzq5b",
+          "pod": "forge-probe-huggingface-lerobot-xvla-l40s-eu-north1-2a2852",
+          "request_ms_p50": 134,
+          "request_ms_samples": [
+            132,
+            133,
+            134,
+            134,
+            134,
+            135,
+            135,
+            133,
+            133,
+            135
+          ],
+          "startup_ms": 92370,
+          "status": "supported",
+          "vram_used_gb": 4.16
+        },
+        "RTX6000/us-central1": {
+          "model_time_source": "query_time_ms",
+          "node": "computeinstance-u00b97s3mnr10cgaaj",
+          "pod": "forge-probe-huggingface-lerobot-xvla-rtx6000-us-central1-114f42",
+          "request_ms_p50": 147,
+          "request_ms_samples": [
+            147,
+            147,
+            148,
+            148,
+            147,
+            149,
+            147,
+            148,
+            147,
+            147
+          ],
+          "startup_ms": 267364,
+          "status": "supported",
+          "vram_used_gb": 4.32
+        }
+      },
+      "inventory_before_probe": {
+        "B300/uk-south1": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "H200/eu-north2": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "L40S/eu-north1": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "RTX6000/us-central1": {
+          "free_gpus": 6,
+          "total_gpus": 7
+        }
+      },
+      "persisted_support_rows": false,
+      "probe_command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingface-lerobot-xvla-google-robot --include-status onboarding --gpu H200 --gpu L40S --gpu RTX6000 --gpu B300 --timeout 1800 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --no-persist --report-json docs/model-onboarding/physical-ai/xvla-google-robot-20260531T18Z-remaining-gpus-probe.json --report-md docs/model-onboarding/physical-ai/xvla-google-robot-20260531T18Z-remaining-gpus-probe.md",
+      "publication_decision": "do_not_publish_or_default_enable_pending_robot_policy_safety_and_support_row_persistence_review",
+      "remaining_gpu_no_persist_probe": "supported_b300_h200_l40s_rtx6000_3_warmup_10_measured",
+      "report_json": "docs/model-onboarding/physical-ai/xvla-google-robot-20260531T18Z-remaining-gpus-probe.json",
+      "report_md": "docs/model-onboarding/physical-ai/xvla-google-robot-20260531T18Z-remaining-gpus-probe.md",
+      "result_summary": {
+        "oom": 0,
+        "other_error": 0,
+        "supported": 4,
+        "unavailable": 0
+      }
+    },
+    "current_checks_20260601T00Z": {
+      "b300_no_persist_retained_pod_probe": {
+        "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+        "first_request_ms": 22229,
+        "model_time_source": "query_time_ms",
+        "node": "computeinstance-e03n331ngk3v1z71a4",
+        "persisted_support_rows": false,
+        "pod": "forge-probe-huggingface-lerobot-xvla-b300-uk-south1-1ca0aa",
+        "report_json": "docs/model-onboarding/physical-ai/xvla-google-robot-20260601T00Z-b300-safety-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/xvla-google-robot-20260601T00Z-b300-safety-probe.md",
+        "startup_ms": 255678,
+        "status": "supported",
+        "vram_used_gb": 4.37
+      },
+      "full_response_query": {
+        "full_action_chunk_committed": false,
+        "query_time_ms": 127,
+        "response_bytes": 12796,
+        "response_sha256": "ccab3f71c72ab45a0b87e8ad42752136af94aa5240d397a32149244c8ca98c72",
+        "response_status": 200,
+        "wall_ms": 340
+      },
+      "hf_recheck": "public_ungated_enabled_revision_f60504c935ba42dad4144985f48eb3ec4a2801e0_license_apache_2_0_pipeline_robotics_library_lerobot",
+      "manifest_dry_run": "passed",
+      "model_safetensors_sha256": "3b1606fc5db7706910fa139fade848417999cc4ab6d85268df93b177989ea041",
+      "publication_decision": "do_not_publish_or_default_enable_pending_simulator_replay_hil_dry_run_or_external_robot_policy_safety_signoff_and_support_row_persistence_review",
+      "regional_digest_checks": {
+        "eu-north1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "eu-north2": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "uk-south1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "us-central1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049"
+      },
+      "retained_pod_cleanup": {
+        "deleted_pod": "forge-probe-huggingface-lerobot-xvla-b300-uk-south1-1ca0aa",
+        "remaining_probe_pods": 0
+      }
+    },
+    "dispatch_carry_forward": {
+      "required_validation": "B200, B300/SM103, H200, L40S, and RTX6000 now have checkpoint-specific no-persist probe evidence. The base X-VLA wrapper evidence remains only a container and dispatch-contract prior for any future checkpoint changes.",
+      "sm103_guard": "XVLA_DISABLE_CUDNN_SDP_ON_SM103=true carries forward the X-VLA wrapper guard that disables cuDNN SDP only on B300/SM103 and keeps Flash, memory-efficient, and math SDPA enabled."
+    },
+    "hf_api_url": "https://huggingface.co/api/models/lerobot/xvla-google-robot?blobs=true",
+    "hf_downloads_observed": 30,
+    "hf_last_modified": "2026-01-22T09:16:46.000Z",
+    "hf_library_name": "lerobot",
+    "hf_likes_observed": 8,
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "lerobot/xvla-google-robot",
+    "hf_model_license": "apache-2.0",
+    "hf_model_private": false,
+    "hf_model_revision": "f60504c935ba42dad4144985f48eb3ec4a2801e0",
+    "hf_pipeline_tag": "robotics",
+    "model_spec": {
+      "action_dim": 20,
+      "action_mode": "ee6d",
+      "camera_keys": [
+        "image",
+        "image2",
+        "empty_camera_0"
+      ],
+      "chunk_size": 30,
+      "image_shapes": {
+        "empty_camera_0": [
+          3,
+          224,
+          224
+        ],
+        "image": [
+          3,
+          256,
+          256
+        ],
+        "image2": [
+          3,
+          256,
+          256
+        ]
+      },
+      "max_state_dim": 20,
+      "n_action_steps": 30,
+      "policy_type": "xvla",
+      "state_dim": 8
+    },
+    "official_container_checks": {
+      "docker.io/2toinf/x-vla:latest": "401_unauthorized",
+      "docker.io/lerobot/xvla:latest": "401_unauthorized",
+      "ghcr.io/2toinf/x-vla:latest": "denied"
+    },
+    "official_serving_container_found": false,
+    "onboarding_state": "hidden_manifest_live_upserted_five_cell_no_persist_supported_b300_static_action_preflight_passed_pending_sim_or_hil_signoff_and_support_row_review",
+    "probe_plan": {
+      "dry_run_manifest_first": true,
+      "next_command": "Run robot-policy simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff against the exact digest and request contract before publication.",
+      "publish_gate": "Keep hidden until support-row persistence review and simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff exist."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_readiness_review_20260531T22Z": {
+      "artifact_recheck": {
+        "hf_library_name": "lerobot",
+        "hf_model_disabled": false,
+        "hf_model_gated": false,
+        "hf_model_license": "apache-2.0",
+        "hf_model_private": false,
+        "hf_model_revision": "f60504c935ba42dad4144985f48eb3ec4a2801e0",
+        "hf_pipeline_tag": "robotics",
+        "model_safetensors_sha256": "3b1606fc5db7706910fa139fade848417999cc4ab6d85268df93b177989ea041",
+        "model_safetensors_size_bytes": 3519073692
+      },
+      "fallback_attempted": {
+        "fallback_result": "Completed artifact, digest, and no-persist evidence review instead of publication or support-row persistence.",
+        "simulation_harness_search": "No scoped X-VLA Google Robot simulator replay or no-actuation HIL harness was found in the wrapper, focused tests, 17Z/18Z probe reports, or worker notes; only the wrapper README safety reminder and prior publication blockers were found."
+      },
+      "no_persist_probe_evidence": {
+        "manifest_gpu_compatibility_meaning": "Local manifest compatibility records no-persist checkpoint evidence only; it is not a live support-row publication.",
+        "measured_runs_per_cell": 10,
+        "persisted_support_rows": false,
+        "source_reports": [
+          "docs/model-onboarding/physical-ai/xvla-google-robot-20260531T17Z-b200-probe.json",
+          "docs/model-onboarding/physical-ai/xvla-google-robot-20260531T18Z-remaining-gpus-probe.json"
+        ],
+        "status": "five_cell_checkpoint_specific_no_persist_supported",
+        "supported_cells": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "H200/eu-north2",
+          "L40S/eu-north1",
+          "RTX6000/us-central1"
+        ],
+        "warmup_runs": 3
+      },
+      "publication_decision": "do_not_publish_keep_hidden_pending_robot_policy_safety_and_support_row_persistence_review",
+      "regional_digest_recheck": {
+        "eu-north1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "eu-north2": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "uk-south1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+        "us-central1": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049"
+      },
+      "required_before_publication": [
+        "Persist or deliberately classify live support rows after supervisor review; do not infer persistence from no-persist probe reports.",
+        "Run simulator replay, no-actuation HIL dry run, or obtain external robot-policy safety signoff for this exact checkpoint revision, wrapper digest, camera contract, 8D state, and 20D action output.",
+        "Keep status onboarding, stability experimental, default_eligible false, and no customer-facing default route until those gates pass."
+      ],
+      "review_artifact": "docs/model-onboarding/physical-ai/xvla-google-robot-20260531T22Z-publication-readiness.json",
+      "reviewed_at": "2026-05-31T22:03:50Z",
+      "status": "review_complete_keep_hidden"
+    },
+    "robot_policy_safety_preflight_20260601T00Z": {
+      "action_contract": {
+        "action_dtype": "torch.float32",
+        "action_mode": "ee6d",
+        "action_shape": [
+          1,
+          30,
+          20
+        ],
+        "gripper_indices": [
+          9,
+          19
+        ],
+        "robot_type": "google_robot"
+      },
+      "decision": "clears_static_no_actuation_action_trace_preflight_only",
+      "publication_decision": "keep_hidden_onboarding_default_eligible_false_pending_simulator_replay_hil_dry_run_or_external_robot_policy_safety_signoff",
+      "scope": "B300/uk-south1 retained-pod no-persist query using the manifest default Google Robot request against wrapper digest sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049 and model revision f60504c935ba42dad4144985f48eb3ec4a2801e0",
+      "static_checks": {
+        "all_finite": true,
+        "continuity_threshold": 0.25,
+        "gripper_max": 0.5232295989990234,
+        "gripper_min": 0.4717807471752167,
+        "gripper_values_within_unit_interval": true,
+        "max_abs_action_value": 0.5232295989990234,
+        "max_abs_step_delta": 0.005043480545282364,
+        "max_abs_step_delta_dim": 5,
+        "max_abs_step_delta_step": 9,
+        "max_abs_step_delta_within_threshold": true,
+        "max_action_value": 0.5232295989990234,
+        "min_action_value": -0.1364179104566574
+      },
+      "status": "passes_no_actuation_static_action_trace_preflight_not_simulation_signoff"
+    },
+    "selected_candidate": "lerobot/xvla-google-robot",
+    "selected_reason": "Public ungated Apache-2.0 LeRobot X-VLA sibling checkpoint that can reuse the already validated Forge X-VLA wrapper image by manifest-level model_id, revision, camera-key, robot-type, and cache changes.",
+    "selected_wrapper_digest": "sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "selected_wrapper_size_bytes": 5693629882,
+    "selected_wrapper_source_slug": "huggingface-lerobot-xvla-base",
+    "selected_wrapper_tag": "gpu-wrapper-cdb7964e-artifactkeys-07z",
+    "source_urls": [
+      "https://huggingface.co/lerobot/xvla-google-robot",
+      "https://huggingface.co/api/models/lerobot/xvla-google-robot?blobs=true",
+      "https://github.com/huggingface/lerobot",
+      "https://github.com/2toinf/X-VLA"
+    ],
+    "upstream_reference_repo": "https://github.com/2toinf/X-VLA",
+    "upstream_source_repo": "https://github.com/huggingface/lerobot"
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "lerobot",
+    "xvla",
+    "google_robot",
+    "safetensors",
+    "apache_2_0",
+    "forge_wrapper_candidate",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-xvla-base:gpu-wrapper-cdb7964e-artifactkeys-07z@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+  "container_image_size_bytes": 5693629882,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-31T17:05:27.550147+00:00",
+  "default_eligible": false,
+  "description": "X-VLA Google Robot is an Apache-2.0 LeRobot vision-language-action policy checkpoint adapted for Google Robot platforms. This hidden Forge candidate reuses the existing digest-backed X-VLA wrapper image with a separate model revision, cache namespace, camera-key contract, and no default eligibility. B200, B300, H200, L40S, and RTX6000 now have checkpoint-specific no-persist support probes. The 2026-06-01T00Z B300 retained-pod preflight confirms the default Google Robot action chunk is finite, continuous, and keeps ee6d gripper channels inside [0, 1], but robot-policy simulator/HIL safety evidence and an explicit support-row persistence review are still required before publication.",
+  "family_id": "0931ccfd-227d-4045-a5ec-9886c71f7474",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot",
+      "FORGE_MODEL_ID": "lerobot/xvla-google-robot",
+      "FORGE_MODEL_REVISION": "f60504c935ba42dad4144985f48eb3ec4a2801e0",
+      "FORGE_MODEL_SLUG": "huggingface-lerobot-xvla-google-robot",
+      "HF_HOME": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot/huggingface/hub",
+      "TORCH_HOME": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/huggingface-lerobot/xvla-google-robot/xdg",
+      "XVLA_ACTION_MODE": "ee6d",
+      "XVLA_CAMERA_KEYS": "image,image2,empty_camera_0",
+      "XVLA_DEVICE": "cuda",
+      "XVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+      "XVLA_DOMAIN_ID": "0",
+      "XVLA_NUM_INFERENCE_STEPS": "10",
+      "XVLA_ROBOT_TYPE": "google_robot",
+      "XVLA_STATE_DIM": "8"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [],
+  "gpu_type": null,
+  "id": "d3c21c77-3ea2-4e59-98a5-95441947df97",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "huggingface-lerobot-xvla",
+  "name": "Hugging Face LeRobot X-VLA Google Robot",
+  "parameter_count": 879738545,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "domain_id": "{{domain_id}}",
+        "images": {
+          "empty_camera_0": "{{empty_camera_0}}",
+          "image": "{{image}}",
+          "image2": "{{image2}}"
+        },
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "return_chunk": "{{return_chunk}}",
+        "robot_state": "{{robot_state}}",
+        "robot_type": "{{robot_type}}"
+      },
+      "endpoint": "/v1/inference/huggingface-lerobot-xvla-google-robot",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Pick up the object and place it at the target location.",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAACAElEQVR42u3TQQ0AAAjEsJOKBCQgnTcaaFIFS5bqgbciAQYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABMIAKGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAbAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAGUAEDgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwAFwLkuoTsZ4H69MAAAAASUVORK5CYII=",
+        "key": "image",
+        "label": "Scene Camera",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAACAElEQVR42u3TQQ0AAAjEsJOKBCQgnTcaaFIFS5bpgrciAQYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABMIAKGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAYAA4ABwABgADAAGAAMAAbAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAGUAEDgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAAGAAMAAYAAwABgADgAHAABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwABgADAAGAAOAAcAAYAAwAFwLlqoTsaF6wR8AAAAASUVORK5CYII=",
+        "key": "image2",
+        "label": "Second Camera",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAACVT/22AAABr0lEQVR42u3SAQkAAAgEsY9qBCMY3RoKgyU4Lj0FZ0UCDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDKoCBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBlUBg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBgWDgkExKBgUg4JBwaAYFAwKBsWgYFAMCgYFg2JQMCgGBYOCQTEoGBSDgkHBoBgUDIpBwaBgUAwKBgWDYlAwKAYFg4JBMSgYFIOCQcGgGBQMikHBoGBQDAoGxaBgUDAoBgWDgkExKBgUg4JBwaAYFAyKQcGgYFAMCgbFoGBQMCgGBYNiUDAoGBSDgkHBoBgUDIpBwaBgUAwKBsWgYFAwKAYFg2JQMCgYFIOCQTEoGBQMikHBoGBQDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQMCgGBYNiUDAoGBSDgkExKBgUDIpBwaAYFAwKBsWgYFAMCgYFg2JQMCgYFIOCQTEoGBQMikHBoBgUDAoG5aMFsn9PELKPO74AAAAASUVORK5CYII=",
+        "key": "empty_camera_0",
+        "label": "Empty Camera 0",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "key": "robot_state",
+        "label": "8D Robot State",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "google_robot",
+        "key": "robot_type",
+        "label": "Robot Type",
+        "options": [
+          "google_robot"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 0,
+        "key": "domain_id",
+        "label": "Domain ID",
+        "max": 6,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "return_chunk",
+        "label": "Return Action Chunk",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-xvla-base:gpu-wrapper-cdb7964e-artifactkeys-07z@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-xvla-base:gpu-wrapper-cdb7964e-artifactkeys-07z@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-xvla-base:gpu-wrapper-cdb7964e-artifactkeys-07z@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-xvla-base:gpu-wrapper-cdb7964e-artifactkeys-07z@sha256:36a084b321fa3c0b8e5868b3eefb4dfd4789302c110d575c7fe5e858db63c049"
+  },
+  "release_rank": 721,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "huggingface-lerobot-xvla-google-robot",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/lerobot/xvla-google-robot",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "lerobot",
+    "xvla",
+    "google-robot",
+    "safetensors",
+    "apache-2.0",
+    "forge-wrapper-candidate"
+  ],
+  "updated_at": "2026-06-30T13:03:05.784331+00:00",
+  "version": "google-robot-f60504c-wrapper-cdb7964e-20260531t16z",
+  "version_description": "Hidden onboarding manifest for the Apache-2.0 lerobot/xvla-google-robot checkpoint served through the existing digest-backed Forge X-VLA HTTP wrapper. The 2026-05-31T17Z pass live-upserted only the hidden onboarding row and produced B200/us-central1 no-persist support evidence; the 2026-05-31T18Z pass added B300, H200, L40S, and RTX6000 no-persist support evidence with 3 warmup plus 10 measured requests per cell. The 2026-05-31T22Z publication-readiness review rechecked the public artifact and regional digest, then kept the model hidden because support rows were not persisted and robot-policy simulator/HIL/external safety signoff is still required before publication. The 2026-06-01T00Z B300 no-persist retained-pod probe added a static no-actuation action-trace preflight for the exact Google Robot checkpoint and wrapper digest; it passed finiteness, continuity, and gripper-range checks but is not simulator replay or HIL safety approval.",
+  "version_key": "google-robot",
+  "version_label": "Google Robot wrapper candidate"
+}

@@ -1,0 +1,379 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+    "artifact_checked_at": "2026-05-28T22:00:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "embedding_dimension": 384,
+      "hidden_size": 384,
+      "matryoshka_dimensions": [
+        384,
+        256,
+        128,
+        64
+      ],
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "pooling": "cls",
+      "pooling_normalized": true
+    },
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 0,
+    "artifact_evidence_20260528T22Z": "Hugging Face API returned private=false, gated=false, disabled=false, cardData.license=apache-2.0, library_name=sentence-transformers, pipeline_tag=sentence-similarity, revision 0e64af8703721ac187772ae93658360a80d72496, and safetensors total 33,360,000 F32 parameters. Raw 1_Pooling/config.json has pooling_mode_cls_token=true and pooling_mode_mean_tokens=false; modules.json includes Transformer, Pooling, and Normalize.",
+    "artifact_gated": false,
+    "artifact_license": "apache-2.0",
+    "artifact_parameters": {
+      "F32": 33360000,
+      "total": 33360000
+    },
+    "artifact_private": false,
+    "artifact_sha": "0e64af8703721ac187772ae93658360a80d72496",
+    "artifact_source": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+    "b300_probe_20260528T22Z": {
+      "benchmark_runs": 10,
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_type": "B300",
+      "inventory": {
+        "free_gpus": 8,
+        "total_gpus": 8
+      },
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "pod_name": "forge-probe-potsu-potsu-medembed-sma-b300-uk-south1-01a6ed",
+      "region": "uk-south1",
+      "report_json": "docs/operations/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-vllm-cuda13-20260528T22Z-b300.json",
+      "report_md": "docs/operations/model-onboarding/hcls/potsu-potsu-medembed-small-biomedical-matryoshka-v2-vllm-cuda13-20260528T22Z-b300.md",
+      "request_ms_p50": 70,
+      "request_ms_samples": [
+        72,
+        70,
+        70,
+        70,
+        73,
+        71,
+        70,
+        70,
+        70,
+        70
+      ],
+      "request_time_source": "client_wall_ms",
+      "startup_ms": 72295,
+      "status": "supported",
+      "tokens_per_second": 742.86,
+      "vram_used_gb": 0.98,
+      "warmup_ms_samples": [
+        3189,
+        72,
+        70
+      ],
+      "warmup_runs": 3
+    },
+    "container_config_snapshot_20260528T22Z": {
+      "architecture": "amd64",
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "entrypoint": [
+        "vllm",
+        "serve"
+      ],
+      "image_version": "vllm/vllm-openai:v0.22.1",
+      "layer_size_bytes": 8669299461,
+      "os": "linux",
+      "source": "https://github.com/vllm-project/vllm",
+      "source_revision": "ad7125a431e176d4161099480a66f0169609a690",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX"
+    },
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+    "container_license_evidence": "The vLLM upstream repository is Apache-2.0 licensed; the selected OCI config labels point to https://github.com/vllm-project/vllm at revision ad7125a431e176d4161099480a66f0169609a690.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_as_sm103_fallback_candidate_after_tei_cuda_1_9_3_rejected_b300",
+    "fallback_reason": {
+      "blocked_runtime": "potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9",
+      "blocked_runtime_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "blocked_runtime_failure": "B300/SM103 pod failed before readiness and the kept diagnostic pod logged `cuda compute cap 103 is not supported`.",
+      "selected_fallback": "vLLM 0.21.0 CUDA 13 pooling profile using an already mirrored digest"
+    },
+    "onboarding_state": "hidden_vllm_cuda13_b300_supported_pending_embedding_parity_matrix_expansion_and_healthcare_review",
+    "probe_plan": {
+      "first_target": "completed_20260528T22Z_on_B300_uk-south1 because TEI CUDA 1.9.3 rejected SM103 and live inventory reported 8 free B300 GPUs.",
+      "next_if_supported": "Run embedding parity against the existing TEI CUDA 1.9.3 row and local sentence-transformers output, then expand to non-B300 matrix cells only after product decides whether this fallback should remain B300-only.",
+      "publication_gate": "Keep hidden/onboarding/default-ineligible until B300 runtime support, embedding parity, broader hardware plan, and healthcare product safety review are complete."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "public_visibility_20260528T22Z": {
+      "public_route_http_status": 404,
+      "response": "model_not_found",
+      "status": "hidden"
+    },
+    "regional_mirror_recheck_20260528T22Z": {
+      "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      }
+    },
+    "runtime_plan": {
+      "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, VLLM_CACHE_ROOT, and XDG_CACHE_HOME are versioned under /mnt/data for first-run model hydration and vLLM artifacts.",
+      "endpoint": "/v1/embeddings",
+      "pooler_config": {
+        "pooling_type": "CLS",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so vLLM does not receive unnecessary platform Hugging Face credentials.",
+      "served_model_name": "potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+    },
+    "validation_state": {
+      "embedding_parity": "not_run",
+      "gpu_probe": "b300_supported_3_warmup_10run_20260528T22Z",
+      "live_upsert": "succeeded_hidden_20260528T22Z",
+      "manifest_schema": "validated_by_scripts_upsert_model_dry_run_20260528T22Z",
+      "publication_decision": "keep_hidden_onboarding"
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "medical_literature",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence_transformers",
+    "matryoshka",
+    "vllm",
+    "blackwell",
+    "sm103_candidate",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-28T22:06:20.235065+00:00",
+  "default_eligible": false,
+  "description": "MedEmbed Small Biomedical Matryoshka v2 is a public Apache-2.0 sentence-transformers model for biomedical semantic similarity and retrieval. Hugging Face metadata rechecked on 2026-05-28T22Z reports private=false, gated=false, disabled=false, library_name=sentence-transformers, pipeline_tag=sentence-similarity, revision 0e64af8703721ac187772ae93658360a80d72496, and safetensors total 33,360,000 F32 parameters. The model card describes a 384-dimensional dense vector space, 512-token maximum sequence length, cosine similarity, CLS pooling, and Matryoshka training for lower-dimensional retrieval tradeoffs. The established hidden TEI CUDA 1.9.3 row supports L40S, B200, and H200 but failed before readiness on B300/SM103 with `cuda compute cap 103 is not supported`. This separate hidden row reuses the already mirrored official vLLM 0.21.0 CUDA 13 image, launches it with `--runner pooling`, and selects CLS pooling with pooler activation so vLLM applies the normalization required by the sentence-transformers Normalize module. The 2026-05-28T22Z hidden B300/uk-south1 probe passed with 72.295 s startup, 70 ms p50 client-wall request time, 742.86 tokens/s, and 0.98 GB VRAM across 3 warmups and 10 measured embedding requests. Keep hidden/onboarding/default-ineligible until embedding parity against the TEI row and local sentence-transformers output, broader matrix expansion, and healthcare product safety review are complete.",
+  "family_id": "4f03db51-a296-452a-af1d-edf58bbf3f47",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": true,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "float16",
+      "--max-model-len",
+      "512",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.35",
+      "--max-num-seqs",
+      "32",
+      "--pooler-config",
+      "{\"pooling_type\":\"CLS\",\"use_activation\":true}"
+    ],
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/vllm-0.21.0-cuda13",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/vllm-0.21.0-cuda13/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/vllm-0.21.0-cuda13/hub",
+      "VLLM_CACHE_ROOT": "/mnt/data/vllm/potsu-potsu-medembed-small-biomedical-matryoshka-v2/vllm-0.21.0-cuda13",
+      "XDG_CACHE_HOME": "/mnt/data/vllm/potsu-potsu-medembed-small-biomedical-matryoshka-v2/vllm-0.21.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T22:07:55.332790+00:00",
+      "region": "uk-south1",
+      "request_ms": 70,
+      "request_ms_p50": 70,
+      "request_ms_p95": 73,
+      "request_ms_p99": 73,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 72295,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 742.86,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.98,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "efb2a0ec-b2c3-44ce-96ee-11dad4c40a4f",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "potsu-potsu-medembed-small-biomedical-matryoshka",
+  "name": "MedEmbed Small Biomedical Matryoshka v2",
+  "parameter_count": 33360000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+    },
+    "input_fields": [
+      {
+        "default": "Query: How does telomerase activity relate to cancer vaccine targets?\n\nPassage: GV1001 is a 16-amino-acid vaccine peptide derived from the human telomerase reverse transcriptase sequence and has been studied as a cancer vaccine candidate.",
+        "key": "input",
+        "label": "Biomedical text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/potsu-potsu-medembed-small-biomedical-matryoshka-v2/vllm-0.21.0-cuda13",
+      "embedding_dimension": 384,
+      "kind": "vllm_pooling_embeddings",
+      "matryoshka_dimensions": [
+        384,
+        256,
+        128,
+        64
+      ],
+      "model_id": "potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "model_revision": "0e64af8703721ac187772ae93658360a80d72496",
+      "pooler_config": {
+        "pooling_type": "CLS",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "served_model_name": "potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "vllm_cache_target": "/mnt/data/vllm/potsu-potsu-medembed-small-biomedical-matryoshka-v2/vllm-0.21.0-cuda13"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation.",
+      "body": "Use only for nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical retrieval embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "release_rank": 57,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "potsu-potsu-medembed-small-biomedical-matryoshka-v2-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical",
+    "medical-literature",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence-transformers",
+    "matryoshka",
+    "vllm",
+    "blackwell",
+    "sm103-candidate",
+    "open-source"
+  ],
+  "updated_at": "2026-06-30T13:36:43.807378+00:00",
+  "version": "hf-0e64af8-vllm-0.21.0-cuda13-pooling",
+  "version_description": "Hidden B300 fallback candidate for MedEmbed Small Biomedical Matryoshka v2 using the already mirrored vLLM 0.21.0 CUDA 13 image in pooling mode after the TEI CUDA 1.9.3 row rejected B300/SM103; the 2026-05-28T22Z B300 probe passed with 3 warmups and 10 measured requests.",
+  "version_key": "hf-0e64af8-vllm-0-21-0-cuda13-pooling",
+  "version_label": "HF 0e64af8 via vLLM 0.21 CUDA 13 pooling"
+}

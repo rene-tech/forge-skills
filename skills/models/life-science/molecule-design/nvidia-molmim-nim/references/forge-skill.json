@@ -1,0 +1,220 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "e448f5df0c4c4df9eadc029ba8e2d514d315816228c3ac29e72265118f85b063",
+  "defaultEligible": false,
+  "displayName": "Use MolMIM NIM",
+  "domain": "molecule-design",
+  "downloadUrl": "/v1/model-skills/nvidia-molmim-nim/markdown?download=true",
+  "group": "molecule-design",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "molecule-design",
+    "nvidia-molmim-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/generate",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+      "fieldType": "textarea",
+      "key": "smi",
+      "label": "Seed molecule SMILES",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [
+        "CMA-ES",
+        "none"
+      ],
+      "default": "CMA-ES",
+      "fieldType": "select",
+      "key": "algorithm",
+      "label": "Generation algorithm",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "QED",
+        "plogP"
+      ],
+      "default": "QED",
+      "fieldType": "select",
+      "key": "property_name",
+      "label": "Property",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "minimize",
+      "label": "Minimize property",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "num_molecules",
+      "label": "Molecules",
+      "maximum": 100,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.4,
+      "fieldType": "number",
+      "key": "min_similarity",
+      "label": "Minimum similarity",
+      "maximum": 0.7,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 8,
+      "fieldType": "number",
+      "key": "particles",
+      "label": "Particles",
+      "maximum": 1000,
+      "minimum": 2,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 3,
+      "fieldType": "number",
+      "key": "iterations",
+      "label": "Iterations",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "scaled_radius",
+      "label": "Scaled radius",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "molecule"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-molmim-nim\ndescription: Use the exact Forge model nvidia-molmim-nim for molecule to molecule, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use MolMIM NIM\n\n- Model slug: `nvidia-molmim-nim`\n- Model family: `nvidia-molmim`\n- Version: `1.0.0` (`nim-1-0-0-regional-mirror-20260605`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / molecule-design / nvidia-molmim-nim`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `NVIDIA NIM terms; production use requires NVIDIA AI Enterprise licensing`\n\n## Purpose\n\nNVIDIA MolMIM NIM is a life-science small-molecule generation service over SMILES input.\n\n## Use this exact model when\n\n- Use this exact `nvidia-molmim-nim` version when the task supplies molecule and needs molecule, json.\n- NVIDIA MolMIM NIM is a life-science small-molecule generation service over SMILES input.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['molecule'] \u2192 ['molecule', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `smi` (textarea, required): Seed molecule SMILES\n- `algorithm` (select, optional): Generation algorithm\n- `property_name` (select, optional): Property\n- `minimize` (checkbox, optional): Minimize property\n- `num_molecules` (number, optional; bounds 1..100): Molecules\n- `min_similarity` (number, optional; bounds 0..0.7): Minimum similarity\n- `particles` (number, optional; bounds 2..1000): Particles\n- `iterations` (number, optional; bounds 1..1000): Iterations\n- `scaled_radius` (number, optional; bounds 0..2): Scaled radius\n\nRequest template:\n\n```json\n{\n  \"algorithm\": \"{{algorithm}}\",\n  \"iterations\": \"{{iterations}}\",\n  \"min_similarity\": \"{{min_similarity}}\",\n  \"minimize\": \"{{minimize}}\",\n  \"num_molecules\": \"{{num_molecules}}\",\n  \"particles\": \"{{particles}}\",\n  \"property_name\": \"{{property_name}}\",\n  \"scaled_radius\": \"{{scaled_radius}}\",\n  \"smi\": \"{{smi}}\"\n}\n```\n\n## Exact output\n\n- `molecule`\n- `json`\n\n## Route\n\n`POST /generate`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-molmim-nim` with version key `nim-1-0-0-regional-mirror-20260605`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /generate` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-molmim-nim`\n- Routes: `/v1/models/nvidia-molmim-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-molmim-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-molmim-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecule-design/nvidia-molmim-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecule-design/nvidia-molmim-nim/SKILL.md\n\n## References\n\n- [MolMIM NIM source](https://build.nvidia.com/nvidia/molmim-generate) (model-card)\n",
+  "license": "NVIDIA NIM terms; production use requires NVIDIA AI Enterprise licensing",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-molmim-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-molmim-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-molmim",
+    "modelUrl": "/v1/models/nvidia-molmim-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-molmim-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-molmim-nim/markdown",
+  "modelFamily": "nvidia-molmim",
+  "modelSlug": "nvidia-molmim-nim",
+  "modelUrl": "/v1/models/nvidia-molmim-nim",
+  "outputFields": [
+    "molecule",
+    "json"
+  ],
+  "outputModalities": [
+    "molecule",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA MolMIM NIM is a life-science small-molecule generation service over SMILES input.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecule-design/nvidia-molmim-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "MolMIM NIM source",
+      "url": "https://build.nvidia.com/nvidia/molmim-generate"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecule-design/nvidia-molmim-nim/SKILL.md",
+  "repositoryPath": "skills/models/life-science/molecule-design/nvidia-molmim-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "algorithm": "{{algorithm}}",
+    "iterations": "{{iterations}}",
+    "min_similarity": "{{min_similarity}}",
+    "minimize": "{{minimize}}",
+    "num_molecules": "{{num_molecules}}",
+    "particles": "{{particles}}",
+    "property_name": "{{property_name}}",
+    "scaled_radius": "{{scaled_radius}}",
+    "smi": "{{smi}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "fp32/fp16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/molmim-generate",
+    "tags": [
+      "life-science",
+      "biology",
+      "chemistry",
+      "drug-discovery",
+      "molecule-generation",
+      "molmim",
+      "nvidia-nim",
+      "regional-mirror"
+    ],
+    "versionLabel": "NIM 1.0.0"
+  },
+  "shortDescription": "NVIDIA MolMIM NIM is a life-science small-molecule generation service over SMILES input.",
+  "skillName": "use-forge-nvidia-molmim-nim",
+  "skillUrl": "/v1/model-skills/nvidia-molmim-nim",
+  "slug": "nvidia-molmim-nim",
+  "stability": "testing",
+  "version": "1.0.0",
+  "versionKey": "nim-1-0-0-regional-mirror-20260605",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['molecule'] \u2192 ['molecule', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-molmim-nim` version when the task supplies molecule and needs molecule, json.",
+    "NVIDIA MolMIM NIM is a life-science small-molecule generation service over SMILES input.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-molmim-nim` with version key `nim-1-0-0-regional-mirror-20260605`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /generate` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

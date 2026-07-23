@@ -1,0 +1,373 @@
+{
+  "benchmark_scores": {
+    "artifact_gated": false,
+    "artifact_private": false,
+    "artifact_source": "https://huggingface.co/zhihan1996/DNABERT-2-117M",
+    "dnabert_attention_fallback": {
+      "approach": "Set BIO_ATTENTION_DROPOUT_OVERRIDE=1e-8 so DNABERT-2 remote bert_layers.py takes its PyTorch attention branch instead of flash_attn_triton.py.",
+      "fp32_failure_report_json": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-benchmark-attnpatch-fp32.json",
+      "fp32_failure_report_md": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-benchmark-attnpatch-fp32.md",
+      "fp32_retry_reason": "First patched H200 probe loaded successfully but returned 500 because the PyTorch attention fallback tried Float x BFloat16 matmul with BIO_TORCH_DTYPE=auto.",
+      "hidden_states_failure_report_json": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-benchmark-hiddenstates-fp32.json",
+      "hidden_states_failure_report_md": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-benchmark-hiddenstates-fp32.md",
+      "hidden_states_retry_reason": "Second patched H200 probe loaded and ran in FP32 but DNABERT-2 remote BertModel did not expose last_hidden_state unless output_hidden_states=True was requested for DNA embeddings.",
+      "previous_failure_report_json": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-smoke-bertcfg-cc-debug.json",
+      "previous_failure_report_md": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-smoke-bertcfg-cc-debug.md",
+      "reason": "The current runtime's Triton API rejects tl.dot(..., trans_b=True), which DNABERT-2's remote flash_attn_triton.py uses.",
+      "tuple_output_retry_reason": "Third patched H200 probe showed DNABERT-2 remote BertModel returns a plain tuple whose first element is token hidden states, rather than a ModelOutput with last_hidden_state/hidden_states attributes."
+    },
+    "hf_api_checked_at": "2026-06-05T00:00:00Z",
+    "hf_hub_disable_xet": true,
+    "hf_library_name": "transformers",
+    "hf_tags": [
+      "transformers",
+      "custom_code"
+    ],
+    "onboarding_state": "h200_eu_north2_supported_full_matrix_pending",
+    "probe_status": {
+      "h200_eu_north2": {
+        "report_json": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-benchmark-tupleout-fp32.json",
+        "report_md": "docs/model-onboarding/hcls/zhihan1996-dnabert-2-117m-dna-embedding-20260605T-event-h200-benchmark-tupleout-fp32.md",
+        "request_ms_p50": 8,
+        "request_ms_samples": [
+          8,
+          8,
+          7,
+          9,
+          8,
+          8,
+          8,
+          8,
+          8,
+          7
+        ],
+        "request_time_source": "model_time_ms",
+        "startup_ms": 16396,
+        "vram_used_gb": 1.18
+      },
+      "next_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug zhihan1996-dnabert-2-117m-dna-embedding --include-status onboarding --gpu H200 --region eu-north2 --timeout 2400 --request-timeout 300 --warmup-runs 1 --benchmark-runs 10 --max-parallel 1 --ephemeral-cache-volumes",
+      "status": "supported_partial",
+      "supported_cells": [
+        "H200/eu-north2"
+      ],
+      "unsupported_or_unprobed_cells": [
+        "B200",
+        "B300",
+        "H100",
+        "L40S",
+        "RTX6000",
+        "other H200 regions"
+      ]
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_verified_at": "2026-06-05T00:00:00Z",
+    "remote_code_required": true,
+    "remote_code_review_status": "pending",
+    "runtime_image_digest": "sha256:bf5c6effc5f0de7e2c6484423c9a203e204e97d507c90b9df77d25430a8c031b",
+    "runtime_image_family": "life-science-transformers:clawbio-dnabert-tupleout-20260605"
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "genomics",
+    "dna",
+    "embedding",
+    "sequence",
+    "dnabert",
+    "transformers",
+    "custom_code",
+    "forge_wrapper",
+    "clawbio",
+    "dna_sequence",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-transformers:clawbio-dnabert-tupleout-20260605@sha256:bf5c6effc5f0de7e2c6484423c9a203e204e97d507c90b9df77d25430a8c031b",
+  "container_image_size_bytes": null,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-05T10:59:18.889111+00:00",
+  "default_eligible": false,
+  "description": "DNABERT-2 is a DNA language model used for genomics sequence representation tasks such as promoter/enhancer and variant-oriented embeddings. This hidden onboarding manifest uses the Forge life-science transformer wrapper with a DNA embedding mode added for the ClawBio event. The upstream Hugging Face metadata marks this repository as public, transformers-based, and custom-code backed; BIO_TRUST_REMOTE_CODE is therefore explicit and must remain reviewed before publication. BIO_ATTENTION_DROPOUT_OVERRIDE is set to route DNABERT-2's remote attention code through its PyTorch fallback instead of a Triton kernel path incompatible with the current PyTorch/Triton runtime, BIO_TORCH_DTYPE=float32 avoids a BF16/FP32 mismatch in that fallback branch, and the wrapper accepts DNABERT-2's tuple-shaped model output. H200/eu-north2 has a 10-run benchmark; the full GPU/region matrix is still pending, so the model must stay hidden and non-default.",
+  "family_id": "44c7d697-7c07-42fc-92ea-c4b3a023582d",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H100": false,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BIO_ATTENTION_DROPOUT_OVERRIDE": "1e-8",
+      "BIO_CONFIG_LOADER": "bert",
+      "BIO_MAX_LENGTH": "512",
+      "BIO_MODEL_ID": "zhihan1996/DNABERT-2-117M",
+      "BIO_MODEL_KIND": "dna_embedding",
+      "BIO_MODEL_SLUG": "zhihan1996-dnabert-2-117m-dna-embedding",
+      "BIO_TORCH_DTYPE": "float32",
+      "BIO_TRUST_REMOTE_CODE": "true",
+      "HF_HOME": "/mnt/data/hf-cache/zhihan1996-dnabert-2-117m-dna-embedding",
+      "HF_HUB_DISABLE_XET": "1",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/zhihan1996-dnabert-2-117m-dna-embedding/hub",
+      "TORCH_HOME": "/mnt/data/torch-cache/zhihan1996-dnabert-2-117m-dna-embedding",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/zhihan1996-dnabert-2-117m-dna-embedding/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/cache/zhihan1996-dnabert-2-117m-dna-embedding"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-06-06T15:08:03.719652+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-06-06T15:14:37.000500+00:00",
+      "region": "us-central1",
+      "request_ms": 6,
+      "request_ms_p50": 6,
+      "request_ms_p95": 6,
+      "request_ms_p99": 6,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 204561,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 2,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.27,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-06T15:26:45.596934+00:00",
+      "region": "uk-south1",
+      "request_ms": 7,
+      "request_ms_p50": 7,
+      "request_ms_p95": 8,
+      "request_ms_p99": 8,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 219614,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.27,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-06T15:18:41.487481+00:00",
+      "region": "eu-north1",
+      "request_ms": 7,
+      "request_ms_p50": 7,
+      "request_ms_p95": 8,
+      "request_ms_p99": 8,
+      "request_ms_samples": 6,
+      "startup_ms_first": null,
+      "startup_ms_probe": 241680,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T12:22:21.999683+00:00",
+      "region": "eu-north2",
+      "request_ms": 8,
+      "request_ms_p50": 8,
+      "request_ms_p95": 9,
+      "request_ms_p99": 9,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 16396,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.44
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-06T15:22:34.357733+00:00",
+      "region": "eu-north1",
+      "request_ms": 9,
+      "request_ms_p50": 9,
+      "request_ms_p95": 10,
+      "request_ms_p99": 10,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 229913,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.44
+    }
+  ],
+  "gpu_type": null,
+  "id": "4eb2e715-6fde-42b1-843f-0dbbafe15b42",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "upstream-license-file-present; license metadata absent from Hugging Face API on 2026-06-05",
+  "modality_input": [
+    "dna_sequence"
+  ],
+  "modality_output": [
+    "embedding",
+    "json"
+  ],
+  "model_family": "zhihan1996-dnabert-2-117m",
+  "name": "DNABERT-2 117M DNA Embeddings",
+  "parameter_count": 117000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_length": "{{max_length}}",
+        "sequence": "{{sequence}}"
+      },
+      "endpoint": "/v1/inference/zhihan1996-dnabert-2-117m-dna-embedding",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "ACGTGTCAGTGATCGTAGCTAGCTAGCTAGCTA",
+        "key": "sequence",
+        "label": "DNA sequence",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 512,
+        "key": "max_length",
+        "label": "Max sequence length",
+        "max": 512,
+        "min": 32,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/hf-cache/zhihan1996-dnabert-2-117m-dna-embedding",
+      "kind": "dna_embedding",
+      "model_id": "zhihan1996/DNABERT-2-117M",
+      "served_model_name": "zhihan1996-dnabert-2-117m-dna-embedding",
+      "trust_remote_code": true
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "max_length"
+      ],
+      "required": [
+        "sequence"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/life-science-transformers:clawbio-dnabert-tupleout-20260605@sha256:bf5c6effc5f0de7e2c6484423c9a203e204e97d507c90b9df77d25430a8c031b",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/life-science-transformers:clawbio-dnabert-tupleout-20260605@sha256:bf5c6effc5f0de7e2c6484423c9a203e204e97d507c90b9df77d25430a8c031b",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/life-science-transformers:clawbio-dnabert-tupleout-20260605@sha256:bf5c6effc5f0de7e2c6484423c9a203e204e97d507c90b9df77d25430a8c031b",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-transformers:clawbio-dnabert-tupleout-20260605@sha256:bf5c6effc5f0de7e2c6484423c9a203e204e97d507c90b9df77d25430a8c031b"
+  },
+  "release_rank": 85,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "zhihan1996-dnabert-2-117m-dna-embedding",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/zhihan1996/DNABERT-2-117M",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "genomics",
+    "dna",
+    "embedding",
+    "sequence",
+    "dnabert",
+    "transformers",
+    "custom-code",
+    "forge-wrapper",
+    "clawbio"
+  ],
+  "updated_at": "2026-06-30T13:03:12.220299+00:00",
+  "version": "hf-main-clawbio-dnabert-tupleout-20260605",
+  "version_description": "DNABERT-2 served as a hidden Forge DNA sequence embedding endpoint through the life-science transformer wrapper.",
+  "version_key": "hf-main-clawbio-dnabert-tupleout-20260605",
+  "version_label": "HF main via Forge life-science DNA wrapper"
+}

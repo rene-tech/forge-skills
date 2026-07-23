@@ -1,0 +1,595 @@
+{
+  "benchmark_scores": {
+    "artifact_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "artifact_parameters": {
+      "BF16": 1804459584,
+      "U8": 19707494400,
+      "total": 21511953984
+    },
+    "artifact_revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+    "blockers": [
+      "Default routing remains blocked until product review accepts the five-GPU active testing profile.",
+      "Matrix request timing source is client_wall_ms, not runtime-internal model timing, so avoid treating these as pure GPU kernel timings.",
+      "Forge currently exposes the chat-completions path here; the vLLM Responses API and built-in tool server flow are not enabled in this manifest."
+    ],
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image",
+    "failed_probe_evidence": [
+      {
+        "checked_at": "2026-05-24T08:24:11Z",
+        "error": "RuntimeError: pod_start_failure:pod_failed",
+        "gpu": "B200",
+        "node": "computeinstance-u00gpk7dcrft1fgxr4",
+        "pod": "forge-probe-openai-gpt-oss-20b-vllm-b200-us-central1-25f529",
+        "region": "us-central1",
+        "report_json": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T08Z-b200-diagnostic.json",
+        "report_md": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T08Z-b200-diagnostic.md",
+        "root_cause": "vLLM engine core failed torch CUDA initialization with cudaGetDeviceCount error 803: unsupported display driver / CUDA driver combination.",
+        "status": "other_error"
+      }
+    ],
+    "fallback_attempted": [
+      "Promoted status to active while keeping stability=testing and default_eligible=false after the 2026-05-24T10Z full matrix produced four supported cells and one RTX6000 failure.",
+      "Removed the manifest-level CUDA compatibility override before this pass; the successful reprobe confirmed the image default VLLM_ENABLE_CUDA_COMPATIBILITY=0 path works on B200.",
+      "Reprobed RTX6000/us-central1 at 2026-05-24T20Z after the full matrix ReadError; the same digest reached readiness, returned HTTP 200, and completed 10 measured warm requests."
+    ],
+    "latest_matrix": {
+      "cells": {
+        "B200/us-central1": {
+          "node": "computeinstance-u00w0dttgfzej44hh3",
+          "pod": "forge-probe-openai-gpt-oss-20b-vllm-b200-us-central1-759df6",
+          "request_ms_p50": 370,
+          "request_ms_samples": [
+            370,
+            369,
+            370,
+            408,
+            386,
+            369,
+            370,
+            370,
+            369,
+            943
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 65062,
+          "status": "supported",
+          "tokens_per_second": 459.46,
+          "vram_used_gb": 157.51
+        },
+        "B300/uk-south1": {
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod": "forge-probe-openai-gpt-oss-20b-vllm-b300-uk-south1-82f569",
+          "request_ms_p50": 287,
+          "request_ms_samples": [
+            278,
+            279,
+            279,
+            336,
+            276,
+            298,
+            301,
+            295,
+            295,
+            279
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 143356,
+          "status": "supported",
+          "tokens_per_second": 592.33,
+          "vram_used_gb": 235.59
+        },
+        "H200/eu-north2": {
+          "node": "computeinstance-e02vy282wq84sh9er9",
+          "pod": "forge-probe-openai-gpt-oss-20b-vllm-h200-eu-north2-2df30f",
+          "request_ms_p50": 374,
+          "request_ms_samples": [
+            374,
+            390,
+            374,
+            403,
+            374,
+            377,
+            375,
+            387,
+            374,
+            374
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 174314,
+          "status": "supported",
+          "tokens_per_second": 454.55,
+          "vram_used_gb": 122.62
+        },
+        "L40S/eu-north1": {
+          "node": "computeinstance-e00rbwdyfy2va3jj09",
+          "pod": "forge-probe-openai-gpt-oss-20b-vllm-l40s-eu-north1-50f5fa",
+          "request_ms_p50": 512,
+          "request_ms_samples": [
+            511,
+            511,
+            512,
+            614,
+            505,
+            518,
+            512,
+            550,
+            512,
+            493
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 138730,
+          "status": "supported",
+          "tokens_per_second": 326.17,
+          "vram_used_gb": 40.03
+        },
+        "RTX6000/us-central1": {
+          "node": "computeinstance-u00nxmpqn2rv3waxbs",
+          "pod": "forge-probe-openai-gpt-oss-20b-vllm-rtx6000-us-central1-a9f853",
+          "prior_error": "ReadError: in 2026-05-24T10Z full matrix on pod forge-probe-openai-gpt-oss-20b-vllm-rtx6000-us-central1-d2fbab",
+          "request_ms_p50": 432,
+          "request_ms_samples": [
+            426,
+            450,
+            428,
+            450,
+            426,
+            435,
+            418,
+            442,
+            438,
+            421
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 492315,
+          "status": "supported",
+          "supplemental_report_json": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T20Z-rtx6000-reprobe.json",
+          "supplemental_report_md": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T20Z-rtx6000-reprobe.md",
+          "tokens_per_second": 393.52,
+          "vram_used_gb": 83.63
+        }
+      },
+      "checked_at": "2026-05-24T20:14:10Z",
+      "report_json": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T10Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T10Z-full-matrix.md",
+      "status": "five_supported_after_rtx6000_reprobe"
+    },
+    "latest_probe": {
+      "checked_at": "2026-05-24T09:15:23Z",
+      "fallback_attempted": "Removed the manifest-level VLLM_ENABLE_CUDA_COMPATIBILITY=1 override and reprobed the onboarding row with --include-status onboarding.",
+      "gpu": "B200",
+      "node": "computeinstance-u00tk4k0j4chbdekqk",
+      "pod": "forge-probe-openai-gpt-oss-20b-vllm-b200-us-central1-6a0bfb",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T09Z-b200-reprobe.json",
+      "report_md": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T09Z-b200-reprobe.md",
+      "request_ms_p50": 370,
+      "request_ms_p95": 398,
+      "request_ms_samples": [
+        370,
+        371,
+        370,
+        408,
+        386,
+        371,
+        370,
+        370,
+        370,
+        370
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "9",
+      "response_status": 200,
+      "startup_ms": 643234,
+      "status": "supported",
+      "tokens_per_second": 459.46,
+      "vram_used_gb": 156.97
+    },
+    "license_evidence": "OpenAI model card and Hugging Face metadata report Apache-2.0 licensing; Hugging Face API reports private=false and gated=false.",
+    "live_db_support_verified_at": "2026-05-24T20:14:10Z",
+    "onboarding_state": "five_cell_cuda13_publishable_active_non_default",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "publish_candidate_active_testing_non_default",
+    "rtx6000_us_central1_reprobe": {
+      "checked_at": "2026-05-24T20:14:10Z",
+      "fallback_attempted": "Reprobed RTX6000/us-central1 after the 2026-05-24T10Z ReadError using the same active model row and digest-pinned regional vLLM 0.21.0 CUDA 13 image.",
+      "node": "computeinstance-u00nxmpqn2rv3waxbs",
+      "pod": "forge-probe-openai-gpt-oss-20b-vllm-rtx6000-us-central1-a9f853",
+      "report_json": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T20Z-rtx6000-reprobe.json",
+      "report_md": "docs/model-onboarding/general/openai-gpt-oss-20b-vllm-20260524T20Z-rtx6000-reprobe.md",
+      "request_ms_p50": 432,
+      "request_ms_samples": [
+        426,
+        450,
+        428,
+        450,
+        426,
+        435,
+        418,
+        442,
+        438,
+        421
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "9",
+      "response_status": 200,
+      "startup_ms": 492315,
+      "status": "supported",
+      "tokens_per_second": 393.52,
+      "vram_used_gb": 83.63
+    },
+    "runtime_evidence": "vLLM GPT-OSS guide documents vLLM serving for openai/gpt-oss-20b, chat completions support, function calling with --tool-call-parser openai --enable-auto-tool-choice, and Hopper/B200 support paths. The 2026-05-24T08Z B200 diagnostic pod resolved GptOssForCausalLM, selected quantization=gpt_oss_mxfp4, parsed 3 safetensors files, and failed before readiness at torch CUDA initialization with cudaGetDeviceCount error 803 while VLLM_ENABLE_CUDA_COMPATIBILITY=1 was set by the manifest. After removing that manifest-level override and refreshing the onboarding row, the 2026-05-24T09Z B200/us-central1 reprobe started the same digest, served the default chat request, returned HTTP 200 with answer `9`, and completed 10 measured warm requests. The 2026-05-24T10Z full matrix probe against the same digest supported B200, B300, H200, and L40S with 3 warmups plus 10 measured chat requests per supported cell; RTX6000 failed with ReadError before a response. The focused 2026-05-24T20Z RTX6000/us-central1 reprobe on the same mirrored digest pulled the 8.67 GB image, started vLLM, returned HTTP 200 with answer `9`, and completed 10 measured warm chat requests.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "source_evidence": [
+      "https://help.openai.com/en/articles/11870455",
+      "https://openai.com/index/gpt-oss-model-card/",
+      "https://huggingface.co/openai/gpt-oss-20b",
+      "https://docs.vllm.ai/projects/recipes/en/latest/OpenAI/GPT-OSS.html",
+      "https://docs.vllm.ai/en/stable/models/supported_models/"
+    ]
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "reasoning",
+    "instruction",
+    "tool_calling",
+    "structured_output",
+    "code",
+    "long_context",
+    "openai",
+    "gpt_oss",
+    "mxfp4",
+    "vllm",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-22T05:06:42.968253+00:00",
+  "default_eligible": false,
+  "description": "OpenAI gpt-oss 20B is a public Apache-2.0 open-weight text reasoning model for instruction following, coding, tool-use style prompts, structured outputs, and agentic workflows. Hugging Face reports the artifact as public and ungated with 21,511,953,984 safetensors parameters, GptOssForCausalLM architecture, native MXFP4 MoE quantization, and 131,072-token max positions. This Forge profile uses the already mirrored vLLM 0.21.0 CUDA 13 OpenAI-compatible image, caps served context to 32,768 tokens for bounded probes, and stores Hugging Face and vLLM caches under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. The 2026-05-24T08Z B200 canary reached vLLM 0.21.0 engine startup but failed CUDA initialization while the manifest forced VLLM_ENABLE_CUDA_COMPATIBILITY=1; this manifest now leaves the CUDA 13 image default compatibility mode in place. The 2026-05-24T10Z full matrix probe succeeded on B200, B300, H200, and L40S with 3 warmups and 10 measured chat requests per supported cell. A focused 2026-05-24T20Z RTX6000 reprobe resolved the prior ReadError, reached HTTP 200, and completed 10 measured warm chat requests on the same digest. The checked-in manifest is active, testing, and non-default so operators can select the five-GPU profile without replacing any default route.",
+  "family_id": "d0850391-5439-4964-a301-86a3a5f73bab",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "openai/gpt-oss-20b",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "openai/gpt-oss-20b",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--max-cudagraph-capture-size",
+      "2048",
+      "--stream-interval",
+      "20",
+      "--gpu-memory-utilization",
+      "0.88",
+      "--max-num-seqs",
+      "8",
+      "--tool-call-parser",
+      "openai",
+      "--enable-auto-tool-choice"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:06:50.490073+00:00",
+      "region": "us-central1",
+      "request_ms": 370,
+      "request_ms_p50": 370,
+      "request_ms_p95": 435,
+      "request_ms_p99": 841,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 65062,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 459.46,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 157.51,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:08:07.042873+00:00",
+      "region": "uk-south1",
+      "request_ms": 287,
+      "request_ms_p50": 287,
+      "request_ms_p95": 320,
+      "request_ms_p99": 333,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 143356,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 592.33,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 235.59,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:08:39.130053+00:00",
+      "region": "eu-north2",
+      "request_ms": 374,
+      "request_ms_p50": 374,
+      "request_ms_p95": 397,
+      "request_ms_p99": 402,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 174314,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 454.55,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.62,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T10:08:06.144747+00:00",
+      "region": "eu-north1",
+      "request_ms": 512,
+      "request_ms_p50": 512,
+      "request_ms_p95": 585,
+      "request_ms_p99": 608,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 138730,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 326.17,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 40.03,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T20:14:09.996434+00:00",
+      "region": "us-central1",
+      "request_ms": 432,
+      "request_ms_p50": 432,
+      "request_ms_p95": 450,
+      "request_ms_p99": 450,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 492315,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 393.52,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 83.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "fa95ed9c-b074-4267-bbfd-23665e27fe07",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "openai-gpt-oss-20b",
+  "name": "OpenAI gpt-oss 20B",
+  "parameter_count": 21511953984,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "include_reasoning": "{{include_reasoning}}",
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "reasoning_effort": "{{reasoning_effort}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "openai/gpt-oss-20b"
+    },
+    "input_fields": [
+      {
+        "default": "Solve this step by step, then give the final answer only: A deployment starts 18 model pods. Two thirds become ready, then 3 more pods fail readiness. How many pods are ready?",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "reasoning_chat",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": "low",
+        "key": "reasoning_effort",
+        "label": "Reasoning Effort",
+        "options": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "type": "select"
+      },
+      {
+        "default": false,
+        "key": "include_reasoning",
+        "label": "Include Reasoning",
+        "type": "checkbox"
+      },
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 512,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "mxfp4",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 43,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "openai-gpt-oss-20b-vllm",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/openai/gpt-oss-20b",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "reasoning",
+    "instruction",
+    "tool-calling",
+    "structured-output",
+    "coding",
+    "long-context",
+    "openai",
+    "gpt-oss",
+    "mxfp4",
+    "vllm"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13",
+  "version_description": "OpenAI gpt-oss 20B served by the official vLLM OpenAI-compatible Docker image.",
+  "version_key": "vllm-0-21-0-cuda13",
+  "version_label": "vLLM 0.21.0 CUDA 13"
+}

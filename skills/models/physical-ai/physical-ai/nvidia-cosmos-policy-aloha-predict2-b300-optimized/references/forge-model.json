@@ -1,0 +1,384 @@
+{
+  "benchmark_scores": {
+    "b300_sxm6_benchmark_runs": 10,
+    "b300_sxm6_warm_avg_ms": 851.4,
+    "b300_sxm6_warm_p50_ms": 847,
+    "b300_sxm6_warm_p95_ms": 860,
+    "image_pin_20260531T19Z": {
+      "all_region_digests_match_manifest": true,
+      "anonymous_no_creds_resolution": "permission_denied_from_nebius_cr",
+      "regional_digest_checks": {
+        "eu-north1": "sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+        "eu-north2": "sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+        "uk-south1": "sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+        "us-central1": "sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96"
+      },
+      "resolution_tools": [
+        "crane digest",
+        "skopeo inspect"
+      ],
+      "selected_digest": "sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+      "tag": "cu130-sm103-ptxas13-nocheckpoint-efficient-decode"
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robotics_policy",
+    "aloha",
+    "cosmos",
+    "blackwell_optimized",
+    "b300",
+    "warm_optimized",
+    "text",
+    "vision",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos-policy-aloha:cu130-sm103-ptxas13-nocheckpoint-efficient-decode@sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T19:23:36.472066+00:00",
+  "default_eligible": false,
+  "description": "B300 warm-optimized Cosmos Policy ALOHA serving build. The image keeps the upstream 50-step ALOHA policy horizon and 10 action denoising steps, uses CUDA 13 ptxas for Triton compilation, auto-enables compiled VAE decode on SM103/CUDA 13, uses a measured Efficient/Flash/cuDNN SDPA priority on SM103, and removes training-only selective activation checkpoint wrappers for inference.",
+  "family_id": "804ca8dd-2515-4479-b51a-9a3b6db76dfb",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-05T18:43:12.910630+00:00",
+      "region": "us-central1",
+      "request_ms": 1198,
+      "request_ms_p50": 1198,
+      "request_ms_p95": 1198,
+      "request_ms_p99": 1198,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 673219,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 8.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:03:16.383408+00:00",
+      "region": "uk-south1",
+      "request_ms": 168729,
+      "request_ms_p50": 846,
+      "request_ms_p95": 76396,
+      "request_ms_p99": 150262,
+      "request_ms_samples": 12,
+      "startup_ms_first": 23000,
+      "startup_ms_probe": 23000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 10.73,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T02:33:15.151727+00:00",
+      "region": "eu-north2",
+      "request_ms": 5119,
+      "request_ms_p50": 3222,
+      "request_ms_p95": 4929,
+      "request_ms_p99": 5081,
+      "request_ms_samples": 2,
+      "startup_ms_first": 11000,
+      "startup_ms_probe": 11000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 8.44,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:22:22.310139+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 1356,
+      "request_ms_p95": 1368,
+      "request_ms_p99": 1368,
+      "request_ms_samples": 10,
+      "startup_ms_first": 11000,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 8.44,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:21:27.363558+00:00",
+      "region": "eu-north1",
+      "request_ms": 4184,
+      "request_ms_p50": 4184,
+      "request_ms_p95": 4184,
+      "request_ms_p99": 4184,
+      "request_ms_samples": 1,
+      "startup_ms_first": 30123,
+      "startup_ms_probe": 30123,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 8.87,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-15T05:01:05.767233+00:00",
+      "region": "us-central1",
+      "request_ms": 4409,
+      "request_ms_p50": 4409,
+      "request_ms_p95": 4409,
+      "request_ms_p99": 4409,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 12000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 8.48,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    }
+  ],
+  "gpu_type": null,
+  "id": "cc22228b-edd4-4603-88cc-0f03d908a827",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "proprio"
+  ],
+  "modality_output": [
+    "json"
+  ],
+  "model_family": "nvidia-cosmos-policy-aloha-predict2",
+  "name": "NVIDIA Cosmos Policy ALOHA Predict2 2B (B300 Optimized)",
+  "parameter_count": 2000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "model": "{{model_slug}}",
+        "num_denoising_steps_action": "{{num_denoising_steps_action}}",
+        "observation": {
+          "left_wrist_image": "{{left_wrist_image}}",
+          "primary_image": "{{primary_image}}",
+          "proprio": "{{proprio}}",
+          "right_wrist_image": "{{right_wrist_image}}",
+          "use_sample_observation": "{{use_sample_observation}}"
+        },
+        "randomize_seed": "{{randomize_seed}}",
+        "seed": "{{seed}}",
+        "task_description": "{{task_description}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos-policy-aloha-predict2-2b",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "fold shirt",
+        "key": "task_description",
+        "label": "Task Description",
+        "options": [
+          "fold shirt",
+          "put candy in bag",
+          "put candies in bowl",
+          "put purple eggplant on plate",
+          "put brown chicken wing on plate",
+          "pick up the cube and place it in the bowl"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "use_sample_observation",
+        "label": "Use Placeholder Observation",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "accept": "image/*",
+        "default": "",
+        "key": "primary_image",
+        "label": "Primary Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/*",
+        "default": "",
+        "key": "left_wrist_image",
+        "label": "Left Wrist Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/*",
+        "default": "",
+        "key": "right_wrist_image",
+        "label": "Right Wrist Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+        "key": "proprio",
+        "label": "ALOHA Proprioception",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "randomize_seed",
+        "label": "Randomize Seed",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "robotics_trace"
+    },
+    "parameter_controls": [
+      {
+        "default": 195,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 10,
+        "key": "num_denoising_steps_action",
+        "label": "Action Denoising Steps",
+        "max": 32,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos-policy-aloha@sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-cosmos-policy-aloha@sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-cosmos-policy-aloha@sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-cosmos-policy-aloha@sha256:e5ceb94100ca84f138be078c8fb5e2cf687bbb2521fd10d5a2fd69ba89258c96"
+  },
+  "release_rank": 30,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+  "source": "custom_container",
+  "source_url": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "policy",
+    "aloha",
+    "cosmos",
+    "blackwell-optimized",
+    "b300",
+    "warm-optimized"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "b300-optimized",
+  "version_description": "CUDA 13 / PyTorch 2.9 B300 build with CUDA 13 ptxas for Triton, automatic SM103 compiled decode, measured SM103 SDPA priority, and inference-only checkpoint wrapper removal.",
+  "version_key": "b300-optimized",
+  "version_label": "B300 optimized"
+}

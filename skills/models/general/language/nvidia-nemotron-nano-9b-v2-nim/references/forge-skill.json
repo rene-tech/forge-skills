@@ -1,0 +1,144 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "2f1f6a7849e1d097d770a4642bf1bb0365625b18b0a8b8510c8318e5386e25c1",
+  "defaultEligible": true,
+  "displayName": "Use NVIDIA Nemotron Nano 9B v2",
+  "domain": "language",
+  "downloadUrl": "/v1/model-skills/nvidia-nemotron-nano-9b-v2-nim/markdown?download=true",
+  "group": "language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "language",
+    "nvidia-nemotron-nano-9b-v2-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Explain in two concise bullet points how Forge probes model support across GPU regions.",
+      "fieldType": "chat_history",
+      "key": "messages",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-nemotron-nano-9b-v2-nim\ndescription: Use the exact Forge model nvidia-nemotron-nano-9b-v2-nim for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Nemotron Nano 9B v2\n\n- Model slug: `nvidia-nemotron-nano-9b-v2-nim`\n- Model family: `nvidia-nemotron-nano-9b-v2`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / language / nvidia-nemotron-nano-9b-v2-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `nvidia-ai-foundation-models-community-license`\n\n## Purpose\n\nNVIDIA Nemotron Nano 9B v2 packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.\n\n## Use this exact model when\n\n- Use this exact `nvidia-nemotron-nano-9b-v2-nim` version when the task supplies text and needs text.\n- NVIDIA Nemotron Nano 9B v2 packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `messages` (chat_history, optional): Prompt\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": \"{{messages}}\",\n  \"model\": \"{{model_slug}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-nemotron-nano-9b-v2-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 4096.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-nemotron-nano-9b-v2-nim`\n- Routes: `/v1/models/nvidia-nemotron-nano-9b-v2-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-nemotron-nano-9b-v2-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-nemotron-nano-9b-v2-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/nvidia-nemotron-nano-9b-v2-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/nvidia-nemotron-nano-9b-v2-nim/SKILL.md\n\n## References\n\n- [NVIDIA Nemotron Nano 9B v2 source](https://build.nvidia.com/nvidia/nvidia-nemotron-nano-9b-v2) (model-card)\n",
+  "license": "nvidia-ai-foundation-models-community-license",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 4096."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-nemotron-nano-9b-v2-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-nemotron-nano-9b-v2-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-nemotron-nano-9b-v2",
+    "modelUrl": "/v1/models/nvidia-nemotron-nano-9b-v2-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-nemotron-nano-9b-v2-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-nemotron-nano-9b-v2-nim/markdown",
+  "modelFamily": "nvidia-nemotron-nano-9b-v2",
+  "modelSlug": "nvidia-nemotron-nano-9b-v2-nim",
+  "modelUrl": "/v1/models/nvidia-nemotron-nano-9b-v2-nim",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA Nemotron Nano 9B v2 packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/nvidia-nemotron-nano-9b-v2-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Nemotron Nano 9B v2 source",
+      "url": "https://build.nvidia.com/nvidia/nvidia-nemotron-nano-9b-v2"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/nvidia-nemotron-nano-9b-v2-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/language/nvidia-nemotron-nano-9b-v2-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": "{{messages}}",
+    "model": "{{model_slug}}",
+    "stream": true,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 4096,
+    "parameterCount": 9000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/nvidia-nemotron-nano-9b-v2",
+    "tags": [
+      "llm",
+      "chat",
+      "reasoning"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "NVIDIA Nemotron Nano 9B v2 packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.",
+  "skillName": "use-forge-nvidia-nemotron-nano-9b-v2-nim",
+  "skillUrl": "/v1/model-skills/nvidia-nemotron-nano-9b-v2-nim",
+  "slug": "nvidia-nemotron-nano-9b-v2-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-nemotron-nano-9b-v2-nim` version when the task supplies text and needs text.",
+    "NVIDIA Nemotron Nano 9B v2 packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-nemotron-nano-9b-v2-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

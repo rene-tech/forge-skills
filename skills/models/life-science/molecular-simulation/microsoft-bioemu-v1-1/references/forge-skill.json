@@ -1,0 +1,223 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "7d425a341af8190caa73870c49e35258843c48e36fe49817742379ae718c28f2",
+  "defaultEligible": false,
+  "displayName": "Use BioEmu v1.1",
+  "domain": "molecular-simulation",
+  "downloadUrl": "/v1/model-skills/microsoft-bioemu-v1-1/markdown?download=true",
+  "group": "molecular-simulation",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "molecular-simulation",
+    "microsoft-bioemu-v1-1"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/microsoft-bioemu-v1-1",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "GYDPETGTWG",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "a3m",
+      "label": "A3M alignment",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 10,
+      "fieldType": "number",
+      "key": "num_samples",
+      "label": "Samples",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [
+        "bioemu-v1.1",
+        "bioemu-v1.0",
+        "bioemu-v1.2"
+      ],
+      "default": "bioemu-v1.1",
+      "fieldType": "select",
+      "key": "model_name",
+      "label": "Checkpoint",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "true",
+        "false"
+      ],
+      "default": "true",
+      "fieldType": "select",
+      "key": "filter_samples",
+      "label": "Filter unphysical samples",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "dpm",
+        "heun"
+      ],
+      "default": "dpm",
+      "fieldType": "select",
+      "key": "denoiser_type",
+      "label": "Denoiser",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 10,
+      "fieldType": "number",
+      "key": "batch_size_100",
+      "label": "Batch size at 100 aa",
+      "maximum": 100,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 101,
+      "fieldType": "number",
+      "key": "base_seed",
+      "label": "Base seed",
+      "maximum": 4294967295,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence",
+    "msa"
+  ],
+  "instructions": "---\nname: use-forge-microsoft-bioemu-v1-1\ndescription: Use the exact Forge model microsoft-bioemu-v1-1 for protein_sequence, msa to structure_ensemble, trajectory, pdb, xtc, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use BioEmu v1.1\n\n- Model slug: `microsoft-bioemu-v1-1`\n- Model family: `microsoft-bioemu`\n- Version: `bioemu-v1.1-via-bioemu-1.3.1-wrapper` (`bioemu-v1-1-bioemu-1-3-1-wrapper`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / molecular-simulation / microsoft-bioemu-v1-1`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `mit`\n\n## Purpose\n\nBioEmu v1.1 is a Microsoft Research AI for Science protein monomer conformational ensemble sampler.\n\n## Use this exact model when\n\n- Use this exact `microsoft-bioemu-v1-1` version when the task supplies protein_sequence, msa and needs structure_ensemble, trajectory, pdb, xtc, json.\n- BioEmu v1.1 is a Microsoft Research AI for Science protein monomer conformational ensemble sampler.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence', 'msa'] \u2192 ['structure_ensemble', 'trajectory', 'pdb', 'xtc', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, required): Protein sequence\n- `a3m` (textarea, optional): A3M alignment\n- `num_samples` (number, optional; bounds 1..1000): Samples\n- `model_name` (select, optional): Checkpoint\n- `filter_samples` (select, optional): Filter unphysical samples\n- `denoiser_type` (select, optional): Denoiser\n- `batch_size_100` (number, optional; bounds 1..100): Batch size at 100 aa\n- `base_seed` (number, optional; bounds 0..4294967295): Base seed\n\nRequest template:\n\n```json\n{\n  \"a3m\": \"{{a3m}}\",\n  \"base_seed\": \"{{base_seed}}\",\n  \"batch_size_100\": \"{{batch_size_100}}\",\n  \"denoiser_type\": \"{{denoiser_type}}\",\n  \"filter_samples\": \"{{filter_samples}}\",\n  \"model_name\": \"{{model_name}}\",\n  \"num_samples\": \"{{num_samples}}\",\n  \"sequence\": \"{{sequence}}\"\n}\n```\n\n## Exact output\n\n- `structure_ensemble`\n- `trajectory`\n- `pdb`\n- `xtc`\n- `json`\n\n## Route\n\n`POST /v1/inference/microsoft-bioemu-v1-1`\n\n## Workflow\n\n1. Load this skill and pin model slug `microsoft-bioemu-v1-1` with version key `bioemu-v1-1-bioemu-1-3-1-wrapper`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/microsoft-bioemu-v1-1` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 1024.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/microsoft-bioemu-v1-1`\n- Routes: `/v1/models/microsoft-bioemu-v1-1/inference-routes`\n- Regional deployment: `/v1/models/microsoft-bioemu-v1-1/regional-deployment`\n- Deployment handoff: `/v1/models/microsoft-bioemu-v1-1/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/microsoft-bioemu-v1-1/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/microsoft-bioemu-v1-1/SKILL.md\n\n## References\n\n- [BioEmu v1.1 source](https://github.com/microsoft/bioemu) (repository)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 1024."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/microsoft-bioemu-v1-1/deploy",
+    "inferenceRoutesUrl": "/v1/models/microsoft-bioemu-v1-1/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/microsoft-bioemu",
+    "modelUrl": "/v1/models/microsoft-bioemu-v1-1",
+    "regionalDeploymentUrl": "/v1/models/microsoft-bioemu-v1-1/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/microsoft-bioemu-v1-1/markdown",
+  "modelFamily": "microsoft-bioemu",
+  "modelSlug": "microsoft-bioemu-v1-1",
+  "modelUrl": "/v1/models/microsoft-bioemu-v1-1",
+  "outputFields": [
+    "structure_ensemble",
+    "trajectory",
+    "pdb",
+    "xtc",
+    "json"
+  ],
+  "outputModalities": [
+    "structure_ensemble",
+    "trajectory",
+    "pdb",
+    "xtc",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "BioEmu v1.1 is a Microsoft Research AI for Science protein monomer conformational ensemble sampler.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/microsoft-bioemu-v1-1/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "BioEmu v1.1 source",
+      "url": "https://github.com/microsoft/bioemu"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/microsoft-bioemu-v1-1/SKILL.md",
+  "repositoryPath": "skills/models/life-science/molecular-simulation/microsoft-bioemu-v1-1/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "a3m": "{{a3m}}",
+    "base_seed": "{{base_seed}}",
+    "batch_size_100": "{{batch_size_100}}",
+    "denoiser_type": "{{denoiser_type}}",
+    "filter_samples": "{{filter_samples}}",
+    "model_name": "{{model_name}}",
+    "num_samples": "{{num_samples}}",
+    "sequence": "{{sequence}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1024,
+    "parameterCount": 31400000,
+    "quantization": "fp32",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/microsoft/bioemu",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "structure",
+      "ensemble",
+      "molecular-dynamics",
+      "bioemu",
+      "forge-wrapper",
+      "open-source",
+      "mit"
+    ],
+    "versionLabel": "BioEmu v1.1 via bioemu 1.3.1 Forge wrapper"
+  },
+  "shortDescription": "BioEmu v1.1 is a Microsoft Research AI for Science protein monomer conformational ensemble sampler.",
+  "skillName": "use-forge-microsoft-bioemu-v1-1",
+  "skillUrl": "/v1/model-skills/microsoft-bioemu-v1-1",
+  "slug": "microsoft-bioemu-v1-1",
+  "stability": "testing",
+  "version": "bioemu-v1.1-via-bioemu-1.3.1-wrapper",
+  "versionKey": "bioemu-v1-1-bioemu-1-3-1-wrapper",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence', 'msa'] \u2192 ['structure_ensemble', 'trajectory', 'pdb', 'xtc', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `microsoft-bioemu-v1-1` version when the task supplies protein_sequence, msa and needs structure_ensemble, trajectory, pdb, xtc, json.",
+    "BioEmu v1.1 is a Microsoft Research AI for Science protein monomer conformational ensemble sampler.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `microsoft-bioemu-v1-1` with version key `bioemu-v1-1-bioemu-1-3-1-wrapper`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/microsoft-bioemu-v1-1` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

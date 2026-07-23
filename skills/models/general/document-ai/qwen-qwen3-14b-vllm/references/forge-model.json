@@ -1,0 +1,456 @@
+{
+  "benchmark_scores": {
+    "artifact_commit": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "artifact_digest": "sha256:607442e407b0fea97f8a132a78b787c121a996dd4de181fa08e8da06e71ec2db",
+    "blockers": [
+      "B200/us-central1 and B300/uk-south1 failed with pod_start_failure:pod_failed in the 2026-05-27T05Z hidden matrix and need runtime log investigation or a CUDA 13/Blackwell-oriented image.",
+      "Do not publish or mark default-eligible until the Blackwell failure mode is understood and a supported publication subset is product-approved.",
+      "The 131k YaRN long-context mode is not enabled in this initial profile; validate a separate long-context profile before raising the served context window above 32,768.",
+      "If 14B BF16 remains too fragile on Blackwell with this image, fall back to Hopper/Ada-only hidden support or evaluate a CUDA 13 vLLM image variant."
+    ],
+    "container_image_size_bytes": 11465572690,
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_10_2_cuda12_8_image_for_initial_hidden_probe",
+    "hf_metadata": {
+      "architecture": "Qwen3ForCausalLM",
+      "disabled": false,
+      "gated": false,
+      "library_name": "transformers",
+      "max_position_embeddings": 40960,
+      "model_id": "Qwen/Qwen3-14B",
+      "model_type": "qwen3",
+      "pipeline_tag": "text-generation",
+      "private": false,
+      "safetensors_total": 14768307200,
+      "sha": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+      "torch_dtype": "bfloat16"
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; Hugging Face API reports private=false, gated=false, and disabled=false.",
+    "onboarding_state": "hidden_partial_matrix_supported_h200_l40s_rtx6000_pending_blackwell_runtime_fix",
+    "planned_probe_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-14b-vllm --include-status onboarding --gpu B200 --region us-central1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json tmp/onboarding-research/general-qwen3-14b-20260525/probe-b200.json --report-md tmp/onboarding-research/general-qwen3-14b-20260525/probe-b200.md",
+    "probe_matrix_20260527T05Z": {
+      "cells_other_error": 2,
+      "cells_supported": 3,
+      "publication_decision": "keep_hidden_onboarding",
+      "reason": "The CUDA 12.8 vLLM 0.10.2 profile has useful Hopper/Ada support evidence but failed on both active Blackwell cells. Keep B200 and B300 disabled and do not publish until a Blackwell-compatible image or runtime flag set is validated.",
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-14b-vllm-20260527T-current-matrix.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-14b-vllm-20260527T-current-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "results": {
+        "B200/us-central1": {
+          "error": "RuntimeError: pod_start_failure:pod_failed",
+          "status": "other_error"
+        },
+        "B300/uk-south1": {
+          "error": "RuntimeError: pod_start_failure:pod_failed",
+          "status": "other_error"
+        },
+        "H200/eu-north2": {
+          "request_ms": 2454,
+          "startup_ms": 553812,
+          "status": "supported",
+          "tokens_per_second": 113.69,
+          "vram_used_gb": 126.55
+        },
+        "L40S/eu-north1": {
+          "request_ms": 9810,
+          "startup_ms": 675615,
+          "status": "supported",
+          "tokens_per_second": 28.44,
+          "vram_used_gb": 39.43
+        },
+        "RTX6000/us-central1": {
+          "request_ms": 5654,
+          "startup_ms": 666127,
+          "status": "supported",
+          "tokens_per_second": 60.67,
+          "vram_used_gb": 86.24
+        }
+      },
+      "scope": "hidden_onboarding_3_warmups_10_measured",
+      "status": "partial_matrix_supported"
+    },
+    "probe_preflight": {
+      "checked_at": "2026-05-25T12:09:14Z",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-14b-vllm --include-status onboarding --gpu B200 --region us-central1 --timeout 1 --request-timeout 1 --warmup-runs 0 --benchmark-runs 0 --max-parallel 1 --report-json tmp/onboarding-research/general-qwen3-14b-20260525/probe-preflight.json --report-md tmp/onboarding-research/general-qwen3-14b-20260525/probe-preflight.md",
+      "error": "RuntimeError: model 'qwen-qwen3-14b-vllm' not found for statuses: active, onboarding",
+      "reason": "The filesystem manifest passed dry-run validation but has not been live-upserted as a hidden onboarding row.",
+      "status": "blocked_before_pod_scheduling"
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:607442e407b0fea97f8a132a78b787c121a996dd4de181fa08e8da06e71ec2db",
+    "regional_mirror_verified_at": "2026-05-25T12:09:14Z",
+    "runtime_evidence": "The Qwen3-14B model card documents vLLM serving, and vLLM 0.10.2 reasoning-output docs list the Qwen3 series with parser name qwen3. Existing Forge Qwen3 4B and SmolLM3 hidden entries have validated this same vLLM 0.10.2 CUDA 12.8 digest on B200/H200/L40S/RTX6000, while B300/SM103 remains suspect for this image family due prior ptxas sm_103a failures.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.10.2",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.10.2@sha256:607442e407b0fea97f8a132a78b787c121a996dd4de181fa08e8da06e71ec2db",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.10.2@sha256:607442e407b0fea97f8a132a78b787c121a996dd4de181fa08e8da06e71ec2db",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.10.2@sha256:607442e407b0fea97f8a132a78b787c121a996dd4de181fa08e8da06e71ec2db",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.10.2@sha256:607442e407b0fea97f8a132a78b787c121a996dd4de181fa08e8da06e71ec2db"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "source_evidence": [
+      "https://huggingface.co/api/models/Qwen/Qwen3-14B",
+      "https://huggingface.co/Qwen/Qwen3-14B",
+      "https://huggingface.co/Qwen/Qwen3-14B/raw/main/config.json",
+      "https://docs.vllm.ai/en/v0.10.2/features/reasoning_outputs.html"
+    ],
+    "validation_commands": [
+      "curl -fsSL https://huggingface.co/api/models/Qwen/Qwen3-14B | jq '{modelId,sha,private,gated,disabled,library_name,pipeline_tag,license:.cardData.license,tags,safetensors:.safetensors}'",
+      "curl -fsSL https://huggingface.co/Qwen/Qwen3-14B/raw/main/config.json | jq '{architectures,model_type,num_hidden_layers,num_attention_heads,num_key_value_heads,hidden_size,intermediate_size,max_position_embeddings,torch_dtype,vocab_size}'",
+      "skopeo inspect --no-tags docker://docker.io/vllm/vllm-openai:v0.10.2 | jq '{Name,Digest,Created,Layers:(.Layers|length),Labels:.Labels,Env:.Env}'",
+      "skopeo inspect --no-tags docker://cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.10.2 | jq -r '.Digest'",
+      "skopeo inspect --no-tags docker://cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.10.2 | jq -r '.Digest'",
+      "skopeo inspect --no-tags docker://cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.10.2 | jq -r '.Digest'",
+      "skopeo inspect --no-tags docker://cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.10.2 | jq -r '.Digest'",
+      "jq empty manifests/models/general/qwen-qwen3-14b-vllm.json",
+      ".venv312/bin/python scripts/upsert_model.py manifests/models/general/qwen-qwen3-14b-vllm.json --dry-run",
+      ".venv312/bin/python - <<'PY'\nimport json\nfrom pathlib import Path\nfrom scripts.probe_model_parallel_matrix import resolve_default_request_body\nmanifest=json.loads(Path('manifests/models/general/qwen-qwen3-14b-vllm.json').read_text())\nprint(json.dumps(resolve_default_request_body(manifest), indent=2, sort_keys=True))\nPY"
+    ]
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "reasoning",
+    "instruction",
+    "tool_calling",
+    "multilingual",
+    "long_context",
+    "qwen",
+    "vllm",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 11465572690,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-27T05:03:47.615262+00:00",
+  "default_eligible": false,
+  "description": "Qwen3 14B is a public Apache-2.0 dense text-generation model for hybrid reasoning, instruction following, multilingual chat, agent-style prompts, and long-context summarization. Hugging Face API metadata reports private=false, gated=false, disabled=false, 14,768,307,200 BF16 safetensors parameters, architecture Qwen3ForCausalLM, and text-generation usage. The upstream model card reports 14.8B total parameters, 40 layers, grouped-query attention with 40 Q heads and 8 KV heads, native 32,768-token context, and 131,072-token YaRN extension guidance. This hidden Forge profile reuses the already mirrored vLLM 0.10.2 CUDA 12.8 OpenAI-compatible image digest sha256:607442e407b0fea97f8a132a78b787c121a996dd4de181fa08e8da06e71ec2db, enables the vLLM qwen3 reasoning parser documented for vLLM 0.10.2, caps served context to 32,768 tokens for bounded probes, and stores Hugging Face and vLLM caches under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. The 2026-05-27T05Z hidden matrix supported H200, L40S, and RTX6000, but B200 and B300 failed during pod startup, so the profile remains hidden/onboarding and default-ineligible pending Blackwell runtime investigation.",
+  "family_id": "e844dc6e-b9f1-4af4-ba12-fa702abb6b57",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "Qwen/Qwen3-14B",
+      "--model",
+      "Qwen/Qwen3-14B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "Qwen/Qwen3-14B",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.9",
+      "--max-num-seqs",
+      "8",
+      "--reasoning-parser",
+      "qwen3"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "VLLM_ENABLE_CUDA_COMPATIBILITY": "1",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T05:15:00.900966+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 27.51
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T05:38:34.054773+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 27.51
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T05:27:20.276541+00:00",
+      "region": "eu-north2",
+      "request_ms": 2454,
+      "request_ms_p50": 2454,
+      "request_ms_p95": 2543,
+      "request_ms_p99": 2548,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 553812,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 113.69,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 126.55,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 27.51
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T05:28:28.860250+00:00",
+      "region": "eu-north1",
+      "request_ms": 9810,
+      "request_ms_p50": 9810,
+      "request_ms_p95": 10425,
+      "request_ms_p99": 10593,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 675615,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 28.44,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 39.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 27.51
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T05:17:30.342142+00:00",
+      "region": "us-central1",
+      "request_ms": 5654,
+      "request_ms_p50": 5654,
+      "request_ms_p95": 6683,
+      "request_ms_p99": 6957,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 666127,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 60.67,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 86.24,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 27.51
+    }
+  ],
+  "gpu_type": null,
+  "id": "4f1c009f-3099-4ddc-af63-d76a61986dc7",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "qwen-qwen3-14b",
+  "name": "Qwen3 14B",
+  "parameter_count": 14768307200,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "chat_template_kwargs": {
+          "enable_thinking": "{{enable_thinking}}"
+        },
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "Qwen/Qwen3-14B"
+    },
+    "input_fields": [
+      {
+        "default": "Use /think to reason briefly, then answer: A team has 9 failing tests, fixes 4, and introduces 2 new failures. How many tests are failing now?",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "reasoning_chat",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": true,
+        "key": "enable_thinking",
+        "label": "Thinking Mode",
+        "type": "checkbox"
+      },
+      {
+        "default": 0.6,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 8192,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 44,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-qwen3-14b-vllm",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Qwen/Qwen3-14B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "reasoning",
+    "instruction",
+    "tool-calling",
+    "multilingual",
+    "long-context",
+    "qwen",
+    "vllm"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.10.2-cuda12.8",
+  "version_description": "Qwen3 14B served by the official vLLM OpenAI-compatible CUDA 12.8 Docker image. The 2026-05-27T05Z hidden matrix advanced H200, L40S, and RTX6000 to supported with 3 warmups plus 10 measured requests, while B200 and B300 failed during pod startup and remain disabled pending runtime investigation.",
+  "version_key": "vllm-0-10-2-cuda12-8",
+  "version_label": "vLLM 0.10.2 CUDA 12.8"
+}

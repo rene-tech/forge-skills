@@ -1,0 +1,472 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/EMBO/soda-vec-dot-std-cov-losses",
+    "artifact_checked_at": "2026-05-28T11:11:00Z",
+    "artifact_config": {
+      "architectures": [
+        "ModernBertModel"
+      ],
+      "embedding_dimension": 768,
+      "hidden_size": 768,
+      "max_position_embeddings": 8192,
+      "model_type": "modernbert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 22,
+      "pooling": "mean",
+      "sentence_transformers_max_seq_length": 512,
+      "torch_dtype": "float32"
+    },
+    "artifact_disabled": false,
+    "artifact_files": {
+      "1_Pooling/config.json": true,
+      "model.safetensors": {
+        "lfs_sha256": "75e9d0fde7b5730d7002c452c36ed681a37029f19507456ecf694fa7949f122b",
+        "size_bytes": 596070136
+      },
+      "modules.json": true,
+      "sentence_bert_config.json": true,
+      "tokenizer.json": {
+        "size_bytes": 3583485
+      }
+    },
+    "artifact_gated": false,
+    "artifact_last_modified": "2025-09-29T07:05:54.000Z",
+    "artifact_license": "mit",
+    "artifact_private": false,
+    "artifact_sha": "ec602c16dd5e973d36128ba03bd430927c21754a",
+    "artifact_source": "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses",
+    "benchmark_note": "The TEI runtime did not expose model_time_ms for this embedding endpoint, so persisted request_ms values are direct pod client wall time and should not be compared as pure GPU kernel time.",
+    "cache_strategy": "HF_HOME and HUGGINGFACE_HUB_CACHE point at /mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/tei-cuda-1.9.3 so model downloads and tokenizer artifacts survive pod restarts and do not fill the container filesystem.",
+    "container_config_snapshot_20260528T09Z": {
+      "architecture": "amd64",
+      "created": "2026-03-23T09:18:22.111980354Z",
+      "cuda_version": "12.9.1",
+      "image_version": "cuda-1.9.3",
+      "license": "Apache-2.0",
+      "os": "linux",
+      "source": "https://github.com/huggingface/text-embeddings-inference",
+      "upstream_default_cache": "/data"
+    },
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image_for_initial_hidden_probe",
+    "fallback_candidate_attempted": {
+      "model": "sentence-transformers/embeddinggemma-300m-medical",
+      "reason": "The fine-tune advertises Apache-2.0, but the base google/embeddinggemma-300m page is licensed under Gemma terms and requires explicit license review before Forge publication. EMBO SODA-VEC has cleaner MIT-over-Apache metadata for this cycle.",
+      "status": "not_selected"
+    },
+    "hcls_safety_gate_20260528T18Z": {
+      "allowed_scope": "Nonclinical biomedical and life-science literature retrieval, clustering, semantic search, and RAG evaluation.",
+      "cleared_requirements": [
+        "MIT model artifact with Apache-2.0 ModernBERT base license evidence",
+        "Existing TEI CUDA 1.9.3 image digest mirrored in all four active Forge regions",
+        "Hidden B200, H200, and L40S probes with 3 warmups and 10 measured embedding requests",
+        "Companion vLLM CUDA 13 B300 fallback passed normalized TEI/vLLM parity",
+        "Research-only acknowledgement and hidden public-route check recorded without changing the OpenAI embeddings request body"
+      ],
+      "default_eligible": false,
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "HCLS product safety review approval",
+        "Product decision on runtime-family presentation for the TEI non-B300 row plus vLLM B300 fallback",
+        "RTX6000 inventory or explicit unsupported classification with evidence"
+      ],
+      "safe_to_publish": false,
+      "safety_routing_packet_20260528T18Z": {
+        "decision": "technical_evidence_complete_not_product_approved",
+        "publishable": false,
+        "report_json": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T18Z-safety-routing-gate.json",
+        "report_md": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-20260528T18Z-safety-routing-gate.md"
+      }
+    },
+    "known_runtime_risk": "Pinned TEI CUDA 1.9.3 has prior Forge B300/SM103 incompatibility evidence on other embedding models; do not claim B300 until a CUDA 13/vLLM pooling fallback is validated.",
+    "license_evidence": {
+      "base_model": "answerdotai/ModernBERT-base",
+      "base_model_license": "Hugging Face API cardData.license=apache-2.0 for answerdotai/ModernBERT-base.",
+      "model_license": "Hugging Face API cardData.license=mit and tags include license:mit."
+    },
+    "live_health_snapshot_20260528T11Z": "Control rollouts were healthy, eu-north1 had ready nodes with no warning events, us-central1 had recent transient node warnings, and uk-south1 had one unrelated failed probe pod under the 6h stale threshold; first worker probe used L40S/eu-north1.",
+    "live_health_snapshot_20260528T13Z": "Control rollouts and EU/EU2 were healthy; US nodes were Ready and pressure-free but had recent warning events for an absent node; UK nodes were Ready and pressure-free with one unrelated failed probe still below the 6h stale threshold. Focused probes were used instead of broad fan-out.",
+    "live_probe_open_cells_20260528T11Z": [
+      "B200/us-central1",
+      "B300/uk-south1",
+      "RTX6000/us-central1"
+    ],
+    "live_probe_open_cells_20260528T13Z": [
+      "RTX6000/us-central1"
+    ],
+    "live_probe_results_20260528T11Z": {
+      "H200/eu-north2": {
+        "report": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9-20260528T11Z-supervisor-h200-eu-north2.md",
+        "request_ms_p50": 102,
+        "request_ms_p95": 102,
+        "request_ms_samples": 10,
+        "startup_ms": 256602,
+        "status": "supported",
+        "timing_source": "client_wall_ms",
+        "tokens_per_second": 490.2,
+        "vram_used_gb": 0.96
+      },
+      "L40S/eu-north1": {
+        "report": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9-20260528T11Z-l40s.md",
+        "request_ms_p50": 95,
+        "request_ms_p95": 96,
+        "request_ms_samples": 10,
+        "startup_ms": 333676,
+        "status": "supported",
+        "timing_source": "client_wall_ms",
+        "tokens_per_second": 526.32,
+        "vram_used_gb": 0.75
+      }
+    },
+    "live_probe_results_20260528T13Z": {
+      "B200/us-central1": {
+        "backend_log": "Starting FlashModernBert model on Cuda(CudaDevice(DeviceId(1)))",
+        "report": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9-20260528T13Z-b200.md",
+        "request_ms_p50": 158,
+        "request_ms_p95": 159,
+        "request_ms_samples": 10,
+        "startup_ms": 283997,
+        "status": "supported",
+        "timing_source": "client_wall_ms",
+        "tokens_per_second": 316.46,
+        "vram_used_gb": 1.05
+      },
+      "B300/uk-south1": {
+        "error_detail": "cuda compute cap 103 is not supported",
+        "report": "docs/model-onboarding/hcls/embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9-20260528T13Z-b300-keep.md",
+        "startup_ms": null,
+        "status": "other_error"
+      }
+    },
+    "live_upsert_20260528T11Z": {
+      "default_eligible": false,
+      "model_status": "onboarding",
+      "public_model_lookup": "HTTP 404 at /api/proxy/v1/models/embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9 after hidden upsert/probe",
+      "status": "succeeded"
+    },
+    "onboarding_state": "canonical_hcls_manifest_hidden_live_upserted_b200_h200_l40s_supported_b300_vllm_fallback_ready_pending_hcls_safety_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_status": "verified_existing_all_four_regions_20260528T09Z",
+    "research_only_routing_gate_20260528T18Z": {
+      "acknowledgement_default": true,
+      "acknowledgement_field": "research_use_acknowledgement",
+      "public_route_check": {
+        "response_detail": "model_not_found",
+        "status": "404_hidden_onboarding_not_public",
+        "url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9"
+      },
+      "publication_decision": "keep_hidden_onboarding",
+      "request_body_unchanged": true,
+      "status": "copy_and_route_gate_ready_not_product_approved"
+    },
+    "runtime_evidence": "Hugging Face API tags include sentence-transformers, text-embeddings-inference, endpoints_compatible, feature-extraction, and safetensors; TEI docs document the cuda-1.9 GPU image and --model-id serving pattern.",
+    "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "source_evidence": [
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses",
+      "https://huggingface.co/api/models/EMBO/soda-vec-dot-std-cov-losses",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/config.json",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/modules.json",
+      "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses/raw/main/1_Pooling/config.json",
+      "https://huggingface.co/api/models/answerdotai/ModernBERT-base",
+      "https://huggingface.co/docs/text-embeddings-inference/quick_tour",
+      "https://github.com/huggingface/text-embeddings-inference"
+    ]
+  },
+  "capabilities": [
+    "life_science",
+    "healthcare",
+    "scientific_literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence_transformers",
+    "modernbert",
+    "tei",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": null,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-28T11:04:33.712978+00:00",
+  "default_eligible": false,
+  "description": "EMBO SODA-VEC Dot/Std/Cov is a MIT-licensed sentence-transformers ModernBERT biomedical and life-science literature embedding model trained on PubMed Central title-abstract pairs with a VICReg-style dot, standard deviation, and covariance objective. Hugging Face metadata rechecked on 2026-05-28T11Z reports the artifact public, ungated, enabled, sentence-transformers based, safetensors-backed, tagged text-embeddings-inference and endpoints_compatible, revision ec602c16dd5e973d36128ba03bd430927c21754a, and built on an Apache-2.0 ModernBERT base. The final model files include model.safetensors, tokenizer.json, modules.json, sentence_bert_config.json, and mean-pooling configuration. This hidden Forge onboarding manifest reuses the existing regionally mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, routes Hugging Face cache into a versioned /mnt/data path, and clears unnecessary Hugging Face token variables for this public artifact. Hidden live upsert has completed and live probe rows now support B200/us-central1, H200/eu-north2, and L40S/eu-north1 with 10 measured embedding requests each. B300 remains deliberately false after a repeated UK probe failed at startup with `cuda compute cap 103 is not supported`; the companion vLLM CUDA 13 pooling manifest is the validated B300 fallback and passed normalized TEI/vLLM parity on synthetic non-PHI HCLS retrieval text. RTX6000 is still unclaimed because current public inventory did not expose an RTX6000 cell during the 13Z cycle. Keep hidden/onboarding/default-ineligible until HCLS product safety approval is complete.",
+  "family_id": "211dbbe6-97fa-418c-9ae9-462902eed617",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/tei-cuda-1.9.3",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/tei-cuda-1.9.3/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "EMBO/soda-vec-dot-std-cov-losses",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "EMBO/soda-vec-dot-std-cov-losses"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T13:08:37.954081+00:00",
+      "region": "us-central1",
+      "request_ms": 158,
+      "request_ms_p50": 158,
+      "request_ms_p95": 159,
+      "request_ms_p99": 159,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 283997,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 316.46,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.05,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T13:12:20.742129+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T11:09:15.116643+00:00",
+      "region": "eu-north2",
+      "request_ms": 102,
+      "request_ms_p50": 102,
+      "request_ms_p95": 102,
+      "request_ms_p99": 102,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 256602,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 490.2,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.96,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T15:08:39.210200+00:00",
+      "region": "eu-north1",
+      "request_ms": 99,
+      "request_ms_p50": 97,
+      "request_ms_p95": 100,
+      "request_ms_p99": 100,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 206553,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 505.05,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.75,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "e44b8619-cfb6-4ecc-822c-e0b907624cc9",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "embo-soda-vec-dot-std-cov-losses",
+  "name": "EMBO SODA-VEC Dot/Std/Cov",
+  "parameter_count": 149000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "EMBO/soda-vec-dot-std-cov-losses"
+    },
+    "input_fields": [
+      {
+        "default": "Query: CRISPR-Cas9 editing in human induced pluripotent stem cells\n\nCandidate abstract: Genome editing workflows use CRISPR-Cas nucleases to introduce targeted DNA changes, enabling functional studies of disease-associated variants in cellular models.",
+        "key": "input",
+        "label": "Biomedical literature text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/embo-soda-vec-dot-std-cov-losses/tei-cuda-1.9.3",
+      "embedding_dimension": 768,
+      "kind": "tei_embeddings",
+      "model_id": "EMBO/soda-vec-dot-std-cov-losses",
+      "model_revision": "ec602c16dd5e973d36128ba03bd430927c21754a",
+      "pooling": "mean",
+      "served_model_name": "EMBO/soda-vec-dot-std-cov-losses"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical and life-science literature retrieval, clustering, semantic search, and RAG evaluation.",
+      "body": "Use for nonclinical biomedical and life-science literature search, clustering, semantic similarity, and RAG evaluation. Do not use for medical advice, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical literature embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 59,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "embo-soda-vec-dot-std-cov-losses-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "life-science",
+    "healthcare",
+    "biomedical",
+    "scientific-literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence-transformers",
+    "modernbert",
+    "tei",
+    "open-source"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-ec602c1-tei-cuda-1.9.3",
+  "version_description": "Hidden Forge onboarding manifest for EMBO SODA-VEC biomedical and life-science literature embeddings served through the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image. This TEI profile is the canonical non-B300 runtime after B200, H200, and L40S 10-run probes; B300 is intentionally handled by the separate CUDA 13 vLLM pooling fallback.",
+  "version_key": "hf-ec602c1-tei-cuda-1-9-3",
+  "version_label": "HF ec602c1 via TEI CUDA 1.9.3"
+}

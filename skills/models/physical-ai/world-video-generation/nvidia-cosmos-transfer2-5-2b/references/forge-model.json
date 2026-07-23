@@ -1,0 +1,361 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "temporary_publication_exception_current": {
+      "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+      "accepted_by_user": true,
+      "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+      "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+      "rollback": "Set model and family status back to onboarding for these slugs/families.",
+      "scope": "temporary_restore_to_catalog_visibility"
+    },
+    "temporary_publication_exceptions": [
+      {
+        "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+        "accepted_by_user": true,
+        "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+        "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+        "rollback": "Set model and family status back to onboarding for these slugs/families.",
+        "scope": "temporary_restore_to_catalog_visibility"
+      }
+    ]
+  },
+  "capabilities": [
+    "physical_ai",
+    "cosmos",
+    "world_model",
+    "synthetic_data",
+    "robotics",
+    "video_to_video",
+    "control_video",
+    "weather_transfer",
+    "text",
+    "video",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/cosmos-transfer2-5-2b:1.0.0",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T10:05:58.638277+00:00",
+  "default_eligible": false,
+  "description": "Hidden onboarding manifest for Cosmos Transfer2.5 NIM, a controllable physical-AI world-generation model with edge, segmentation, visual, and depth controls. NVIDIA's current NIM docs publish the upstream repository as nvcr.io/nim/nvidia/cosmos-transfer2-5-2b:1.0.0, while the verified Forge regional mirrors retain their existing dotted repository names and are pinned by digest. The 2026-05-26T15Z refresh added the missing visual-control playground/probe input and preflighted the complete low-resolution robot-control payload. The 2026-05-26T16Z refresh reverified all regional image digests, captured safe image-config evidence, and confirmed the live support rows are older than the schema fix. Keep the model hidden because the upsert model-server gate still requires image-bound Triton r26.03+ evidence and unauthenticated upstream nvcr.io inspection still returns 401 Unauthorized.",
+  "family_id": "3659494e-c59a-495f-a1b1-2b3f0c3d8759",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 80.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-21T04:21:29.655791+00:00",
+      "region": "us-central1",
+      "request_ms": 66047,
+      "request_ms_p50": 64607,
+      "request_ms_p95": 65903,
+      "request_ms_p99": 66018,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 212562,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 40.78,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 4.39
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-21T10:20:49.938174+00:00",
+      "region": "uk-south1",
+      "request_ms": 56594,
+      "request_ms_p50": 87564,
+      "request_ms_p95": 128371,
+      "request_ms_p99": 129763,
+      "request_ms_samples": 4,
+      "startup_ms_first": 317401,
+      "startup_ms_probe": 256774,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 44.77,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 4.39
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-12T19:44:05.918828+00:00",
+      "observed_success_rate": 0.5,
+      "probed_at": "2026-05-21T15:54:56.077084+00:00",
+      "region": "eu-north2",
+      "request_ms": 109309,
+      "request_ms_p50": 122369,
+      "request_ms_p95": 137864,
+      "request_ms_p99": 138350,
+      "request_ms_samples": 4,
+      "startup_ms_first": 447955,
+      "startup_ms_probe": 238904,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 39.51,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 4.39
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": "2026-05-12T19:44:05.918828+00:00",
+      "observed_success_rate": 0.5,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 115937,
+      "request_ms_p95": 115937,
+      "request_ms_p99": 115937,
+      "request_ms_samples": 1,
+      "startup_ms_first": 447955,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 4.39
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed\n9] velocity_pred = velocity_fn(noise, latent_model_input, timestep.unsqueeze(0))\nINFO 2026-05-05 03:04:20.129] ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nINFO 2026-05-05 03:04:20.129] File \"/opt/nim/third_party/cosmos-transfer2.5/cosmos_transfer2/_src/transfer2/models/vid2vid_model_control_vace_rectified_flow.py\", line 287, in velocity_fn\nINFO 2026-05-05 03:04:20.130] cond_v = self.denoise(noise, noise_x, timestep, condition)\nINFO 202",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-05T03:04:47.867921+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "oom",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 4.39
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-21T12:59:46.549934+00:00",
+      "region": "us-central1",
+      "request_ms": 136783,
+      "request_ms_p50": 150660,
+      "request_ms_p95": 165600,
+      "request_ms_p99": 165834,
+      "request_ms_samples": 4,
+      "startup_ms_first": 309913,
+      "startup_ms_probe": 1581209,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 51.06,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 4.39
+    }
+  ],
+  "gpu_type": null,
+  "id": "40d06fed-6715-43bc-8f72-d5f0751f2d50",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-open-model-license",
+  "modality_input": [
+    "text",
+    "video"
+  ],
+  "modality_output": [
+    "video"
+  ],
+  "model_family": "nvidia-cosmos-transfer2-5-2b",
+  "name": "NVIDIA Cosmos Transfer2.5 2B",
+  "parameter_count": 2358047744,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "depth": "{{depth}}",
+        "edge": "{{edge}}",
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "resolution": "{{resolution}}",
+        "seg": "{{seg}}",
+        "video": "{{video}}",
+        "vis": "{{vis}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos-transfer2-5-2b",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Convert the driving clip to rainy weather while preserving road geometry and object layout.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/robot_input.mp4",
+        "key": "video",
+        "label": "Video URL or base64 MP4",
+        "type": "text",
+        "visible": true
+      },
+      {
+        "default": "480",
+        "key": "resolution",
+        "label": "Resolution",
+        "options": [
+          "480",
+          "720"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": {
+          "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/edge/robot_edge.mp4",
+          "control_weight": 1.0
+        },
+        "key": "edge",
+        "label": "Edge Control",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": {
+          "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/seg/robot_seg.mp4",
+          "control_weight": 1.0
+        },
+        "key": "seg",
+        "label": "Segmentation Control",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": {
+          "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/vis/robot_vis.mp4",
+          "control_weight": 1.0
+        },
+        "key": "vis",
+        "label": "Visual Control",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": {
+          "control": "https://raw.githubusercontent.com/abhinavg4/cosmos-transfer2.5/main/assets_nim/low/depth/robot_depth.mp4",
+          "control_weight": 1.0
+        },
+        "key": "depth",
+        "label": "Depth Control",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "mp4",
+      "type": "video"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-cosmos-transfer2.5-2b@sha256:2af0bc8974eacde0066212ef837c56581940fb57da3b925a7af898bbd5894917",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-cosmos-transfer2.5-2b@sha256:2af0bc8974eacde0066212ef837c56581940fb57da3b925a7af898bbd5894917",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-cosmos-transfer2.5-2b@sha256:2af0bc8974eacde0066212ef837c56581940fb57da3b925a7af898bbd5894917",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-cosmos-transfer2.5-2b@sha256:2af0bc8974eacde0066212ef837c56581940fb57da3b925a7af898bbd5894917"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-cosmos-transfer2-5-2b",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "cosmos",
+    "world-model",
+    "synthetic-data",
+    "robotics",
+    "video-to-video",
+    "control-video",
+    "weather-transfer"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "1.0.0",
+  "version_description": null,
+  "version_key": "1-0-0",
+  "version_label": "1.0.0"
+}

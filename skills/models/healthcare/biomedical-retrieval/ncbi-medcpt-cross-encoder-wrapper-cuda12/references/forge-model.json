@@ -1,0 +1,695 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/ncbi/MedCPT-Cross-Encoder",
+    "artifact_checked_at": "2026-05-30T11:05:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertForSequenceClassification"
+      ],
+      "hidden_size": 768,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "score_direction": "higher_is_more_relevant",
+      "sequence_classification_labels": 1,
+      "torch_dtype": "float32",
+      "transformers_version": "4.34.0",
+      "vocab_size": 30522
+    },
+    "artifact_disabled": false,
+    "artifact_files_observed": [
+      ".gitattributes",
+      "LICENSE",
+      "README.md",
+      "added_tokens.json",
+      "config.json",
+      "pytorch_model.bin",
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer_config.json",
+      "vocab.txt"
+    ],
+    "artifact_gated": false,
+    "artifact_last_modified": "2023-12-03T00:45:45.000Z",
+    "artifact_license": "public-domain",
+    "artifact_parameters": {
+      "estimated_f32": 109483009,
+      "total_estimated": 109483009
+    },
+    "artifact_private": false,
+    "artifact_sha": "71caf65d4927987813984f54c284405a13fcca49",
+    "artifact_source": "https://huggingface.co/ncbi/MedCPT-Cross-Encoder",
+    "base_image": "docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+    "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, TORCH_HOME, XDG_CACHE_HOME, and HOME point to versioned /mnt/data paths. A file lock under the same cache root serializes first-run tokenizer/config/checkpoint hydration.",
+    "container_build_20260530T11Z": {
+      "compressed_layer_bytes": 4267717479,
+      "compressed_layer_count": 13,
+      "cpu_smoke": {
+        "checkpoint_sha256": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0",
+        "device": "cpu",
+        "model_class": "BertForSequenceClassification",
+        "model_time_ms": 108,
+        "scores_ranked": [
+          {
+            "index": 0,
+            "rank": 0,
+            "score": 2.300419
+          },
+          {
+            "index": 1,
+            "rank": 1,
+            "score": -5.065831
+          },
+          {
+            "index": 2,
+            "rank": 2,
+            "score": -15.441727
+          }
+        ],
+        "state_dict_load": "torch.load(weights_only=True)",
+        "status": "passed",
+        "tokenizer_class": "BertTokenizerFast"
+      },
+      "fallback": "direct_crane_copy_to_helper_canonical_regional_repositories",
+      "image_size_bytes": 7749696315,
+      "local_image_id": "sha256:9b3ea7fd74805f7e1ed38feecfe6cd36d647b5608a17a179a1ef0b868a4f0a8b",
+      "local_ref": "forge-local/ncbi-medcpt-cross-encoder:wrapper-cuda12-torch2100-20260630",
+      "manifest_digest": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+      "mirror_helper_result": "failed_before_copy_permission_denied_open_docker_config_config_json",
+      "push_mirror_status": "pushed_us_central_and_mirrored_all_regions_digest_verified",
+      "regional_digest_verification": {
+        "eu-north1": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+        "eu-north2": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+        "uk-south1": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+        "us-central1": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31"
+      },
+      "route_smoke": [
+        "/",
+        "/health",
+        "/healthz",
+        "/rerank",
+        "/v1/health/ready",
+        "/v1/rerank"
+      ],
+      "status": "pushed_mirrored_and_cpu_smoke_passed"
+    },
+    "container_digest": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+    "container_source_decision": "build_forge_owned_cuda12_wrapper_because_tei_bert_rerank_support_is_unproven_and_the_artifact_only_publishes_pytorch_model_bin",
+    "cycle_20260531T06Z": {
+      "candidate": "ncbi/MedCPT-Cross-Encoder",
+      "forge_slug": "ncbi-medcpt-cross-encoder-wrapper-cuda12",
+      "hidden_live_upsert": {
+        "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/ncbi-medcpt-cross-encoder-wrapper-cuda12.json",
+        "live_row": {
+          "container_digest": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+          "default_eligible": false,
+          "is_latest": true,
+          "model_id": "1957bd26-1e48-4a6e-9681-45f595318752",
+          "stability": "experimental",
+          "status": "onboarding"
+        },
+        "observed_output": "ncbi-medcpt-cross-encoder-wrapper-cuda12",
+        "status": "passed"
+      },
+      "live_support_snapshot": {
+        "rows": [
+          {
+            "gpu": "B200",
+            "region": "us-central1",
+            "request_ms_p50": 4,
+            "request_ms_p95": 5,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 14750.0,
+            "updated_at": "2026-05-30T11:21:37.631488Z",
+            "vram_measured_gb": 0.99
+          },
+          {
+            "gpu": "B300",
+            "region": "uk-south1",
+            "request_ms_p50": 6,
+            "request_ms_p95": 6,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 9833.33,
+            "updated_at": "2026-05-30T11:25:03.800352Z",
+            "vram_measured_gb": 0.99
+          },
+          {
+            "gpu": "H200",
+            "region": "eu-north2",
+            "request_ms_p50": 5,
+            "request_ms_p95": 6,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 11800.0,
+            "updated_at": "2026-05-30T11:21:49.101275Z",
+            "vram_measured_gb": 0.93
+          },
+          {
+            "gpu": "L40S",
+            "region": "eu-north1",
+            "request_ms_p50": 7,
+            "request_ms_p95": 7,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 8428.57,
+            "updated_at": "2026-05-30T11:21:41.392293Z",
+            "vram_measured_gb": 0.73
+          }
+        ],
+        "source": "hosted model_gpu_support after hidden upsert refresh"
+      },
+      "manifest_dry_run": "passed",
+      "publish_blocker": "License reviewer approval and HCLS product safety approval are still pending; RTX6000 also remains unclassified because no matching us-central1 inventory cell is available.",
+      "publish_decision": "do_not_publish_customer_visible",
+      "regional_digest_recheck": {
+        "command": "jq -r '.regional_container_images | to_entries[] | [.key,.value] | @tsv' manifests/models/hcls/ncbi-medcpt-cross-encoder-wrapper-cuda12.json | while read region ref; do crane digest \"$ref\"; done",
+        "expected_digest": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+        "results": {
+          "eu-north1": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+          "eu-north2": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+          "uk-south1": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+          "us-central1": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31"
+        }
+      },
+      "rtx6000_reprobe": {
+        "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug ncbi-medcpt-cross-encoder-wrapper-cuda12 --include-status onboarding --gpu RTX6000 --region us-central1 --timeout 1800 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/ncbi-medcpt-cross-encoder-wrapper-cuda12-20260531T06Z-rtx6000.json --report-md docs/model-onboarding/hcls/ncbi-medcpt-cross-encoder-wrapper-cuda12-20260531T06Z-rtx6000.md",
+        "observed_output": "No inventory cells matched the requested filters.",
+        "report_files_created": false,
+        "status": "blocked_no_matching_inventory_cell",
+        "support_row_persisted": false
+      },
+      "status": "hidden_onboarding_row_refreshed_mirrors_reverified_rtx6000_inventory_still_absent",
+      "timestamp_bucket": "2026-05-31T06Z"
+    },
+    "full_matrix_probe_20260530T11Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200_us-central1": {
+          "gpu_node": "computeinstance-u00kraen1pxk791bbq",
+          "measured_model_time_samples_ms": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            5,
+            4,
+            4
+          ],
+          "pod": "forge-probe-ncbi-medcpt-cross-encode-b200-us-central1-adc344",
+          "request_ms_p50": 4,
+          "startup_ms": 188588,
+          "tokens_per_second": 14750.0,
+          "vram_used_gb": 0.99
+        },
+        "B300_uk-south1": {
+          "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+          "measured_model_time_samples_ms": [
+            6,
+            6,
+            6,
+            5,
+            5,
+            5,
+            6,
+            5,
+            6,
+            5
+          ],
+          "pod": "forge-probe-ncbi-medcpt-cross-encode-b300-uk-south1-70f6c3",
+          "request_ms_p50": 6,
+          "startup_ms": 181991,
+          "tokens_per_second": 9833.33,
+          "vram_used_gb": 0.99
+        },
+        "H200_eu-north2": {
+          "gpu_node": "computeinstance-e02qrr5b7wych6gj31",
+          "measured_model_time_samples_ms": [
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            5,
+            5,
+            5
+          ],
+          "pod": "forge-probe-ncbi-medcpt-cross-encode-h200-eu-north2-3a19eb",
+          "request_ms_p50": 5,
+          "startup_ms": 201639,
+          "tokens_per_second": 11800.0,
+          "vram_used_gb": 0.93
+        },
+        "L40S_eu-north1": {
+          "gpu_node": "computeinstance-e00r5wx71cbrtbjzvg",
+          "measured_model_time_samples_ms": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            6
+          ],
+          "pod": "forge-probe-ncbi-medcpt-cross-encode-l40s-eu-north1-102651",
+          "request_ms_p50": 7,
+          "startup_ms": 193872,
+          "tokens_per_second": 8428.57,
+          "vram_used_gb": 0.73
+        }
+      },
+      "container_digest": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+      "endpoint_path": "/rerank",
+      "live_upsert": true,
+      "model_time_source": "model_time_ms",
+      "report_json": "docs/model-onboarding/hcls/ncbi-medcpt-cross-encoder-wrapper-cuda12-20260530T11Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/ncbi-medcpt-cross-encoder-wrapper-cuda12-20260530T11Z-full-matrix.md",
+      "rtx6000_explicit_probe_20260530T11Z": "No inventory cells matched the requested filters for --gpu RTX6000 --region us-central1; no report was generated and no unsupported result was persisted.",
+      "status": "supported_four_cells_rtx6000_no_inventory",
+      "warmup_runs": 3
+    },
+    "gpu_compatibility_basis": {
+      "B200": "supported_20260530T11Z_standard_probe_10_measured_model_time_p50_4ms",
+      "B300": "supported_20260530T11Z_standard_probe_10_measured_model_time_p50_6ms",
+      "H200": "supported_20260530T11Z_standard_probe_10_measured_model_time_p50_5ms",
+      "L40S": "supported_20260530T11Z_standard_probe_10_measured_model_time_p50_7ms",
+      "RTX6000": "unavailable_20260530T11Z_explicit_probe_no_inventory_cell_matched_us-central1"
+    },
+    "license_file_evidence": "Model card metadata and the Hugging Face UI report public-domain and link LICENSE, but the repository LICENSE file is empty. The 2026-05-30 current-cycle3 publication packet adds NCBI/NLM provenance and NCBI policy evidence; keep hidden until license review explicitly accepts this evidence.",
+    "onboarding_state": "wrapper_image_mirrored_four_cell_matrix_supported_publication_packet_prepared_pending_license_and_hcls_safety_review",
+    "planned_container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-cross-encoder:wrapper-cuda12-torch2100-20260630",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "do_not_publish_customer_visible",
+    "publication_gate_20260530T_current_cycle3": {
+      "license_position": {
+        "decision": "license_provenance_packet_prepared_pending_legal_acceptance",
+        "hf_license_file_size_bytes": 0,
+        "hf_license_link": "LICENSE",
+        "hf_model_card_license": "public-domain",
+        "ncbi_nlm_provenance": "The model card says this work was supported by the Intramural Research Programs of the National Institutes of Health, National Library of Medicine, and describes the tool as research conducted in the Computational Biology Branch, NCBI/NLM.",
+        "ncbi_policy_evidence": "NCBI policy says information created by or for the US government on the NCBI site is public domain, asks for NLM acknowledgement, states that services should make the NCBI disclaimer and copyright notice evident, and says NLM does not provide legal advice.",
+        "source_urls": [
+          "https://huggingface.co/ncbi/MedCPT-Cross-Encoder",
+          "https://huggingface.co/ncbi/MedCPT-Cross-Encoder/raw/main/README.md",
+          "https://huggingface.co/ncbi/MedCPT-Cross-Encoder/raw/main/LICENSE",
+          "https://www.ncbi.nlm.nih.gov/home/about/policies/"
+        ]
+      },
+      "next_gate": "Legal/product reviewers must explicitly accept the public-domain provenance packet and research-only HCLS positioning before routable publication.",
+      "packet_md": "docs/model-onboarding/hcls/ncbi-medcpt-cross-encoder-wrapper-cuda12-20260530T-current-cycle3-publication-packet.md",
+      "product_safety_position": {
+        "allowed_scope": "Nonclinical biomedical literature retrieval, reranking, semantic search, and RAG evaluation over article-style text.",
+        "disallowed_uses": [
+          "medical advice",
+          "clinical decision-making",
+          "diagnosis, treatment, triage, or medication recommendations",
+          "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+        ],
+        "residual_risks": [
+          "No PHI detector or clinical intent classifier is enforced by the wrapper.",
+          "Customer-visible copy and routing still need HCLS product safety reviewer approval.",
+          "NCBI disclaimer and acknowledgement language must be reviewed before publication."
+        ],
+        "runtime_enforcement": [
+          "manifest safety_notice requires research_use_acknowledgement",
+          "runtime rejects /rerank requests unless research_use_acknowledgement=true",
+          "response includes research_use scope and not_for disclaimer",
+          "manifest remains onboarding, experimental, and default_eligible=false"
+        ]
+      },
+      "publication_decision": "keep_hidden_onboarding_default_ineligible_pending_license_and_hcls_product_safety_approval",
+      "publishable": false,
+      "status": "technical_packet_prepared_not_product_approved",
+      "technical_readiness": {
+        "cache_strategy": "Hugging Face, Transformers, Torch, XDG, and HOME caches remain rooted under versioned /mnt/data paths.",
+        "container_digest": "sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+        "gpu_matrix": "B200/us-central1, B300/uk-south1, H200/eu-north2, and L40S/eu-north1 supported with 3 warmups and 10 measured rerank requests per cell using model_time_ms; RTX6000 unavailable because no inventory cell matched.",
+        "regional_mirrors": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ],
+        "safe_checkpoint_load": "SHA256-verified pytorch_model.bin loaded only through torch.load(weights_only=True) with no unsafe pickle fallback."
+      }
+    },
+    "pytorch_model_bin": {
+      "pointer_size_bytes": 134,
+      "sha256": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0",
+      "size_bytes": 437998062
+    },
+    "remaining_blockers": [
+      "RTX6000 not classified because explicit us-central1 probe found no inventory cell",
+      "License reviewer approval still pending; current-cycle3 packet records Hugging Face public-domain metadata, empty LICENSE, NCBI/NLM provenance, and NCBI policy evidence",
+      "HCLS product safety reviewer approval still pending; current-cycle3 packet records allowed/disallowed scope and runtime acknowledgement enforcement"
+    ],
+    "rerank_contract": {
+      "input": "query plus texts array of strings or article objects",
+      "max_texts": 32,
+      "raw_scores_default": true,
+      "research_use_acknowledgement_required": true,
+      "score": "BertForSequenceClassification logit; higher is more relevant",
+      "tokenization": "tokenizer([query] * n, text_pair=texts, padding=true, truncation=true, max_length=512)"
+    },
+    "runtime_stack": {
+      "fastapi": "0.136.1",
+      "huggingface_hub": "0.33.4",
+      "starlette": "1.0.1",
+      "torch": "2.10.0+cu128",
+      "transformers": "4.48.3",
+      "uvicorn": "0.34.0"
+    },
+    "safe_checkpoint_load_gate": {
+      "checkpoint_file": "pytorch_model.bin",
+      "load_path": "hf_hub_download_then_sha256_verify_then_torch_load_weights_only_then_strict_state_dict",
+      "sha256_required": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0",
+      "status": "gpu_probe_supported_four_cells",
+      "unsafe_pickle_fallback": "not_allowed"
+    },
+    "safetensors_artifact_present": false,
+    "tei_preflight_fallback_reduced": {
+      "current_state": "Forge wrapper source, manifest, image push, all-region digest mirror, retained CPU smoke, hidden live upsert, and four-cell GPU matrix now exist.",
+      "previous_blocker": "TEI CUDA 1.9.3 BERT reranker support and pytorch_model.bin load behavior were unproven."
+    },
+    "wrapper_source": "services/models/hcls/ncbi_medcpt_cross_encoder"
+  },
+  "capabilities": [
+    "healthcare",
+    "reranking",
+    "retrieval",
+    "medcpt",
+    "cross_encoder",
+    "research_only",
+    "text",
+    "scores",
+    "rerank"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-cross-encoder:wrapper-cuda12-torch2100-20260630@sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+  "container_image_size_bytes": 7749696315,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-30T11:18:04.501275+00:00",
+  "default_eligible": true,
+  "description": "MedCPT Cross Encoder is NCBI's public-domain biomedical reranker for scoring a query jointly with candidate PubMed-style article text. The model card documents ranking articles for a query by tokenizing query/article pairs with max_length=512 and using a BertForSequenceClassification logit where higher scores indicate higher relevance. Hugging Face API metadata checked on 2026-05-30 reports private=false, gated=false, disabled=false, license_name=public-domain, library_name=transformers, pipeline_tag=text-classification, text-embeddings-inference and endpoints_compatible tags, revision 71caf65d4927987813984f54c284405a13fcca49, tokenizer.json present, and a single pytorch_model.bin LFS artifact at SHA256 61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0. This Forge-owned wrapper is the fallback for the previous TEI preflight blocker: it verifies the pinned checkpoint SHA256 before loading, refuses torch.load unless weights_only=True exists, instantiates BertForSequenceClassification from config, loads the verified state dict, exposes /rerank and /v1/rerank, returns sorted higher-is-more-relevant scores with model_time_ms, clears inherited Hugging Face token env vars, and stores Hugging Face, Transformers, Torch, XDG, and HOME caches under shared /mnt/data. The 2026-05-30T11Z image build produced config id sha256:9b3ea7fd74805f7e1ed38feecfe6cd36d647b5608a17a179a1ef0b868a4f0a8b, registry digest sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31, local size 7749696315 bytes, and 4267717479 compressed bytes. A CPU smoke loaded the pinned checkpoint with weights_only=True and ranked the diabetes-treatment review above central diabetes insipidus and hypertension. The hidden 2026-05-30T11Z Forge matrix supports B200, B300, H200, and L40S with 3 warmups plus 10 measured rerank requests per cell using model_time_ms; an explicit RTX6000/us-central1 probe found no matching inventory cell, so RTX6000 remains pending rather than failed. Keep onboarding/default-ineligible until HCLS license and product safety review complete.",
+  "family_id": "49352c9b-7103-4b68-8bb4-5c012726bc78",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/ncbi-medcpt-cross-encoder/wrapper-cuda12",
+      "HF_TOKEN": "",
+      "HOME": "/mnt/data/home/ncbi-medcpt-cross-encoder",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/ncbi-medcpt-cross-encoder/wrapper-cuda12/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MEDCPT_CROSS_ALLOW_REMOTE_DOWNLOAD": "true",
+      "MEDCPT_CROSS_CHECKPOINT_SHA256": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0",
+      "MEDCPT_CROSS_DEVICE": "auto",
+      "MEDCPT_CROSS_HF_REVISION": "71caf65d4927987813984f54c284405a13fcca49",
+      "MEDCPT_CROSS_MAX_LENGTH": "512",
+      "MEDCPT_CROSS_MODEL_ID": "ncbi/MedCPT-Cross-Encoder",
+      "MEDCPT_CROSS_MODEL_SLUG": "ncbi-medcpt-cross-encoder-wrapper-cuda12",
+      "MEDCPT_CROSS_TORCH_DTYPE": "auto",
+      "SERVED_MODEL_NAME": "ncbi/MedCPT-Cross-Encoder",
+      "TORCH_HOME": "/mnt/data/huggingface/ncbi-medcpt-cross-encoder/wrapper-cuda12/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/ncbi-medcpt-cross-encoder/wrapper-cuda12/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/huggingface/ncbi-medcpt-cross-encoder/wrapper-cuda12/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T11:21:37.631488+00:00",
+      "region": "us-central1",
+      "request_ms": 4,
+      "request_ms_p50": 4,
+      "request_ms_p95": 5,
+      "request_ms_p99": 5,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 188588,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 14750.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.99,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.2
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T11:25:03.800352+00:00",
+      "region": "uk-south1",
+      "request_ms": 6,
+      "request_ms_p50": 6,
+      "request_ms_p95": 6,
+      "request_ms_p99": 6,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 181991,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 9833.33,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.99,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.2
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T11:21:49.101275+00:00",
+      "region": "eu-north2",
+      "request_ms": 5,
+      "request_ms_p50": 5,
+      "request_ms_p95": 6,
+      "request_ms_p99": 6,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 201639,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 11800.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.93,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.2
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T11:21:41.392293+00:00",
+      "region": "eu-north1",
+      "request_ms": 7,
+      "request_ms_p50": 7,
+      "request_ms_p95": 7,
+      "request_ms_p99": 7,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 193872,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 8428.57,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.73,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.2
+    }
+  ],
+  "gpu_type": null,
+  "id": "1957bd26-1e48-4a6e-9681-45f595318752",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "public-domain",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "scores"
+  ],
+  "model_family": "ncbi-medcpt-cross-encoder",
+  "name": "MedCPT Cross Encoder",
+  "parameter_count": 109483009,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "model": "{{model_slug}}",
+        "query": "{{query}}",
+        "raw_scores": "{{raw_scores}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "return_text": "{{return_text}}",
+        "texts": "{{texts}}"
+      },
+      "endpoint": "/rerank",
+      "method": "POST",
+      "upstream_model_id": "ncbi/MedCPT-Cross-Encoder"
+    },
+    "input_fields": [
+      {
+        "default": "diabetes treatment",
+        "key": "query",
+        "label": "Biomedical query",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": [
+          "Type 1 and 2 diabetes mellitus: A review on current treatment approach and gene therapy as potential intervention.",
+          "Diagnosis and Management of Central Diabetes Insipidus in Adults.",
+          "Impact of Salt Intake on the Pathogenesis and Treatment of Hypertension."
+        ],
+        "key": "texts",
+        "label": "Candidate PubMed-style article texts",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "ranking_scores",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": true,
+        "key": "raw_scores",
+        "label": "Raw logits",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "return_text",
+        "label": "Return text",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/ncbi-medcpt-cross-encoder/wrapper-cuda12",
+      "checkpoint_file": "pytorch_model.bin",
+      "checkpoint_sha256": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0",
+      "input_contract": "query_text_pairs",
+      "kind": "forge_medcpt_cross_rerank",
+      "max_sequence_length": 512,
+      "model_id": "ncbi/MedCPT-Cross-Encoder",
+      "model_revision": "71caf65d4927987813984f54c284405a13fcca49",
+      "score_direction": "higher_is_more_relevant",
+      "served_model_name": "ncbi/MedCPT-Cross-Encoder",
+      "state_dict_load": "torch.load(weights_only=True)",
+      "tokenizer_backend": "fast_bert_tokenizer_json"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical literature retrieval, reranking, semantic search, and RAG evaluation over article-style text.",
+      "body": "Use only for nonclinical biomedical literature retrieval, reranking, semantic search, and RAG evaluation. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical reranking"
+    },
+    "schema_version": 1,
+    "type": "rerank"
+  },
+  "quantization": "fp16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-cross-encoder:wrapper-cuda12-torch2100-20260630@sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-cross-encoder:wrapper-cuda12-torch2100-20260630@sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-cross-encoder:wrapper-cuda12-torch2100-20260630@sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-cross-encoder:wrapper-cuda12-torch2100-20260630@sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31"
+  },
+  "release_rank": 73,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "ncbi-medcpt-cross-encoder-wrapper-cuda12",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/ncbi/MedCPT-Cross-Encoder",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "biomedical",
+    "reranking",
+    "retrieval",
+    "medcpt",
+    "cross-encoder",
+    "research-only"
+  ],
+  "updated_at": "2026-06-30T13:52:22.900900+00:00",
+  "version": "hf-71caf65-wrapper-cuda12-safe-state-dict",
+  "version_description": "Hidden Forge-owned MedCPT Cross Encoder reranker wrapper planned as the safe fallback for the TEI preflight row. The 2026-05-30T11Z image is pushed, mirrored to all four active regions at digest sha256:7b7655d9bb2c0e4a92ae673b33a91485c91769a9e0e9bfb4277d9cee27883c31, and CPU-smoked with pinned-checkpoint SHA256 verification plus torch.load(weights_only=True).",
+  "version_key": "hf-71caf65-wrapper-cuda12-safe-state-dict",
+  "version_label": "Forge CUDA 12 wrapper"
+}

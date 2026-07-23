@@ -1,0 +1,197 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "1c2d794b929ec9ec932f23aab12509c4fe480033b9f6470720cea5a37261d374",
+  "defaultEligible": true,
+  "displayName": "Use OpenMed ZeroShot NER Pathology Tiny 60M",
+  "domain": "biomedical-extraction",
+  "downloadUrl": "/v1/model-skills/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/markdown?download=true",
+  "group": "biomedical-extraction",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-extraction",
+    "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/token_classification",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "The pathology report describes invasive ductal carcinoma with lymphovascular invasion and no evidence of melanoma.",
+      "fieldType": "textarea",
+      "key": "text",
+      "label": "Biomedical or pathology text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "DISEASE\nPATHOLOGY_FINDING\nANATOMY",
+      "fieldType": "textarea",
+      "key": "labels",
+      "label": "Entity labels",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.35,
+      "fieldType": "number",
+      "key": "threshold",
+      "label": "Score threshold",
+      "maximum": 1,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "return_text",
+      "label": "Return source text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "flat_ner",
+      "label": "Flat spans only",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "multi_label",
+      "label": "Allow multiple labels per span",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-only use acknowledged",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-openmed-zeroshot-ner-pathology-tiny-60m-wrap-9361106c\ndescription: Use the exact Forge model openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft for text to json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use OpenMed ZeroShot NER Pathology Tiny 60M\n\n- Model slug: `openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft`\n- Model family: `openmed-zeroshot-ner-pathology-tiny-60m`\n- Version: `hf751c87f-gliner026-cvefix-20260604t01z` (`hf751c87f-gliner026-cvefix-20260604t01z`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-extraction / openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nOpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.\n\n## Use this exact model when\n\n- Use this exact `openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft` version when the task supplies text and needs json.\n- OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `text` (textarea, optional): Biomedical or pathology text\n- `labels` (textarea, optional): Entity labels\n- `threshold` (number, optional; bounds 0..1): Score threshold\n- `return_text` (checkbox, optional): Return source text\n- `flat_ner` (checkbox, optional): Flat spans only\n- `multi_label` (checkbox, optional): Allow multiple labels per span\n- `research_use_acknowledgement` (checkbox, optional): Research-only use acknowledged\n\nRequest template:\n\n```json\n{\n  \"flat_ner\": \"{{flat_ner}}\",\n  \"labels\": \"{{labels}}\",\n  \"model\": \"{{model_slug}}\",\n  \"multi_label\": \"{{multi_label}}\",\n  \"research_use_acknowledgement\": \"{{research_use_acknowledgement}}\",\n  \"return_text\": \"{{return_text}}\",\n  \"text\": \"{{text}}\",\n  \"threshold\": \"{{threshold}}\"\n}\n```\n\n## Exact output\n\n- `json`\n\n## Route\n\n`POST /token_classification`\n\n## Workflow\n\n1. Load this skill and pin model slug `openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft` with version key `hf751c87f-gliner026-cvefix-20260604t01z`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /token_classification` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 1024.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft`\n- Routes: `/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/inference-routes`\n- Regional deployment: `/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/regional-deployment`\n- Deployment handoff: `/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-extraction/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-extraction/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/SKILL.md\n\n## References\n\n- [OpenMed ZeroShot NER Pathology Tiny 60M source](https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 1024."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/deploy",
+    "inferenceRoutesUrl": "/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/openmed-zeroshot-ner-pathology-tiny-60m",
+    "modelUrl": "/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+    "regionalDeploymentUrl": "/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/markdown",
+  "modelFamily": "openmed-zeroshot-ner-pathology-tiny-60m",
+  "modelSlug": "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+  "modelUrl": "/v1/models/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+  "outputFields": [
+    "json"
+  ],
+  "outputModalities": [
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-extraction/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "OpenMed ZeroShot NER Pathology Tiny 60M source",
+      "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-extraction/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-extraction/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "flat_ner": "{{flat_ner}}",
+    "labels": "{{labels}}",
+    "model": "{{model_slug}}",
+    "multi_label": "{{multi_label}}",
+    "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+    "return_text": "{{return_text}}",
+    "text": "{{text}}",
+    "threshold": "{{threshold}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1024,
+    "parameterCount": 60000000,
+    "quantization": "fp32",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+    "tags": [
+      "healthcare",
+      "life-science",
+      "biomedical-nlp",
+      "pathology",
+      "token-classification",
+      "named-entity-recognition",
+      "zero-shot-ner",
+      "disease-entity-recognition",
+      "literature-mining",
+      "knowledge-graph",
+      "gliner",
+      "apache-2.0",
+      "research-only"
+    ],
+    "versionLabel": "HF 751c87f Forge GLiNER wrapper CVE fix 01Z"
+  },
+  "shortDescription": "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.",
+  "skillName": "use-forge-openmed-zeroshot-ner-pathology-tiny-60m-wrap-9361106c",
+  "skillUrl": "/v1/model-skills/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+  "slug": "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+  "stability": "testing",
+  "version": "hf751c87f-gliner026-cvefix-20260604t01z",
+  "versionKey": "hf751c87f-gliner026-cvefix-20260604t01z",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft` version when the task supplies text and needs json.",
+    "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft` with version key `hf751c87f-gliner026-cvefix-20260604t01z`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /token_classification` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

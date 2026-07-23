@@ -1,0 +1,163 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "d4bfe4522ff59be90ad99027e2f721cd9b00ca5a6a2a8c3fedcd70ded4cbbc3c",
+  "defaultEligible": true,
+  "displayName": "Use SapBERT PubMedBERT Entity Embeddings",
+  "domain": "biomedical-retrieval",
+  "downloadUrl": "/v1/model-skills/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/markdown?download=true",
+  "group": "biomedical-retrieval",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-retrieval",
+    "cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Coronavirus infection",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Biomedical entity name",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "float"
+      ],
+      "default": "float",
+      "fieldType": "select",
+      "key": "encoding_format",
+      "label": "Encoding format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "normalize",
+      "label": "Normalize vector",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-only use acknowledged",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-cambridgeltl-sapbert-pubmedbert-fulltext-wra-6f549b5a\ndescription: Use the exact Forge model cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use SapBERT PubMedBERT Entity Embeddings\n\n- Model slug: `cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12`\n- Model family: `cambridgeltl-sapbert-pubmedbert-fulltext`\n- Version: `hf-090663c-wrapper-cuda12-slow-tokenizer` (`hf-090663c-wrapper-cuda12-slow-tokenizer`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-retrieval / cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nSapBERT PubMedBERT is an Apache-2.0 biomedical entity representation model trained with UMLS 2020AA entity names using PubMedBERT as the base model.\n\n## Use this exact model when\n\n- Use this exact `cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12` version when the task supplies text and needs embedding.\n- SapBERT PubMedBERT is an Apache-2.0 biomedical entity representation model trained with UMLS 2020AA entity names using PubMedBERT as the base model.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Biomedical entity name\n- `encoding_format` (select, optional): Encoding format\n- `normalize` (checkbox, optional): Normalize vector\n- `research_use_acknowledgement` (checkbox, optional): Research-only use acknowledged\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"{{encoding_format}}\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\",\n  \"normalize\": \"{{normalize}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12` with version key `hf-090663c-wrapper-cuda12-slow-tokenizer`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12`\n- Routes: `/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/inference-routes`\n- Regional deployment: `/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/regional-deployment`\n- Deployment handoff: `/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/SKILL.md\n\n## References\n\n- [SapBERT PubMedBERT Entity Embeddings source](https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/deploy",
+    "inferenceRoutesUrl": "/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/cambridgeltl-sapbert-pubmedbert-fulltext",
+    "modelUrl": "/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+    "regionalDeploymentUrl": "/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/markdown",
+  "modelFamily": "cambridgeltl-sapbert-pubmedbert-fulltext",
+  "modelSlug": "cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+  "modelUrl": "/v1/models/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "SapBERT PubMedBERT is an Apache-2.0 biomedical entity representation model trained with UMLS 2020AA entity names using PubMedBERT as the base model.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "SapBERT PubMedBERT Entity Embeddings source",
+      "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-retrieval/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "{{encoding_format}}",
+    "input": "{{input}}",
+    "model": "{{model_slug}}",
+    "normalize": "{{normalize}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 109482240,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+    "tags": [
+      "healthcare",
+      "biomedical",
+      "entity-linking",
+      "umls",
+      "embedding",
+      "retrieval",
+      "bert",
+      "pubmedbert",
+      "huggingface",
+      "forge-wrapper",
+      "open-source"
+    ],
+    "versionLabel": "HF 090663c Forge wrapper CUDA 12"
+  },
+  "shortDescription": "SapBERT PubMedBERT is an Apache-2.0 biomedical entity representation model trained with UMLS 2020AA entity names using PubMedBERT as the base model.",
+  "skillName": "use-forge-cambridgeltl-sapbert-pubmedbert-fulltext-wra-6f549b5a",
+  "skillUrl": "/v1/model-skills/cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+  "slug": "cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+  "stability": "testing",
+  "version": "hf-090663c-wrapper-cuda12-slow-tokenizer",
+  "versionKey": "hf-090663c-wrapper-cuda12-slow-tokenizer",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12` version when the task supplies text and needs embedding.",
+    "SapBERT PubMedBERT is an Apache-2.0 biomedical entity representation model trained with UMLS 2020AA entity names using PubMedBERT as the base model.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12` with version key `hf-090663c-wrapper-cuda12-slow-tokenizer`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

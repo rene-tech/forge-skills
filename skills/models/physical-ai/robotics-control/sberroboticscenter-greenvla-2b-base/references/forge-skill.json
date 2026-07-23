@@ -1,0 +1,189 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "f3aee07869cba68ea918b08c7f4dbaa09d348bc9c3d9da6bad2896f7ebae99e3",
+  "defaultEligible": false,
+  "displayName": "Use SberRoboticsCenter GreenVLA 2B Base",
+  "domain": "robotics-control",
+  "downloadUrl": "/v1/model-skills/sberroboticscenter-greenvla-2b-base/markdown?download=true",
+  "group": "robotics-control",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "robotics-control",
+    "sberroboticscenter-greenvla-2b-base"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/sberroboticscenter-greenvla-2b-base",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "pick up the green block and place it on the plate",
+      "fieldType": "textarea",
+      "key": "instruction",
+      "label": "Instruction",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAACVT/22AAABr0lEQVR42u3SAQkAAAgEsY9qBCMY3RoKgyU4Lj0FZ0UCDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDKoCBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBlUBg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBgWDgkExKBgUg4JBwaAYFAwKBsWgYFAMCgYFg2JQMCgGBYOCQTEoGBSDgkHBoBgUDIpBwaBgUAwKBgWDYlAwKAYFg4JBMSgYFIOCQcGgGBQMikHBoGBQDAoGxaBgUDAoBgWDgkExKBgUg4JBwaAYFAyKQcGgYFAMCgbFoGBQMCgGBYNiUDAoGBSDgkHBoBgUDIpBwaBgUAwKBsWgYFAwKAYFg2JQMCgYFIOCQTEoGBQMikHBoGBQDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQMCgGBYNiUDAoGBSDgkExKBgUDIpBwaAYFAwKBsWgYFAMCgYFg2JQMCgYFIOCQTEoGBQMikHBoBgUDAoG5aMFsn9PELKPO74AAAAASUVORK5CYII=",
+      "fieldType": "file_upload",
+      "key": "image",
+      "label": "Bridge RGB Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fieldType": "json_editor",
+      "key": "robot_state",
+      "label": "8D Bridge Robot State",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "bridge"
+      ],
+      "default": "bridge",
+      "fieldType": "select",
+      "key": "data_config_name",
+      "label": "Data Config",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "no_actuation",
+      "label": "No Actuation",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "instructions": "---\nname: use-forge-sberroboticscenter-greenvla-2b-base\ndescription: Use the exact Forge model sberroboticscenter-greenvla-2b-base for text, image, robot_state to robot_action, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use SberRoboticsCenter GreenVLA 2B Base\n\n- Model slug: `sberroboticscenter-greenvla-2b-base`\n- Model family: `sberroboticscenter-greenvla`\n- Version: `2b-base-gpu-wrapper-952a80c-noact-fastvendored` (`2b-base`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / robotics-control / sberroboticscenter-greenvla-2b-base`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nGreenVLA 2B Base is an Apache-2.0 vision-language-action robot policy checkpoint from SberRoboticsCenter for Bridge/WidowX-style manipulation.\n\n## Use this exact model when\n\n- Use this exact `sberroboticscenter-greenvla-2b-base` version when the task supplies text, image, robot_state and needs robot_action, json.\n- GreenVLA 2B Base is an Apache-2.0 vision-language-action robot policy checkpoint from SberRoboticsCenter for Bridge/WidowX-style manipulation.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `instruction` (textarea, optional): Instruction\n- `image` (file_upload, optional): Bridge RGB Image\n- `robot_state` (json_editor, optional): 8D Bridge Robot State\n- `data_config_name` (select, optional): Data Config\n- `no_actuation` (checkbox, optional): No Actuation\n\nRequest template:\n\n```json\n{\n  \"data_config_name\": \"{{data_config_name}}\",\n  \"image\": \"{{image}}\",\n  \"instruction\": \"{{instruction}}\",\n  \"model\": \"{{model_slug}}\",\n  \"no_actuation\": \"{{no_actuation}}\",\n  \"robot_state\": \"{{robot_state}}\"\n}\n```\n\n## Exact output\n\n- `robot_action`\n- `json`\n\n## Route\n\n`POST /v1/inference/sberroboticscenter-greenvla-2b-base`\n\n## Workflow\n\n1. Load this skill and pin model slug `sberroboticscenter-greenvla-2b-base` with version key `2b-base`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/sberroboticscenter-greenvla-2b-base` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/sberroboticscenter-greenvla-2b-base`\n- Routes: `/v1/models/sberroboticscenter-greenvla-2b-base/inference-routes`\n- Regional deployment: `/v1/models/sberroboticscenter-greenvla-2b-base/regional-deployment`\n- Deployment handoff: `/v1/models/sberroboticscenter-greenvla-2b-base/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/sberroboticscenter-greenvla-2b-base/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/sberroboticscenter-greenvla-2b-base/SKILL.md\n\n## References\n\n- [SberRoboticsCenter GreenVLA 2B Base source](https://huggingface.co/SberRoboticsCenter/GreenVLA-2b-base) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/sberroboticscenter-greenvla-2b-base/deploy",
+    "inferenceRoutesUrl": "/v1/models/sberroboticscenter-greenvla-2b-base/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/sberroboticscenter-greenvla",
+    "modelUrl": "/v1/models/sberroboticscenter-greenvla-2b-base",
+    "regionalDeploymentUrl": "/v1/models/sberroboticscenter-greenvla-2b-base/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/sberroboticscenter-greenvla-2b-base/markdown",
+  "modelFamily": "sberroboticscenter-greenvla",
+  "modelSlug": "sberroboticscenter-greenvla-2b-base",
+  "modelUrl": "/v1/models/sberroboticscenter-greenvla-2b-base",
+  "outputFields": [
+    "robot_action",
+    "json"
+  ],
+  "outputModalities": [
+    "robot_action",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "GreenVLA 2B Base is an Apache-2.0 vision-language-action robot policy checkpoint from SberRoboticsCenter for Bridge/WidowX-style manipulation.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/sberroboticscenter-greenvla-2b-base/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "SberRoboticsCenter GreenVLA 2B Base source",
+      "url": "https://huggingface.co/SberRoboticsCenter/GreenVLA-2b-base"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/sberroboticscenter-greenvla-2b-base/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/robotics-control/sberroboticscenter-greenvla-2b-base/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "data_config_name": "{{data_config_name}}",
+    "image": "{{image}}",
+    "instruction": "{{instruction}}",
+    "model": "{{model_slug}}",
+    "no_actuation": "{{no_actuation}}",
+    "robot_state": "{{robot_state}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 2000000000,
+    "quantization": "bfloat16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/SberRoboticsCenter/GreenVLA-2b-base",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "robot-policy",
+      "vision-language-action",
+      "greenvla",
+      "lerobot",
+      "bridge",
+      "widowx",
+      "safetensors",
+      "apache-2.0",
+      "forge-wrapper-candidate",
+      "publication-reviewed-keep-hidden",
+      "robot-policy-safety-pending"
+    ],
+    "versionLabel": "2B Base wrapper candidate"
+  },
+  "shortDescription": "GreenVLA 2B Base is an Apache-2.0 vision-language-action robot policy checkpoint from SberRoboticsCenter for Bridge/WidowX-style manipulation.",
+  "skillName": "use-forge-sberroboticscenter-greenvla-2b-base",
+  "skillUrl": "/v1/model-skills/sberroboticscenter-greenvla-2b-base",
+  "slug": "sberroboticscenter-greenvla-2b-base",
+  "stability": "testing",
+  "version": "2b-base-gpu-wrapper-952a80c-noact-fastvendored",
+  "versionKey": "2b-base",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `sberroboticscenter-greenvla-2b-base` version when the task supplies text, image, robot_state and needs robot_action, json.",
+    "GreenVLA 2B Base is an Apache-2.0 vision-language-action robot policy checkpoint from SberRoboticsCenter for Bridge/WidowX-style manipulation.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `sberroboticscenter-greenvla-2b-base` with version key `2b-base`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/sberroboticscenter-greenvla-2b-base` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "instruction",
+    "multilingual",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/qwen/qwen-2.5-7b-instruct:latest",
+  "container_image_size_bytes": null,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-26T13:33:33.859170+00:00",
+  "default_eligible": true,
+  "description": "Qwen 2.5 7B instruction model packaged as an NVIDIA NIM, useful for multilingual and coding-adjacent chat workloads.",
+  "family_id": "1e7b8ee0-5b4c-4379-a235-8bdd832a30f4",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 32.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0",
+      "NIM_MODEL_PROFILE": "vllm-bf16-tp1-pp1"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks B200 unsupported",
+      "last_failed_at": "2026-05-12T23:50:08.525469+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 4,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks B300 unsupported",
+      "last_failed_at": "2026-05-13T17:19:18.026803+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T17:18:54.579485+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 4,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:10:10.788233+00:00",
+      "region": "eu-north2",
+      "request_ms": 1719,
+      "request_ms_p50": 1644,
+      "request_ms_p95": 1712,
+      "request_ms_p99": 1718,
+      "request_ms_samples": 3,
+      "startup_ms_first": 187000,
+      "startup_ms_probe": 67910,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 175.68,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 127.66,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 187000,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 127.66,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:18:24.852829+00:00",
+      "region": "eu-north1",
+      "request_ms": 5534,
+      "request_ms_p50": 4049,
+      "request_ms_p95": 5386,
+      "request_ms_p99": 5504,
+      "request_ms_samples": 3,
+      "startup_ms_first": 162874,
+      "startup_ms_probe": 68000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 54.57,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 41.72,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: NIM startup aborted on RTX6000 before readiness",
+      "last_failed_at": "2026-05-13T17:26:08.513551+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T17:31:34.492037+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    }
+  ],
+  "gpu_type": null,
+  "id": "3d212fcb-92a8-4d5e-a171-5307d402e0f3",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "qwen-2-5-7b-instruct",
+  "name": "Qwen 2.5 7B Instruct",
+  "parameter_count": 7000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": "{{messages}}",
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "qwen/qwen-2.5-7b-instruct"
+    },
+    "input_fields": [
+      {
+        "default": "Give a bilingual English/German summary of why regional image mirrors reduce cold-start time.",
+        "key": "messages",
+        "label": "Prompt",
+        "type": "chat_history",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "markdown",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.7,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-qwen-qwen-2.5-7b-instruct:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-qwen-qwen-2.5-7b-instruct:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-qwen-qwen-2.5-7b-instruct:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-qwen-qwen-2.5-7b-instruct:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-2-5-7b-instruct-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/qwen/qwen-2.5-7b-instruct",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "instruction",
+    "multilingual"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

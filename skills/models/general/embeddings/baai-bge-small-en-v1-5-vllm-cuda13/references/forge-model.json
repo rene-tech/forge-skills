@@ -1,0 +1,501 @@
+{
+  "benchmark_scores": {
+    "active_tei_b300_blocker": "The active TEI CUDA 1.9.3 profile keeps B300 disabled because a retained diagnostic pod exited before readiness with `cuda compute cap 103 is not supported` on SM103.",
+    "active_tei_baseline_slug": "baai-bge-small-en-v1-5-tei-cuda-1-9",
+    "artifact_api": "https://huggingface.co/api/models/BAAI/bge-small-en-v1.5?blobs=true",
+    "artifact_checked_at": "2026-05-31T22Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "auto_map": null,
+      "embedding_dimension": 384,
+      "hidden_size": 384,
+      "intermediate_size": 1536,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pooling": "cls",
+      "pooling_normalized": true,
+      "torch_dtype": "float32",
+      "trust_remote_code": null
+    },
+    "artifact_disabled": false,
+    "artifact_evidence_20260531T22Z": "Hugging Face API returned modelId=BAAI/bge-small-en-v1.5, private=false, gated=false, disabled=false, library_name=sentence-transformers, pipeline_tag=feature-extraction, cardData.license=mit, revision 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a, lastModified=2024-02-22T03:36:23Z, tags text-embeddings-inference/endpoints_compatible, and safetensors I64=512 plus F32=33,360,000. Raw config.json reports BertModel with no auto_map/trust_remote_code; modules.json contains Transformer, Pooling, and Normalize; 1_Pooling/config.json enables CLS pooling and 384 dimensions.",
+    "artifact_gated": false,
+    "artifact_last_modified": "2024-02-22T03:36:23.000Z",
+    "artifact_license": "mit",
+    "artifact_parameters": {
+      "F32": 33360000,
+      "I64": 512,
+      "total": 33360512
+    },
+    "artifact_private": false,
+    "artifact_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "artifact_source": "https://huggingface.co/BAAI/bge-small-en-v1.5",
+    "b300_no_persist_probe_20260601T00Z": {
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "gpu_type": "B300",
+      "model_time_source": "client_wall_ms",
+      "persisted": false,
+      "pod_name": "forge-probe-baai-bge-small-en-v1-5-v-b300-uk-south1-5da1b1",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/general/baai-bge-small-en-v1-5-vllm-cuda13-20260601T00Z-b300-no-persist.json",
+      "report_md": "docs/model-onboarding/general/baai-bge-small-en-v1-5-vllm-cuda13-20260601T00Z-b300-no-persist.md",
+      "request_ms_p50": 73,
+      "request_ms_samples": [
+        73,
+        73,
+        73,
+        75,
+        73,
+        73,
+        73,
+        73,
+        72,
+        73
+      ],
+      "response_status": 200,
+      "startup_ms": 53242,
+      "status": "supported",
+      "tokens_per_second": 356.16,
+      "vram_used_gb": 0.98,
+      "warmup_ms_samples": [
+        3202,
+        74,
+        73
+      ]
+    },
+    "b300_persisted_probe_20260601T00Z": {
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "gpu_type": "B300",
+      "model_time_source": "client_wall_ms",
+      "persisted": true,
+      "pod_name": "forge-probe-baai-bge-small-en-v1-5-v-b300-uk-south1-43a577",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/general/baai-bge-small-en-v1-5-vllm-cuda13-20260601T00Z-b300-persisted.json",
+      "report_md": "docs/model-onboarding/general/baai-bge-small-en-v1-5-vllm-cuda13-20260601T00Z-b300-persisted.md",
+      "request_ms_p50": 72,
+      "request_ms_p95": 73,
+      "request_ms_p99": 73,
+      "request_ms_samples": [
+        72,
+        72,
+        72,
+        72,
+        72,
+        73,
+        71,
+        72,
+        72,
+        71
+      ],
+      "response_status": 200,
+      "startup_ms": 46931,
+      "status": "supported",
+      "tokens_per_second": 361.11,
+      "vram_used_gb": 0.98,
+      "warmup_ms_samples": [
+        3185,
+        74,
+        73
+      ]
+    },
+    "candidate_selection": "Selected as the concrete B300 fallback path for the active BGE Small TEI row after TEI CUDA 1.9.3 rejected SM103. This small MIT-licensed English embedding model is a useful low-cost retrieval profile, and vLLM 0.21.0 CUDA 13 is already mirrored and proven on adjacent Forge embedding fallbacks.",
+    "container_config_snapshot": {
+      "architecture": "amd64",
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "image_version": "vllm/vllm-openai:v0.21.0",
+      "layer_size_bytes": 8669266122,
+      "os": "linux",
+      "source": "https://github.com/vllm-project/vllm",
+      "source_revision": "ad7125a431e176d4161099480a66f0169609a690",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+      "vllm_enable_cuda_compatibility": "0"
+    },
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+    "container_license_evidence": "The vLLM v0.21.0 source tree is Apache-2.0 licensed; skopeo inspect links the selected image to https://github.com/vllm-project/vllm revision ad7125a431e176d4161099480a66f0169609a690.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_as_hidden_sm103_fallback_candidate_after_tei_cuda_1_9_3_rejected_b300",
+    "embedding_parity_20260601T00Z": {
+      "checked_at": "2026-06-01T00:14:33Z",
+      "corpus_scope": "synthetic non-HCLS general retrieval/control texts",
+      "corpus_size": 10,
+      "method": "direct temporary probe pods queried through ComputeHttp; TEI reference on L40S/eu-north1 and vLLM fallback on B300/uk-south1; both pods deleted after comparison",
+      "report_json": "docs/model-onboarding/general/baai-bge-small-en-v1-5-vllm-cuda13-20260601T00Z-parity.json",
+      "report_md": "docs/model-onboarding/general/baai-bge-small-en-v1-5-vllm-cuda13-20260601T00Z-parity.md",
+      "status": "passed",
+      "summary": {
+        "max_abs_delta_raw_max": 0.0006341973,
+        "max_abs_delta_unit_max": 0.0006341759,
+        "max_norm_delta": 7.18e-08,
+        "mean_raw_cosine": 0.9999982636,
+        "mean_tei_norm": 1.0000000004,
+        "mean_vllm_norm": 1.0000000199,
+        "min_raw_cosine": 0.9999951641,
+        "p50_raw_cosine": 0.9999986344
+      },
+      "tei_reference": {
+        "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "gpu_type": "L40S",
+        "latency_ms": 472,
+        "region": "eu-north1",
+        "slug": "baai-bge-small-en-v1-5-tei-cuda-1-9",
+        "startup_ms": 206746,
+        "vram_used_gb": 0.54
+      },
+      "threshold": {
+        "dimension_required": 384,
+        "max_norm_delta_allowed": 0.001,
+        "max_unit_delta_allowed": 0.025,
+        "min_raw_cosine_required": 0.999
+      },
+      "vllm_candidate": {
+        "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "gpu_type": "B300",
+        "latency_ms": 3371,
+        "pooler_config": {
+          "pooling_type": "CLS",
+          "use_activation": true
+        },
+        "region": "uk-south1",
+        "slug": "baai-bge-small-en-v1-5-vllm-cuda13",
+        "startup_ms": 396567,
+        "vram_used_gb": 0.98
+      }
+    },
+    "live_readback_20260601T00Z": {
+      "db": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": false,
+          "B300": true,
+          "H200": false,
+          "L40S": false,
+          "RTX6000": false
+        },
+        "is_latest": false,
+        "stability": "testing",
+        "status": "active",
+        "support_rows": {
+          "B300/uk-south1": {
+            "measurement_source": "client_wall_ms",
+            "request_ms_p50": 72,
+            "request_ms_p95": 73,
+            "request_ms_p99": 73,
+            "request_ms_samples": 10,
+            "startup_ms": 46931,
+            "status": "supported",
+            "tokens_per_second": 361.11,
+            "vram_measured_gb": 0.98
+          }
+        }
+      },
+      "public_route": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": false,
+          "B300": true,
+          "H200": false,
+          "L40S": false,
+          "RTX6000": false
+        },
+        "stability": "testing",
+        "status": "cold",
+        "support_rows": {
+          "B300/uk-south1": {
+            "request_ms_p50": 72,
+            "request_ms_samples": 10,
+            "status": "supported",
+            "tokens_per_second": 361.11
+          }
+        }
+      }
+    },
+    "next_steps": [
+      "Keep this vLLM profile non-default and non-latest unless product review accepts the heavier CUDA 13 route as broader family default.",
+      "Only enable B200, H200, L40S, or RTX6000 for this vLLM profile after each cell has its own matrix evidence.",
+      "Retain the TEI CUDA 1.9.3 profile as the latest route for non-B300 cells."
+    ],
+    "onboarding_state": "active_testing_non_default_vllm_cuda13_b300_supported_parity_passed_non_b300_unprobed",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260601T00Z": {
+      "decision": "publish_active_testing_non_default_b300_fallback",
+      "reason": "The vLLM CUDA 13 profile cleared 10-text TEI parity and a standard persisted B300 probe with 3 warmups and 10 measured requests. Keep only B300 enabled until non-B300 cells are intentionally probed for this heavier fallback."
+    },
+    "regional_mirror_recheck_20260531T22Z": {
+      "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      }
+    },
+    "runtime_evidence": "vLLM 0.21.0 embedding documentation lists BertModel as supported for BERT-based embedding models including BAAI/bge-base-en-v1.5, lists the OpenAI-compatible /v1/embeddings API, and documents `use_activation` as the normalize control. Existing Forge Qwen3 and GTE ModernBERT vLLM CUDA 13 pooling profiles validate the same image and endpoint contract.",
+    "runtime_plan": {
+      "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, VLLM_CACHE_ROOT, and XDG_CACHE_HOME are versioned under /mnt/data for first-run model hydration and vLLM artifacts.",
+      "dtype": "float16",
+      "endpoint": "/v1/embeddings",
+      "max_model_len": 512,
+      "pooler_config": {
+        "pooling_type": "CLS",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so vLLM does not receive unnecessary platform Hugging Face credentials.",
+      "served_model_name": "BAAI/bge-small-en-v1.5"
+    },
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "source_evidence": [
+      "https://huggingface.co/BAAI/bge-small-en-v1.5",
+      "https://huggingface.co/api/models/BAAI/bge-small-en-v1.5?blobs=true",
+      "https://docs.vllm.ai/en/v0.21.0/models/pooling_models/embed/",
+      "https://github.com/vllm-project/vllm/tree/v0.21.0"
+    ],
+    "validation_state": {
+      "embedding_parity": "passed_10_text_tei_vllm_output_20260601T00Z",
+      "focused_manifest_test": "passed_20260601T00Z",
+      "gpu_probe": "b300_persisted_supported_20260601T00Z",
+      "image_gate": "passed_empty_findings_20260531T22Z_and_20260601T00Z",
+      "live_upsert": "succeeded_active_testing_non_default_20260601T00Z",
+      "manifest_schema": "validated_by_scripts_upsert_model_dry_run_20260531T22Z_and_20260601T00Z",
+      "vllm_image_gate": "passed_empty_findings_20260531T22Z_and_20260601T00Z"
+    }
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic_search",
+    "english",
+    "bge",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "sm103",
+    "fallback",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669266122,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-01T00:16:07.660375+00:00",
+  "default_eligible": false,
+  "description": "Active non-default CUDA 13 vLLM pooling fallback for BAAI bge-small-en-v1.5, a public MIT-licensed English embedding model for semantic search, short RAG retrieval, clustering, and low-cost passage ranking. The active TEI CUDA 1.9.3 profile remains the lighter latest route with B200, H200, L40S, and RTX6000 support, but B300/SM103 is disabled there because the pinned TEI runtime exits before readiness with `cuda compute cap 103 is not supported`. This fallback keeps the same model artifact revision 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a, uses the already mirrored official vLLM 0.21.0 CUDA 13 image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, launches with `--runner pooling`, and selects CLS pooling with `use_activation=true` because vLLM 0.21.0 documents that this flag controls embedding normalization. The 2026-06-01T00Z TEI-vs-vLLM parity pass compared 10 general retrieval/control texts between TEI on L40S and this vLLM profile on B300 with min cosine 0.9999951641, max unit-vector delta 0.0006341759, max norm delta 0.0000000718, and 384 dimensions throughout. The same cycle's persisted B300 matrix probe passed with 3 warmups and 10 measured /v1/embeddings requests: 46.931 s startup, 72 ms client-wall p50, 73 ms p95, 361.11 tokens/s, and 0.98 GB VRAM. Hugging Face and vLLM caches are versioned under /mnt/data and Hugging Face token env is explicitly cleared because the artifact is public and ungated. Keep default_eligible=false and is_latest=false because this vLLM runtime is only the B300 fallback; do not enable non-B300 cells until each has its own matrix evidence.",
+  "family_id": "3f6d54cf-afff-4395-be78-3a1233d1992e",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": true,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "BAAI/bge-small-en-v1.5",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "BAAI/bge-small-en-v1.5",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "float16",
+      "--max-model-len",
+      "512",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.35",
+      "--max-num-seqs",
+      "32",
+      "--pooler-config",
+      "{\"pooling_type\":\"CLS\",\"use_activation\":true}"
+    ],
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/baai-bge-small-en-v1-5/vllm-0.21.0-cuda13",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/baai-bge-small-en-v1-5/vllm-0.21.0-cuda13/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/baai-bge-small-en-v1-5/vllm-0.21.0-cuda13/hub",
+      "VLLM_CACHE_ROOT": "/mnt/data/vllm/baai-bge-small-en-v1-5/vllm-0.21.0-cuda13",
+      "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+      "XDG_CACHE_HOME": "/mnt/data/vllm/baai-bge-small-en-v1-5/vllm-0.21.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T00:20:54.080966+00:00",
+      "region": "uk-south1",
+      "request_ms": 72,
+      "request_ms_p50": 72,
+      "request_ms_p95": 73,
+      "request_ms_p99": 73,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 46931,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 361.11,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.98,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "00621eae-9bb5-4533-a923-30e26d8621ad",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "baai-bge-small-en-v1-5",
+  "name": "BGE Small EN v1.5",
+  "parameter_count": 33360512,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "BAAI/bge-small-en-v1.5"
+    },
+    "input_fields": [
+      {
+        "default": "Represent this sentence for searching relevant passages: Lightweight embeddings help support teams rank short knowledge-base answers quickly.",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/baai-bge-small-en-v1-5/vllm-0.21.0-cuda13",
+      "kind": "vllm_pooling_embeddings",
+      "model_id": "BAAI/bge-small-en-v1.5",
+      "model_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "pooler_config": {
+        "pooling_type": "CLS",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "served_model_name": "BAAI/bge-small-en-v1.5",
+      "vllm_cache_target": "/mnt/data/vllm/baai-bge-small-en-v1-5/vllm-0.21.0-cuda13"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 88,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "baai-bge-small-en-v1-5-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/BAAI/bge-small-en-v1.5",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "uk-south1"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic-search",
+    "english",
+    "bge",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "sm103",
+    "fallback"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-5c38ec7-vllm-0.21.0-cuda13-pooling",
+  "version_description": "Active non-default CUDA 13 vLLM pooling fallback for BAAI bge-small-en-v1.5 on B300/SM103. The lighter TEI CUDA 1.9.3 profile remains the latest route for non-B300 cells.",
+  "version_key": "hf-5c38ec7-vllm-0-21-0-cuda13-pooling",
+  "version_label": "HF 5c38ec7 via vLLM 0.21 CUDA 13 pooling"
+}

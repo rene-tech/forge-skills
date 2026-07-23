@@ -1,0 +1,167 @@
+{
+  "benchmarkClaims": [
+    {
+      "caveats": [
+        "This establishes model-family representation context, not embedding quality for the 650M pooled endpoint.",
+        "Do not compare these structure scores with retrieval, clustering, or classification metrics."
+      ],
+      "checkedAt": "2026-07-23",
+      "conditions": "Paper-reported structure-module evaluation; no Forge reproduction is claimed.",
+      "dataset": "CAMEO and CASP14 structure benchmarks",
+      "direction": "higher-is-better",
+      "metric": "TM-score",
+      "modelScope": "The paper's 15B-parameter ESM-2 plus its structure module, not the Forge 650M pooled-embedding endpoint.",
+      "provenance": "reported",
+      "sourceKind": "paper",
+      "sourceTitle": "Evolutionary-scale prediction of atomic-level protein structure with a language model",
+      "sourceUrl": "https://www.biorxiv.org/content/10.1101/2022.07.20.500902v1.full-text",
+      "split": "Public benchmark sets reported in the paper",
+      "value": "71.3 on CAMEO and 53.9 on CASP14 for the reported 15B ESM-2 structure module"
+    }
+  ],
+  "benchmarkEvidenceNote": "Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "ce7731b606cba4e69310009884ba5885741db7d19975f0431aaf4c770cfef245",
+  "defaultEligible": true,
+  "displayName": "Use ESM-2 650M Protein Embeddings",
+  "domain": "protein-representation",
+  "downloadUrl": "/v1/model-skills/facebook-esm-2-650m-protein-embedding/markdown?download=true",
+  "group": "protein-representation",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "protein-representation",
+    "facebook-esm-2-650m-protein-embedding"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/facebook-esm-2-650m-protein-embedding",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMK",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_length",
+      "label": "Max sequence length",
+      "maximum": 1024,
+      "minimum": 32,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence"
+  ],
+  "instructions": "---\nname: use-forge-facebook-esm-2-650m-protein-embedding\ndescription: Use the exact Forge model facebook-esm-2-650m-protein-embedding for protein_sequence to embedding, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use ESM-2 650M Protein Embeddings\n\n- Model slug: `facebook-esm-2-650m-protein-embedding`\n- Model family: `facebook-esm-2-650m`\n- Version: `hf-08e4846-wrapper-20260427-timing` (`hf-08e4846-wrapper-20260427-timing`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / protein-representation / facebook-esm-2-650m-protein-embedding`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `mit`\n\n## Purpose\n\nESM-2 650M is a non-clinical protein language model for sequence representation learning.\n\n## Use this exact model when\n\n- Use this exact `facebook-esm-2-650m-protein-embedding` version when the task supplies protein_sequence and needs embedding, json.\n- ESM-2 650M is a non-clinical protein language model for sequence representation learning.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['embedding', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, required): Protein sequence\n- `max_length` (number, optional; bounds 32..1024): Max sequence length\n\nRequest template:\n\n```json\n{\n  \"max_length\": \"{{max_length}}\",\n  \"sequence\": \"{{sequence}}\"\n}\n```\n\n## Exact output\n\n- `task`\n- `sequence_length`\n- `embedding_dim`\n- `embedding_preview`\n- `embedding_l2`\n- `model_time_ms`\n\n## Route\n\n`POST /v1/inference/facebook-esm-2-650m-protein-embedding`\n\n## Workflow\n\n1. Load this skill and pin model slug `facebook-esm-2-650m-protein-embedding` with version key `hf-08e4846-wrapper-20260427-timing`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/facebook-esm-2-650m-protein-embedding` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `reviewed`\n\nReviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.\n\n### Evolutionary-scale prediction of atomic-level protein structure with a language model\n\n- Scope: The paper's 15B-parameter ESM-2 plus its structure module, not the Forge 650M pooled-embedding endpoint.\n- Dataset/split: CAMEO and CASP14 structure benchmarks / Public benchmark sets reported in the paper\n- Metric/value: TM-score / 71.3 on CAMEO and 53.9 on CASP14 for the reported 15B ESM-2 structure module\n- Provenance: reported\n- Conditions: Paper-reported structure-module evaluation; no Forge reproduction is claimed.\n- Caveat: This establishes model-family representation context, not embedding quality for the 650M pooled endpoint.\n- Caveat: Do not compare these structure scores with retrieval, clustering, or classification metrics.\n- Primary source: https://www.biorxiv.org/content/10.1101/2022.07.20.500902v1.full-text\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.\n- Declared context/sequence window: 1024.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/facebook-esm-2-650m-protein-embedding`\n- Routes: `/v1/models/facebook-esm-2-650m-protein-embedding/inference-routes`\n- Regional deployment: `/v1/models/facebook-esm-2-650m-protein-embedding/regional-deployment`\n- Deployment handoff: `/v1/models/facebook-esm-2-650m-protein-embedding/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/facebook-esm-2-650m-protein-embedding/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-representation/facebook-esm-2-650m-protein-embedding/SKILL.md\n\n## References\n\n- [ESM-2 650M model card](https://huggingface.co/facebook/esm2_t33_650M_UR50D) (model-card)\n- [Evolutionary-scale prediction of atomic-level protein structure with a language model](https://www.biorxiv.org/content/10.1101/2022.07.20.500902v1.full-text) (paper)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.",
+    "Declared context/sequence window: 1024."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/facebook-esm-2-650m-protein-embedding/deploy",
+    "inferenceRoutesUrl": "/v1/models/facebook-esm-2-650m-protein-embedding/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/facebook-esm-2-650m",
+    "modelUrl": "/v1/models/facebook-esm-2-650m-protein-embedding",
+    "regionalDeploymentUrl": "/v1/models/facebook-esm-2-650m-protein-embedding/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/facebook-esm-2-650m-protein-embedding/markdown",
+  "modelFamily": "facebook-esm-2-650m",
+  "modelSlug": "facebook-esm-2-650m-protein-embedding",
+  "modelUrl": "/v1/models/facebook-esm-2-650m-protein-embedding",
+  "outputFields": [
+    "task",
+    "sequence_length",
+    "embedding_dim",
+    "embedding_preview",
+    "embedding_l2",
+    "model_time_ms"
+  ],
+  "outputModalities": [
+    "embedding",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 1,
+  "publicEvidenceStatus": "reviewed",
+  "purpose": "ESM-2 650M is a non-clinical protein language model for sequence representation learning.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-representation/facebook-esm-2-650m-protein-embedding/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "ESM-2 650M model card",
+      "url": "https://huggingface.co/facebook/esm2_t33_650M_UR50D"
+    },
+    {
+      "kind": "paper",
+      "title": "Evolutionary-scale prediction of atomic-level protein structure with a language model",
+      "url": "https://www.biorxiv.org/content/10.1101/2022.07.20.500902v1.full-text"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/facebook-esm-2-650m-protein-embedding/SKILL.md",
+  "repositoryPath": "skills/models/life-science/protein-representation/facebook-esm-2-650m-protein-embedding/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_length": "{{max_length}}",
+    "sequence": "{{sequence}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1024,
+    "parameterCount": 650000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/facebook/esm2_t33_650M_UR50D",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "embedding",
+      "sequence",
+      "esm",
+      "transformers",
+      "forge-wrapper",
+      "open-source"
+    ],
+    "versionLabel": "HF 08e4846 via Forge life-science wrapper"
+  },
+  "shortDescription": "ESM-2 650M is a non-clinical protein language model for sequence representation learning.",
+  "skillName": "use-forge-facebook-esm-2-650m-protein-embedding",
+  "skillUrl": "/v1/model-skills/facebook-esm-2-650m-protein-embedding",
+  "slug": "facebook-esm-2-650m-protein-embedding",
+  "stability": "testing",
+  "version": "hf-08e4846-wrapper-20260427-timing",
+  "versionKey": "hf-08e4846-wrapper-20260427-timing",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['embedding', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `facebook-esm-2-650m-protein-embedding` version when the task supplies protein_sequence and needs embedding, json.",
+    "ESM-2 650M is a non-clinical protein language model for sequence representation learning.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `facebook-esm-2-650m-protein-embedding` with version key `hf-08e4846-wrapper-20260427-timing`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/facebook-esm-2-650m-protein-embedding` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

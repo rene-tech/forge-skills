@@ -1,0 +1,155 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "421f717bb7cbae37658f54d0c96bd720615f7e3ba56c47981a0d4bd06d0a2448",
+  "defaultEligible": false,
+  "displayName": "Use EMBO SODA-VEC Dot/Std/Cov",
+  "domain": "biomedical-retrieval",
+  "downloadUrl": "/v1/model-skills/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/markdown?download=true",
+  "group": "biomedical-retrieval",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "biomedical-retrieval",
+    "embo-soda-vec-dot-std-cov-losses-vllm-cuda13"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Query: CRISPR-Cas9 editing in human induced pluripotent stem cells\n\nCandidate abstract: Genome editing workflows use CRISPR-Cas nucleases to introduce targeted DNA changes, enabling functional studies of disease-associated variants in cellular models.",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Biomedical literature text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "float"
+      ],
+      "default": "float",
+      "fieldType": "select",
+      "key": "encoding_format",
+      "label": "Encoding format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-only use acknowledged",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-embo-soda-vec-dot-std-cov-losses-vllm-cuda13\ndescription: Use the exact Forge model embo-soda-vec-dot-std-cov-losses-vllm-cuda13 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use EMBO SODA-VEC Dot/Std/Cov\n\n- Model slug: `embo-soda-vec-dot-std-cov-losses-vllm-cuda13`\n- Model family: `embo-soda-vec-dot-std-cov-losses`\n- Version: `hf-ec602c1-vllm-0.21.0-cuda13-pooling` (`hf-ec602c1-vllm-0-21-0-cuda13-pooling`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / biomedical-retrieval / embo-soda-vec-dot-std-cov-losses-vllm-cuda13`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `mit`\n\n## Purpose\n\nEMBO SODA-VEC Dot/Std/Cov is a MIT-licensed sentence-transformers ModernBERT biomedical and life-science literature embedding model trained on PubMed Central title-abstract pairs with a VICReg-style dot, standard deviation, and covariance objective.\n\n## Use this exact model when\n\n- Use this exact `embo-soda-vec-dot-std-cov-losses-vllm-cuda13` version when the task supplies text and needs embedding.\n- EMBO SODA-VEC Dot/Std/Cov is a MIT-licensed sentence-transformers ModernBERT biomedical and life-science literature embedding model trained on PubMed Central title-abstract pairs with a VICReg-style dot, standard deviation, and covariance objective.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Biomedical literature text\n- `encoding_format` (select, optional): Encoding format\n- `research_use_acknowledgement` (checkbox, optional): Research-only use acknowledged\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"{{encoding_format}}\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `embo-soda-vec-dot-std-cov-losses-vllm-cuda13` with version key `hf-ec602c1-vllm-0-21-0-cuda13-pooling`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13`\n- Routes: `/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/inference-routes`\n- Regional deployment: `/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/regional-deployment`\n- Deployment handoff: `/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/biomedical-retrieval/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/biomedical-retrieval/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/SKILL.md\n\n## References\n\n- [EMBO SODA-VEC Dot/Std/Cov source](https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses) (model-card)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/deploy",
+    "inferenceRoutesUrl": "/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/embo-soda-vec-dot-std-cov-losses",
+    "modelUrl": "/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13",
+    "regionalDeploymentUrl": "/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/markdown",
+  "modelFamily": "embo-soda-vec-dot-std-cov-losses",
+  "modelSlug": "embo-soda-vec-dot-std-cov-losses-vllm-cuda13",
+  "modelUrl": "/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "EMBO SODA-VEC Dot/Std/Cov is a MIT-licensed sentence-transformers ModernBERT biomedical and life-science literature embedding model trained on PubMed Central title-abstract pairs with a VICReg-style dot, standard deviation, and covariance objective.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/biomedical-retrieval/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "EMBO SODA-VEC Dot/Std/Cov source",
+      "url": "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/biomedical-retrieval/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/SKILL.md",
+  "repositoryPath": "skills/models/life-science/biomedical-retrieval/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "{{encoding_format}}",
+    "input": "{{input}}",
+    "model": "{{model_slug}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 149014272,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/EMBO/soda-vec-dot-std-cov-losses",
+    "tags": [
+      "life-science",
+      "healthcare",
+      "biomedical",
+      "scientific-literature",
+      "pubmed",
+      "embedding",
+      "retrieval",
+      "rag",
+      "sentence-transformers",
+      "modernbert",
+      "vllm",
+      "blackwell",
+      "sm103-candidate",
+      "open-source"
+    ],
+    "versionLabel": "HF ec602c1 via vLLM 0.21 CUDA 13 pooling"
+  },
+  "shortDescription": "EMBO SODA-VEC Dot/Std/Cov is a MIT-licensed sentence-transformers ModernBERT biomedical and life-science literature embedding model trained on PubMed Central title-abstract pairs with a VICReg-style dot, standard deviation, and covariance objective.",
+  "skillName": "use-forge-embo-soda-vec-dot-std-cov-losses-vllm-cuda13",
+  "skillUrl": "/v1/model-skills/embo-soda-vec-dot-std-cov-losses-vllm-cuda13",
+  "slug": "embo-soda-vec-dot-std-cov-losses-vllm-cuda13",
+  "stability": "testing",
+  "version": "hf-ec602c1-vllm-0.21.0-cuda13-pooling",
+  "versionKey": "hf-ec602c1-vllm-0-21-0-cuda13-pooling",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `embo-soda-vec-dot-std-cov-losses-vllm-cuda13` version when the task supplies text and needs embedding.",
+    "EMBO SODA-VEC Dot/Std/Cov is a MIT-licensed sentence-transformers ModernBERT biomedical and life-science literature embedding model trained on PubMed Central title-abstract pairs with a VICReg-style dot, standard deviation, and covariance objective.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `embo-soda-vec-dot-std-cov-losses-vllm-cuda13` with version key `hf-ec602c1-vllm-0-21-0-cuda13-pooling`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

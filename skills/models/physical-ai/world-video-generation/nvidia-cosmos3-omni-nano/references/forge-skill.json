@@ -1,0 +1,338 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "d2fd2b6175bdfbda3e40c47ae90f92e8f3a658b38b948cea016f54bb8f344b6d",
+  "defaultEligible": true,
+  "displayName": "Use NVIDIA Cosmos 3 Omni (Nano)",
+  "domain": "world-video-generation",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos3-omni-nano/markdown?download=true",
+  "group": "world-video-generation",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "world-video-generation",
+    "nvidia-cosmos3-omni-nano"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos3-omni",
+  "inputFields": [
+    {
+      "choices": [
+        "text2image",
+        "text2video",
+        "image2video",
+        "forward_dynamics",
+        "inverse_dynamics",
+        "policy"
+      ],
+      "default": "text2image",
+      "fieldType": "select",
+      "key": "model_mode",
+      "label": "Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "A warehouse robot carefully navigates around a reflective glass door while soft morning light enters the room.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "vision_path",
+      "label": "Conditioning Image or Video",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": {
+        "actions": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "fieldType": "json_editor",
+      "key": "action_state",
+      "label": "Action Sequence JSON",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "text",
+      "key": "domain_name",
+      "label": "Action Domain",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "256",
+        "480",
+        "720",
+        "1080"
+      ],
+      "default": "256",
+      "fieldType": "select",
+      "key": "resolution",
+      "label": "Resolution",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "1,1",
+        "4,3",
+        "3,4",
+        "16,9",
+        "9,16"
+      ],
+      "default": "1,1",
+      "fieldType": "select",
+      "key": "aspect_ratio",
+      "label": "Aspect Ratio",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 200,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 24,
+      "fieldType": "number",
+      "key": "fps",
+      "label": "FPS",
+      "maximum": 30,
+      "minimum": 10,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4,
+      "fieldType": "number",
+      "key": "num_steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4,
+      "fieldType": "slider",
+      "key": "guidance",
+      "label": "Guidance",
+      "maximum": 7,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "shift",
+      "label": "Shift",
+      "maximum": 20,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 42,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 2147483647,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 16,
+      "fieldType": "number",
+      "key": "raw_action_dim",
+      "label": "Raw Action Dim",
+      "maximum": 1024,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 16,
+      "fieldType": "number",
+      "key": "action_chunk_size",
+      "label": "Action Chunk Size",
+      "maximum": 128,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "number",
+      "key": "image_size",
+      "label": "Action Image Size",
+      "maximum": 1024,
+      "minimum": 64,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "video",
+    "action"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos3-omni-nano\ndescription: Use the exact Forge model nvidia-cosmos3-omni-nano for text, image, video, action to image, video, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos 3 Omni (Nano)\n\n- Model slug: `nvidia-cosmos3-omni-nano`\n- Model family: `nvidia-cosmos3-omni`\n- Version: `nano-bf16-ea` (`nano-bf16`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / world-video-generation / nvidia-cosmos3-omni-nano`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `nvidia-software-model-evaluation-license`\n\n## Purpose\n\nEarly-access Cosmos 3 Omni Nano world-generation and action model served through a Forge CUDA 13 wrapper.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos3-omni-nano` version when the task supplies text, image, video, action and needs image, video, json.\n- Early-access Cosmos 3 Omni Nano world-generation and action model served through a Forge CUDA 13 wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video', 'action'] \u2192 ['image', 'video', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `model_mode` (select, optional): Mode\n- `prompt` (textarea, optional): Prompt\n- `vision_path` (file_upload, optional): Conditioning Image or Video\n- `action_state` (json_editor, optional): Action Sequence JSON\n- `domain_name` (text, optional): Action Domain\n- `resolution` (select, optional): Resolution\n- `aspect_ratio` (select, optional): Aspect Ratio\n- `num_frames` (number, optional; bounds 1..200): Frames\n- `fps` (number, optional; bounds 10..30): FPS\n- `num_steps` (number, optional; bounds 1..50): Steps\n- `guidance` (slider, optional; bounds 0..7): Guidance\n- `shift` (number, optional; bounds 0..20): Shift\n- `seed` (number, optional; bounds 0..2147483647): Seed\n- `raw_action_dim` (number, optional; bounds 1..1024): Raw Action Dim\n- `action_chunk_size` (number, optional; bounds 1..128): Action Chunk Size\n- `image_size` (number, optional; bounds 64..1024): Action Image Size\n\nRequest template:\n\n```json\n{\n  \"action_chunk_size\": \"{{action_chunk_size}}\",\n  \"action_state\": \"{{action_state}}\",\n  \"aspect_ratio\": \"{{aspect_ratio}}\",\n  \"domain_name\": \"{{domain_name}}\",\n  \"fps\": \"{{fps}}\",\n  \"guidance\": \"{{guidance}}\",\n  \"image_size\": \"{{image_size}}\",\n  \"model_mode\": \"{{model_mode}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_steps\": \"{{num_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"raw_action_dim\": \"{{raw_action_dim}}\",\n  \"resolution\": \"{{resolution}}\",\n  \"seed\": \"{{seed}}\",\n  \"shift\": \"{{shift}}\",\n  \"vision_path\": \"{{vision_path}}\"\n}\n```\n\n## Exact output\n\n- `image`\n- `video`\n- `json`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos3-omni`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos3-omni-nano` with version key `nano-bf16`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos3-omni` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos3-omni-nano`\n- Routes: `/v1/models/nvidia-cosmos3-omni-nano/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos3-omni-nano/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos3-omni-nano/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-nano/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-nano/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos 3 Omni (Nano) source](https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano) (model-card)\n",
+  "license": "nvidia-software-model-evaluation-license",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos3-omni-nano/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos3-omni-nano/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos3-omni",
+    "modelUrl": "/v1/models/nvidia-cosmos3-omni-nano",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos3-omni-nano/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos3-omni-nano/markdown",
+  "modelFamily": "nvidia-cosmos3-omni",
+  "modelSlug": "nvidia-cosmos3-omni-nano",
+  "modelUrl": "/v1/models/nvidia-cosmos3-omni-nano",
+  "outputFields": [
+    "image",
+    "video",
+    "json"
+  ],
+  "outputModalities": [
+    "image",
+    "video",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Early-access Cosmos 3 Omni Nano world-generation and action model served through a Forge CUDA 13 wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-nano/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Cosmos 3 Omni (Nano) source",
+      "url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-nano/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-nano/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "action_chunk_size": "{{action_chunk_size}}",
+    "action_state": "{{action_state}}",
+    "aspect_ratio": "{{aspect_ratio}}",
+    "domain_name": "{{domain_name}}",
+    "fps": "{{fps}}",
+    "guidance": "{{guidance}}",
+    "image_size": "{{image_size}}",
+    "model_mode": "{{model_mode}}",
+    "num_frames": "{{num_frames}}",
+    "num_steps": "{{num_steps}}",
+    "prompt": "{{prompt}}",
+    "raw_action_dim": "{{raw_action_dim}}",
+    "resolution": "{{resolution}}",
+    "seed": "{{seed}}",
+    "shift": "{{shift}}",
+    "vision_path": "{{vision_path}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 8000000000,
+    "quantization": "bf16",
+    "requiresHfToken": true,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano",
+    "tags": [
+      "physical-ai",
+      "cosmos",
+      "cosmos3",
+      "world-foundation-model",
+      "text-to-image",
+      "text-to-video",
+      "image-to-video",
+      "forward-dynamics",
+      "inverse-dynamics",
+      "policy",
+      "early-access"
+    ],
+    "versionLabel": "Nano BF16 EA"
+  },
+  "shortDescription": "Early-access Cosmos 3 Omni Nano world-generation and action model served through a Forge CUDA 13 wrapper.",
+  "skillName": "use-forge-nvidia-cosmos3-omni-nano",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos3-omni-nano",
+  "slug": "nvidia-cosmos3-omni-nano",
+  "stability": "testing",
+  "version": "nano-bf16-ea",
+  "versionKey": "nano-bf16",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video', 'action'] \u2192 ['image', 'video', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos3-omni-nano` version when the task supplies text, image, video, action and needs image, video, json.",
+    "Early-access Cosmos 3 Omni Nano world-generation and action model served through a Forge CUDA 13 wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos3-omni-nano` with version key `nano-bf16`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos3-omni` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

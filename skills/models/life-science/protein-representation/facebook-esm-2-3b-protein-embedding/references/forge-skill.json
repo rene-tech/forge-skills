@@ -1,0 +1,144 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "e99b154288bedddcbf5e57ec65881b65f028af81eb58c46b9b13fd8ca766e99a",
+  "defaultEligible": true,
+  "displayName": "Use ESM-2 3B Protein Embeddings",
+  "domain": "protein-representation",
+  "downloadUrl": "/v1/model-skills/facebook-esm-2-3b-protein-embedding/markdown?download=true",
+  "group": "protein-representation",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "protein-representation",
+    "facebook-esm-2-3b-protein-embedding"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/facebook-esm-2-3b-protein-embedding",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMK",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_length",
+      "label": "Max sequence length",
+      "maximum": 1024,
+      "minimum": 32,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence"
+  ],
+  "instructions": "---\nname: use-forge-facebook-esm-2-3b-protein-embedding\ndescription: Use the exact Forge model facebook-esm-2-3b-protein-embedding for protein_sequence to embedding, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use ESM-2 3B Protein Embeddings\n\n- Model slug: `facebook-esm-2-3b-protein-embedding`\n- Model family: `facebook-esm-2-3b`\n- Version: `hf-476b639-wrapper-20260427-timing` (`hf-476b639-wrapper-20260427-timing`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / protein-representation / facebook-esm-2-3b-protein-embedding`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `mit`\n\n## Purpose\n\nESM-2 3B is a nonclinical protein language model for sequence representation learning and downstream protein analysis.\n\n## Use this exact model when\n\n- Use this exact `facebook-esm-2-3b-protein-embedding` version when the task supplies protein_sequence and needs embedding, json.\n- ESM-2 3B is a nonclinical protein language model for sequence representation learning and downstream protein analysis.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['embedding', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, required): Protein sequence\n- `max_length` (number, optional; bounds 32..1024): Max sequence length\n\nRequest template:\n\n```json\n{\n  \"max_length\": \"{{max_length}}\",\n  \"sequence\": \"{{sequence}}\"\n}\n```\n\n## Exact output\n\n- `task`\n- `sequence_length`\n- `embedding_dim`\n- `embedding_preview`\n- `embedding_l2`\n- `model_time_ms`\n\n## Route\n\n`POST /v1/inference/facebook-esm-2-3b-protein-embedding`\n\n## Workflow\n\n1. Load this skill and pin model slug `facebook-esm-2-3b-protein-embedding` with version key `hf-476b639-wrapper-20260427-timing`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/facebook-esm-2-3b-protein-embedding` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 1024.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/facebook-esm-2-3b-protein-embedding`\n- Routes: `/v1/models/facebook-esm-2-3b-protein-embedding/inference-routes`\n- Regional deployment: `/v1/models/facebook-esm-2-3b-protein-embedding/regional-deployment`\n- Deployment handoff: `/v1/models/facebook-esm-2-3b-protein-embedding/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/facebook-esm-2-3b-protein-embedding/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-representation/facebook-esm-2-3b-protein-embedding/SKILL.md\n\n## References\n\n- [ESM-2 3B Protein Embeddings source](https://huggingface.co/facebook/esm2_t36_3B_UR50D) (model-card)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 1024."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/facebook-esm-2-3b-protein-embedding/deploy",
+    "inferenceRoutesUrl": "/v1/models/facebook-esm-2-3b-protein-embedding/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/facebook-esm-2-3b",
+    "modelUrl": "/v1/models/facebook-esm-2-3b-protein-embedding",
+    "regionalDeploymentUrl": "/v1/models/facebook-esm-2-3b-protein-embedding/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/facebook-esm-2-3b-protein-embedding/markdown",
+  "modelFamily": "facebook-esm-2-3b",
+  "modelSlug": "facebook-esm-2-3b-protein-embedding",
+  "modelUrl": "/v1/models/facebook-esm-2-3b-protein-embedding",
+  "outputFields": [
+    "task",
+    "sequence_length",
+    "embedding_dim",
+    "embedding_preview",
+    "embedding_l2",
+    "model_time_ms"
+  ],
+  "outputModalities": [
+    "embedding",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "ESM-2 3B is a nonclinical protein language model for sequence representation learning and downstream protein analysis.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-representation/facebook-esm-2-3b-protein-embedding/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "ESM-2 3B Protein Embeddings source",
+      "url": "https://huggingface.co/facebook/esm2_t36_3B_UR50D"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/facebook-esm-2-3b-protein-embedding/SKILL.md",
+  "repositoryPath": "skills/models/life-science/protein-representation/facebook-esm-2-3b-protein-embedding/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_length": "{{max_length}}",
+    "sequence": "{{sequence}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1024,
+    "parameterCount": 3000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/facebook/esm2_t36_3B_UR50D",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "embedding",
+      "sequence",
+      "esm",
+      "transformers",
+      "forge-wrapper",
+      "open-source",
+      "mit"
+    ],
+    "versionLabel": "HF 476b639 via Forge life-science wrapper"
+  },
+  "shortDescription": "ESM-2 3B is a nonclinical protein language model for sequence representation learning and downstream protein analysis.",
+  "skillName": "use-forge-facebook-esm-2-3b-protein-embedding",
+  "skillUrl": "/v1/model-skills/facebook-esm-2-3b-protein-embedding",
+  "slug": "facebook-esm-2-3b-protein-embedding",
+  "stability": "testing",
+  "version": "hf-476b639-wrapper-20260427-timing",
+  "versionKey": "hf-476b639-wrapper-20260427-timing",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['embedding', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `facebook-esm-2-3b-protein-embedding` version when the task supplies protein_sequence and needs embedding, json.",
+    "ESM-2 3B is a nonclinical protein language model for sequence representation learning and downstream protein analysis.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `facebook-esm-2-3b-protein-embedding` with version key `hf-476b639-wrapper-20260427-timing`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/facebook-esm-2-3b-protein-embedding` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

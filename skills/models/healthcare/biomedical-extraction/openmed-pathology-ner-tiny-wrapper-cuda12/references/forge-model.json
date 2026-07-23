@@ -1,0 +1,777 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M?blobs=true",
+    "artifact_checked_at": "2026-06-04T16:00:00Z",
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 7811,
+    "artifact_files_observed": [
+      ".gitattributes",
+      "README.md",
+      "added_tokens.json",
+      "gliner_config.json",
+      "pytorch_model.bin",
+      "special_tokens_map.json",
+      "spiece.model",
+      "test_results.json",
+      "tokenizer.json",
+      "tokenizer_config.json"
+    ],
+    "artifact_gated": false,
+    "artifact_last_modified": "2025-10-19T07:54:18.000Z",
+    "artifact_library_name": "gliner",
+    "artifact_license": "apache-2.0",
+    "artifact_likes_observed": 0,
+    "artifact_model_file": {
+      "blob_id": "362e1b13f67af2c668ee4a2fe7192df4addf7808",
+      "path": "pytorch_model.bin",
+      "sha256": "d84285fd6758d40f8d67809b91870acb9caaeee322b5daa4da132aac3fdb65eb",
+      "size_bytes": 688530184
+    },
+    "artifact_pipeline_tag": "token-classification",
+    "artifact_private": false,
+    "artifact_readme": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/raw/main/README.md",
+    "artifact_sha": "751c87f2dfa77800e1bead7f9fb40f5734078e47",
+    "artifact_source": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+    "artifact_tokenizer_file": {
+      "blob_id": "991640c158ca9c8f954039de87537ec846637442",
+      "path": "tokenizer.json",
+      "sha256": "c23b87e1609c72116a5aea222f983df99723cb2afa554d9d137f289840c3097b",
+      "size_bytes": 16335205
+    },
+    "b200_manual_smoke_20260604T02Z": {
+      "avg_model_time_ms": 7,
+      "avg_wall_ms": 9,
+      "benchmark_runs": 10,
+      "container_started_at": "2026-06-04T02:07:17Z",
+      "driver_version": "580.126.09",
+      "gpu": "B200",
+      "health": {
+        "checkpoint_sha256": "d84285fd6758d40f8d67809b91870acb9caaeee322b5daa4da132aac3fdb65eb",
+        "device": "cuda",
+        "gliner_package": "0.2.26",
+        "model_class": "UniEncoderSpanGLiNER",
+        "ready": true,
+        "status": "ready",
+        "transformers_package": "5.3.0",
+        "words_splitter": "whitespace"
+      },
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/u00xf2pqq3cr2q8xsz-models-openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z@sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+      "image_digest": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+      "image_pull_seconds": 200.761,
+      "measured_model_time_ms": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "measured_wall_ms": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "median_model_time_ms": 7,
+      "median_wall_ms": 9,
+      "namespace": "forge-models",
+      "node": "computeinstance-u00zzte1mv6kjap6dg",
+      "pod_name": "forge-probe-openmed-zeroshot-ner-pat-b200-us-central1-deb975",
+      "pod_ready_at": "2026-06-04T02:07:30Z",
+      "pod_scheduled_at": "2026-06-04T02:03:41Z",
+      "probe_driver_fallback": {
+        "attempted_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft --include-status onboarding --gpu B200 --region us-central1 --timeout 900 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1",
+        "result": "Outer shell timeout killed the probe driver after 120 seconds while the 8.2 GB image was still pulling; the orphaned pod later became ready and was smoke-tested manually.",
+        "supervisor_live_upsert": "Succeeded on 2026-06-04T02Z with the control-plane forge-platform-secrets POSTGRES_URL and --keep-existing-family-latest.",
+        "worker_live_upsert_blocker": "The worker shell lacked POSTGRES_URL or DATABASE_URL, so it could not perform the live upsert."
+      },
+      "region": "us-central1",
+      "response_entities": [
+        {
+          "end": 13,
+          "label": "PATHOLOGY_FINDING",
+          "score": 0.3767346143722534,
+          "start": 4,
+          "text": "pathology"
+        },
+        {
+          "end": 56,
+          "label": "DISEASE",
+          "score": 0.7165974974632263,
+          "start": 31,
+          "text": "invasive ductal carcinoma"
+        },
+        {
+          "end": 85,
+          "label": "DISEASE",
+          "score": 0.6615649461746216,
+          "start": 62,
+          "text": "lymphovascular invasion"
+        },
+        {
+          "end": 113,
+          "label": "DISEASE",
+          "score": 0.7751981616020203,
+          "start": 105,
+          "text": "melanoma"
+        }
+      ],
+      "startup_to_ready_seconds": 229,
+      "status": "supported",
+      "vram_total_gb": 183.36,
+      "vram_used_gb": 1.54,
+      "warmup_runs": [
+        {
+          "entities": 4,
+          "model_time_ms": 447,
+          "wall_ms": 451
+        },
+        {
+          "entities": 4,
+          "model_time_ms": 8,
+          "wall_ms": 10
+        },
+        {
+          "entities": 4,
+          "model_time_ms": 8,
+          "wall_ms": 10
+        }
+      ]
+    },
+    "blockers": [
+      "Healthcare product safety review must approve the nonclinical pathology text-mining surface before any active/default-eligible publication.",
+      "Live catalog page review was not performed in this worker cycle because the row remains hidden/onboarding/default-ineligible."
+    ],
+    "commands": [
+      "git fetch --prune origin",
+      "git status --short --branch",
+      "git rev-list --left-right --count HEAD...origin/main",
+      ".venv312/bin/python - <<'PY' ... Hugging Face API metadata probe for StanfordAIMI/RadBERT, OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M, peterhan91/CLEAR ... PY",
+      ".venv312/bin/python -m pip index versions gliner",
+      ".venv312/bin/python -m pip download --no-deps --dest /tmp/forge-gliner-src-026 gliner==0.2.26",
+      ".venv312/bin/python scripts/upsert_model.py manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft.json --dry-run",
+      "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft --include-status onboarding --gpu B200 --gpu B300 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 5 --report-json docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260604T04Z-full-matrix.json --report-md docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260604T04Z-full-matrix.md",
+      ".venv312/bin/python -m json.tool manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft.json >/tmp/openmed-zeroshot-manifest-jsoncheck.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft.json --dry-run >/tmp/openmed-zeroshot-upsert-dryrun-20260604T14Z.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest tests/test_hcls_onboarding_manifests.py::test_openmed_zeroshot_pathology_manifest_keeps_publication_blocked tests/test_openmed_zeroshot_pathology_wrapper.py -q",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/security/check_model_server_image_gate.py manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft.json --format json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python - <<'PY' ... Hugging Face API metadata probe for OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M ... PY"
+    ],
+    "container_source_decision": "build_forge_owned_wrapper_required_no_official_scheduler_ready_gliner_container_found; wrapper source added 2026-06-03T23Z",
+    "fallback_candidate": {
+      "license": "mit",
+      "model": "StanfordAIMI/RadBERT",
+      "reason": "Public ungated MIT radiology/BioBERT masked-language model. Lower priority because fill-mask is less directly useful for Forge users than zero-shot pathology NER unless a feature-extraction or classification wrapper is defined.",
+      "revision": "c8f97547ff6dd96debf4e50022d9679219e6987b",
+      "source": "https://huggingface.co/StanfordAIMI/RadBERT"
+    },
+    "gpu_probe_state": "standard_matrix_supported_six_live_cells_rtx6000_no_inventory",
+    "nondraft_preflight_20260604T16Z": {
+      "artifact_checked_at": "2026-06-04T16:00:00Z",
+      "artifact_downloads_observed": 7811,
+      "artifact_license": "apache-2.0",
+      "artifact_revision": "751c87f2dfa77800e1bead7f9fb40f5734078e47",
+      "container_digest": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+      "post_hidden_upsert_probe_plan": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openmed-pathology-ner-tiny-wrapper-cuda12 --include-status onboarding --gpu B200 --gpu B300 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 5 --no-persist --report-json docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260605T-nondraft-probe.json --report-md docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260605T-nondraft-probe.md",
+      "publication": "blocked_product_safety_pending",
+      "slug": "openmed-pathology-ner-tiny-wrapper-cuda12",
+      "source_manifest": "manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft.json",
+      "status": "dry_run_candidate",
+      "validation_plan": [
+        ".venv312/bin/python -m json.tool manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12.json",
+        ".venv312/bin/python scripts/upsert_model.py manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12.json --dry-run",
+        "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/security/check_model_server_image_gate.py manifests/models/hcls/openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12.json --format json"
+      ]
+    },
+    "nondraft_probe_20260605T09Z": {
+      "benchmark_runs": 10,
+      "cells": {
+        "B200_us-central1": {
+          "request_ms_p50": 7,
+          "startup_ms": 232641,
+          "status": "supported",
+          "vram_used_gb": 1.5
+        },
+        "B300_uk-south1": {
+          "request_ms_p50": 7,
+          "startup_ms": 203107,
+          "status": "supported",
+          "vram_used_gb": 1.5
+        },
+        "H200_eu-north1": {
+          "request_ms_p50": 8,
+          "startup_ms": 9167,
+          "status": "supported",
+          "vram_used_gb": 1.42
+        },
+        "H200_eu-north2": {
+          "request_ms_p50": 8,
+          "startup_ms": 190534,
+          "status": "supported",
+          "vram_used_gb": 1.42
+        },
+        "H200_us-central1": {
+          "request_ms_p50": 9,
+          "startup_ms": 231769,
+          "status": "supported",
+          "vram_used_gb": 1.42
+        },
+        "L40S_eu-north1": {
+          "request_ms_p50": 10,
+          "startup_ms": 167995,
+          "status": "supported",
+          "vram_used_gb": 1.22
+        },
+        "RTX6000_us-central1": {
+          "request_ms_p50": 8,
+          "startup_ms": 162086,
+          "status": "supported",
+          "vram_used_gb": 1.38
+        }
+      },
+      "command": "POSTGRES_URL=<from forge-platform-secrets, not printed> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openmed-pathology-ner-tiny-wrapper-cuda12 --include-status onboarding --gpu B200 --gpu B300 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 5 --no-persist --report-json docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260605T-nondraft-probe.json --report-md docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260605T-nondraft-probe.md",
+      "persisted": false,
+      "report_json": "docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260605T-nondraft-probe.json",
+      "report_md": "docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260605T-nondraft-probe.md",
+      "request_time_source": "model_time_ms",
+      "status": "supported_seven_live_cells_no_persist",
+      "warmup_runs": 3
+    },
+    "onboarding_state": "hidden_live_upserted_nondraft_seven_cell_no_persist_probe_supported_product_safety_pending",
+    "planned_container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z@sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_state": {
+      "blockers": [
+        "Healthcare product safety reviewer approval is still required before active/default publication of the nonclinical pathology text-mining surface.",
+        "The shorter non-draft slug has been hidden-live-upserted, but non-draft support rows from the 2026-06-05T09Z probe were intentionally not persisted.",
+        "Keep the row hidden/onboarding/default-ineligible until HCLS product safety review approves the nonclinical pathology text-mining surface."
+      ],
+      "decision": "keep_hidden_until_hcls_product_safety_review_then_hidden_upsert_nondraft_slug",
+      "default_eligible": false,
+      "fallback": {
+        "decision": "keep_nondraft_row_hidden_onboarding_default_ineligible",
+        "reason": "If product safety approval stays blocked, retain the non-draft row as hidden onboarding evidence and route demand to reviewed HCLS text-mining models."
+      },
+      "is_latest": true,
+      "last_review": "hcls_nondraft_preflight_20260604T16Z",
+      "publishable": false,
+      "recommended_catalog_state": {
+        "default_eligible": false,
+        "public_publication": "do_not_publish_until_hcls_product_safety_review_approves_the_nonclinical_pathology_text_mining_surface",
+        "stability": "experimental",
+        "status": "onboarding"
+      },
+      "status": "blocked",
+      "technical_clearances": {
+        "artifact_license": "apache-2.0",
+        "artifact_revision": "751c87f2dfa77800e1bead7f9fb40f5734078e47",
+        "benchmark_runs": 10,
+        "container_digest": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+        "matrix_supported_cells": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "H200/eu-north1",
+          "H200/eu-north2",
+          "H200/us-central1",
+          "L40S/eu-north1"
+        ],
+        "mirrored_regions": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ],
+        "no_persist_matrix_supported_cells": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "H200/eu-north1",
+          "H200/eu-north2",
+          "H200/us-central1",
+          "L40S/eu-north1",
+          "RTX6000/us-central1"
+        ],
+        "request_time_source": "model_time_ms",
+        "security_gates": {
+          "model_server_image_gate": "passed_no_findings_20260604T10Z",
+          "trivy_high_critical_ignore_unfixed": "passed_zero_fixed_high_critical_findings_20260604T01Z"
+        },
+        "warmup_runs": 3
+      },
+      "technical_state": "hidden_live_upserted_non_draft_manifest_container_mirrored_standard_matrix_supported_no_persist_rtx6000_validated"
+    },
+    "regional_mirror_state": "pushed_and_mirrored_all_active_regions_digest_sha256_5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+    "standard_matrix_20260604T04Z": {
+      "benchmark_runs": 10,
+      "cells": {
+        "B200_us-central1": {
+          "request_ms_p50": 7,
+          "samples_ms": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "startup_ms": 216772,
+          "status": "supported",
+          "vram_used_gb": 1.5
+        },
+        "B300_uk-south1": {
+          "request_ms_p50": 7,
+          "samples_ms": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            8,
+            7,
+            7
+          ],
+          "startup_ms": 14866,
+          "status": "supported",
+          "vram_used_gb": 1.5
+        },
+        "H200_eu-north1": {
+          "request_ms_p50": 9,
+          "samples_ms": [
+            9,
+            10,
+            9,
+            10,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "startup_ms": 245700,
+          "status": "supported",
+          "vram_used_gb": 1.42
+        },
+        "H200_eu-north2": {
+          "request_ms_p50": 8,
+          "samples_ms": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "startup_ms": 190401,
+          "status": "supported",
+          "vram_used_gb": 1.42
+        },
+        "H200_us-central1": {
+          "request_ms_p50": 7,
+          "samples_ms": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            8,
+            7,
+            7
+          ],
+          "startup_ms": 137412,
+          "status": "supported",
+          "vram_used_gb": 1.42
+        },
+        "L40S_eu-north1": {
+          "request_ms_p50": 11,
+          "samples_ms": [
+            10,
+            10,
+            11,
+            11,
+            11,
+            10,
+            11,
+            11,
+            11,
+            10
+          ],
+          "startup_ms": 15975,
+          "status": "supported",
+          "vram_used_gb": 1.22
+        }
+      },
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft --include-status onboarding --gpu B200 --gpu B300 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 5 --report-json docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260604T04Z-full-matrix.json --report-md docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260604T04Z-full-matrix.md",
+      "persisted": true,
+      "report_json": "docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260604T04Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openmed-zeroshot-ner-pathology-tiny-60m-20260604T04Z-full-matrix.md",
+      "request_time_source": "model_time_ms",
+      "rtx6000": "Requested in the 2026-06-04T04Z draft probe command, but no RTX6000 inventory cell appeared in that generated report. RTX6000 was later validated by the 2026-06-05T09Z non-draft no-persist probe.",
+      "status": "supported_six_live_cells",
+      "warmup_runs": 3
+    },
+    "wrapper_source": "services/models/hcls/openmed_zeroshot_ner_pathology_tiny_60m",
+    "wrapper_source_20260603T23Z": {
+      "cache_policy": {
+        "HF_HOME": "/opt/nim/.cache/huggingface/openmed-zeroshot-ner-pathology-tiny-60m/wrapper-cuda12-gliner026",
+        "note": "/opt/nim/.cache is mounted by Forge scheduler from /mnt/data/forge-weights."
+      },
+      "files": [
+        "services/models/hcls/openmed_zeroshot_ner_pathology_tiny_60m/__init__.py",
+        "services/models/hcls/openmed_zeroshot_ner_pathology_tiny_60m/runtime.py",
+        "services/models/hcls/openmed_zeroshot_ner_pathology_tiny_60m/main.py",
+        "services/models/hcls/openmed_zeroshot_ner_pathology_tiny_60m/Dockerfile"
+      ],
+      "runtime_stack_plan": {
+        "base_image": "docker.io/pytorch/pytorch:2.10.0-cuda12.8-cudnn9-runtime@sha256:b85566342b86d13a67712e9315d40cdc2dad7f8d86df1aff3831f80835edbcca",
+        "gliner_loader_safety": "GLiNER 0.2.26 wheel inspected; BaseGLiNER._load_state_dict uses torch.load(..., weights_only=True) for .bin checkpoints.",
+        "gliner_requirement": "gliner==0.2.26 --no-deps",
+        "huggingface_hub_requirement": "huggingface_hub==1.3.7",
+        "langdetect_requirement": "langdetect==1.0.9",
+        "onnxruntime_requirement": "onnxruntime==1.23.2",
+        "pillow_requirement": "pillow==12.2.0",
+        "protobuf_requirement": "protobuf==6.33.5",
+        "torch_floor": "PyTorch >= 2.10.0",
+        "transformers_requirement": "transformers==5.3.0",
+        "word_splitter_override": "OPENMED_GLINER_WORDS_SPLITTER=whitespace avoids GLiNER 0.2.26 universal splitter construction of optional Korean/Japanese/Chinese/Arabic/Hindi tokenizers for the default English pathology text-mining endpoint."
+      },
+      "safety_controls": [
+        "runtime rejects requests unless research_use_acknowledgement=true",
+        "HF_TOKEN and HUGGING_FACE_HUB_TOKEN are set to empty strings for the public ungated artifact",
+        "pytorch_model.bin SHA256 is verified before GLiNER load",
+        "source exposes /token_classification, /v1/token_classification, and /run"
+      ],
+      "status": "source_added_import_and_fake_runtime_smoke_pending"
+    },
+    "wrapper_source_20260604T00Z": {
+      "changes": [
+        "runtime defaults OPENMED_GLINER_WORDS_SPLITTER to whitespace and prepares a cache-local GLiNER config overlay with words_splitter_type=whitespace before GLiNER.from_pretrained",
+        "Dockerfile and manifest env expose OPENMED_GLINER_WORDS_SPLITTER=whitespace",
+        "The whitespace splitter avoids GLiNER 0.2.26 universal splitter eager construction of optional Korean/Japanese/Chinese/Arabic/Hindi tokenizers for this default English pathology text-mining endpoint."
+      ],
+      "local_validation": {
+        "cpu_model_load_smoke": {
+          "cache_source": "/tmp/forge-openmed-gliner-cache-23z/hf",
+          "device": "cpu",
+          "entities_count": 4,
+          "gliner_package": "0.2.26",
+          "model_class": "UniEncoderSpanGLiNER",
+          "model_time_ms": 34,
+          "network": "none",
+          "status": "passed",
+          "transformers_package": "5.3.0",
+          "words_splitter": "whitespace"
+        },
+        "docker_build": {
+          "image_id": "sha256:f54e41d8aaade8a3a6449acd5828ceb111e9e3149cba9031123edb1811cdb707",
+          "image_user": "10001:10001",
+          "local_tag": "forge-local/openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-20260604t00z-local",
+          "size_bytes": 8196063074,
+          "status": "passed"
+        },
+        "fake_runtime_smoke": "passed",
+        "git_fetch_prune_origin": "passed",
+        "head_origin_main": "0 0",
+        "manifest_json_tool": "passed",
+        "py_compile": "passed",
+        "pytest_wrapper_smoke": "tests/test_openmed_zeroshot_pathology_wrapper.py passed 5 tests",
+        "torch_runtime_gate": "passed_no_findings",
+        "transformers_cve_gate": "passed_no_findings",
+        "upsert_dry_run": "passed"
+      },
+      "status": "local_image_build_and_cpu_model_load_smoke_passed"
+    },
+    "wrapper_source_20260604T01Z": {
+      "local_image": {
+        "gliner": "0.2.26",
+        "huggingface_hub": "1.3.7",
+        "image_id": "sha256:1975162155ed2220738960a3a9348c2a0b74900499aa0b957141c54111763fe3",
+        "image_user": "10001:10001",
+        "pillow": "12.2.0",
+        "protobuf": "6.33.5",
+        "size_bytes": 8223670609,
+        "tag": "forge-local/openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z-local",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.3.0"
+      },
+      "registry": {
+        "digest": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+        "mirror": "passed_all_active_regions",
+        "push": "passed",
+        "regional_digest_verification": {
+          "eu-north1": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+          "eu-north2": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+          "uk-south1": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+          "us-central1": "sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7"
+        },
+        "source_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z"
+      },
+      "source_changes": [
+        "Dockerfile apt layer installs linux-libc-dev so Ubuntu package metadata upgrades from 6.8.0-90.91 to 6.8.0-124.124.",
+        "Dockerfile pins pillow==12.2.0 and protobuf==6.33.5 to clear fixed HIGH Python package findings.",
+        "No API, endpoint, model, cache, or acknowledgement contract changed."
+      ],
+      "status": "cvefix_image_scanned_pushed_mirrored_gpu_probe_pending",
+      "trivy_fixed_high_critical_scan": {
+        "post_fix": {
+          "command": "trivy image --quiet --scanners vuln --severity HIGH,CRITICAL --ignore-unfixed --format json --output /tmp/openmed-zeroshot-20260604T01Z-cvefix-trivy-fixed-high-critical.json forge-local/openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z-local",
+          "critical": 0,
+          "high": 0,
+          "vuln_ids": 0
+        },
+        "pre_fix": {
+          "critical": 0,
+          "high": 24,
+          "summary": "20 ubuntu linux-libc-dev HIGH findings plus 3 pillow HIGH findings and 1 protobuf HIGH finding."
+        }
+      }
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "biomedical_nlp",
+    "pathology",
+    "token_classification",
+    "named_entity_recognition",
+    "zero_shot_ner",
+    "disease_entity_recognition",
+    "literature_mining",
+    "knowledge_graph",
+    "gliner",
+    "apache_2_0",
+    "research_only",
+    "text",
+    "structured_output"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z@sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+  "container_image_size_bytes": 8223670609,
+  "context_window": 1024,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-05T09:03:50.280703+00:00",
+  "default_eligible": false,
+  "description": "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction. The Hugging Face API rechecked on 2026-06-04T02Z reports private=false, gated=false, disabled=false, library_name=gliner, pipeline_tag=token-classification, revision 751c87f2dfa77800e1bead7f9fb40f5734078e47, tokenizer.json present, pytorch_model.bin SHA256 d84285fd6758d40f8d67809b91870acb9caaeee322b5daa4da132aac3fdb65eb, and Apache-2.0 license metadata. The model card describes high-precision disease NER tuned for research literature, NCBI Disease corpus grounding, and zero-shot flexibility through caller-specified entity labels. Forge did not find an official serving container suitable for the scheduler, so this non-draft row uses a Forge-owned GLiNER/FastAPI wrapper source added under services/models/hcls/openmed_zeroshot_ner_pathology_tiny_60m. The wrapper mirrors the existing OpenMed disease NER safety pattern: clear inherited Hugging Face token env vars for the public artifact, route caches to /opt/nim/.cache backed by Forge shared /mnt/data/forge-weights, require research_use_acknowledgement=true, expose /token_classification, /v1/token_classification, and /run, pin the HF revision, verify pytorch_model.bin SHA256 before load, force GLiNER's inference word splitter to whitespace by default to avoid non-required multilingual tokenizer extras, run as UID/GID 10001:10001, and return label/start/end/text/score spans plus model_time_ms. The 2026-06-04T01Z CVE-fix image was scanned with zero fixed HIGH/CRITICAL Trivy findings, pushed, and mirrored to every active Forge region at digest sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7. The 2026-06-05T09Z no-persist non-draft probe supports B200, B300, H200, L40S, and RTX6000 with 3 warmups plus 10 measured token-classification requests per live cell using runtime-reported model_time_ms. Keep hidden, onboarding, and default-ineligible until healthcare product safety review approves the nonclinical pathology text-mining surface.",
+  "family_id": "1a7c061c-8733-4a01-a35a-65a1eec4ef73",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface/openmed-zeroshot-ner-pathology-tiny-60m/wrapper-cuda12-gliner026",
+      "HF_HUB_DISABLE_TELEMETRY": "1",
+      "HF_TOKEN": "",
+      "HOME": "/opt/nim/.cache/home/openmed-zeroshot-ner-pathology-tiny-60m",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/openmed-zeroshot-ner-pathology-tiny-60m/wrapper-cuda12-gliner026/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "OPENMED_GLINER_ALLOW_REMOTE_DOWNLOAD": "true",
+      "OPENMED_GLINER_CHECKPOINT_SHA256": "d84285fd6758d40f8d67809b91870acb9caaeee322b5daa4da132aac3fdb65eb",
+      "OPENMED_GLINER_DEVICE": "auto",
+      "OPENMED_GLINER_HF_REVISION": "751c87f2dfa77800e1bead7f9fb40f5734078e47",
+      "OPENMED_GLINER_MAX_LENGTH": "1024",
+      "OPENMED_GLINER_MODEL_ID": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "OPENMED_GLINER_MODEL_SLUG": "openmed-pathology-ner-tiny-wrapper-cuda12",
+      "OPENMED_GLINER_WORDS_SPLITTER": "whitespace",
+      "SERVED_MODEL_NAME": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "TORCH_HOME": "/opt/nim/.cache/huggingface/openmed-zeroshot-ner-pathology-tiny-60m/wrapper-cuda12-gliner026/torch",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/openmed-zeroshot-ner-pathology-tiny-60m/wrapper-cuda12-gliner026/transformers",
+      "XDG_CACHE_HOME": "/opt/nim/.cache/huggingface/openmed-zeroshot-ner-pathology-tiny-60m/wrapper-cuda12-gliner026/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [],
+  "gpu_type": null,
+  "id": "3857ad6c-0398-4ffd-ac8c-95042f5bd816",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "json"
+  ],
+  "model_family": "openmed-zeroshot-ner-pathology-tiny-60m",
+  "name": "OpenMed ZeroShot NER Pathology Tiny 60M",
+  "parameter_count": 60000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "flat_ner": "{{flat_ner}}",
+        "labels": "{{labels}}",
+        "model": "{{model_slug}}",
+        "multi_label": "{{multi_label}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "return_text": "{{return_text}}",
+        "text": "{{text}}",
+        "threshold": "{{threshold}}"
+      },
+      "endpoint": "/token_classification",
+      "method": "POST",
+      "upstream_model_id": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+    },
+    "input_fields": [
+      {
+        "default": "The pathology report describes invasive ductal carcinoma with lymphovascular invasion and no evidence of melanoma.",
+        "key": "text",
+        "label": "Biomedical or pathology text",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "DISEASE\nPATHOLOGY_FINDING\nANATOMY",
+        "key": "labels",
+        "label": "Entity labels",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "entity_spans",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.35,
+        "key": "threshold",
+        "label": "Score threshold",
+        "max": 1,
+        "min": 0,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "return_text",
+        "label": "Return source text",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "flat_ner",
+        "label": "Flat spans only",
+        "type": "checkbox"
+      },
+      {
+        "default": false,
+        "key": "multi_label",
+        "label": "Allow multiple labels per span",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/opt/nim/.cache/huggingface/openmed-zeroshot-ner-pathology-tiny-60m/wrapper-cuda12-gliner026",
+      "checkpoint_file": "pytorch_model.bin",
+      "checkpoint_sha256": "d84285fd6758d40f8d67809b91870acb9caaeee322b5daa4da132aac3fdb65eb",
+      "input_contract": "biomedical_text_with_entity_labels",
+      "kind": "forge_openmed_gliner_zeroshot_ner",
+      "max_sequence_length": 1024,
+      "model_id": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "model_revision": "751c87f2dfa77800e1bead7f9fb40f5734078e47",
+      "output_contract": "entity_spans",
+      "served_model_name": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "word_splitter": "whitespace",
+      "wrapper_source": "services/models/hcls/openmed_zeroshot_ner_pathology_tiny_60m"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical pathology and biomedical text mining for entity extraction, curation, and benchmark evaluation.",
+      "body": "Use only for nonclinical biomedical literature mining, curation, benchmark evaluation, and knowledge graph preprocessing on de-identified or synthetic text. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, patient care, or patient-specific medical interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient care",
+        "patient-specific interpretation of symptoms, medical records, imaging, laboratory results, pathology reports, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Nonclinical pathology text mining only"
+    },
+    "schema_version": 1,
+    "type": "token_classification"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z@sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z@sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z@sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/u00xf2pqq3cr2q8xsz-models-openmed-zeroshot-ner-pathology-tiny-60m:wrapper-cuda12-gliner026-cvefix-20260604t01z@sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7"
+  },
+  "release_rank": 98,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "openmed-pathology-ner-tiny-wrapper-cuda12",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical-nlp",
+    "pathology",
+    "token-classification",
+    "named-entity-recognition",
+    "zero-shot-ner",
+    "disease-entity-recognition",
+    "literature-mining",
+    "knowledge-graph",
+    "gliner",
+    "apache-2.0",
+    "research-only"
+  ],
+  "updated_at": "2026-06-30T13:03:07.792771+00:00",
+  "version": "hf751c87f-gliner026-cvefix-20260605",
+  "version_description": "Non-draft hidden onboarding row for the public Apache-2.0 OpenMed GLiNER pathology zero-shot NER model. This manifest keeps the exact 2026-06-04T01Z CVE-fixed Forge-owned wrapper image and mirrored digest sha256:5f0047a8476633e6187c8386e3c48238e296e869593df45c2303c3f9b65ba1f7 from the draft row, but uses the database-safe slug openmed-pathology-ner-tiny-wrapper-cuda12. The artifact remains pinned to Hugging Face revision 751c87f2dfa77800e1bead7f9fb40f5734078e47 with pytorch_model.bin SHA256 d84285fd6758d40f8d67809b91870acb9caaeee322b5daa4da132aac3fdb65eb, public ungated Apache-2.0 metadata, and research-use acknowledgement enforcement. The 2026-06-05T09Z no-persist non-draft probe validated B200, B300, H200, L40S, and RTX6000 with 3 warmups plus 10 measured token-classification requests per live cell. Keep onboarding/default-ineligible pending HCLS product safety review.",
+  "version_key": "hf751c87f-gliner026-cvefix-20260605",
+  "version_label": "HF 751c87f Forge GLiNER wrapper CVE fix non-draft"
+}

@@ -1,0 +1,158 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "0b0358a358f0422409c580ce2ec0ae4c8c922bfeae0880a774d0c0cc085b7f45",
+  "defaultEligible": false,
+  "displayName": "Use BioMedLM 2.7B",
+  "domain": "biomedical-text",
+  "downloadUrl": "/v1/model-skills/stanfordcrfm-biomedlm-2-7b-safety-review/markdown?download=true",
+  "group": "biomedical-text",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-text",
+    "stanfordcrfm-biomedlm-2-7b-safety-review"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/stanfordcrfm-biomedlm-2-7b-safety-review",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Summarize why biomedical language models can help literature triage, and list two limitations.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": 96,
+      "fieldType": "number",
+      "key": "max_new_tokens",
+      "label": "Max new tokens",
+      "maximum": 512,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-only use acknowledged",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-stanfordcrfm-biomedlm-2-7b-safety-review\ndescription: Use the exact Forge model stanfordcrfm-biomedlm-2-7b-safety-review for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use BioMedLM 2.7B\n\n- Model slug: `stanfordcrfm-biomedlm-2-7b-safety-review`\n- Model family: `stanfordcrfm-biomedlm`\n- Version: `hf-3e1a0ab-wrapper-20260426-fix2` (`hf-3e1a0ab-life-science-20260426-fix2`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-text / stanfordcrfm-biomedlm-2-7b-safety-review`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `bigscience-bloom-rail-1.0`\n\n## Purpose\n\nBioMedLM 2.7B is a Stanford CRFM and MosaicML biomedical GPT-style language model trained on PubMed abstracts and full-text data from The Pile.\n\n## Use this exact model when\n\n- Use this exact `stanfordcrfm-biomedlm-2-7b-safety-review` version when the task supplies text and needs text.\n- BioMedLM 2.7B is a Stanford CRFM and MosaicML biomedical GPT-style language model trained on PubMed abstracts and full-text data from The Pile.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, required): Prompt\n- `max_new_tokens` (number, optional; bounds 1..512): Max new tokens\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `research_use_acknowledgement` (checkbox, required): Research-only use acknowledged\n\nRequest template:\n\n```json\n{\n  \"max_new_tokens\": \"{{max_new_tokens}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"research_use_acknowledgement\": \"{{research_use_acknowledgement}}\",\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/inference/stanfordcrfm-biomedlm-2-7b-safety-review`\n\n## Workflow\n\n1. Load this skill and pin model slug `stanfordcrfm-biomedlm-2-7b-safety-review` with version key `hf-3e1a0ab-life-science-20260426-fix2`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/stanfordcrfm-biomedlm-2-7b-safety-review` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 1024.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review`\n- Routes: `/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review/inference-routes`\n- Regional deployment: `/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review/regional-deployment`\n- Deployment handoff: `/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-text/stanfordcrfm-biomedlm-2-7b-safety-review/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-text/stanfordcrfm-biomedlm-2-7b-safety-review/SKILL.md\n\n## References\n\n- [BioMedLM 2.7B source](https://huggingface.co/stanford-crfm/BioMedLM) (model-card)\n",
+  "license": "bigscience-bloom-rail-1.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 1024."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review/deploy",
+    "inferenceRoutesUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/stanfordcrfm-biomedlm",
+    "modelUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review",
+    "regionalDeploymentUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/stanfordcrfm-biomedlm-2-7b-safety-review/markdown",
+  "modelFamily": "stanfordcrfm-biomedlm",
+  "modelSlug": "stanfordcrfm-biomedlm-2-7b-safety-review",
+  "modelUrl": "/v1/models/stanfordcrfm-biomedlm-2-7b-safety-review",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "BioMedLM 2.7B is a Stanford CRFM and MosaicML biomedical GPT-style language model trained on PubMed abstracts and full-text data from The Pile.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-text/stanfordcrfm-biomedlm-2-7b-safety-review/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "BioMedLM 2.7B source",
+      "url": "https://huggingface.co/stanford-crfm/BioMedLM"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-text/stanfordcrfm-biomedlm-2-7b-safety-review/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-text/stanfordcrfm-biomedlm-2-7b-safety-review/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_new_tokens": "{{max_new_tokens}}",
+    "prompt": "{{prompt}}",
+    "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1024,
+    "parameterCount": 2700000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/stanford-crfm/BioMedLM",
+    "tags": [
+      "healthcare",
+      "life-science",
+      "biomedical",
+      "language-model",
+      "text-generation",
+      "custom-container",
+      "forge-wrapper",
+      "research-only"
+    ],
+    "versionLabel": "HF 3e1a0ab via Forge life-science wrapper"
+  },
+  "shortDescription": "BioMedLM 2.7B is a Stanford CRFM and MosaicML biomedical GPT-style language model trained on PubMed abstracts and full-text data from The Pile.",
+  "skillName": "use-forge-stanfordcrfm-biomedlm-2-7b-safety-review",
+  "skillUrl": "/v1/model-skills/stanfordcrfm-biomedlm-2-7b-safety-review",
+  "slug": "stanfordcrfm-biomedlm-2-7b-safety-review",
+  "stability": "testing",
+  "version": "hf-3e1a0ab-wrapper-20260426-fix2",
+  "versionKey": "hf-3e1a0ab-life-science-20260426-fix2",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `stanfordcrfm-biomedlm-2-7b-safety-review` version when the task supplies text and needs text.",
+    "BioMedLM 2.7B is a Stanford CRFM and MosaicML biomedical GPT-style language model trained on PubMed abstracts and full-text data from The Pile.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `stanfordcrfm-biomedlm-2-7b-safety-review` with version key `hf-3e1a0ab-life-science-20260426-fix2`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/stanfordcrfm-biomedlm-2-7b-safety-review` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

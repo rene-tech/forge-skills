@@ -1,0 +1,176 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "3934f8b8d839f23d365e74cd578a8d927a93621678bcc38389d9e370c5b1a5cf",
+  "defaultEligible": false,
+  "displayName": "Use Qwen2.5-VL 7B Instruct",
+  "domain": "vision-language",
+  "downloadUrl": "/v1/model-skills/qwen-qwen2-5-vl-7b-instruct-vllm/markdown?download=true",
+  "group": "vision-language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "vision-language",
+    "qwen-qwen2-5-vl-7b-instruct-vllm"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Describe this image and transcribe any visible text. If no text is visible, say so before summarizing the layout in two bullets.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "https://raw.githubusercontent.com/github/explore/main/topics/pytorch/pytorch.png",
+      "fieldType": "text",
+      "key": "image_url",
+      "label": "Image URL or data URL",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.1,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-qwen-qwen2-5-vl-7b-instruct-vllm\ndescription: Use the exact Forge model qwen-qwen2-5-vl-7b-instruct-vllm for text, image to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Qwen2.5-VL 7B Instruct\n\n- Model slug: `qwen-qwen2-5-vl-7b-instruct-vllm`\n- Model family: `qwen-qwen2-5-vl-7b-instruct`\n- Version: `vllm-0.21.0` (`vllm-0-21-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / vision-language / qwen-qwen2-5-vl-7b-instruct-vllm`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nQwen2.5-VL 7B Instruct is an Apache-2.0 vision-language chat model for OCR, document and chart understanding, visual question answering, and structured extraction.\n\n## Use this exact model when\n\n- Use this exact `qwen-qwen2-5-vl-7b-instruct-vllm` version when the task supplies text, image and needs text.\n- Qwen2.5-VL 7B Instruct is an Apache-2.0 vision-language chat model for OCR, document and chart understanding, visual question answering, and structured extraction.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `image_url` (text, optional): Image URL or data URL\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": [\n        {\n          \"text\": \"{{prompt}}\",\n          \"type\": \"text\"\n        },\n        {\n          \"image_url\": {\n            \"url\": \"{{image_url}}\"\n          },\n          \"type\": \"image_url\"\n        }\n      ],\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": false,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `qwen-qwen2-5-vl-7b-instruct-vllm` with version key `vllm-0-21-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm`\n- Routes: `/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/inference-routes`\n- Regional deployment: `/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/regional-deployment`\n- Deployment handoff: `/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/qwen-qwen2-5-vl-7b-instruct-vllm/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/qwen-qwen2-5-vl-7b-instruct-vllm/SKILL.md\n\n## References\n\n- [Qwen2.5-VL 7B Instruct source](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/deploy",
+    "inferenceRoutesUrl": "/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/qwen-qwen2-5-vl-7b-instruct",
+    "modelUrl": "/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm",
+    "regionalDeploymentUrl": "/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/qwen-qwen2-5-vl-7b-instruct-vllm/markdown",
+  "modelFamily": "qwen-qwen2-5-vl-7b-instruct",
+  "modelSlug": "qwen-qwen2-5-vl-7b-instruct-vllm",
+  "modelUrl": "/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Qwen2.5-VL 7B Instruct is an Apache-2.0 vision-language chat model for OCR, document and chart understanding, visual question answering, and structured extraction.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/qwen-qwen2-5-vl-7b-instruct-vllm/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Qwen2.5-VL 7B Instruct source",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/qwen-qwen2-5-vl-7b-instruct-vllm/SKILL.md",
+  "repositoryPath": "skills/models/general/vision-language/qwen-qwen2-5-vl-7b-instruct-vllm/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": [
+          {
+            "text": "{{prompt}}",
+            "type": "text"
+          },
+          {
+            "image_url": {
+              "url": "{{image_url}}"
+            },
+            "type": "image_url"
+          }
+        ],
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": false,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 8292166656,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
+    "tags": [
+      "vlm",
+      "vision-language",
+      "chat",
+      "ocr",
+      "document-understanding",
+      "multimodal",
+      "qwen",
+      "vllm"
+    ],
+    "versionLabel": "vLLM 0.21.0"
+  },
+  "shortDescription": "Qwen2.5-VL 7B Instruct is an Apache-2.0 vision-language chat model for OCR, document and chart understanding, visual question answering, and structured extraction.",
+  "skillName": "use-forge-qwen-qwen2-5-vl-7b-instruct-vllm",
+  "skillUrl": "/v1/model-skills/qwen-qwen2-5-vl-7b-instruct-vllm",
+  "slug": "qwen-qwen2-5-vl-7b-instruct-vllm",
+  "stability": "testing",
+  "version": "vllm-0.21.0",
+  "versionKey": "vllm-0-21-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `qwen-qwen2-5-vl-7b-instruct-vllm` version when the task supplies text, image and needs text.",
+    "Qwen2.5-VL 7B Instruct is an Apache-2.0 vision-language chat model for OCR, document and chart understanding, visual question answering, and structured extraction.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `qwen-qwen2-5-vl-7b-instruct-vllm` with version key `vllm-0-21-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

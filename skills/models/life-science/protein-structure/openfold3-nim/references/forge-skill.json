@@ -1,0 +1,206 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "a3058716d817d27bc55b9b40b80517e504f55cdc0429a674aebe9a98fc56f09e",
+  "defaultEligible": false,
+  "displayName": "Use OpenFold3 NIM",
+  "domain": "protein-structure",
+  "downloadUrl": "/v1/model-skills/openfold3-nim/markdown?download=true",
+  "group": "protein-structure",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "protein-structure",
+    "openfold3-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/biology/openfold/openfold3/predict",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "MKTVRQERLKSIVR",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": "A",
+      "fieldType": "text",
+      "key": "chain_id",
+      "label": "Chain ID",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": ">query\nMKTVRQERLKSIVR",
+      "fieldType": "textarea",
+      "key": "msa_a3m",
+      "label": "A3M MSA",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "pdb",
+        "cif"
+      ],
+      "default": "pdb",
+      "fieldType": "select",
+      "key": "output_format",
+      "label": "Output format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "diffusion_samples",
+      "label": "Diffusion samples",
+      "maximum": 5,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence",
+    "nucleotide_sequence",
+    "molecule",
+    "msa",
+    "template",
+    "json"
+  ],
+  "instructions": "---\nname: use-forge-openfold3-nim\ndescription: Use the exact Forge model openfold3-nim for protein_sequence, nucleotide_sequence, molecule, msa, template, json to structure, confidence, pdb, cif, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use OpenFold3 NIM\n\n- Model slug: `openfold3-nim`\n- Model family: `openfold3`\n- Version: `1.5.0-rc1` (`nim-1-5-0-rc1-security-upgrade`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / protein-structure / openfold3-nim`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `NVIDIA Open Model License; Apache-2.0 additional information; NVIDIA NIM terms`\n\n## Purpose\n\nOpenFold3 NIM is NVIDIA's packaged OpenFold3 biomolecular complex structure-prediction service.\n\n## Use this exact model when\n\n- Use this exact `openfold3-nim` version when the task supplies protein_sequence, nucleotide_sequence, molecule, msa, template, json and needs structure, confidence, pdb, cif, json.\n- OpenFold3 NIM is NVIDIA's packaged OpenFold3 biomolecular complex structure-prediction service.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence', 'nucleotide_sequence', 'molecule', 'msa', 'template', 'json'] \u2192 ['structure', 'confidence', 'pdb', 'cif', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, required): Protein sequence\n- `chain_id` (text, optional): Chain ID\n- `msa_a3m` (textarea, optional): A3M MSA\n- `output_format` (select, optional): Output format\n- `diffusion_samples` (number, optional; bounds 1..5): Diffusion samples\n\nRequest template:\n\n```json\n{\n  \"inputs\": [\n    {\n      \"diffusion_samples\": \"{{diffusion_samples}}\",\n      \"input_id\": \"primary\",\n      \"molecules\": [\n        {\n          \"id\": \"{{chain_id}}\",\n          \"msa\": {\n            \"main\": {\n              \"a3m\": {\n                \"alignment\": \"{{msa_a3m}}\",\n                \"format\": \"a3m\"\n              }\n            }\n          },\n          \"sequence\": \"{{sequence}}\",\n          \"type\": \"protein\"\n        }\n      ],\n      \"output_format\": \"{{output_format}}\"\n    }\n  ],\n  \"request_id\": \"forge-openfold3\"\n}\n```\n\n## Exact output\n\n- `structure`\n- `confidence`\n- `pdb`\n- `cif`\n- `json`\n\n## Route\n\n`POST /biology/openfold/openfold3/predict`\n\n## Workflow\n\n1. Load this skill and pin model slug `openfold3-nim` with version key `nim-1-5-0-rc1-security-upgrade`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /biology/openfold/openfold3/predict` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 4096.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/openfold3-nim`\n- Routes: `/v1/models/openfold3-nim/inference-routes`\n- Regional deployment: `/v1/models/openfold3-nim/regional-deployment`\n- Deployment handoff: `/v1/models/openfold3-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/openfold3-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-structure/openfold3-nim/SKILL.md\n\n## References\n\n- [OpenFold3 NIM source](https://docs.nvidia.com/nim/bionemo/openfold3/latest/) (model-card)\n",
+  "license": "NVIDIA Open Model License; Apache-2.0 additional information; NVIDIA NIM terms",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 4096."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/openfold3-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/openfold3-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/openfold3",
+    "modelUrl": "/v1/models/openfold3-nim",
+    "regionalDeploymentUrl": "/v1/models/openfold3-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/openfold3-nim/markdown",
+  "modelFamily": "openfold3",
+  "modelSlug": "openfold3-nim",
+  "modelUrl": "/v1/models/openfold3-nim",
+  "outputFields": [
+    "structure",
+    "confidence",
+    "pdb",
+    "cif",
+    "json"
+  ],
+  "outputModalities": [
+    "structure",
+    "confidence",
+    "pdb",
+    "cif",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "OpenFold3 NIM is NVIDIA's packaged OpenFold3 biomolecular complex structure-prediction service.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-structure/openfold3-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "OpenFold3 NIM source",
+      "url": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/openfold3-nim/SKILL.md",
+  "repositoryPath": "skills/models/life-science/protein-structure/openfold3-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "inputs": [
+      {
+        "diffusion_samples": "{{diffusion_samples}}",
+        "input_id": "primary",
+        "molecules": [
+          {
+            "id": "{{chain_id}}",
+            "msa": {
+              "main": {
+                "a3m": {
+                  "alignment": "{{msa_a3m}}",
+                  "format": "a3m"
+                }
+              }
+            },
+            "sequence": "{{sequence}}",
+            "type": "protein"
+          }
+        ],
+        "output_format": "{{output_format}}"
+      }
+    ],
+    "request_id": "forge-openfold3"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 4096,
+    "parameterCount": 368000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "dna",
+      "rna",
+      "ligand",
+      "structure-prediction",
+      "biomolecular-complex",
+      "nvidia-nim",
+      "openfold",
+      "blackwell-candidate"
+    ],
+    "versionLabel": "NIM 1.5.0-rc1"
+  },
+  "shortDescription": "OpenFold3 NIM is NVIDIA's packaged OpenFold3 biomolecular complex structure-prediction service.",
+  "skillName": "use-forge-openfold3-nim",
+  "skillUrl": "/v1/model-skills/openfold3-nim",
+  "slug": "openfold3-nim",
+  "stability": "testing",
+  "version": "1.5.0-rc1",
+  "versionKey": "nim-1-5-0-rc1-security-upgrade",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence', 'nucleotide_sequence', 'molecule', 'msa', 'template', 'json'] \u2192 ['structure', 'confidence', 'pdb', 'cif', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `openfold3-nim` version when the task supplies protein_sequence, nucleotide_sequence, molecule, msa, template, json and needs structure, confidence, pdb, cif, json.",
+    "OpenFold3 NIM is NVIDIA's packaged OpenFold3 biomolecular complex structure-prediction service.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `openfold3-nim` with version key `nim-1-5-0-rc1-security-upgrade`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /biology/openfold/openfold3/predict` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

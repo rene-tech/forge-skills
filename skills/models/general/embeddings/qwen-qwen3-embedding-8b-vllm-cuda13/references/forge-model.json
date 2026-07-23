@@ -1,0 +1,563 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "hidden_size": 4096,
+      "max_position_embeddings": 40960,
+      "model_type": "qwen3",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 36,
+      "num_key_value_heads": 8,
+      "torch_dtype": "bfloat16"
+    },
+    "artifact_evidence": "Hugging Face API reported Qwen/Qwen3-Embedding-8B as public, ungated, enabled, feature-extraction, sentence-transformers, license:apache-2.0, revision 1d8ad4ca9b3dd8059ad90a75d4983776a23d44af, and 7,567,295,488 BF16 safetensors parameters on 2026-05-24T21Z.",
+    "artifact_parameters": {
+      "BF16": 7567295488,
+      "total": 7567295488
+    },
+    "artifact_revision": "1d8ad4ca9b3dd8059ad90a75d4983776a23d44af",
+    "b200_rtx6000_probe_command_20260525T00Z": {
+      "b200_report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T00Z-b200.json",
+      "b200_report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T00Z-b200.md",
+      "b200_status": "capacity_blocked_before_runtime",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-embedding-8b-vllm-cuda13 --include-status active --include-status onboarding --gpu B200 --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 2",
+      "rtx6000_report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T00Z-rtx6000.json",
+      "rtx6000_report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T00Z-rtx6000.md",
+      "targets": [
+        "B200/us-central1",
+        "RTX6000/us-central1"
+      ]
+    },
+    "b300_probe_command": {
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-embedding-8b-vllm-cuda13 --include-status onboarding --gpu B300 --region uk-south1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T21Z-b300.json --report-md docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T21Z-b300.md",
+      "reason": "Test whether the B300-capable vLLM CUDA 13 pooling path can replace the TEI CUDA 1.9.3 SM103 blocker for the 8B embedding model.",
+      "target": "B300/uk-south1"
+    },
+    "blockers": [
+      "Keep default_eligible=false and is_latest=false: TEI CUDA 1.9.3 remains the low-footprint reference for non-B300 cells while this vLLM profile uses 28.72-185.58 GB across the five-cell matrix.",
+      "The matrix request time source remains client_wall_ms rather than runtime-internal model timing, so do not treat the rows as pure GPU kernel timings.",
+      "Cold starts are still large on cache-warm hostPath probes, with 413.687 s on B200, 441.065 s on B300, 646.090 s on L40S, and 461.069 s on RTX6000."
+    ],
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_license_evidence": "Existing Forge vLLM CUDA 13 manifests pin docker.io/vllm/vllm-openai:v0.21.0 to digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9 across all four regional registries.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_as_b300_embedding_fallback_candidate",
+    "full_vector_parity": {
+      "checked_at": "2026-05-24T22:13:41Z",
+      "cosine_similarity": 0.999952366,
+      "dimensions_compared": 4096,
+      "gpu_cell": "H200/eu-north2",
+      "input": "default_manifest_embedding_prompt",
+      "length_match": true,
+      "max_abs_diff": 0.002169527,
+      "mean_abs_diff": 0.000113484,
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T22Z-h200-parity.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T22Z-h200-parity.md",
+      "tei_l2_norm": 0.9999999785385636,
+      "tei_reference_slug": "qwen-qwen3-embedding-8b-tei-cuda-1-9",
+      "tei_status_code": 200,
+      "vllm_l2_norm": 1.0000000501720958,
+      "vllm_status_code": 200
+    },
+    "h200_probe_command": {
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-embedding-8b-vllm-cuda13 --include-status onboarding --gpu H200 --region eu-north2 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T22Z-h200.json --report-md docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T22Z-h200.md",
+      "reason": "Add the required non-B300 comparison cell before publication review.",
+      "target": "H200/eu-north2"
+    },
+    "l40s_b200_probe_commands_20260525T06Z": {
+      "b200_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-embedding-8b-vllm-cuda13 --include-status active --include-status onboarding --gpu B200 --region us-central1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-b200-reprobe.json --report-md docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-b200-reprobe.md",
+      "b200_status": "supported",
+      "l40s_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug qwen-qwen3-embedding-8b-vllm-cuda13 --include-status active --include-status onboarding --gpu L40S --region eu-north1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-l40s.json --report-md docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-l40s.md",
+      "l40s_status": "supported",
+      "reason": "Complete the vLLM 8B embedding matrix after prior validation covered B300, H200, and RTX6000, and replace the earlier ambiguous B200 404 with a successful focused reprobe."
+    },
+    "latest_b200_probe": {
+      "checked_at": "2026-05-25T06:21:49Z",
+      "gpu": "B200",
+      "node": "computeinstance-u00nppazxj027qnwat",
+      "pod": "forge-probe-qwen-qwen3-embedding-8b--b200-us-central1-1f9f23",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-b200-reprobe.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-b200-reprobe.md",
+      "request_ms_p50": 171,
+      "request_ms_samples": [
+        170,
+        171,
+        171,
+        171,
+        171,
+        171,
+        170,
+        170,
+        171,
+        170
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "embedding_vector",
+      "response_status": 200,
+      "startup_ms": 413687,
+      "status": "supported",
+      "tokens_per_second": 175.44,
+      "vram_used_gb": 123.07
+    },
+    "latest_b300_probe": {
+      "checked_at": "2026-05-24T21:13:42Z",
+      "gpu": "B300",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "pod": "forge-probe-qwen-qwen3-embedding-8b--b300-uk-south1-e10f9b",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T21Z-b300.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T21Z-b300.md",
+      "request_ms_p50": 78,
+      "request_ms_samples": [
+        78,
+        78,
+        82,
+        78,
+        77,
+        78,
+        78,
+        78,
+        78,
+        78
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "embedding_vector",
+      "response_status": 200,
+      "runtime_notes": [
+        "vLLM resolved Qwen/Qwen3-Embedding-8B to pooling convert=embed with Qwen3ForCausalLM architecture.",
+        "Runtime selected FLASHINFER attention on B300/SM103.",
+        "The first warmup request took 2619 ms after startup; the 10 measured runs had median client_wall_ms 78."
+      ],
+      "startup_ms": 441065,
+      "status": "supported",
+      "tokens_per_second": 384.62,
+      "vram_used_gb": 185.58
+    },
+    "latest_h200_probe": {
+      "checked_at": "2026-05-24T22:05:25Z",
+      "gpu": "H200",
+      "node": "computeinstance-e02qrr5b7wych6gj31",
+      "pod": "forge-probe-qwen-qwen3-embedding-8b--h200-eu-north2-9d6bf4",
+      "region": "eu-north2",
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T22Z-h200.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260524T22Z-h200.md",
+      "request_ms_p50": 111,
+      "request_ms_samples": [
+        111,
+        111,
+        111,
+        111,
+        111,
+        111,
+        111,
+        111,
+        110,
+        111
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "embedding_vector",
+      "response_status": 200,
+      "startup_ms": 71615,
+      "status": "supported",
+      "tokens_per_second": 270.27,
+      "vram_used_gb": 95.65
+    },
+    "latest_l40s_probe": {
+      "checked_at": "2026-05-25T06:14:21Z",
+      "gpu": "L40S",
+      "node": "computeinstance-e00knmqbn7kxszaff1",
+      "pod": "forge-probe-qwen-qwen3-embedding-8b--l40s-eu-north1-ae6a22",
+      "region": "eu-north1",
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-l40s.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T06Z-l40s.md",
+      "request_ms_p50": 117,
+      "request_ms_samples": [
+        118,
+        118,
+        117,
+        117,
+        117,
+        117,
+        117,
+        116,
+        118,
+        117
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "embedding_vector",
+      "response_status": 200,
+      "startup_ms": 646090,
+      "status": "supported",
+      "tokens_per_second": 256.41,
+      "vram_used_gb": 28.72
+    },
+    "latest_rtx6000_probe": {
+      "checked_at": "2026-05-25T00:16:16Z",
+      "gpu": "RTX6000",
+      "node": "computeinstance-u00nxmpqn2rv3waxbs",
+      "pod": "forge-probe-qwen-qwen3-embedding-8b--rtx6000-us-central1-0949fc",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T00Z-rtx6000.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-embedding-8b-vllm-cuda13-20260525T00Z-rtx6000.md",
+      "request_ms_p50": 180,
+      "request_ms_samples": [
+        180,
+        180,
+        180,
+        180,
+        181,
+        180,
+        179,
+        180,
+        180,
+        179
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": "embedding_vector",
+      "response_status": 200,
+      "startup_ms": 461069,
+      "status": "supported",
+      "tokens_per_second": 166.67,
+      "vram_used_gb": 64.2
+    },
+    "license_evidence": "Hugging Face API and model metadata report license:apache-2.0; the model is public and ungated.",
+    "onboarding_state": "vllm_cuda13_embedding_8b_five_cell_supported_parity_cleared_active_non_default",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_review": {
+      "decision": "publish_candidate_active_non_default",
+      "default_eligible": false,
+      "is_latest": false,
+      "manifest_stability": "testing",
+      "manifest_status": "active",
+      "reason": "The vLLM CUDA 13 pooling profile now clears the B300 blocker and has all five current Forge GPU cells supported with 3 warmups and 10 measured embedding requests per cell. Keep it non-default because TEI remains the lower-footprint route outside B300 and the vLLM profile consumes materially more VRAM on B200, B300, and H200.",
+      "reviewed_at": "2026-05-25T06Z"
+    },
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_verified_at": "2026-05-24T21Z",
+    "runtime_evidence": "vLLM 0.21.0 docs list OpenAI-compatible /v1/embeddings for embedding usage and document --runner pooling for pooling models. The existing Forge qwen-qwen3-embedding-0-6b-vllm-cuda13 profile validated the same runtime pattern on all five GPU cells.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "source_evidence": [
+      "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+      "https://huggingface.co/Qwen/Qwen3-Embedding-8B/raw/main/config.json",
+      "https://docs.vllm.ai/en/v0.21.0/models/pooling_models/embed/"
+    ]
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "code_retrieval",
+    "qwen3",
+    "vllm",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-24T21:06:00.396854+00:00",
+  "default_eligible": false,
+  "description": "Qwen3 Embedding 8B served by the already mirrored official vLLM 0.21.0 CUDA 13 OpenAI-compatible image in pooling runner mode. This active, non-default profile is a five-cell fallback for the TEI CUDA 1.9.3 profile, which supports B200, H200, L40S, and RTX6000 but exits before server startup on B300/SM103. The upstream public Hugging Face metadata reports Apache-2.0 licensing, no gating, feature-extraction usage, sentence-transformers metadata, and 7,567,295,488 BF16 safetensors parameters. vLLM 0.21.0 CUDA 13 already validates B300 for the Qwen3 Embedding 0.6B pooling profile and for Qwen3 4B text generation in Forge. The 2026-05-24T21Z B300 probe started this 8B pooling profile on SM103, selected FlashInfer attention, returned HTTP 200 from /v1/embeddings, and completed 3 warmups plus 10 measured warm embedding requests. The 2026-05-24T22Z H200 probe added a non-B300 comparison cell with HTTP 200, 71.615 s startup, 111 ms warm p50, 270.27 TPS, and 95.65 GB VRAM. The 2026-05-25T00Z RTX6000 probe completed 3 warmups plus 10 measured warm embedding requests with HTTP 200, 461.069 s startup, 180 ms warm p50, 166.67 TPS, and 64.2 GB VRAM. The 2026-05-25T06Z probes completed the remaining L40S and B200 cells with HTTP 200, 646.090 s startup and 117 ms warm p50 on L40S, and 413.687 s startup and 171 ms warm p50 on B200. A 2026-05-24T22Z direct H200 full-vector parity check against the TEI CUDA 1.9.3 row compared the default manifest prompt over 4096 dimensions and measured cosine similarity 0.999952366, mean absolute difference 0.000113484, and max absolute difference 0.002169527. Keep this version non-default and non-latest because TEI remains materially cheaper on non-B300 cells even though the vLLM CUDA 13 profile now has all five current Forge GPU cells validated.",
+  "family_id": "3a1f140d-71b8-4cf3-b7a9-fcf5a7e59cdf",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "Qwen/Qwen3-Embedding-8B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "Qwen/Qwen3-Embedding-8B",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "32768",
+      "--gpu-memory-utilization",
+      "0.7",
+      "--max-num-seqs",
+      "16"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T06:21:48.731361+00:00",
+      "region": "us-central1",
+      "request_ms": 171,
+      "request_ms_p50": 171,
+      "request_ms_p95": 171,
+      "request_ms_p99": 171,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 413687,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 175.44,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 123.07,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T21:13:41.261316+00:00",
+      "region": "uk-south1",
+      "request_ms": 78,
+      "request_ms_p50": 78,
+      "request_ms_p95": 80,
+      "request_ms_p99": 82,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 441065,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 384.62,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 185.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T22:05:24.138971+00:00",
+      "region": "eu-north2",
+      "request_ms": 111,
+      "request_ms_p50": 111,
+      "request_ms_p95": 111,
+      "request_ms_p99": 111,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 71615,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 270.27,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 95.65,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T06:14:20.756894+00:00",
+      "region": "eu-north1",
+      "request_ms": 117,
+      "request_ms_p50": 117,
+      "request_ms_p95": 118,
+      "request_ms_p99": 118,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 646090,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 256.41,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 28.72,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T00:16:15.431214+00:00",
+      "region": "us-central1",
+      "request_ms": 180,
+      "request_ms_p50": 180,
+      "request_ms_p95": 181,
+      "request_ms_p99": 181,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 461069,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 166.67,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 64.2,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "ecab7695-e777-407b-a4cf-5b381c70b014",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "qwen-qwen3-embedding-8b",
+  "name": "Qwen3 Embedding 8B",
+  "parameter_count": 7567295488,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "Qwen/Qwen3-Embedding-8B"
+    },
+    "input_fields": [
+      {
+        "default": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: How does shared GPU cache reduce model cold starts?",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      }
+    ],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "bfloat16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 39,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-qwen3-embedding-8b-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "code-retrieval",
+    "qwen3",
+    "vllm",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13-embed",
+  "version_description": "Qwen3 Embedding 8B served by the official vLLM CUDA 13 OpenAI-compatible image in pooling mode as an active, non-default five-cell fallback.",
+  "version_key": "vllm-0-21-0-cuda13-embed",
+  "version_label": "vLLM 0.21.0 CUDA 13 Embed"
+}

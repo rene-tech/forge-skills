@@ -1,0 +1,1199 @@
+{
+  "benchmark_scores": {
+    "artifact_disabled": false,
+    "artifact_files": [
+      {
+        "path": "pytorch_model.bin",
+        "sha256": "2ee07356b125d1e3e57503c204111fd7323347fc4735d41d3caac57c2a78e116",
+        "size_bytes": 8442062570
+      },
+      {
+        "path": "config.json",
+        "size_bytes": 2103
+      },
+      {
+        "path": "vocab.txt",
+        "size_bytes": 72
+      }
+    ],
+    "artifact_gated": false,
+    "artifact_license": "mit",
+    "artifact_private": false,
+    "artifact_sha": "75a3841ee059df2bf4d56688166c8fb459ddd97a",
+    "artifact_source": "https://huggingface.co/facebook/esmfold_v1",
+    "cache_strategy": "Manifest env overrides route Hugging Face, Transformers, Torch, XDG, and HOME caches into a slug-scoped /opt/nim/.cache directory backed by Forge shared /mnt/data/forge-weights. The container keeps code and dependencies only; the 8.44 GB ESMFold weight hydrates into shared cache on first start without requiring UID 10001 to create new top-level /mnt/data directories.",
+    "container_source_decision": "No separate model-specific serving image was selected. The existing Forge-owned life-science transformer wrapper already serves facebook/esmfold_v1 with FastAPI health and inference endpoints, PDB export, and corrected PDB adapter probe evidence.",
+    "expected_response_fields": [
+      "task",
+      "sequence_length",
+      "mean_plddt",
+      "pdb_preview",
+      "pdb_truncated",
+      "model_time_ms"
+    ],
+    "forge_runtime": "services/models/life_science_transformers",
+    "hcls_safety_readiness_packet_20260603T05Z": {
+      "cleared_requirements": [
+        "Artifact license and revision recorded.",
+        "CVE-safe Torch and Transformers floors are represented in checked-in Dockerfile and manifest evidence.",
+        "Regional runtime image digests are pinned and identical across four Forge regions.",
+        "Five-cell Forge GPU support matrix is persisted with non-null PDB previews and mean pLDDT responses.",
+        "Research-only playground acknowledgement is present in the Tamarind schema and request body mapping."
+      ],
+      "decision": "keep_hidden_onboarding_default_ineligible",
+      "evidence_documents": [
+        "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b200-persisted-cachefix-benchmark.md",
+        "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b300-persisted-cachefix-benchmark.md",
+        "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-h200-eu2-persisted-cachefix-benchmark.md",
+        "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-l40s-eu1-persisted-cachefix-benchmark.md",
+        "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-rtx6000-us-persisted-cachefix-benchmark.md",
+        "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T05Z-safety-readiness.md"
+      ],
+      "publication_decision": "Do not publish, make default eligible, or promote beyond onboarding from this packet. It is a handoff for HCLS product safety review only.",
+      "remaining_blockers": [
+        "HCLS product safety reviewer approval for customer-visible nonclinical research-only copy and routing.",
+        "Supervisor decision before any public/default routing or status promotion.",
+        "Optional product/UX decision on whether ESMFold output should use a richer protein structure renderer instead of JSON/PDB preview."
+      ],
+      "review_scope": "Nonclinical protein structure prediction and biomolecular research using public or fully authorized protein sequences.",
+      "status": "ready_for_hcls_product_safety_review_not_approved",
+      "technical_evidence": {
+        "artifact": {
+          "gated": false,
+          "license": "mit",
+          "primary_weight_sha256": "2ee07356b125d1e3e57503c204111fd7323347fc4735d41d3caac57c2a78e116",
+          "revision": "75a3841ee059df2bf4d56688166c8fb459ddd97a",
+          "source": "https://huggingface.co/facebook/esmfold_v1"
+        },
+        "matrix": "B200, B300, H200, L40S, and RTX6000 supported and persisted with 3 warmups and 10 measured requests per cell on 2026-06-03T04Z.",
+        "response_contract": {
+          "http_status": 200,
+          "mean_plddt": "present",
+          "pdb_preview": "non-null",
+          "request_time_source": "model_time_ms"
+        },
+        "runtime_digest": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+        "runtime_stack": {
+          "default_user": "10001:10001",
+          "torch": "2.10.0+cu128",
+          "transformers": "5.3.0"
+        },
+        "safety_notice": "Playground requires research_use_acknowledgement and disallows clinical decision-making, diagnosis or treatment, therapeutic efficacy claims, wet-lab safety claims, patient-specific interpretation, and patient care."
+      }
+    },
+    "hf_api_checked_at": "2026-06-03T04:10:15Z",
+    "hf_downloads_at_check": 1674318,
+    "hf_last_modified": "2023-03-22T17:39:28.000Z",
+    "hf_library_name": "transformers",
+    "image_config_snapshot": {
+      "architecture": "amd64",
+      "command": "uvicorn services.models.life_science_transformers.main:app --host 0.0.0.0 --port 8000",
+      "created": "2026-06-03T02:12:09.429087218Z",
+      "default_bio_model_id": "facebook/esmfold_v1",
+      "default_bio_model_kind": "esmfold",
+      "os": "linux",
+      "pytorch_version": "2.10.0"
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_supported": {
+        "B200/us-central1": {
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00m47dkr55e8yk9fb",
+          "pdb_preview": "non-null",
+          "pod": "forge-probe-facebook-esmfold-v1-b200-us-central1-f6aeb1",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b200-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b200-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 579,
+          "request_ms_samples": [
+            579,
+            578,
+            576,
+            577,
+            580,
+            580,
+            584,
+            583,
+            579,
+            578
+          ],
+          "startup_ms": 223923,
+          "vram_used_gb": 7.58,
+          "warmup_ms_samples": [
+            1163,
+            584,
+            589
+          ]
+        },
+        "B300/uk-south1": {
+          "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pdb_preview": "non-null",
+          "pod": "forge-probe-facebook-esmfold-v1-b300-uk-south1-350188",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b300-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b300-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 578,
+          "request_ms_samples": [
+            585,
+            584,
+            590,
+            578,
+            572,
+            576,
+            577,
+            572,
+            574,
+            578
+          ],
+          "startup_ms": 14914,
+          "vram_used_gb": 7.58,
+          "warmup_ms_samples": [
+            35646,
+            600,
+            591
+          ]
+        },
+        "H200/eu-north2": {
+          "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+          "node": "computeinstance-e02bf73e3ecaj6cvh5",
+          "pdb_preview": "non-null",
+          "pod": "forge-probe-facebook-esmfold-v1-h200-eu-north2-9b4644",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-h200-eu2-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-h200-eu2-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 688,
+          "request_ms_samples": [
+            696,
+            697,
+            688,
+            681,
+            685,
+            699,
+            689,
+            692,
+            687,
+            676
+          ],
+          "startup_ms": 218580,
+          "vram_used_gb": 7.52,
+          "warmup_ms_samples": [
+            1256,
+            696,
+            685
+          ]
+        },
+        "L40S/eu-north1": {
+          "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+          "node": "computeinstance-e00knmqbn7kxszaff1",
+          "pdb_preview": "non-null",
+          "pod": "forge-probe-facebook-esmfold-v1-l40s-eu-north1-e019d2",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-l40s-eu1-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-l40s-eu1-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 914,
+          "request_ms_samples": [
+            910,
+            923,
+            916,
+            921,
+            915,
+            905,
+            908,
+            919,
+            912,
+            904
+          ],
+          "startup_ms": 188323,
+          "vram_used_gb": 7.32,
+          "warmup_ms_samples": [
+            1432,
+            925,
+            925
+          ]
+        },
+        "RTX6000/us-central1": {
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00vxq1q7wy9b41qnz",
+          "pdb_preview": "non-null",
+          "pod": "forge-probe-facebook-esmfold-v1-rtx6000-us-central1-40bd31",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-rtx6000-us-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-rtx6000-us-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 666,
+          "request_ms_samples": [
+            666,
+            665,
+            667,
+            683,
+            666,
+            657,
+            660,
+            661,
+            676,
+            672
+          ],
+          "startup_ms": 215373,
+          "vram_used_gb": 7.46,
+          "warmup_ms_samples": [
+            1354,
+            679,
+            675
+          ]
+        }
+      },
+      "checked_at": "2026-06-03T04:09:39Z",
+      "image_digest": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+      "live_model_status_seen_by_probe": "active",
+      "pdb_export": "non-null",
+      "persisted": true,
+      "persistence": "direct probe pods upserted model_gpu_support for all declared cells; checked-in manifest remains onboarding/default-ineligible pending HCLS product safety",
+      "request_time_source": "model_time_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "live_posture_remediation_20260603T07Z": {
+      "action": {
+        "checked_in_manifest_source_of_truth": "status=onboarding, default_eligible=false, stability=experimental, research_use_acknowledgement required",
+        "live_upsert": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/facebook-esmfold-v1.json",
+        "printed_secret": false,
+        "result": "facebook-esmfold-v1",
+        "secret_source": "nebius-mk8s-forge-control/forge-system/forge-platform-secrets:POSTGRES_URL"
+      },
+      "fallback": "If product safety approval remains unavailable, keep ESMFold hidden/onboarding and use the 2026-06-03T04Z persisted matrix only as internal technical evidence.",
+      "post_upsert_readback": {
+        "checked_at": "2026-06-03T07:05:21Z",
+        "db_body_template_includes_acknowledgement": true,
+        "db_default_eligible": false,
+        "db_has_safety_packet": true,
+        "db_required_fields": [
+          "sequence",
+          "research_use_acknowledgement"
+        ],
+        "db_stability": "experimental",
+        "db_status": "onboarding",
+        "public_catalog_search_result_count": 0,
+        "public_model_endpoint": "404_hidden"
+      },
+      "pre_upsert_readback": {
+        "benchmark_scores_missing": [
+          "onboarding_state",
+          "publication_gate",
+          "safety_gate",
+          "hcls_safety_readiness_packet_20260603T05Z"
+        ],
+        "checked_at": "2026-06-03T07:04:03Z",
+        "default_eligible": true,
+        "inference_route_body_template_missing": [
+          "research_use_acknowledgement"
+        ],
+        "public_model_endpoint": "200",
+        "status_field": "cold"
+      },
+      "publication_decision": "Do not publish or make default eligible. This remediation intentionally removes public/default eligibility until HCLS product safety approves the nonclinical research-only positioning.",
+      "status": "live_upsert_completed_hidden_onboarding",
+      "trigger": "Public readback at 2026-06-03T07:04Z still returned default_eligible=true, omitted the checked-in safety packet, and omitted research_use_acknowledgement from the concrete inference-route body template."
+    },
+    "onboarding_state": "onboarding_cve_safe_cachefix_persisted_five_cell_matrix_supported_hcls_safety_pending",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_gate": "The declared full Forge GPU matrix for B200, B300, H200, L40S, and RTX6000 is supported and persisted to model_gpu_support on the 2026-06-03T02Z CVE-safe cache-fixed digest with 3 warmups and 10 measured requests per cell. Publication and default routing remain blocked until HCLS product safety approves the nonclinical research-only positioning.",
+    "regional_mirror_verified_at": "2026-06-03T02:14:00Z",
+    "research_use_safety_contract_20260602T21Z": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical protein structure prediction and biomolecular research using public or fully authorized protein sequences.",
+      "body_template_passes_acknowledgement": true,
+      "decision": "manifest_acknowledgement_added_keep_hidden_onboarding",
+      "disallowed_uses": [
+        "clinical decision-making",
+        "diagnosis or treatment",
+        "therapeutic efficacy claims",
+        "wet-lab safety claims",
+        "patient-specific interpretation",
+        "patient care"
+      ],
+      "playground_notice_must_acknowledge": true,
+      "publication_state": "torch_runtime_declared_matrix_and_persistence_resolved_hcls_safety_pending",
+      "wrapper_behavior": "life_science_transformers ESMFold path accepts dict payloads and ignores non-model acknowledgement metadata while safety gating remains enforced at Forge UI/API mapping level"
+    },
+    "runtime_image_created_at": "2026-06-03T02:12:09.429087218Z",
+    "runtime_image_digests": {
+      "eu-north1": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+      "eu-north2": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+      "uk-south1": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+      "us-central1": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822"
+    },
+    "runtime_image_family": "life-science-facebook-esmfold-v1:cve-safe-20260603t02z-cachefix",
+    "runtime_image_os_arch": "linux/amd64",
+    "runtime_image_size_bytes": 4527823318,
+    "safety_gate": "Research-only protein structure prediction. Do not market as clinical decision support, diagnostic guidance, therapeutic efficacy prediction, or patient-specific advice.",
+    "torch_cve_safe_cache_probe_20260603T02Z": {
+      "cachefix_image_digest": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+      "cachefix_image_tag": "cve-safe-20260603t02z-cachefix",
+      "failed_candidate_image_digest": "sha256:97c0d5e1b2642559b08e630ebc1f1ef27d8c556f8632326beb44906fbb8250cb",
+      "failed_candidate_image_tag": "cve-safe-20260603t00z-setuptools",
+      "probe_attempts": [
+        {
+          "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+          "error": "RuntimeError: pod_start_failure:pod_failed",
+          "gpu": "B300",
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod": "forge-probe-facebook-esmfold-v1-b300-uk-south1-95754d",
+          "region": "uk-south1",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cve-safe-smoke.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cve-safe-smoke.md",
+          "status": "other_error"
+        },
+        {
+          "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+          "error": "RuntimeError: pod_start_failure:pod_failed",
+          "gpu": "B300",
+          "log_excerpt": "OSError: PermissionError at /mnt/data/hf-cache/facebook-esmfold-v1 when downloading facebook/esmfold_v1. Check cache directory permissions.",
+          "node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod": "forge-probe-facebook-esmfold-v1-b300-uk-south1-0839a8",
+          "region": "uk-south1",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cve-safe-smoke-keeppod.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cve-safe-smoke-keeppod.md",
+          "status": "other_error"
+        },
+        {
+          "benchmark_runs": 1,
+          "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+          "gpu": "B300",
+          "mean_plddt": 0.71,
+          "model_time_source": "model_time_ms",
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pdb_preview": "non-null",
+          "pod": "forge-probe-facebook-esmfold-v1-b300-uk-south1-5ea183",
+          "region": "uk-south1",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cachefix-smoke.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cachefix-smoke.md",
+          "request_ms": 36536,
+          "response_status": 200,
+          "startup_ms": 67280,
+          "status": "supported",
+          "vram_used_gb": 7.58,
+          "warmup_runs": 0
+        },
+        {
+          "benchmark_runs": 10,
+          "benchmark_samples_ms": [
+            597,
+            591,
+            594,
+            596,
+            592,
+            594,
+            596,
+            597,
+            600,
+            594
+          ],
+          "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+          "gpu": "B300",
+          "mean_plddt": 0.71,
+          "model_time_source": "model_time_ms",
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pdb_preview": "non-null",
+          "pod": "forge-probe-facebook-esmfold-v1-b300-uk-south1-baf480",
+          "region": "uk-south1",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cachefix-benchmark.md",
+          "request_ms_p50": 595,
+          "response_status": 200,
+          "startup_ms": 8597,
+          "status": "supported",
+          "vram_used_gb": 7.58,
+          "warmup_runs": 3,
+          "warmup_samples_ms": [
+            35739,
+            614,
+            600
+          ]
+        }
+      ],
+      "publication_decision": "Do not publish or make default eligible. The cache-fixed CVE-safe digest now has B300 support with 3 warmups and 10 measured requests plus non-null PDB and mean pLDDT, but still needs the remaining Forge GPU matrix cells and HCLS product safety approval.",
+      "regional_digest_verification": {
+        "eu-north1": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+        "eu-north2": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+        "uk-south1": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+        "us-central1": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822"
+      },
+      "runtime_blocker": "The CVE-safe mirrored image keeps USER 10001:10001 but routes HF_HOME to /mnt/data/hf-cache/facebook-esmfold-v1. In Forge probe pods, /mnt/data is a hostPath, so the image build-time chmod is hidden and UID 10001 cannot create the slug cache directory on a cold node.",
+      "source_fallback_applied": {
+        "cache_root": "/opt/nim/.cache/huggingface/facebook-esmfold-v1/cve-safe-cuda128",
+        "compressed_layer_size_bytes": 4527823318,
+        "dockerfile": "services/models/life_science_transformers/Dockerfile.esmfold_v1",
+        "image_size_bytes": 8264077417,
+        "image_user": "10001:10001",
+        "local_image": "forge-local/life-science-facebook-esmfold-v1:cve-safe-20260603t02z-cachefix",
+        "local_image_id": "sha256:f700102c52f0c7ae4c96399d9c98670822a3dd2b0c20558054664c1c2a9abb88",
+        "pushed_and_mirrored": true,
+        "reason": "Matches the existing OpenMed non-root HCLS wrapper pattern: /opt/nim/.cache is backed by Forge shared /mnt/data/forge-weights and remains compatible with config.User=10001:10001.",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.3.0"
+      },
+      "status": "cachefix_b300_smoke_supported_full_matrix_pending",
+      "superseded_by": "torch_cve_safe_full_matrix_probe_20260603T03Z"
+    },
+    "torch_cve_safe_full_matrix_probe_20260603T03Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200/us-central1": {
+          "benchmark_samples_ms": [
+            669,
+            609,
+            604,
+            598,
+            594,
+            601,
+            603,
+            602,
+            602,
+            585
+          ],
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00jt6wekmrm7dfwjd",
+          "pod": "forge-probe-facebook-esmfold-v1-b200-us-central1-274b49",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-b200-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-b200-cachefix-benchmark.md",
+          "request_ms_p50": 602,
+          "startup_ms": 263426,
+          "vram_used_gb": 7.58,
+          "warmup_samples_ms": [
+            1216,
+            653,
+            633
+          ]
+        },
+        "B300/uk-south1": {
+          "benchmark_samples_ms": [
+            597,
+            591,
+            594,
+            596,
+            592,
+            594,
+            596,
+            597,
+            600,
+            594
+          ],
+          "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod": "forge-probe-facebook-esmfold-v1-b300-uk-south1-baf480",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T02Z-b300-cachefix-benchmark.md",
+          "request_ms_p50": 595,
+          "startup_ms": 8597,
+          "vram_used_gb": 7.58,
+          "warmup_samples_ms": [
+            35739,
+            614,
+            600
+          ]
+        },
+        "H200/eu-north2": {
+          "benchmark_samples_ms": [
+            854,
+            649,
+            674,
+            740,
+            658,
+            648,
+            615,
+            617,
+            612,
+            603
+          ],
+          "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+          "node": "computeinstance-e02xkjz43xcbx889xb",
+          "pod": "forge-probe-facebook-esmfold-v1-h200-eu-north2-0be4d7",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-h200-eu2-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-h200-eu2-cachefix-benchmark.md",
+          "request_ms_p50": 648,
+          "startup_ms": 247198,
+          "vram_used_gb": 7.52,
+          "warmup_samples_ms": [
+            1289,
+            664,
+            701
+          ]
+        },
+        "L40S/eu-north1": {
+          "benchmark_samples_ms": [
+            980,
+            985,
+            1037,
+            947,
+            948,
+            972,
+            1010,
+            967,
+            965,
+            957
+          ],
+          "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+          "node": "computeinstance-e00df18tkn1sh37ez7",
+          "pod": "forge-probe-facebook-esmfold-v1-l40s-eu-north1-462404",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-l40s-eu1-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-l40s-eu1-cachefix-benchmark.md",
+          "request_ms_p50": 970,
+          "startup_ms": 245611,
+          "vram_used_gb": 7.32,
+          "warmup_samples_ms": [
+            1465,
+            968,
+            1243
+          ]
+        },
+        "RTX6000/us-central1": {
+          "benchmark_samples_ms": [
+            605,
+            630,
+            633,
+            631,
+            625,
+            620,
+            631,
+            633,
+            613,
+            636
+          ],
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00kmfnwm9wbgsyn2y",
+          "pod": "forge-probe-facebook-esmfold-v1-rtx6000-us-central1-d43fec",
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-rtx6000-us-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T03Z-rtx6000-us-cachefix-benchmark.md",
+          "request_ms_p50": 630,
+          "startup_ms": 232496,
+          "vram_used_gb": 7.46,
+          "warmup_samples_ms": [
+            2318,
+            636,
+            629
+          ]
+        }
+      },
+      "image_digest": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+      "image_tag": "cve-safe-20260603t02z-cachefix",
+      "persisted": false,
+      "probe_mode": "direct probe pods with --no-persist, region-local immutable container image overrides",
+      "publication_decision": "Do not publish or make default eligible from this no-persist evidence alone. Superseded by the 2026-06-03T04Z persisted matrix; HCLS product safety approval remains required.",
+      "request_time_source": "model_time_ms",
+      "response_contract": {
+        "http_status": 200,
+        "mean_plddt": "present",
+        "pdb_preview": "non-null"
+      },
+      "status": "declared_five_cell_matrix_supported_hcls_safety_pending",
+      "warmup_runs": 3
+    },
+    "torch_cve_safe_persisted_matrix_probe_20260603T04Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200/us-central1": {
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b200-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b200-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 579,
+          "startup_ms": 223923,
+          "vram_used_gb": 7.58
+        },
+        "B300/uk-south1": {
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b300-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-b300-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 578,
+          "startup_ms": 14914,
+          "vram_used_gb": 7.58
+        },
+        "H200/eu-north2": {
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-h200-eu2-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-h200-eu2-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 688,
+          "startup_ms": 218580,
+          "vram_used_gb": 7.52
+        },
+        "L40S/eu-north1": {
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-l40s-eu1-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-l40s-eu1-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 914,
+          "startup_ms": 188323,
+          "vram_used_gb": 7.32
+        },
+        "RTX6000/us-central1": {
+          "report_json": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-rtx6000-us-persisted-cachefix-benchmark.json",
+          "report_md": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T04Z-rtx6000-us-persisted-cachefix-benchmark.md",
+          "request_ms_p50": 666,
+          "startup_ms": 215373,
+          "vram_used_gb": 7.46
+        }
+      },
+      "image_digest": "sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+      "image_tag": "cve-safe-20260603t02z-cachefix",
+      "live_model_status_seen_by_probe": "active",
+      "persisted": true,
+      "probe_mode": "direct probe pods with region-local immutable container image overrides; model_gpu_support upserted per declared cell",
+      "publication_decision": "Do not publish or make default eligible. Production support persistence is complete for the declared cache-fixed matrix, but HCLS product safety approval is still missing.",
+      "request_time_source": "model_time_ms",
+      "response_contract": {
+        "http_status": 200,
+        "mean_plddt": "present",
+        "pdb_preview": "non-null"
+      },
+      "status": "declared_five_cell_matrix_persisted_supported_hcls_safety_pending",
+      "warmup_runs": 3
+    },
+    "torch_cve_safe_rebuild_plan_20260602T22Z": {
+      "cache_plan": {
+        "HF_HOME": "/mnt/data/hf-cache/facebook-esmfold-v1",
+        "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/facebook-esmfold-v1/hub",
+        "TORCH_HOME": "/mnt/data/torch-cache/facebook-esmfold-v1",
+        "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/facebook-esmfold-v1/transformers",
+        "XDG_CACHE_HOME": "/mnt/data/cache/facebook-esmfold-v1",
+        "hydration_artifact": "facebook/esmfold_v1 pytorch_model.bin, sha256:2ee07356b125d1e3e57503c204111fd7323347fc4735d41d3caac57c2a78e116"
+      },
+      "candidate_base_images_checked_20260602T22Z": [
+        {
+          "docker_hub_digest": "sha256:b85566342b86d13a67712e9315d40cdc2dad7f8d86df1aff3831f80835edbcca",
+          "image": "pytorch/pytorch:2.10.0-cuda12.8-cudnn9-runtime",
+          "role": "primary CUDA 12.8 runtime candidate for broad Forge GPU reprobe"
+        },
+        {
+          "docker_hub_digest": "sha256:1f57418aedd9a4d0d3a59646619e1d4f82cacc33817247cead4f749e1f452d4b",
+          "image": "pytorch/pytorch:2.10.0-cuda13.0-cudnn9-runtime",
+          "role": "Blackwell follow-up candidate if CUDA 12.8 compatibility smoke regresses or CUDA 13 wins B200/B300 benchmarks"
+        }
+      ],
+      "current_blockers": [
+        "Current mirrored image reports PYTORCH_VERSION=2.8.0, below Forge torch_runtime_gate floor 2.10.0 for GHSA-63cw-57p8-fm3p / CVE-2026-24747.",
+        "Shared life-science base Dockerfile pins transformers==4.48.3, below Forge CVE-2026-4372 fixed floor 5.3.0."
+      ],
+      "decision": "do_not_publish_until_new_digest_built_mirrored_scanned_and_reprobed",
+      "fallback_if_transformers_5_3_breaks_esmfold": "Keep the current manifest hidden/onboarding, do not publish the PyTorch 2.8.0 digest, and build a dedicated ESMFold compatibility wrapper that preserves the PDB adapter while satisfying the Torch 2.10.0 floor.",
+      "package_floors": {
+        "torch": ">=2.10.0",
+        "transformers": "5.3.0",
+        "validation_note": "Run an in-image ESMFold import and short-sequence CPU/GPU smoke before replacing the current digest because the existing wrapper uses ESMFold APIs from Transformers."
+      },
+      "required_prepublication_steps": [
+        "Build an ESMFold-specific 20260602T22Z or newer wrapper image from the PyTorch 2.10.0 base.",
+        "Verify image config reports PYTORCH_VERSION=2.10.0 or newer and transformers 5.3.0 or newer.",
+        "Run scripts/security/check_transformers_cve_2026_4372.py against the exact Dockerfile and manifest evidence.",
+        "Run scripts/security/check_torch_runtime_gate.py after temporarily evaluating active/testing metadata on the candidate manifest.",
+        "Run wrapper py_compile, import EsmForProteinFolding plus OpenFold PDB helpers, and execute one short nonclinical protein sequence smoke.",
+        "Push the immutable primary digest, mirror it to us-central1, eu-north1, eu-north2, and uk-south1, and verify matching digests.",
+        "Run scripts/probe_model_parallel_matrix.py --slug facebook-esmfold-v1 --timeout 1800 --warmup-runs 3 --benchmark-runs 10 on the new digest.",
+        "Keep status=onboarding and default_eligible=false until HCLS product safety approval reviews the rebuilt runtime and nonclinical copy."
+      ]
+    },
+    "torch_cve_safe_source_candidate_20260602T23Z": {
+      "checked_in_source": {
+        "base_image": "docker.io/pytorch/pytorch:2.10.0-cuda12.8-cudnn9-runtime@sha256:b85566342b86d13a67712e9315d40cdc2dad7f8d86df1aff3831f80835edbcca",
+        "cache_env": {
+          "HF_HOME": "/mnt/data/hf-cache/facebook-esmfold-v1",
+          "HOME": "/mnt/data/home/facebook-esmfold-v1",
+          "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/facebook-esmfold-v1/hub",
+          "TORCH_HOME": "/mnt/data/torch-cache/facebook-esmfold-v1",
+          "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/facebook-esmfold-v1/transformers",
+          "XDG_CACHE_HOME": "/mnt/data/cache/facebook-esmfold-v1"
+        },
+        "default_user": "10001:10001",
+        "dockerfile": "services/models/life_science_transformers/Dockerfile.esmfold_v1",
+        "huggingface_hub_requirement": "huggingface_hub==1.3.7",
+        "pip_pep668_handling": "PIP_BREAK_SYSTEM_PACKAGES=1 is required by the Ubuntu/Python 3.12 PyTorch 2.10 base image.",
+        "torch_floor": "PYTORCH_VERSION=2.10.0",
+        "transformers_requirement": "transformers==5.3.0"
+      },
+      "compatibility_preflight": {
+        "reason": "The checked-in wrapper already uses EsmForProteinFolding directly, so the fixed-floor source candidate preserves the working API path instead of relying on the missing AutoModel alias.",
+        "transformers_5_3_0_auto_model_import": "failed: cannot import name 'AutoModelForProteinFolding' from 'transformers'",
+        "wrapper_import_path": "passed: from transformers import EsmForProteinFolding, AutoTokenizer; from transformers.models.esm.openfold_utils.protein import to_pdb; from transformers.models.esm.openfold_utils.feats import atom14_to_atom37"
+      },
+      "decision": "Do not replace the current mirrored digest or publish this row until the local candidate is pushed, mirrored to every Forge region, scanned, short-sequence smoked on GPU, and reprobed across the matrix.",
+      "local_container_build": {
+        "build_command": "docker buildx build --platform linux/amd64 --load -t forge-local/life-science-facebook-esmfold-v1:cve-safe-20260602t23z -f services/models/life_science_transformers/Dockerfile.esmfold_v1 .",
+        "image_id": "sha256:3c9b8ae2c7f51c643f7ae55310e84bc0bc052ad42861cc56e30165018d003ed1",
+        "initial_build_blocker": {
+          "error": "python -m pip install --upgrade pip failed with externally-managed-environment in the PyTorch 2.10 Ubuntu/Python 3.12 base.",
+          "fallback_applied": "Set PIP_BREAK_SYSTEM_PACKAGES=1 in the image environment and rebuilt successfully."
+        },
+        "size_bytes": 8227798429,
+        "tag": "forge-local/life-science-facebook-esmfold-v1:cve-safe-20260602t23z"
+      },
+      "local_limitations": [
+        "No local GPU smoke was run because nvidia-smi cannot communicate with an NVIDIA driver in this workspace.",
+        "The ESMFold 8.44 GB checkpoint was not hydrated during the local build or import smoke.",
+        "The candidate image has not been pushed, mirrored, scanned by registry digest, or probed in Forge."
+      ],
+      "local_validation": {
+        "esmfold_imports": [
+          "EsmForProteinFolding",
+          "AutoTokenizer",
+          "to_pdb",
+          "atom14_to_atom37"
+        ],
+        "py_compile": [
+          "/app/services/models/life_science_transformers/runtime.py",
+          "/app/services/models/life_science_transformers/main.py"
+        ],
+        "runtime_settings": {
+          "hf_home": "/mnt/data/hf-cache/facebook-esmfold-v1",
+          "kind": "esmfold",
+          "model_id": "facebook/esmfold_v1",
+          "slug": "facebook-esmfold-v1"
+        },
+        "security_scanner": "scripts/security/check_transformers_cve_2026_4372.py services/models/life_science_transformers/Dockerfile.esmfold_v1 --format json returned no findings",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.3.0"
+      },
+      "remaining_prepublication_steps": [
+        "Push the local candidate to the primary Forge registry and record its immutable digest.",
+        "Mirror the exact digest to us-central1, eu-north1, eu-north2, and uk-south1.",
+        "Run an in-image short-sequence GPU smoke that verifies non-null PDB output and mean_plddt.",
+        "Run scripts/probe_model_parallel_matrix.py --slug facebook-esmfold-v1 --timeout 1800 --warmup-runs 3 --benchmark-runs 10 on the new digest.",
+        "Keep status=onboarding and default_eligible=false until HCLS product safety approval signs off."
+      ],
+      "status": "local_cve_safe_image_import_smoke_passed_push_pending"
+    },
+    "torch_cve_safe_source_candidate_20260603T00Z": {
+      "decision": "Do not replace the current mirrored digest or publish this row until the local candidate is pushed, mirrored to every Forge region, short-sequence smoked on GPU, and reprobed across the matrix.",
+      "local_container_build": {
+        "build_command": "docker buildx build --platform linux/amd64 --load -t forge-local/life-science-facebook-esmfold-v1:cve-safe-20260603t00z-setuptools -f services/models/life_science_transformers/Dockerfile.esmfold_v1 .",
+        "fallback_applied": "Pinned setuptools==82.0.1 alongside pip==26.1.2 and wheel==0.46.2 because the first 00Z rebuild still exposed setuptools-vendored wheel 0.45.1 metadata to Trivy.",
+        "image_id": "sha256:f27dc44592511f8ffcb417cbe045d30702f5f7589907ad550e4181fe633b3ebc",
+        "size_bytes": 8264077889,
+        "tag": "forge-local/life-science-facebook-esmfold-v1:cve-safe-20260603t00z-setuptools"
+      },
+      "local_limitations": [
+        "No local GPU smoke was run because nvidia-smi cannot communicate with an NVIDIA driver in this workspace.",
+        "The ESMFold 8.44 GB checkpoint was not hydrated during the local build or import smoke.",
+        "The candidate image has not been pushed, mirrored by registry digest, or probed in Forge."
+      ],
+      "local_validation": {
+        "default_user": "10001:10001",
+        "hf_home": "/mnt/data/hf-cache/facebook-esmfold-v1",
+        "pillow": "12.2.0",
+        "pip": "26.1.2",
+        "sentencepiece": "0.2.1",
+        "setuptools": "82.0.1",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.3.0",
+        "trivy_high_critical_findings": 0,
+        "trivy_report_path": "docs/model-onboarding/hcls/facebook-esmfold-v1-20260603T00Z-trivy-high-critical-summary.md",
+        "urllib3": "2.7.0",
+        "wheel": "0.46.2"
+      },
+      "remaining_prepublication_steps": [
+        "Push the local candidate to the primary Forge registry and record its immutable digest.",
+        "Mirror the exact digest to us-central1, eu-north1, eu-north2, and uk-south1.",
+        "Run an in-image short-sequence GPU smoke that verifies non-null PDB output and mean_plddt.",
+        "Run scripts/probe_model_parallel_matrix.py --slug facebook-esmfold-v1 --timeout 1800 --warmup-runs 3 --benchmark-runs 10 on the new digest.",
+        "Keep status=onboarding and default_eligible=false until HCLS product safety approval signs off."
+      ],
+      "status": "local_cve_safe_image_high_critical_scan_passed_push_pending"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "protein",
+    "structure_prediction",
+    "protein_folding",
+    "esm",
+    "forge_wrapper",
+    "open_source",
+    "mit",
+    "protein_sequence",
+    "protein_structure",
+    "confidence",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-facebook-esmfold-v1:cve-safe-20260603t02z-cachefix@sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+  "container_image_size_bytes": 4527823318,
+  "context_window": 1024,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-26T19:21:24.048578+00:00",
+  "default_eligible": true,
+  "description": "Meta ESMFold predicts protein structures directly from a single amino-acid sequence without requiring MSA database lookup. The Hugging Face model card identifies MIT licensing and Transformers support, and describes the model as ESM-2-backed end-to-end protein folding. This HCLS manifest promotes the existing customer-facing ESMFold workload from a legacy docs manifest into the HCLS onboarding manifest set with immutable regional image refs, /opt/nim/.cache-backed shared cache env, artifact revision evidence, and the cache-fixed five-cell corrected PDB export probe matrix. The 2026-06-03T02Z pass replaced the failed /mnt/data-cache CVE-safe image with a PyTorch 2.10 / Transformers 5.3 cache-fixed digest and proved B300 support; the 2026-06-03T03Z pass added B200, H200, L40S, and RTX6000 3-warmup/10-run no-persist benchmark evidence with non-null PDB previews and mean pLDDT responses; the 2026-06-03T04Z pass reran the same declared cells without --no-persist and upserted model_gpu_support as supported for B200, B300, H200, L40S, and RTX6000. This remains a nonclinical research structure-prediction workflow and must not be positioned as diagnostic, therapeutic, safety, efficacy, or patient-specific guidance.",
+  "family_id": "1e50e145-986e-4154-ab31-9aa293298d84",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BIO_MAX_LENGTH": "512",
+      "BIO_MAX_NEW_TOKENS": "96",
+      "BIO_MODEL_ID": "facebook/esmfold_v1",
+      "BIO_MODEL_KIND": "esmfold",
+      "BIO_MODEL_SLUG": "facebook-esmfold-v1",
+      "BIO_TORCH_DTYPE": "auto",
+      "HF_HOME": "/opt/nim/.cache/huggingface/facebook-esmfold-v1/cve-safe-cuda128",
+      "HOME": "/opt/nim/.cache/home/facebook-esmfold-v1",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/facebook-esmfold-v1/cve-safe-cuda128/hub",
+      "TORCH_HOME": "/opt/nim/.cache/huggingface/facebook-esmfold-v1/cve-safe-cuda128/torch",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/facebook-esmfold-v1/cve-safe-cuda128/transformers",
+      "XDG_CACHE_HOME": "/opt/nim/.cache/huggingface/facebook-esmfold-v1/cve-safe-cuda128/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 10001,
+    "container_run_as_user": 10001,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-19T06:55:53.886419+00:00",
+      "observed_success_rate": 0.0833,
+      "probed_at": "2026-06-03T04:09:38.198646+00:00",
+      "region": "us-central1",
+      "request_ms": 579,
+      "request_ms_p50": 580,
+      "request_ms_p95": 808,
+      "request_ms_p99": 1166,
+      "request_ms_samples": 15,
+      "startup_ms_first": 22366,
+      "startup_ms_probe": 223923,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 11,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-19T06:55:39.812674+00:00",
+      "observed_success_rate": 0.0833,
+      "probed_at": "2026-06-03T04:04:54.954712+00:00",
+      "region": "uk-south1",
+      "request_ms": 578,
+      "request_ms_p50": 578,
+      "request_ms_p95": 18176,
+      "request_ms_p99": 35362,
+      "request_ms_samples": 12,
+      "startup_ms_first": 23144,
+      "startup_ms_probe": 14914,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 11,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:31:19.195638+00:00",
+      "region": "eu-north1",
+      "request_ms": 749,
+      "request_ms_p50": 749,
+      "request_ms_p95": 868,
+      "request_ms_p99": 900,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 399930,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-19T06:55:45.081035+00:00",
+      "observed_success_rate": 0.0833,
+      "probed_at": "2026-06-08T11:31:20.375920+00:00",
+      "region": "eu-north1",
+      "request_ms": 686,
+      "request_ms_p50": 686,
+      "request_ms_p95": 962,
+      "request_ms_p99": 964,
+      "request_ms_samples": 10,
+      "startup_ms_first": 23308,
+      "startup_ms_probe": 400555,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 11,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-19T06:55:45.081035+00:00",
+      "observed_success_rate": 0.0833,
+      "probed_at": "2026-06-03T04:09:30.887524+00:00",
+      "region": "eu-north2",
+      "request_ms": 688,
+      "request_ms_p50": 692,
+      "request_ms_p95": 1280,
+      "request_ms_p99": 1969,
+      "request_ms_samples": 13,
+      "startup_ms_first": 23308,
+      "startup_ms_probe": 218580,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 11,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-19T06:55:45.081035+00:00",
+      "observed_success_rate": 0.0833,
+      "probed_at": "2026-04-26T20:25:26.049619+00:00",
+      "region": "us-central1",
+      "request_ms": 882,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 23308,
+      "startup_ms_probe": 37320,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 11,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.52,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-19T06:55:35.886478+00:00",
+      "observed_success_rate": 0.0833,
+      "probed_at": "2026-06-03T04:09:03.794780+00:00",
+      "region": "eu-north1",
+      "request_ms": 914,
+      "request_ms_p50": 914,
+      "request_ms_p95": 1141,
+      "request_ms_p99": 1354,
+      "request_ms_samples": 12,
+      "startup_ms_first": 17403,
+      "startup_ms_probe": 188323,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 11,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.32,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-19T06:55:53.963563+00:00",
+      "observed_success_rate": 0.0833,
+      "probed_at": "2026-06-03T04:09:28.854780+00:00",
+      "region": "us-central1",
+      "request_ms": 666,
+      "request_ms_p50": 666,
+      "request_ms_p95": 1075,
+      "request_ms_p99": 1459,
+      "request_ms_samples": 12,
+      "startup_ms_first": 20612,
+      "startup_ms_probe": 215373,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 11,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.46,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.59
+    }
+  ],
+  "gpu_type": null,
+  "id": "d2f3f8b3-b35a-4e22-b79a-7fd68bf4d08a",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "protein_sequence"
+  ],
+  "modality_output": [
+    "protein_structure",
+    "confidence",
+    "json"
+  ],
+  "model_family": "facebook-esmfold",
+  "name": "ESMFold",
+  "parameter_count": 3000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_length": "{{max_length}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "sequence": "{{sequence}}"
+      },
+      "endpoint": "/v1/inference/facebook-esmfold-v1",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "MTEITAAMVKELRESTGAGMMDCKNALSETQHEK",
+        "key": "sequence",
+        "label": "Protein sequence",
+        "type": "protein_sequence",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "PDB preview, mean pLDDT, sequence length, and model timing",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 512,
+        "key": "max_length",
+        "label": "Max sequence length",
+        "max": 1024,
+        "min": 32,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/opt/nim/.cache/huggingface/facebook-esmfold-v1/cve-safe-cuda128",
+      "kind": "esmfold",
+      "model_id": "facebook/esmfold_v1",
+      "model_revision": "75a3841ee059df2bf4d56688166c8fb459ddd97a",
+      "served_model_name": "facebook-esmfold-v1",
+      "wrapper_dockerfile": "services/models/life_science_transformers/Dockerfile.esmfold_v1",
+      "wrapper_path": "services/models/life_science_transformers"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical protein structure prediction and biomolecular research using public or fully authorized protein sequences.",
+      "body": "Use only for nonclinical protein structure prediction and biomolecular research. Generated structures and confidence summaries require independent scientific validation. Do not use for clinical decision-making, diagnosis, treatment, therapeutic efficacy claims, wet-lab safety claims, patient-specific interpretation, or patient care.",
+      "disallowed_uses": [
+        "clinical decision-making",
+        "diagnosis or treatment",
+        "therapeutic efficacy claims",
+        "wet-lab safety claims",
+        "patient-specific interpretation",
+        "patient care"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only protein structure prediction"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "max_length"
+      ],
+      "required": [
+        "sequence",
+        "research_use_acknowledgement"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/life-science-facebook-esmfold-v1@sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/life-science-facebook-esmfold-v1@sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/life-science-facebook-esmfold-v1@sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-facebook-esmfold-v1@sha256:a83c6dd1481e408240583f718845cdf0220a9d8c57854aa9a3e4dd948d47f822"
+  },
+  "release_rank": 60,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "facebook-esmfold-v1",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/facebook/esmfold_v1",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "protein",
+    "structure-prediction",
+    "protein-folding",
+    "esm",
+    "forge-wrapper",
+    "open-source",
+    "mit"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-75a3841-wrapper-20260521-pdb-adapter-fix",
+  "version_description": "Digest-pinned HCLS manifest for Meta ESMFold v1 served through Forge's life-science transformer wrapper with the 20260521 PDB adapter fix, the 20260603T02Z PyTorch 2.10 cache-fixed CVE-safe image, and the 20260603T04Z declared five-GPU persisted matrix.",
+  "version_key": "hf-75a3841-wrapper-20260521-pdb-adapter-fix",
+  "version_label": "HF 75a3841 via Forge life-science wrapper"
+}

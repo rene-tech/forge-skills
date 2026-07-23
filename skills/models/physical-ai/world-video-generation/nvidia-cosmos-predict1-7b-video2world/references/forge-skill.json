@@ -1,0 +1,157 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "f201fc5fc4f3f0d8a7972d7c448bc045a1145e2bff53d82089b8fefc4f78af0c",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos Predict1 7B Video2World",
+  "domain": "world-video-generation",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos-predict1-7b-video2world/markdown?download=true",
+  "group": "world-video-generation",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "world-video-generation",
+    "nvidia-cosmos-predict1-7b-video2world"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos-predict1-7b-video2world",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Continue this driving scene as a rainy evening sequence, preserving road layout, vehicle motion, and camera perspective.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "https://assets.ngc.nvidia.com/products/api-catalog/cosmos/ar_result_default_robot.mp4",
+      "fieldType": "text",
+      "key": "video",
+      "label": "Video URL or base64 MP4",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "blurry, low quality, artifacts, people",
+      "fieldType": "textarea",
+      "key": "negative_prompt",
+      "label": "Negative Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 42,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "video"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos-predict1-7b-video2world\ndescription: Use the exact Forge model nvidia-cosmos-predict1-7b-video2world for text, image, video to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos Predict1 7B Video2World\n\n- Model slug: `nvidia-cosmos-predict1-7b-video2world`\n- Model family: `nvidia-cosmos-predict1-7b-video2world`\n- Version: `1.0.0` (`1-0-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / world-video-generation / nvidia-cosmos-predict1-7b-video2world`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `nvidia-ai-foundation-models-community`\n\n## Purpose\n\nCosmos Predict1 NIM for image/video-conditioned world generation.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos-predict1-7b-video2world` version when the task supplies text, image, video and needs video.\n- Cosmos Predict1 NIM for image/video-conditioned world generation.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `video` (text, optional): Video URL or base64 MP4\n- `negative_prompt` (textarea, optional): Negative Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n\nRequest template:\n\n```json\n{\n  \"model\": \"{{model_slug}}\",\n  \"negative_prompt\": \"{{negative_prompt}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"video\": \"{{video}}\"\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos-predict1-7b-video2world`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos-predict1-7b-video2world` with version key `1-0-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos-predict1-7b-video2world` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos-predict1-7b-video2world`\n- Routes: `/v1/models/nvidia-cosmos-predict1-7b-video2world/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos-predict1-7b-video2world/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos-predict1-7b-video2world/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-predict1-7b-video2world/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-predict1-7b-video2world/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos Predict1 7B Video2World source](https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html) (model-card)\n",
+  "license": "nvidia-ai-foundation-models-community",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos-predict1-7b-video2world/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos-predict1-7b-video2world/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos-predict1-7b-video2world",
+    "modelUrl": "/v1/models/nvidia-cosmos-predict1-7b-video2world",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos-predict1-7b-video2world/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos-predict1-7b-video2world/markdown",
+  "modelFamily": "nvidia-cosmos-predict1-7b-video2world",
+  "modelSlug": "nvidia-cosmos-predict1-7b-video2world",
+  "modelUrl": "/v1/models/nvidia-cosmos-predict1-7b-video2world",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Cosmos Predict1 NIM for image/video-conditioned world generation.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-predict1-7b-video2world/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Cosmos Predict1 7B Video2World source",
+      "url": "https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-predict1-7b-video2world/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/world-video-generation/nvidia-cosmos-predict1-7b-video2world/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "model": "{{model_slug}}",
+    "negative_prompt": "{{negative_prompt}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "video": "{{video}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 7000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html",
+    "tags": [
+      "physical-ai",
+      "cosmos",
+      "world-foundation-model",
+      "synthetic-data",
+      "video-to-video"
+    ],
+    "versionLabel": "1.0.0"
+  },
+  "shortDescription": "Cosmos Predict1 NIM for image/video-conditioned world generation.",
+  "skillName": "use-forge-nvidia-cosmos-predict1-7b-video2world",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos-predict1-7b-video2world",
+  "slug": "nvidia-cosmos-predict1-7b-video2world",
+  "stability": "experimental",
+  "version": "1.0.0",
+  "versionKey": "1-0-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos-predict1-7b-video2world` version when the task supplies text, image, video and needs video.",
+    "Cosmos Predict1 NIM for image/video-conditioned world generation.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos-predict1-7b-video2world` with version key `1-0-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos-predict1-7b-video2world` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

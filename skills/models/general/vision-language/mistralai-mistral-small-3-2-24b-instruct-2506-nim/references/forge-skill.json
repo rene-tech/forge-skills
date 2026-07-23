@@ -1,0 +1,175 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "ca3b0657227bf00233bf89785de32848edf58fbfb50ae7f31464984aa867e945",
+  "defaultEligible": false,
+  "displayName": "Use Mistral Small 3.2 24B Instruct 2506",
+  "domain": "vision-language",
+  "downloadUrl": "/v1/model-skills/mistralai-mistral-small-3-2-24b-instruct-2506-nim/markdown?download=true",
+  "group": "vision-language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "vision-language",
+    "mistralai-mistral-small-3-2-24b-instruct-2506-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Describe the image and identify the visible colors and layout in two concise bullets.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAJ0lEQVR42mN4pqCFFSlX3MGKGEY10ESD1pYorOjrJRusaFQDTTQAAD//eJDqUy8IAAAAAElFTkSuQmCC",
+      "fieldType": "text",
+      "key": "image_url",
+      "label": "Image URL or data URL",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.15,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-mistralai-mistral-small-3-2-24b-instruct-2506-nim\ndescription: Use the exact Forge model mistralai-mistral-small-3-2-24b-instruct-2506-nim for text, image to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Mistral Small 3.2 24B Instruct 2506\n\n- Model slug: `mistralai-mistral-small-3-2-24b-instruct-2506-nim`\n- Model family: `mistralai-mistral-small-3-2-24b-instruct-2506`\n- Version: `1.3.1` (`nim-1-3-1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / vision-language / mistralai-mistral-small-3-2-24b-instruct-2506-nim`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nMistral Small 3.2 24B Instruct 2506 packaged as NVIDIA's VLM NIM.\n\n## Use this exact model when\n\n- Use this exact `mistralai-mistral-small-3-2-24b-instruct-2506-nim` version when the task supplies text, image and needs text.\n- Mistral Small 3.2 24B Instruct 2506 packaged as NVIDIA's VLM NIM.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `image_url` (text, optional): Image URL or data URL\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": [\n        {\n          \"text\": \"{{prompt}}\",\n          \"type\": \"text\"\n        },\n        {\n          \"image_url\": {\n            \"url\": \"{{image_url}}\"\n          },\n          \"type\": \"image_url\"\n        }\n      ],\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": false,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `mistralai-mistral-small-3-2-24b-instruct-2506-nim` with version key `nim-1-3-1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 131072.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim`\n- Routes: `/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/inference-routes`\n- Regional deployment: `/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/regional-deployment`\n- Deployment handoff: `/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/mistralai-mistral-small-3-2-24b-instruct-2506-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/mistralai-mistral-small-3-2-24b-instruct-2506-nim/SKILL.md\n\n## References\n\n- [Mistral Small 3.2 24B Instruct 2506 source](https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/mistral-small-3-2/api.html) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 131072."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/mistralai-mistral-small-3-2-24b-instruct-2506",
+    "modelUrl": "/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+    "regionalDeploymentUrl": "/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/mistralai-mistral-small-3-2-24b-instruct-2506-nim/markdown",
+  "modelFamily": "mistralai-mistral-small-3-2-24b-instruct-2506",
+  "modelSlug": "mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+  "modelUrl": "/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Mistral Small 3.2 24B Instruct 2506 packaged as NVIDIA's VLM NIM.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/mistralai-mistral-small-3-2-24b-instruct-2506-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Mistral Small 3.2 24B Instruct 2506 source",
+      "url": "https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/mistral-small-3-2/api.html"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/mistralai-mistral-small-3-2-24b-instruct-2506-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/vision-language/mistralai-mistral-small-3-2-24b-instruct-2506-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": [
+          {
+            "text": "{{prompt}}",
+            "type": "text"
+          },
+          {
+            "image_url": {
+              "url": "{{image_url}}"
+            },
+            "type": "image_url"
+          }
+        ],
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": false,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 131072,
+    "parameterCount": 24000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/mistral-small-3-2/api.html",
+    "tags": [
+      "llm",
+      "chat",
+      "vision-language",
+      "function-calling",
+      "instruction",
+      "multilingual",
+      "nvidia-nim"
+    ],
+    "versionLabel": "NIM 1.3.1"
+  },
+  "shortDescription": "Mistral Small 3.2 24B Instruct 2506 packaged as NVIDIA's VLM NIM.",
+  "skillName": "use-forge-mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+  "skillUrl": "/v1/model-skills/mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+  "slug": "mistralai-mistral-small-3-2-24b-instruct-2506-nim",
+  "stability": "testing",
+  "version": "1.3.1",
+  "versionKey": "nim-1-3-1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `mistralai-mistral-small-3-2-24b-instruct-2506-nim` version when the task supplies text, image and needs text.",
+    "Mistral Small 3.2 24B Instruct 2506 packaged as NVIDIA's VLM NIM.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `mistralai-mistral-small-3-2-24b-instruct-2506-nim` with version key `nim-1-3-1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

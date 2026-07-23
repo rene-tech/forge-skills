@@ -1,0 +1,272 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "a4e68f2f7e83d92605ce0dd090e122284065d021a9091397037eeec42e72da3e",
+  "defaultEligible": true,
+  "displayName": "Use LAMMPS/Kokkos Molecular Dynamics",
+  "domain": "molecular-simulation",
+  "downloadUrl": "/v1/model-skills/lammps-kokkos-md-wrapper/markdown?download=true",
+  "group": "molecular-simulation",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "molecular-simulation",
+    "lammps-kokkos-md-wrapper"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/lammps-kokkos-md-wrapper",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "input_script",
+      "label": "LAMMPS input script",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "data_file",
+      "label": "LAMMPS data file",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 100,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 1000000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "timestep_fs",
+      "label": "Timestep (fs)",
+      "maximum": 1000000,
+      "minimum": 1e-06,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 120,
+      "fieldType": "number",
+      "key": "temperature_k",
+      "label": "Temperature (K)",
+      "maximum": 10000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 17,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 2147483647,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [
+        "auto",
+        "gpu",
+        "cpu"
+      ],
+      "default": "auto",
+      "fieldType": "select",
+      "key": "gpu_mode",
+      "label": "GPU mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "mpi_ranks",
+      "label": "MPI ranks",
+      "maximum": 8,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "omp_threads",
+      "label": "OpenMP threads",
+      "maximum": 64,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "gpu_count",
+      "label": "Kokkos GPUs",
+      "maximum": 8,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "kokkos_suffix",
+      "label": "Use Kokkos suffix",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "kokkos_gpu_aware",
+      "label": "GPU-aware MPI",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-use acknowledgement",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    }
+  ],
+  "inputModalities": [
+    "simulation_parameters",
+    "topology",
+    "potential",
+    "json"
+  ],
+  "instructions": "---\nname: use-forge-lammps-kokkos-md-wrapper\ndescription: Use the exact Forge model lammps-kokkos-md-wrapper for simulation_parameters, topology, potential, json to trajectory, energy, log, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use LAMMPS/Kokkos Molecular Dynamics\n\n- Model slug: `lammps-kokkos-md-wrapper`\n- Model family: `lammps-md`\n- Version: `lammps-22jul2025u4-cuda128-sm80-20260616` (`lammps-22jul2025u4-sm80-20260616`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / molecular-simulation / lammps-kokkos-md-wrapper`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `GPL-2.0-only; NVIDIA CUDA container terms`\n\n## Purpose\n\nLAMMPS/Kokkos Molecular Dynamics is a live-tested Forge runtime for bounded nonclinical LAMMPS simulations with Kokkos/CUDA acceleration.\n\n## Use this exact model when\n\n- Use this exact `lammps-kokkos-md-wrapper` version when the task supplies simulation_parameters, topology, potential, json and needs trajectory, energy, log, json.\n- LAMMPS/Kokkos Molecular Dynamics is a live-tested Forge runtime for bounded nonclinical LAMMPS simulations with Kokkos/CUDA acceleration.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['simulation_parameters', 'topology', 'potential', 'json'] \u2192 ['trajectory', 'energy', 'log', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input_script` (textarea, optional): LAMMPS input script\n- `data_file` (textarea, optional): LAMMPS data file\n- `steps` (number, optional; bounds 1..1000000): Steps\n- `timestep_fs` (number, optional; bounds 1e-06..1000000): Timestep (fs)\n- `temperature_k` (number, optional; bounds 1..10000): Temperature (K)\n- `seed` (number, optional; bounds 0..2147483647): Seed\n- `gpu_mode` (select, optional): GPU mode\n- `mpi_ranks` (number, optional; bounds 1..8): MPI ranks\n- `omp_threads` (number, optional; bounds 1..64): OpenMP threads\n- `gpu_count` (number, optional; bounds 1..8): Kokkos GPUs\n- `kokkos_suffix` (checkbox, optional): Use Kokkos suffix\n- `kokkos_gpu_aware` (checkbox, optional): GPU-aware MPI\n- `research_use_acknowledgement` (checkbox, required): Research-use acknowledgement\n\nRequest template:\n\n```json\n{\n  \"data_file\": \"{{data_file}}\",\n  \"gpu_count\": \"{{gpu_count}}\",\n  \"gpu_mode\": \"{{gpu_mode}}\",\n  \"input_script\": \"{{input_script}}\",\n  \"kokkos_gpu_aware\": \"{{kokkos_gpu_aware}}\",\n  \"kokkos_suffix\": \"{{kokkos_suffix}}\",\n  \"mpi_ranks\": \"{{mpi_ranks}}\",\n  \"omp_threads\": \"{{omp_threads}}\",\n  \"research_use_acknowledgement\": \"{{research_use_acknowledgement}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\",\n  \"temperature_k\": \"{{temperature_k}}\",\n  \"timestep_fs\": \"{{timestep_fs}}\"\n}\n```\n\n## Exact output\n\n- `trajectory`\n- `energy`\n- `log`\n- `json`\n\n## Route\n\n`POST /v1/inference/lammps-kokkos-md-wrapper`\n\n## Workflow\n\n1. Load this skill and pin model slug `lammps-kokkos-md-wrapper` with version key `lammps-22jul2025u4-sm80-20260616`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/lammps-kokkos-md-wrapper` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/lammps-kokkos-md-wrapper`\n- Routes: `/v1/models/lammps-kokkos-md-wrapper/inference-routes`\n- Regional deployment: `/v1/models/lammps-kokkos-md-wrapper/regional-deployment`\n- Deployment handoff: `/v1/models/lammps-kokkos-md-wrapper/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/lammps-kokkos-md-wrapper/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/lammps-kokkos-md-wrapper/SKILL.md\n\n## References\n\n- [LAMMPS/Kokkos Molecular Dynamics source](https://github.com/lammps/lammps/releases/tag/stable_22Jul2025_update4) (repository)\n",
+  "license": "GPL-2.0-only; NVIDIA CUDA container terms",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/lammps-kokkos-md-wrapper/deploy",
+    "inferenceRoutesUrl": "/v1/models/lammps-kokkos-md-wrapper/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/lammps-md",
+    "modelUrl": "/v1/models/lammps-kokkos-md-wrapper",
+    "regionalDeploymentUrl": "/v1/models/lammps-kokkos-md-wrapper/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/lammps-kokkos-md-wrapper/markdown",
+  "modelFamily": "lammps-md",
+  "modelSlug": "lammps-kokkos-md-wrapper",
+  "modelUrl": "/v1/models/lammps-kokkos-md-wrapper",
+  "outputFields": [
+    "trajectory",
+    "energy",
+    "log",
+    "json"
+  ],
+  "outputModalities": [
+    "trajectory",
+    "energy",
+    "log",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "LAMMPS/Kokkos Molecular Dynamics is a live-tested Forge runtime for bounded nonclinical LAMMPS simulations with Kokkos/CUDA acceleration.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/lammps-kokkos-md-wrapper/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "LAMMPS/Kokkos Molecular Dynamics source",
+      "url": "https://github.com/lammps/lammps/releases/tag/stable_22Jul2025_update4"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/lammps-kokkos-md-wrapper/SKILL.md",
+  "repositoryPath": "skills/models/life-science/molecular-simulation/lammps-kokkos-md-wrapper/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "data_file": "{{data_file}}",
+    "gpu_count": "{{gpu_count}}",
+    "gpu_mode": "{{gpu_mode}}",
+    "input_script": "{{input_script}}",
+    "kokkos_gpu_aware": "{{kokkos_gpu_aware}}",
+    "kokkos_suffix": "{{kokkos_suffix}}",
+    "mpi_ranks": "{{mpi_ranks}}",
+    "omp_threads": "{{omp_threads}}",
+    "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}",
+    "temperature_k": "{{temperature_k}}",
+    "timestep_fs": "{{timestep_fs}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/lammps/lammps/releases/tag/stable_22Jul2025_update4",
+    "tags": [
+      "life-science",
+      "biology",
+      "molecular-dynamics",
+      "simulation",
+      "lammps",
+      "kokkos",
+      "cuda",
+      "hpc",
+      "forge-wrapper",
+      "open-source",
+      "gpl"
+    ],
+    "versionLabel": "LAMMPS stable 22Jul2025 update4 Kokkos/CUDA SM80 wrapper"
+  },
+  "shortDescription": "LAMMPS/Kokkos Molecular Dynamics is a live-tested Forge runtime for bounded nonclinical LAMMPS simulations with Kokkos/CUDA acceleration.",
+  "skillName": "use-forge-lammps-kokkos-md-wrapper",
+  "skillUrl": "/v1/model-skills/lammps-kokkos-md-wrapper",
+  "slug": "lammps-kokkos-md-wrapper",
+  "stability": "testing",
+  "version": "lammps-22jul2025u4-cuda128-sm80-20260616",
+  "versionKey": "lammps-22jul2025u4-sm80-20260616",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['simulation_parameters', 'topology', 'potential', 'json'] \u2192 ['trajectory', 'energy', 'log', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `lammps-kokkos-md-wrapper` version when the task supplies simulation_parameters, topology, potential, json and needs trajectory, energy, log, json.",
+    "LAMMPS/Kokkos Molecular Dynamics is a live-tested Forge runtime for bounded nonclinical LAMMPS simulations with Kokkos/CUDA acceleration.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `lammps-kokkos-md-wrapper` with version key `lammps-22jul2025u4-sm80-20260616`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/lammps-kokkos-md-wrapper` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

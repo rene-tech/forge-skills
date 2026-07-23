@@ -1,0 +1,154 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "073617e51376432c31b6c5de4ba6261da1f980a1a2e98313608e04c4b6d11038",
+  "defaultEligible": false,
+  "displayName": "Use Qwen3 Reranker 0.6B",
+  "domain": "retrieval-and-reranking",
+  "downloadUrl": "/v1/model-skills/qwen-qwen3-reranker-0-6b-vllm-cuda13/markdown?download=true",
+  "group": "retrieval-and-reranking",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "retrieval-and-reranking",
+    "qwen-qwen3-reranker-0-6b-vllm-cuda13"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/qwen-qwen3-reranker-0-6b-vllm-cuda13",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "How do shared model caches reduce inference cold starts?",
+      "fieldType": "textarea",
+      "key": "query",
+      "label": "Query",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        "A shared cache keeps downloaded weights and runtime artifacts on durable storage so later pods can reuse them instead of hydrating from scratch.",
+        "Cold starts are usually dominated by frontend CSS parsing and browser layout.",
+        "Rerankers compare a query with candidate passages and assign relevance scores for retrieval pipelines."
+      ],
+      "fieldType": "json_editor",
+      "key": "documents",
+      "label": "Candidate documents",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 3,
+      "fieldType": "number",
+      "key": "top_n",
+      "label": "Top N",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-qwen-qwen3-reranker-0-6b-vllm-cuda13\ndescription: Use the exact Forge model qwen-qwen3-reranker-0-6b-vllm-cuda13 for text to ranking tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Qwen3 Reranker 0.6B\n\n- Model slug: `qwen-qwen3-reranker-0-6b-vllm-cuda13`\n- Model family: `qwen-qwen3-reranker-0-6b`\n- Version: `vllm-0.21.0-cuda13-rerank` (`vllm-0-21-0-cuda13-rerank`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / retrieval-and-reranking / qwen-qwen3-reranker-0-6b-vllm-cuda13`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nQwen3 Reranker 0.6B is an Apache-2.0 multilingual text reranking model for retrieval, RAG, code retrieval, and cross-lingual search.\n\n## Use this exact model when\n\n- Use this exact `qwen-qwen3-reranker-0-6b-vllm-cuda13` version when the task supplies text and needs ranking.\n- Qwen3 Reranker 0.6B is an Apache-2.0 multilingual text reranking model for retrieval, RAG, code retrieval, and cross-lingual search.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['ranking'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `query` (textarea, optional): Query\n- `documents` (json_editor, optional): Candidate documents\n- `top_n` (number, optional; bounds 1..10): Top N\n\nRequest template:\n\n```json\n{\n  \"documents\": \"{{documents}}\",\n  \"model\": \"{{model_slug}}\",\n  \"query\": \"{{query}}\",\n  \"top_n\": \"{{top_n}}\"\n}\n```\n\n## Exact output\n\n- `ranking`\n\n## Route\n\n`POST /v1/inference/qwen-qwen3-reranker-0-6b-vllm-cuda13`\n\n## Workflow\n\n1. Load this skill and pin model slug `qwen-qwen3-reranker-0-6b-vllm-cuda13` with version key `vllm-0-21-0-cuda13-rerank`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/qwen-qwen3-reranker-0-6b-vllm-cuda13` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13`\n- Routes: `/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/inference-routes`\n- Regional deployment: `/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/regional-deployment`\n- Deployment handoff: `/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/qwen-qwen3-reranker-0-6b-vllm-cuda13/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/retrieval-and-reranking/qwen-qwen3-reranker-0-6b-vllm-cuda13/SKILL.md\n\n## References\n\n- [Qwen3 Reranker 0.6B source](https://huggingface.co/Qwen/Qwen3-Reranker-0.6B) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/deploy",
+    "inferenceRoutesUrl": "/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/qwen-qwen3-reranker-0-6b",
+    "modelUrl": "/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13",
+    "regionalDeploymentUrl": "/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/qwen-qwen3-reranker-0-6b-vllm-cuda13/markdown",
+  "modelFamily": "qwen-qwen3-reranker-0-6b",
+  "modelSlug": "qwen-qwen3-reranker-0-6b-vllm-cuda13",
+  "modelUrl": "/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13",
+  "outputFields": [
+    "ranking"
+  ],
+  "outputModalities": [
+    "ranking"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Qwen3 Reranker 0.6B is an Apache-2.0 multilingual text reranking model for retrieval, RAG, code retrieval, and cross-lingual search.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/retrieval-and-reranking/qwen-qwen3-reranker-0-6b-vllm-cuda13/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Qwen3 Reranker 0.6B source",
+      "url": "https://huggingface.co/Qwen/Qwen3-Reranker-0.6B"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/qwen-qwen3-reranker-0-6b-vllm-cuda13/SKILL.md",
+  "repositoryPath": "skills/models/general/retrieval-and-reranking/qwen-qwen3-reranker-0-6b-vllm-cuda13/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "documents": "{{documents}}",
+    "model": "{{model_slug}}",
+    "query": "{{query}}",
+    "top_n": "{{top_n}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 595776512,
+    "quantization": "bfloat16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/Qwen/Qwen3-Reranker-0.6B",
+    "tags": [
+      "rerank",
+      "retrieval",
+      "rag",
+      "multilingual",
+      "code-retrieval",
+      "small",
+      "qwen3",
+      "vllm",
+      "cuda13",
+      "blackwell"
+    ],
+    "versionLabel": "vLLM 0.21.0 CUDA 13 Rerank"
+  },
+  "shortDescription": "Qwen3 Reranker 0.6B is an Apache-2.0 multilingual text reranking model for retrieval, RAG, code retrieval, and cross-lingual search.",
+  "skillName": "use-forge-qwen-qwen3-reranker-0-6b-vllm-cuda13",
+  "skillUrl": "/v1/model-skills/qwen-qwen3-reranker-0-6b-vllm-cuda13",
+  "slug": "qwen-qwen3-reranker-0-6b-vllm-cuda13",
+  "stability": "testing",
+  "version": "vllm-0.21.0-cuda13-rerank",
+  "versionKey": "vllm-0-21-0-cuda13-rerank",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['ranking'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `qwen-qwen3-reranker-0-6b-vllm-cuda13` version when the task supplies text and needs ranking.",
+    "Qwen3 Reranker 0.6B is an Apache-2.0 multilingual text reranking model for retrieval, RAG, code retrieval, and cross-lingual search.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `qwen-qwen3-reranker-0-6b-vllm-cuda13` with version key `vllm-0-21-0-cuda13-rerank`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/qwen-qwen3-reranker-0-6b-vllm-cuda13` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

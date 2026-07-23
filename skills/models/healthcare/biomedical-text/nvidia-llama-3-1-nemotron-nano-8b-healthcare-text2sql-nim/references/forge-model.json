@@ -1,0 +1,756 @@
+{
+  "benchmark_scores": {
+    "b200_probe_20260525T17Z_10run": {
+      "attention_backend": "FlashInfer backend with HND KV cache layout on V1 engine for Blackwell SM 10.0",
+      "benchmark_runs": 10,
+      "cluster": "mk8scluster-u00eyp43c8have384b",
+      "command": "PYTHONUNBUFFERED=1 POSTGRES_URL=<redacted> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim --include-status onboarding --gpu B200 --region us-central1 --timeout 3000 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T17Z-b200.json --report-md docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T17Z-b200.md",
+      "compute_capability": [
+        10,
+        0
+      ],
+      "gpu": "B200",
+      "inventory_note": "Read-only Forge inventory before the probe showed B200/us-central1 with 7 total and 7 free GPUs.",
+      "node": "computeinstance-u00k5jxyf741mb6qka",
+      "pod_name": "forge-probe-nvidia-llama-3-1-nemotro-b200-us-central1-66c1ea",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T17Z-b200.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T17Z-b200.md",
+      "request_ms_avg": 242.8,
+      "request_ms_p50": 243,
+      "request_ms_samples": [
+        243,
+        242,
+        242,
+        242,
+        242,
+        243,
+        243,
+        243,
+        243,
+        243
+      ],
+      "request_ms_source": "client_wall_ms",
+      "response_status": 200,
+      "selected_profile": "vllm-bf16-tp1-pp1-956c3512fbbd2bfc28bfa98cda038ab9bf0bffdb0512a1569f3ebf9cc7fee637",
+      "startup_ms": 639793,
+      "status": "supported",
+      "tokens_per_second": 893.0,
+      "vram_used_gb": 162.29,
+      "warmup_runs": 3
+    },
+    "b300_probe_20260525T18Z_10run": {
+      "attention_backend": "vLLM BF16 profile selected on NVIDIA B300 SXM6 AC / SM 10.3; NIM logs did not emit a more specific attention backend line before readiness.",
+      "benchmark_runs": 10,
+      "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim --include-status onboarding --gpu B300 --region uk-south1 --timeout 3000 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T18Z-b300.json --report-md docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T18Z-b300.md",
+      "compute_capability": [
+        10,
+        3
+      ],
+      "gpu": "B300",
+      "inventory_note": "Read-only Forge inventory before the probe showed B300/uk-south1 with 8 total and 8 free GPUs.",
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "pod_name": "forge-probe-nvidia-llama-3-1-nemotro-b300-uk-south1-881ba9",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T18Z-b300.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T18Z-b300.md",
+      "request_ms_avg": 163.0,
+      "request_ms_p50": 163,
+      "request_ms_samples": [
+        163,
+        163,
+        163,
+        163,
+        164,
+        163,
+        163,
+        163,
+        163,
+        162
+      ],
+      "request_ms_source": "client_wall_ms",
+      "response_status": 200,
+      "selected_profile": "vllm-bf16-tp1-pp1-956c3512fbbd2bfc28bfa98cda038ab9bf0bffdb0512a1569f3ebf9cc7fee637",
+      "startup_ms": 749097,
+      "status": "supported",
+      "tokens_per_second": 1331.29,
+      "vram_used_gb": 242.4,
+      "warmup_runs": 3
+    },
+    "blockers": [
+      "Exact catalog model-card license terms still need authenticated confirmation; public NIM LLM docs link use to the NVIDIA AI Product Agreement.",
+      "Healthcare product safety review must approve the nonclinical Text2SQL positioning before publication or default eligibility."
+    ],
+    "container_source_decision": "reuse_official_nvidia_llm_nim_1_15_1_container",
+    "h200_probe_20260525T06Z": {
+      "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+      "commands": [
+        "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim --include-status onboarding --gpu H200 --region eu-north2 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200.json --report-md docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200.md",
+        "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim --include-status onboarding --gpu H200 --region eu-north2 --timeout 1200 --request-timeout 120 --warmup-runs 0 --benchmark-runs 1 --max-parallel 1 --keep-pods --report-json docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200-keep.json --report-md docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200-keep.md"
+      ],
+      "first_probe": {
+        "error": "RuntimeError: pod_start_failure:pod_failed",
+        "events": "container started, then readiness probe failed with connect: connection refused before pod deletion",
+        "image_pull": "7m18.48s including waiting; image size 10319064673 bytes",
+        "node": "computeinstance-e02xmpc3hhyvpwf4qg",
+        "pod": "forge-probe-nvidia-llama-3-1-nemotro-h200-eu-north2-61650c"
+      },
+      "gpu": "H200",
+      "keep_pod_probe": {
+        "error": "RuntimeError: pod_start_failure:model:terminated:Error",
+        "image_pull": "6m58.859s including waiting; image size 10319064673 bytes",
+        "node": "computeinstance-e02vy282wq84sh9er9",
+        "pod": "forge-probe-nvidia-llama-3-1-nemotro-h200-eu-north2-df7213",
+        "root_cause": "NIM launch exits before readiness with OSError: [Errno 30] Read-only file system while removing /opt/nim/llm/.venv/bin/../lib/python3.12/site-packages/outlines",
+        "selected_profile": "vllm-bf16-tp1-pp1, precision bf16, tp=1, pp=1, compute_capability [9, 0]"
+      },
+      "region": "eu-north2",
+      "reports": [
+        "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200.json",
+        "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200.md",
+        "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200-keep.json",
+        "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T06Z-h200-keep.md"
+      ],
+      "runtime_license_log": "Container startup logs state NVIDIA Software License Agreement, Product-Specific Terms for NVIDIA AI Products, NVIDIA Open Model License, and additional Llama 3.3 Community License.",
+      "status": "other_error"
+    },
+    "h200_probe_20260525T08Z_writable_symlink": {
+      "benchmark_samples": [
+        853
+      ],
+      "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+      "gpu": "H200",
+      "node": "computeinstance-e02fa1dvbwvhme53cq",
+      "note": "One-request smoke validated the writable symlink launcher workaround; compatibility remains false until 10 warm benchmark requests and broader matrix classification complete.",
+      "pod_name": "forge-probe-nvidia-llama-3-1-nemotro-h200-eu-north2-d66aa2",
+      "region": "eu-north2",
+      "report_json": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T08Z-h200-writable-symlink-keep.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T08Z-h200-writable-symlink-keep.md",
+      "request_ms": 853,
+      "request_ms_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 605279,
+      "status": "supported",
+      "tokens_per_second": 254.4,
+      "vram_used_gb": 127.18
+    },
+    "h200_probe_20260525T09Z_10run": {
+      "benchmark_runs": 10,
+      "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim --include-status onboarding --gpu H200 --region eu-north2 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T09Z-h200-10run.json --report-md docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T09Z-h200-10run.md",
+      "gpu": "H200",
+      "inventory_note": "The probe report inventory contained one eligible cell: H200/eu-north2 with 8 total and 8 free GPUs.",
+      "node": "computeinstance-e02fa1dvbwvhme53cq",
+      "pod_name": "forge-probe-nvidia-llama-3-1-nemotro-h200-eu-north2-2e09fc",
+      "region": "eu-north2",
+      "report_json": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T09Z-h200-10run.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T09Z-h200-10run.md",
+      "request_ms_avg": 210.6,
+      "request_ms_p50": 210,
+      "request_ms_samples": [
+        211,
+        211,
+        212,
+        210,
+        210,
+        211,
+        210,
+        210,
+        210,
+        211
+      ],
+      "request_ms_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 207532,
+      "status": "supported",
+      "tokens_per_second": 1033.33,
+      "vram_used_gb": 127.18,
+      "warmup_runs": 3
+    },
+    "healthcare_safety_gate": {
+      "allowed_scope": "Nonclinical SQL generation for de-identified healthcare analytics schemas and research data exploration.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "Confirm exact model and container license terms from authenticated NVIDIA catalog/model card",
+        "Verify upstream image digest and mirror digest-pinned refs to all Forge regions",
+        "Run at least one smoke probe and full Forge GPU matrix with 10 warm benchmark requests per supported cell",
+        "Healthcare product safety review approval for nonclinical positioning and prompt surface"
+      ]
+    },
+    "l40s_probe_20260525T16Z_10run": {
+      "attention_backend": "Flash Attention",
+      "benchmark_runs": 10,
+      "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+      "command": "PYTHONUNBUFFERED=1 POSTGRES_URL=<redacted> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim --include-status onboarding --gpu L40S --region eu-north1 --timeout 3000 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T16Z-l40s.json --report-md docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T16Z-l40s.md",
+      "compute_capability": [
+        8,
+        9
+      ],
+      "gpu": "L40S",
+      "node": "computeinstance-e00df18tkn1sh37ez7",
+      "pod_name": "forge-probe-nvidia-llama-3-1-nemotro-l40s-eu-north1-eb70c2",
+      "region": "eu-north1",
+      "report_json": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T16Z-l40s.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T16Z-l40s.md",
+      "request_ms_avg": 506.4,
+      "request_ms_p50": 506,
+      "request_ms_samples": [
+        506,
+        507,
+        506,
+        506,
+        507,
+        507,
+        507,
+        506,
+        506,
+        506
+      ],
+      "request_ms_source": "client_wall_ms",
+      "response_status": 200,
+      "selected_profile": "vllm-bf16-tp1-pp1-956c3512fbbd2bfc28bfa98cda038ab9bf0bffdb0512a1569f3ebf9cc7fee637",
+      "startup_ms": 268591,
+      "status": "supported",
+      "tokens_per_second": 428.85,
+      "vram_used_gb": 41.05,
+      "warmup_runs": 3
+    },
+    "model_server_image_gate": {
+      "evidence": "Forge operator verified the OCI config and embedded model manifest for this digest: BACKEND_TYPE=tensorrt_llm_nv_ext, com.nvidia.nim.version=1.15.0, release profile 1.15.1, and llm_engine=vllm; no Triton server runtime is used by this NIM image.",
+      "validated_at": "2026-06-25",
+      "validated_image_digest": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+      "validated_no_triton_server": true,
+      "validated_runtime_backend": "tensorrt_llm_nv_ext"
+    },
+    "nvidia_container_tag": "nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1",
+    "nvidia_docs": [
+      "https://docs.nvidia.com/nim/large-language-models/1.15.0/text-to-sql-model.html",
+      "https://docs.nvidia.com/nim/large-language-models/1.15.0/supported-models.html",
+      "https://docs.nvidia.com/nim/large-language-models/1.15.0/release-notes.html",
+      "https://docs.nvidia.com/nim/large-language-models/1.15.0/EULA.html",
+      "https://docs.nvidia.com/nim/large-language-models/1.15.0/getting-started.html",
+      "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0"
+    ],
+    "nvidia_model_id": "nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0",
+    "nvidia_release_evidence": {
+      "current_docs_recheck_20260525T16Z": "NVIDIA NIM LLM 1.15.0 docs still list the Healthcare Text2SQL Nano model, describe DDL-to-SQL prompting, and list 1.15.1 as the supported NIM version.",
+      "ngc_catalog_search_state": "NGC catalog lists llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0 as an NVIDIA NIM container for clinical self-service analytics and deep research tools.",
+      "release_notes": "NIM LLM 1.15.1 added Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql-v1.0 and Llama-3.3-Nemotron-Super-49B-Healthcare-Text2sql-v1.0.",
+      "supported_models_docs_version": "1.15.0",
+      "text_to_sql_docs_last_updated": "2026-05-22"
+    },
+    "nvidia_support_matrix": {
+      "generic_configuration": "Any NVIDIA GPU with sufficient memory and compute capability >= 7.0, or >= 8.0 for bfloat16, may run but is not guaranteed.",
+      "supported_vllm_profile": {
+        "gpus": [
+          "1 or 2 H200",
+          "1 or 2 H100 SXM",
+          "1 or 2 H100 NVL",
+          "1 or 2 A100 SXM4 80GB",
+          "2 or 4 L40S",
+          "2 or 4 A10G"
+        ],
+        "precision": "BF16"
+      }
+    },
+    "onboarding_state": "h200_l40s_b200_b300_rtx6000_supported_10run_benchmarks_hidden_safety_gated",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_gate_review_20260525T20Z": {
+      "current_public_nvidia_docs": {
+        "ai_product_terms": "NVIDIA Product Specific Terms for AI Products were last modified 2026-04-15 and define NVIDIA AI Enterprise to include NVIDIA NIMs in the NGC AI Enterprise catalog.",
+        "checked_at": "2026-05-25T20:00:00Z",
+        "release_notes": "NVIDIA NIM LLM release 1.15.1 lists Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql-v1.0 as a new language model.",
+        "supported_models": "Supported-model docs list NIM version 1.15.1 and BF16 vLLM profiles for H200/H100/A100/L40S/A10G-class hardware.",
+        "text_to_sql_docs": "NVIDIA NIM LLM docs list Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql-v1.0 and describe DDL-plus-instructions SQL generation."
+      },
+      "decision": "keep_hidden_onboarding_default_ineligible",
+      "live_model_row_readback": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": true,
+          "B300": true,
+          "H200": true,
+          "L40S": true,
+          "RTX6000": true
+        },
+        "stability": "experimental",
+        "status": "onboarding"
+      },
+      "live_support_cells_readback": {
+        "B200/us-central1": {
+          "request_ms_p50": 243,
+          "request_ms_samples": 10,
+          "startup_ms": 639793,
+          "status": "supported",
+          "tokens_per_second": 893.0,
+          "vram_used_gb": 162.29
+        },
+        "B300/uk-south1": {
+          "request_ms_p50": 163,
+          "request_ms_samples": 10,
+          "startup_ms": 749097,
+          "status": "supported",
+          "tokens_per_second": 1331.29,
+          "vram_used_gb": 242.4
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 211,
+          "request_ms_samples": 11,
+          "startup_ms": 207532,
+          "status": "supported",
+          "tokens_per_second": 1033.33,
+          "vram_used_gb": 127.18
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 506,
+          "request_ms_samples": 10,
+          "startup_ms": 268591,
+          "status": "supported",
+          "tokens_per_second": 428.85,
+          "vram_used_gb": 41.05
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 402,
+          "request_ms_samples": 10,
+          "startup_ms": 569547,
+          "status": "supported",
+          "tokens_per_second": 539.8,
+          "vram_used_gb": 86.82
+        }
+      },
+      "regional_mirror_recheck": {
+        "checked_at": "2026-05-25T20:04:28Z",
+        "digest": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+        "status": "all_four_regions_resolve_to_expected_digest"
+      },
+      "remaining_publication_gates": [
+        "Authenticated NVIDIA NGC catalog/model-card terms and upstream digest confirmation with accepted account terms.",
+        "Healthcare product safety approval for the nonclinical Text2SQL prompt surface and customer-visible positioning."
+      ],
+      "technical_matrix_state": "complete_five_tracked_gpu_types_supported",
+      "upstream_digest_recheck": {
+        "checked_at": "2026-05-25T20:04:28Z",
+        "result": "nvcr.io returned 401 Unauthorized for unauthenticated crane digest against the 1.15.1 upstream ref",
+        "status": "blocked_without_ngc_auth"
+      }
+    },
+    "regional_mirror_status": {
+      "checked_at": "2026-05-25T06:07:40Z",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/mirror_via_k8s_job.py --upstream nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1 --wait --timeout 1800",
+      "container_labels": {
+        "com.nvidia.nim.category": "llm",
+        "com.nvidia.nim.model": "nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0",
+        "com.nvidia.nim.version": "1.15.0"
+      },
+      "digest": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+      "jobs": {
+        "eu-north1": "mirror-llama-3-1-nemotron-nano-8b-hea-19fdc6",
+        "eu-north2": "mirror-llama-3-1-nemotron-nano-8b-hea-8e58fb",
+        "uk-south1": "mirror-llama-3-1-nemotron-nano-8b-hea-6336a3",
+        "us-central1": "mirror-llama-3-1-nemotron-nano-8b-hea-6f9da7"
+      },
+      "manifest": {
+        "amd64_total_bytes": 10319050194,
+        "manifests": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+        "platform_digests": {
+          "linux/amd64": "sha256:9d88c05f1737382f2cd809f9a9179c67a89e095ef7879ae33aed544966d95c5a",
+          "linux/arm64": "sha256:62d9b66a12fba0ba48bf75d1c450cc646fb3ccec928109d8695f215a48fadbec"
+        },
+        "schemaVersion": 2
+      },
+      "status": "succeeded",
+      "verified_regions": {
+        "eu-north1": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+        "eu-north2": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+        "uk-south1": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+        "us-central1": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd"
+      }
+    },
+    "research_checked_at": "2026-05-25T19:13:50Z",
+    "rtx6000_probe_20260525T19Z_10run": {
+      "attention_backend": "Flash Attention backend on V1 engine for NVIDIA RTX PRO 6000 Blackwell Server Edition / SM 12.0",
+      "benchmark_runs": 10,
+      "cluster": "mk8scluster-u00eyp43c8have384b",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim --include-status onboarding --gpu RTX6000 --region us-central1 --timeout 3000 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T19Z-rtx6000.json --report-md docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T19Z-rtx6000.md",
+      "compute_capability": [
+        12,
+        0
+      ],
+      "gpu": "RTX6000",
+      "inventory_note": "Read-only Forge inventory before the probe showed RTX6000/us-central1 with 8 total and 8 free GPUs; forge-models had no running pods in the us-central1 compute cluster.",
+      "node": "computeinstance-u00nxmpqn2rv3waxbs",
+      "pod_name": "forge-probe-nvidia-llama-3-1-nemotro-rtx6000-us-central1-3d990b",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T19Z-rtx6000.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-healthcare-text2sql-20260525T19Z-rtx6000.md",
+      "request_ms_avg": 402.6,
+      "request_ms_p50": 402,
+      "request_ms_samples": [
+        403,
+        402,
+        407,
+        403,
+        402,
+        402,
+        402,
+        402,
+        402,
+        401
+      ],
+      "request_ms_source": "client_wall_ms",
+      "response_status": 200,
+      "selected_profile": "vllm-bf16-tp1-pp1-956c3512fbbd2bfc28bfa98cda038ab9bf0bffdb0512a1569f3ebf9cc7fee637",
+      "startup_ms": 569547,
+      "status": "supported",
+      "tokens_per_second": 539.8,
+      "vram_used_gb": 86.82,
+      "warmup_runs": 3
+    },
+    "security_gate_remediation_20260625": {
+      "digest": "sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+      "status": "non_triton_runtime_attested"
+    },
+    "upstream_digest_checks": {
+      "checked_at": "2026-05-25T05:03:38Z",
+      "commands": [
+        "timeout 60s crane digest nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1",
+        "timeout 60s crane digest nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:latest",
+        "timeout 60s skopeo inspect --no-tags docker://nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1"
+      ],
+      "digest": null,
+      "error_summary": "NVCR returned 401 Unauthorized for crane and skopeo because NGC_API_KEY/NIM_API_KEY are unset in this shell.",
+      "result": "blocked"
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "clinical_analytics",
+    "text_to_sql",
+    "text_generation",
+    "chat",
+    "nvidia_nim",
+    "mirrored",
+    "digest_pinned",
+    "research_only",
+    "text",
+    "schema",
+    "sql",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1",
+  "container_image_size_bytes": 10319050194,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-25T06:10:10.805149+00:00",
+  "default_eligible": true,
+  "description": "NVIDIA's Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL NIM translates natural-language healthcare analytics questions plus DDL into SQL. This Forge candidate is useful for nonclinical self-service analytics and research data exploration over de-identified clinical schemas. It uses digest-pinned regional mirrors and must remain hidden and default-ineligible until GPU probes pass and healthcare product safety review approves nonclinical positioning. It must not be used for medical advice, clinical decision-making, diagnosis, treatment, triage, or patient-specific record interpretation.",
+  "family_id": "be82f502-da85-48bd-bb7c-98d96d8b3278",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "set -euo pipefail\ncat > /tmp/python3 <<'SH'\n#!/bin/bash\nif [ \"${1:-}\" = \"-m\" ] && [ \"${2:-}\" = \"nim_llm_sdk.entrypoints.launch\" ]; then\n  shift 2\n  exec /opt/nim/llm/.venv/bin/python3 - \"$@\" <<'PY'\nimport os\nimport runpy\nimport sys\n\nsite = os.path.normpath(os.path.join(os.environ.get(\"PYTHON_PATH\", \"/opt/nim/llm/.venv/bin\"), \"..\", \"lib\", \"python3.12\", \"site-packages\"))\nmanaged_links = {\n    os.path.join(site, \"outlines\"): os.path.join(site, \"outlines-1.2.5\"),\n    os.path.join(site, \"outlines_core\"): os.path.join(site, \"outlines_core-0.2.11\"),\n}\n_real_remove = os.remove\n_real_symlink = os.symlink\n\ndef _same_link(dst: str, src: str) -> bool:\n    try:\n        return os.path.islink(dst) and os.path.normpath(os.readlink(dst)) == os.path.normpath(src)\n    except OSError:\n        return False\n\ndef _safe_remove(path: str, *args, **kwargs):\n    dst = os.path.normpath(path)\n    desired = managed_links.get(dst)\n    if desired and _same_link(dst, desired):\n        return None\n    return _real_remove(path, *args, **kwargs)\n\ndef _safe_symlink(src: str, dst: str, *args, **kwargs):\n    normalized_dst = os.path.normpath(dst)\n    desired = managed_links.get(normalized_dst)\n    if desired and os.path.normpath(src) == os.path.normpath(desired) and _same_link(normalized_dst, desired):\n        return None\n    return _real_symlink(src, dst, *args, **kwargs)\n\nos.remove = _safe_remove\nos.symlink = _safe_symlink\nsys.argv = [\"nim_llm_sdk.entrypoints.launch\", *sys.argv[1:]]\nrunpy.run_module(\"nim_llm_sdk.entrypoints.launch\", run_name=\"__main__\")\nPY\nfi\nexec /opt/nim/llm/.venv/bin/python3 \"$@\"\nSH\nchmod 0755 /tmp/python3\nPATH=\"/tmp:${PATH}\" exec /opt/nvidia/nvidia_entrypoint.sh /opt/nim/start_server.sh"
+    ],
+    "container_command": [
+      "/bin/bash",
+      "-lc"
+    ],
+    "container_env": {
+      "NIM_CACHE_PATH": "/opt/nim/.cache",
+      "NIM_ENABLE_KV_CACHE_REUSE": "1",
+      "NIM_SERVED_MODEL_NAME": "nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0",
+      "NIM_TELEMETRY_MODE": "0"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 80.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T17:15:52.593408+00:00",
+      "region": "us-central1",
+      "request_ms": 243,
+      "request_ms_p50": 243,
+      "request_ms_p95": 243,
+      "request_ms_p99": 243,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 639793,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 893.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 162.29,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T18:16:37.286796+00:00",
+      "region": "uk-south1",
+      "request_ms": 163,
+      "request_ms_p50": 163,
+      "request_ms_p95": 164,
+      "request_ms_p99": 164,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 749097,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1331.29,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 242.4,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T09:07:47.373687+00:00",
+      "region": "eu-north2",
+      "request_ms": 210,
+      "request_ms_p50": 211,
+      "request_ms_p95": 532,
+      "request_ms_p99": 789,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 207532,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 1033.33,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 127.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T16:08:26.999257+00:00",
+      "region": "eu-north1",
+      "request_ms": 506,
+      "request_ms_p50": 506,
+      "request_ms_p95": 507,
+      "request_ms_p99": 507,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 268591,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 428.85,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 41.05,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T19:13:49.676315+00:00",
+      "region": "us-central1",
+      "request_ms": 402,
+      "request_ms_p50": 402,
+      "request_ms_p95": 405,
+      "request_ms_p99": 407,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 569547,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 539.8,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 86.82,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 14.9
+    }
+  ],
+  "gpu_type": null,
+  "id": "e80d3457-e42b-46e0-b446-e11b6f83d35b",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "NVIDIA AI Product/NIM; NVIDIA Open Model; Llama 3.3 Community License",
+  "modality_input": [
+    "text",
+    "schema"
+  ],
+  "modality_output": [
+    "sql",
+    "text"
+  ],
+  "model_family": "nvidia-healthcare-text2sql",
+  "name": "Llama 3.1 Nemotron Nano 8B Healthcare Text2SQL",
+  "parameter_count": 8000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "detailed thinking off. Generate SQL only for the supplied schema. Do not provide medical advice or clinical interpretation.",
+            "role": "system"
+          },
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0"
+    },
+    "input_fields": [
+      {
+        "default": "Based on DDL statements, instructions, and the current date, generate a SQL query in sqlite to answer the question.\nIf the question cannot be answered using the available tables and columns in the DDL, return only: None.\nToday is 2026-05-25 00:00:00\nDDL statements:\nDROP TABLE IF EXISTS diagnosis;\nCREATE TABLE diagnosis (\n  diagnosisid INT NOT NULL PRIMARY KEY,\n  patientunitstayid INT NOT NULL,\n  diagnosisname VARCHAR(200) NOT NULL,\n  diagnosistime TIMESTAMP NOT NULL,\n  icd9code VARCHAR(100)\n);\nInstructions:\n- Use only the provided schema.\n- Return only the SQL query.\n- Do not provide medical advice or patient-specific interpretation.\nquestion: How many distinct patients have at least one diagnosis recorded?",
+        "key": "prompt",
+        "label": "DDL, instructions, and question",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "sql",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 1024,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_mount": "/opt/nim/.cache",
+      "forge_cache_target": "/mnt/data/nim-cache/nvidia-healthcare-text2sql/1.15.1",
+      "kind": "nvidia_nim_llm",
+      "nim_id": "nvidia/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0",
+      "readiness_path": "/v1/health/ready"
+    },
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1@sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1@sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1@sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0:1.15.1@sha256:68e8f96f7eebb6e377510269104bf43706fa5f07c0a04003ed79a4b5322f61fd"
+  },
+  "release_rank": 80,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/large-language-models/1.15.0/text-to-sql-model.html",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "clinical-analytics",
+    "text-to-sql",
+    "llm",
+    "chat",
+    "nvidia-nim",
+    "mirrored",
+    "digest-pinned",
+    "research-only"
+  ],
+  "updated_at": "2026-06-25T14:00:59.335911+00:00",
+  "version": "1.15.1",
+  "version_description": "NVIDIA LLM NIM 1.15.1 for healthcare Text2SQL over clinical analytics schemas.",
+  "version_key": "nim-1-15-1-candidate",
+  "version_label": "NIM 1.15.1"
+}

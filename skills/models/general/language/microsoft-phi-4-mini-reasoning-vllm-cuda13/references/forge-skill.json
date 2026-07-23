@@ -1,0 +1,171 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "4edb1381ac4c777c26ea7c0a97a9cb5f9f5128beacc19bb89666d7d0b1df76d6",
+  "defaultEligible": false,
+  "displayName": "Use Microsoft Phi-4 Mini Reasoning",
+  "domain": "language",
+  "downloadUrl": "/v1/model-skills/microsoft-phi-4-mini-reasoning-vllm-cuda13/markdown?download=true",
+  "group": "language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "language",
+    "microsoft-phi-4-mini-reasoning-vllm-cuda13"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Solve this step by step and return the final answer clearly: A factory makes 18 valves per hour on line A and 24 valves per hour on line B. If line B runs for 2 fewer hours than line A and together they make 300 valves, how many hours did line A run?",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.95,
+      "fieldType": "number",
+      "key": "top_p",
+      "label": "Top P",
+      "maximum": 1,
+      "minimum": 0.01,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1024,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 8192,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-microsoft-phi-4-mini-reasoning-vllm-cuda13\ndescription: Use the exact Forge model microsoft-phi-4-mini-reasoning-vllm-cuda13 for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Microsoft Phi-4 Mini Reasoning\n\n- Model slug: `microsoft-phi-4-mini-reasoning-vllm-cuda13`\n- Model family: `microsoft-phi-4-mini-reasoning`\n- Version: `vllm-0.21.0-cuda13` (`vllm-0-21-0-cuda13`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / language / microsoft-phi-4-mini-reasoning-vllm-cuda13`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `mit`\n\n## Purpose\n\nMicrosoft Phi-4 Mini Reasoning is a public MIT-licensed 3.8B-parameter dense text-generation model for multi-step mathematical reasoning, symbolic problem solving, formal proof-style prompts, and compact reasoning use cases where latency and GPU footprint matter.\n\n## Use this exact model when\n\n- Use this exact `microsoft-phi-4-mini-reasoning-vllm-cuda13` version when the task supplies text and needs text.\n- Microsoft Phi-4 Mini Reasoning is a public MIT-licensed 3.8B-parameter dense text-generation model for multi-step mathematical reasoning, symbolic problem solving, formal proof-style prompts, and compact reasoning use cases where latency and GPU footprint matter.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `top_p` (number, optional; bounds 0.01..1): Top P\n- `max_tokens` (number, optional; bounds 1..8192): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"You are Phi, a compact reasoning assistant. Show concise reasoning and put the final answer at the end.\",\n      \"role\": \"system\"\n    },\n    {\n      \"content\": \"{{prompt}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": false,\n  \"temperature\": \"{{temperature}}\",\n  \"top_p\": \"{{top_p}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `microsoft-phi-4-mini-reasoning-vllm-cuda13` with version key `vllm-0-21-0-cuda13`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13`\n- Routes: `/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/inference-routes`\n- Regional deployment: `/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/regional-deployment`\n- Deployment handoff: `/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/microsoft-phi-4-mini-reasoning-vllm-cuda13/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/microsoft-phi-4-mini-reasoning-vllm-cuda13/SKILL.md\n\n## References\n\n- [Microsoft Phi-4 Mini Reasoning source](https://huggingface.co/microsoft/Phi-4-mini-reasoning) (model-card)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/deploy",
+    "inferenceRoutesUrl": "/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/microsoft-phi-4-mini-reasoning",
+    "modelUrl": "/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13",
+    "regionalDeploymentUrl": "/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/microsoft-phi-4-mini-reasoning-vllm-cuda13/markdown",
+  "modelFamily": "microsoft-phi-4-mini-reasoning",
+  "modelSlug": "microsoft-phi-4-mini-reasoning-vllm-cuda13",
+  "modelUrl": "/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Microsoft Phi-4 Mini Reasoning is a public MIT-licensed 3.8B-parameter dense text-generation model for multi-step mathematical reasoning, symbolic problem solving, formal proof-style prompts, and compact reasoning use cases where latency and GPU footprint matter.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/microsoft-phi-4-mini-reasoning-vllm-cuda13/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Microsoft Phi-4 Mini Reasoning source",
+      "url": "https://huggingface.co/microsoft/Phi-4-mini-reasoning"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/microsoft-phi-4-mini-reasoning-vllm-cuda13/SKILL.md",
+  "repositoryPath": "skills/models/general/language/microsoft-phi-4-mini-reasoning-vllm-cuda13/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "You are Phi, a compact reasoning assistant. Show concise reasoning and put the final answer at the end.",
+        "role": "system"
+      },
+      {
+        "content": "{{prompt}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": false,
+    "temperature": "{{temperature}}",
+    "top_p": "{{top_p}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 3836021760,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/microsoft/Phi-4-mini-reasoning",
+    "tags": [
+      "llm",
+      "chat",
+      "reasoning",
+      "math",
+      "symbolic",
+      "code",
+      "phi",
+      "vllm",
+      "cuda13",
+      "blackwell"
+    ],
+    "versionLabel": "vLLM 0.21.0 CUDA 13"
+  },
+  "shortDescription": "Microsoft Phi-4 Mini Reasoning is a public MIT-licensed 3.8B-parameter dense text-generation model for multi-step mathematical reasoning, symbolic problem solving, formal proof-style prompts, and compact reasoning use cases where latency and GPU footprint matter.",
+  "skillName": "use-forge-microsoft-phi-4-mini-reasoning-vllm-cuda13",
+  "skillUrl": "/v1/model-skills/microsoft-phi-4-mini-reasoning-vllm-cuda13",
+  "slug": "microsoft-phi-4-mini-reasoning-vllm-cuda13",
+  "stability": "testing",
+  "version": "vllm-0.21.0-cuda13",
+  "versionKey": "vllm-0-21-0-cuda13",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `microsoft-phi-4-mini-reasoning-vllm-cuda13` version when the task supplies text and needs text.",
+    "Microsoft Phi-4 Mini Reasoning is a public MIT-licensed 3.8B-parameter dense text-generation model for multi-step mathematical reasoning, symbolic problem solving, formal proof-style prompts, and compact reasoning use cases where latency and GPU footprint matter.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `microsoft-phi-4-mini-reasoning-vllm-cuda13` with version key `vllm-0-21-0-cuda13`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

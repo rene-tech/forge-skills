@@ -1,0 +1,714 @@
+{
+  "benchmark_scores": {
+    "artifact_disabled": false,
+    "artifact_gated": false,
+    "artifact_license": "apache-2.0",
+    "artifact_private": false,
+    "artifact_sha": "9a11e1ffa817c211cbb52ee1fb312dc6b61b40a5",
+    "artifact_source": "https://huggingface.co/BioMistral/BioMistral-7B",
+    "blockers": [
+      "Healthcare product safety review is required before making any biomedical text-generation model routable.",
+      "Probe timing uses client_wall_ms because the stock vLLM chat-completions response does not expose model-reported runtime."
+    ],
+    "cache_strategy": "Hydrate Hugging Face model weights and vLLM cache into /mnt/data-scoped directories through HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, XDG_CACHE_HOME, VLLM_CACHE_ROOT, and --download-dir.",
+    "container_source_decision": "Use the official public vLLM OpenAI-compatible image because the BioMistral artifact is public and ungated, and the candidate needs only standard chat-completions serving. No Forge-owned wrapper is required before first smoke reprobe.",
+    "current_evidence_20260523T14Z": {
+      "checked_at": "2026-05-23T14:14:32Z",
+      "docker_hub_tag": {
+        "amd64_digest": "sha256:4ac9b7c6dabc3ec762c0edef4e9245abe98373844da91cc53ee42e5c58280c5b",
+        "amd64_size_bytes": 8669266122,
+        "last_updated": "2026-05-15T06:46:48.042663Z",
+        "manifest_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "tag": "v0.21.0",
+        "url": "https://registry.hub.docker.com/v2/repositories/vllm/vllm-openai/tags/v0.21.0"
+      },
+      "gpu_inventory_pre_probe": {
+        "b200_us_central1_free_gpus": 8,
+        "free_gpus": 38,
+        "total_gpus": 40,
+        "url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/gpu-inventory"
+      },
+      "hf_api": {
+        "disabled": false,
+        "downloads": 143679,
+        "gated": false,
+        "last_modified": "2024-02-21T20:53:27.000Z",
+        "license": "apache-2.0",
+        "likes": 504,
+        "private": false,
+        "sha": "9a11e1ffa817c211cbb52ee1fb312dc6b61b40a5",
+        "url": "https://huggingface.co/api/models/BioMistral/BioMistral-7B"
+      },
+      "live_public_route_check": {
+        "status": "404_hidden_onboarding_not_public",
+        "url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/biomistral-biomistral-7b-vllm"
+      },
+      "regional_mirror_recheck": {
+        "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "regions": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ],
+        "status": "verified_all_four_regions"
+      }
+    },
+    "default_routing_gate_20260608": {
+      "reason": "Active public-preview vLLM 0.21 profile lacks the required VLLM_MAX_N_SEQUENCES guard; keep visible but non-default until refreshed or guarded.",
+      "status": "default_routing_disabled_for_public_preview",
+      "updated_at": "2026-06-08T13:11:37+00:00"
+    },
+    "healthcare_safety_gate": {
+      "allowed_scope": "Nonclinical biomedical literature triage, research summarization, and scientific workflow drafting.",
+      "checked_at": "2026-05-22T08:08:37Z",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "playground_default_prompt": "nonclinical_literature_triage_with_explicit_no_patient_specific_recommendations",
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "Healthcare product safety review approval",
+        "Customer-facing nonclinical positioning copy",
+        "Safety evaluation for medical-advice and medical-results-interpretation prompts",
+        "Monitoring and escalation owner sign-off"
+      ]
+    },
+    "hf_api_checked_at": "2026-05-22T08:08:37Z",
+    "hf_downloads_at_check": 147174,
+    "hf_likes_at_check": 504,
+    "latest_b200_smoke_probe_20260523T14Z": {
+      "checked_at": "2026-05-23T14:14:32Z",
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug biomistral-biomistral-7b-vllm --include-status onboarding --gpu B200 --region us-central1 --timeout 1800 --request-timeout 300 --warmup-runs 1 --benchmark-runs 3 --max-parallel 1 --report-json docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T14Z-b200-smoke.json --report-md docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T14Z-b200-smoke.md",
+      "gpu_node": "computeinstance-u00v6qsxjnq7h14ysy",
+      "gpu_type": "B200",
+      "live_support_upsert": true,
+      "model_status": "onboarding",
+      "pod_name": "forge-probe-biomistral-biomistral-7b-b200-us-central1-e8def1",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T14Z-b200-smoke.json",
+      "report_md": "docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T14Z-b200-smoke.md",
+      "request_body": {
+        "max_tokens": 256,
+        "messages_count": 1,
+        "model": "biomistral-biomistral-7b-vllm",
+        "prompt_scope": "non_patient_specific_biomedical_research_summary",
+        "stream": false,
+        "temperature": 0.2
+      },
+      "request_ms_p50": 764,
+      "request_ms_samples": [
+        768,
+        710,
+        764
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 603140,
+      "status": "supported",
+      "tokens_per_second": 268.32,
+      "vram_used_gb": 164.65,
+      "warmup_ms": 1141
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_supported": {
+        "B200/us-central1": {
+          "gpu_node": "computeinstance-u00wadeavqy9rn934z",
+          "pod_name": "forge-probe-biomistral-biomistral-7b-b200-us-central1-38246c",
+          "request_ms_p50": 519,
+          "request_ms_samples": [
+            517,
+            701,
+            521,
+            596,
+            534,
+            364,
+            451,
+            465,
+            406,
+            817
+          ],
+          "startup_ms": 601944,
+          "tokens_per_second": 456.65,
+          "vram_used_gb": 164.65
+        },
+        "B300/uk-south1": {
+          "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod_name": "forge-probe-biomistral-biomistral-7b-b300-uk-south1-345a6c",
+          "request_ms_p50": 428,
+          "request_ms_samples": [
+            426,
+            611,
+            429,
+            506,
+            443,
+            271,
+            358,
+            373,
+            313,
+            730
+          ],
+          "startup_ms": 97844,
+          "tokens_per_second": 553.74,
+          "vram_used_gb": 246.84
+        },
+        "H200/eu-north2": {
+          "gpu_node": "computeinstance-e02xmpc3hhyvpwf4qg",
+          "pod_name": "forge-probe-biomistral-biomistral-7b-h200-eu-north2-c57478",
+          "request_ms_p50": 568,
+          "request_ms_samples": [
+            590,
+            969,
+            504,
+            461,
+            1007,
+            822,
+            386,
+            680,
+            418,
+            546
+          ],
+          "startup_ms": 610005,
+          "tokens_per_second": 253.52,
+          "vram_used_gb": 129.16
+        },
+        "L40S/eu-north1": {
+          "gpu_node": "computeinstance-e00rbwdyfy2va3jj09",
+          "pod_name": "forge-probe-biomistral-biomistral-7b-l40s-eu-north1-aeda41",
+          "request_ms_p50": 2358,
+          "request_ms_samples": [
+            1690,
+            2308,
+            2408,
+            3346,
+            1591,
+            2807,
+            2149,
+            2767,
+            2209,
+            5204
+          ],
+          "startup_ms": 610915,
+          "tokens_per_second": 129.77,
+          "vram_used_gb": 41.23
+        },
+        "RTX6000/us-central1": {
+          "gpu_node": "computeinstance-u00nxmpqn2rv3waxbs",
+          "pod_name": "forge-probe-biomistral-biomistral-7b-rtx6000-us-central1-be5fcb",
+          "request_ms_p50": 1774,
+          "request_ms_samples": [
+            1287,
+            1266,
+            2789,
+            1167,
+            2711,
+            2262,
+            786,
+            880,
+            2894,
+            2893
+          ],
+          "startup_ms": 649046,
+          "tokens_per_second": 172.49,
+          "vram_used_gb": 87.78
+        }
+      },
+      "checked_at": "2026-05-23T15:15:20Z",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug biomistral-biomistral-7b-vllm --include-status onboarding --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 5 --report-json docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T15Z-full-matrix.json --report-md docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T15Z-full-matrix.md",
+      "generated_at": "2026-05-23T15:15:20.920259+00:00",
+      "gpu_inventory_pre_probe": {
+        "cells": {
+          "B200/us-central1": {
+            "free_gpus": 8,
+            "total_gpus": 8
+          },
+          "B300/uk-south1": {
+            "free_gpus": 8,
+            "total_gpus": 8
+          },
+          "H200/eu-north2": {
+            "free_gpus": 8,
+            "total_gpus": 8
+          },
+          "L40S/eu-north1": {
+            "free_gpus": 6,
+            "total_gpus": 8
+          },
+          "RTX6000/us-central1": {
+            "free_gpus": 8,
+            "total_gpus": 8
+          }
+        },
+        "free_gpus": 38,
+        "total_gpus": 40
+      },
+      "live_support_upsert": true,
+      "model_status": "onboarding",
+      "public_status_pre_probe": {
+        "checked_at": "2026-05-23T15:03:37.512202+00:00",
+        "incidents": [],
+        "status": "operational"
+      },
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "report_json": "docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T15Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/biomistral-biomistral-7b-vllm-20260523T15Z-full-matrix.md",
+      "request_body": {
+        "max_tokens": 256,
+        "messages_count": 1,
+        "model": "biomistral-biomistral-7b-vllm",
+        "prompt_scope": "non_patient_specific_biomedical_research_summary",
+        "stream": false,
+        "temperature": 0.2
+      },
+      "request_time_source": "client_wall_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "live_onboarding_upsert": {
+      "checked_at": "2026-05-22T07:15:54Z",
+      "default_eligible": false,
+      "keep_existing_family_latest": true,
+      "stability": "experimental",
+      "status": "onboarding"
+    },
+    "onboarding_state": "five_cell_matrix_supported_pending_healthcare_safety_review",
+    "previous_b200_smoke_probe": {
+      "checked_at": "2026-05-22T06:16:07Z",
+      "gpu_node": "computeinstance-u00f9pcxzvgbdx0cj6",
+      "pod_name": "forge-probe-biomistral-biomistral-7b-b200-us-central1-09f871",
+      "report_json": "tmp/parallel-matrix/biomistral-biomistral-7b-vllm-b200-us-20260522T06Z.json",
+      "report_md": "tmp/parallel-matrix/biomistral-biomistral-7b-vllm-b200-us-20260522T06Z.md",
+      "request_ms_p50": 770,
+      "request_ms_samples": [
+        774,
+        710,
+        770
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 613880,
+      "status": "supported",
+      "tokens_per_second": 266.23,
+      "vram_used_gb": 164.65
+    },
+    "prior_smoke_probe": {
+      "checked_at": "2026-05-21T20:08:00Z",
+      "failure_reason": "vLLM returned HTTP 404 because the request model was BioMistral/BioMistral-7B while the server was started with served model name biomistral-biomistral-7b-vllm.",
+      "gpu_type": "B200",
+      "image_pull": "succeeded",
+      "region": "us-central1",
+      "status": "other_error"
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "regional_mirror_refs": {
+      "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1",
+      "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1",
+      "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1",
+      "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1"
+    },
+    "regional_mirror_verified_at": "2026-06-30T00:00:00Z",
+    "request_alignment_checked_at": "2026-05-22T06:16:33Z",
+    "request_alignment_probe_body": {
+      "messages_count": 1,
+      "model": "biomistral-biomistral-7b-vllm",
+      "stream": false
+    },
+    "runtime_image": "docker.io/vllm/vllm-openai:v0.22.1",
+    "runtime_image_manifest_count": 2,
+    "runtime_image_manifest_digest": "sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "medical",
+    "biology",
+    "language_model",
+    "chat",
+    "vllm",
+    "open_source",
+    "text",
+    "openai_compatible",
+    "text_generation",
+    "streaming"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+  "container_image_size_bytes": 8669305992,
+  "context_window": 2048,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-21T19:15:40.735602+00:00",
+  "default_eligible": false,
+  "description": "BioMistral 7B is an Apache-2.0 biomedical language model further pre-trained from Mistral 7B on PubMed Central Open Access text. This Forge onboarding manifest uses mirrored regional copies of the public vLLM OpenAI-compatible image and aligns Forge's probe request model with the vLLM served model name. A refreshed five-cell Forge matrix probe on 2026-05-23T15Z validated B200, B300, H200, L40S, and RTX6000 support with 10 warm benchmark requests per cell. The default playground prompt is framed for nonclinical biomedical literature triage. The model must stay non-routable until healthcare product safety review approves a nonclinical user surface. It must not be used for medical advice or clinical decision-making.",
+  "family_id": "afda6fe2-3ea8-4200-b193-33e360d7ab13",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "--model",
+      "BioMistral/BioMistral-7B",
+      "--served-model-name",
+      "biomistral-biomistral-7b-vllm",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--download-dir",
+      "/mnt/data/hf-cache/biomistral-biomistral-7b-vllm",
+      "--max-model-len",
+      "2048"
+    ],
+    "container_env": {
+      "HF_HOME": "/mnt/data/hf-cache",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/hub",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/transformers",
+      "VLLM_CACHE_ROOT": "/mnt/data/vllm-cache/biomistral-biomistral-7b-vllm",
+      "XDG_CACHE_HOME": "/mnt/data/cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T15:14:17.760444+00:00",
+      "region": "us-central1",
+      "request_ms": 519,
+      "request_ms_p50": 764,
+      "request_ms_p95": 770,
+      "request_ms_p99": 770,
+      "request_ms_samples": 5,
+      "startup_ms_first": null,
+      "startup_ms_probe": 601944,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 456.65,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 164.65,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T15:05:50.959142+00:00",
+      "region": "uk-south1",
+      "request_ms": 428,
+      "request_ms_p50": 537,
+      "request_ms_p95": 635,
+      "request_ms_p99": 644,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 97844,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 553.74,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 246.84,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": "ApiException: (422)\nReason: Unprocessable Entity\nHTTP response headers: HTTPHeaderDict({'Audit-Id': '4a55dc45-5e15-470f-a86a-ea3a3f942d08', 'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'Warning': '299 - \"would violate PodSecurity \\\\\"baseline:v1.33\\\\\": hostPath volumes (volumes \\\\\"shared-data\\\\\", \\\\\"nim-cache\\\\\")\"', 'X-Kubernetes-Pf-Flowschema-Uid': 'd1686236-3960-49a4-8029-02bf65ca7622', 'X-Kubernetes-Pf-Prioritylevel-Uid': '00e0abb3-5692-4c2b-b83f-d566518dec78', 'Da",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:16:23.541825+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "ApiException: (422)\nReason: Unprocessable Entity\nHTTP response headers: HTTPHeaderDict({'Audit-Id': '8f54ea29-7c9b-4905-844e-5c25d64e69ee', 'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'Warning': '299 - \"would violate PodSecurity \\\\\"baseline:v1.33\\\\\": hostPath volumes (volumes \\\\\"shared-data\\\\\", \\\\\"nim-cache\\\\\")\"', 'X-Kubernetes-Pf-Flowschema-Uid': 'd1686236-3960-49a4-8029-02bf65ca7622', 'X-Kubernetes-Pf-Prioritylevel-Uid': '00e0abb3-5692-4c2b-b83f-d566518dec78', 'Da",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:16:28.381495+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T15:14:26.205268+00:00",
+      "region": "eu-north2",
+      "request_ms": 568,
+      "request_ms_p50": 690,
+      "request_ms_p95": 800,
+      "request_ms_p99": 810,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 610005,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 253.52,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 129.16,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "ApiException: (422)\nReason: Unprocessable Entity\nHTTP response headers: HTTPHeaderDict({'Audit-Id': 'fe706252-8867-42c8-a8ba-ba5cec290315', 'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'Warning': '299 - \"would violate PodSecurity \\\\\"baseline:v1.33\\\\\": hostPath volumes (volumes \\\\\"shared-data\\\\\", \\\\\"nim-cache\\\\\")\"', 'X-Kubernetes-Pf-Flowschema-Uid': 'f1dbae13-bec9-4c53-ae75-197ff1de7395', 'X-Kubernetes-Pf-Prioritylevel-Uid': '3a4962a5-4229-4333-a03f-9e79f7012255', 'Da",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:16:33.540326+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T15:14:50.003427+00:00",
+      "region": "eu-north1",
+      "request_ms": 2358,
+      "request_ms_p50": 2640,
+      "request_ms_p95": 2895,
+      "request_ms_p99": 2917,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 610915,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 129.77,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 41.23,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T15:15:20.416742+00:00",
+      "region": "us-central1",
+      "request_ms": 1774,
+      "request_ms_p50": 1605,
+      "request_ms_p95": 1757,
+      "request_ms_p99": 1771,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 649046,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 172.49,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 87.78,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    }
+  ],
+  "gpu_type": null,
+  "id": "ff4d775b-bb49-4c86-b9f1-a62ba21a2577",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "biomistral-biomistral-7b",
+  "name": "BioMistral 7B",
+  "parameter_count": 7000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": "{{messages}}",
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "biomistral-biomistral-7b-vllm"
+    },
+    "input_fields": [
+      {
+        "default": "For nonclinical biomedical literature triage, summarize how protein language model embeddings can support drug discovery research. Include two limitations and avoid diagnosis, treatment, or patient-specific recommendations.",
+        "key": "messages",
+        "label": "Prompt",
+        "type": "chat_history",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "markdown",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 1024,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/hf-cache/biomistral-biomistral-7b-vllm",
+      "kind": "vllm_openai",
+      "model_id": "BioMistral/BioMistral-7B",
+      "model_revision": "9a11e1ffa817c211cbb52ee1fb312dc6b61b40a5",
+      "served_model_name": "biomistral-biomistral-7b-vllm"
+    },
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "release_rank": 35,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "biomistral-biomistral-7b-vllm",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/BioMistral/BioMistral-7B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical",
+    "medical",
+    "biology",
+    "language-model",
+    "chat",
+    "vllm",
+    "open-source"
+  ],
+  "updated_at": "2026-06-30T13:36:35.217953+00:00",
+  "version": "9a11e1f",
+  "version_description": "BioMistral/BioMistral-7B served through the stock vLLM OpenAI-compatible container with Forge request model aligned to the vLLM served model name.",
+  "version_key": "hf-9a11e1f-vllm-0-21-0",
+  "version_label": "HF 9a11e1f via vLLM 0.21.0"
+}

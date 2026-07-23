@@ -1,0 +1,508 @@
+{
+  "benchmark_scores": {
+    "artifacts_checked": [
+      "README.md",
+      "config.json",
+      "processor_config.json",
+      "norm_stats.json",
+      "model.safetensors.index.json",
+      "model-00001-of-00005.safetensors",
+      "model-00002-of-00005.safetensors",
+      "model-00003-of-00005.safetensors",
+      "model-00004-of-00005.safetensors",
+      "model-00005-of-00005.safetensors"
+    ],
+    "blockers": [
+      "Run simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff for the SO100/101 action space before publication; the 2026-05-31T20Z static q99 review is not a safety signoff.",
+      "Keep hidden until robot-policy safety signoff covers the SO100/101 action space despite five-cell representative probe support.",
+      "HF cardData.license remains null even though the upstream GitHub repository reports Apache-2.0; retain publication review gate."
+    ],
+    "checked_at": "2026-05-31T20:05:16Z",
+    "container_search": {
+      "candidate_registry_recheck_20260529T15Z": {
+        "docker_hub": "anonymous crane digest checks returned 401 for the candidate refs; no public pullable Docker Hub image verified",
+        "forge_regional_digest_verified": "sha256:a957b09819de8187b59fc4e0d2dc3f928f11cb5ed68b3786924ddb0af3b12121",
+        "ghcr": "anonymous crane digest check reported no matching credentials; no public pullable GHCR image verified"
+      },
+      "candidate_registry_refs_checked": [
+        "ghcr.io/allenai/molmoact2:latest",
+        "ghcr.io/allenai/molmoact2-so100-101:latest",
+        "docker.io/allenai/molmoact2:latest",
+        "docker.io/allenai/molmoact2-so100-101:latest",
+        "docker.io/allenai/molmoact2-so100_101:latest"
+      ],
+      "decision": "reuse existing Forge-owned MolmoAct2 CUDA13 HTTP wrapper image rather than build a new container",
+      "official_serving_container_found": false,
+      "upstream_dockerfile_found": false,
+      "upstream_repository_tree_checked": "https://api.github.com/repos/allenai/molmoact2/git/trees/main?recursive=1",
+      "upstream_servers_found": [
+        "examples/droid/host_server_droid.py",
+        "examples/yam/host_server_yam.py"
+      ]
+    },
+    "custom_code_hashes_match_existing_wrapper_allowlist": {
+      "configuration_molmoact2.py": "ccc1b24db7ab42b30705414b14de9601b1d82fba6f6d85393b0e9cbe1052fac4",
+      "image_processing_molmoact2.py": "bb623a013e7f897ffb938990bd02374b61dabcabd87f9f19d59111ec88ecf675",
+      "modeling_molmoact2.py": "3e0090b8cc045d59911c0a579815ebd17ce0423f9fdd03be887412df5c7b8b49",
+      "processing_molmoact2.py": "61ec88c04cf70844dc98ab518d332911ec32cf5f24f052b7413ddd5d61483109",
+      "video_processing_molmoact2.py": "8da721aa638da65aaa35e458920037c16b81dca344a623bb08db2b73f9ce9992"
+    },
+    "fallback": "If remaining SO100/101 GPU cells fail in the generic wrapper, fall back to the already-probed allenai-molmoact2-bimanual-yam candidate and keep SO100/101 H200-only hidden until a checkpoint-specific wrapper path is built.",
+    "fallback_checked": "Postgres readback confirmed allenai-molmoact2-bimanual-yam remains an onboarding fallback with B200, B300, H200, L40S, and RTX6000 compatibility already recorded in its manifest.",
+    "h200_elbow_q99_review_20260531T20Z": {
+      "action_shape": [
+        1,
+        30,
+        6
+      ],
+      "decision": "clears_static_q99_magnitude_review_only_not_robot_policy_safety_signoff",
+      "elbow_flex": {
+        "above_q99_count": 12,
+        "above_q99_fraction": 0.4,
+        "margin_below_training_max": 21.380859375,
+        "max_over_q99": 0.3923277986002936,
+        "observed_max": 174.0,
+        "observed_mean": 164.43333333333334,
+        "observed_min": 141.0,
+        "training_max": 195.380859375,
+        "training_q99": 173.6076722013997
+      },
+      "publication_decision": "do_not_publish_keep_hidden_pending_simulator_replay_hil_dry_run_or_external_robot_policy_safety_signoff",
+      "review_artifact": "docs/model-onboarding/physical-ai/allenai-molmoact2-so100-101-20260531T20Z-elbow-q99-review.json",
+      "source_report": "docs/model-onboarding/physical-ai/allenai-molmoact2-so100-101-20260529T1515Z-h200-action-bounds.json",
+      "status": "static_elbow_q99_magnitude_review_complete_keep_hidden",
+      "training_min_max_violations": [],
+      "within_training_min_max": true
+    },
+    "hf_api": "https://huggingface.co/api/models/allenai/MolmoAct2-SO100_101?blobs=true",
+    "hf_card_license": null,
+    "hf_last_modified": "2026-05-23T01:15:19.000Z",
+    "hf_library_name": "transformers",
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "allenai/MolmoAct2-SO100_101",
+    "hf_model_private": false,
+    "hf_model_revision": "152569fe57914d97be91055800035f54e250d009",
+    "hf_pipeline_tag": "robotics",
+    "hf_tags_checked": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "so100",
+      "so101",
+      "custom_code",
+      "arxiv:2605.02881"
+    ],
+    "license_evidence": {
+      "github_license": "Apache-2.0",
+      "github_pushed_at": "2026-05-28T17:21:48Z",
+      "github_repository": "https://github.com/allenai/molmoact2",
+      "github_updated_at": "2026-05-29T11:36:50Z",
+      "hf_card_license": null,
+      "license_file": "https://raw.githubusercontent.com/allenai/molmoact2/main/LICENSE"
+    },
+    "onboarding_state": "five_cell_representative_probe_passed_static_elbow_q99_reviewed_hidden_pending_sim_hil_or_external_safety_signoff",
+    "probe_decision": {
+      "action_bounds": {
+        "decision": "passes_static_action_bounds_against_training_min_max",
+        "q01_q99_outliers": [
+          {
+            "above_q99": 12,
+            "below_q01": 0,
+            "dimension": "elbow_flex",
+            "observed_max": 174.0,
+            "observed_min": 141.0
+          }
+        ],
+        "report": "docs/model-onboarding/physical-ai/allenai-molmoact2-so100-101-20260529T1515Z-h200-action-bounds.json",
+        "within_training_min_max": true
+      },
+      "full_action_capture": {
+        "action_dtype": "torch.float32",
+        "action_shape": [
+          1,
+          30,
+          6
+        ],
+        "first_action": [
+          -1.6171875,
+          186.0,
+          174.0,
+          60.25,
+          -4.9375,
+          -0.03759765625
+        ],
+        "last_action": [
+          -1.921875,
+          156.0,
+          141.0,
+          73.0,
+          -9.375,
+          0.2265625
+        ],
+        "query_time_ms": 431
+      },
+      "model_time_source": "query_time_ms",
+      "new_gpu_probe_executed": true,
+      "persisted_support_matrix": false,
+      "report": "docs/model-onboarding/physical-ai/allenai-molmoact2-so100-101-20260529T1505Z-h200-representative-probe.md",
+      "request_ms_p50": 400,
+      "request_ms_samples": [
+        392,
+        406,
+        381,
+        406,
+        391,
+        402,
+        399,
+        401,
+        400,
+        402
+      ],
+      "response_status": 200,
+      "result": "supported",
+      "scope": "H200/eu-north2 hidden-row no-persist representative probe with model-card sample Realsense top/side RGB images, 6D SO100/101 state, 3 warmup runs, and 10 measured runs",
+      "startup_ms": 299220,
+      "vram_used_gb": 12.67
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "remaining_matrix_probe_20260529T16Z": {
+      "cells": [
+        {
+          "gpu_type": "B200",
+          "model_time_source": "query_time_ms",
+          "region": "us-central1",
+          "request_ms_p50": 332,
+          "request_ms_samples": [
+            332,
+            331,
+            337,
+            330,
+            332,
+            338,
+            330,
+            336,
+            333,
+            336
+          ],
+          "response_status": 200,
+          "startup_ms": 283960,
+          "status": "supported",
+          "vram_used_gb": 12.77
+        },
+        {
+          "gpu_type": "B300",
+          "model_time_source": "query_time_ms",
+          "region": "uk-south1",
+          "request_ms_p50": 336,
+          "request_ms_samples": [
+            333,
+            338,
+            335,
+            334,
+            338,
+            335,
+            340,
+            341,
+            333,
+            338
+          ],
+          "response_status": 200,
+          "startup_ms": 337258,
+          "status": "supported",
+          "vram_used_gb": 12.77
+        },
+        {
+          "gpu_type": "L40S",
+          "model_time_source": "query_time_ms",
+          "region": "eu-north1",
+          "request_ms_p50": 567,
+          "request_ms_samples": [
+            569,
+            565,
+            569,
+            570,
+            565,
+            569,
+            570,
+            561,
+            563,
+            563
+          ],
+          "response_status": 200,
+          "startup_ms": 249488,
+          "status": "supported",
+          "vram_used_gb": 12.5
+        },
+        {
+          "gpu_type": "RTX6000",
+          "model_time_source": "query_time_ms",
+          "region": "us-central1",
+          "request_ms_p50": 427,
+          "request_ms_samples": [
+            428,
+            431,
+            431,
+            419,
+            428,
+            468,
+            426,
+            423,
+            417,
+            420
+          ],
+          "response_status": 200,
+          "startup_ms": 299168,
+          "status": "supported",
+          "vram_used_gb": 12.64
+        }
+      ],
+      "new_gpu_probe_executed": true,
+      "persisted_support_matrix": true,
+      "report_json": "docs/model-onboarding/physical-ai/allenai-molmoact2-so100-101-20260529T16Z-remaining4-probe.json",
+      "report_md": "docs/model-onboarding/physical-ai/allenai-molmoact2-so100-101-20260529T16Z-remaining4-probe.md",
+      "result": "supported",
+      "scope": "B200/us-central1, B300/uk-south1, L40S/eu-north1, and RTX6000/us-central1 hidden-row representative probes using the SO100/101 manifest default sample request, 3 warmup runs, and 10 measured runs per cell"
+    },
+    "reused_wrapper_image": {
+      "digest": "sha256:a957b09819de8187b59fc4e0d2dc3f928f11cb5ed68b3786924ddb0af3b12121",
+      "prior_direct_probe_scope": "BimanualYAM five-cell probes plus SO100/101 H200/eu-north2 representative probe and the 2026-05-29T16Z SO100/101 B200/B300/L40S/RTX6000 representative probe",
+      "runtime_stack": "cu130-torch2.12.0-cuda13.0-ptxas13.2",
+      "source_slug": "allenai-molmoact2-bimanual-yam"
+    },
+    "runtime_contract": {
+      "action_dim": 6,
+      "action_horizon": 30,
+      "camera_keys": [
+        "top",
+        "side"
+      ],
+      "control_mode": "absolute joint pose",
+      "n_action_steps": 30,
+      "norm_tag": "so100_so101_molmoact2",
+      "recommended_dtype": "bf16 for lower-memory inference; upstream reports fp32 around 24GB without CUDA graph and bf16 under 16GB",
+      "state_dim": 6
+    },
+    "safetensors_index": {
+      "shard_sha256": {
+        "model-00001-of-00005.safetensors": "1db2ede310edee16e4c11bc86eba1b97ea9b3a26238b02831df3b3e0879fdd36",
+        "model-00002-of-00005.safetensors": "6913a7bd2bfe2cb03c47b534e2d3bfddd2c88f9345a4c843ac2aff3cbc17fcc8",
+        "model-00003-of-00005.safetensors": "d19a73e6698875c04aeea7b1bce705eee37d4911ed46ad2d7a8c937ac81425c2",
+        "model-00004-of-00005.safetensors": "d3e1c71627001fdb1889599951d2b50789bc416b523cfee3c2b36b8bab81682d",
+        "model-00005-of-00005.safetensors": "7edce41246e9efda93308323ee9d62878a3b024401103e846c164c4e0199aeed"
+      },
+      "total_parameters": 5485309424,
+      "total_size_bytes": 21768785088,
+      "weight_map_count": 1295
+    },
+    "selected_candidate": "allenai/MolmoAct2-SO100_101",
+    "selected_reason": "Fresh 2026 MolmoAct2 policy checkpoint with public ungated safetensors artifacts, Apache-2.0 upstream repository license, SO-100/101 policy-inference intent, smaller two-camera plus 6D-state contract, and compatibility with Forge's existing digest-mirrored MolmoAct2 CUDA13 wrapper image."
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "molmoact2",
+    "so100",
+    "so101",
+    "forge_wrapper_candidate",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-allenai-molmoact2-bimanual-yam:wrapper-20260525t19z-cu130-diagnostic@sha256:a957b09819de8187b59fc4e0d2dc3f928f11cb5ed68b3786924ddb0af3b12121",
+  "container_image_size_bytes": 8663684128,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-29T03:25:36.439565+00:00",
+  "default_eligible": false,
+  "description": "MolmoAct2-SO100_101 is AllenAI's MolmoAct2 checkpoint fine-tuned for SO-100/101 single-arm robot policy inference. It maps a natural-language instruction, two RGB camera observations, and a 6D raw robot state into continuous robot-scale actions with norm_tag=so100_so101_molmoact2. The Hugging Face checkpoint is public, ungated, and safetensors-backed; the upstream repository is Apache-2.0; and the checkpoint reuses the existing Forge MolmoAct2 CUDA13 wrapper image and regional mirrors. This manifest remains hidden even though SO100/101 representative probes now pass on B200, B300, H200, L40S, and RTX6000. The H200 elbow-flex q99 static review is complete, but simulator replay, no-actuation HIL dry run, or external robot-policy safety signoff is still required before publication.",
+  "family_id": "d9639e4f-3909-47b3-bdce-04a2e8a39da1",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/allenai/molmoact2-so100-101",
+      "FORGE_MODEL_ID": "allenai/MolmoAct2-SO100_101",
+      "FORGE_MODEL_SLUG": "allenai-molmoact2-so100-101",
+      "HF_HOME": "/mnt/data/forge-weights/allenai/molmoact2-so100-101/huggingface",
+      "HF_HUB_ENABLE_HF_TRANSFER": "1",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/allenai/molmoact2-so100-101/huggingface/hub",
+      "MOLMOACT2_CAMERA_KEYS": "top,side",
+      "MOLMOACT2_DEFAULT_NUM_STEPS": "10",
+      "MOLMOACT2_DEVICE": "cuda:0",
+      "MOLMOACT2_DTYPE": "bfloat16",
+      "MOLMOACT2_ENABLE_CUDA_GRAPH": "false",
+      "MOLMOACT2_INCLUDE_INTERNAL_TRACEBACK": "false",
+      "MOLMOACT2_MODEL_REVISION": "152569fe57914d97be91055800035f54e250d009",
+      "MOLMOACT2_NORM_TAG": "so100_so101_molmoact2",
+      "MOLMOACT2_RUNTIME_STACK": "cu130-torch2.12.0-cuda13.0-ptxas13.2",
+      "MOLMOACT2_STATE_DIM": "6",
+      "MOLMOACT2_VERIFY_CODE_HASHES": "true",
+      "TORCH_HOME": "/mnt/data/forge-weights/allenai/molmoact2-so100-101/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/allenai/molmoact2-so100-101/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/allenai/molmoact2-so100-101/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/allenai/molmoact2-so100-101/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [],
+  "gpu_type": null,
+  "id": "bcd9ed81-992f-49ba-9991-246e0a6c8791",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "Apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "allenai-molmoact2",
+  "name": "AllenAI MolmoAct2 SO100/101",
+  "parameter_count": 5485309424,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "enable_cuda_graph": "{{enable_cuda_graph}}",
+        "images": {
+          "side": "{{side_cam}}",
+          "top": "{{top_cam}}"
+        },
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "num_steps": "{{num_steps}}",
+        "robot_state": "{{robot_state}}"
+      },
+      "endpoint": "/v1/inference/allenai-molmoact2-so100-101",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Move the arm towards the lemon, grasp it, lift it up, and drop it into the red bowl.",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+        "key": "top_cam",
+        "label": "Realsense Top RGB",
+        "sample_sha256": "55aa91ada852ef4e7570c3f3d26ee44537200f9d15db1a914708cb3083c0e58b",
+        "source": "https://huggingface.co/allenai/MolmoAct2-SO100_101/resolve/main/assets/sample_realsense_top_rgb.png",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+        "key": "side_cam",
+        "label": "Realsense Side RGB",
+        "sample_sha256": "25b937d596f81da7a5120ef949eaa59e39f15e588a9de14025b12797d200b81f",
+        "source": "https://huggingface.co/allenai/MolmoAct2-SO100_101/resolve/main/assets/sample_realsense_side_rgb.png",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          -0.52734375,
+          189.140625,
+          181.40625,
+          60.64453125,
+          -3.603515625,
+          1.0971786975860596
+        ],
+        "key": "robot_state",
+        "label": "6D SO100/101 State",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 10,
+        "key": "num_steps",
+        "label": "Flow Steps",
+        "max": 50,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": false,
+        "key": "enable_cuda_graph",
+        "label": "CUDA Graph",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bf16-runtime",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-allenai-molmoact2-bimanual-yam:wrapper-20260525t19z-cu130-diagnostic@sha256:a957b09819de8187b59fc4e0d2dc3f928f11cb5ed68b3786924ddb0af3b12121",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-allenai-molmoact2-bimanual-yam:wrapper-20260525t19z-cu130-diagnostic@sha256:a957b09819de8187b59fc4e0d2dc3f928f11cb5ed68b3786924ddb0af3b12121",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-allenai-molmoact2-bimanual-yam:wrapper-20260525t19z-cu130-diagnostic@sha256:a957b09819de8187b59fc4e0d2dc3f928f11cb5ed68b3786924ddb0af3b12121",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-allenai-molmoact2-bimanual-yam:wrapper-20260525t19z-cu130-diagnostic@sha256:a957b09819de8187b59fc4e0d2dc3f928f11cb5ed68b3786924ddb0af3b12121"
+  },
+  "release_rank": 520,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "allenai-molmoact2-so100-101",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/allenai/MolmoAct2-SO100_101",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "molmoact2",
+    "so100",
+    "so101",
+    "forge-wrapper-candidate"
+  ],
+  "updated_at": "2026-06-30T13:58:20.904219+00:00",
+  "version": "so100-101-152569f-wrapper-20260529t03z",
+  "version_description": "Hidden onboarding manifest for AllenAI MolmoAct2-SO100_101, a public Apache-2.0 MolmoAct2 robotics policy checkpoint for SO-100/101 inference. It reuses the existing digest-qualified Forge MolmoAct2 CUDA13 wrapper image because the checkpoint has the same verified custom-code hashes and safetensors structure as the already-probed BimanualYAM variant. H200/eu-north2 and the 2026-05-29T16Z remaining four-cell 3-warmup/10-measured probes now pass on B200, B300, L40S, and RTX6000. The 2026-05-31T20Z static review resolved the H200 elbow-flex q99 magnitude as marginal while keeping the model hidden pending simulator replay, no-actuation HIL dry run or external robot-policy safety signoff, and publication license review.",
+  "version_key": "so100-101",
+  "version_label": "SO100/101 wrapper candidate"
+}

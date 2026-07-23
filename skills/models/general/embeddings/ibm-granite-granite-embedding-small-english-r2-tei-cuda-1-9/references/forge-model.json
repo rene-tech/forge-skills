@@ -1,0 +1,536 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "ModernBertModel"
+      ],
+      "hidden_size": 384,
+      "max_position_embeddings": 8192,
+      "model_type": "modernbert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "torch_dtype": "bfloat16",
+      "vocab_size": 50368
+    },
+    "artifact_parameters": {
+      "BF16": 47662464,
+      "total": 47662464
+    },
+    "artifact_refreshed_at": "2026-06-01T00:00:00Z",
+    "artifact_revision": "2ab6fa8ea2d674564defd37171ae19079b864b33",
+    "b200_probe_20260601T03Z": {
+      "cache_volume_mode": "hostPath",
+      "cluster": "mk8scluster-u00eyp43c8have384b",
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9 --include-status onboarding --gpu B200 --region us-central1 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9-20260601T00Z-b200.json --report-md docs/model-onboarding/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9-20260601T00Z-b200.md",
+      "gpu": "B200",
+      "gpu_node": "computeinstance-u00kraen1pxk791bbq",
+      "latency_samples_ms": [
+        159,
+        157,
+        157,
+        158,
+        157,
+        157,
+        157,
+        157,
+        157,
+        157
+      ],
+      "persisted": true,
+      "pod_name": "forge-probe-ibm-granite-granite-embe-b200-us-central1-766ca4",
+      "region": "us-central1",
+      "report_json": "docs/model-onboarding/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9-20260601T00Z-b200.json",
+      "report_md": "docs/model-onboarding/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9-20260601T00Z-b200.md",
+      "request_ms_p50": 157,
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 196923,
+      "status": "supported",
+      "tokens_per_second": 229.3,
+      "vram_used_gb": 0.84
+    },
+    "blockers": [
+      "B300 needs a newer SM103-capable TEI image or a Forge-owned CUDA 13 embedding wrapper; the pinned TEI CUDA 1.9.3 image rejects SM103 before server startup."
+    ],
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face cache is pointed at /opt/nim/.cache paths, matching existing Forge TEI manifests that back these paths with shared /mnt/data/forge-weights.",
+    "candidate_selection": "Selected as a compact Apache-2.0 enterprise embedding model from IBM Granite that is general-purpose, public, ungated, TEI-compatible, and not already present in Forge manifests.",
+    "capacity_check_20260601T05Z": {
+      "command": "curl -fsS --max-time 30 https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/gpu-inventory | jq -r '.inventory[] | [.region,.gpu_type,.total_gpus,.used_gpus,.free_gpus,.cluster_id] | @tsv' | sort",
+      "result": [
+        "eu-north1 L40S total=8 used=0 free=8 cluster=mk8scluster-e00tjerrz0axkghmbm",
+        "eu-north2 H200 total=8 used=0 free=8 cluster=mk8scluster-e02q80x7frtvf9rj9e",
+        "us-central1 RTX6000 total=8 used=0 free=8 cluster=mk8scluster-u00eyp43c8have384b"
+      ]
+    },
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_image_size_bytes": 3110096066,
+    "container_license_evidence": "skopeo inspect labels for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 report org.opencontainers.image.licenses=Apache-2.0 and org.opencontainers.image.version=cuda-1.9.3.",
+    "container_revision": "06670157fb6c1523482219bdb2d1660277d38088",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image",
+    "dry_run_validation": {
+      "image_gate": "passed_no_findings_20260601T03Z",
+      "manifest_json": "passed_20260601T03Z",
+      "upsert_model_dry_run": "passed_20260601T03Z"
+    },
+    "expected_gpu_notes": {
+      "B200": "supported on 2026-06-01T03Z hostPath-cache probe with 3 warmups and 10 measured requests",
+      "B300": "disabled for this exact TEI CUDA 1.9.3 digest because sibling diagnostics show the entrypoint rejects SM103 with cuda compute cap 103 is not supported",
+      "H200": "supported on 2026-06-01T05Z hostPath-cache probe with 3 warmups and 10 measured requests",
+      "L40S": "supported on 2026-06-01T05Z hostPath-cache probe with 3 warmups and 10 measured requests",
+      "RTX6000": "supported on 2026-06-01T05Z hostPath-cache probe with 3 warmups and 10 measured requests"
+    },
+    "license_evidence": "Hugging Face API and model-card metadata report license:apache-2.0; Hugging Face API reports private=false, gated=false, disabled=false, and tags include license:apache-2.0, text-embeddings-inference, and endpoints_compatible.",
+    "live_upsert_20260601T03Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9.json --keep-existing-family-latest",
+      "public_lookup_after_upsert": "404_expected_for_onboarding_status",
+      "result": "succeeded_hidden_onboarding",
+      "returned_slug": "ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9"
+    },
+    "live_upsert_20260601T05Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9.json --keep-existing-family-latest",
+      "result": "succeeded_hidden_onboarding",
+      "returned_slug": "ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9"
+    },
+    "matrix_probe_20260601T05Z": {
+      "cache_volume_mode": "hostPath",
+      "cells": [
+        {
+          "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+          "gpu": "H200",
+          "gpu_node": "computeinstance-e02xmpc3hhyvpwf4qg",
+          "latency_samples_ms": [
+            98,
+            98,
+            98,
+            98,
+            98,
+            99,
+            98,
+            98,
+            98,
+            98
+          ],
+          "pod_name": "forge-probe-ibm-granite-granite-embe-h200-eu-north2-d02e4a",
+          "region": "eu-north2",
+          "request_ms_p50": 98,
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 222472,
+          "status": "supported",
+          "tokens_per_second": 367.35,
+          "vram_used_gb": 0.74
+        },
+        {
+          "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+          "gpu": "L40S",
+          "gpu_node": "computeinstance-e00df18tkn1sh37ez7",
+          "latency_samples_ms": [
+            98,
+            98,
+            98,
+            98,
+            98,
+            97,
+            98,
+            97,
+            98,
+            97
+          ],
+          "pod_name": "forge-probe-ibm-granite-granite-embe-l40s-eu-north1-9843d2",
+          "region": "eu-north1",
+          "request_ms_p50": 98,
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 214266,
+          "status": "supported",
+          "tokens_per_second": 367.35,
+          "vram_used_gb": 0.57
+        },
+        {
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "gpu": "RTX6000",
+          "gpu_node": "computeinstance-u00km4vh0dm80kct8y",
+          "latency_samples_ms": [
+            160,
+            160,
+            159,
+            159,
+            159,
+            159,
+            159,
+            160,
+            161,
+            161
+          ],
+          "pod_name": "forge-probe-ibm-granite-granite-embe-rtx6000-us-central1-0021b3",
+          "region": "us-central1",
+          "request_ms_p50": 160,
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 356304,
+          "status": "supported",
+          "tokens_per_second": 225.0,
+          "vram_used_gb": 0.71
+        }
+      ],
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9 --include-status onboarding --gpu H200 --gpu L40S --gpu RTX6000 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 3 --report-json docs/model-onboarding/general/general-20260601T05Z-ibm-granite-embedding-small-english-r2-matrix.json --report-md docs/model-onboarding/general/general-20260601T05Z-ibm-granite-embedding-small-english-r2-matrix.md",
+      "oom": 0,
+      "other_error": 0,
+      "persisted": true,
+      "probe_pending": 0,
+      "report_json": "docs/model-onboarding/general/general-20260601T05Z-ibm-granite-embedding-small-english-r2-matrix.json",
+      "report_md": "docs/model-onboarding/general/general-20260601T05Z-ibm-granite-embedding-small-english-r2-matrix.md",
+      "supported": 3
+    },
+    "onboarding_state": "active_nondefault_b200_h200_l40s_rtx6000_supported_b300_sm103_runtime_incompatible",
+    "pooling_config": {
+      "pooling_mode_cls_token": true,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_mean_tokens": false,
+      "word_embedding_dimension": 384
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_review_20260604T16Z": {
+      "decision": "promote_source_manifest_to_active_nondefault",
+      "default_eligible": false,
+      "gpu_compatibility": {
+        "B200": true,
+        "B300": false,
+        "H200": true,
+        "L40S": true,
+        "RTX6000": true
+      },
+      "license_refresh": {
+        "disabled": false,
+        "gated": false,
+        "library_name": "sentence-transformers",
+        "license": "apache-2.0",
+        "pipeline_tag": "feature-extraction",
+        "private": false,
+        "safetensors_BF16": 47662464,
+        "sha": "2ab6fa8ea2d674564defd37171ae19079b864b33"
+      },
+      "manifest_status": "active",
+      "publication_scope": "Text-only dense embedding endpoint /v1/embeddings. B300 stays disabled for this TEI CUDA 1.9.3 digest until an SM103-capable runtime is selected.",
+      "regional_mirror_recheck": {
+        "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "regions": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ]
+      },
+      "stability": "testing",
+      "validation": {
+        "focused_runtime_test": "passed_20260604T16Z_resolved_default_embeddings_request",
+        "live_upsert": "pending_operator_with_POSTGRES_URL",
+        "manifest_json": "passed_20260604T16Z",
+        "model_server_image_gate": "passed_empty_findings_20260604T16Z",
+        "upsert_model_dry_run": "passed_20260604T16Z_active_testing_nondefault"
+      }
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-06-01T00:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "Hugging Face metadata tags the model as text-embeddings-inference and endpoints_compatible; TEI exposes the OpenAI-compatible /v1/embeddings endpoint already used by sibling Forge embedding manifests.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "sentence_bert_config": {
+      "do_lower_case": false,
+      "max_seq_length": 8192
+    },
+    "source_evidence": [
+      "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2",
+      "https://huggingface.co/api/models/ibm-granite/granite-embedding-small-english-r2",
+      "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/README.md",
+      "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/config.json",
+      "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/modules.json",
+      "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/1_Pooling/config.json",
+      "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/sentence_bert_config.json",
+      "https://huggingface.co/docs/text-embeddings-inference/index",
+      "https://github.com/huggingface/text-embeddings-inference"
+    ],
+    "validation_commands": [
+      "git fetch --prune origin",
+      "git status --short --branch",
+      "git rev-list --left-right --count HEAD...origin/main",
+      "curl -fsSL --max-time 30 'https://huggingface.co/api/models?tags=text-embeddings-inference&pipeline_tag=feature-extraction&sort=downloads&direction=-1&limit=80' | jq -r '.[] | [.id, (.cardData.license // \"\"), (.pipeline_tag // \"\"), (.library_name // \"\"), ((.tags // []) | join(\",\"))] | @tsv'",
+      "curl -fsSL --max-time 30 'https://huggingface.co/api/models/ibm-granite/granite-embedding-small-english-r2' | jq '{id, private, gated, disabled, downloads, likes, pipeline_tag, library_name, tags, safetensors, cardData, sha, siblings: (.siblings | map(.rfilename) | .[0:40])}'",
+      "curl -fsSL --max-time 30 'https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/config.json' | jq '{model_type, architectures, hidden_size, num_hidden_layers, num_attention_heads, vocab_size, max_position_embeddings, torch_dtype}'",
+      "curl -fsSL --max-time 30 'https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/modules.json' | jq .",
+      "curl -fsSL --max-time 30 'https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/1_Pooling/config.json' | jq .",
+      "curl -fsSL --max-time 30 'https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/sentence_bert_config.json' | jq .",
+      "curl -fsSL --max-time 30 'https://huggingface.co/ibm-granite/granite-embedding-small-english-r2/raw/main/README.md' | sed -n '1,220p'",
+      "rg -n \"granite-embedding-small-english-r2|granite-embedding-reranker-english-r2|granite-embedding-english-r2\" manifests docs/model-onboarding/general services/models",
+      "skopeo inspect --no-tags docker://ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 | jq '{Name, Digest, Created, Labels: .Labels, Layers: (.Layers|length), Env: [.Env[]? | select(test(\"TOKEN|KEY|SECRET|PASSWORD\")|not)]}'",
+      "for ref in 'cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference:cuda-1.9' 'cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference:cuda-1.9' 'cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference:cuda-1.9' 'cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference:cuda-1.9'; do printf '%s\\t' \"$ref\"; skopeo inspect --no-tags \"docker://$ref\" | jq -r '.Digest'; done",
+      ".venv312/bin/python - <<'PY'\nfrom shared.container_image_size import inspect_container_image_size_bytes\nprint(inspect_container_image_size_bytes('ghcr.io/huggingface/text-embeddings-inference:cuda-1.9'))\nPY",
+      "jq empty manifests/models/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9.json --dry-run",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/security/check_model_server_image_gate.py manifests/models/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9.json --format json",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9.json --keep-existing-family-latest",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9 --include-status onboarding --gpu B200 --region us-central1 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9-20260601T00Z-b200.json --report-md docs/model-onboarding/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9-20260601T00Z-b200.md",
+      "curl -fsS --max-time 30 https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/gpu-inventory | jq -r '.inventory[] | [.region,.gpu_type,.total_gpus,.used_gpus,.free_gpus,.cluster_id] | @tsv' | sort",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9.json --keep-existing-family-latest",
+      "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9 --include-status onboarding --gpu H200 --gpu L40S --gpu RTX6000 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 3 --report-json docs/model-onboarding/general/general-20260601T05Z-ibm-granite-embedding-small-english-r2-matrix.json --report-md docs/model-onboarding/general/general-20260601T05Z-ibm-granite-embedding-small-english-r2-matrix.md",
+      "curl -fsS --max-time 30 https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9"
+    ]
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic_search",
+    "enterprise",
+    "long_context",
+    "modernbert",
+    "granite",
+    "ibm",
+    "english",
+    "huggingface",
+    "tei",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110096066,
+  "context_window": 8192,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-01T03:08:09.494454+00:00",
+  "default_eligible": false,
+  "description": "IBM Granite Embedding Small English R2 is a public Apache-2.0, non-HCLS, non-physical-AI English dense embedding model for enterprise semantic search, RAG retrieval, long-document retrieval, code retrieval, table retrieval, and multi-turn conversational retrieval. Hugging Face metadata refreshed on 2026-06-04T16Z reports private=false, gated=false, disabled=false, pipeline_tag=feature-extraction, library_name=sentence-transformers, tags text-embeddings-inference and endpoints_compatible, revision 2ab6fa8ea2d674564defd37171ae19079b864b33, and 47,662,464 BF16 safetensors parameters. The model card reports a 47M ModernBERT-based bi-encoder with 384-dimensional output vectors and 8192-token context length, trained with permissive enterprise-friendly datasets plus IBM data. This active non-default Forge profile reuses the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, clears unnecessary Hugging Face token variables for this public artifact, and keeps Hugging Face caches under /opt/nim/.cache paths backed by Forge shared /mnt/data cache. The 2026-06-01T03Z focused B200/us-central1 probe passed with 3 warmups, 10 measured /v1/embeddings requests, 196923 ms startup, 157 ms p50 client-wall request time, 229.3 tokens/s, and 0.84 GB VRAM. The 2026-06-01T05Z bounded matrix probe added H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 support with 3 warmups and 10 measured requests per cell; p50 client-wall request times were 98 ms on H200, 98 ms on L40S, and 160 ms on RTX6000. B300 remains disabled because this exact TEI image digest exits on SM103 with `cuda compute cap 103 is not supported`.",
+  "family_id": "d4429bcc-c44c-46f8-a817-dad3243c30f2",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "ibm-granite/granite-embedding-small-english-r2",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "ibm-granite/granite-embedding-small-english-r2"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T03:11:49.738047+00:00",
+      "region": "us-central1",
+      "request_ms": 157,
+      "request_ms_p50": 157,
+      "request_ms_p95": 159,
+      "request_ms_p99": 159,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 196923,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 229.3,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.84,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T05:07:03.394686+00:00",
+      "region": "eu-north2",
+      "request_ms": 98,
+      "request_ms_p50": 98,
+      "request_ms_p95": 99,
+      "request_ms_p99": 99,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 222472,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 367.35,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.74,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T05:06:55.254973+00:00",
+      "region": "eu-north1",
+      "request_ms": 98,
+      "request_ms_p50": 98,
+      "request_ms_p95": 98,
+      "request_ms_p99": 98,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 214266,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 367.35,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.57,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T05:09:18.631431+00:00",
+      "region": "us-central1",
+      "request_ms": 160,
+      "request_ms_p50": 160,
+      "request_ms_p95": 161,
+      "request_ms_p99": 161,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 356304,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 225.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "2bb80eb9-ec88-44d7-81f9-8900a7cdd60e",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "ibm-granite-granite-embedding-small-english-r2",
+  "name": "Granite Embedding Small English R2",
+  "parameter_count": 47662464,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "float",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "ibm-granite/granite-embedding-small-english-r2"
+    },
+    "input_fields": [
+      {
+        "default": "Granite Embedding Small English R2 creates compact vectors for enterprise semantic search over support tickets, runbooks, product docs, and code-adjacent knowledge.",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 70,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic-search",
+    "enterprise",
+    "long-context",
+    "modernbert",
+    "granite",
+    "ibm",
+    "english",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Active non-default Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for IBM Granite Embedding Small English R2.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

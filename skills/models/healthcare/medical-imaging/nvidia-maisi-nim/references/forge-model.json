@@ -1,0 +1,408 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "temporary_publication_exception_current": {
+      "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+      "accepted_by_user": true,
+      "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+      "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+      "rollback": "Set model and family status back to onboarding for these slugs/families.",
+      "scope": "temporary_restore_to_catalog_visibility"
+    },
+    "temporary_publication_exceptions": [
+      {
+        "accepted_at": "2026-06-01T08:22:55.199719+00:00",
+        "accepted_by_user": true,
+        "reason": "User requested restoring NIM/Triton-held models while image-bound Triton r26.03+ evidence or replacement images are still pending.",
+        "risk": "Models may embed an unverified Triton surface affected by NVIDIA May 2026 bulletin; keep non-default where they were non-default and prioritize attestation/replacement.",
+        "rollback": "Set model and family status back to onboarding for these slugs/families.",
+        "scope": "temporary_restore_to_catalog_visibility"
+      }
+    ]
+  },
+  "capabilities": [
+    "healthcare",
+    "medical_imaging",
+    "synthetic_data",
+    "ct",
+    "segmentation",
+    "3d_medical_image",
+    "maisi",
+    "nvidia_nim",
+    "publication_hold",
+    "structured",
+    "vision",
+    "file"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/maisi:latest",
+  "container_image_size_bytes": 14733616775,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T16:58:21.672912+00:00",
+  "default_eligible": false,
+  "description": "NVIDIA MAISI is a medical-imaging NIM for generating synthetic 3D CT volumes and paired segmentation labels from requested body regions, anatomies, voxel spacing, and output-size controls. The current NVIDIA documentation says MAISI 1.0.1 is an accelerated release, exposes /v1/maisi/run, and returns ZIP archives containing generated imaging artifacts. This Forge manifest records the existing digest-verified regional latest mirrors and keeps the UI scoped to nonclinical synthetic-data and research workflows. MAISI must not be used for clinical diagnosis, treatment planning, patient-specific decisions, or evaluation of real patient imaging.",
+  "family_id": "3886daee-587f-4df3-bd70-4472a79bd77e",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "GENERATE_IMAGE_TIMEOUT": "1800",
+      "NIM_CACHE_PATH": "/opt/nim/.cache",
+      "NIM_HTTP_API_PORT": "8000",
+      "NIM_TELEMETRY_MODE": "0"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-07T11:30:25.967808+00:00",
+      "region": "us-central1",
+      "request_ms": 13186,
+      "request_ms_p50": 13186,
+      "request_ms_p95": 13879,
+      "request_ms_p99": 14049,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 447297,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.56,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:55:37.812131+00:00",
+      "region": "uk-south1",
+      "request_ms": 13861,
+      "request_ms_p50": 13882,
+      "request_ms_p95": 13902,
+      "request_ms_p99": 13904,
+      "request_ms_samples": 2,
+      "startup_ms_first": 538883,
+      "startup_ms_probe": 538883,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.53,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:52:59.637434+00:00",
+      "region": "eu-north2",
+      "request_ms": 12531,
+      "request_ms_p50": 12256,
+      "request_ms_p95": 12504,
+      "request_ms_p99": 12526,
+      "request_ms_samples": 2,
+      "startup_ms_first": 111003,
+      "startup_ms_probe": 111003,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.21,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 13235,
+      "request_ms_p95": 14240,
+      "request_ms_p99": 14708,
+      "request_ms_samples": 10,
+      "startup_ms_first": 111003,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.33,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-22T12:21:33.291880+00:00",
+      "region": "eu-north1",
+      "request_ms": 15004,
+      "request_ms_p50": 15200,
+      "request_ms_p95": 15375,
+      "request_ms_p99": 15391,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 168524,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 7.04,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:58:55.106689+00:00",
+      "region": "us-central1",
+      "request_ms": 15088,
+      "request_ms_p50": 14718,
+      "request_ms_p95": 15051,
+      "request_ms_p99": 15081,
+      "request_ms_samples": 3,
+      "startup_ms_first": 1763864,
+      "startup_ms_probe": 88860,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 5,
+      "total_warm_starts": 4,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "57ac4a2c-0b76-43c8-82ca-ab31d0be4c26",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "NVIDIA software and model evaluation license agreement; NVIDIA NIM terms",
+  "modality_input": [
+    "structured"
+  ],
+  "modality_output": [
+    "image",
+    "segmentation",
+    "file"
+  ],
+  "model_family": "nvidia-maisi",
+  "name": "NVIDIA MAISI",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "anatomy_list": "{{anatomy_list}}",
+        "body_region": "{{body_region}}",
+        "image_output_ext": "{{image_output_ext}}",
+        "label_output_ext": "{{label_output_ext}}",
+        "num_inference_steps": "{{num_inference_steps}}",
+        "num_output_samples": "{{num_output_samples}}",
+        "output_size": "{{output_size}}",
+        "spacing": "{{spacing}}"
+      },
+      "endpoint": "/v1/maisi/run",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "[\"abdomen\"]",
+        "key": "body_region",
+        "label": "Body regions JSON array",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "[\"liver\", \"spleen\"]",
+        "key": "anatomy_list",
+        "label": "Anatomies JSON array",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": 1,
+        "key": "num_output_samples",
+        "label": "Number of output samples",
+        "max": 1,
+        "min": 1,
+        "type": "number",
+        "visible": true
+      },
+      {
+        "default": 20,
+        "key": "num_inference_steps",
+        "label": "Inference steps",
+        "max": 1000,
+        "min": 1,
+        "type": "number",
+        "visible": true
+      },
+      {
+        "default": "[256, 256, 128]",
+        "key": "output_size",
+        "label": "Output size [x,y,z]",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "[1.0, 1.0, 1.0]",
+        "key": "spacing",
+        "label": "Spacing [x,y,z]",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": ".nii.gz",
+        "key": "image_output_ext",
+        "label": "Image output extension",
+        "options": [
+          ".nii.gz",
+          ".nii",
+          ".nrrd",
+          ".dcm"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": ".nii.gz",
+        "key": "label_output_ext",
+        "label": "Label output extension",
+        "options": [
+          ".nii.gz",
+          ".nii",
+          ".nrrd",
+          ".dcm"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "zip archive containing synthetic CT image and paired segmentation label files",
+      "type": "file"
+    },
+    "parameter_controls": [],
+    "runtime": {
+      "cache_mount": "/opt/nim/.cache",
+      "forge_cache_target": "/mnt/data/nim-cache/nvidia-maisi/latest",
+      "kind": "nvidia_nim",
+      "liveness_path": "/v1/health/live",
+      "nim_id": "nvidia/maisi",
+      "readiness_path": "/v1/health/ready",
+      "service_info_path": "/v1/maisi/info"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "anatomy_list",
+        "num_inference_steps",
+        "output_size",
+        "spacing",
+        "image_output_ext",
+        "label_output_ext"
+      ],
+      "required": [
+        "body_region",
+        "num_output_samples"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-maisi@sha256:a357210fe3b3f336faf8620deaf9b40848c73f313ec2a52370a623c57617bf51",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-maisi@sha256:a357210fe3b3f336faf8620deaf9b40848c73f313ec2a52370a623c57617bf51",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-maisi@sha256:a357210fe3b3f336faf8620deaf9b40848c73f313ec2a52370a623c57617bf51",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-maisi@sha256:a357210fe3b3f336faf8620deaf9b40848c73f313ec2a52370a623c57617bf51"
+  },
+  "release_rank": 62,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-maisi-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/medical/maisi/latest/",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "medical-imaging",
+    "synthetic-data",
+    "ct",
+    "segmentation",
+    "3d-medical-image",
+    "maisi",
+    "nvidia-nim",
+    "publication-hold"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "1.0.1",
+  "version_description": "NVIDIA MAISI medical-imaging NIM for synthetic 3D CT image and paired segmentation-label generation, backed by the existing Forge regional latest mirrors whose image labels identify NIM version 1.0.1.",
+  "version_key": "nim-1-0-1-latest-digest",
+  "version_label": "NIM latest / MAISI 1.0.1"
+}

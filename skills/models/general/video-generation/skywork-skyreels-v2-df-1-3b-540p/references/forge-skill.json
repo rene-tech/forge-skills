@@ -1,0 +1,184 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "0f4dedc46735d9c7684d34cdb72ff94756885ae12be914e138f126bca6fe8253",
+  "defaultEligible": true,
+  "displayName": "Use SkyReels-V2 DF 1.3B 540p",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/skywork-skyreels-v2-df-1-3b-540p/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "skywork-skyreels-v2-df-1-3b-540p"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/skywork-skyreels-v2-df-1-3b-540p",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A cat and a dog inspect a compact GPU server in a cozy lab, smooth film-like motion, natural light",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "low quality, blurry, flicker, watermark, distorted anatomy",
+      "fieldType": "textarea",
+      "key": "negative_prompt",
+      "label": "Negative Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 77,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 20,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 4,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 6,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 97,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 121,
+      "minimum": 25,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-skywork-skyreels-v2-df-1-3b-540p\ndescription: Use the exact Forge model skywork-skyreels-v2-df-1-3b-540p for text to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use SkyReels-V2 DF 1.3B 540p\n\n- Model slug: `skywork-skyreels-v2-df-1-3b-540p`\n- Model family: `skywork-skyreels-v2`\n- Version: `df-1-3b-540p-diffusers` (`df-1-3b-540p-diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / skywork-skyreels-v2-df-1-3b-540p`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nSkyReels-V2 diffusion-forcing text-to-video generation through the Forge Diffusers wrapper.\n\n## Use this exact model when\n\n- Use this exact `skywork-skyreels-v2-df-1-3b-540p` version when the task supplies text and needs video.\n- SkyReels-V2 diffusion-forcing text-to-video generation through the Forge Diffusers wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `negative_prompt` (textarea, optional): Negative Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_inference_steps` (number, optional; bounds 4..50): Steps\n- `guidance_scale` (number, optional; bounds 1..10): Guidance\n- `num_frames` (number, optional; bounds 25..121): Frames\n\nRequest template:\n\n```json\n{\n  \"addnoise_condition\": 20,\n  \"ar_step\": 5,\n  \"base_num_frames\": \"{{num_frames}}\",\n  \"causal_block_size\": 5,\n  \"fps\": 24,\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"height\": 544,\n  \"negative_prompt\": \"{{negative_prompt}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"width\": 960\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/skywork-skyreels-v2-df-1-3b-540p`\n\n## Workflow\n\n1. Load this skill and pin model slug `skywork-skyreels-v2-df-1-3b-540p` with version key `df-1-3b-540p-diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/skywork-skyreels-v2-df-1-3b-540p` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/skywork-skyreels-v2-df-1-3b-540p`\n- Routes: `/v1/models/skywork-skyreels-v2-df-1-3b-540p/inference-routes`\n- Regional deployment: `/v1/models/skywork-skyreels-v2-df-1-3b-540p/regional-deployment`\n- Deployment handoff: `/v1/models/skywork-skyreels-v2-df-1-3b-540p/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/skywork-skyreels-v2-df-1-3b-540p/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/skywork-skyreels-v2-df-1-3b-540p/SKILL.md\n\n## References\n\n- [SkyReels-V2 DF 1.3B 540p source](https://huggingface.co/docs/diffusers/v0.37.1/en/api/pipelines/skyreels_v2) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/skywork-skyreels-v2-df-1-3b-540p/deploy",
+    "inferenceRoutesUrl": "/v1/models/skywork-skyreels-v2-df-1-3b-540p/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/skywork-skyreels-v2",
+    "modelUrl": "/v1/models/skywork-skyreels-v2-df-1-3b-540p",
+    "regionalDeploymentUrl": "/v1/models/skywork-skyreels-v2-df-1-3b-540p/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/skywork-skyreels-v2-df-1-3b-540p/markdown",
+  "modelFamily": "skywork-skyreels-v2",
+  "modelSlug": "skywork-skyreels-v2-df-1-3b-540p",
+  "modelUrl": "/v1/models/skywork-skyreels-v2-df-1-3b-540p",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "SkyReels-V2 diffusion-forcing text-to-video generation through the Forge Diffusers wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/skywork-skyreels-v2-df-1-3b-540p/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "SkyReels-V2 DF 1.3B 540p source",
+      "url": "https://huggingface.co/docs/diffusers/v0.37.1/en/api/pipelines/skyreels_v2"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/skywork-skyreels-v2-df-1-3b-540p/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/skywork-skyreels-v2-df-1-3b-540p/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "addnoise_condition": 20,
+    "ar_step": 5,
+    "base_num_frames": "{{num_frames}}",
+    "causal_block_size": 5,
+    "fps": 24,
+    "guidance_scale": "{{guidance_scale}}",
+    "height": 544,
+    "negative_prompt": "{{negative_prompt}}",
+    "num_frames": "{{num_frames}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "width": 960
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 1300000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/docs/diffusers/v0.37.1/en/api/pipelines/skyreels_v2",
+    "tags": [
+      "video-generation",
+      "text-to-video",
+      "diffusion",
+      "skyreels",
+      "single-gpu"
+    ],
+    "versionLabel": "DF 1.3B 540p Diffusers"
+  },
+  "shortDescription": "SkyReels-V2 diffusion-forcing text-to-video generation through the Forge Diffusers wrapper.",
+  "skillName": "use-forge-skywork-skyreels-v2-df-1-3b-540p",
+  "skillUrl": "/v1/model-skills/skywork-skyreels-v2-df-1-3b-540p",
+  "slug": "skywork-skyreels-v2-df-1-3b-540p",
+  "stability": "experimental",
+  "version": "df-1-3b-540p-diffusers",
+  "versionKey": "df-1-3b-540p-diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `skywork-skyreels-v2-df-1-3b-540p` version when the task supplies text and needs video.",
+    "SkyReels-V2 diffusion-forcing text-to-video generation through the Forge Diffusers wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `skywork-skyreels-v2-df-1-3b-540p` with version key `df-1-3b-540p-diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/skywork-skyreels-v2-df-1-3b-540p` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

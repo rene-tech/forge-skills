@@ -1,0 +1,302 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "code",
+    "text_generation",
+    "completion",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/bigcode/starcoder2-7b:latest",
+  "container_image_size_bytes": null,
+  "context_window": 4096,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-27T07:56:52.175144+00:00",
+  "default_eligible": true,
+  "description": "BigCode StarCoder2 7B packaged as an NVIDIA NIM and mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave2. The playground uses the completion endpoint because this code model tokenizer does not provide a chat template.",
+  "family_id": "ff37f2a9-0636-49d1-b923-165e013009ca",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-08T17:20:36.247031+00:00",
+      "region": "us-central1",
+      "request_ms": 1198,
+      "request_ms_p50": 1198,
+      "request_ms_p95": 1199,
+      "request_ms_p99": 1199,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 503000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 227.88,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 162.05,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-07T21:49:44.091830+00:00",
+      "region": "uk-south1",
+      "request_ms": 1098,
+      "request_ms_p50": 1098,
+      "request_ms_p95": 1099,
+      "request_ms_p99": 1099,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 15000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 248.63,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 242.49,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-27T08:27:20.989256+00:00",
+      "region": "eu-north2",
+      "request_ms": 1458,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": 51056,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 187.24,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 127.28,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-27T08:18:31.750490+00:00",
+      "region": "us-central1",
+      "request_ms": 1522,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": 49246,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 179.37,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 127.28,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-27T08:20:09.929998+00:00",
+      "region": "eu-north1",
+      "request_ms": 5262,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": 56050,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 51.88,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 40.96,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T05:18:02.376877+00:00",
+      "region": "us-central1",
+      "request_ms": 3454,
+      "request_ms_p50": 3454,
+      "request_ms_p95": 41612,
+      "request_ms_p99": 45004,
+      "request_ms_samples": 3,
+      "startup_ms_first": 11000,
+      "startup_ms_probe": 49884,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 79.04,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 86.65,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 13.04
+    }
+  ],
+  "gpu_type": null,
+  "id": "05a75394-7a5d-4524-8e59-c6e80cb35873",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "bigcode-openrail-m",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "bigcode-starcoder2-7b",
+  "name": "BigCode StarCoder2 7B",
+  "parameter_count": 7000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "stream": true,
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/completions",
+      "method": "POST",
+      "upstream_model_id": "bigcode/starcoder2-7b"
+    },
+    "input_fields": [
+      {
+        "default": "Write a concise Python function that validates regional model mirror names and returns invalid entries.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "markdown",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 256,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "completion"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-bigcode-starcoder2-7b:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-bigcode-starcoder2-7b:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-bigcode-starcoder2-7b:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-bigcode-starcoder2-7b:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "bigcode-starcoder2-7b-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/bigcode/starcoder2-7b",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "code",
+    "llm",
+    "completion"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

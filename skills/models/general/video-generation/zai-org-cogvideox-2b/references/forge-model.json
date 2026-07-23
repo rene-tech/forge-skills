@@ -1,0 +1,293 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "video_generation",
+    "text_to_video",
+    "diffusion",
+    "cogvideox",
+    "single_gpu",
+    "text",
+    "video",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+  "container_image_size_bytes": null,
+  "context_window": 226,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-17T03:40:41.639731+00:00",
+  "default_eligible": true,
+  "description": "CogVideoX 2B text-to-video generation through the reusable Forge Diffusers media wrapper. It is the first custom open video wrapper candidate because the model card documents single-GPU Diffusers deployment and low-VRAM offload paths.",
+  "family_id": "9289ac89-13c2-4875-aa71-6c659bd28073",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0,
+    "runtime_env": {
+      "MEDIA_DEFAULT_FPS": "8",
+      "MEDIA_DEFAULT_GUIDANCE_SCALE": "6",
+      "MEDIA_DEFAULT_NUM_FRAMES": "49",
+      "MEDIA_DEFAULT_STEPS": "20",
+      "MEDIA_ENABLE_CPU_OFFLOAD": "1",
+      "MEDIA_ENABLE_SEQUENTIAL_CPU_OFFLOAD": "0",
+      "MEDIA_ENABLE_VAE_SLICING": "1",
+      "MEDIA_ENABLE_VAE_TILING": "1",
+      "MEDIA_MODEL_ID": "zai-org/CogVideoX-2b",
+      "MEDIA_MODEL_KIND": "video_diffusers",
+      "MEDIA_MODEL_SLUG": "zai-org-cogvideox-2b",
+      "MEDIA_PIPELINE_CLASS": "CogVideoXPipeline",
+      "MEDIA_TORCH_DTYPE": "float16"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:45:25.042615+00:00",
+      "region": "us-central1",
+      "request_ms": 25013,
+      "request_ms_p50": 25013,
+      "request_ms_p95": 25013,
+      "request_ms_p99": 25013,
+      "request_ms_samples": 1,
+      "startup_ms_first": 30762,
+      "startup_ms_probe": 30762,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:02:07.398341+00:00",
+      "region": "uk-south1",
+      "request_ms": 60178,
+      "request_ms_p50": 60178,
+      "request_ms_p95": 60178,
+      "request_ms_p99": 60178,
+      "request_ms_samples": 1,
+      "startup_ms_first": 62410,
+      "startup_ms_probe": 11770,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:45:34.402182+00:00",
+      "region": "eu-north2",
+      "request_ms": 27333,
+      "request_ms_p50": 27333,
+      "request_ms_p95": 27333,
+      "request_ms_p99": 27333,
+      "request_ms_samples": 1,
+      "startup_ms_first": 52377,
+      "startup_ms_probe": 52377,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:45:52.405765+00:00",
+      "region": "eu-north1",
+      "request_ms": 54371,
+      "request_ms_p50": 54371,
+      "request_ms_p95": 54371,
+      "request_ms_p99": 54371,
+      "request_ms_samples": 1,
+      "startup_ms_first": 54961,
+      "startup_ms_probe": 54961,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T03:45:34.995834+00:00",
+      "region": "us-central1",
+      "request_ms": 35182,
+      "request_ms_p50": 35182,
+      "request_ms_p95": 35182,
+      "request_ms_p99": 35182,
+      "request_ms_samples": 1,
+      "startup_ms_first": 54544,
+      "startup_ms_probe": 54544,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    }
+  ],
+  "gpu_type": null,
+  "id": "5448157a-6120-4b42-9b73-ea3a41a86e84",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "video"
+  ],
+  "model_family": "zai-org-cogvideox",
+  "name": "CogVideoX 2B",
+  "parameter_count": 2000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "guidance_scale": "{{guidance_scale}}",
+        "num_inference_steps": "{{num_inference_steps}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}"
+      },
+      "endpoint": "/v1/inference/zai-org-cogvideox-2b",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "A detailed wooden toy ship gliding over a plush blue carpet like ocean waves, cinematic motion, soft indoor light",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "mp4",
+      "type": "video"
+    },
+    "parameter_controls": [
+      {
+        "default": 42,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 20,
+        "key": "num_inference_steps",
+        "label": "Steps",
+        "max": 50,
+        "min": 4,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 6,
+        "key": "guidance_scale",
+        "label": "Guidance",
+        "max": 10,
+        "min": 1,
+        "step": 0.5,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "video_generation"
+  },
+  "quantization": "fp16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-media-generation-diffusers:20260517-diffusers-v6",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-media-generation-diffusers:20260517-diffusers-v6"
+  },
+  "release_rank": 150,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "zai-org-cogvideox-2b",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/zai-org/CogVideoX-2b",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "video-generation",
+    "text-to-video",
+    "diffusion",
+    "cogvideox",
+    "single-gpu"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "2b-diffusers",
+  "version_description": null,
+  "version_key": "2b-diffusers",
+  "version_label": "2B Diffusers"
+}

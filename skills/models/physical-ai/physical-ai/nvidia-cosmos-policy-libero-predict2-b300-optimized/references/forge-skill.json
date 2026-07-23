@@ -1,0 +1,180 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "4b06035c1a1693e02b017091752aaae07c2778b2c609107165dd7c6226f6aead",
+  "defaultEligible": true,
+  "displayName": "Use NVIDIA Cosmos Policy LIBERO Predict2 2B (B300 Optimized)",
+  "domain": "physical-ai",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos-policy-libero-predict2-b300-optimized/markdown?download=true",
+  "group": "physical-ai",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "physical-ai",
+    "nvidia-cosmos-policy-libero-predict2-b300-optimized"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos-policy-libero-predict2-2b",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "put both the alphabet soup and the tomato sauce in the basket",
+      "fieldType": "textarea",
+      "key": "task_description",
+      "label": "Task Description",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "{\"use_sample_observation\": true}",
+      "fieldType": "json_editor",
+      "key": "observation",
+      "label": "Observation JSON",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "generate_future_state_and_value",
+      "label": "Generate Future State and Value",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "materialize_future_images",
+      "label": "Decode Future Images",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 195,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "num_denoising_steps_action",
+      "label": "Denoising Steps",
+      "maximum": 32,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "proprio"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos-policy-libero-predict2-b300-optimized\ndescription: Use the exact Forge model nvidia-cosmos-policy-libero-predict2-b300-optimized for text, image, proprio to json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos Policy LIBERO Predict2 2B (B300 Optimized)\n\n- Model slug: `nvidia-cosmos-policy-libero-predict2-b300-optimized`\n- Model family: `nvidia-cosmos-policy-libero-predict2`\n- Version: `b300-optimized` (`b300-optimized`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / physical-ai / nvidia-cosmos-policy-libero-predict2-b300-optimized`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nB300-optimized CUDA 13 Cosmos Policy LIBERO checkpoint wrapper with validated SM103 cuDNN attention dispatch.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos-policy-libero-predict2-b300-optimized` version when the task supplies text, image, proprio and needs json.\n- B300-optimized CUDA 13 Cosmos Policy LIBERO checkpoint wrapper with validated SM103 cuDNN attention dispatch.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'proprio'] \u2192 ['json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `task_description` (textarea, optional): Task Description\n- `observation` (json_editor, optional): Observation JSON\n- `generate_future_state_and_value` (checkbox, optional): Generate Future State and Value\n- `materialize_future_images` (checkbox, optional): Decode Future Images\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_denoising_steps_action` (number, optional; bounds 1..32): Denoising Steps\n\nRequest template:\n\n```json\n{\n  \"generate_future_state_and_value\": \"{{generate_future_state_and_value}}\",\n  \"materialize_future_images\": \"{{materialize_future_images}}\",\n  \"model\": \"{{model_slug}}\",\n  \"num_denoising_steps_action\": \"{{num_denoising_steps_action}}\",\n  \"observation\": \"{{observation}}\",\n  \"seed\": \"{{seed}}\",\n  \"task_description\": \"{{task_description}}\"\n}\n```\n\n## Exact output\n\n- `json`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos-policy-libero-predict2-2b`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos-policy-libero-predict2-b300-optimized` with version key `b300-optimized`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos-policy-libero-predict2-2b` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized`\n- Routes: `/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-b300-optimized/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-b300-optimized/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos Policy LIBERO Predict2 2B (B300 Optimized) source](https://github.com/NVlabs/cosmos-policy) (repository)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos-policy-libero-predict2",
+    "modelUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos-policy-libero-predict2-b300-optimized/markdown",
+  "modelFamily": "nvidia-cosmos-policy-libero-predict2",
+  "modelSlug": "nvidia-cosmos-policy-libero-predict2-b300-optimized",
+  "modelUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-b300-optimized",
+  "outputFields": [
+    "json"
+  ],
+  "outputModalities": [
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "B300-optimized CUDA 13 Cosmos Policy LIBERO checkpoint wrapper with validated SM103 cuDNN attention dispatch.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-b300-optimized/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "NVIDIA Cosmos Policy LIBERO Predict2 2B (B300 Optimized) source",
+      "url": "https://github.com/NVlabs/cosmos-policy"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-b300-optimized/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-b300-optimized/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "generate_future_state_and_value": "{{generate_future_state_and_value}}",
+    "materialize_future_images": "{{materialize_future_images}}",
+    "model": "{{model_slug}}",
+    "num_denoising_steps_action": "{{num_denoising_steps_action}}",
+    "observation": "{{observation}}",
+    "seed": "{{seed}}",
+    "task_description": "{{task_description}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 2000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/NVlabs/cosmos-policy",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "policy",
+      "libero",
+      "cosmos",
+      "blackwell-optimized"
+    ],
+    "versionLabel": "B300 Optimized"
+  },
+  "shortDescription": "B300-optimized CUDA 13 Cosmos Policy LIBERO checkpoint wrapper with validated SM103 cuDNN attention dispatch.",
+  "skillName": "use-forge-nvidia-cosmos-policy-libero-predict2-b300-optimized",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos-policy-libero-predict2-b300-optimized",
+  "slug": "nvidia-cosmos-policy-libero-predict2-b300-optimized",
+  "stability": "testing",
+  "version": "b300-optimized",
+  "versionKey": "b300-optimized",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'proprio'] \u2192 ['json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos-policy-libero-predict2-b300-optimized` version when the task supplies text, image, proprio and needs json.",
+    "B300-optimized CUDA 13 Cosmos Policy LIBERO checkpoint wrapper with validated SM103 cuDNN attention dispatch.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos-policy-libero-predict2-b300-optimized` with version key `b300-optimized`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos-policy-libero-predict2-2b` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

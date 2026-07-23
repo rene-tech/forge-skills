@@ -1,0 +1,128 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "8d5fabbcb61dee0548a8de7e73654caca901c70ccade2d4dc1de77d8c30d7896",
+  "defaultEligible": false,
+  "displayName": "Use BGE-M3",
+  "domain": "embeddings",
+  "downloadUrl": "/v1/model-skills/baai-bge-m3-tei-cuda-1-9/markdown?download=true",
+  "group": "embeddings",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "embeddings",
+    "baai-bge-m3-tei-cuda-1-9"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "How can shared GPU caches reduce model inference cold starts?",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Input text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-baai-bge-m3-tei-cuda-1-9\ndescription: Use the exact Forge model baai-bge-m3-tei-cuda-1-9 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use BGE-M3\n\n- Model slug: `baai-bge-m3-tei-cuda-1-9`\n- Model family: `baai-bge-m3`\n- Version: `tei-cuda-1.9.3` (`tei-cuda-1-9-3`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / embeddings / baai-bge-m3-tei-cuda-1-9`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `mit`\n\n## Purpose\n\nBAAI BGE-M3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic retrieval, long-document RAG, and dense embedding use.\n\n## Use this exact model when\n\n- Use this exact `baai-bge-m3-tei-cuda-1-9` version when the task supplies text and needs embedding.\n- BAAI BGE-M3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic retrieval, long-document RAG, and dense embedding use.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Input text\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"float\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `baai-bge-m3-tei-cuda-1-9` with version key `tei-cuda-1-9-3`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 8192.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/baai-bge-m3-tei-cuda-1-9`\n- Routes: `/v1/models/baai-bge-m3-tei-cuda-1-9/inference-routes`\n- Regional deployment: `/v1/models/baai-bge-m3-tei-cuda-1-9/regional-deployment`\n- Deployment handoff: `/v1/models/baai-bge-m3-tei-cuda-1-9/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/baai-bge-m3-tei-cuda-1-9/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/embeddings/baai-bge-m3-tei-cuda-1-9/SKILL.md\n\n## References\n\n- [BGE-M3 source](https://huggingface.co/BAAI/bge-m3) (model-card)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 8192."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/baai-bge-m3-tei-cuda-1-9/deploy",
+    "inferenceRoutesUrl": "/v1/models/baai-bge-m3-tei-cuda-1-9/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/baai-bge-m3",
+    "modelUrl": "/v1/models/baai-bge-m3-tei-cuda-1-9",
+    "regionalDeploymentUrl": "/v1/models/baai-bge-m3-tei-cuda-1-9/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/baai-bge-m3-tei-cuda-1-9/markdown",
+  "modelFamily": "baai-bge-m3",
+  "modelSlug": "baai-bge-m3-tei-cuda-1-9",
+  "modelUrl": "/v1/models/baai-bge-m3-tei-cuda-1-9",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "BAAI BGE-M3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic retrieval, long-document RAG, and dense embedding use.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/embeddings/baai-bge-m3-tei-cuda-1-9/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "BGE-M3 source",
+      "url": "https://huggingface.co/BAAI/bge-m3"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/baai-bge-m3-tei-cuda-1-9/SKILL.md",
+  "repositoryPath": "skills/models/general/embeddings/baai-bge-m3-tei-cuda-1-9/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "float",
+    "input": "{{input}}",
+    "model": "{{model_slug}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 8192,
+    "parameterCount": null,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/BAAI/bge-m3",
+    "tags": [
+      "embedding",
+      "retrieval",
+      "rag",
+      "multilingual",
+      "long-context",
+      "hybrid-retrieval",
+      "bge",
+      "huggingface",
+      "tei"
+    ],
+    "versionLabel": "TEI CUDA 1.9.3"
+  },
+  "shortDescription": "BAAI BGE-M3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic retrieval, long-document RAG, and dense embedding use.",
+  "skillName": "use-forge-baai-bge-m3-tei-cuda-1-9",
+  "skillUrl": "/v1/model-skills/baai-bge-m3-tei-cuda-1-9",
+  "slug": "baai-bge-m3-tei-cuda-1-9",
+  "stability": "testing",
+  "version": "tei-cuda-1.9.3",
+  "versionKey": "tei-cuda-1-9-3",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `baai-bge-m3-tei-cuda-1-9` version when the task supplies text and needs embedding.",
+    "BAAI BGE-M3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic retrieval, long-document RAG, and dense embedding use.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `baai-bge-m3-tei-cuda-1-9` with version key `tei-cuda-1-9-3`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

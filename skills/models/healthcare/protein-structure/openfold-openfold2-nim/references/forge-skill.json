@@ -1,0 +1,122 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "71f93d23e48d9297645a3c7c60ed930f51da1995329e682c55c1fec8093bbf93",
+  "defaultEligible": true,
+  "displayName": "Use OpenFold2",
+  "domain": "protein-structure",
+  "downloadUrl": "/v1/model-skills/openfold-openfold2-nim/markdown?download=true",
+  "group": "protein-structure",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "protein-structure",
+    "openfold-openfold2-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/biology/openfold/openfold2/predict-structure-from-msa-and-template",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "GGSKENEISHHAKEIERLQKEIERHKQSIKKLKQSEQSNPPPNPEGTRQARRNRRRRWRERQRQKENEISHHAKEIERLQKEIERHKQSIKKLKQSEC",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "sequence"
+  ],
+  "instructions": "---\nname: use-forge-openfold-openfold2-nim\ndescription: Use the exact Forge model openfold-openfold2-nim for sequence to structure tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use OpenFold2\n\n- Model slug: `openfold-openfold2-nim`\n- Model family: `openfold-openfold2`\n- Version: `latest` (`latest`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / protein-structure / openfold-openfold2-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `Apache-2.0; NVIDIA NIM terms`\n\n## Purpose\n\nOpenFold2 NIM for protein structure prediction from amino-acid sequences with optional MSA/template support in the upstream API.\n\n## Use this exact model when\n\n- Use this exact `openfold-openfold2-nim` version when the task supplies sequence and needs structure.\n- OpenFold2 NIM for protein structure prediction from amino-acid sequences with optional MSA/template support in the upstream API.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['sequence'] \u2192 ['structure'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, optional): Protein sequence\n\nRequest template:\n\n```json\n{\n  \"sequence\": \"{{sequence}}\"\n}\n```\n\n## Exact output\n\n- `structure`\n\n## Route\n\n`POST /biology/openfold/openfold2/predict-structure-from-msa-and-template`\n\n## Workflow\n\n1. Load this skill and pin model slug `openfold-openfold2-nim` with version key `latest`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /biology/openfold/openfold2/predict-structure-from-msa-and-template` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/openfold-openfold2-nim`\n- Routes: `/v1/models/openfold-openfold2-nim/inference-routes`\n- Regional deployment: `/v1/models/openfold-openfold2-nim/regional-deployment`\n- Deployment handoff: `/v1/models/openfold-openfold2-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/protein-structure/openfold-openfold2-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/protein-structure/openfold-openfold2-nim/SKILL.md\n\n## References\n\n- [OpenFold2 source](https://build.nvidia.com/openfold/openfold2) (model-card)\n",
+  "license": "Apache-2.0; NVIDIA NIM terms",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/openfold-openfold2-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/openfold-openfold2-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/openfold-openfold2",
+    "modelUrl": "/v1/models/openfold-openfold2-nim",
+    "regionalDeploymentUrl": "/v1/models/openfold-openfold2-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/openfold-openfold2-nim/markdown",
+  "modelFamily": "openfold-openfold2",
+  "modelSlug": "openfold-openfold2-nim",
+  "modelUrl": "/v1/models/openfold-openfold2-nim",
+  "outputFields": [
+    "structure"
+  ],
+  "outputModalities": [
+    "structure"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "OpenFold2 NIM for protein structure prediction from amino-acid sequences with optional MSA/template support in the upstream API.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/protein-structure/openfold-openfold2-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "OpenFold2 source",
+      "url": "https://build.nvidia.com/openfold/openfold2"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/protein-structure/openfold-openfold2-nim/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/protein-structure/openfold-openfold2-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "sequence": "{{sequence}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/openfold/openfold2",
+    "tags": [
+      "biology",
+      "biotech",
+      "life-science",
+      "protein-structure",
+      "openfold",
+      "nvidia-nim"
+    ],
+    "versionLabel": "latest"
+  },
+  "shortDescription": "OpenFold2 NIM for protein structure prediction from amino-acid sequences with optional MSA/template support in the upstream API.",
+  "skillName": "use-forge-openfold-openfold2-nim",
+  "skillUrl": "/v1/model-skills/openfold-openfold2-nim",
+  "slug": "openfold-openfold2-nim",
+  "stability": "stable",
+  "version": "latest",
+  "versionKey": "latest",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['sequence'] \u2192 ['structure'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `openfold-openfold2-nim` version when the task supplies sequence and needs structure.",
+    "OpenFold2 NIM for protein structure prediction from amino-acid sequences with optional MSA/template support in the upstream API.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `openfold-openfold2-nim` with version key `latest`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /biology/openfold/openfold2/predict-structure-from-msa-and-template` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "earth-observation",
+  "contentSha256": "5181241e94e3ab18a5d6d48e704cb9e40a54f6ccea729ab2b7b262baa671889e",
+  "defaultEligible": false,
+  "displayName": "Use SatlasPretrain Aerial SwinB",
+  "domain": "earth-observation",
+  "downloadUrl": "/v1/model-skills/allenai-satlaspretrain-aerial-swinb/markdown?download=true",
+  "group": "earth-observation",
+  "hierarchyPath": [
+    "models",
+    "earth-observation",
+    "earth-observation",
+    "allenai-satlaspretrain-aerial-swinb"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/allenai-satlaspretrain-aerial-swinb",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/15/12663/7710",
+      "fieldType": "url",
+      "key": "image",
+      "label": "Image URL or data URI",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        "buildings",
+        "roads",
+        "water",
+        "fields",
+        "forest"
+      ],
+      "fieldType": "list",
+      "key": "labels",
+      "label": "Labels",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": {},
+      "fieldType": "json_editor",
+      "key": "metadata",
+      "label": "Optional Plot Metadata",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "tile_size",
+      "label": "Tile Size",
+      "maximum": 2048,
+      "minimum": 256,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 4,
+      "fieldType": "number",
+      "key": "max_tiles",
+      "label": "Max Tiles",
+      "maximum": 16,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.5,
+      "fieldType": "number",
+      "key": "mask_threshold",
+      "label": "Mask Threshold",
+      "maximum": 0.9,
+      "minimum": 0.1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "return_centinela_report",
+      "label": "Return Centinela report",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-allenai-satlaspretrain-aerial-swinb\ndescription: Use the exact Forge model allenai-satlaspretrain-aerial-swinb for image to json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use SatlasPretrain Aerial SwinB\n\n- Model slug: `allenai-satlaspretrain-aerial-swinb`\n- Model family: `allenai-satlaspretrain-aerial-swinb`\n- Version: `usable-highres` (`usable-highres`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / earth-observation / earth-observation / allenai-satlaspretrain-aerial-swinb`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nPublic Satlas high-resolution multi-task model for 8-bit RGB aerial/satellite imagery.\n\n## Use this exact model when\n\n- Use this exact `allenai-satlaspretrain-aerial-swinb` version when the task supplies image and needs json.\n- Public Satlas high-resolution multi-task model for 8-bit RGB aerial/satellite imagery.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['image'] \u2192 ['json'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `image` (url, optional): Image URL or data URI\n- `labels` (list, optional): Labels\n- `metadata` (json_editor, optional): Optional Plot Metadata\n- `tile_size` (number, optional; bounds 256..2048): Tile Size\n- `max_tiles` (number, optional; bounds 1..16): Max Tiles\n- `mask_threshold` (number, optional; bounds 0.1..0.9): Mask Threshold\n- `return_centinela_report` (checkbox, optional): Return Centinela report\n\nRequest template:\n\n```json\n{\n  \"image\": \"{{image}}\",\n  \"labels\": \"{{labels}}\",\n  \"mask_threshold\": \"{{mask_threshold}}\",\n  \"max_tiles\": \"{{max_tiles}}\",\n  \"metadata\": \"{{metadata}}\",\n  \"return_centinela_report\": \"{{return_centinela_report}}\",\n  \"tile_size\": \"{{tile_size}}\"\n}\n```\n\n## Exact output\n\n- `json`\n\n## Route\n\n`POST /v1/inference/allenai-satlaspretrain-aerial-swinb`\n\n## Workflow\n\n1. Load this skill and pin model slug `allenai-satlaspretrain-aerial-swinb` with version key `usable-highres`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/allenai-satlaspretrain-aerial-swinb` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Confirm imagery, geospatial data, and derived-output rights before processing or redistribution.\n- Require human review before consequential environmental, security, property, or emergency-response decisions.\n- Keep model revision, request, response, source imagery, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/allenai-satlaspretrain-aerial-swinb`\n- Routes: `/v1/models/allenai-satlaspretrain-aerial-swinb/inference-routes`\n- Regional deployment: `/v1/models/allenai-satlaspretrain-aerial-swinb/regional-deployment`\n- Deployment handoff: `/v1/models/allenai-satlaspretrain-aerial-swinb/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/earth-observation/earth-observation/allenai-satlaspretrain-aerial-swinb/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/earth-observation/earth-observation/allenai-satlaspretrain-aerial-swinb/SKILL.md\n\n## References\n\n- [SatlasPretrain Aerial SwinB source](https://github.com/allenai/satlas) (repository)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/allenai-satlaspretrain-aerial-swinb/deploy",
+    "inferenceRoutesUrl": "/v1/models/allenai-satlaspretrain-aerial-swinb/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/allenai-satlaspretrain-aerial-swinb",
+    "modelUrl": "/v1/models/allenai-satlaspretrain-aerial-swinb",
+    "regionalDeploymentUrl": "/v1/models/allenai-satlaspretrain-aerial-swinb/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/allenai-satlaspretrain-aerial-swinb/markdown",
+  "modelFamily": "allenai-satlaspretrain-aerial-swinb",
+  "modelSlug": "allenai-satlaspretrain-aerial-swinb",
+  "modelUrl": "/v1/models/allenai-satlaspretrain-aerial-swinb",
+  "outputFields": [
+    "json"
+  ],
+  "outputModalities": [
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Public Satlas high-resolution multi-task model for 8-bit RGB aerial/satellite imagery.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/earth-observation/earth-observation/allenai-satlaspretrain-aerial-swinb/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "SatlasPretrain Aerial SwinB source",
+      "url": "https://github.com/allenai/satlas"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/earth-observation/earth-observation/allenai-satlaspretrain-aerial-swinb/SKILL.md",
+  "repositoryPath": "skills/models/earth-observation/earth-observation/allenai-satlaspretrain-aerial-swinb/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "image": "{{image}}",
+    "labels": "{{labels}}",
+    "mask_threshold": "{{mask_threshold}}",
+    "max_tiles": "{{max_tiles}}",
+    "metadata": "{{metadata}}",
+    "return_centinela_report": "{{return_centinela_report}}",
+    "tile_size": "{{tile_size}}"
+  },
+  "safety": [
+    "Confirm imagery, geospatial data, and derived-output rights before processing or redistribution.",
+    "Require human review before consequential environmental, security, property, or emergency-response decisions.",
+    "Keep model revision, request, response, source imagery, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "fp32",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/allenai/satlas",
+    "tags": [
+      "earth-observation",
+      "satellite",
+      "aerial",
+      "satlas",
+      "buildings",
+      "roads",
+      "high-resolution",
+      "multitask"
+    ],
+    "versionLabel": "Usable High-Resolution"
+  },
+  "shortDescription": "Public Satlas high-resolution multi-task model for 8-bit RGB aerial/satellite imagery.",
+  "skillName": "use-forge-allenai-satlaspretrain-aerial-swinb",
+  "skillUrl": "/v1/model-skills/allenai-satlaspretrain-aerial-swinb",
+  "slug": "allenai-satlaspretrain-aerial-swinb",
+  "stability": "experimental",
+  "version": "usable-highres",
+  "versionKey": "usable-highres",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['image'] \u2192 ['json'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `allenai-satlaspretrain-aerial-swinb` version when the task supplies image and needs json.",
+    "Public Satlas high-resolution multi-task model for 8-bit RGB aerial/satellite imagery.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `allenai-satlaspretrain-aerial-swinb` with version key `usable-highres`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/allenai-satlaspretrain-aerial-swinb` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

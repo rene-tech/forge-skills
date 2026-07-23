@@ -1,0 +1,549 @@
+{
+  "benchmark_scores": {
+    "artifact_commit": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+    "artifact_config": {
+      "architectures": [
+        "XLMRobertaModel"
+      ],
+      "hidden_size": 1024,
+      "max_position_embeddings": 514,
+      "model_type": "xlm-roberta",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 24,
+      "torch_dtype": "float16",
+      "vocab_size": 250002
+    },
+    "artifact_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "b200_us_central1_probe": {
+      "latency_samples_ms": [
+        158,
+        159,
+        158,
+        157,
+        157,
+        157,
+        157,
+        157,
+        158,
+        158
+      ],
+      "model_p50_ms": 158,
+      "node": "computeinstance-u00hjshxzk8vfj5wj9",
+      "pod_name": "forge-probe-intfloat-multilingual-e5-b200-us-central1-ffd732",
+      "probed_at": "2026-05-24T18:11:45Z",
+      "response_status": 200,
+      "source": "client_wall_ms",
+      "startup_ms": 309324,
+      "status": "supported",
+      "tokens_per_second": 253.16,
+      "vram_gb": 1.78
+    },
+    "b300_sm103_entrypoint_audit": {
+      "audited_at": "2026-05-24T18:05:00Z",
+      "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "finding": "The TEI CUDA 1.9.3 /entrypoint.sh reads nvidia-smi compute_cap and dispatches only 75, 80-89, 90, 100, and 120. B300 reports SM103/compute_cap=103, which falls through to the unsupported branch and exits 1 before server startup.",
+      "image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+      "next_step": "Keep B300 disabled until upstream TEI adds an SM103 router or Forge builds and mirrors a B300-capable wrapper variant."
+    },
+    "b300_uk_south1_probe": {
+      "failure_reason": "RuntimeError: pod_start_failure:pod_failed",
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "pod_name": "forge-probe-intfloat-multilingual-e5-b300-uk-south1-21d7ad",
+      "probed_at": "2026-05-24T18:11:45Z",
+      "status": "other_error"
+    },
+    "blockers": [
+      "B300/uk-south1 is blocked for the pinned TEI CUDA 1.9.3 image by missing SM103 entrypoint dispatch.",
+      "TEI embeddings responses generally do not expose server-side model execution time, so request_ms is client_wall_ms rather than runtime-internal model execution time.",
+      "Keep default_eligible=false until product routing explicitly chooses this MIT multilingual E5 route over the current default embedding options."
+    ],
+    "container_license_evidence": "skopeo inspect labels for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 report org.opencontainers.image.licenses=Apache-2.0 and org.opencontainers.image.version=cuda-1.9.3.",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_image_after_nvcr_nim_manifest_auth_required",
+    "h200_eu_north2_probe": {
+      "latency_samples_ms": [
+        102,
+        101,
+        101,
+        102,
+        100,
+        101,
+        101,
+        101,
+        101,
+        101
+      ],
+      "model_p50_ms": 101,
+      "node": "computeinstance-e02xmpc3hhyvpwf4qg",
+      "pod_name": "forge-probe-intfloat-multilingual-e5-h200-eu-north2-67f9dc",
+      "probed_at": "2026-05-24T18:11:45Z",
+      "response_status": 200,
+      "source": "client_wall_ms",
+      "startup_ms": 235870,
+      "status": "supported",
+      "tokens_per_second": 396.04,
+      "vram_gb": 1.67
+    },
+    "l40s_eu_north1_probe": {
+      "latency_samples_ms": [
+        96,
+        97,
+        98,
+        96,
+        97,
+        97,
+        97,
+        96,
+        97,
+        97
+      ],
+      "model_p50_ms": 97,
+      "node": "computeinstance-e00knmqbn7kxszaff1",
+      "pod_name": "forge-probe-intfloat-multilingual-e5-l40s-eu-north1-ff0200",
+      "probed_at": "2026-05-24T18:11:45Z",
+      "response_status": 200,
+      "source": "client_wall_ms",
+      "startup_ms": 235057,
+      "status": "supported",
+      "tokens_per_second": 412.37,
+      "vram_gb": 1.5
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_failed": [
+        "B300/uk-south1"
+      ],
+      "cells_supported": [
+        "B200/us-central1",
+        "H200/eu-north2",
+        "L40S/eu-north1",
+        "RTX6000/us-central1"
+      ],
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug intfloat-multilingual-e5-large-instruct-tei-cuda-1-9 --include-status onboarding --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json docs/model-onboarding/general/intfloat-multilingual-e5-large-instruct-tei-cuda-1-9-20260524T18Z-matrix.json --report-md docs/model-onboarding/general/intfloat-multilingual-e5-large-instruct-tei-cuda-1-9-20260524T18Z-matrix.md",
+      "probed_at": "2026-05-24T18:11:45Z",
+      "report_json": "docs/model-onboarding/general/intfloat-multilingual-e5-large-instruct-tei-cuda-1-9-20260524T18Z-matrix.json",
+      "report_md": "docs/model-onboarding/general/intfloat-multilingual-e5-large-instruct-tei-cuda-1-9-20260524T18Z-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "status": "partial_supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API reports private=false, gated=false, disabled=false, cardData.license=mit, and tag license:mit for intfloat/multilingual-e5-large-instruct.",
+    "live_publication_20260527T08Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/intfloat-multilingual-e5-large-instruct-tei-cuda-1-9.json --keep-existing-family-latest",
+      "db_readback": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": true,
+          "B300": false,
+          "H200": true,
+          "L40S": true,
+          "RTX6000": true
+        },
+        "is_latest": true,
+        "stability": "testing",
+        "status": "active",
+        "support_rows": {
+          "B200/us-central1": {
+            "request_ms_p50": 158,
+            "request_ms_samples": 10,
+            "startup_ms": 309324,
+            "status": "supported",
+            "tokens_per_second": 253.16,
+            "vram_measured_gb": 1.78
+          },
+          "B300/uk-south1": {
+            "last_error": "RuntimeError: pod_start_failure:pod_failed",
+            "request_ms_samples": 0,
+            "status": "other_error"
+          },
+          "H200/eu-north2": {
+            "request_ms_p50": 101,
+            "request_ms_samples": 10,
+            "startup_ms": 235870,
+            "status": "supported",
+            "tokens_per_second": 396.04,
+            "vram_measured_gb": 1.67
+          },
+          "L40S/eu-north1": {
+            "request_ms_p50": 97,
+            "request_ms_samples": 10,
+            "startup_ms": 235057,
+            "status": "supported",
+            "tokens_per_second": 412.37,
+            "vram_measured_gb": 1.5
+          },
+          "RTX6000/us-central1": {
+            "request_ms_p50": 167,
+            "request_ms_samples": 10,
+            "startup_ms": 361520,
+            "status": "supported",
+            "tokens_per_second": 239.52,
+            "vram_measured_gb": 1.65
+          }
+        }
+      },
+      "public_readback": {
+        "default_eligible": false,
+        "gpu_compatibility": {
+          "B200": true,
+          "B300": false,
+          "H200": true,
+          "L40S": true,
+          "RTX6000": true
+        },
+        "stability": "testing",
+        "status": "cold",
+        "url": "https://forge.eu-north1.osmo.nebius.cloud/api/proxy/v1/models/intfloat-multilingual-e5-large-instruct-tei-cuda-1-9"
+      },
+      "result": "succeeded"
+    },
+    "live_upserted_at": "2026-05-24T18:05:00Z",
+    "onboarding_state": "active_testing_non_default_b200_h200_l40s_rtx6000_supported_b300_sm103_entrypoint_incompatible",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_review_20260527T08Z": {
+      "artifact_refresh": {
+        "disabled": false,
+        "gated": false,
+        "hf_api_checked_at": "2026-05-27T08Z",
+        "last_modified": "2025-07-10T10:12:37.000Z",
+        "library_name": "sentence-transformers",
+        "license": "mit",
+        "pipeline_tag": "feature-extraction",
+        "private": false,
+        "safetensors_f16_parameters": 559890432,
+        "sha": "274baa43b0e13e37fafa6428dbc7938e62e5c439"
+      },
+      "basis": "License, artifact metadata, container digest, regional mirrors, and matrix evidence were refreshed or rechecked. B200, H200, L40S, and RTX6000 each have 3 warmups and 10 measured warm embedding requests; B300 is a classified TEI CUDA 1.9.3 SM103 entrypoint incompatibility and remains disabled.",
+      "container_refresh": {
+        "checked_at": "2026-05-27T08Z",
+        "created": "2026-03-23T09:18:22.111980354Z",
+        "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+        "license_label": "Apache-2.0",
+        "revision_label": "06670157fb6c1523482219bdb2d1660277d38088",
+        "version_label": "cuda-1.9.3"
+      },
+      "decision": "publish_candidate_active_non_default",
+      "default_eligible": false,
+      "is_latest": true,
+      "manifest_stability": "testing",
+      "manifest_status": "active",
+      "probe_decision": "No new GPU pod was launched in this cycle. Existing 2026-05-24T18Z matrix data already meets the 10-run bar on all enabled cells, and the only disabled cell is a deterministic TEI entrypoint architecture rejection.",
+      "regional_mirror_refresh": {
+        "checked_at": "2026-05-27T08Z",
+        "regions": {
+          "eu-north1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+          "eu-north2": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+          "uk-south1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+          "us-central1": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+        }
+      },
+      "report_md": "docs/model-onboarding/general/intfloat-multilingual-e5-large-instruct-tei-cuda-1-9-20260527T08Z-publish.md",
+      "reviewed_at": "2026-05-27T08Z"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-27T08Z",
+    "rtx6000_us_central1_probe": {
+      "latency_samples_ms": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        166,
+        167,
+        167,
+        166,
+        167
+      ],
+      "model_p50_ms": 167,
+      "node": "computeinstance-u00q8qwvq3rkqfsn5j",
+      "pod_name": "forge-probe-intfloat-multilingual-e5-rtx6000-us-central1-21488a",
+      "probed_at": "2026-05-24T18:11:45Z",
+      "response_status": 200,
+      "source": "client_wall_ms",
+      "startup_ms": 361520,
+      "status": "supported",
+      "tokens_per_second": 239.52,
+      "vram_gb": 1.65
+    },
+    "runtime_evidence": "Hugging Face API tags include sentence-transformers, text-embeddings-inference, and endpoints_compatible; selected TEI CUDA 1.9.3 image exposes the OpenAI-compatible /v1/embeddings endpoint used by Forge embedding manifests.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "source_evidence": [
+      "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
+      "https://huggingface.co/intfloat/multilingual-e5-large-instruct/raw/main/config.json",
+      "https://github.com/huggingface/text-embeddings-inference"
+    ]
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "instruct",
+    "e5",
+    "sentence_transformers",
+    "huggingface",
+    "tei",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-24T18:05:22.530290+00:00",
+  "default_eligible": false,
+  "description": "intfloat multilingual-e5-large-instruct served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual instruction-conditioned dense retrieval and RAG embeddings. Hugging Face API metadata reports private=false, gated=false, disabled=false, MIT license metadata, sentence-transformers library usage, feature-extraction pipeline, xlm-roberta architecture, text-embeddings-inference compatibility, endpoints compatibility, 94 listed languages, and 559,890,432 safetensors parameters. The selected runtime reuses the already mirrored TEI CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a across Forge regions and stores Hugging Face caches under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. The 2026-05-27T08Z publication review promotes this route to active/testing and non-default for B200, H200, L40S, and RTX6000 after 10 measured warm embedding requests per supported cell. B300 remains disabled for this pinned TEI image because the entrypoint dispatches SM75, SM80-89, SM90, SM100, and SM120 only; B300 reports SM103 and exits before server startup.",
+  "family_id": "286d9069-f9e3-4614-894f-a45fa29d4433",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "intfloat/multilingual-e5-large-instruct",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "intfloat/multilingual-e5-large-instruct"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T18:10:52.506281+00:00",
+      "region": "us-central1",
+      "request_ms": 158,
+      "request_ms_p50": 158,
+      "request_ms_p95": 159,
+      "request_ms_p99": 159,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 309324,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 253.16,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.78,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T18:09:45.508045+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T18:09:38.458407+00:00",
+      "region": "eu-north2",
+      "request_ms": 101,
+      "request_ms_p50": 101,
+      "request_ms_p95": 102,
+      "request_ms_p99": 102,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 235870,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 396.04,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.67,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T18:09:36.834064+00:00",
+      "region": "eu-north1",
+      "request_ms": 97,
+      "request_ms_p50": 97,
+      "request_ms_p95": 98,
+      "request_ms_p99": 98,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 235057,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 412.37,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.5,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T18:11:44.833653+00:00",
+      "region": "us-central1",
+      "request_ms": 167,
+      "request_ms_p50": 167,
+      "request_ms_p95": 167,
+      "request_ms_p99": 167,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 361520,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 239.52,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.65,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "3d830d9e-d7af-4f89-820e-9114b739ec1a",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "intfloat-multilingual-e5-large-instruct",
+  "name": "Multilingual E5 Large Instruct",
+  "parameter_count": 559890432,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "float",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "intfloat/multilingual-e5-large-instruct"
+    },
+    "input_fields": [
+      {
+        "default": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: How do shared model caches reduce inference cold starts?",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 51,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "intfloat-multilingual-e5-large-instruct-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "instruct",
+    "e5",
+    "sentence-transformers",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for intfloat multilingual-e5-large-instruct.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

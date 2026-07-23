@@ -1,0 +1,209 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "a5847ba0beb5fe339dff22865748464d139162fcc0cca91f505ed988b35c0f64",
+  "defaultEligible": false,
+  "displayName": "Use Hugging Face LeRobot SmolVLA VLABench",
+  "domain": "robotics-control",
+  "downloadUrl": "/v1/model-skills/huggingface-lerobot-smolvla-vlabench/markdown?download=true",
+  "group": "robotics-control",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "robotics-control",
+    "huggingface-lerobot-smolvla-vlabench"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/huggingface-lerobot-smolvla-vlabench",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Move the object to the requested target location.",
+      "fieldType": "textarea",
+      "key": "instruction",
+      "label": "Instruction",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "image_image",
+      "label": "Main Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "second_image_image",
+      "label": "Second Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "wrist_image_image",
+      "label": "Wrist Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fieldType": "json_editor",
+      "key": "robot_state",
+      "label": "7D Robot State",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "so100_follower",
+        "so101_follower"
+      ],
+      "default": "so100_follower",
+      "fieldType": "select",
+      "key": "robot_type",
+      "label": "Robot Type",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "return_chunk",
+      "label": "Return Action Chunk",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "instructions": "---\nname: use-forge-huggingface-lerobot-smolvla-vlabench\ndescription: Use the exact Forge model huggingface-lerobot-smolvla-vlabench for text, image, robot_state to robot_action, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Hugging Face LeRobot SmolVLA VLABench\n\n- Model slug: `huggingface-lerobot-smolvla-vlabench`\n- Model family: `huggingface-lerobot-smolvla`\n- Version: `vlabench-4fd586e-wrapper-20260602t21z` (`vlabench`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / robotics-control / huggingface-lerobot-smolvla-vlabench`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nHidden onboarding candidate for lerobot/smolvla_vlabench, a SmolVLA-family vision-language-action policy fine-tuned on the VLABench unified robotics dataset.\n\n## Use this exact model when\n\n- Use this exact `huggingface-lerobot-smolvla-vlabench` version when the task supplies text, image, robot_state and needs robot_action, json.\n- Hidden onboarding candidate for lerobot/smolvla_vlabench, a SmolVLA-family vision-language-action policy fine-tuned on the VLABench unified robotics dataset.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `instruction` (textarea, optional): Instruction\n- `image_image` (file_upload, optional): Main Camera Image\n- `second_image_image` (file_upload, optional): Second Camera Image\n- `wrist_image_image` (file_upload, optional): Wrist Camera Image\n- `robot_state` (json_editor, optional): 7D Robot State\n- `robot_type` (select, optional): Robot Type\n- `return_chunk` (checkbox, optional): Return Action Chunk\n\nRequest template:\n\n```json\n{\n  \"images\": {\n    \"image\": \"{{image_image}}\",\n    \"second_image\": \"{{second_image_image}}\",\n    \"wrist_image\": \"{{wrist_image_image}}\"\n  },\n  \"instruction\": \"{{instruction}}\",\n  \"model\": \"{{model_slug}}\",\n  \"return_chunk\": \"{{return_chunk}}\",\n  \"robot_state\": \"{{robot_state}}\",\n  \"robot_type\": \"{{robot_type}}\"\n}\n```\n\n## Exact output\n\n- `robot_action`\n- `json`\n\n## Route\n\n`POST /v1/inference/huggingface-lerobot-smolvla-vlabench`\n\n## Workflow\n\n1. Load this skill and pin model slug `huggingface-lerobot-smolvla-vlabench` with version key `vlabench`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/huggingface-lerobot-smolvla-vlabench` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/huggingface-lerobot-smolvla-vlabench`\n- Routes: `/v1/models/huggingface-lerobot-smolvla-vlabench/inference-routes`\n- Regional deployment: `/v1/models/huggingface-lerobot-smolvla-vlabench/regional-deployment`\n- Deployment handoff: `/v1/models/huggingface-lerobot-smolvla-vlabench/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-vlabench/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-vlabench/SKILL.md\n\n## References\n\n- [Hugging Face LeRobot SmolVLA VLABench source](https://huggingface.co/lerobot/smolvla_vlabench) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/huggingface-lerobot-smolvla-vlabench/deploy",
+    "inferenceRoutesUrl": "/v1/models/huggingface-lerobot-smolvla-vlabench/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/huggingface-lerobot-smolvla",
+    "modelUrl": "/v1/models/huggingface-lerobot-smolvla-vlabench",
+    "regionalDeploymentUrl": "/v1/models/huggingface-lerobot-smolvla-vlabench/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/huggingface-lerobot-smolvla-vlabench/markdown",
+  "modelFamily": "huggingface-lerobot-smolvla",
+  "modelSlug": "huggingface-lerobot-smolvla-vlabench",
+  "modelUrl": "/v1/models/huggingface-lerobot-smolvla-vlabench",
+  "outputFields": [
+    "robot_action",
+    "json"
+  ],
+  "outputModalities": [
+    "robot_action",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Hidden onboarding candidate for lerobot/smolvla_vlabench, a SmolVLA-family vision-language-action policy fine-tuned on the VLABench unified robotics dataset.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-vlabench/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Hugging Face LeRobot SmolVLA VLABench source",
+      "url": "https://huggingface.co/lerobot/smolvla_vlabench"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-vlabench/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-vlabench/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "images": {
+      "image": "{{image_image}}",
+      "second_image": "{{second_image_image}}",
+      "wrist_image": "{{wrist_image_image}}"
+    },
+    "instruction": "{{instruction}}",
+    "model": "{{model_slug}}",
+    "return_chunk": "{{return_chunk}}",
+    "robot_state": "{{robot_state}}",
+    "robot_type": "{{robot_type}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 450000000,
+    "quantization": "fp32",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/lerobot/smolvla_vlabench",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "robot-policy",
+      "vision-language-action",
+      "smolvla",
+      "lerobot",
+      "vlabench",
+      "forge-wrapper-candidate",
+      "robot-policy-safety-pending"
+    ],
+    "versionLabel": "VLABench wrapper candidate"
+  },
+  "shortDescription": "Hidden onboarding candidate for lerobot/smolvla_vlabench, a SmolVLA-family vision-language-action policy fine-tuned on the VLABench unified robotics dataset.",
+  "skillName": "use-forge-huggingface-lerobot-smolvla-vlabench",
+  "skillUrl": "/v1/model-skills/huggingface-lerobot-smolvla-vlabench",
+  "slug": "huggingface-lerobot-smolvla-vlabench",
+  "stability": "testing",
+  "version": "vlabench-4fd586e-wrapper-20260602t21z",
+  "versionKey": "vlabench",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `huggingface-lerobot-smolvla-vlabench` version when the task supplies text, image, robot_state and needs robot_action, json.",
+    "Hidden onboarding candidate for lerobot/smolvla_vlabench, a SmolVLA-family vision-language-action policy fine-tuned on the VLABench unified robotics dataset.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `huggingface-lerobot-smolvla-vlabench` with version key `vlabench`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/huggingface-lerobot-smolvla-vlabench` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

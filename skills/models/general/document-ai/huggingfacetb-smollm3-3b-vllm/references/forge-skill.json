@@ -1,0 +1,180 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "1b5e9197bd433080ef793a42c216a72f0d9d0d21bae1add56612b29013ecfcd9",
+  "defaultEligible": false,
+  "displayName": "Use SmolLM3 3B",
+  "domain": "document-ai",
+  "downloadUrl": "/v1/model-skills/huggingfacetb-smollm3-3b-vllm/markdown?download=true",
+  "group": "document-ai",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "document-ai",
+    "huggingfacetb-smollm3-3b-vllm"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Summarize this incident note for an engineering handoff, then list three follow-up questions:\\n\\nThe EU model probe hit readiness timeout after image pull completed. Logs show weight hydration still running in the shared cache path. No OOM event was recorded.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "enable_thinking",
+      "label": "Thinking",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.6,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.95,
+      "fieldType": "number",
+      "key": "top_p",
+      "label": "Top P",
+      "maximum": 1,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-huggingfacetb-smollm3-3b-vllm\ndescription: Use the exact Forge model huggingfacetb-smollm3-3b-vllm for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use SmolLM3 3B\n\n- Model slug: `huggingfacetb-smollm3-3b-vllm`\n- Model family: `huggingfacetb-smollm3-3b`\n- Version: `vllm-0.10.2-cuda12.8` (`vllm-0-10-2-cuda12-8`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / document-ai / huggingfacetb-smollm3-3b-vllm`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nSmolLM3 3B is a public Apache-2.0 small general language model from Hugging Face for instruction following, hybrid reasoning, multilingual chat, tool-use style prompts, and long-context summarization.\n\n## Use this exact model when\n\n- Use this exact `huggingfacetb-smollm3-3b-vllm` version when the task supplies text and needs text.\n- SmolLM3 3B is a public Apache-2.0 small general language model from Hugging Face for instruction following, hybrid reasoning, multilingual chat, tool-use style prompts, and long-context summarization.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `enable_thinking` (checkbox, optional): Thinking\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `top_p` (number, optional; bounds 0..1): Top P\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"chat_template_kwargs\": {\n    \"enable_thinking\": \"{{enable_thinking}}\"\n  },\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": [\n    {\n      \"content\": \"{{prompt}}\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\",\n  \"top_p\": \"{{top_p}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `huggingfacetb-smollm3-3b-vllm` with version key `vllm-0-10-2-cuda12-8`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/huggingfacetb-smollm3-3b-vllm`\n- Routes: `/v1/models/huggingfacetb-smollm3-3b-vllm/inference-routes`\n- Regional deployment: `/v1/models/huggingfacetb-smollm3-3b-vllm/regional-deployment`\n- Deployment handoff: `/v1/models/huggingfacetb-smollm3-3b-vllm/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/huggingfacetb-smollm3-3b-vllm/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/huggingfacetb-smollm3-3b-vllm/SKILL.md\n\n## References\n\n- [SmolLM3 3B source](https://huggingface.co/HuggingFaceTB/SmolLM3-3B) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/huggingfacetb-smollm3-3b-vllm/deploy",
+    "inferenceRoutesUrl": "/v1/models/huggingfacetb-smollm3-3b-vllm/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/huggingfacetb-smollm3-3b",
+    "modelUrl": "/v1/models/huggingfacetb-smollm3-3b-vllm",
+    "regionalDeploymentUrl": "/v1/models/huggingfacetb-smollm3-3b-vllm/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/huggingfacetb-smollm3-3b-vllm/markdown",
+  "modelFamily": "huggingfacetb-smollm3-3b",
+  "modelSlug": "huggingfacetb-smollm3-3b-vllm",
+  "modelUrl": "/v1/models/huggingfacetb-smollm3-3b-vllm",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "SmolLM3 3B is a public Apache-2.0 small general language model from Hugging Face for instruction following, hybrid reasoning, multilingual chat, tool-use style prompts, and long-context summarization.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/document-ai/huggingfacetb-smollm3-3b-vllm/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "SmolLM3 3B source",
+      "url": "https://huggingface.co/HuggingFaceTB/SmolLM3-3B"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/huggingfacetb-smollm3-3b-vllm/SKILL.md",
+  "repositoryPath": "skills/models/general/document-ai/huggingfacetb-smollm3-3b-vllm/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "chat_template_kwargs": {
+      "enable_thinking": "{{enable_thinking}}"
+    },
+    "max_tokens": "{{max_tokens}}",
+    "messages": [
+      {
+        "content": "{{prompt}}",
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": true,
+    "temperature": "{{temperature}}",
+    "top_p": "{{top_p}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 3075098624,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/HuggingFaceTB/SmolLM3-3B",
+    "tags": [
+      "llm",
+      "chat",
+      "reasoning",
+      "instruction",
+      "tool-calling",
+      "multilingual",
+      "long-context",
+      "smollm3",
+      "huggingface",
+      "vllm"
+    ],
+    "versionLabel": "vLLM 0.10.2 CUDA 12.8"
+  },
+  "shortDescription": "SmolLM3 3B is a public Apache-2.0 small general language model from Hugging Face for instruction following, hybrid reasoning, multilingual chat, tool-use style prompts, and long-context summarization.",
+  "skillName": "use-forge-huggingfacetb-smollm3-3b-vllm",
+  "skillUrl": "/v1/model-skills/huggingfacetb-smollm3-3b-vllm",
+  "slug": "huggingfacetb-smollm3-3b-vllm",
+  "stability": "testing",
+  "version": "vllm-0.10.2-cuda12.8",
+  "versionKey": "vllm-0-10-2-cuda12-8",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `huggingfacetb-smollm3-3b-vllm` version when the task supplies text and needs text.",
+    "SmolLM3 3B is a public Apache-2.0 small general language model from Hugging Face for instruction following, hybrid reasoning, multilingual chat, tool-use style prompts, and long-context summarization.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `huggingfacetb-smollm3-3b-vllm` with version key `vllm-0-10-2-cuda12-8`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

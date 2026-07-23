@@ -1,0 +1,686 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Qwen3VLForConditionalGeneration"
+      ],
+      "hidden_size": 2048,
+      "max_position_embeddings": 262144,
+      "model_type": "qwen3_vl",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 28,
+      "num_key_value_heads": 8,
+      "text_model_type": "qwen3_vl_text",
+      "vision_depth": 24,
+      "vision_hidden_size": 1024,
+      "vision_num_heads": 16
+    },
+    "artifact_evidence": "Hugging Face API reported Qwen/Qwen3-VL-Reranker-2B as public, ungated, enabled, text-ranking, transformers, license:apache-2.0, revision 4bd860ac4f15ad1897a214615cccc700f8f71818, 338,562 downloads, 193 likes, and 2,127,532,032 BF16 safetensors parameters on 2026-05-25T08:05Z.",
+    "artifact_last_modified": "2026-04-16T08:55:33.000Z",
+    "artifact_parameters": {
+      "BF16": 2127532032,
+      "total": 2127532032
+    },
+    "artifact_revision": "4bd860ac4f15ad1897a214615cccc700f8f71818",
+    "blockers": [
+      "Video input remains intentionally unexposed pending request mapping, benchmark payload stability, and remote-media policy validation.",
+      "Request timing is client_wall_ms rather than pure model execution time because vLLM /v1/rerank did not expose query_time_ms."
+    ],
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_revision": "ad7125a431e176d4161099480a66f0169609a690",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_for_pooling_vision_rerank_candidate",
+    "l40s_probe_20260525T08Z": {
+      "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+      "gpu": "L40S",
+      "node": "computeinstance-e00knmqbn7kxszaff1",
+      "pod_name": "forge-probe-qwen-qwen3-vl-reranker-2-l40s-eu-north1-efde17",
+      "region": "eu-north1",
+      "report_json": "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-l40s.json",
+      "report_md": "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-l40s.md",
+      "request_ms_p50": 941,
+      "request_ms_samples": [
+        932,
+        943,
+        933,
+        941,
+        941,
+        942,
+        940,
+        944,
+        947,
+        935
+      ],
+      "request_ms_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 145552,
+      "status": "supported",
+      "tokens_per_second": 2938.36,
+      "vram_used_gb": 30.45,
+      "warmup_ms_samples": [
+        16411,
+        1363,
+        1485
+      ]
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; vLLM image labels report source https://github.com/vllm-project/vllm.",
+    "live_probe": {
+      "benchmark_runs": 10,
+      "checked_at": "2026-05-25T08:24:25Z",
+      "latest_report_json": "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-remaining.json",
+      "latest_report_md": "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-remaining.md",
+      "report_jsons": [
+        "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-l40s.json",
+        "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-remaining.json"
+      ],
+      "report_mds": [
+        "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-l40s.md",
+        "docs/model-onboarding/general/qwen-qwen3-vl-reranker-2b-vllm-cuda13-20260525T08Z-remaining.md"
+      ],
+      "request_time_source": "client_wall_ms",
+      "residual_notes": [
+        "Request timing is client_wall_ms because vLLM /v1/rerank did not expose server-side model execution time.",
+        "Video input is upstream-supported but intentionally not exposed until Forge request mapping, benchmark payload stability, and remote-media policy are validated."
+      ],
+      "status": "supported",
+      "supported_cells": {
+        "B200/us-central1": {
+          "gpu_node": "computeinstance-u00k5jxyf741mb6qka",
+          "pod_name": "forge-probe-qwen-qwen3-vl-reranker-2-b200-us-central1-ff6a7c",
+          "request_ms_p50": 720,
+          "request_ms_samples": [
+            718,
+            719,
+            735,
+            721,
+            717,
+            718,
+            1952,
+            726,
+            721,
+            716
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 400016,
+          "status": "supported",
+          "tokens_per_second": 3840.28,
+          "vram_used_gb": 124.77,
+          "warmup_ms_samples": [
+            11237,
+            735,
+            720
+          ]
+        },
+        "B300/uk-south1": {
+          "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod_name": "forge-probe-qwen-qwen3-vl-reranker-2-b300-uk-south1-24067f",
+          "request_ms_p50": 642,
+          "request_ms_samples": [
+            645,
+            637,
+            639,
+            639,
+            638,
+            656,
+            642,
+            5180,
+            644,
+            642
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 498956,
+          "status": "supported",
+          "tokens_per_second": 4306.85,
+          "vram_used_gb": 187.33,
+          "warmup_ms_samples": [
+            18770,
+            694,
+            651
+          ]
+        },
+        "H200/eu-north2": {
+          "gpu_node": "computeinstance-e02xkjz43xcbx889xb",
+          "pod_name": "forge-probe-qwen-qwen3-vl-reranker-2-h200-eu-north2-927cb2",
+          "request_ms_p50": 1109,
+          "request_ms_samples": [
+            1108,
+            1110,
+            1108,
+            1111,
+            2152,
+            1108,
+            1105,
+            1108,
+            1110,
+            1114
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 388718,
+          "status": "supported",
+          "tokens_per_second": 2493.24,
+          "vram_used_gb": 97.32,
+          "warmup_ms_samples": [
+            16831,
+            1890,
+            1122
+          ]
+        },
+        "H200/us-central1": {
+          "gpu_node": "computeinstance-u00qyzqxydq8epkvpy",
+          "pod_name": "forge-probe-qwen-qwen3-vl-reranker-2-h200-us-central1-b5764b",
+          "request_ms_p50": 824,
+          "request_ms_samples": [
+            824,
+            820,
+            823,
+            824,
+            826,
+            832,
+            824,
+            830,
+            819,
+            820
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 509456,
+          "status": "supported",
+          "tokens_per_second": 3355.58,
+          "vram_used_gb": 97.32,
+          "warmup_ms_samples": [
+            15209,
+            819,
+            2315
+          ]
+        },
+        "L40S/eu-north1": {
+          "gpu_node": "computeinstance-e00knmqbn7kxszaff1",
+          "pod_name": "forge-probe-qwen-qwen3-vl-reranker-2-l40s-eu-north1-efde17",
+          "request_ms_p50": 941,
+          "request_ms_samples": [
+            932,
+            943,
+            933,
+            941,
+            941,
+            942,
+            940,
+            944,
+            947,
+            935
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 145552,
+          "status": "supported",
+          "tokens_per_second": 2938.36,
+          "vram_used_gb": 30.45,
+          "warmup_ms_samples": [
+            16411,
+            1363,
+            1485
+          ]
+        },
+        "RTX6000/us-central1": {
+          "gpu_node": "computeinstance-u00nxmpqn2rv3waxbs",
+          "pod_name": "forge-probe-qwen-qwen3-vl-reranker-2-rtx6000-us-central1-ac7b5a",
+          "request_ms_p50": 801,
+          "request_ms_samples": [
+            808,
+            826,
+            803,
+            801,
+            794,
+            795,
+            801,
+            795,
+            800,
+            801
+          ],
+          "request_time_source": "client_wall_ms",
+          "response_status": 200,
+          "startup_ms": 142225,
+          "status": "supported",
+          "tokens_per_second": 3451.94,
+          "vram_used_gb": 65.96,
+          "warmup_ms_samples": [
+            49463,
+            826,
+            1709
+          ]
+        }
+      },
+      "warmup_runs": 3
+    },
+    "media_mapping_regression_20260526T02Z": {
+      "allowed_media_domain": "qianwen-res.oss-cn-beijing.aliyuncs.com",
+      "documents_shape": "default request resolves a text-only document, an image-only OpenAI image_url content document, and a mixed text plus image_url content document",
+      "notes": [
+        "The resolved default request keeps the upstream model id Qwen/Qwen3-VL-Reranker-2B and top_n=3 for vLLM /v1/rerank probes.",
+        "All default remote media URLs are HTTPS and scoped to the single allowed Qwen demo asset domain.",
+        "Video remains intentionally unexposed until a separate payload, benchmark, and remote-media policy review is completed."
+      ],
+      "redirect_policy": "VLLM_MEDIA_URL_ALLOW_REDIRECTS=0",
+      "request_builder": "scripts.probe_model_parallel_matrix.resolve_default_request_body",
+      "status": "passed",
+      "validated_by": "tests/test_general_qwen3_vl_reranker_manifest.py::test_qwen3_vl_reranker_default_request_preserves_text_image_documents",
+      "video_exposure": "not_exposed"
+    },
+    "media_url_safety": [
+      "The manifest sets --allowed-media-domains to qianwen-res.oss-cn-beijing.aliyuncs.com for the default public image URL.",
+      "The manifest sets VLLM_MEDIA_URL_ALLOW_REDIRECTS=0 so redirects cannot bypass the media domain allowlist."
+    ],
+    "onboarding_state": "active_testing_non_default_full_discovered_matrix_supported",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_verified_at": "2026-05-25T08:05Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "Hugging Face model card documents vLLM scoring with runner=pooling, trust_remote_code, Qwen3VLForSequenceClassification overrides, and qwen3_vl_reranker.jinja. vLLM 0.21 scoring docs include vision rerank online examples using /rerank and list the Qwen3 VL reranker template. The vLLM v0.21.0 Dockerfile sets WORKDIR /vllm-workspace, copies examples into the runtime image, and uses ENTRYPOINT [\"vllm\", \"serve\"], supporting the relative examples/pooling/score/template/qwen3_vl_reranker.jinja path used here.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "source_evidence": [
+      "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+      "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/raw/main/config.json",
+      "https://docs.vllm.ai/en/v0.21.0/examples/pooling/score/",
+      "https://docs.vllm.ai/en/latest/examples/pooling/score/",
+      "https://raw.githubusercontent.com/vllm-project/vllm/v0.21.0/docker/Dockerfile",
+      "https://raw.githubusercontent.com/vllm-project/vllm/v0.21.0/examples/pooling/score/template/qwen3_vl_reranker.jinja"
+    ]
+  },
+  "capabilities": [
+    "rerank",
+    "retrieval",
+    "rag",
+    "multimodal",
+    "vision_language",
+    "qwen3_vl",
+    "image_retrieval",
+    "visual_document_retrieval",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "vision",
+    "ranking",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 4096,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-25T08:08:04.432902+00:00",
+  "default_eligible": false,
+  "description": "Qwen3-VL Reranker 2B is an Apache-2.0 multimodal reranker for text, image, screenshot, and visual-document retrieval workflows. Hugging Face API metadata checked on 2026-05-25T08:05Z reports private=false, gated=false, disabled=false, text-ranking usage, revision 4bd860ac4f15ad1897a214615cccc700f8f71818, lastModified 2026-04-16T08:55:33Z, 338,562 downloads, and 2,127,532,032 BF16 safetensors parameters. The model card says the 2B reranker supports 30+ languages, 32K context, text/images/screenshots/videos, and multimodal document reranking; this Forge profile starts with text plus image inputs and caps runtime context at 4096 tokens to match the vLLM online example and reduce first-start memory risk. The container decision reuses the already mirrored official vLLM 0.21.0 CUDA 13 image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, with Hugging Face and vLLM caches under /opt/nim/.cache backed by Forge shared /mnt/data cache. Live Forge probes support B200/us-central1, B300/uk-south1, H200/eu-north2, H200/us-central1, L40S/eu-north1, and RTX6000/us-central1 with 3 warmups and 10 measured multimodal rerank requests per cell. Request timing is client wall time because vLLM /v1/rerank did not expose model execution timing. Video input remains intentionally unexposed until Forge request mapping, benchmark payload stability, and remote-media policy are validated.",
+  "family_id": "063b5b6e-8f4c-4997-b41f-dd9de9dd5092",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "Qwen/Qwen3-VL-Reranker-2B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "Qwen/Qwen3-VL-Reranker-2B",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "4096",
+      "--gpu-memory-utilization",
+      "0.7",
+      "--max-num-seqs",
+      "8",
+      "--max-num-batched-tokens",
+      "4096",
+      "--trust-remote-code",
+      "--hf-overrides",
+      "{\"architectures\":[\"Qwen3VLForSequenceClassification\"],\"classifier_from_token\":[\"no\",\"yes\"],\"is_original_qwen3_reranker\":true}",
+      "--chat-template",
+      "examples/pooling/score/template/qwen3_vl_reranker.jinja",
+      "--allowed-media-domains",
+      "qianwen-res.oss-cn-beijing.aliyuncs.com"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "VLLM_MEDIA_URL_ALLOW_REDIRECTS": "0",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 48.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T08:19:12.953964+00:00",
+      "region": "us-central1",
+      "request_ms": 720,
+      "request_ms_p50": 720,
+      "request_ms_p95": 1404,
+      "request_ms_p99": 1842,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 400016,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 3840.28,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 124.77,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T08:24:25.253610+00:00",
+      "region": "uk-south1",
+      "request_ms": 642,
+      "request_ms_p50": 642,
+      "request_ms_p95": 3144,
+      "request_ms_p99": 4773,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 498956,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 4306.85,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 187.33,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T08:19:11.413433+00:00",
+      "region": "eu-north2",
+      "request_ms": 1109,
+      "request_ms_p50": 1109,
+      "request_ms_p95": 1685,
+      "request_ms_p99": 2059,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 388718,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 2493.24,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 97.32,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T08:21:07.825946+00:00",
+      "region": "us-central1",
+      "request_ms": 824,
+      "request_ms_p50": 824,
+      "request_ms_p95": 831,
+      "request_ms_p99": 832,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 509456,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 3355.58,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 97.32,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T08:11:24.926181+00:00",
+      "region": "eu-north1",
+      "request_ms": 941,
+      "request_ms_p50": 941,
+      "request_ms_p95": 946,
+      "request_ms_p99": 947,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 145552,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 2938.36,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 30.45,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T08:15:33.537849+00:00",
+      "region": "us-central1",
+      "request_ms": 801,
+      "request_ms_p50": 801,
+      "request_ms_p95": 818,
+      "request_ms_p99": 824,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 142225,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 3451.94,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 65.96,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "af083242-68bf-4052-b75d-579e5be3cf56",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "ranking"
+  ],
+  "model_family": "qwen-qwen3-vl-reranker-2b",
+  "name": "Qwen3-VL Reranker 2B",
+  "parameter_count": 2127532032,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "documents": "{{documents}}",
+        "model": "{{model_slug}}",
+        "query": "{{query}}",
+        "top_n": "{{top_n}}"
+      },
+      "endpoint": "/v1/inference/qwen-qwen3-vl-reranker-2b-vllm-cuda13",
+      "method": "POST",
+      "upstream_model_id": "Qwen/Qwen3-VL-Reranker-2B"
+    },
+    "input_fields": [
+      {
+        "default": "A woman playing with her dog on a beach at sunset.",
+        "key": "query",
+        "label": "Query",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": [
+          "A woman shares a joyful moment with her golden retriever on a sun-drenched beach at sunset.",
+          {
+            "content": [
+              {
+                "image_url": {
+                  "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"
+                },
+                "type": "image_url"
+              }
+            ]
+          },
+          {
+            "content": [
+              {
+                "text": "A golden retriever offers its paw while sitting with a woman on the beach.",
+                "type": "text"
+              },
+              {
+                "image_url": {
+                  "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"
+                },
+                "type": "image_url"
+              }
+            ]
+          }
+        ],
+        "key": "documents",
+        "label": "Candidate documents",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": 3,
+        "key": "top_n",
+        "label": "Top N",
+        "type": "number",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "ranking_scores",
+      "type": "json"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "rerank"
+  },
+  "quantization": "bfloat16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 54,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "qwen-qwen3-vl-reranker-2b-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "rerank",
+    "retrieval",
+    "rag",
+    "multimodal",
+    "vision-language",
+    "qwen3-vl",
+    "image-retrieval",
+    "visual-document-retrieval",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13-vision-rerank-onboarding",
+  "version_description": "Active testing non-default Qwen3-VL Reranker 2B served by the vLLM CUDA 13 OpenAI-compatible image in pooling mode.",
+  "version_key": "vllm-0-21-0-cuda13-vision-rerank-onboarding",
+  "version_label": "vLLM 0.21.0 CUDA 13 Vision Rerank"
+}

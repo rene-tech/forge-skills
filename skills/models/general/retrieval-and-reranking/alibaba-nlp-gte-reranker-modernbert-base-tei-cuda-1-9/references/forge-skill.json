@@ -1,0 +1,164 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "1b4a0321e9cd6fb3ccc8e3c2b8004358c4631fcd87c9ce5709b1cb3c4ab9f32c",
+  "defaultEligible": false,
+  "displayName": "Use GTE Reranker ModernBERT Base",
+  "domain": "retrieval-and-reranking",
+  "downloadUrl": "/v1/model-skills/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/markdown?download=true",
+  "group": "retrieval-and-reranking",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "retrieval-and-reranking",
+    "alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/rerank",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "How do shared model caches reduce inference cold starts?",
+      "fieldType": "textarea",
+      "key": "query",
+      "label": "Query",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        "A shared cache keeps downloaded weights and runtime artifacts on durable storage so later pods can reuse them instead of hydrating from scratch.",
+        "Cold starts are usually dominated by frontend CSS parsing and browser layout.",
+        "Rerankers compare a query with candidate passages and assign relevance scores for retrieval pipelines."
+      ],
+      "fieldType": "json_editor",
+      "key": "texts",
+      "label": "Candidate texts",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "raw_scores",
+      "label": "Raw scores",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "return_text",
+      "label": "Return text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9\ndescription: Use the exact Forge model alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9 for text to ranking tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use GTE Reranker ModernBERT Base\n\n- Model slug: `alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9`\n- Model family: `alibaba-nlp-gte-reranker-modernbert-base`\n- Version: `tei-cuda-1.9.3` (`tei-cuda-1-9-3`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / retrieval-and-reranking / alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nAlibaba-NLP gte-reranker-modernbert-base served by Hugging Face Text Embeddings Inference CUDA 1.9 for English retrieval reranking.\n\n## Use this exact model when\n\n- Use this exact `alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9` version when the task supplies text and needs ranking.\n- Alibaba-NLP gte-reranker-modernbert-base served by Hugging Face Text Embeddings Inference CUDA 1.9 for English retrieval reranking.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['ranking'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `query` (textarea, optional): Query\n- `texts` (json_editor, optional): Candidate texts\n- `raw_scores` (checkbox, optional): Raw scores\n- `return_text` (checkbox, optional): Return text\n\nRequest template:\n\n```json\n{\n  \"query\": \"{{query}}\",\n  \"raw_scores\": \"{{raw_scores}}\",\n  \"return_text\": \"{{return_text}}\",\n  \"texts\": \"{{texts}}\",\n  \"truncate\": true,\n  \"truncation_direction\": \"right\"\n}\n```\n\n## Exact output\n\n- `ranking`\n\n## Route\n\n`POST /rerank`\n\n## Workflow\n\n1. Load this skill and pin model slug `alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9` with version key `tei-cuda-1-9-3`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /rerank` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 8192.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9`\n- Routes: `/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/inference-routes`\n- Regional deployment: `/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/regional-deployment`\n- Deployment handoff: `/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/retrieval-and-reranking/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/SKILL.md\n\n## References\n\n- [GTE Reranker ModernBERT Base source](https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 8192."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/deploy",
+    "inferenceRoutesUrl": "/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/alibaba-nlp-gte-reranker-modernbert-base",
+    "modelUrl": "/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+    "regionalDeploymentUrl": "/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/markdown",
+  "modelFamily": "alibaba-nlp-gte-reranker-modernbert-base",
+  "modelSlug": "alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+  "modelUrl": "/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+  "outputFields": [
+    "ranking"
+  ],
+  "outputModalities": [
+    "ranking"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Alibaba-NLP gte-reranker-modernbert-base served by Hugging Face Text Embeddings Inference CUDA 1.9 for English retrieval reranking.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/retrieval-and-reranking/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "GTE Reranker ModernBERT Base source",
+      "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/SKILL.md",
+  "repositoryPath": "skills/models/general/retrieval-and-reranking/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "query": "{{query}}",
+    "raw_scores": "{{raw_scores}}",
+    "return_text": "{{return_text}}",
+    "texts": "{{texts}}",
+    "truncate": true,
+    "truncation_direction": "right"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 8192,
+    "parameterCount": 149000000,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base",
+    "tags": [
+      "rerank",
+      "retrieval",
+      "rag",
+      "modernbert",
+      "gte",
+      "english",
+      "huggingface",
+      "tei"
+    ],
+    "versionLabel": "TEI CUDA 1.9.3"
+  },
+  "shortDescription": "Alibaba-NLP gte-reranker-modernbert-base served by Hugging Face Text Embeddings Inference CUDA 1.9 for English retrieval reranking.",
+  "skillName": "use-forge-alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+  "skillUrl": "/v1/model-skills/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+  "slug": "alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+  "stability": "testing",
+  "version": "tei-cuda-1.9.3",
+  "versionKey": "tei-cuda-1-9-3",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['ranking'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9` version when the task supplies text and needs ranking.",
+    "Alibaba-NLP gte-reranker-modernbert-base served by Hugging Face Text Embeddings Inference CUDA 1.9 for English retrieval reranking.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9` with version key `tei-cuda-1-9-3`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /rerank` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

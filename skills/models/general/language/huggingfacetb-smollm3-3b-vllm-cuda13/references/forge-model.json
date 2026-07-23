@@ -1,0 +1,654 @@
+{
+  "benchmark_scores": {
+    "artifact_commit": "a07cc9a04f16550a088caea529712d1d335b0ac1",
+    "b300_uk_south1_cuda_compatibility_probe": {
+      "checked_at": "2026-05-23T04:12:09Z",
+      "classification": "cuda_driver_runtime_incompatible",
+      "container_exit_code": 1,
+      "failure_summary": "After args were corrected, vLLM 0.21.0 reached SmolLM3ForCausalLM architecture resolution and engine startup, then failed in torch.cuda init with cudaGetDeviceCount error 803 while VLLM_ENABLE_CUDA_COMPATIBILITY was inherited as 1 from the CUDA 12.8 profile. This manifest now removes that override and keeps the image default compatibility mode.",
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "image_ref": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "pod_name": "forge-probe-huggingfacetb-smollm3-3b-b300-uk-south1-695595",
+      "status": "other_error"
+    },
+    "b300_uk_south1_duplicate_serve_probe": {
+      "checked_at": "2026-05-23T04:09:19Z",
+      "classification": "manifest_runtime_args_incompatible",
+      "container_exit_code": 2,
+      "failure_summary": "Adding `serve` to container_args also failed because the image config already has Entrypoint [\"vllm\", \"serve\"]. Logs again showed `vllm: error: unrecognized arguments: HuggingFaceTB/SmolLM3-3B`; this manifest now provides only the positional model id plus option flags.",
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "image_ref": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "pod_name": "forge-probe-huggingfacetb-smollm3-3b-b300-uk-south1-f1866a",
+      "status": "other_error"
+    },
+    "b300_uk_south1_entrypoint_probe": {
+      "checked_at": "2026-05-23T04:06:51Z",
+      "classification": "manifest_runtime_args_incompatible",
+      "container_exit_code": 2,
+      "failure_summary": "vLLM 0.21.0 exited during argparse before model load because the manifest used CUDA 12.8-style args with both a positional model id and duplicate `--model`. Logs showed `vllm: error: unrecognized arguments: HuggingFaceTB/SmolLM3-3B`; this manifest removes duplicate `--model`.",
+      "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+      "image_ref": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "pod_name": "forge-probe-huggingfacetb-smollm3-3b-b300-uk-south1-9ca94f",
+      "status": "other_error"
+    },
+    "b300_uk_south1_probe": {
+      "benchmark_runs": 10,
+      "checked_at": "2026-05-23T04:15:08Z",
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "model_p50_ms": 794,
+      "pod_name": "forge-probe-huggingfacetb-smollm3-3b-b300-uk-south1-5cbaa1",
+      "reports": [
+        "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T04Z-b300-cuda-compat-default.json",
+        "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T04Z-b300-cuda-compat-default.md"
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "runtime_notes": [
+        "vLLM 0.21.0 resolved SmolLM3ForCausalLM with dtype bfloat16 and max model length 32768.",
+        "Model loading took 5.83 GiB and 9.53 seconds; available KV cache memory was 220.41 GiB.",
+        "Logs selected FlashInfer attention with TRTLLM prefill attention auto-detected and served /v1/chat/completions successfully."
+      ],
+      "startup_ms": 85470,
+      "status": "supported",
+      "tokens_per_second": 358.94,
+      "vram_used_gb": 227.66
+    },
+    "blockers": [
+      "Default routing remains blocked until product review decides whether this CUDA 13 runtime should replace the existing CUDA 12.8 SmolLM3 profile or remain an operator-selected variant.",
+      "The matrix request time source is client_wall_ms because the OpenAI-compatible runtime did not expose a separate model execution time field; avoid treating these as pure GPU kernel timings.",
+      "Native 64k context and YaRN 128k context are not advertised in this Forge profile; validate a separate long-context variant before raising served context above 32768."
+    ],
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_as_alternate_runtime_variant",
+    "fallback_attempted": [
+      "Kept default_eligible=false and is_latest=false so the existing SmolLM3 family route is not replaced automatically.",
+      "Kept the separate CUDA 12.8 vLLM profile available as the prior runtime record while CUDA 13 remains an operator-selected active variant.",
+      "Kept served context capped at 32768 despite upstream 65536 native context and YaRN 128k guidance until a dedicated long-context Forge probe validates higher KV pressure."
+    ],
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_supported": {
+        "B200/us-central1": {
+          "gpu_node": "computeinstance-u00m906qeyypse5ecf",
+          "pod_name": "forge-probe-huggingfacetb-smollm3-3b-b200-us-central1-3fa002",
+          "request_ms_p50": 895,
+          "request_ms_samples": [
+            995,
+            825,
+            926,
+            928,
+            917,
+            862,
+            995,
+            835,
+            873,
+            839
+          ],
+          "startup_ms": 602359,
+          "tokens_per_second": 290.5,
+          "vram_used_gb": 151.72
+        },
+        "B300/uk-south1": {
+          "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod_name": "forge-probe-huggingfacetb-smollm3-3b-b300-uk-south1-5cbaa1",
+          "request_ms_p50": 794,
+          "request_ms_samples": [
+            787,
+            764,
+            792,
+            873,
+            763,
+            1163,
+            636,
+            795,
+            821,
+            858
+          ],
+          "startup_ms": 85470,
+          "tokens_per_second": 358.94,
+          "vram_used_gb": 227.66
+        },
+        "H200/eu-north2": {
+          "gpu_node": "computeinstance-e02vy282wq84sh9er9",
+          "pod_name": "forge-probe-huggingfacetb-smollm3-3b-h200-eu-north2-a9bbc1",
+          "request_ms_p50": 858,
+          "request_ms_samples": [
+            860,
+            962,
+            890,
+            764,
+            844,
+            815,
+            765,
+            909,
+            856,
+            859
+          ],
+          "startup_ms": 596341,
+          "tokens_per_second": 306.53,
+          "vram_used_gb": 118.87
+        },
+        "L40S/eu-north1": {
+          "gpu_node": "computeinstance-e00knmqbn7kxszaff1",
+          "pod_name": "forge-probe-huggingfacetb-smollm3-3b-l40s-eu-north1-ab492e",
+          "request_ms_p50": 1798,
+          "request_ms_samples": [
+            1715,
+            1826,
+            1881,
+            1583,
+            1826,
+            1992,
+            1947,
+            1428,
+            1694,
+            1770
+          ],
+          "startup_ms": 604405,
+          "tokens_per_second": 148.5,
+          "vram_used_gb": 37.63
+        },
+        "RTX6000/us-central1": {
+          "gpu_node": "computeinstance-u00njrrgkdfs962g7w",
+          "pod_name": "forge-probe-huggingfacetb-smollm3-3b-rtx6000-us-central1-52f5bb",
+          "request_ms_p50": 1390,
+          "request_ms_samples": [
+            1650,
+            1285,
+            1548,
+            1402,
+            1440,
+            1378,
+            1261,
+            1307,
+            1744,
+            1278
+          ],
+          "startup_ms": 680716,
+          "tokens_per_second": 186.33,
+          "vram_used_gb": 80.75
+        }
+      },
+      "checked_at": "2026-05-23T12:17:14Z",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug huggingfacetb-smollm3-3b-vllm-cuda13 --include-status onboarding --gpu B200 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4",
+      "report_markdown": [
+        "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T12Z-remaining.md",
+        "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T04Z-b300-cuda-compat-default.md"
+      ],
+      "reports": [
+        "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T12Z-remaining.json",
+        "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T04Z-b300-cuda-compat-default.json"
+      ],
+      "request_time_source": "client_wall_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; Hugging Face API reports private=false and gated=false.",
+    "onboarding_state": "five_cell_cuda13_publishable_active_non_default",
+    "public_artifact_verified_at": "2026-05-24T07:00:00Z",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "publish_candidate_active_non_default",
+    "publication_decision_reason": "The CUDA 13 profile has five supported GPU cells, current Apache-2.0 public artifact metadata, a validated dry-run manifest, and B300/SM103 runtime evidence. Keep default_eligible=false and is_latest=false because this is a separate runtime profile for the same SmolLM3 family as the existing CUDA 12.8 manifest; product review can still decide whether to replace the CUDA 12.8 route or expose a split runtime option.",
+    "publication_review": {
+      "decision": "publish_candidate_active_non_default",
+      "default_eligible": false,
+      "is_latest": false,
+      "manifest_stability": "testing",
+      "manifest_status": "active",
+      "reason": "The checked-in CUDA 13 profile already had all five current Forge GPU cells supported with 3 warmups and 10 measured requests per cell. The 07Z review refreshed upstream artifact metadata and converts the stale pending-review state into an explicit active, non-default publication review while retaining the 32768-token cap and client_wall_ms timing caveat.",
+      "report_json": "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260524T07Z-active-nondefault.json",
+      "report_md": "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260524T07Z-active-nondefault.md",
+      "reviewed_at": "2026-05-24T07Z"
+    },
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_verified_at": "2026-05-23T12:00:00Z",
+    "remaining_cells_12z_probe": {
+      "cells": {
+        "B200/us-central1": {
+          "latency_samples_ms": [
+            995,
+            825,
+            926,
+            928,
+            917,
+            862,
+            995,
+            835,
+            873,
+            839
+          ],
+          "model_p50_ms": 895,
+          "source": "client_wall_ms",
+          "startup_ms": 602359,
+          "tokens_per_second": 290.5,
+          "vram_gb": 151.72
+        },
+        "H200/eu-north2": {
+          "latency_samples_ms": [
+            860,
+            962,
+            890,
+            764,
+            844,
+            815,
+            765,
+            909,
+            856,
+            859
+          ],
+          "model_p50_ms": 858,
+          "source": "client_wall_ms",
+          "startup_ms": 596341,
+          "tokens_per_second": 306.53,
+          "vram_gb": 118.87
+        },
+        "L40S/eu-north1": {
+          "latency_samples_ms": [
+            1715,
+            1826,
+            1881,
+            1583,
+            1826,
+            1992,
+            1947,
+            1428,
+            1694,
+            1770
+          ],
+          "model_p50_ms": 1798,
+          "source": "client_wall_ms",
+          "startup_ms": 604405,
+          "tokens_per_second": 148.5,
+          "vram_gb": 37.63
+        },
+        "RTX6000/us-central1": {
+          "latency_samples_ms": [
+            1650,
+            1285,
+            1548,
+            1402,
+            1440,
+            1378,
+            1261,
+            1307,
+            1744,
+            1278
+          ],
+          "model_p50_ms": 1390,
+          "source": "client_wall_ms",
+          "startup_ms": 680716,
+          "tokens_per_second": 186.33,
+          "vram_gb": 80.75
+        }
+      },
+      "checked_at": "2026-05-23T12:17:14Z",
+      "report_json": "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T12Z-remaining.json",
+      "report_md": "docs/model-onboarding/general/huggingfacetb-smollm3-3b-vllm-cuda13-20260523T12Z-remaining.md",
+      "status": "supported"
+    },
+    "runtime_evidence": "vLLM 0.21.0 image labels identify build commit ad7125a431e176d4161099480a66f0169609a690. Image config inspection showed Entrypoint [\"vllm\", \"serve\"] and image env VLLM_ENABLE_CUDA_COMPATIBILITY=0. A 2026-05-23T03Z B300 diagnostic pod with the same regional image showed NVIDIA B300 SXM6 AC, ptxas release 13.0 V13.0.88, torch 2.11.0+cu130, CUDA 13.0, device capability (10, 3), triton 3.6.0, vLLM 0.21.0, and a successful BF16 CUDA matmul. 2026-05-23T04Z retained probes proved the manifest must not pass duplicate `serve` or `--model` args; it now uses the image's built-in vLLM serve entrypoint with only the positional model id and leaves the image default CUDA compatibility mode in place. The final 2026-05-23T04Z B300 probe reached vLLM serving, selected FlashInfer/TRTLLM attention, loaded SmolLM3ForCausalLM, returned HTTP 200, and completed 10 measured warm requests. The 2026-05-23T12Z remaining-cell probe used the same digest and manifest args and completed 10 measured warm requests on B200, H200, L40S, and RTX6000.",
+    "runtime_image_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "reasoning",
+    "instruction",
+    "tool_calling",
+    "multilingual",
+    "long_context",
+    "smollm3",
+    "huggingface",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-23T04:05:39.789359+00:00",
+  "default_eligible": false,
+  "description": "SmolLM3 3B is a public Apache-2.0 small general language model from Hugging Face for instruction following, hybrid reasoning, multilingual chat, tool-use style prompts, and long-context summarization. Hugging Face API metadata refreshed on 2026-05-24T07Z reports private=false, gated=false, disabled=false, commit a07cc9a04f16550a088caea529712d1d335b0ac1, 3,075,098,624 BF16 safetensors parameters, SmolLM3ForCausalLM architecture, and text-generation usage. This CUDA 13 variant is split from the supported vLLM 0.10.2 CUDA 12.8 Forge profile to expose the newer vLLM 0.21.0 CUDA 13 runtime without overwriting that profile's matrix. It reuses the already mirrored vLLM 0.21.0 CUDA 13 OpenAI-compatible image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, caps served context to 32,768 tokens for bounded probes, disables thinking by default for predictable short responses, uses the image's built-in `vllm serve` entrypoint with only the positional model id, and stores Hugging Face and vLLM caches under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. The CUDA 13 runtime has live supported evidence on all five Forge GPU cells: B300/uk-south1 from the 2026-05-23T04Z probe, plus B200/us-central1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 from the 2026-05-23T12Z probe. The 2026-05-24T07Z publication review promotes this checked-in manifest to active, testing, non-default, and non-latest for operator-selected CUDA 13 usage while preserving the separate CUDA 12.8 profile and a 32,768-token served-context cap.",
+  "family_id": "bb63c246-2f12-4e93-934c-f650a5c65b4d",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "HuggingFaceTB/SmolLM3-3B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "HuggingFaceTB/SmolLM3-3B",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.85",
+      "--max-num-seqs",
+      "16",
+      "--enable-auto-tool-choice",
+      "--tool-call-parser",
+      "hermes"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T12:15:15.704454+00:00",
+      "region": "us-central1",
+      "request_ms": 895,
+      "request_ms_p50": 895,
+      "request_ms_p95": 895,
+      "request_ms_p99": 895,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 602359,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 290.5,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 151.72,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T04:15:07.806255+00:00",
+      "region": "uk-south1",
+      "request_ms": 794,
+      "request_ms_p50": 794,
+      "request_ms_p95": 794,
+      "request_ms_p99": 794,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 85470,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 358.94,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 227.66,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T12:15:09.376376+00:00",
+      "region": "eu-north2",
+      "request_ms": 858,
+      "request_ms_p50": 858,
+      "request_ms_p95": 858,
+      "request_ms_p99": 858,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 596341,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 306.53,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 118.87,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T12:15:28.272219+00:00",
+      "region": "eu-north1",
+      "request_ms": 1798,
+      "request_ms_p50": 1798,
+      "request_ms_p95": 1798,
+      "request_ms_p99": 1798,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 604405,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 148.5,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 37.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-23T12:17:14.278794+00:00",
+      "region": "us-central1",
+      "request_ms": 1390,
+      "request_ms_p50": 1390,
+      "request_ms_p95": 1390,
+      "request_ms_p99": 1390,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 680716,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 186.33,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 80.75,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 5.73
+    }
+  ],
+  "gpu_type": null,
+  "id": "feb6309d-f02f-4b5d-a7c8-74c9f9eb313a",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "huggingfacetb-smollm3-3b",
+  "name": "SmolLM3 3B",
+  "parameter_count": 3075098624,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "chat_template_kwargs": {
+          "enable_thinking": "{{enable_thinking}}"
+        },
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "HuggingFaceTB/SmolLM3-3B"
+    },
+    "input_fields": [
+      {
+        "default": "Summarize this incident note for an engineering handoff, then list three follow-up questions:\n\nThe EU model probe hit readiness timeout after image pull completed. Logs show weight hydration still running in the shared cache path. No OOM event was recorded.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "reasoning_chat",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": false,
+        "key": "enable_thinking",
+        "label": "Thinking",
+        "type": "checkbox"
+      },
+      {
+        "default": 0.6,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 512,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 45,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "huggingfacetb-smollm3-3b-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/HuggingFaceTB/SmolLM3-3B",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "reasoning",
+    "instruction",
+    "tool-calling",
+    "multilingual",
+    "long-context",
+    "smollm3",
+    "huggingface",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13",
+  "version_description": "Hugging Face SmolLM3 3B served by the official vLLM OpenAI-compatible CUDA 13 Docker image as a non-default activation candidate with five-cell Forge validation evidence.",
+  "version_key": "vllm-0-21-0-cuda13",
+  "version_label": "vLLM 0.21.0 CUDA 13"
+}

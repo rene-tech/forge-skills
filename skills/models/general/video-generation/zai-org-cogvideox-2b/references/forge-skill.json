@@ -1,0 +1,155 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "ae65454fb5afa3ff74bba21dd25a3fa2d61a3110336d3547c46c329c2c668446",
+  "defaultEligible": true,
+  "displayName": "Use CogVideoX 2B",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/zai-org-cogvideox-2b/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "zai-org-cogvideox-2b"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/zai-org-cogvideox-2b",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A detailed wooden toy ship gliding over a plush blue carpet like ocean waves, cinematic motion, soft indoor light",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 42,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 20,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 4,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 6,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-zai-org-cogvideox-2b\ndescription: Use the exact Forge model zai-org-cogvideox-2b for text to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use CogVideoX 2B\n\n- Model slug: `zai-org-cogvideox-2b`\n- Model family: `zai-org-cogvideox`\n- Version: `2b-diffusers` (`2b-diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / zai-org-cogvideox-2b`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nCogVideoX 2B text-to-video generation through the reusable Forge Diffusers media wrapper.\n\n## Use this exact model when\n\n- Use this exact `zai-org-cogvideox-2b` version when the task supplies text and needs video.\n- CogVideoX 2B text-to-video generation through the reusable Forge Diffusers media wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_inference_steps` (number, optional; bounds 4..50): Steps\n- `guidance_scale` (number, optional; bounds 1..10): Guidance\n\nRequest template:\n\n```json\n{\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\"\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/zai-org-cogvideox-2b`\n\n## Workflow\n\n1. Load this skill and pin model slug `zai-org-cogvideox-2b` with version key `2b-diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/zai-org-cogvideox-2b` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 226.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/zai-org-cogvideox-2b`\n- Routes: `/v1/models/zai-org-cogvideox-2b/inference-routes`\n- Regional deployment: `/v1/models/zai-org-cogvideox-2b/regional-deployment`\n- Deployment handoff: `/v1/models/zai-org-cogvideox-2b/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/zai-org-cogvideox-2b/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/zai-org-cogvideox-2b/SKILL.md\n\n## References\n\n- [CogVideoX 2B source](https://huggingface.co/zai-org/CogVideoX-2b) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 226."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/zai-org-cogvideox-2b/deploy",
+    "inferenceRoutesUrl": "/v1/models/zai-org-cogvideox-2b/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/zai-org-cogvideox",
+    "modelUrl": "/v1/models/zai-org-cogvideox-2b",
+    "regionalDeploymentUrl": "/v1/models/zai-org-cogvideox-2b/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/zai-org-cogvideox-2b/markdown",
+  "modelFamily": "zai-org-cogvideox",
+  "modelSlug": "zai-org-cogvideox-2b",
+  "modelUrl": "/v1/models/zai-org-cogvideox-2b",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "CogVideoX 2B text-to-video generation through the reusable Forge Diffusers media wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/zai-org-cogvideox-2b/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "CogVideoX 2B source",
+      "url": "https://huggingface.co/zai-org/CogVideoX-2b"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/zai-org-cogvideox-2b/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/zai-org-cogvideox-2b/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "guidance_scale": "{{guidance_scale}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 226,
+    "parameterCount": 2000000000,
+    "quantization": "fp16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/zai-org/CogVideoX-2b",
+    "tags": [
+      "video-generation",
+      "text-to-video",
+      "diffusion",
+      "cogvideox",
+      "single-gpu"
+    ],
+    "versionLabel": "2B Diffusers"
+  },
+  "shortDescription": "CogVideoX 2B text-to-video generation through the reusable Forge Diffusers media wrapper.",
+  "skillName": "use-forge-zai-org-cogvideox-2b",
+  "skillUrl": "/v1/model-skills/zai-org-cogvideox-2b",
+  "slug": "zai-org-cogvideox-2b",
+  "stability": "experimental",
+  "version": "2b-diffusers",
+  "versionKey": "2b-diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `zai-org-cogvideox-2b` version when the task supplies text and needs video.",
+    "CogVideoX 2B text-to-video generation through the reusable Forge Diffusers media wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `zai-org-cogvideox-2b` with version key `2b-diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/zai-org-cogvideox-2b` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

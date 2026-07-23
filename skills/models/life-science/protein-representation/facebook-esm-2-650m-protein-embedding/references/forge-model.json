@@ -1,0 +1,489 @@
+{
+  "benchmark_scores": {
+    "artifact_files": [
+      "config.json",
+      "model.safetensors",
+      "pytorch_model.bin",
+      "special_tokens_map.json",
+      "tokenizer_config.json",
+      "vocab.txt"
+    ],
+    "artifact_gated": false,
+    "artifact_license": "mit",
+    "artifact_private": false,
+    "artifact_sha": "08e4846e537177426273712802403f7ba8261b6c",
+    "artifact_source": "https://huggingface.co/facebook/esm2_t33_650M_UR50D",
+    "blockers": [
+      "Publication is intentionally deferred because the live catalog already exposes the legacy facebook-esm-2-650m slug; Forge should decide whether this digest-pinned protein-embedding slug replaces, aliases, or remains separate.",
+      "RTX6000 was not present in the live GPU inventory during the four-cell matrix run and remains unclassified."
+    ],
+    "cache_strategy": "Hydrate Hugging Face and Torch artifacts into /mnt/data-scoped cache directories through wrapper env vars; do not bake weights into the image.",
+    "container_source_decision": "No model-specific NIM was found for the Facebook ESM-2 650M checkpoint. NVIDIA BioNeMo documents ESM-2 training/TransformerEngine recipes and recommends NVIDIA PyTorch containers, while the Forge-owned life-science wrapper already serves Hugging Face Transformers protein_embedding workloads with /v1/inference.",
+    "expected_response_fields": [
+      "task",
+      "sequence_length",
+      "embedding_dim",
+      "embedding_preview",
+      "embedding_l2",
+      "model_time_ms"
+    ],
+    "forge_runtime": "services/models/life_science_transformers",
+    "hf_api_checked_at": "2026-05-22T00:05:05Z",
+    "hf_downloads_at_check": 2098770,
+    "hf_library_name": "transformers",
+    "hf_pipeline_tag": "fill-mask",
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 4,
+      "cells_supported": {
+        "B200/us-central1": {
+          "pod_name": "forge-probe-facebook-esm-2-650m-prot-b200-us-central1-75892a",
+          "request_ms_p50": 14,
+          "request_ms_samples": [
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            15,
+            14
+          ],
+          "startup_ms": 19476,
+          "vram_used_gb": 2.12
+        },
+        "B300/uk-south1": {
+          "pod_name": "forge-probe-facebook-esm-2-650m-prot-b300-uk-south1-70125b",
+          "request_ms_p50": 14,
+          "request_ms_samples": [
+            13,
+            14,
+            13,
+            14,
+            14,
+            14,
+            13,
+            14,
+            13,
+            14
+          ],
+          "startup_ms": 39901,
+          "vram_used_gb": 2.12
+        },
+        "H200/eu-north2": {
+          "note": "Startup includes an observed 2m42s regional image pull.",
+          "pod_name": "forge-probe-facebook-esm-2-650m-prot-h200-eu-north2-f0d7af",
+          "request_ms_p50": 17,
+          "request_ms_samples": [
+            18,
+            18,
+            17,
+            17,
+            18,
+            17,
+            17,
+            17,
+            17,
+            17
+          ],
+          "startup_ms": 201511,
+          "vram_used_gb": 2.04
+        },
+        "L40S/eu-north1": {
+          "pod_name": "forge-probe-facebook-esm-2-650m-prot-l40s-eu-north1-e48f9f",
+          "request_ms_p50": 23,
+          "request_ms_samples": [
+            23,
+            23,
+            23,
+            23,
+            23,
+            23,
+            23,
+            23,
+            23,
+            23
+          ],
+          "startup_ms": 22498,
+          "vram_used_gb": 1.86
+        }
+      },
+      "checked_at": "2026-05-22T04:07:29Z",
+      "command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug facebook-esm-2-650m-protein-embedding --include-status onboarding --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4",
+      "report_json": "tmp/parallel-matrix/facebook-esm-2-650m-protein-embedding-20260522T040729Z.json",
+      "report_md": "tmp/parallel-matrix/facebook-esm-2-650m-protein-embedding-20260522T040729Z.md",
+      "request_time_source": "model_time_ms",
+      "status": "supported",
+      "unavailable_or_unprobed": {
+        "RTX6000": "No RTX6000 cell was present in the 2026-05-22 public GPU inventory used for this matrix probe."
+      },
+      "warmup_runs": 3
+    },
+    "onboarding_state": "four_cell_matrix_supported_pending_publication_dedupe",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_verified_at": "2026-05-22T00:05:05Z",
+    "runtime_image_created_at": {
+      "uk-south1": "2026-04-27T06:33:53Z",
+      "us-central1": "2026-04-27T06:33:12Z"
+    },
+    "runtime_image_digests": {
+      "eu-north1": "sha256:fd2c040ff0183a02989474910d2294a069df7685d00c1e429bd08621c715fb74",
+      "eu-north2": "sha256:3a30d57c0f8204ada2a50333226e3b595ad220472d5cac68099e6f4f1f3cce9b",
+      "uk-south1": "sha256:07852f9531aa8d15f94fbb08e9552ac5d5e0d6ab01e4c4a4fd69cdf1b53c8e1c",
+      "us-central1": "sha256:5ff160340afe93ea0be03af3da9061b6a8f05d26aff3c390e403328bc952a27d"
+    },
+    "runtime_image_family": "life-science-facebook-esm2-650m:20260427-timing",
+    "runtime_image_os_arch": "linux/amd64"
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "protein",
+    "embedding",
+    "sequence",
+    "esm",
+    "transformers",
+    "forge_wrapper",
+    "open_source",
+    "protein_sequence",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-facebook-esm2-650m:20260427-timing@sha256:5ff160340afe93ea0be03af3da9061b6a8f05d26aff3c390e403328bc952a27d",
+  "container_image_size_bytes": 4888071019,
+  "context_window": 1024,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-22T00:14:57.047208+00:00",
+  "default_eligible": true,
+  "description": "ESM-2 650M is a non-clinical protein language model for sequence representation learning. The Hugging Face model card identifies MIT licensing, a 33-layer 650M-parameter checkpoint, and masked-language-model protein sequence use. This Forge onboarding entry uses the existing Forge life-science transformer wrapper to return pooled protein embeddings plus sequence metadata. Regional Forge wrapper images were inspectable and digest-pinned on 2026-05-22; runtime caches are directed to /mnt/data. A four-cell onboarding probe on 2026-05-22 validated the wrapper on the live B200, B300, H200, and L40S regions with 10 warm model-time samples per cell. Keep this slug non-routable until Forge decides whether it should replace or alias the existing public facebook-esm-2-650m entry.",
+  "family_id": "67a64947-8395-4005-afa6-d86e1901fdda",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BIO_MAX_LENGTH": "1024",
+      "BIO_MODEL_ID": "facebook/esm2_t33_650M_UR50D",
+      "BIO_MODEL_KIND": "protein_embedding",
+      "BIO_MODEL_SLUG": "facebook-esm-2-650m-protein-embedding",
+      "BIO_TORCH_DTYPE": "auto",
+      "HF_HOME": "/mnt/data/hf-cache/facebook-esm-2-650m-protein-embedding",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/facebook-esm-2-650m-protein-embedding/hub",
+      "TORCH_HOME": "/mnt/data/torch-cache/facebook-esm-2-650m-protein-embedding",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/facebook-esm-2-650m-protein-embedding/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/cache/facebook-esm-2-650m-protein-embedding"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 10001,
+    "container_run_as_user": 10001,
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:39:48.026615+00:00",
+      "region": "us-central1",
+      "request_ms": 14,
+      "request_ms_p50": 14,
+      "request_ms_p95": 14,
+      "request_ms_p99": 15,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 234748,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.12,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.21
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:40:11.549276+00:00",
+      "region": "uk-south1",
+      "request_ms": 13,
+      "request_ms_p50": 13,
+      "request_ms_p95": 14,
+      "request_ms_p99": 15,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 223044,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.12,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.21
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:45:30.434597+00:00",
+      "region": "eu-north1",
+      "request_ms": 14,
+      "request_ms_p50": 14,
+      "request_ms_p95": 14,
+      "request_ms_p99": 14,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 260058,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.04,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.21
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-07-23T12:59:57.408578+00:00",
+      "region": "eu-north1",
+      "request_ms": 14,
+      "request_ms_p50": 14,
+      "request_ms_p95": 15,
+      "request_ms_p99": 15,
+      "request_ms_samples": 10,
+      "startup_ms_first": 186673,
+      "startup_ms_probe": 186673,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.04,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.21
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-08T11:40:15.889066+00:00",
+      "region": "eu-north2",
+      "request_ms": 16,
+      "request_ms_p50": 16,
+      "request_ms_p95": 17,
+      "request_ms_p99": 17,
+      "request_ms_samples": 11,
+      "startup_ms_first": 186673,
+      "startup_ms_probe": 232073,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.04,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.21
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-06-08T11:28:40.411179+00:00",
+      "region": "us-central1",
+      "request_ms": 17,
+      "request_ms_p50": 17,
+      "request_ms_p95": 18,
+      "request_ms_p99": 18,
+      "request_ms_samples": 10,
+      "startup_ms_first": 186673,
+      "startup_ms_probe": 250024,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.04,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.21
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T11:41:02.048036+00:00",
+      "region": "eu-north1",
+      "request_ms": 23,
+      "request_ms_p50": 23,
+      "request_ms_p95": 28,
+      "request_ms_p99": 30,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 65115,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.86,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.21
+    }
+  ],
+  "gpu_type": null,
+  "id": "3d397a5b-f293-472d-bf05-a13f78c89766",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "protein_sequence"
+  ],
+  "modality_output": [
+    "embedding",
+    "json"
+  ],
+  "model_family": "facebook-esm-2-650m",
+  "name": "ESM-2 650M Protein Embeddings",
+  "parameter_count": 650000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_length": "{{max_length}}",
+        "sequence": "{{sequence}}"
+      },
+      "endpoint": "/v1/inference/facebook-esm-2-650m-protein-embedding",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMK",
+        "key": "sequence",
+        "label": "Protein sequence",
+        "type": "protein_sequence",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 512,
+        "key": "max_length",
+        "label": "Max sequence length",
+        "max": 1024,
+        "min": 32,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/hf-cache/facebook-esm-2-650m-protein-embedding",
+      "kind": "protein_embedding",
+      "model_id": "facebook/esm2_t33_650M_UR50D",
+      "model_revision": "08e4846e537177426273712802403f7ba8261b6c",
+      "served_model_name": "facebook-esm-2-650m-protein-embedding"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "max_length"
+      ],
+      "required": [
+        "sequence"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/life-science-facebook-esm2-650m@sha256:fd2c040ff0183a02989474910d2294a069df7685d00c1e429bd08621c715fb74",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/life-science-facebook-esm2-650m@sha256:3a30d57c0f8204ada2a50333226e3b595ad220472d5cac68099e6f4f1f3cce9b",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/life-science-facebook-esm2-650m@sha256:07852f9531aa8d15f94fbb08e9552ac5d5e0d6ab01e4c4a4fd69cdf1b53c8e1c",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-facebook-esm2-650m@sha256:5ff160340afe93ea0be03af3da9061b6a8f05d26aff3c390e403328bc952a27d"
+  },
+  "release_rank": 55,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "facebook-esm-2-650m-protein-embedding",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/facebook/esm2_t33_650M_UR50D",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "protein",
+    "embedding",
+    "sequence",
+    "esm",
+    "transformers",
+    "forge-wrapper",
+    "open-source"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-08e4846-wrapper-20260427-timing",
+  "version_description": "Meta ESM-2 650M served as a Forge protein-sequence embedding endpoint through the life-science transformer wrapper.",
+  "version_key": "hf-08e4846-wrapper-20260427-timing",
+  "version_label": "HF 08e4846 via Forge life-science wrapper"
+}

@@ -1,0 +1,241 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "97fd64ad032a39503a9d0e661270dde81b86506412eaf47a0967b375a376bd90",
+  "defaultEligible": true,
+  "displayName": "Use LTX-2.3",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/lightricks-ltx-2-3-sglang/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "lightricks-ltx-2-3-sglang"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/lightricks-ltx-2",
+  "inputFields": [
+    {
+      "choices": [
+        "text2video",
+        "image2video"
+      ],
+      "default": "text2video",
+      "fieldType": "select",
+      "key": "mode",
+      "label": "Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "A cinematic wide shot of a rain-soaked city street at blue hour, slow dolly forward, realistic reflections, natural traffic ambience.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "input_image",
+      "label": "Starting Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "license_acknowledgement",
+      "label": "I accept the LTX-2 Community License and confirm this use is authorized",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "768x512",
+        "512x768"
+      ],
+      "default": "768x512",
+      "fieldType": "select",
+      "key": "size",
+      "label": "Frame Size",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "negative_prompt",
+      "label": "Negative Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 49,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 121,
+      "minimum": 9,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 24,
+      "fieldType": "number",
+      "key": "fps",
+      "label": "FPS",
+      "maximum": 30,
+      "minimum": 8,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 20,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Inference Steps",
+      "maximum": 40,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 3,
+      "fieldType": "slider",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 20,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 42,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 2147483647,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-lightricks-ltx-2-3-sglang\ndescription: Use the exact Forge model lightricks-ltx-2-3-sglang for text, image to video, audio tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use LTX-2.3\n\n- Model slug: `lightricks-ltx-2-3-sglang`\n- Model family: `lightricks-ltx-2`\n- Version: `2.3-one-stage-sglang-0.5.11` (`2-3-one-stage`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / lightricks-ltx-2-3-sglang`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `ltx-2-community-license-agreement`\n\n## Purpose\n\nLTX-2.3 generates video with synchronized audio from text or a starting image.\n\n## Use this exact model when\n\n- Use this exact `lightricks-ltx-2-3-sglang` version when the task supplies text, image and needs video, audio.\n- LTX-2.3 generates video with synchronized audio from text or a starting image.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['video', 'audio'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `mode` (select, optional): Mode\n- `prompt` (textarea, optional): Prompt\n- `input_image` (file_upload, optional): Starting Image\n- `license_acknowledgement` (checkbox, optional): I accept the LTX-2 Community License and confirm this use is authorized\n- `size` (select, optional): Frame Size\n- `negative_prompt` (textarea, optional): Negative Prompt\n- `num_frames` (number, optional; bounds 9..121): Frames\n- `fps` (number, optional; bounds 8..30): FPS\n- `num_inference_steps` (number, optional; bounds 1..40): Inference Steps\n- `guidance_scale` (slider, optional; bounds 0..20): Guidance\n- `seed` (number, optional; bounds 0..2147483647): Seed\n\nRequest template:\n\n```json\n{\n  \"fps\": \"{{fps}}\",\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"input_image\": \"{{input_image}}\",\n  \"license_acknowledgement\": \"{{license_acknowledgement}}\",\n  \"mode\": \"{{mode}}\",\n  \"negative_prompt\": \"{{negative_prompt}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"size\": \"{{size}}\"\n}\n```\n\n## Exact output\n\n- `video`\n- `audio`\n\n## Route\n\n`POST /v1/inference/lightricks-ltx-2`\n\n## Workflow\n\n1. Load this skill and pin model slug `lightricks-ltx-2-3-sglang` with version key `2-3-one-stage`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/lightricks-ltx-2` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/lightricks-ltx-2-3-sglang`\n- Routes: `/v1/models/lightricks-ltx-2-3-sglang/inference-routes`\n- Regional deployment: `/v1/models/lightricks-ltx-2-3-sglang/regional-deployment`\n- Deployment handoff: `/v1/models/lightricks-ltx-2-3-sglang/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/lightricks-ltx-2-3-sglang/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/lightricks-ltx-2-3-sglang/SKILL.md\n\n## References\n\n- [LTX-2.3 source](https://huggingface.co/Lightricks/LTX-2.3) (model-card)\n",
+  "license": "ltx-2-community-license-agreement",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/lightricks-ltx-2-3-sglang/deploy",
+    "inferenceRoutesUrl": "/v1/models/lightricks-ltx-2-3-sglang/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/lightricks-ltx-2",
+    "modelUrl": "/v1/models/lightricks-ltx-2-3-sglang",
+    "regionalDeploymentUrl": "/v1/models/lightricks-ltx-2-3-sglang/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/lightricks-ltx-2-3-sglang/markdown",
+  "modelFamily": "lightricks-ltx-2",
+  "modelSlug": "lightricks-ltx-2-3-sglang",
+  "modelUrl": "/v1/models/lightricks-ltx-2-3-sglang",
+  "outputFields": [
+    "video",
+    "audio"
+  ],
+  "outputModalities": [
+    "video",
+    "audio"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "LTX-2.3 generates video with synchronized audio from text or a starting image.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/lightricks-ltx-2-3-sglang/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "LTX-2.3 source",
+      "url": "https://huggingface.co/Lightricks/LTX-2.3"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/lightricks-ltx-2-3-sglang/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/lightricks-ltx-2-3-sglang/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "fps": "{{fps}}",
+    "guidance_scale": "{{guidance_scale}}",
+    "input_image": "{{input_image}}",
+    "license_acknowledgement": "{{license_acknowledgement}}",
+    "mode": "{{mode}}",
+    "negative_prompt": "{{negative_prompt}}",
+    "num_frames": "{{num_frames}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "size": "{{size}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 22000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/Lightricks/LTX-2.3",
+    "tags": [
+      "video-generation",
+      "text-to-video",
+      "image-to-video",
+      "audio-video",
+      "ltx-2",
+      "sglang"
+    ],
+    "versionLabel": "2.3 One Stage"
+  },
+  "shortDescription": "LTX-2.3 generates video with synchronized audio from text or a starting image.",
+  "skillName": "use-forge-lightricks-ltx-2-3-sglang",
+  "skillUrl": "/v1/model-skills/lightricks-ltx-2-3-sglang",
+  "slug": "lightricks-ltx-2-3-sglang",
+  "stability": "stable",
+  "version": "2.3-one-stage-sglang-0.5.11",
+  "versionKey": "2-3-one-stage",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['video', 'audio'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `lightricks-ltx-2-3-sglang` version when the task supplies text, image and needs video, audio.",
+    "LTX-2.3 generates video with synchronized audio from text or a starting image.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `lightricks-ltx-2-3-sglang` with version key `2-3-one-stage`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/lightricks-ltx-2` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

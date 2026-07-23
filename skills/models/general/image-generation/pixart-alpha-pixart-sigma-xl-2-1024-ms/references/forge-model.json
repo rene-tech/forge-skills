@@ -1,0 +1,293 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "image_generation",
+    "text_to_image",
+    "diffusion",
+    "pixart",
+    "single_gpu",
+    "text",
+    "vision",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+  "container_image_size_bytes": null,
+  "context_window": 300,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-17T04:12:12.032738+00:00",
+  "default_eligible": true,
+  "description": "PixArt-Sigma XL 1024 text-to-image generation through the Forge Diffusers wrapper. It is included as a low-risk open image baseline with documented low-VRAM inference paths.",
+  "family_id": "cb3e9c02-7f69-414b-8dd8-3138b30735fc",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 8.0,
+    "runtime_env": {
+      "MEDIA_DEFAULT_GUIDANCE_SCALE": "4.5",
+      "MEDIA_DEFAULT_HEIGHT": "1024",
+      "MEDIA_DEFAULT_STEPS": "20",
+      "MEDIA_DEFAULT_WIDTH": "1024",
+      "MEDIA_ENABLE_CPU_OFFLOAD": "1",
+      "MEDIA_ENABLE_VAE_SLICING": "1",
+      "MEDIA_ENABLE_VAE_TILING": "1",
+      "MEDIA_MODEL_ID": "PixArt-alpha/PixArt-Sigma-XL-2-1024-MS",
+      "MEDIA_MODEL_KIND": "image_diffusers",
+      "MEDIA_MODEL_SLUG": "pixart-alpha-pixart-sigma-xl-2-1024-ms",
+      "MEDIA_PIPELINE_CLASS": "PixArtSigmaPipeline",
+      "MEDIA_TORCH_DTYPE": "float16"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:18:05.354690+00:00",
+      "region": "us-central1",
+      "request_ms": 12268,
+      "request_ms_p50": 12268,
+      "request_ms_p95": 12268,
+      "request_ms_p99": 12268,
+      "request_ms_samples": 1,
+      "startup_ms_first": 41708,
+      "startup_ms_probe": 41708,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:15:49.988158+00:00",
+      "region": "uk-south1",
+      "request_ms": 44614,
+      "request_ms_p50": 44614,
+      "request_ms_p95": 44614,
+      "request_ms_p99": 44614,
+      "request_ms_samples": 1,
+      "startup_ms_first": 60957,
+      "startup_ms_probe": 60957,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:18:16.625704+00:00",
+      "region": "eu-north2",
+      "request_ms": 13105,
+      "request_ms_p50": 13105,
+      "request_ms_p95": 13105,
+      "request_ms_p99": 13105,
+      "request_ms_samples": 1,
+      "startup_ms_first": 44781,
+      "startup_ms_probe": 44781,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:39:32.985235+00:00",
+      "region": "eu-north1",
+      "request_ms": 14148,
+      "request_ms_p50": 14148,
+      "request_ms_p95": 14148,
+      "request_ms_p99": 14148,
+      "request_ms_samples": 1,
+      "startup_ms_first": 49749,
+      "startup_ms_probe": 49749,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:18:08.427796+00:00",
+      "region": "us-central1",
+      "request_ms": 12859,
+      "request_ms_p50": 12859,
+      "request_ms_p95": 12859,
+      "request_ms_p99": 12859,
+      "request_ms_samples": 1,
+      "startup_ms_first": 60163,
+      "startup_ms_probe": 60163,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "ba229392-a5aa-407f-bbec-118d512af7b2",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "image"
+  ],
+  "model_family": "pixart-alpha-pixart-sigma",
+  "name": "PixArt-Sigma XL 2 1024 MS",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "guidance_scale": "{{guidance_scale}}",
+        "max_sequence_length": 300,
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}",
+        "steps": "{{steps}}"
+      },
+      "endpoint": "/v1/inference/pixart-alpha-pixart-sigma-xl-2-1024-ms",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "A clean editorial illustration of image generation benchmarks across GPU cards, crisp labels, modern technical magazine style",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "png",
+      "type": "image"
+    },
+    "parameter_controls": [
+      {
+        "default": 14,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 20,
+        "key": "steps",
+        "label": "Steps",
+        "max": 50,
+        "min": 4,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 4.5,
+        "key": "guidance_scale",
+        "label": "Guidance",
+        "max": 10,
+        "min": 1,
+        "step": 0.5,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "image_generation"
+  },
+  "quantization": "fp16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-media-generation-diffusers:20260517-diffusers-v7"
+  },
+  "release_rank": 161,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "pixart-alpha-pixart-sigma-xl-2-1024-ms",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/pixart_sigma",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "image-generation",
+    "text-to-image",
+    "diffusion",
+    "pixart",
+    "single-gpu"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "xl-2-1024-ms-diffusers",
+  "version_description": null,
+  "version_key": "xl-2-1024-ms-diffusers",
+  "version_label": "XL 2 1024 MS Diffusers"
+}

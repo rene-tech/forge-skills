@@ -1,0 +1,313 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "image_generation",
+    "text_to_image",
+    "diffusion",
+    "z_image",
+    "single_gpu",
+    "text",
+    "vision",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+  "container_image_size_bytes": null,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-17T04:12:07.973848+00:00",
+  "default_eligible": true,
+  "description": "Z-Image Turbo text-to-image generation through the Forge Diffusers wrapper. Diffusers documents it as a 6B image model that fits in 16GB VRAM, making it a strong single-GPU candidate.",
+  "family_id": "aa216410-e716-47af-84dc-8ce60cb792b0",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0,
+    "runtime_env": {
+      "MEDIA_DEFAULT_GUIDANCE_SCALE": "0",
+      "MEDIA_DEFAULT_HEIGHT": "1024",
+      "MEDIA_DEFAULT_STEPS": "8",
+      "MEDIA_DEFAULT_WIDTH": "1024",
+      "MEDIA_ENABLE_CPU_OFFLOAD": "1",
+      "MEDIA_ENABLE_VAE_SLICING": "1",
+      "MEDIA_ENABLE_VAE_TILING": "1",
+      "MEDIA_MODEL_ID": "Tongyi-MAI/Z-Image-Turbo",
+      "MEDIA_MODEL_KIND": "image_diffusers",
+      "MEDIA_MODEL_SLUG": "tongyi-mai-z-image-turbo",
+      "MEDIA_PIPELINE_CLASS": "ZImagePipeline",
+      "MEDIA_TORCH_DTYPE": "bfloat16"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:25:48.819548+00:00",
+      "region": "us-central1",
+      "request_ms": 21154,
+      "request_ms_p50": 21154,
+      "request_ms_p95": 21154,
+      "request_ms_p99": 21154,
+      "request_ms_samples": 1,
+      "startup_ms_first": 32225,
+      "startup_ms_probe": 32225,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 11.18
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:16:04.007996+00:00",
+      "region": "uk-south1",
+      "request_ms": 21920,
+      "request_ms_p50": 21920,
+      "request_ms_p95": 21920,
+      "request_ms_p99": 21920,
+      "request_ms_samples": 1,
+      "startup_ms_first": 84650,
+      "startup_ms_probe": 84650,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 11.18
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:20:17.230048+00:00",
+      "region": "eu-north2",
+      "request_ms": 22711,
+      "request_ms_p50": 22711,
+      "request_ms_p95": 22711,
+      "request_ms_p99": 22711,
+      "request_ms_samples": 1,
+      "startup_ms_first": 59816,
+      "startup_ms_probe": 59816,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 11.18
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:31:43.309323+00:00",
+      "region": "eu-north1",
+      "request_ms": 23568,
+      "request_ms_p50": 23568,
+      "request_ms_p95": 23568,
+      "request_ms_p99": 23568,
+      "request_ms_samples": 1,
+      "startup_ms_first": 78614,
+      "startup_ms_probe": 78614,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 11.18
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-17T04:21:46.571466+00:00",
+      "region": "us-central1",
+      "request_ms": 17712,
+      "request_ms_p50": 17712,
+      "request_ms_p95": 17712,
+      "request_ms_p99": 17712,
+      "request_ms_samples": 1,
+      "startup_ms_first": 80819,
+      "startup_ms_probe": 80819,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 11.18
+    }
+  ],
+  "gpu_type": null,
+  "id": "6aedd897-3e45-43c6-a1a5-41d894a9adf6",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "image"
+  ],
+  "model_family": "tongyi-mai-z-image",
+  "name": "Z-Image Turbo",
+  "parameter_count": 6000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "guidance_scale": "{{guidance_scale}}",
+        "height": "{{height}}",
+        "max_sequence_length": 512,
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}",
+        "steps": "{{steps}}",
+        "width": "{{width}}"
+      },
+      "endpoint": "/v1/inference/tongyi-mai-z-image-turbo",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "A bilingual poster for a cloud GPU image generation platform, crisp product typography, photorealistic workstation, English and Chinese text, studio lighting",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "png",
+      "type": "image"
+    },
+    "parameter_controls": [
+      {
+        "default": 42,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 8,
+        "key": "steps",
+        "label": "Steps",
+        "max": 20,
+        "min": 4,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 0,
+        "key": "guidance_scale",
+        "label": "Guidance",
+        "max": 6,
+        "min": 0,
+        "step": 0.5,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "width",
+        "label": "Width",
+        "max": 1536,
+        "min": 512,
+        "step": 64,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "height",
+        "label": "Height",
+        "max": 1536,
+        "min": 512,
+        "step": 64,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "image_generation"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-media-generation-diffusers:20260517-diffusers-v7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-media-generation-diffusers:20260517-diffusers-v7"
+  },
+  "release_rank": 160,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "tongyi-mai-z-image-turbo",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "image-generation",
+    "text-to-image",
+    "diffusion",
+    "z-image",
+    "single-gpu"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "turbo-diffusers",
+  "version_description": null,
+  "version_key": "turbo-diffusers",
+  "version_label": "Turbo Diffusers"
+}

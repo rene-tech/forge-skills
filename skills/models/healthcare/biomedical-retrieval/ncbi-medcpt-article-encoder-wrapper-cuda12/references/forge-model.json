@@ -1,0 +1,676 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/ncbi/MedCPT-Article-Encoder",
+    "artifact_checked_at": "2026-05-31T08:04:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "embedding_dimension": 768,
+      "hidden_size": 768,
+      "input_contract": "title_abstract_pair",
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pooling": "cls",
+      "transformers_version": "4.34.0",
+      "vocab_size": 30522
+    },
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 112161,
+    "artifact_evidence": "Hugging Face API returned private=false, gated=false, disabled=false, license_name=public-domain, library_name=transformers, pipeline_tag=feature-extraction, tags including text-embeddings-inference and endpoints_compatible, revision d05a736da4bb84ee4057b7f7999485be6ed85465, tokenizer.json present, and safetensors total 109,482,240 F32 parameters on 2026-05-31T08:04Z. The model card says each article contains title and abstract text and uses last_hidden_state[:, 0, :] as the representation.",
+    "artifact_files_observed": [
+      ".gitattributes",
+      "LICENSE",
+      "README.md",
+      "added_tokens.json",
+      "config.json",
+      "model.safetensors",
+      "pytorch_model.bin",
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer_config.json",
+      "vocab.txt"
+    ],
+    "artifact_gated": false,
+    "artifact_last_modified": "2023-12-03T00:47:23.000Z",
+    "artifact_license": "public-domain",
+    "artifact_likes_observed": 28,
+    "artifact_parameters": {
+      "F32": 109482240,
+      "total": 109482240
+    },
+    "artifact_private": false,
+    "artifact_recheck_20260531T0804Z": {
+      "disabled": false,
+      "downloads_observed": 112161,
+      "gated": false,
+      "last_modified": "2023-12-03T00:47:23.000Z",
+      "library_name": "transformers",
+      "license_file_evidence": "NCBI/NLM United States Government Work; freely available to the public with no U.S. Government restriction on use or reproduction.",
+      "license_link": "LICENSE",
+      "license_name": "public-domain",
+      "likes_observed": 28,
+      "pipeline_tag": "feature-extraction",
+      "private": false,
+      "readme_contract": "Article Encoder inputs are PubMed-style title and abstract pairs; CLS last hidden state is the article representation and shares a vector space with MedCPT Query Encoder.",
+      "safetensors_total": 109482240,
+      "sha": "d05a736da4bb84ee4057b7f7999485be6ed85465",
+      "status": "unchanged_public_ungated_artifact"
+    },
+    "artifact_sha": "d05a736da4bb84ee4057b7f7999485be6ed85465",
+    "artifact_source": "https://huggingface.co/ncbi/MedCPT-Article-Encoder",
+    "base_image": "docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+    "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, TORCH_HOME, XDG_CACHE_HOME, and HOME point to versioned /mnt/data paths. A file lock under the same cache root serializes first-run model/tokenizer hydration.",
+    "container_build_20260529T15Z": {
+      "cpu_smoke": {
+        "embedding_dimension": 768,
+        "first3_rounded": [
+          -0.017074,
+          -0.006749,
+          -0.015563
+        ],
+        "input_contract": "title_abstract_pair",
+        "model_time_ms": 44,
+        "normalized": true,
+        "prompt_tokens": 48,
+        "status": "passed"
+      },
+      "local_image_id": "sha256:0c9a212b8fcb3e42cd1cae9380e3e91b76d5e7c2d62d0a1ec6e39121bd6471d2",
+      "mirror_note": "mirror_via_k8s_job canonicalized the regional destination repository to models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-article-encoder; the manifest uses those digest-pinned refs.",
+      "regional_digest_verification": {
+        "eu-north1": "sha256:93a4991e4f8712ed90f9fad2bcbeee7022639a150fbf94cb6c7fb5c71355c8a9",
+        "eu-north2": "sha256:93a4991e4f8712ed90f9fad2bcbeee7022639a150fbf94cb6c7fb5c71355c8a9",
+        "uk-south1": "sha256:93a4991e4f8712ed90f9fad2bcbeee7022639a150fbf94cb6c7fb5c71355c8a9",
+        "us-central1": "sha256:93a4991e4f8712ed90f9fad2bcbeee7022639a150fbf94cb6c7fb5c71355c8a9"
+      },
+      "registry_digest": "sha256:93a4991e4f8712ed90f9fad2bcbeee7022639a150fbf94cb6c7fb5c71355c8a9",
+      "size_bytes": 7819154727,
+      "status": "built_pushed_mirrored"
+    },
+    "container_build_20260531T0804Z": {
+      "cpu_smoke": {
+        "acknowledged_unloaded_runtime": "ModelNotReadyError",
+        "missing_acknowledgement": "ValueError research_use_acknowledgement",
+        "scope": "in-image runtime acknowledgement gate without model hydration",
+        "status": "passed"
+      },
+      "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-article-encoder:wrapper-cuda12-torch2100-20260630",
+      "local_image_id": "sha256:cdc128087db9c486c9dd2751b42547ddaade616d218bd128419534700b92b868",
+      "publication_effect": "Manifest refs point to the acknowledgement-gated digest. Keep support publication gated until this exact digest completes live matrix reprobe.",
+      "regional_digest_verification": {
+        "eu-north1": "sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+        "eu-north2": "sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+        "uk-south1": "sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+        "us-central1": "sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762"
+      },
+      "registry_digest": "sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+      "size_bytes": 7819155495,
+      "status": "built_pushed_mirrored_acknowledgement_gate_smoked"
+    },
+    "container_digest": "sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+    "container_image_size_bytes": 7819155495,
+    "container_source_decision": "build_forge_owned_cuda12_wrapper_because_generic_openai_compatible_tei_single_string_input_does_not_preserve_the_documented_title_abstract_pair_tokenization_contract",
+    "embedding_contract": {
+      "embedding_dimension": 768,
+      "input": "title and abstract fields, or input/articles as article objects",
+      "max_batch_size": 16,
+      "normalized_default": true,
+      "pooling": "last_hidden_state[:, 0, :]",
+      "tokenization": "tokenizer(title_batch, text_pair=abstract_batch, padding=true, truncation=true, max_length=512)"
+    },
+    "full_matrix_probe_20260529T15Z": {
+      "b300_sm103_result": "supported_20260529T15Z_wrapper_cuda12_pytorch_path_no_tei_sm103_candle_rejection",
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200_us-central1": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-b200-us-central1-ed7e0d",
+          "request_ms_p50": 3,
+          "request_ms_samples": 10,
+          "startup_ms": 197887,
+          "tokens_per_second": 16000.0,
+          "vram_used_gb": 0.99
+        },
+        "B300_uk-south1": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-b300-uk-south1-2c917f",
+          "request_ms_p50": 3,
+          "request_ms_samples": 10,
+          "startup_ms": 182417,
+          "tokens_per_second": 16000.0,
+          "vram_used_gb": 0.99
+        },
+        "H200_eu-north2": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-h200-eu-north2-e12de1",
+          "request_ms_p50": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 187474,
+          "tokens_per_second": 12000.0,
+          "vram_used_gb": 0.93
+        },
+        "L40S_eu-north1": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-l40s-eu-north1-5d03d8",
+          "request_ms_p50": 6,
+          "request_ms_samples": 10,
+          "startup_ms": 166098,
+          "tokens_per_second": 8000.0,
+          "vram_used_gb": 0.73
+        },
+        "RTX6000_us-central1": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-rtx6000-us-central1-1bfe0d",
+          "request_ms_p50": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 213656,
+          "tokens_per_second": 12000.0,
+          "vram_used_gb": 0.87
+        }
+      },
+      "report_json": "docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260529T15Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260529T15Z-full-matrix.md",
+      "request_body": {
+        "abstract": "Single-cell transcriptomic profiling of intestinal biopsies identifies disease-associated macrophage, fibroblast, and T cell populations and links inflammatory programs to treatment response in inflammatory bowel disease.",
+        "encoding_format": "float",
+        "normalize": true,
+        "title": "Single-cell RNA sequencing reveals immune cell states in inflammatory bowel disease"
+      },
+      "request_time_source": "model_time_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "gpu_compatibility_basis": {
+      "B200": "supported_20260531T0804Z_ack_digest_standard_probe_10_measured_model_time_p50_4ms",
+      "B300": "supported_20260531T0804Z_ack_digest_standard_probe_10_measured_model_time_p50_4ms",
+      "H200": "supported_20260531T0804Z_ack_digest_standard_probe_10_measured_model_time_p50_4ms",
+      "L40S": "supported_20260531T0804Z_ack_digest_standard_probe_10_measured_model_time_p50_6ms",
+      "RTX6000": "unavailable_20260531T0804Z_ack_digest_probe_blocked_by_us_central1_insufficient_gpu_capacity"
+    },
+    "license_file_evidence": "NCBI/NLM United States Government Work; freely available to the public with no U.S. Government restriction on use or reproduction.",
+    "local_image_id": "sha256:cdc128087db9c486c9dd2751b42547ddaade616d218bd128419534700b92b868",
+    "next_commands": [
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12.json --dry-run",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12.json --keep-existing-family-latest",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug ncbi-medcpt-article-encoder-wrapper-cuda12 --include-status onboarding --gpu RTX6000 --region us-central1 --timeout 2400 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260531T0804Z-rtx6000.json --report-md docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260531T0804Z-rtx6000.md",
+      "Run product safety and retrieval/corpus integration review before publication/default eligibility."
+    ],
+    "onboarding_state": "acknowledgement_gate_image_mirrored_four_schedulable_cells_supported_rtx6000_capacity_blocked_pending_hcls_safety_routing_review",
+    "pair_parity_20260529T15Z": {
+      "artifact_revision": "d05a736da4bb84ee4057b7f7999485be6ed85465",
+      "cosine": 0.9999997019767761,
+      "direct_first3": [
+        -0.01707378,
+        -0.00674949,
+        -0.01556317
+      ],
+      "embedding_dimension": 768,
+      "evidence_json": "docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260529T15Z-pair-parity.json",
+      "evidence_md": "docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260529T15Z-contract.md",
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "normalized": true,
+      "pooling": "last_hidden_state[:, 0, :]",
+      "prompt_tokens": 48,
+      "reference_runtime": "independent_direct_transformers_cpu_inside_same_image",
+      "runtime": "built_wrapper_container_cpu",
+      "status": "passed",
+      "tokenizer_call": "tokenizer([title], text_pair=[abstract], padding=true, truncation=true, max_length=512)",
+      "wrapper_first3": [
+        -0.01707378,
+        -0.00674949,
+        -0.01556317
+      ]
+    },
+    "paired_query_encoder": {
+      "artifact": "ncbi/MedCPT-Query-Encoder",
+      "query_row_state": "B200_H200_L40S_RTX6000_supported_B300_disabled_on_TEI_cuda_1_9_SM103",
+      "routing_implication": "This wrapper removes the article-side pair-tokenization blocker and validates B300/SM103 for article-side embeddings. Public query-to-article routing still needs product approval and an approved retrieval/corpus integration plan.",
+      "slug": "ncbi-medcpt-query-encoder-tei-cuda-1-9"
+    },
+    "planned_container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-article-encoder:wrapper-cuda12-torch2100-20260630",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "do_not_publish_customer_visible_until_rtx6000_reprobe_or_explicit_exclusion_hcls_safety_review_and_query_to_article_routing_approval",
+    "remaining_blockers": [
+      "RTX6000/us-central1 exact-digest probe blocked by current GPU capacity",
+      "Query-to-article product routing and corpus integration plan not approved",
+      "HCLS product safety review not complete"
+    ],
+    "runtime_stack": {
+      "fastapi": "0.136.1",
+      "huggingface_hub": "0.33.4",
+      "safetensors": "0.5.2",
+      "starlette": "1.0.1",
+      "torch": "2.10.0+cu128",
+      "transformers": "4.48.3",
+      "uvicorn": "0.34.0"
+    },
+    "safety_gate_20260531T0804Z": {
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation over article titles and abstracts.",
+      "blocked_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "in_image_smoke": "docker run ack gate smoke passed without weight hydration",
+      "manifest_body_template": "passes research_use_acknowledgement from playground control to /v1/embeddings",
+      "runtime_behavior": "embed() rejects requests unless research_use_acknowledgement=true before model readiness or inference",
+      "status": "runtime_acknowledgement_gate_enforced_in_new_image",
+      "unit_tests": [
+        "tests/test_medcpt_article_encoder_wrapper.py",
+        "tests/test_medcpt_article_encoder_manifest.py"
+      ]
+    },
+    "schedulable_matrix_probe_20260531T0804Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200_us-central1": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-b200-us-central1-7540c2",
+          "request_ms_p50": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 183128,
+          "tokens_per_second": 12000.0,
+          "vram_used_gb": 0.99
+        },
+        "B300_uk-south1": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-b300-uk-south1-44a586",
+          "request_ms_p50": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 8104,
+          "tokens_per_second": 12000.0,
+          "vram_used_gb": 0.99
+        },
+        "H200_eu-north2": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-h200-eu-north2-48caea",
+          "request_ms_p50": 4,
+          "request_ms_samples": 10,
+          "startup_ms": 15970,
+          "tokens_per_second": 12000.0,
+          "vram_used_gb": 0.93
+        },
+        "L40S_eu-north1": {
+          "pod": "forge-probe-ncbi-medcpt-article-enco-l40s-eu-north1-0d5aa3",
+          "request_ms_p50": 6,
+          "request_ms_samples": 10,
+          "startup_ms": 166685,
+          "tokens_per_second": 8000.0,
+          "vram_used_gb": 0.73
+        }
+      },
+      "container_digest": "sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+      "live_upsert": true,
+      "report_json": "docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260531T0804Z-schedulable-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260531T0804Z-schedulable-matrix.md",
+      "request_body": {
+        "abstract": "Single-cell transcriptomic profiling of intestinal biopsies identifies disease-associated macrophage, fibroblast, and T cell populations and links inflammatory programs to treatment response in inflammatory bowel disease.",
+        "encoding_format": "float",
+        "normalize": true,
+        "research_use_acknowledgement": true,
+        "title": "Single-cell RNA sequencing reveals immune cell states in inflammatory bowel disease"
+      },
+      "request_time_source": "model_time_ms",
+      "rtx6000_us_central1_blocker": {
+        "evidence": "Stopped all-cell probe after scheduler event for pod forge-probe-ncbi-medcpt-article-enco-rtx6000-us-central1-133116: 0/11 nodes available; 1 Insufficient nvidia.com/gpu; 8 node affinity/selector mismatch; utility/uninitialized taints on remaining nodes. The live RTX6000/us-central1 support row was updated to unavailable and stale latency percentiles were cleared.",
+        "fallback": "Reprobe RTX6000/us-central1 when capacity is free, or explicitly exclude RTX6000 for this acknowledgement-gated version before publication.",
+        "status": "capacity_blocked_persisted_unavailable_for_exact_digest"
+      },
+      "status": "supported_four_schedulable_cells_rtx6000_capacity_blocked",
+      "warmup_runs": 3
+    },
+    "validation_commands_run_20260529T15Z": [
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m compileall -q services/models/hcls/ncbi_medcpt_article_encoder services/models/common",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12.json --dry-run",
+      "docker build -f services/models/hcls/ncbi_medcpt_article_encoder/Dockerfile -t cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-article-encoder:wrapper-cuda12-pair-tokenizer-20260529t15z .",
+      "docker run --rm --entrypoint python -e MEDCPT_ARTICLE_DEVICE=cpu -e MEDCPT_ARTICLE_ALLOW_REMOTE_DOWNLOAD=true -v /tmp/forge-medcpt-article-smoke-cache:/cache cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-article-encoder:wrapper-cuda12-pair-tokenizer-20260529t15z -c <runtime_load_and_embed_smoke>",
+      "docker push cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-article-encoder:wrapper-cuda12-pair-tokenizer-20260529t15z",
+      ".venv312/bin/python scripts/mirror_via_k8s_job.py --upstream cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-article-encoder:wrapper-cuda12-pair-tokenizer-20260529t15z --wait",
+      "crane digest <each regional mirror>",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12.json --keep-existing-family-latest",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug ncbi-medcpt-article-encoder-wrapper-cuda12 --include-status onboarding --timeout 2400 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 3 --report-json docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260529T15Z-full-matrix.json --report-md docs/model-onboarding/hcls/ncbi-medcpt-article-encoder-wrapper-cuda12-20260529T15Z-full-matrix.md"
+    ],
+    "wrapper_source": "services/models/hcls/ncbi_medcpt_article_encoder"
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "medical_literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic_search",
+    "bert",
+    "medcpt",
+    "forge_wrapper",
+    "public_domain",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/ncbi-medcpt-article-encoder:wrapper-cuda12-torch2100-20260630",
+  "container_image_size_bytes": 7819155495,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-29T15:12:24.483171+00:00",
+  "default_eligible": false,
+  "description": "MedCPT Article Encoder is NCBI's public-domain biomedical dense retrieval encoder for PubMed-style article titles and abstracts. The Hugging Face model card describes MedCPT as a query/article encoder pair trained on 255M PubMed query-article pairs and documents the Article Encoder input as a list containing title and abstract text, with the last-layer CLS hidden state used as the article representation. The 2026-05-31T08Z artifact recheck reported private=false, gated=false, disabled=false, license_name=public-domain, library_name=transformers, pipeline_tag=feature-extraction, text-embeddings-inference and endpoints_compatible tags, revision d05a736da4bb84ee4057b7f7999485be6ed85465, tokenizer.json present, and safetensors total 109,482,240 F32 parameters. This Forge-owned wrapper is the scoped fallback for the existing MedCPT query-side routing blocker: it accepts explicit title and abstract fields, calls the tokenizer with title as text and abstract as text_pair, computes CLS embeddings with AutoModel, returns unit-normalized vectors by default to align with the current MedCPT Query Encoder TEI row, exposes model_time_ms for probes, rejects inference unless research_use_acknowledgement=true, clears inherited Hugging Face token env vars, and stores Hugging Face, Transformers, Torch, XDG, and HOME caches under shared /mnt/data. The 2026-05-31T08Z acknowledgement-gated image was built, pushed, mirrored to all four active Forge regions at digest sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762, passed in-image acknowledgement smoke, live-upserted hidden, and persisted support on B200, B300, H200, and L40S with 3 warmups plus 10 measured model_time_ms requests per schedulable cell. RTX6000/us-central1 exact-digest probing is not claimed because scheduling failed with insufficient GPU capacity during this cycle. Keep onboarding/default-ineligible until RTX6000 is reprobed or explicitly excluded, HCLS product safety review, and query-to-article product routing approval are complete.",
+  "family_id": "f6a1ccab-2b49-4c3c-a128-f3849f99476f",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/ncbi-medcpt-article-encoder/wrapper-cuda12",
+      "HF_TOKEN": "",
+      "HOME": "/mnt/data/home/ncbi-medcpt-article-encoder",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/ncbi-medcpt-article-encoder/wrapper-cuda12/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MEDCPT_ARTICLE_ALLOW_REMOTE_DOWNLOAD": "true",
+      "MEDCPT_ARTICLE_DEVICE": "auto",
+      "MEDCPT_ARTICLE_HF_REVISION": "d05a736da4bb84ee4057b7f7999485be6ed85465",
+      "MEDCPT_ARTICLE_MAX_LENGTH": "512",
+      "MEDCPT_ARTICLE_MODEL_ID": "ncbi/MedCPT-Article-Encoder",
+      "MEDCPT_ARTICLE_MODEL_SLUG": "ncbi-medcpt-article-encoder-wrapper-cuda12",
+      "MEDCPT_ARTICLE_TORCH_DTYPE": "auto",
+      "SERVED_MODEL_NAME": "ncbi/MedCPT-Article-Encoder",
+      "TORCH_HOME": "/mnt/data/huggingface/ncbi-medcpt-article-encoder/wrapper-cuda12/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/ncbi-medcpt-article-encoder/wrapper-cuda12/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/huggingface/ncbi-medcpt-article-encoder/wrapper-cuda12/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T08:21:40.084499+00:00",
+      "region": "us-central1",
+      "request_ms": 4,
+      "request_ms_p50": 3,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 183128,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 12000.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.99,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T08:25:02.646261+00:00",
+      "region": "uk-south1",
+      "request_ms": 4,
+      "request_ms_p50": 3,
+      "request_ms_p95": 4,
+      "request_ms_p99": 4,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 8104,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 12000.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.99,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T08:24:50.222012+00:00",
+      "region": "eu-north2",
+      "request_ms": 4,
+      "request_ms_p50": 4,
+      "request_ms_p95": 4,
+      "request_ms_p99": 5,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 15970,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 12000.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.93,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T08:24:30.576594+00:00",
+      "region": "eu-north1",
+      "request_ms": 6,
+      "request_ms_p50": 6,
+      "request_ms_p95": 6,
+      "request_ms_p99": 6,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 166685,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 8000.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.73,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": "RTX6000/us-central1 exact-digest probe capacity blocked on 2026-05-31T08Z: pod forge-probe-ncbi-medcpt-article-enco-rtx6000-us-central1-133116 Pending; scheduler reported 0/11 nodes available, including 1 Insufficient nvidia.com/gpu, 8 node affinity/selector mismatches, and utility/uninitialized taints on remaining nodes.",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T08:29:54.092748+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "521c7c4c-d3f6-4479-aade-88544212ad93",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "public-domain",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "ncbi-medcpt-article-encoder",
+  "name": "MedCPT Article Encoder",
+  "parameter_count": 109482240,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "abstract": "{{abstract}}",
+        "encoding_format": "{{encoding_format}}",
+        "model": "{{model_slug}}",
+        "normalize": "{{normalize}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "title": "{{title}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "ncbi/MedCPT-Article-Encoder"
+    },
+    "input_fields": [
+      {
+        "default": "Single-cell RNA sequencing reveals immune cell states in inflammatory bowel disease",
+        "key": "title",
+        "label": "Article title",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "Single-cell transcriptomic profiling of intestinal biopsies identifies disease-associated macrophage, fibroblast, and T cell populations and links inflammatory programs to treatment response in inflammatory bowel disease.",
+        "key": "abstract",
+        "label": "Article abstract",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      },
+      {
+        "default": true,
+        "key": "normalize",
+        "label": "Normalize vector",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/ncbi-medcpt-article-encoder/wrapper-cuda12",
+      "embedding_dimension": 768,
+      "input_contract": "title_abstract_pair",
+      "kind": "forge_medcpt_article_embeddings",
+      "model_id": "ncbi/MedCPT-Article-Encoder",
+      "model_revision": "d05a736da4bb84ee4057b7f7999485be6ed85465",
+      "normalized_default": true,
+      "pooling": "cls",
+      "research_use_acknowledgement_required": true,
+      "served_model_name": "ncbi/MedCPT-Article-Encoder",
+      "tokenizer_backend": "fast_bert_tokenizer_json"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation over article titles and abstracts.",
+      "body": "Use only for nonclinical biomedical literature retrieval, clustering, semantic search, and RAG evaluation. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only biomedical article embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-article-encoder:wrapper-cuda12-torch2100-20260630@sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-article-encoder:wrapper-cuda12-torch2100-20260630@sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-article-encoder:wrapper-cuda12-torch2100-20260630@sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/u00xf2pqq3cr2q8xsz-models-ncbi-medcpt-article-encoder:wrapper-cuda12-torch2100-20260630@sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762"
+  },
+  "release_rank": 60,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "ncbi-medcpt-article-encoder-wrapper-cuda12",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/ncbi/MedCPT-Article-Encoder",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical",
+    "medical-literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic-search",
+    "bert",
+    "medcpt",
+    "forge-wrapper",
+    "public-domain",
+    "open-source"
+  ],
+  "updated_at": "2026-06-30T13:52:20.826698+00:00",
+  "version": "hf-d05a736-wrapper-cuda12-pair-tokenizer-ack",
+  "version_description": "Hidden Forge-owned MedCPT Article Encoder wrapper that preserves the upstream title/abstract pair-tokenization contract, returns unit-normalized CLS embeddings for query-to-article retrieval parity with the MedCPT Query Encoder TEI row, and enforces research_use_acknowledgement=true before inference. The 2026-05-31T08Z cycle refreshed upstream public-domain provenance, rebuilt and mirrored the acknowledgement-gated image to all active regions at sha256:dda4931ed2fdb2d6e46a4c1bbd2c7c69b497d292b1d0a555a8b8f2f549416762, live-upserted the hidden row, and persisted exact-digest support on B200, B300, H200, and L40S with 3 warmups plus 10 measured requests per schedulable cell. RTX6000/us-central1 exact-digest probing is capacity-blocked by insufficient GPU scheduling. Keep onboarding/default-ineligible until RTX6000 is reprobed or explicitly excluded, HCLS product-safety review, and query-to-article routing approval complete.",
+  "version_key": "hf-d05a736-wrapper-cuda12-pair-tokenizer-ack",
+  "version_label": "HF d05a736 Forge wrapper CUDA 12 ack gate"
+}

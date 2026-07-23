@@ -1,0 +1,155 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "0fe03fe6ea9ad9f6a01ab07cd8536f5e864235c0f9f6ee683e3043305f770b99",
+  "defaultEligible": true,
+  "displayName": "Use ESMFold",
+  "domain": "protein-structure",
+  "downloadUrl": "/v1/model-skills/facebook-esmfold-v1/markdown?download=true",
+  "group": "protein-structure",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "protein-structure",
+    "facebook-esmfold-v1"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/facebook-esmfold-v1",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "MTEITAAMVKELRESTGAGMMDCKNALSETQHEK",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_length",
+      "label": "Max sequence length",
+      "maximum": 1024,
+      "minimum": 32,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-only use acknowledged",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence"
+  ],
+  "instructions": "---\nname: use-forge-facebook-esmfold-v1\ndescription: Use the exact Forge model facebook-esmfold-v1 for protein_sequence to protein_structure, confidence, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use ESMFold\n\n- Model slug: `facebook-esmfold-v1`\n- Model family: `facebook-esmfold`\n- Version: `hf-75a3841-wrapper-20260521-pdb-adapter-fix` (`hf-75a3841-wrapper-20260521-pdb-adapter-fix`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / protein-structure / facebook-esmfold-v1`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `mit`\n\n## Purpose\n\nMeta ESMFold predicts protein structures directly from a single amino-acid sequence without requiring MSA database lookup.\n\n## Use this exact model when\n\n- Use this exact `facebook-esmfold-v1` version when the task supplies protein_sequence and needs protein_structure, confidence, json.\n- Meta ESMFold predicts protein structures directly from a single amino-acid sequence without requiring MSA database lookup.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['protein_structure', 'confidence', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, required): Protein sequence\n- `max_length` (number, optional; bounds 32..1024): Max sequence length\n- `research_use_acknowledgement` (checkbox, required): Research-only use acknowledged\n\nRequest template:\n\n```json\n{\n  \"max_length\": \"{{max_length}}\",\n  \"research_use_acknowledgement\": \"{{research_use_acknowledgement}}\",\n  \"sequence\": \"{{sequence}}\"\n}\n```\n\n## Exact output\n\n- `task`\n- `sequence_length`\n- `mean_plddt`\n- `pdb_preview`\n- `pdb_truncated`\n- `model_time_ms`\n\n## Route\n\n`POST /v1/inference/facebook-esmfold-v1`\n\n## Workflow\n\n1. Load this skill and pin model slug `facebook-esmfold-v1` with version key `hf-75a3841-wrapper-20260521-pdb-adapter-fix`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/facebook-esmfold-v1` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 1024.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/facebook-esmfold-v1`\n- Routes: `/v1/models/facebook-esmfold-v1/inference-routes`\n- Regional deployment: `/v1/models/facebook-esmfold-v1/regional-deployment`\n- Deployment handoff: `/v1/models/facebook-esmfold-v1/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/facebook-esmfold-v1/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-structure/facebook-esmfold-v1/SKILL.md\n\n## References\n\n- [ESMFold source](https://huggingface.co/facebook/esmfold_v1) (model-card)\n",
+  "license": "mit",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 1024."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/facebook-esmfold-v1/deploy",
+    "inferenceRoutesUrl": "/v1/models/facebook-esmfold-v1/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/facebook-esmfold",
+    "modelUrl": "/v1/models/facebook-esmfold-v1",
+    "regionalDeploymentUrl": "/v1/models/facebook-esmfold-v1/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/facebook-esmfold-v1/markdown",
+  "modelFamily": "facebook-esmfold",
+  "modelSlug": "facebook-esmfold-v1",
+  "modelUrl": "/v1/models/facebook-esmfold-v1",
+  "outputFields": [
+    "task",
+    "sequence_length",
+    "mean_plddt",
+    "pdb_preview",
+    "pdb_truncated",
+    "model_time_ms"
+  ],
+  "outputModalities": [
+    "protein_structure",
+    "confidence",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Meta ESMFold predicts protein structures directly from a single amino-acid sequence without requiring MSA database lookup.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-structure/facebook-esmfold-v1/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "ESMFold source",
+      "url": "https://huggingface.co/facebook/esmfold_v1"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/facebook-esmfold-v1/SKILL.md",
+  "repositoryPath": "skills/models/life-science/protein-structure/facebook-esmfold-v1/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_length": "{{max_length}}",
+    "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+    "sequence": "{{sequence}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 1024,
+    "parameterCount": 3000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/facebook/esmfold_v1",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "structure-prediction",
+      "protein-folding",
+      "esm",
+      "forge-wrapper",
+      "open-source",
+      "mit"
+    ],
+    "versionLabel": "HF 75a3841 via Forge life-science wrapper"
+  },
+  "shortDescription": "Meta ESMFold predicts protein structures directly from a single amino-acid sequence without requiring MSA database lookup.",
+  "skillName": "use-forge-facebook-esmfold-v1",
+  "skillUrl": "/v1/model-skills/facebook-esmfold-v1",
+  "slug": "facebook-esmfold-v1",
+  "stability": "testing",
+  "version": "hf-75a3841-wrapper-20260521-pdb-adapter-fix",
+  "versionKey": "hf-75a3841-wrapper-20260521-pdb-adapter-fix",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['protein_structure', 'confidence', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `facebook-esmfold-v1` version when the task supplies protein_sequence and needs protein_structure, confidence, json.",
+    "Meta ESMFold predicts protein structures directly from a single amino-acid sequence without requiring MSA database lookup.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `facebook-esmfold-v1` with version key `hf-75a3841-wrapper-20260521-pdb-adapter-fix`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/facebook-esmfold-v1` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

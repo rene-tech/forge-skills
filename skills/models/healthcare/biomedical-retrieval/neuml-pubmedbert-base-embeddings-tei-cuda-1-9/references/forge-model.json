@@ -1,0 +1,568 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/NeuML/pubmedbert-base-embeddings",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "hidden_size": 768,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pooling": "mean",
+      "torch_dtype": "float32",
+      "vocab_size": 30522
+    },
+    "artifact_disabled": false,
+    "artifact_evidence": "Hugging Face API returned private=false, gated=false, disabled=false, cardData.license=apache-2.0, pipeline_tag=sentence-similarity, library_name=sentence-transformers, safetensors total 109,482,240 F32 parameters, and tags sentence-transformers, feature-extraction, text-embeddings-inference, endpoints_compatible, and license:apache-2.0.",
+    "artifact_gated": false,
+    "artifact_last_modified": "2026-04-21T12:44:28.000Z",
+    "artifact_license": "apache-2.0",
+    "artifact_parameters": {
+      "F32": 109482240,
+      "total": 109482240
+    },
+    "artifact_private": false,
+    "artifact_sha": "b79526d6ef3645e0df4530322e266f24c829f5ef",
+    "artifact_source": "https://huggingface.co/NeuML/pubmedbert-base-embeddings",
+    "b300_sm103_runtime_decision_20260526T23Z": {
+      "current_runtime_entrypoint": {
+        "digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+        "entrypoint": "cuda-all-entrypoint.sh",
+        "image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+        "local_entrypoint_command": "docker run --rm --entrypoint /bin/sh ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 -lc \"sed -n '1,220p' /entrypoint.sh\"",
+        "source_revision": "06670157fb6c1523482219bdb2d1660277d38088",
+        "supported_compute_caps": [
+          "75",
+          "80_to_89",
+          "90",
+          "100",
+          "120"
+        ],
+        "unsupported_compute_cap": "103"
+      },
+      "current_runtime_probe_decision": "do_not_reprobe_cuda_all_on_b300; live failure and upstream entrypoint both reject compute capability 103",
+      "decision": "keep_current_tei_cuda_1_9_3_row_b300_unsupported_and_trial_sm103_only_as_separate_hidden_runtime_variant",
+      "evidence_checked_at": "2026-05-26T23:10:00Z",
+      "latest_cuda_all_recheck": {
+        "entrypoint_source": "https://raw.githubusercontent.com/huggingface/text-embeddings-inference/5bc4d889c38cf9c75e63617d62779bc0f6628b23/cuda-all-entrypoint.sh",
+        "image": "ghcr.io/huggingface/text-embeddings-inference:cuda-latest",
+        "index_digest": "sha256:46d020454c4d5e3563a9aca6c6991335f8c9919e43a992d47916fdc3fffe98f1",
+        "result": "same_cuda_all_entrypoint_branches_no_103",
+        "source_revision": "5bc4d889c38cf9c75e63617d62779bc0f6628b23",
+        "version_label": "cuda-latest"
+      },
+      "next_action": "Create a separate hidden PubMedBERT TEI Blackwell variant from an immutable 100-latest digest, mirror to all regions, upsert hidden, and run B300-only probe with 3 warmups and 10 measured requests.",
+      "probe_safety": "Do not use --container-image-override on the existing PubMedBERT slug because probe_model_parallel_matrix.py persists model_gpu_support; create/upsert a separate hidden variant before any B300 runtime experiment.",
+      "selected_next_candidate": {
+        "entrypoint": "cuda-entrypoint.sh",
+        "image": "ghcr.io/huggingface/text-embeddings-inference:100-latest",
+        "index_digest": "sha256:943ef544a9baf4aa22fb1de9f8d39d133930340ef334bc8678ac57529b055c4d",
+        "license": "Apache-2.0",
+        "linux_amd64_manifest_digest": "sha256:b9147df25e0e3710c093855e2124d088bf994b627a7f0c6e03a9276e4b7d23a7",
+        "reason": "freshest amd64 Blackwell-family TEI tag found; no shell compute-capability dispatch rejection, but no SM103-specific tag exists",
+        "source_revision": "5bc4d889c38cf9c75e63617d62779bc0f6628b23",
+        "status": "candidate_not_mirrored_or_probed",
+        "version_label": "100-latest"
+      },
+      "tag_inventory": {
+        "candidate_tags": [
+          "blackwell-latest",
+          "100-latest",
+          "100-1.9.3",
+          "120-latest"
+        ],
+        "command": "crane ls ghcr.io/huggingface/text-embeddings-inference | rg '(^|[-])(100|103|blackwell|cuda|hopper|89).*1\\.9|1\\.10|latest'",
+        "not_selected_for_current_row": "all require separate digest, mirror, hidden upsert, and probe before changing B300 compatibility",
+        "sm103_specific_tag_found": false
+      }
+    },
+    "cache_strategy": "HF_HOME and HUGGINGFACE_HUB_CACHE point at /mnt/data/huggingface/neuml-pubmedbert-base-embeddings/tei-cuda-1.9.3 so TEI model downloads and tokenizer artifacts survive pod restarts and do not fill the container filesystem.",
+    "container_config_snapshot": {
+      "architecture": "amd64",
+      "checked_at": "2026-05-26T07:02:00Z",
+      "created": "2026-03-23T09:18:22.111980354Z",
+      "cuda_version": "12.9.1",
+      "image_version": "cuda-1.9.3",
+      "license": "Apache-2.0",
+      "source": "https://github.com/huggingface/text-embeddings-inference",
+      "upstream_default_cache": "/data"
+    },
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+    "container_license_evidence": "crane config for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 reports org.opencontainers.image.licenses=Apache-2.0 and org.opencontainers.image.version=cuda-1.9.3.",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image",
+    "gpu_compatibility_basis": {
+      "B200": "supported_20260526T07Z_probe",
+      "B300": "failed_20260526T21Z_tei_cuda_1_9_3_container_exits_cuda_compute_cap_103_not_supported",
+      "H200": "supported_20260526T06Z_probe",
+      "L40S": "supported_20260526T06Z_probe",
+      "RTX6000": "supported_20260526T06Z_probe"
+    },
+    "healthcare_safety_gate": {
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG over scientific text.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "Healthcare product safety review approval",
+        "Catalog publication decision accepting B300 unsupported for this pinned TEI CUDA 1.9.3 variant; B300 support requires a separate SM103-proven TEI/runtime variant"
+      ]
+    },
+    "latest_matrix_probe": {
+      "cells": [
+        {
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "gpu": "B200",
+          "measured_samples_ms": [
+            159,
+            159,
+            159,
+            158,
+            158,
+            158,
+            159,
+            159,
+            159,
+            159
+          ],
+          "region": "us-central1",
+          "request_p50_ms": 159,
+          "startup_ms": 269661,
+          "status": "supported",
+          "timing_source": "client_wall_ms",
+          "tokens_per_second": 238.99,
+          "vram_used_gb": 0.96,
+          "warmup_samples_ms": [
+            472,
+            158,
+            159
+          ]
+        },
+        {
+          "cluster": "mk8scluster-e02q80x7frtvf9rj9e",
+          "gpu": "H200",
+          "measured_samples_ms": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            103,
+            99,
+            99,
+            100,
+            100
+          ],
+          "region": "eu-north2",
+          "request_p50_ms": 100,
+          "startup_ms": 286175,
+          "status": "supported",
+          "timing_source": "client_wall_ms",
+          "tokens_per_second": 380.0,
+          "vram_used_gb": 0.86,
+          "warmup_samples_ms": [
+            300,
+            100,
+            100
+          ]
+        },
+        {
+          "cluster": "mk8scluster-e00tjerrz0axkghmbm",
+          "gpu": "L40S",
+          "measured_samples_ms": [
+            93,
+            93,
+            93,
+            94,
+            94,
+            93,
+            94,
+            93,
+            92,
+            93
+          ],
+          "region": "eu-north1",
+          "request_p50_ms": 93,
+          "startup_ms": 284885,
+          "status": "supported",
+          "timing_source": "client_wall_ms",
+          "tokens_per_second": 408.6,
+          "vram_used_gb": 0.69,
+          "warmup_samples_ms": [
+            289,
+            94,
+            93
+          ]
+        },
+        {
+          "cluster": "mk8scluster-u00eyp43c8have384b",
+          "gpu": "RTX6000",
+          "measured_samples_ms": [
+            167,
+            167,
+            166,
+            166,
+            167,
+            166,
+            166,
+            166,
+            166,
+            167
+          ],
+          "region": "us-central1",
+          "request_p50_ms": 166,
+          "startup_ms": 292217,
+          "status": "supported",
+          "timing_source": "client_wall_ms",
+          "tokens_per_second": 228.92,
+          "vram_used_gb": 0.84,
+          "warmup_samples_ms": [
+            511,
+            174,
+            167
+          ]
+        }
+      ],
+      "failed_cells": [
+        {
+          "cleanup": "Diagnostic keep-pod was deleted after log and pod-status capture.",
+          "cluster": "mk8scluster-e03sgjb79s092hrvc4",
+          "container_exit_code": 1,
+          "container_log": "cuda compute cap 103 is not supported",
+          "diagnostic_pod": "forge-probe-neuml-pubmedbert-base-em-b300-uk-south1-940560",
+          "diagnostic_report_json": "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-tei-cuda-1-9-20260526T21Z-b300-diagnostic.json",
+          "diagnostic_report_md": "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-tei-cuda-1-9-20260526T21Z-b300-diagnostic.md",
+          "error_detail": "RuntimeError: pod_start_failure:pod_failed",
+          "gpu": "B300",
+          "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference:cuda-1.9@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+          "inventory_before_probe": {
+            "free_gpus": 8,
+            "total_gpus": 8
+          },
+          "node": "computeinstance-e03n331ngk3v1z71a4",
+          "pod": "forge-probe-neuml-pubmedbert-base-em-b300-uk-south1-b96bd6",
+          "region": "uk-south1",
+          "report_json": "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-tei-cuda-1-9-20260526T21Z-b300.json",
+          "status": "other_error"
+        }
+      ],
+      "generated_at": "2026-05-26T21:08:28.224298+00:00",
+      "model_status": "onboarding",
+      "reports": [
+        "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-tei-cuda-1-9-20260526T06Z-h200-l40s-rtx6000.json",
+        "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-tei-cuda-1-9-20260526T07Z-b200.json",
+        "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-tei-cuda-1-9-20260526T21Z-b300.json",
+        "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-tei-cuda-1-9-20260526T21Z-b300-diagnostic.json"
+      ],
+      "status": "four_supported_cells_b300_failed_sm103_unsupported"
+    },
+    "onboarding_state": "hidden_upsert_four_cell_matrix_complete_b300_sm103_unsupported_runtime_decision_pending_healthcare_safety_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-26T07Z",
+    "runtime_evidence": "The TEI upstream README documents ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 with --model-id and a shared /data volume, and the selected model carries text-embeddings-inference and endpoints_compatible tags. Forge overrides HF_HOME and HUGGINGFACE_HUB_CACHE to a versioned /mnt/data path so first-run model hydration is reusable across pod restarts.",
+    "secret_policy": "This public, ungated model explicitly sets HF_TOKEN and HUGGING_FACE_HUB_TOKEN to empty strings so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "source_evidence": [
+      "https://huggingface.co/NeuML/pubmedbert-base-embeddings",
+      "https://huggingface.co/api/models/NeuML/pubmedbert-base-embeddings",
+      "https://github.com/huggingface/text-embeddings-inference",
+      "https://github.com/huggingface/text-embeddings-inference/pkgs/container/text-embeddings-inference"
+    ]
+  },
+  "capabilities": [
+    "healthcare",
+    "medical_literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence_transformers",
+    "huggingface",
+    "tei",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-26T06:05:08.452895+00:00",
+  "default_eligible": false,
+  "description": "NeuML PubMedBERT Base Embeddings is an Apache-2.0 sentence-transformers model fine-tuned from PubMedBERT for biomedical sentence and paragraph embeddings. The Hugging Face model card describes 768-dimensional vectors for clustering, semantic search, and RAG over PubMed-style biomedical text, and the Hugging Face API reports public, ungated, enabled metadata with sentence-transformers, safetensors, text-embeddings-inference, and endpoints-compatible tags. This Forge onboarding manifest reuses the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a across all Forge regions, points Hugging Face cache paths at Forge shared /mnt/data storage, and clears inherited Hugging Face token env vars because the model is public and ungated. Hidden probes support B200, H200, L40S, and RTX6000 with 3 warmups plus 10 measured requests per cell. The 2026-05-26T21Z B300 probe scheduled and pulled the same digest-pinned TEI CUDA 1.9.3 image on SM103, but the container exited before readiness with cuda compute cap 103 is not supported, so B300 remains disabled for this pinned runtime. Keep hidden/onboarding and non-default until healthcare product safety review completes; intended use is nonclinical biomedical literature retrieval, not medical advice or patient-specific decision support.",
+  "family_id": "f36c8169-44dd-4bbb-a5e7-c2c89e3e4506",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/mnt/data/huggingface/neuml-pubmedbert-base-embeddings/tei-cuda-1.9.3",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/neuml-pubmedbert-base-embeddings/tei-cuda-1.9.3/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "NeuML/pubmedbert-base-embeddings",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "NeuML/pubmedbert-base-embeddings"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T07:08:26.834566+00:00",
+      "region": "us-central1",
+      "request_ms": 159,
+      "request_ms_p50": 159,
+      "request_ms_p95": 159,
+      "request_ms_p99": 159,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 269661,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 238.99,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.96,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T21:08:27.729614+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T06:17:46.743210+00:00",
+      "region": "eu-north2",
+      "request_ms": 100,
+      "request_ms_p50": 96,
+      "request_ms_p95": 100,
+      "request_ms_p99": 102,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 286175,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 380.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.86,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T06:17:45.438307+00:00",
+      "region": "eu-north1",
+      "request_ms": 93,
+      "request_ms_p50": 98,
+      "request_ms_p95": 101,
+      "request_ms_p99": 102,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 284885,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 408.6,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.69,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-26T06:17:54.297224+00:00",
+      "region": "us-central1",
+      "request_ms": 166,
+      "request_ms_p50": 162,
+      "request_ms_p95": 167,
+      "request_ms_p99": 167,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 292217,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 228.92,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.84,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "64e676cb-c43a-448d-a234-ff84bb22a22a",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "neuml-pubmedbert-base-embeddings",
+  "name": "PubMedBERT Base Embeddings",
+  "parameter_count": 109482240,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "NeuML/pubmedbert-base-embeddings"
+    },
+    "input_fields": [
+      {
+        "default": "Title: Protein language models for antibody engineering\nAbstract: Dense embeddings can help retrieve related biomedical literature and cluster nonclinical research summaries by mechanism, assay type, and target family.",
+        "key": "input",
+        "label": "Biomedical text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/neuml-pubmedbert-base-embeddings/tei-cuda-1.9.3",
+      "kind": "tei_embeddings",
+      "model_id": "NeuML/pubmedbert-base-embeddings",
+      "model_revision": "b79526d6ef3645e0df4530322e266f24c829f5ef",
+      "served_model_name": "NeuML/pubmedbert-base-embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 58,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "neuml-pubmedbert-base-embeddings-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/NeuML/pubmedbert-base-embeddings",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "healthcare",
+    "biomedical",
+    "medical-literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence-transformers",
+    "huggingface",
+    "tei",
+    "open-source"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-b79526d-tei-cuda-1.9.3",
+  "version_description": "NeuML PubMedBERT Base Embeddings served by Hugging Face Text Embeddings Inference CUDA 1.9.3 for biomedical literature semantic search and RAG.",
+  "version_key": "hf-b79526d-tei-cuda-1-9-3",
+  "version_label": "HF b79526d via TEI CUDA 1.9.3"
+}

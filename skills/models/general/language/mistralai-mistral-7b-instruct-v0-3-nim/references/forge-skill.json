@@ -1,0 +1,144 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "3aed94ae85469f6993c30f718fc2fbd1a3794d356a0d132eb3cc1cfe8c392603",
+  "defaultEligible": true,
+  "displayName": "Use Mistral 7B Instruct v0.3",
+  "domain": "language",
+  "downloadUrl": "/v1/model-skills/mistralai-mistral-7b-instruct-v0-3-nim/markdown?download=true",
+  "group": "language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "language",
+    "mistralai-mistral-7b-instruct-v0-3-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Explain in two concise paragraphs how regional model image mirrors improve cold-start reliability.",
+      "fieldType": "chat_history",
+      "key": "messages",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.7,
+      "fieldType": "number",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-mistralai-mistral-7b-instruct-v0-3-nim\ndescription: Use the exact Forge model mistralai-mistral-7b-instruct-v0-3-nim for text to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Mistral 7B Instruct v0.3\n\n- Model slug: `mistralai-mistral-7b-instruct-v0-3-nim`\n- Model family: `mistralai-mistral-7b-instruct-v0-3`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / language / mistralai-mistral-7b-instruct-v0-3-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nMistral 7B Instruct v0.3 packaged as an NVIDIA NIM and mirrored into Forge regional registries.\n\n## Use this exact model when\n\n- Use this exact `mistralai-mistral-7b-instruct-v0-3-nim` version when the task supplies text and needs text.\n- Mistral 7B Instruct v0.3 packaged as an NVIDIA NIM and mirrored into Forge regional registries.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `messages` (chat_history, optional): Prompt\n- `temperature` (number, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": \"{{messages}}\",\n  \"model\": \"{{model_slug}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `mistralai-mistral-7b-instruct-v0-3-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/mistralai-mistral-7b-instruct-v0-3-nim`\n- Routes: `/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/inference-routes`\n- Regional deployment: `/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/regional-deployment`\n- Deployment handoff: `/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/mistralai-mistral-7b-instruct-v0-3-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/mistralai-mistral-7b-instruct-v0-3-nim/SKILL.md\n\n## References\n\n- [Mistral 7B Instruct v0.3 source](https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/mistralai-mistral-7b-instruct-v0-3",
+    "modelUrl": "/v1/models/mistralai-mistral-7b-instruct-v0-3-nim",
+    "regionalDeploymentUrl": "/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/mistralai-mistral-7b-instruct-v0-3-nim/markdown",
+  "modelFamily": "mistralai-mistral-7b-instruct-v0-3",
+  "modelSlug": "mistralai-mistral-7b-instruct-v0-3-nim",
+  "modelUrl": "/v1/models/mistralai-mistral-7b-instruct-v0-3-nim",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Mistral 7B Instruct v0.3 packaged as an NVIDIA NIM and mirrored into Forge regional registries.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/language/mistralai-mistral-7b-instruct-v0-3-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Mistral 7B Instruct v0.3 source",
+      "url": "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/mistralai-mistral-7b-instruct-v0-3-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/language/mistralai-mistral-7b-instruct-v0-3-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": "{{messages}}",
+    "model": "{{model_slug}}",
+    "stream": true,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 7000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3",
+    "tags": [
+      "llm",
+      "chat",
+      "instruction"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "Mistral 7B Instruct v0.3 packaged as an NVIDIA NIM and mirrored into Forge regional registries.",
+  "skillName": "use-forge-mistralai-mistral-7b-instruct-v0-3-nim",
+  "skillUrl": "/v1/model-skills/mistralai-mistral-7b-instruct-v0-3-nim",
+  "slug": "mistralai-mistral-7b-instruct-v0-3-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['text'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `mistralai-mistral-7b-instruct-v0-3-nim` version when the task supplies text and needs text.",
+    "Mistral 7B Instruct v0.3 packaged as an NVIDIA NIM and mirrored into Forge regional registries.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `mistralai-mistral-7b-instruct-v0-3-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

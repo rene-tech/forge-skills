@@ -1,0 +1,459 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "hidden_size": 384,
+      "intermediate_size": 1536,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 6,
+      "torch_dtype": null
+    },
+    "artifact_files": {
+      "model.safetensors": {
+        "hf_blob_id": "d49eff1e4a6f0e3ba5069f21c6d20aad156dd2c9",
+        "size_bytes": 90868376
+      }
+    },
+    "artifact_last_modified": "2025-03-06T13:37:44.000Z",
+    "artifact_parameters": {
+      "F32": 22713216,
+      "I64": 512,
+      "total": 22713728
+    },
+    "artifact_revision": "c9745ed1d9f207416be6d2e6f8de32d1f16199bf",
+    "b300_classification": {
+      "benchmark_samples": [],
+      "cache_volume_mode": "hostPath",
+      "checked_at": "2026-05-29T22:18:30Z",
+      "container_log_tail": "cuda compute cap 103 is not supported",
+      "diagnostic_pod_cleanup": "deleted forge-probe-sentence-transformers-al-b300-uk-south1-908273 after log capture",
+      "diagnostic_report_json": "docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-b300-diagnostic-keep.json",
+      "diagnostic_report_md": "docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-b300-diagnostic-keep.md",
+      "error": "RuntimeError: pod_start_failure:pod_failed",
+      "persisted": true,
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-b300-classification.json",
+      "report_md": "docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-b300-classification.md",
+      "status": "other_error"
+    },
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face cache is pointed at /opt/nim/.cache paths, matching existing Forge TEI manifests that back these paths with shared /mnt/data/forge-weights.",
+    "candidate_selection": "Selected as a small, high-utility, non-HCLS and non-physical general embedding model that fills a compact baseline retrieval slot without new wrapper code or new private credentials.",
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_image_size_bytes": 3110078263,
+    "container_license_evidence": "skopeo inspect labels for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 report org.opencontainers.image.licenses=Apache-2.0 and org.opencontainers.image.version=cuda-1.9.3.",
+    "container_revision": "06670157fb6c1523482219bdb2d1660277d38088",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image",
+    "dry_run_validation": {
+      "focused_pytest": "passed_20260529T22Z",
+      "manifest_json": "passed_20260529T22Z",
+      "upsert_model_dry_run": "passed_20260529T22Z"
+    },
+    "expected_gpu_notes": {
+      "B200": "supported on hostPath-cache probe with 3 warmups and 10 measured requests",
+      "B300": "incompatible on pinned TEI CUDA 1.9.3; diagnostic pod logged cuda compute cap 103 is not supported",
+      "H200": "supported on hostPath-cache probe with 3 warmups and 10 measured requests",
+      "L40S": "supported on hostPath-cache probe with 3 warmups and 10 measured requests",
+      "RTX6000": "pending inventory and live probe"
+    },
+    "fallback_status": {
+      "b300_runtime_fallback": "not_created_this_cycle",
+      "reason": "A CUDA 13 pooling fallback may be viable, but it needs sentence-transformers mean-pooling parity validation before being treated as a product runtime. The TEI digest already provides supported B200/H200/L40S coverage for the hidden baseline row."
+    },
+    "latest_non_b300_matrix": {
+      "benchmark_runs": 10,
+      "cache_volume_mode": "hostPath",
+      "checked_at": "2026-05-29T22:17:28Z",
+      "discovered_gpus": [
+        "B200",
+        "H200",
+        "L40S"
+      ],
+      "persisted": true,
+      "report_json": "docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-non-b300-matrix.json",
+      "report_md": "docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-non-b300-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "requested_gpus": [
+        "B200",
+        "H200",
+        "L40S"
+      ],
+      "results": {
+        "B200": {
+          "region": "us-central1",
+          "request_ms_p50": 170,
+          "request_ms_samples": [
+            170,
+            170,
+            170,
+            170,
+            170,
+            171,
+            170,
+            170,
+            170,
+            170
+          ],
+          "startup_ms": 189152,
+          "status": "supported",
+          "tokens_per_second": 158.82,
+          "vram_used_gb": 0.81
+        },
+        "H200": {
+          "region": "eu-north2",
+          "request_ms_p50": 99,
+          "request_ms_samples": [
+            98,
+            99,
+            99,
+            99,
+            98,
+            98,
+            99,
+            99,
+            100,
+            98
+          ],
+          "startup_ms": 230166,
+          "status": "supported",
+          "tokens_per_second": 272.73,
+          "vram_used_gb": 0.71
+        },
+        "L40S": {
+          "region": "eu-north1",
+          "request_ms_p50": 89,
+          "request_ms_samples": [
+            89,
+            89,
+            89,
+            88,
+            89,
+            89,
+            88,
+            89,
+            89,
+            89
+          ],
+          "startup_ms": 207026,
+          "status": "supported",
+          "tokens_per_second": 303.37,
+          "vram_used_gb": 0.54
+        }
+      },
+      "status": "supported_b200_h200_l40s",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model-card metadata report license=apache-2.0; the API reports private=false, gated=false, disabled=false, and tags include license:apache-2.0, text-embeddings-inference, and endpoints_compatible.",
+    "live_upsert": {
+      "checked_at": "2026-05-29T22:05:00Z",
+      "default_eligible": false,
+      "model_status": "onboarding",
+      "published": false,
+      "status": "succeeded"
+    },
+    "onboarding_state": "live_upserted_b200_h200_l40s_supported_b300_sm103_failed_pending_rtx6000",
+    "pooling_config": {
+      "pooling_mode_cls_token": false,
+      "pooling_mode_max_tokens": false,
+      "pooling_mode_mean_sqrt_len_tokens": false,
+      "pooling_mode_mean_tokens": true,
+      "word_embedding_dimension": 384
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-29T22:00:00Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "runtime_evidence": "Hugging Face metadata tags the model as text-embeddings-inference and endpoints_compatible; TEI exposes the OpenAI-compatible /v1/embeddings endpoint already used by sibling Forge embedding manifests.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "sentence_bert_config": {
+      "do_lower_case": false,
+      "max_seq_length": 256
+    },
+    "source_evidence": [
+      "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?blobs=true",
+      "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/raw/main/config.json",
+      "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/raw/main/1_Pooling/config.json",
+      "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/raw/main/sentence_bert_config.json",
+      "https://huggingface.co/docs/text-embeddings-inference/index",
+      "https://github.com/huggingface/text-embeddings-inference"
+    ],
+    "validation_commands": [
+      "git fetch --prune origin",
+      "git status --short --branch",
+      "git rev-list --left-right --count HEAD...origin/main",
+      "rg -n \"all-MiniLM|all-minilm|MiniLM-L6|sentence-transformers\" manifests docs services -g '!docs/supervisor/hourly-report.md'",
+      "curl -fsSL 'https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?blobs=true' | jq '{id,sha,lastModified,private,gated,disabled,library_name,pipeline_tag,license:.cardData.license,downloads,likes,tags,safetensors:.safetensors}'",
+      "curl -fsSL 'https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/raw/main/config.json' | jq '{architectures,model_type,hidden_size,num_hidden_layers,num_attention_heads,intermediate_size,max_position_embeddings,torch_dtype}'",
+      "curl -fsSL 'https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/raw/main/1_Pooling/config.json' | jq '.'",
+      "curl -fsSL 'https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/raw/main/sentence_bert_config.json' | jq '.'",
+      "skopeo inspect --no-tags docker://ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 | jq '{Name,Digest,Created,Labels:{source:.Labels[\"org.opencontainers.image.source\"],revision:.Labels[\"org.opencontainers.image.revision\"],licenses:.Labels[\"org.opencontainers.image.licenses\"],version:.Labels[\"org.opencontainers.image.version\"]}}'",
+      "skopeo inspect --no-tags docker://ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 | jq '[.LayersData[]?.Size] | add'",
+      "skopeo inspect --no-tags docker://cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference:cuda-1.9 | jq -r '.Digest'",
+      "skopeo inspect --no-tags docker://cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference:cuda-1.9 | jq -r '.Digest'",
+      "skopeo inspect --no-tags docker://cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference:cuda-1.9 | jq -r '.Digest'",
+      "skopeo inspect --no-tags docker://cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference:cuda-1.9 | jq -r '.Digest'",
+      "jq empty manifests/models/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9.json --dry-run",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q tests/test_general_minilm_manifest.py -p no:cacheprovider",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9.json",
+      "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9 --include-status onboarding --gpu B200 --gpu H200 --gpu L40S --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-non-b300-matrix.json --report-md docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-non-b300-matrix.md",
+      "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9 --include-status onboarding --gpu B300 --region uk-south1 --timeout 900 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-b300-classification.json --report-md docs/model-onboarding/general/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9-20260529T22Z-b300-classification.md"
+    ]
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic_search",
+    "sentence_similarity",
+    "english",
+    "sentence_transformers",
+    "minilm",
+    "huggingface",
+    "tei",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110078263,
+  "context_window": 256,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-29T22:06:30.543869+00:00",
+  "default_eligible": false,
+  "description": "sentence-transformers/all-MiniLM-L6-v2 is a public Apache-2.0 sentence-transformers embedding model for semantic search, sentence similarity, clustering, and compact RAG retrieval over short English text. Hugging Face metadata checked on 2026-05-29T22Z reports private=false, gated=false, disabled=false, library_name=sentence-transformers, pipeline_tag=sentence-similarity, tags text-embeddings-inference and endpoints_compatible, revision c9745ed1d9f207416be6d2e6f8de32d1f16199bf, and 22,713,728 safetensors parameters. The model card reports 384-dimensional dense vectors and intended use for clustering or semantic search; sentence_bert_config.json sets max_seq_length=256, and 1_Pooling/config.json selects mean pooling. This hidden Forge onboarding profile reuses the already mirrored Hugging Face Text Embeddings Inference CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, clears unnecessary Hugging Face token variables for this public artifact, and keeps Hugging Face caches under /opt/nim/.cache paths backed by Forge shared /mnt/data cache. The 2026-05-29T22Z hidden hostPath-cache matrix supports B200/us-central1, H200/eu-north2, and L40S/eu-north1 with 3 warmups and 10 measured embedding requests per cell. B300/uk-south1 failed before readiness on the same digest with `cuda compute cap 103 is not supported`, so B300 remains disabled until a newer TEI runtime or a parity-checked CUDA 13 pooling fallback is added. RTX6000 was not present in public inventory during this cycle.",
+  "family_id": "c8c9e4c9-c3bb-45f1-9aee-d328392c3e64",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "sentence-transformers/all-MiniLM-L6-v2",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "sentence-transformers/all-MiniLM-L6-v2"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T22:10:03.104944+00:00",
+      "region": "us-central1",
+      "request_ms": 170,
+      "request_ms_p50": 170,
+      "request_ms_p95": 171,
+      "request_ms_p99": 171,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 189152,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 158.82,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.81,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T22:17:53.205536+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T22:17:27.148659+00:00",
+      "region": "eu-north2",
+      "request_ms": 99,
+      "request_ms_p50": 99,
+      "request_ms_p95": 100,
+      "request_ms_p99": 100,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 230166,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 272.73,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T22:13:33.369896+00:00",
+      "region": "eu-north1",
+      "request_ms": 89,
+      "request_ms_p50": 89,
+      "request_ms_p95": 89,
+      "request_ms_p99": 89,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 207026,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 303.37,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.54,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "c7cd58ae-658b-4fff-855d-df69f2d5c2ed",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "sentence-transformers-all-minilm-l6-v2",
+  "name": "All-MiniLM-L6-v2",
+  "parameter_count": 22713728,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "float",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "sentence-transformers/all-MiniLM-L6-v2"
+    },
+    "input_fields": [
+      {
+        "default": "A compact embedding model is useful for semantic search, clustering, and retrieval-augmented generation over short support articles.",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 88,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "semantic-search",
+    "sentence-similarity",
+    "english",
+    "sentence-transformers",
+    "minilm",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for sentence-transformers/all-MiniLM-L6-v2.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

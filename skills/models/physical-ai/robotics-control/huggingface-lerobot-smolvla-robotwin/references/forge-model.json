@@ -1,0 +1,888 @@
+{
+  "benchmark_scores": {
+    "artifact_files": {
+      "config_json": {
+        "blob_id": "cd73758dd887904904be9d4ac0d5c630bfb63103",
+        "path": "config.json",
+        "size_bytes": 2486
+      },
+      "model_safetensors": {
+        "blob_id": "7e5dd18a7e8a02d3197d60df61f501959d85aada",
+        "path": "model.safetensors",
+        "sha256": "6fbaa809585cb10924351ce101ca2d576787a472cf8c34b5e2f10c84ef8a3134",
+        "size_bytes": 906712520
+      },
+      "normalizer_safetensors": {
+        "blob_id": "1dee8901d11326c4d0afc7906feb28bc8d7aa936",
+        "path": "policy_preprocessor_step_5_normalizer_processor.safetensors",
+        "sha256": "d606283ad4f5b92495fcd93c51a3209116c4037d4ea9d1d0fe1b87da08409798",
+        "size_bytes": 4624
+      },
+      "policy_preprocessor_json": {
+        "blob_id": "4e6f6267f160ea62d34977f742c01172b998cab4",
+        "path": "policy_preprocessor.json",
+        "size_bytes": 2132
+      },
+      "unnormalizer_safetensors": {
+        "blob_id": "1dee8901d11326c4d0afc7906feb28bc8d7aa936",
+        "path": "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+        "sha256": "d606283ad4f5b92495fcd93c51a3209116c4037d4ea9d1d0fe1b87da08409798",
+        "size_bytes": 4624
+      }
+    },
+    "base_model": "lerobot/smolvla_base",
+    "blocked_actions": [
+      "public_activation",
+      "robot_policy_safety_validation",
+      "publish"
+    ],
+    "blockers": [
+      "The upstream RobotWin artifacts are internally inconsistent: config.json and policy_preprocessor.json declare 6D observation.state, but the normalizer safetensors stores 14D observation.state statistics.",
+      "Robot-policy safety validation is still required before public/default eligibility."
+    ],
+    "cache_root": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin",
+    "checked_at": "2026-05-29T04:10:00Z",
+    "container_decision": "Reuse the Forge-owned SmolVLA wrapper image because it is configurable by FORGE_MODEL_SLUG, FORGE_MODEL_ID, cache root, SMOLVLA_CAMERA_KEYS, and SMOLVLA_STATE_DIM. The public Hugging Face LeRobot GPU image is a CUDA/LeRobot base image, not a Forge HTTP serving image.",
+    "dataset": "pepijn223/robotwin_unified_v3",
+    "forge_wrapper_path": "services/models/physical-ai/huggingface_lerobot_smolvla_base",
+    "hf_api_url": "https://huggingface.co/api/models/lerobot/smolvla_robotwin?blobs=true",
+    "hf_last_modified": "2026-04-11T21:50:17.000Z",
+    "hf_library_name": "lerobot",
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "lerobot/smolvla_robotwin",
+    "hf_model_license": "apache-2.0",
+    "hf_model_private": false,
+    "hf_model_revision": "967623a0f38c7e1236c66b3893c830398d793ff7",
+    "hf_pipeline_tag": "robotics",
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells_pending": [],
+      "cells_supported": {
+        "B200/us-central1": {
+          "request_ms_p50": 147,
+          "request_ms_samples": [
+            147,
+            148,
+            146,
+            148,
+            147,
+            144,
+            144,
+            148,
+            147,
+            145
+          ],
+          "response_action_dim": 14,
+          "startup_ms": 258360,
+          "vram_used_gb": 1.71
+        },
+        "B300/uk-south1": {
+          "dispatch_evidence": "The wrapper keeps SMOLVLA_DISABLE_CUDNN_SDP_ON_SM103=true for B300/SM103, following the previously validated SmolVLA wrapper path.",
+          "request_ms_p50": 143,
+          "request_ms_samples": [
+            143,
+            144,
+            144,
+            143,
+            146,
+            144,
+            143,
+            142,
+            142,
+            143
+          ],
+          "response_action_dim": 14,
+          "startup_ms": 21071,
+          "vram_used_gb": 1.71
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 170,
+          "request_ms_samples": [
+            171,
+            168,
+            172,
+            168,
+            169,
+            171,
+            170,
+            172,
+            170,
+            171
+          ],
+          "response_action_dim": 14,
+          "startup_ms": 257458,
+          "vram_used_gb": 1.63
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 218,
+          "request_ms_samples": [
+            218,
+            215,
+            216,
+            217,
+            218,
+            218,
+            218,
+            220,
+            222,
+            218
+          ],
+          "response_action_dim": 14,
+          "startup_ms": 261871,
+          "vram_used_gb": 1.44
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 180,
+          "request_ms_samples": [
+            180,
+            180,
+            180,
+            181,
+            179,
+            180,
+            180,
+            180,
+            181,
+            184
+          ],
+          "response_action_dim": 14,
+          "startup_ms": 281944,
+          "vram_used_gb": 1.58
+        }
+      },
+      "generated_at": "2026-05-29T04:10:00Z",
+      "report_json": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260529T04Z-rtx6000.json",
+      "report_md": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260529T04Z-rtx6000.md",
+      "request_time_source": "query_time_ms",
+      "status": "all_target_cells_supported_hidden",
+      "warmup_runs": 3
+    },
+    "model_spec": {
+      "action_dim": 14,
+      "chunk_size": 50,
+      "config_camera_keys": [
+        "camera1",
+        "camera2",
+        "camera3"
+      ],
+      "config_state_dim": 6,
+      "image_shape_chw": [
+        3,
+        256,
+        256
+      ],
+      "n_action_steps": 50,
+      "policy_type": "smolvla",
+      "processor_artifact_camera_keys": [
+        "cam_high",
+        "cam_left_wrist",
+        "cam_right_wrist"
+      ],
+      "processor_artifact_state_dim": 14
+    },
+    "next_safe_commands": [
+      "Run RobotWin simulator replay, HIL dry run, or obtain external robot-policy safety signoff before any public/default activation."
+    ],
+    "onboarding_state": "hidden_manifest_added_l40s_h200_b300_b200_rtx6000_supported_pending_safety_review",
+    "processor_artifact_discrepancy": {
+      "manifest_choice": "Use RobotWin pre-rename camera keys and a 14D robot_state because that payload matches the shipped processor tensors and passed live probes.",
+      "risk": "config.json and policy_preprocessor.json declare 6D observation.state, but the normalizer safetensors stores 14D observation.state statistics."
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision_20260528T20Z": {
+      "decision": "do_not_publish_keep_hidden_onboarding",
+      "live_hidden_probe_upsert": "B300/uk-south1 support row updated by probe_model_parallel_matrix.py",
+      "public_activation": "blocked",
+      "reason": "The B300 static action trace preflight passed finite/range checks, but RTX6000 remains absent from inventory and no simulator replay, HIL dry run, or external robot-policy safety signoff exists."
+    },
+    "publication_gate_20260528T18Z": {
+      "artifact_license": {
+        "gated": false,
+        "hf_model_id": "lerobot/smolvla_robotwin",
+        "hf_model_revision": "967623a0f38c7e1236c66b3893c830398d793ff7",
+        "license": "apache-2.0",
+        "model_safetensors_sha256": "6fbaa809585cb10924351ce101ca2d576787a472cf8c34b5e2f10c84ef8a3134",
+        "private": false
+      },
+      "cache_plan": {
+        "hf_home_under_mnt_data": true,
+        "root": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin",
+        "torch_home_under_mnt_data": true,
+        "triton_cache_under_mnt_data": true
+      },
+      "container": {
+        "decision": "reuse_forge_owned_smolvla_wrapper",
+        "digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "regional_digest_refs": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ]
+      },
+      "manifest_and_ui": {
+        "camera_keys": [
+          "cam_high",
+          "cam_left_wrist",
+          "cam_right_wrist"
+        ],
+        "output_format_hint": "robotics_trace",
+        "state_dim": 14
+      },
+      "onboarding_note": "docs/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T18Z-local-gate.md",
+      "pending_cells": [
+        "RTX6000/us-central1"
+      ],
+      "probe_decision": "not_run_this_worker_no_new_safe_rtx6000_inventory_evidence_and_live_scheduler_use_avoided",
+      "remaining_blockers": [
+        "RTX6000 exact-digest probe remains pending.",
+        "Upstream RobotWin config/preprocessor 6D state metadata conflicts with 14D normalizer/action evidence.",
+        "Robot-policy safety validation remains required before public/default eligibility."
+      ],
+      "status": "publish_blocked_hidden_onboarding",
+      "validated_cells": [
+        "B200/us-central1",
+        "B300/uk-south1",
+        "H200/eu-north2",
+        "L40S/eu-north1"
+      ],
+      "worker_note": "docs/supervisor/workers/physical-ai-20260528T18Z.md"
+    },
+    "publication_gate_20260528T21Z": {
+      "cleanup_remaining_robotwin_probe_pods": 0,
+      "denormalized_latency_window_verified": true,
+      "live_hidden_manifest_upsert": "succeeded",
+      "live_support_rows_verified": true,
+      "operation_note": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T21Z-visible-matrix-gate.md",
+      "probe_report_json": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T21Z-visible-matrix.json",
+      "probe_report_md": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T21Z-visible-matrix.md",
+      "publish_decision": "do_not_publish_keep_hidden_onboarding",
+      "remaining_blockers": [
+        "RTX6000 exact-digest probe remains pending because RTX6000 is not present in current public inventory.",
+        "Upstream RobotWin config/preprocessor 6D state metadata conflicts with 14D normalizer/action evidence.",
+        "Robot-policy safety validation remains required before public/default eligibility."
+      ],
+      "status": "visible_cells_supported_publish_blocked_hidden_onboarding",
+      "validated_cells": [
+        "B200/us-central1",
+        "B300/uk-south1",
+        "H200/eu-north2",
+        "L40S/eu-north1"
+      ],
+      "visible_inventory": [
+        "B200/us-central1",
+        "B300/uk-south1",
+        "H200/eu-north2",
+        "L40S/eu-north1"
+      ],
+      "worker_note": "docs/supervisor/workers/physical-ai-20260528T21Z.md"
+    },
+    "publication_gate_20260528T22Z": {
+      "checks_passed": [
+        "all_cells_supported",
+        "all_action_shapes_1x50x14",
+        "all_values_finite",
+        "all_dims_within_train_min_max"
+      ],
+      "live_support_rows_updated": true,
+      "operation_note": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T22Z-cross-cell-safety.md",
+      "publish_decision": "do_not_publish_keep_hidden_onboarding",
+      "remaining_blockers": [
+        "RTX6000 exact-digest probe remains pending because RTX6000 is not present in current public inventory.",
+        "Upstream RobotWin config/preprocessor 6D state metadata conflicts with 14D normalizer/action evidence.",
+        "Robot-policy safety validation still requires simulator replay, HIL dry run, or external safety signoff."
+      ],
+      "status": "cross_cell_static_action_preflight_passed_publish_blocked_hidden_onboarding",
+      "validated_cells": [
+        "B200/us-central1",
+        "B300/uk-south1",
+        "H200/eu-north2",
+        "L40S/eu-north1"
+      ],
+      "worker_note": "docs/supervisor/workers/physical-ai-20260528T22Z.md"
+    },
+    "publication_gate_20260529T04Z": {
+      "cache_plan": {
+        "hf_home_under_mnt_data": true,
+        "root": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin",
+        "torch_home_under_mnt_data": true,
+        "triton_cache_under_mnt_data": true
+      },
+      "container": {
+        "decision": "reuse_forge_owned_smolvla_wrapper",
+        "digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+      },
+      "live_support_rows_updated": true,
+      "pending_cells": [],
+      "probe_report_json": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260529T04Z-rtx6000.json",
+      "probe_report_md": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260529T04Z-rtx6000.md",
+      "publish_decision": "do_not_publish_keep_hidden_onboarding",
+      "remaining_blockers": [
+        "Upstream RobotWin config/preprocessor 6D state metadata conflicts with 14D normalizer/action evidence.",
+        "Robot-policy safety validation still requires simulator replay, HIL dry run, or external safety signoff."
+      ],
+      "status": "all_target_cells_supported_publish_blocked_hidden_onboarding",
+      "validated_cells": [
+        "B200/us-central1",
+        "B300/uk-south1",
+        "H200/eu-north2",
+        "L40S/eu-north1",
+        "RTX6000/us-central1"
+      ],
+      "worker_note": "docs/model-candidates/physical-ai/smolvla-robotwin-rtx6000-20260529T04Z.md"
+    },
+    "regional_tag_alias_hygiene_20260529T01Z": {
+      "initial_plain_tag_check": {
+        "eu-north1": "missing_404_manifest_unknown",
+        "eu-north2": "missing_404_manifest_unknown",
+        "uk-south1": "missing_404_manifest_unknown",
+        "us-central1": "present"
+      },
+      "manifest_refs_changed": false,
+      "post_repair_plain_tag_digests": {
+        "eu-north1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "eu-north2": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "uk-south1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+        "us-central1": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+      },
+      "repair_command": "crane copy <regional-repo>@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e <regional-repo>:gpu-wrapper-sm103-sdpa-20z",
+      "repaired_regions": [
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ],
+      "runtime_effect": "No scheduler image ref change; existing tag@digest refs were already digest-pinned. The repair makes the plain regional alias tags auditable and reusable.",
+      "selected_wrapper_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+      "status": "repaired_verified"
+    },
+    "robot_policy_cross_cell_safety_preflight_20260528T22Z": {
+      "cells": [
+        {
+          "action_shape": [
+            1,
+            50,
+            14
+          ],
+          "all_dims_within_train_min_max": true,
+          "all_finite": true,
+          "direct_action_query_time_ms": 143,
+          "gpu": "B200",
+          "max_abs_action": 1.1393020153045654,
+          "max_abs_step_delta": 0.12991511821746826,
+          "probe_single_request_ms": 11429,
+          "region": "us-central1",
+          "response_sha256": "b8e9a1e0832cc2e18bc3aa232db32c97c83796e5bee16b064718eb7d175aa4f2",
+          "startup_ms": 259039,
+          "vram_used_gb": 1.71
+        },
+        {
+          "action_shape": [
+            1,
+            50,
+            14
+          ],
+          "all_dims_within_train_min_max": true,
+          "all_finite": true,
+          "direct_action_query_time_ms": 174,
+          "gpu": "B300",
+          "max_abs_action": 1.810704231262207,
+          "max_abs_step_delta": 0.13904094696044922,
+          "probe_single_request_ms": 34525,
+          "region": "uk-south1",
+          "response_sha256": "c1fcb0d57fc2bac1d7332ee7ffbb86970b7b69a32e876451763e88a01d56c852",
+          "startup_ms": 20941,
+          "vram_used_gb": 1.71
+        },
+        {
+          "action_shape": [
+            1,
+            50,
+            14
+          ],
+          "all_dims_within_train_min_max": true,
+          "all_finite": true,
+          "direct_action_query_time_ms": 176,
+          "gpu": "H200",
+          "max_abs_action": 1.3760933876037598,
+          "max_abs_step_delta": 0.142846941947937,
+          "probe_single_request_ms": 1063,
+          "region": "eu-north2",
+          "response_sha256": "231a803261034b3397dd7f28a7d81739ad74101b9b1a2edf534602a195ae0f0e",
+          "startup_ms": 259860,
+          "vram_used_gb": 1.63
+        },
+        {
+          "action_shape": [
+            1,
+            50,
+            14
+          ],
+          "all_dims_within_train_min_max": true,
+          "all_finite": true,
+          "direct_action_query_time_ms": 236,
+          "gpu": "L40S",
+          "max_abs_action": 1.3311223983764648,
+          "max_abs_step_delta": 0.10563153028488159,
+          "probe_single_request_ms": 795,
+          "region": "eu-north1",
+          "response_sha256": "36685f53176207c481d2c8af14e47b2b17a7fac9c7ff69da4e609f6891f9977a",
+          "startup_ms": 265059,
+          "vram_used_gb": 1.44
+        }
+      ],
+      "cleanup": {
+        "remaining_robotwin_probe_pods": 0,
+        "retained_probe_pods_deleted": true
+      },
+      "cross_cell_action_comparison": {
+        "interpretation": "Cross-cell action chunks stayed finite and within upstream action bounds; pairwise numerical differences are recorded as static compatibility evidence only, not as simulator safety approval.",
+        "max_pairwise_abs_action_diff": 1.0250833481550217,
+        "max_pairwise_mean_abs_action_diff": 0.11483267129398883,
+        "same_shape_all_cells": true
+      },
+      "decision": "keep_hidden_onboarding",
+      "probe_report_json": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T22Z-cross-cell-direct-probe.json",
+      "probe_report_md": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T22Z-cross-cell-direct-probe.md",
+      "remaining_review": "This is a cross-cell static action trace check only; RobotWin simulator replay, HIL dry run, or external robot-policy safety signoff is still required before publication.",
+      "report_json": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T22Z-cross-cell-safety.json",
+      "report_md": "docs/operations/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T22Z-cross-cell-safety.md",
+      "source_stats_report_json": "docs/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T20Z-safety-preflight.json",
+      "status": "cross_cell_static_action_trace_preflight_passed_not_simulation_signoff"
+    },
+    "robot_policy_safety_preflight_20260528T20Z": {
+      "cell": {
+        "gpu": "B300",
+        "model_time_source": "query_time_ms",
+        "region": "uk-south1",
+        "request_ms": 161,
+        "startup_ms": 246743,
+        "vram_used_gb": 1.71
+      },
+      "checks": {
+        "action_shape": [
+          1,
+          50,
+          14
+        ],
+        "all_dims_within_train_min_max": true,
+        "all_finite": true,
+        "max_abs_action": 1.7458175420761108,
+        "max_abs_step_delta": 0.6375528573989868,
+        "max_abs_step_delta_dim": 5,
+        "max_abs_z_score": 2.7453860123796856,
+        "max_abs_z_score_dim": 5,
+        "response_sha256": "f8f2e6c5bf17aa9317d3f0a1bbaa0db07f016a688c6b98fa70e008ba540b6fd4"
+      },
+      "cleanup": {
+        "deleted": true,
+        "kept_probe_pod": "forge-probe-huggingface-lerobot-smol-b300-uk-south1-0ac427",
+        "remaining_robotwin_probe_pods": 0
+      },
+      "decision": "keep_hidden_onboarding",
+      "probe_report_json": "docs/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T20Z-b300-safety-probe.json",
+      "probe_report_md": "docs/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T20Z-b300-safety-probe.md",
+      "remaining_review": "This is a static action trace check only; RobotWin simulator replay, HIL dry run, or external robot-policy safety signoff is still required before publication.",
+      "report_json": "docs/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T20Z-safety-preflight.json",
+      "report_md": "docs/model-onboarding/physical-ai/huggingface-lerobot-smolvla-robotwin-20260528T20Z-safety-preflight.md",
+      "source_stats": {
+        "artifact": "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+        "sha256": "d606283ad4f5b92495fcd93c51a3209116c4037d4ea9d1d0fe1b87da08409798"
+      },
+      "status": "static_action_trace_preflight_passed_not_simulation_signoff"
+    },
+    "selected_candidate": "lerobot/smolvla_robotwin",
+    "selected_reason": "Fresh SmolVLA-family robotics policy with explicit Apache-2.0 model metadata, public ungated safetensors artifacts, and compatibility with the existing configurable Forge SmolVLA wrapper contract.",
+    "selected_wrapper_digest": "sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "selected_wrapper_digest_verified_regions": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "selected_wrapper_source_manifest": "manifests/models/physical_ai/huggingface-lerobot-smolvla-libero.json",
+    "source_urls": [
+      "https://huggingface.co/lerobot/smolvla_robotwin",
+      "https://huggingface.co/api/models/lerobot/smolvla_robotwin?blobs=true",
+      "https://github.com/huggingface/lerobot",
+      "https://github.com/huggingface/lerobot/blob/main/LICENSE"
+    ],
+    "upstream_refresh_20260529T01Z": {
+      "hf_downloads_observed": 130,
+      "hf_last_modified": "2026-04-11T21:50:17.000Z",
+      "hf_library_name": "lerobot",
+      "hf_likes_observed": 2,
+      "hf_model_disabled": false,
+      "hf_model_gated": false,
+      "hf_model_id": "lerobot/smolvla_robotwin",
+      "hf_model_license": "apache-2.0",
+      "hf_model_private": false,
+      "hf_model_revision": "967623a0f38c7e1236c66b3893c830398d793ff7",
+      "hf_pipeline_tag": "robotics",
+      "source_repo": "https://github.com/huggingface/lerobot",
+      "source_repo_license": "Apache-2.0",
+      "source_repo_main_sha": "24017e960c39a24fe1b6ea6248522460fa5aa4b3",
+      "source_repo_pushed_at": "2026-05-28T10:06:40Z",
+      "source_repo_updated_at": "2026-05-29T00:40:44Z"
+    },
+    "upstream_source_checked_at": "2026-05-29T01:03:00Z",
+    "upstream_source_license": "Apache-2.0",
+    "upstream_source_main_sha": "24017e960c39a24fe1b6ea6248522460fa5aa4b3",
+    "upstream_source_pushed_at": "2026-05-28T10:06:40Z",
+    "upstream_source_repo": "https://github.com/huggingface/lerobot"
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "lerobot",
+    "smolvla",
+    "robotwin",
+    "safetensors",
+    "apache_2_0",
+    "forge_wrapper_candidate",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base:gpu-wrapper-sm103-sdpa-20z@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+  "container_image_size_bytes": 5693682815,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-28T11:04:34.751562+00:00",
+  "default_eligible": false,
+  "description": "SmolVLA RobotWin is an Apache-2.0 LeRobot SmolVLA policy checkpoint fine-tuned from lerobot/smolvla_base on the pepijn223/robotwin_unified_v3 dataset. The published config.json describes three 256px RGB camera observations and a 6D robot state, but the shipped policy preprocessor renames RobotWin camera keys cam_high, cam_left_wrist, and cam_right_wrist into camera1, camera2, and camera3, while the normalizer safetensors stores 14D observation.state statistics. This hidden Forge candidate reuses the already mirrored SmolVLA wrapper image. The 2026-05-28T21Z visible-cell exact-digest reprobe supports L40S, H200, B300, and B200 with a processor-aligned 14D state payload, and the live hidden support rows were updated. The 2026-05-28T22Z cross-cell static safety check captured full action chunks from retained pods on the same four cells and verified finite 1x50x14 outputs within upstream action bounds. The 2026-05-29T01Z artifact hygiene pass confirmed upstream Apache-2.0 metadata and repaired the missing plain regional tag aliases for the digest-pinned wrapper image outside us-central1. The 2026-05-29T04Z RTX6000/us-central1 probe completed on the same digest with 10 measured query_time_ms samples and upserted the hidden support row. Simulator replay, HIL, or external robot-policy safety signoff remains required before publication.",
+  "family_id": "fc4fe20b-1a2b-4887-add2-bc6197f66862",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin",
+      "FORGE_MODEL_ID": "lerobot/smolvla_robotwin",
+      "FORGE_MODEL_REVISION": "967623a0f38c7e1236c66b3893c830398d793ff7",
+      "FORGE_MODEL_SLUG": "huggingface-lerobot-smolvla-robotwin",
+      "HF_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin/huggingface/hub",
+      "SMOLVLA_CAMERA_KEYS": "cam_high,cam_left_wrist,cam_right_wrist",
+      "SMOLVLA_DEVICE": "cuda",
+      "SMOLVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+      "SMOLVLA_ROBOT_TYPE": "so100_follower",
+      "SMOLVLA_STATE_DIM": "14",
+      "TORCH_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/huggingface-lerobot/smolvla-robotwin/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T22:10:10.286831+00:00",
+      "region": "us-central1",
+      "request_ms": 11429,
+      "request_ms_p50": 148,
+      "request_ms_p95": 149,
+      "request_ms_p99": 9173,
+      "request_ms_samples": 21,
+      "startup_ms_first": null,
+      "startup_ms_probe": 259039,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T22:06:33.451436+00:00",
+      "region": "uk-south1",
+      "request_ms": 34525,
+      "request_ms_p50": 145,
+      "request_ms_p95": 160,
+      "request_ms_p99": 27309,
+      "request_ms_samples": 22,
+      "startup_ms_first": null,
+      "startup_ms_probe": 20941,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.71,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T22:09:59.316831+00:00",
+      "region": "eu-north2",
+      "request_ms": 1063,
+      "request_ms_p50": 170,
+      "request_ms_p95": 175,
+      "request_ms_p99": 885,
+      "request_ms_samples": 21,
+      "startup_ms_first": null,
+      "startup_ms_probe": 259860,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.63,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T22:10:04.379893+00:00",
+      "region": "eu-north1",
+      "request_ms": 795,
+      "request_ms_p50": 220,
+      "request_ms_p95": 228,
+      "request_ms_p99": 682,
+      "request_ms_samples": 21,
+      "startup_ms_first": null,
+      "startup_ms_probe": 265059,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.44,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T04:10:00.127415+00:00",
+      "region": "us-central1",
+      "request_ms": 180,
+      "request_ms_p50": 180,
+      "request_ms_p95": 183,
+      "request_ms_p99": 184,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 281944,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 1.68
+    }
+  ],
+  "gpu_type": null,
+  "id": "d6dab85f-264f-4a8d-965c-a15989026da3",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "huggingface-lerobot-smolvla",
+  "name": "Hugging Face LeRobot SmolVLA RobotWin",
+  "parameter_count": 450000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "images": {
+          "cam_high": "{{cam_high_image}}",
+          "cam_left_wrist": "{{cam_left_wrist_image}}",
+          "cam_right_wrist": "{{cam_right_wrist_image}}"
+        },
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "return_chunk": "{{return_chunk}}",
+        "robot_state": "{{robot_state}}",
+        "robot_type": "{{robot_type}}"
+      },
+      "endpoint": "/v1/inference/huggingface-lerobot-smolvla-robotwin",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "Pick up the object and place it at the target location.",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "cam_high_image",
+        "label": "High Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "cam_left_wrist_image",
+        "label": "Left Wrist Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+        "key": "cam_right_wrist_image",
+        "label": "Right Wrist Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "key": "robot_state",
+        "label": "14D Robot State",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "so100_follower",
+        "key": "robot_type",
+        "label": "Robot Type",
+        "options": [
+          "so100_follower",
+          "so101_follower"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": true,
+        "key": "return_chunk",
+        "label": "Return Action Chunk",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-huggingface-lerobot-smolvla-base@sha256:8ed075bd440b31907b523951129dda35061681f2c87244963f3c98bff9c4dd1e"
+  },
+  "release_rank": 700,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "huggingface-lerobot-smolvla-robotwin",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/lerobot/smolvla_robotwin",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "lerobot",
+    "smolvla",
+    "robotwin",
+    "safetensors",
+    "apache-2.0",
+    "forge-wrapper-candidate"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "robotwin-967623a-wrapper-candidate-20260528t09z",
+  "version_description": "Hidden onboarding manifest for the Apache-2.0 lerobot/smolvla_robotwin checkpoint served through the existing Forge SmolVLA HTTP wrapper. The Hugging Face artifact is public, ungated, safetensors-backed, and declares Apache-2.0 model metadata. The selected wrapper digest is already mirrored in all active Forge regions for SmolVLA-family checkpoints. The 2026-05-28T21Z live hidden upsert and visible-cell matrix reprobe refreshed B200, B300, H200, and L40S support rows with 3 warmups and 10 measured RobotWin requests per cell using the processor-aligned 14D state and RobotWin camera keys. The 2026-05-28T22Z pass added a cross-cell static action-trace preflight on those same visible cells, with each full action chunk finite, shaped 1x50x14, and within upstream action min/max bounds. The 2026-05-29T01Z pass rechecked upstream Apache-2.0 artifact/source metadata and repaired missing plain regional tag aliases for the digest-pinned SmolVLA wrapper in eu-north1, eu-north2, and uk-south1. The 2026-05-29T04Z pass proved RTX6000/us-central1 with 3 warmups and 10 measured RobotWin requests on the same digest. Keep hidden until robot-policy safety validation passes.",
+  "version_key": "robotwin",
+  "version_label": "RobotWin wrapper candidate"
+}

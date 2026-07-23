@@ -1,0 +1,267 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "fd5327101908dc82c7504fa5989b1c290275d8b8e9b7551abea9093abc6854c5",
+  "defaultEligible": true,
+  "displayName": "Use OpenMM Molecular Dynamics",
+  "domain": "molecular-simulation",
+  "downloadUrl": "/v1/model-skills/openmm-md-8-5-1-wrapper/markdown?download=true",
+  "group": "molecular-simulation",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "molecular-simulation",
+    "openmm-md-8-5-1-wrapper"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/openmm-md-8-5-1-wrapper",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": 8,
+      "fieldType": "number",
+      "key": "particle_count",
+      "label": "Particles",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 100,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 1000000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 2,
+      "fieldType": "number",
+      "key": "timestep_fs",
+      "label": "Timestep (fs)",
+      "maximum": 10,
+      "minimum": 0.1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 120,
+      "fieldType": "number",
+      "key": "temperature_k",
+      "label": "Temperature (K)",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "friction_per_ps",
+      "label": "Friction (1/ps)",
+      "maximum": 100,
+      "minimum": 0.001,
+      "required": false
+    },
+    {
+      "choices": [
+        "NoCutoff",
+        "CutoffNonPeriodic",
+        "CutoffPeriodic"
+      ],
+      "default": "NoCutoff",
+      "fieldType": "select",
+      "key": "nonbonded_method",
+      "label": "Nonbonded method",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1.2,
+      "fieldType": "number",
+      "key": "cutoff_nm",
+      "label": "Cutoff (nm)",
+      "maximum": 5,
+      "minimum": 0.1,
+      "required": false
+    },
+    {
+      "choices": [
+        "LangevinMiddle",
+        "Verlet"
+      ],
+      "default": "LangevinMiddle",
+      "fieldType": "select",
+      "key": "integrator",
+      "label": "Integrator",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "auto",
+        "CUDA",
+        "CPU"
+      ],
+      "default": "auto",
+      "fieldType": "select",
+      "key": "platform",
+      "label": "Platform",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "mixed",
+        "single",
+        "double"
+      ],
+      "default": "mixed",
+      "fieldType": "select",
+      "key": "precision",
+      "label": "CUDA precision",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "return_state",
+      "label": "Return final state",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-use acknowledgement",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    }
+  ],
+  "inputModalities": [
+    "simulation_parameters",
+    "json"
+  ],
+  "instructions": "---\nname: use-forge-openmm-md-8-5-1-wrapper\ndescription: Use the exact Forge model openmm-md-8-5-1-wrapper for simulation_parameters, json to trajectory, energy, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use OpenMM Molecular Dynamics\n\n- Model slug: `openmm-md-8-5-1-wrapper`\n- Model family: `openmm-md`\n- Version: `8.5.1-cuda12-wrapper-profiler-optimized-20260604` (`8-5-1-cuda12-wrapper-profiler-optimized-20260604`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / molecular-simulation / openmm-md-8-5-1-wrapper`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `MIT and LGPL components; NVIDIA CUDA container terms`\n\n## Purpose\n\nOpenMM Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.\n\n## Use this exact model when\n\n- Use this exact `openmm-md-8-5-1-wrapper` version when the task supplies simulation_parameters, json and needs trajectory, energy, json.\n- OpenMM Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['simulation_parameters', 'json'] \u2192 ['trajectory', 'energy', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `particle_count` (number, optional; bounds 1..4096): Particles\n- `steps` (number, optional; bounds 1..1000000): Steps\n- `timestep_fs` (number, optional; bounds 0.1..10): Timestep (fs)\n- `temperature_k` (number, optional; bounds 1..1000): Temperature (K)\n- `friction_per_ps` (number, optional; bounds 0.001..100): Friction (1/ps)\n- `nonbonded_method` (select, optional): Nonbonded method\n- `cutoff_nm` (number, optional; bounds 0.1..5): Cutoff (nm)\n- `integrator` (select, optional): Integrator\n- `platform` (select, optional): Platform\n- `precision` (select, optional): CUDA precision\n- `return_state` (checkbox, optional): Return final state\n- `research_use_acknowledgement` (checkbox, required): Research-use acknowledgement\n\nRequest template:\n\n```json\n{\n  \"cutoff_nm\": \"{{cutoff_nm}}\",\n  \"friction_per_ps\": \"{{friction_per_ps}}\",\n  \"integrator\": \"{{integrator}}\",\n  \"nonbonded_method\": \"{{nonbonded_method}}\",\n  \"particle_count\": \"{{particle_count}}\",\n  \"platform\": \"{{platform}}\",\n  \"precision\": \"{{precision}}\",\n  \"research_use_acknowledgement\": \"{{research_use_acknowledgement}}\",\n  \"return_state\": \"{{return_state}}\",\n  \"steps\": \"{{steps}}\",\n  \"temperature_k\": \"{{temperature_k}}\",\n  \"timestep_fs\": \"{{timestep_fs}}\"\n}\n```\n\n## Exact output\n\n- `trajectory`\n- `energy`\n- `json`\n\n## Route\n\n`POST /v1/inference/openmm-md-8-5-1-wrapper`\n\n## Workflow\n\n1. Load this skill and pin model slug `openmm-md-8-5-1-wrapper` with version key `8-5-1-cuda12-wrapper-profiler-optimized-20260604`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/openmm-md-8-5-1-wrapper` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/openmm-md-8-5-1-wrapper`\n- Routes: `/v1/models/openmm-md-8-5-1-wrapper/inference-routes`\n- Regional deployment: `/v1/models/openmm-md-8-5-1-wrapper/regional-deployment`\n- Deployment handoff: `/v1/models/openmm-md-8-5-1-wrapper/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/openmm-md-8-5-1-wrapper/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/openmm-md-8-5-1-wrapper/SKILL.md\n\n## References\n\n- [OpenMM Molecular Dynamics source](https://github.com/openmm/openmm) (repository)\n",
+  "license": "MIT and LGPL components; NVIDIA CUDA container terms",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/openmm-md-8-5-1-wrapper/deploy",
+    "inferenceRoutesUrl": "/v1/models/openmm-md-8-5-1-wrapper/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/openmm-md",
+    "modelUrl": "/v1/models/openmm-md-8-5-1-wrapper",
+    "regionalDeploymentUrl": "/v1/models/openmm-md-8-5-1-wrapper/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/openmm-md-8-5-1-wrapper/markdown",
+  "modelFamily": "openmm-md",
+  "modelSlug": "openmm-md-8-5-1-wrapper",
+  "modelUrl": "/v1/models/openmm-md-8-5-1-wrapper",
+  "outputFields": [
+    "trajectory",
+    "energy",
+    "json"
+  ],
+  "outputModalities": [
+    "trajectory",
+    "energy",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "OpenMM Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/openmm-md-8-5-1-wrapper/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "OpenMM Molecular Dynamics source",
+      "url": "https://github.com/openmm/openmm"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/openmm-md-8-5-1-wrapper/SKILL.md",
+  "repositoryPath": "skills/models/life-science/molecular-simulation/openmm-md-8-5-1-wrapper/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "cutoff_nm": "{{cutoff_nm}}",
+    "friction_per_ps": "{{friction_per_ps}}",
+    "integrator": "{{integrator}}",
+    "nonbonded_method": "{{nonbonded_method}}",
+    "particle_count": "{{particle_count}}",
+    "platform": "{{platform}}",
+    "precision": "{{precision}}",
+    "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+    "return_state": "{{return_state}}",
+    "steps": "{{steps}}",
+    "temperature_k": "{{temperature_k}}",
+    "timestep_fs": "{{timestep_fs}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/openmm/openmm",
+    "tags": [
+      "life-science",
+      "biology",
+      "molecular-dynamics",
+      "simulation",
+      "openmm",
+      "cuda",
+      "conda-forge",
+      "forge-wrapper",
+      "open-source",
+      "mit"
+    ],
+    "versionLabel": "OpenMM 8.5.1 profiled throughput wrapper"
+  },
+  "shortDescription": "OpenMM Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.",
+  "skillName": "use-forge-openmm-md-8-5-1-wrapper",
+  "skillUrl": "/v1/model-skills/openmm-md-8-5-1-wrapper",
+  "slug": "openmm-md-8-5-1-wrapper",
+  "stability": "testing",
+  "version": "8.5.1-cuda12-wrapper-profiler-optimized-20260604",
+  "versionKey": "8-5-1-cuda12-wrapper-profiler-optimized-20260604",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['simulation_parameters', 'json'] \u2192 ['trajectory', 'energy', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `openmm-md-8-5-1-wrapper` version when the task supplies simulation_parameters, json and needs trajectory, energy, json.",
+    "OpenMM Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `openmm-md-8-5-1-wrapper` with version key `8-5-1-cuda12-wrapper-profiler-optimized-20260604`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/openmm-md-8-5-1-wrapper` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

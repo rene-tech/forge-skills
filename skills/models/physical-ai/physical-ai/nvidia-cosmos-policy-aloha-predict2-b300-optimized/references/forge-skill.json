@@ -1,0 +1,224 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "b94eef5e61d32c8010d7eba6e6ded65a48f2ed1892fb4d7c05fcb3d7b5ba4933",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos Policy ALOHA Predict2 2B (B300 Optimized)",
+  "domain": "physical-ai",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos-policy-aloha-predict2-b300-optimized/markdown?download=true",
+  "group": "physical-ai",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "physical-ai",
+    "nvidia-cosmos-policy-aloha-predict2-b300-optimized"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos-policy-aloha-predict2-2b",
+  "inputFields": [
+    {
+      "choices": [
+        "fold shirt",
+        "put candy in bag",
+        "put candies in bowl",
+        "put purple eggplant on plate",
+        "put brown chicken wing on plate",
+        "pick up the cube and place it in the bowl"
+      ],
+      "default": "fold shirt",
+      "fieldType": "select",
+      "key": "task_description",
+      "label": "Task Description",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "use_sample_observation",
+      "label": "Use Placeholder Observation",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "primary_image",
+      "label": "Primary Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "left_wrist_image",
+      "label": "Left Wrist Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "right_wrist_image",
+      "label": "Right Wrist Camera Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+      "fieldType": "json_editor",
+      "key": "proprio",
+      "label": "ALOHA Proprioception",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "randomize_seed",
+      "label": "Randomize Seed",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 195,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 10,
+      "fieldType": "number",
+      "key": "num_denoising_steps_action",
+      "label": "Action Denoising Steps",
+      "maximum": 32,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "proprio"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos-policy-aloha-predict2-b300-optimized\ndescription: Use the exact Forge model nvidia-cosmos-policy-aloha-predict2-b300-optimized for text, image, proprio to json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos Policy ALOHA Predict2 2B (B300 Optimized)\n\n- Model slug: `nvidia-cosmos-policy-aloha-predict2-b300-optimized`\n- Model family: `nvidia-cosmos-policy-aloha-predict2`\n- Version: `b300-optimized` (`b300-optimized`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / physical-ai / nvidia-cosmos-policy-aloha-predict2-b300-optimized`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nB300 warm-optimized Cosmos Policy ALOHA serving build.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos-policy-aloha-predict2-b300-optimized` version when the task supplies text, image, proprio and needs json.\n- B300 warm-optimized Cosmos Policy ALOHA serving build.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'proprio'] \u2192 ['json'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `task_description` (select, optional): Task Description\n- `use_sample_observation` (checkbox, optional): Use Placeholder Observation\n- `primary_image` (file_upload, optional): Primary Camera Image\n- `left_wrist_image` (file_upload, optional): Left Wrist Camera Image\n- `right_wrist_image` (file_upload, optional): Right Wrist Camera Image\n- `proprio` (json_editor, optional): ALOHA Proprioception\n- `randomize_seed` (checkbox, optional): Randomize Seed\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_denoising_steps_action` (number, optional; bounds 1..32): Action Denoising Steps\n\nRequest template:\n\n```json\n{\n  \"model\": \"{{model_slug}}\",\n  \"num_denoising_steps_action\": \"{{num_denoising_steps_action}}\",\n  \"observation\": {\n    \"left_wrist_image\": \"{{left_wrist_image}}\",\n    \"primary_image\": \"{{primary_image}}\",\n    \"proprio\": \"{{proprio}}\",\n    \"right_wrist_image\": \"{{right_wrist_image}}\",\n    \"use_sample_observation\": \"{{use_sample_observation}}\"\n  },\n  \"randomize_seed\": \"{{randomize_seed}}\",\n  \"seed\": \"{{seed}}\",\n  \"task_description\": \"{{task_description}}\"\n}\n```\n\n## Exact output\n\n- `json`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos-policy-aloha-predict2-2b`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos-policy-aloha-predict2-b300-optimized` with version key `b300-optimized`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos-policy-aloha-predict2-2b` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized`\n- Routes: `/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-aloha-predict2-b300-optimized/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-aloha-predict2-b300-optimized/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos Policy ALOHA Predict2 2B (B300 Optimized) source](https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md) (repository)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos-policy-aloha-predict2",
+    "modelUrl": "/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos-policy-aloha-predict2-b300-optimized/markdown",
+  "modelFamily": "nvidia-cosmos-policy-aloha-predict2",
+  "modelSlug": "nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+  "modelUrl": "/v1/models/nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+  "outputFields": [
+    "json"
+  ],
+  "outputModalities": [
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "B300 warm-optimized Cosmos Policy ALOHA serving build.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-aloha-predict2-b300-optimized/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "NVIDIA Cosmos Policy ALOHA Predict2 2B (B300 Optimized) source",
+      "url": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-aloha-predict2-b300-optimized/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-aloha-predict2-b300-optimized/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "model": "{{model_slug}}",
+    "num_denoising_steps_action": "{{num_denoising_steps_action}}",
+    "observation": {
+      "left_wrist_image": "{{left_wrist_image}}",
+      "primary_image": "{{primary_image}}",
+      "proprio": "{{proprio}}",
+      "right_wrist_image": "{{right_wrist_image}}",
+      "use_sample_observation": "{{use_sample_observation}}"
+    },
+    "randomize_seed": "{{randomize_seed}}",
+    "seed": "{{seed}}",
+    "task_description": "{{task_description}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 2000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "policy",
+      "aloha",
+      "cosmos",
+      "blackwell-optimized",
+      "b300",
+      "warm-optimized"
+    ],
+    "versionLabel": "B300 optimized"
+  },
+  "shortDescription": "B300 warm-optimized Cosmos Policy ALOHA serving build.",
+  "skillName": "use-forge-nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+  "slug": "nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+  "stability": "testing",
+  "version": "b300-optimized",
+  "versionKey": "b300-optimized",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'proprio'] \u2192 ['json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos-policy-aloha-predict2-b300-optimized` version when the task supplies text, image, proprio and needs json.",
+    "B300 warm-optimized Cosmos Policy ALOHA serving build.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos-policy-aloha-predict2-b300-optimized` with version key `b300-optimized`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos-policy-aloha-predict2-2b` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "earth_observation",
+    "satellite",
+    "aerial",
+    "satlas",
+    "buildings",
+    "roads",
+    "high_resolution",
+    "multitask",
+    "vision",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "earth_observation",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/earth-observation-satlaspretrain-aerial-swinb:20260507-centinela",
+  "container_image_size_bytes": 8829650247,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-06T13:49:23.031973+00:00",
+  "default_eligible": false,
+  "description": "Public Satlas high-resolution multi-task model for 8-bit RGB aerial/satellite imagery. The Forge wrapper samples large images into tiles and returns structured presence scores and area metrics for buildings, roads/streets, water/rivers, fields/crops, and forest/canopy. When requested, it also emits a Centinela Digital Twin report that maps detector evidence to the approved plot-classification matrix and crop/timber palettes.",
+  "family_id": "70d53b22-03da-4a65-bdf9-09f1e225315d",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H100": false,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-07T09:53:53.481614+00:00",
+      "region": "us-central1",
+      "request_ms": 1038,
+      "request_ms_p50": 1038,
+      "request_ms_p95": 1050,
+      "request_ms_p99": 1051,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 221285,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.83,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "gpu_incompatible: model catalog marks B300 unsupported",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-15T01:59:56.701545+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": 1118,
+      "request_ms_p95": 1129,
+      "request_ms_p99": 1130,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.14,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-07T19:57:33.271953+00:00",
+      "region": "eu-north2",
+      "request_ms": 1361,
+      "request_ms_p50": 1361,
+      "request_ms_p95": 1361,
+      "request_ms_p99": 1361,
+      "request_ms_samples": 1,
+      "startup_ms_first": 5643,
+      "startup_ms_probe": 5733,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 1.72,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:22:22.310139+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 1260,
+      "request_ms_p95": 1275,
+      "request_ms_p99": 1280,
+      "request_ms_samples": 10,
+      "startup_ms_first": 5643,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 1.72,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "gpu_incompatible: model catalog marks L40S unsupported",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks RTX6000 unsupported",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T01:59:56.875232+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 10758,
+      "request_ms_p95": 10758,
+      "request_ms_p99": 10758,
+      "request_ms_samples": 1,
+      "startup_ms_first": 228190,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "57ad556d-18fb-4948-b117-a3b964d8e93a",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "image"
+  ],
+  "modality_output": [
+    "json"
+  ],
+  "model_family": "allenai-satlaspretrain-aerial-swinb",
+  "name": "SatlasPretrain Aerial SwinB",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "image": "{{image}}",
+        "labels": "{{labels}}",
+        "mask_threshold": "{{mask_threshold}}",
+        "max_tiles": "{{max_tiles}}",
+        "metadata": "{{metadata}}",
+        "return_centinela_report": "{{return_centinela_report}}",
+        "tile_size": "{{tile_size}}"
+      },
+      "endpoint": "/v1/inference/allenai-satlaspretrain-aerial-swinb",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/15/12663/7710",
+        "key": "image",
+        "label": "Image URL or data URI",
+        "type": "url",
+        "visible": true
+      },
+      {
+        "default": [
+          "buildings",
+          "roads",
+          "water",
+          "fields",
+          "forest"
+        ],
+        "key": "labels",
+        "label": "Labels",
+        "type": "list",
+        "visible": true
+      },
+      {
+        "default": {},
+        "key": "metadata",
+        "label": "Optional Plot Metadata",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 512,
+        "key": "tile_size",
+        "label": "Tile Size",
+        "max": 2048,
+        "min": 256,
+        "step": 256,
+        "type": "number"
+      },
+      {
+        "default": 4,
+        "key": "max_tiles",
+        "label": "Max Tiles",
+        "max": 16,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 0.5,
+        "key": "mask_threshold",
+        "label": "Mask Threshold",
+        "max": 0.9,
+        "min": 0.1,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "return_centinela_report",
+        "label": "Return Centinela report",
+        "type": "checkbox"
+      }
+    ],
+    "runtime": {
+      "kind": "satlas_highres_multitask",
+      "labels": [
+        "buildings",
+        "roads",
+        "water",
+        "fields",
+        "forest"
+      ],
+      "model_id": "SatlasPretrainHighresOld"
+    },
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/earth-observation-satlaspretrain-aerial-swinb:20260507-centinela",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/earth-observation-satlaspretrain-aerial-swinb:20260507-centinela",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/earth-observation-satlaspretrain-aerial-swinb:20260507-centinela",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/earth-observation-satlaspretrain-aerial-swinb:20260507-centinela"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "allenai-satlaspretrain-aerial-swinb",
+  "source": "custom_container",
+  "source_url": "https://github.com/allenai/satlas",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north2"
+  ],
+  "tags": [
+    "earth-observation",
+    "satellite",
+    "aerial",
+    "satlas",
+    "buildings",
+    "roads",
+    "high-resolution",
+    "multitask"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "usable-highres",
+  "version_description": "Forge wrapper for the public Satlas high-resolution multi-task checkpoint. It returns structured building, road, water, agriculture, and canopy signals from 8-bit RGB aerial/satellite images, with an optional Centinela report layer.",
+  "version_key": "usable-highres",
+  "version_label": "Usable High-Resolution"
+}

@@ -1,0 +1,499 @@
+{
+  "benchmark_scores": {
+    "artifact_license": "mit",
+    "artifact_source": "https://github.com/gcorso/DiffDock",
+    "container_source_decision": "Selected the official NVIDIA NIM rather than the upstream rbgcsail/diffdock Docker Hub image because the NIM exposes the documented HTTP serving contract, readiness endpoint, telemetry control, and /opt/nim/.cache checkpoint hydration path. The upstream Docker Hub image is useful fallback evidence but is a CLI/container shell workflow and would need a Forge wrapper before serving.",
+    "direct_upstream_digest_check": {
+      "checked_at": "2026-05-25T13:04:06Z",
+      "commands": [
+        "timeout 60s crane digest nvcr.io/nim/mit/diffdock:2.2.0",
+        "timeout 60s crane digest nvcr.io/nim/mit/diffdock:latest"
+      ],
+      "error": "401 Unauthorized from nvcr.io before digest resolution",
+      "status": "blocked_without_ngc_auth"
+    },
+    "documented_gpu_support": {
+      "gpu_count": 1,
+      "minimum_storage_gb": 40,
+      "precision": "BF16",
+      "tested_gpus": [
+        "H100",
+        "A100",
+        "L40S",
+        "A6000",
+        "A10G"
+      ]
+    },
+    "existing_container_search": {
+      "forge_regional_mirror": {
+        "digest": "sha256:e1ff6c752579efe82b8c046035989f9bd15b22410bb3273e0c5aaa531214d96e",
+        "source_tag": "cr.*.nebius.cloud/*/models/nim-mit-diffdock:latest",
+        "status": "all_four_regions_verified"
+      },
+      "nvidia_nim": {
+        "direct_upstream_digest_status": "blocked_without_ngc_auth",
+        "ref": "nvcr.io/nim/mit/diffdock:2.2.0",
+        "status": "selected_via_existing_forge_regional_mirrors"
+      },
+      "upstream_oss_dockerhub": {
+        "compressed_layer_bytes": 3668329993,
+        "digest": "sha256:1b7bb3adb332fdc9648a0ec53dec2f790cfbb816d7478d2bd93f1cdea3b269f0",
+        "ref": "rbgcsail/diffdock:latest",
+        "status": "available_not_selected_cli_container"
+      }
+    },
+    "image_config_snapshot": {
+      "architecture": "amd64",
+      "backend_type": "pytorch",
+      "checked_at": "2026-05-25T13:05:30Z",
+      "compressed_layer_bytes": 16446799159,
+      "created": "2026-01-08T20:53:15.337671774Z",
+      "cuda_version": "12.8.1",
+      "cudnn_version": "9.8.0.87-1",
+      "dd_use_bf16": "1",
+      "nim_cache_path": "/opt/nim/.cache",
+      "nim_model_version": "2.2.0",
+      "nimtools_version": "1.5.2"
+    },
+    "nvidia_docs": [
+      "https://docs.nvidia.com/nim/bionemo/diffdock/latest/overview.html",
+      "https://docs.nvidia.com/nim/bionemo/diffdock/latest/release-notes.html",
+      "https://docs.nvidia.com/nim/bionemo/diffdock/latest/support-matrix.html",
+      "https://docs.nvidia.com/nim/bionemo/diffdock/latest/getting-started.html",
+      "https://docs.nvidia.com/nim/bionemo/diffdock/latest/configure-nim.html",
+      "https://docs.nvidia.com/nim/bionemo/diffdock/latest/api-reference.html",
+      "https://docs.nvidia.com/nim/bionemo/diffdock/latest/EULA.html"
+    ],
+    "nvidia_docs_last_updated": "2026-02-09",
+    "nvidia_model_card": "https://build.nvidia.com/mit/diffdock",
+    "nvidia_modelcard_detail": "https://build.nvidia.com/mit/diffdock/modelcard",
+    "nvidia_release": "2.2.0",
+    "onboarding_state": "active_tree_manifest_schema_candidate_regional_mirrors_verified_h200_prior_smoke_fresh_matrix_pending",
+    "prior_forge_probe_evidence": {
+      "gpu_region": "H200/eu-north2",
+      "note": "Prior smoke probe used the corrected local runtime endpoint. Treat as evidence for H200 only; run a fresh full matrix before publication.",
+      "request_ms": 1061,
+      "source": "tmp/model-onboarding-20260426/all-nvidia-nims/wave8-healthcare-biotech-20260428/mit-diffdock-nim-H200-eu-north2-manual-ready-pod-fixed-endpoint-20260428T1700Z.md",
+      "status": "supported",
+      "vram_gb": 5.32
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_blocker": "Fresh full Forge probe/benchmark was not run in this cycle; direct NVCR digest verification is blocked by NGC auth/terms in this worker shell. Keep status=onboarding and default_eligible=false until NGC upstream digest is verified or versioned mirrors are refreshed and probe_model_parallel_matrix succeeds across intended cells.",
+    "regional_mirror_checks": {
+      "checked_at": "2026-05-25T13:04:45Z",
+      "commands": [
+        "timeout 60s crane digest cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mit-diffdock:latest",
+        "timeout 60s crane digest cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-mit-diffdock:latest",
+        "timeout 60s crane digest cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-mit-diffdock:latest",
+        "timeout 60s crane digest cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-mit-diffdock:latest"
+      ],
+      "digest": "sha256:e1ff6c752579efe82b8c046035989f9bd15b22410bb3273e0c5aaa531214d96e",
+      "status": "all_four_regions_verified"
+    },
+    "research_checked_at": "2026-05-25T13:10:00Z"
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "chemistry",
+    "drug_discovery",
+    "molecular_docking",
+    "protein_ligand",
+    "pose_generation",
+    "diffusion",
+    "diffdock",
+    "nvidia_nim",
+    "regional_mirror_verified",
+    "protein_structure",
+    "molecule",
+    "sdf",
+    "mol2",
+    "structured_output",
+    "docked_pose",
+    "confidence"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/mit/diffdock:2.2.0",
+  "container_image_size_bytes": 16446799159,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T16:26:59.160548+00:00",
+  "default_eligible": false,
+  "description": "DiffDock NIM is NVIDIA's packaged MIT DiffDock service for small-molecule blind docking: it accepts protein PDB text and ligand SDF/MOL2/SMILES-style text, samples protein-ligand poses, and returns ranked docked ligand positions with confidence scores. NVIDIA's current DiffDock docs identify release 2.2.0, the /molecular-docking/diffdock/generate endpoint, /v1/health/ready readiness checks, single-GPU execution, cache mounting at /opt/nim/.cache, and tested H100, A100, L40S, A6000, and A10G configurations. This Forge manifest is onboarding-only despite digest-verified regional mirrors because the current worker shell cannot verify the private NVCR upstream digest and no fresh full Forge GPU matrix was run in this cycle. The recorded prior H200/eu-north2 smoke test remains useful evidence, but B200/B300/L40S/RTX6000 should be reprobed before publication. This is a nonclinical computational chemistry and drug-discovery research workflow, not clinical, therapeutic, toxicity, safety, efficacy, or patient-specific guidance.",
+  "family_id": "2cd588c2-de83-4990-b26e-e527804af669",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "NIM_CACHE_PATH": "/opt/nim/.cache",
+      "NIM_HTTP_API_PORT": "8000",
+      "NIM_TELEMETRY_MODE": "0"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": "503: cold_start_failed: RuntimeError: pod_start_failure:model:log_fatal:no kernel image is available for execution on the device:logs:INFO 2026-05-15 00:37:46.280 public.rs:52] Skipping download, using cached copy of file: diffdock_models_v1/confidence.pt at path: \"/opt/nim/.cache/ngc/hub/models--nim--mit--diffdock/snapshots/2.2.0/diffdock_models_v1/confidence.pt\" INFO 2026-05-15 00:37:46.300 lib.rs:203] File: diffdock_models_v1/score.pt found in cache: \"/opt/nim/.cache/ngc/hub/models--nim--mit--diffdock/snapshots/2.2.0/diffdock_models_v1/score.pt\" INFO 2026-05-15 00:37:46.300 public.rs:52] Skipping download, using cached copy of file: diffdock_models_v1/score.pt at path: \"/opt/nim/.cache/ngc/hub/models--nim--mit--diffdock/snapshots/2.2.0/diffdock_models_v1/score.pt\" INFO 2026-05-15 00:37:46.317 lib.rs:203] File: diffdock_models_v2.2/confidence_parameters.yml found in cache: \"/opt/nim/.cache/ngc/hub/models--nim--mit--diffdock/snapshots/2.2.0/diffdock_models_v2.2/confidence_parameters.y",
+      "last_failed_at": "2026-05-15T00:38:01.929630+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-15T00:37:41.856190+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": "gpu_runtime_incompatible: PyTorch build lacks SM103/B300 CUDA kernels; logs show CUDA no kernel image available",
+      "last_failed_at": "2026-05-13T17:32:07.618936+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-14T22:50:29.262002+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 2,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T05:20:03.617848+00:00",
+      "region": "eu-north2",
+      "request_ms": 4147,
+      "request_ms_p50": 2274,
+      "request_ms_p95": 4011,
+      "request_ms_p99": 4120,
+      "request_ms_samples": 6,
+      "startup_ms_first": 27000,
+      "startup_ms_probe": 27344,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 5.32,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:22:22.310139+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 1485,
+      "request_ms_p95": 2002,
+      "request_ms_p99": 2330,
+      "request_ms_samples": 10,
+      "startup_ms_first": 27000,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 5.11,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-15T05:52:19.987131+00:00",
+      "region": "eu-north1",
+      "request_ms": 2836,
+      "request_ms_p50": 2517,
+      "request_ms_p95": 2804,
+      "request_ms_p99": 2830,
+      "request_ms_samples": 2,
+      "startup_ms_first": null,
+      "startup_ms_probe": 37000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": "gpu_runtime_incompatible: PyTorch build lacks SM120/RTX6000 CUDA kernels; logs show CUDA no kernel image available",
+      "last_failed_at": "2026-05-12T20:04:30.853435+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-14T22:50:29.262002+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "1f93f2be-c1d7-4a3f-8832-925aa7d6518e",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "NVIDIA Open Model License; MIT (upstream DiffDock); NVIDIA NIM terms",
+  "modality_input": [
+    "protein_structure",
+    "molecule",
+    "sdf",
+    "mol2",
+    "json"
+  ],
+  "modality_output": [
+    "docked_pose",
+    "sdf",
+    "confidence",
+    "json"
+  ],
+  "model_family": "mit-diffdock",
+  "name": "MIT DiffDock NIM",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "is_staged": "{{is_staged}}",
+        "ligand": "{{ligand}}",
+        "ligand_file_type": "{{ligand_file_type}}",
+        "num_poses": "{{num_poses}}",
+        "protein": "{{protein}}",
+        "save_trajectory": "{{save_trajectory}}",
+        "skip_gen_conformer": "{{skip_gen_conformer}}",
+        "steps": "{{steps}}",
+        "time_divisions": "{{time_divisions}}"
+      },
+      "endpoint": "/molecular-docking/diffdock/generate",
+      "method": "POST",
+      "upstream_model_id": "mit/diffdock"
+    },
+    "input_fields": [
+      {
+        "default": "ATOM      1  N   PRO A1109      -7.773  -8.599   8.647  1.00 19.10           N  \nATOM      2  CA  PRO A1109      -6.848  -8.162   7.581  1.00 17.21           C  \nATOM      3  C   PRO A1109      -7.190  -8.893   6.273  1.00 16.69           C  \nATOM      4  O   PRO A1109      -8.032  -9.790   6.284  1.00 16.90           O  \nATOM      5  CB  PRO A1109      -5.460  -8.555   8.085  1.00 18.07           C  \nATOM      6  CG  PRO A1109      -5.729  -9.745   8.998  1.00 20.63           C  \nATOM      7  CD  PRO A1109      -7.061  -9.412   9.617  1.00 18.77           C  \nATOM      8  N   LEU A1110      -6.573  -8.507   5.152  1.00 13.72           N  \nATOM      9  CA  LEU A1110      -6.611  -9.342   3.931  1.00 13.43           C  \nATOM     10  C   LEU A1110      -5.910 -10.662   4.212  1.00 13.65           C  \nATOM     11  O   LEU A1110      -4.829 -10.727   4.818  1.00 13.16           O  \nATOM     12  CB  LEU A1110      -5.896  -8.666   2.758  1.00 13.75           C  \nATOM     13  CG  LEU A1110      -6.437  -7.340   2.264  1.00 15.04           C  \nATOM     14  CD1 LEU A1110      -5.512  -6.724   1.227  1.00 16.47           C  \nATOM     15  CD2 LEU A1110      -7.818  -7.521   1.685  1.00 17.01           C  \nATOM     16  N   PRO A1111      -6.468 -11.804   3.750  1.00 12.32           N  \nATOM     17  CA  PRO A1111      -5.813 -13.095   3.925  1.00 11.94           C  \nATOM     18  C   PRO A1111      -4.661 -13.388   2.968  1.00 11.95           C  \nATOM     19  O   PRO A1111      -4.036 -14.433   3.057  1.00 15.07           O  \nATOM     20  CB  PRO A1111      -6.986 -14.063   3.701  1.00 13.44           C  \nATOM     21  CG  PRO A1111      -7.853 -13.339   2.710  1.00 13.79           C  \nATOM     22  CD  PRO A1111      -7.819 -11.898   3.166  1.00 13.72           C  \nEND",
+        "key": "protein",
+        "label": "Protein PDB ATOM records",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "ZU6\n  CCTOOLS-0919241044\n\n 36 37  0  0  0  0  0  0  0  0999 V2000\n    4.7700    0.6810    0.3130 C   0  0  0  0  0\n    3.9180   -0.3290   -0.0750 C   0  0  0  0  0\n    1.5920   -1.1170   -0.5690 C   0  0  0  0  0\n   -0.8170   -2.2390    1.2270 O   0  0  0  0  0\n   -1.2310   -2.5010    0.1180 C   0  0  0  0  0\n   -2.1610   -3.4640   -0.0440 N   0  0  0  0  0\n   -2.6710   -4.1920    1.1190 C   0  0  0  0  0\n   -0.7060   -1.7510   -1.0790 C   0  0  0  0  0\n    0.2870   -0.7670   -0.6410 N   0  0  0  0  0\n    1.9630   -2.2390   -0.8620 O   0  0  0  0  0\n    2.5500   -0.0780   -0.1620 C   0  0  0  0  0\n    4.2770    1.9420    0.6220 C   0  0  0  0  0\n    2.9280    2.2090    0.5480 C   0  0  0  0  0\n    2.0450    1.2050    0.1470 C   0  0  0  0  0\n    0.7090    1.4240    0.0610 N   0  0  0  0  0\n   -0.1110    0.4900   -0.3110 C   0  0  0  0  0\n   -1.5810    0.8150   -0.3810 C   0  0  0  0  0\n   -1.8010    2.2730    0.0290 C   0  0  0  0  0\n   -3.2700    2.5980   -0.0410 C   0  0  0  0  0\n   -3.7010    3.8290    0.2770 O   0  0  0  0  0\n   -4.0610    1.7510   -0.3840 O   0  0  0  0  0\n    5.8310    0.4900    0.3810 H   0  0  0  0  0\n    4.3070   -1.3090   -0.3110 H   0  0  0  0  0\n   -2.4910   -3.6730   -0.9320 H   0  0  0  0  0\n   -3.4090   -4.9250    0.7940 H   0  0  0  0  0\n   -1.8480   -4.7030    1.6180 H   0  0  0  0  0\n   -3.1360   -3.4910    1.8120 H   0  0  0  0  0\n   -0.2400   -2.4530   -1.7720 H   0  0  0  0  0\n   -1.5290   -1.2400   -1.5780 H   0  0  0  0  0\n    4.9600    2.7220    0.9250 H   0  0  0  0  0\n    2.5560    3.1930    0.7920 H   0  0  0  0  0\n   -1.9380    0.6670   -1.4010 H   0  0  0  0  0\n   -2.1310    0.1610    0.2950 H   0  0  0  0  0\n   -1.4440    2.4210    1.0480 H   0  0  0  0  0\n   -1.2510    2.9270   -0.6470 H   0  0  0  0  0\n   -4.6530    3.9900    0.2170 H   0  0  0  0  0\n  1  2  1  0  0  0\n  1 22  1  0  0  0\n  2 11  2  0  0  0\n  2 23  1  0  0  0\n  3 10  2  0  0  0\n  3  9  1  0  0  0\n  5  4  2  0  0  0\n  5  6  1  0  0  0\n  6  7  1  0  0  0\n  6 24  1  0  0  0\n  7 25  1  0  0  0\n  7 26  1  0  0  0\n  7 27  1  0  0  0\n  8  5  1  0  0  0\n  8 28  1  0  0  0\n  8 29  1  0  0  0\n  9  8  1  0  0  0\n 11  3  1  0  0  0\n 12  1  2  0  0  0\n 12 13  1  0  0  0\n 12 30  1  0  0  0\n 13 14  2  0  0  0\n 13 31  1  0  0  0\n 14 11  1  0  0  0\n 14 15  1  0  0  0\n 15 16  1  0  0  0\n 16  9  1  0  0  0\n 16 17  1  0  0  0\n 17 32  1  0  0  0\n 17 33  1  0  0  0\n 18 19  1  0  0  0\n 18 17  1  0  0  0\n 18 34  1  0  0  0\n 18 35  1  0  0  0\n 19 20  1  0  0  0\n 20 36  1  0  0  0\n 21 19  2  0  0  0\nM  END\n$$$$",
+        "key": "ligand",
+        "label": "Ligand SDF, MOL2, or SMILES text",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "sdf",
+        "key": "ligand_file_type",
+        "label": "Ligand file type",
+        "options": [
+          "sdf",
+          "mol2",
+          "txt"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "save_trajectory",
+        "label": "Save trajectory",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "skip_gen_conformer",
+        "label": "Skip conformer generation",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "is_staged",
+        "label": "Use staged docking",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "ranked ligand SDF poses, input protein PDB text, and confidence scores",
+      "type": "structure_3d"
+    },
+    "parameter_controls": [
+      {
+        "default": 1,
+        "key": "num_poses",
+        "label": "Generated poses",
+        "max": 40,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 18,
+        "key": "steps",
+        "label": "Diffusion steps",
+        "max": 100,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 20,
+        "key": "time_divisions",
+        "label": "Diffusion time divisions",
+        "max": 100,
+        "min": 20,
+        "step": 2,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_mount": "/opt/nim/.cache",
+      "direct_upstream_digest_status": "blocked_without_ngc_auth",
+      "docs_path": "/docs",
+      "forge_cache_target": "/mnt/data/nim-cache/mit-diffdock/2.2.0",
+      "kind": "nvidia_nim",
+      "mirror_status": "regional_mirrors_digest_verified",
+      "models_path": "/v1/models",
+      "nim_id": "mit/diffdock",
+      "nim_version": "2.2.0",
+      "readiness_path": "/v1/health/ready"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "num_poses",
+        "time_divisions",
+        "steps",
+        "save_trajectory",
+        "skip_gen_conformer",
+        "is_staged"
+      ],
+      "required": [
+        "protein",
+        "ligand",
+        "ligand_file_type"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-mit-diffdock:latest@sha256:e1ff6c752579efe82b8c046035989f9bd15b22410bb3273e0c5aaa531214d96e",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-mit-diffdock:latest@sha256:e1ff6c752579efe82b8c046035989f9bd15b22410bb3273e0c5aaa531214d96e",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-mit-diffdock:latest@sha256:e1ff6c752579efe82b8c046035989f9bd15b22410bb3273e0c5aaa531214d96e",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-mit-diffdock:latest@sha256:e1ff6c752579efe82b8c046035989f9bd15b22410bb3273e0c5aaa531214d96e"
+  },
+  "release_rank": 74,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "mit-diffdock-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/mit/diffdock",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "chemistry",
+    "drug-discovery",
+    "molecular-docking",
+    "protein-ligand",
+    "pose-generation",
+    "diffusion",
+    "diffdock",
+    "nvidia-nim",
+    "regional-mirror-verified"
+  ],
+  "updated_at": "2026-06-30T13:04:21.866287+00:00",
+  "version": "2.2.0",
+  "version_description": "NVIDIA NIM packaging for MIT DiffDock molecular docking pose generation. Regional Forge mirrors are digest-verified and image labels identify NIM/model version 2.2.0; the manifest remains onboarding until a fresh full Forge matrix is run.",
+  "version_key": "nim-2-2-0-regional-mirror-onboarding",
+  "version_label": "NIM 2.2.0"
+}

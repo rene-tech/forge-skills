@@ -1,0 +1,151 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "image_generation",
+    "text_to_image",
+    "diffusion",
+    "stable_diffusion",
+    "stability_ai",
+    "text",
+    "vision",
+    "general",
+    "custom_inference"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/stabilityai/stable-diffusion-3.5-large:1.1.0",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-17T02:40:55.956141+00:00",
+  "default_eligible": true,
+  "description": "Stability AI Stable Diffusion 3.5 Large Visual GenAI NIM for high-quality text-to-image generation on a single GPU.",
+  "family_id": "52f1fb5b-7bd8-45ae-aee3-c95a5619ef55",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface/hub",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "NIM_ENABLE_WARMUP": "0",
+      "NIM_MODEL_VARIANT": "base"
+    }
+  },
+  "gpu_support": [],
+  "gpu_type": null,
+  "id": "361c809e-f6ae-4f2d-964f-c9d197dc6b4f",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "stability-ai-community-license",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "image"
+  ],
+  "model_family": "stabilityai-stable-diffusion-3-5-large",
+  "name": "Stable Diffusion 3.5 Large",
+  "parameter_count": 8000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "mode": "{{mode}}",
+        "model": "{{model_slug}}",
+        "prompt": "{{prompt}}",
+        "seed": "{{seed}}",
+        "steps": "{{steps}}"
+      },
+      "endpoint": "/v1/inference/stabilityai-stable-diffusion-3-5-large",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "A high-resolution concept art render of a cloud GPU control room, cinematic lighting, detailed but realistic",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "base",
+        "key": "mode",
+        "label": "Mode",
+        "options": [
+          "base"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "png",
+      "type": "image"
+    },
+    "parameter_controls": [
+      {
+        "default": 0,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 50,
+        "key": "steps",
+        "label": "Steps",
+        "max": 50,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "image_generation"
+  },
+  "quantization": "nim-profile",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-stabilityai-stable-diffusion-3.5-large:1.1.0",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-stabilityai-stable-diffusion-3.5-large:1.1.0",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-stabilityai-stable-diffusion-3.5-large:1.1.0",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-stabilityai-stable-diffusion-3.5-large:1.1.0"
+  },
+  "release_rank": 100,
+  "requires_hf_token": true,
+  "single_region_risk": false,
+  "slug": "stabilityai-stable-diffusion-3-5-large",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [],
+  "tags": [
+    "image-generation",
+    "text-to-image",
+    "diffusion",
+    "stable-diffusion",
+    "stability-ai"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "1.1.0",
+  "version_description": null,
+  "version_key": "1-1-0",
+  "version_label": "1.1.0"
+}

@@ -1,0 +1,1634 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M?blobs=true",
+    "artifact_checked_at": "2026-06-04T05:03:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertForTokenClassification"
+      ],
+      "hidden_size": 1024,
+      "labels": [
+        "O",
+        "B-DISEASE",
+        "I-DISEASE"
+      ],
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 24,
+      "torch_dtype": "bfloat16"
+    },
+    "artifact_disabled": false,
+    "artifact_gated": false,
+    "artifact_last_modified": "2025-08-05T09:41:31.000Z",
+    "artifact_library_name": "transformers",
+    "artifact_license": "apache-2.0",
+    "artifact_model_file": {
+      "path": "model.safetensors",
+      "sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+      "size_bytes": 668237670
+    },
+    "artifact_pipeline_tag": "token-classification",
+    "artifact_private": false,
+    "artifact_sha": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+    "artifact_source": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+    "base_image": "docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+    "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, TORCH_HOME, XDG_CACHE_HOME, and HOME point to versioned /opt/nim/.cache paths, which Forge mounts from the shared /mnt/data/forge-weights hostPath. A file lock under the same cache root serializes first-run checkpoint and tokenizer hydration.",
+    "checkpoint_load_gate": {
+      "checkpoint_file": "model.safetensors",
+      "load_path": "hf_hub_download_then_sha256_verify_then_AutoModelForTokenClassification_from_pretrained_use_safetensors_true",
+      "sha256_required": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26"
+    },
+    "container_digest": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+    "container_source_decision": "build_forge_owned_cuda12_wrapper_because_the_only_matching_public_oci_image_downloads_mutable_bytez_serving_code_at_startup",
+    "cve_2026_4372_source_rebuild_20260602Tnext": {
+      "checked_in_source": {
+        "dockerfile": "services/models/hcls/openmed_ner_diseasedetect_biomed_335m/Dockerfile",
+        "fixed_requirement": "transformers==5.3.0",
+        "hub_requirement": "huggingface_hub==1.3.7",
+        "source_security_gate": "passed_on_dockerfile_only"
+      },
+      "current_mirrored_digest_runtime": {
+        "digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "package_version": "4.48.3",
+        "publication_state": "blocked",
+        "runtime_stack_field": "benchmark_scores.runtime_stack"
+      },
+      "decision": "do_not_publish_until_fixed_digest_built_mirrored_scanned_and_reprobed",
+      "evidence_files": {
+        "source_note": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260602Tnext-cvefix-source.md",
+        "worker_note": "docs/supervisor/worker-notes/hcls-2026-06-02T20Z-next.md"
+      },
+      "local_container_build": {
+        "image_id": "sha256:1ea4fdd9834f3c66ce272d8dd24cc11e8a41e013757676662270af9ec6c14d03",
+        "image_ref": "forge-local/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-cvefix-20260602tnext",
+        "image_size_bytes": 7760002929,
+        "image_user": "10001:10001",
+        "image_workdir": "/app",
+        "runtime_versions": {
+          "huggingface_hub_package": "1.3.7",
+          "transformers_package": "5.3.0"
+        },
+        "smoke": {
+          "device": "cpu",
+          "entity_count": 1,
+          "first_entity": {
+            "end": 39,
+            "label": "DISEASE",
+            "score": 0.9534578323364258,
+            "start": 24,
+            "text": "Crohn's disease"
+          },
+          "input": "A possible link between Crohn's disease and gut microbiota is being investigated in PubMed abstracts.",
+          "model_time_ms": 75,
+          "ready": true,
+          "torch_dtype": "fp32"
+        },
+        "status": "built_and_cpu_smoke_passed"
+      },
+      "package_availability": {
+        "command": ".venv312/bin/python -m pip index versions transformers",
+        "fixed_floor_available": true,
+        "hub_command": ".venv312/bin/python -m pip index versions huggingface_hub",
+        "hub_observed_latest": "1.17.0",
+        "hub_selected_requirement": "huggingface_hub==1.3.7",
+        "observed_latest": "5.9.0",
+        "selected_requirement": "transformers==5.3.0"
+      },
+      "remaining_blockers": [
+        "Push the local fixed OpenMed wrapper image to the primary registry and verify the immutable digest.",
+        "Mirror the fixed digest to us-central1, eu-north1, eu-north2, and uk-south1.",
+        "Run model-server image gate and CVE-2026-4372 gate on the fixed manifest/digest evidence.",
+        "Upsert the hidden onboarding manifest only after the fixed digest is recorded.",
+        "Rerun the representative B200, B300, H200, L40S, and RTX6000 GPU matrix with 3 warmups and 10 measured requests per supported cell.",
+        "Keep default_eligible=false pending separate HCLS default-route review."
+      ],
+      "status": "local_fixed_image_cpu_smoke_passed_push_pending"
+    },
+    "cve_fixed_r2_registry_security_20260604T05Z": {
+      "artifact_recheck": {
+        "checked_at": "2026-06-04T05Z",
+        "disabled": false,
+        "downloads_observed": 148794,
+        "gated": false,
+        "last_modified": "2025-08-05T09:41:31.000Z",
+        "library_name": "transformers",
+        "license": "apache-2.0",
+        "likes_observed": 8,
+        "model_file": {
+          "path": "model.safetensors",
+          "sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+          "size_bytes": 668237670
+        },
+        "model_page": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "revision": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+        "source": "https://huggingface.co/api/models/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M?blobs=true"
+      },
+      "decision": "keep_hidden_onboarding_default_ineligible_until_hcls_product_review_and_catalog_copy_approve",
+      "failed_first_05z_digest": {
+        "digest": "sha256:71efe2f6ff0c55aa16b4ffb8147e6a5b9e3eebb07a8a44c0e512b2216fe3398d",
+        "fallback": "rebuild with fixed OS packages and Python fixed floors under r2 tag",
+        "fixed_high_critical_findings": {
+          "python": [
+            "Brotli",
+            "jaraco.context",
+            "pillow",
+            "setuptools",
+            "urllib3",
+            "wheel"
+          ],
+          "ubuntu": [
+            "gpgv",
+            "linux-libc-dev"
+          ]
+        },
+        "scan_result": "failed",
+        "scanner": "trivy image --exit-code 1 --severity HIGH,CRITICAL --ignore-unfixed --scanners vuln",
+        "tag": "wrapper-cuda12-cvefix-20260604t05z"
+      },
+      "gpu_matrix_state": {
+        "benchmark_runs": 10,
+        "live_upsert": true,
+        "manifest_gpu_compatibility": {
+          "B200": true,
+          "B300": true,
+          "H200": true,
+          "L40S": true,
+          "RTX6000": false
+        },
+        "persisted": true,
+        "reason": "The r2 digest was hidden live-upserted and probed directly on 2026-06-04T08Z; the prior sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d matrix remains historical only.",
+        "report_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604Tcurrent-r2-full-matrix.json",
+        "report_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604Tcurrent-r2-full-matrix.md",
+        "request_time_source": "model_time_ms",
+        "rtx6000": "Requested in the probe command, but no RTX6000 inventory cell appeared in the generated report; no RTX6000 support row was persisted.",
+        "status": "supported_six_live_cells",
+        "supported_cells": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "H200/us-central1",
+          "H200/eu-north1",
+          "H200/eu-north2",
+          "L40S/eu-north1"
+        ],
+        "warmup_runs": 3
+      },
+      "r2_container": {
+        "digest": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+        "image_size_bytes": 7801351263,
+        "image_user": "10001:10001",
+        "image_workdir": "/app",
+        "local_image_id": "sha256:f0ec11b45c24d0a3475ffc44bd8bc01622d0d58ee6eae151cbfddd183070154d",
+        "primary_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-torch2100-20260630@sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+        "runtime_versions": {
+          "Brotli": "1.2.0",
+          "huggingface_hub": "1.3.7",
+          "jaraco.context": "6.1.0",
+          "pillow": "12.2.0",
+          "setuptools": "82.0.1",
+          "transformers": "5.3.0",
+          "urllib3": "2.7.0",
+          "wheel": "0.46.2"
+        },
+        "tag": "wrapper-cuda12-torch2100-20260630",
+        "validation": {
+          "py_compile": "passed",
+          "transformers_cve_2026_4372_source_gate": "passed_empty_findings",
+          "trivy_high_critical_ignore_unfixed": "passed_zero_findings"
+        }
+      },
+      "regional_digest_verification": {
+        "checked_at": "2026-06-04T05Z",
+        "eu-north1": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+        "eu-north2": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+        "method": "crane digest each primary and regional tag after scripts/mirror_via_k8s_job.py --wait",
+        "uk-south1": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+        "us-central1": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+        "us-central1_primary": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64"
+      },
+      "status": "pushed_mirrored_security_clean_hidden_upserted_standard_matrix_supported"
+    },
+    "endpoint_contract": {
+      "aggregation_strategy": [
+        "none",
+        "simple",
+        "first",
+        "average",
+        "max"
+      ],
+      "input": "text string or texts array with research_use_acknowledgement=true",
+      "output": "disease entity spans with label, start, end, text, score, and model_time_ms",
+      "paths": [
+        "/token_classification",
+        "/v1/token_classification",
+        "/run"
+      ]
+    },
+    "full_matrix_probe_20260531T07Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200_us-central1": {
+          "gpu_node": "computeinstance-u00pyd1rnq28tmd2b2",
+          "measured_model_time_samples_ms": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            7,
+            7
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-b200-us-central1-0c0dfe",
+          "request_ms_p50": 8,
+          "startup_ms": 180869,
+          "vram_used_gb": 1.42
+        },
+        "B300_uk-south1": {
+          "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+          "measured_model_time_samples_ms": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-b300-uk-south1-657a95",
+          "request_ms_p50": 8,
+          "startup_ms": 175896,
+          "vram_used_gb": 1.42
+        },
+        "H200_eu-north2": {
+          "gpu_node": "computeinstance-e02vy282wq84sh9er9",
+          "measured_model_time_samples_ms": [
+            9,
+            9,
+            9,
+            8,
+            9,
+            8,
+            8,
+            9,
+            8,
+            8
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-h200-eu-north2-931270",
+          "request_ms_p50": 8,
+          "startup_ms": 209005,
+          "vram_used_gb": 1.33
+        },
+        "L40S_eu-north1": {
+          "gpu_node": "computeinstance-e00knmqbn7kxszaff1",
+          "measured_model_time_samples_ms": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-l40s-eu-north1-df83f9",
+          "request_ms_p50": 12,
+          "startup_ms": 206332,
+          "vram_used_gb": 1.16
+        }
+      },
+      "container_digest": "sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+      "endpoint_path": "/token_classification",
+      "live_upsert": true,
+      "model_time_source": "model_time_ms",
+      "report_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T07Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T07Z-full-matrix.md",
+      "status": "supported_four_cells",
+      "warmup_runs": 3
+    },
+    "full_matrix_probe_20260531T13Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200_us-central1": {
+          "gpu_node": "computeinstance-u00m47dkr55e8yk9fb",
+          "measured_model_time_samples_ms": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            8,
+            7,
+            7,
+            7,
+            7
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-b200-us-central1-2bd6fc",
+          "request_ms_p50": 7,
+          "startup_ms": 212147,
+          "vram_used_gb": 1.42
+        },
+        "B300_uk-south1": {
+          "gpu_node": "computeinstance-e03xrnnk8zqkvrw8sc",
+          "measured_model_time_samples_ms": [
+            8,
+            7,
+            7,
+            7,
+            8,
+            7,
+            7,
+            7,
+            7,
+            8
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-b300-uk-south1-cb3f7e",
+          "request_ms_p50": 7,
+          "startup_ms": 200916,
+          "vram_used_gb": 1.42
+        },
+        "H200_eu-north2": {
+          "gpu_node": "computeinstance-e02vy282wq84sh9er9",
+          "measured_model_time_samples_ms": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            9,
+            8,
+            8,
+            8,
+            8
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-h200-eu-north2-3e974f",
+          "request_ms_p50": 8,
+          "startup_ms": 15785,
+          "vram_used_gb": 1.33
+        },
+        "L40S_eu-north1": {
+          "gpu_node": "computeinstance-e00rbwdyfy2va3jj09",
+          "measured_model_time_samples_ms": [
+            12,
+            12,
+            12,
+            13,
+            13,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-l40s-eu-north1-91a114",
+          "request_ms_p50": 12,
+          "startup_ms": 15676,
+          "vram_used_gb": 1.16
+        },
+        "RTX6000_us-central1": {
+          "gpu_node": "computeinstance-u00ehhrf0qfcg7maay",
+          "measured_model_time_samples_ms": [
+            7,
+            8,
+            8,
+            8,
+            9,
+            7,
+            8,
+            8,
+            8,
+            7
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-rtx6000-us-central1-3e5a42",
+          "request_ms_p50": 8,
+          "startup_ms": 489604,
+          "vram_used_gb": 1.29
+        }
+      },
+      "container_digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+      "endpoint_path": "/token_classification",
+      "live_upsert": true,
+      "model_time_source": "model_time_ms",
+      "report_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.md",
+      "status": "supported_five_cells",
+      "warmup_runs": 3
+    },
+    "hcls_product_safety_catalog_copy_refresh_20260604Tcurrent": {
+      "artifact_recheck": {
+        "checked_at": "2026-06-04Tcurrent",
+        "config": {
+          "architectures": [
+            "BertForTokenClassification"
+          ],
+          "hidden_size": 1024,
+          "labels": [
+            "O",
+            "B-DISEASE",
+            "I-DISEASE"
+          ],
+          "max_position_embeddings": 512,
+          "model_type": "bert",
+          "num_attention_heads": 16,
+          "num_hidden_layers": 24,
+          "torch_dtype": "bfloat16"
+        },
+        "disabled": false,
+        "gated": false,
+        "last_modified": "2025-08-05T09:41:31.000Z",
+        "library_name": "transformers",
+        "license": "apache-2.0",
+        "model_file": {
+          "path": "model.safetensors",
+          "sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+          "size_bytes": 668237670
+        },
+        "model_page": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "revision": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+        "source": "https://huggingface.co/api/models/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M?blobs=true"
+      },
+      "copy_review": {
+        "allowed_scope": "Nonclinical biomedical literature mining, curation, benchmark evaluation, knowledge graph preprocessing, and disease-name span extraction from public or otherwise permitted article-style text.",
+        "catalog_copy_status": "pending_owner_signoff",
+        "copy_surfaces": {
+          "acknowledgement_field": "research_use_acknowledgement",
+          "api_body_requires_acknowledgement": true,
+          "default_probe_acknowledgement": true,
+          "endpoint_contract_requires_acknowledgement": true,
+          "playground_safety_notice": "present_must_acknowledge",
+          "visible_acknowledgement_control": true
+        },
+        "disallowed_uses": [
+          "medical advice",
+          "clinical decision-making",
+          "diagnosis, treatment, triage, or medication recommendations",
+          "patient care",
+          "patient-specific interpretation of symptoms, records, imaging, laboratory results, or genetic results"
+        ],
+        "required_customer_visible_claims": [
+          "Nonclinical biomedical literature mining only.",
+          "Disease-name span extraction from public or otherwise permitted article-style text.",
+          "Not for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, patient care, or patient-specific medical interpretation.",
+          "Research-use acknowledgement is required before inference."
+        ]
+      },
+      "decision": "technical_packet_current_for_r2_not_product_approved",
+      "evidence_files": {
+        "cvefix_note": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604T05Z-cvefix-r2-registry.md",
+        "live_matrix_closeout": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604T08Z-r2-live-matrix-closeout.md",
+        "matrix_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604Tcurrent-r2-full-matrix.json",
+        "matrix_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604Tcurrent-r2-full-matrix.md",
+        "refresh_note": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604Tcurrent-product-safety-copy-refresh.md"
+      },
+      "publication_effect": "metadata_refresh_only_keep_hidden_onboarding_default_ineligible_no_live_upsert",
+      "publishable": false,
+      "r2_technical_clearances": {
+        "container_digest": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+        "image_user": "10001:10001",
+        "matrix": {
+          "benchmark_runs": 10,
+          "live_upsert": true,
+          "persisted": true,
+          "request_time_source": "model_time_ms",
+          "rtx6000": "unclassified_no_inventory_cell_in_20260604T08Z_probe",
+          "status": "supported_six_live_cells",
+          "supported_cells": [
+            "B200/us-central1",
+            "B300/uk-south1",
+            "H200/us-central1",
+            "H200/eu-north1",
+            "H200/eu-north2",
+            "L40S/eu-north1"
+          ],
+          "warmup_runs": 3
+        },
+        "regional_digest_verification": {
+          "checked_at": "2026-06-04T05Z",
+          "eu-north1": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+          "eu-north2": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+          "method": "crane digest each primary and regional tag after scripts/mirror_via_k8s_job.py --wait",
+          "uk-south1": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+          "us-central1": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64"
+        },
+        "security_gates": {
+          "model_server_image_gate": "passed_no_findings_20260604Tcurrent",
+          "transformers_cve_2026_4372": "passed_no_findings_20260604Tcurrent",
+          "trivy_high_critical_ignore_unfixed": "passed_zero_findings_20260604T05Z"
+        }
+      },
+      "recommended_catalog_state": {
+        "default_eligible": false,
+        "is_latest": true,
+        "public_publication": "do_not_publish_until_hcls_product_safety_and_catalog_copy_approval",
+        "stability": "experimental",
+        "status": "onboarding"
+      },
+      "remaining_blockers": [
+        "HCLS product safety reviewer approval for customer-visible publication.",
+        "Customer-visible catalog copy owner signoff for nonclinical positioning.",
+        "RTX6000 support for the r2 digest remains unclassified until inventory exposes an RTX6000 cell and a focused probe runs.",
+        "Default routing remains disallowed pending separate HCLS product routing review."
+      ]
+    },
+    "hcls_product_safety_gate_20260531T14Z": {
+      "allowed_scope": "Nonclinical biomedical literature mining, curation, benchmark evaluation, knowledge graph preprocessing, and disease-name span extraction from public or otherwise permitted article-style text.",
+      "artifact_recheck": {
+        "checked_at": "2026-05-31T14Z",
+        "config": {
+          "architectures": [
+            "BertForTokenClassification"
+          ],
+          "labels": [
+            "O",
+            "B-DISEASE",
+            "I-DISEASE"
+          ],
+          "max_position_embeddings": 512,
+          "model_type": "bert"
+        },
+        "disabled": false,
+        "gated": false,
+        "last_modified": "2025-08-05T09:41:31.000Z",
+        "library_name": "transformers",
+        "license": "apache-2.0",
+        "model_file": {
+          "path": "model.safetensors",
+          "sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+          "size_bytes": 668237670
+        },
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "revision": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+        "source": "https://huggingface.co/api/models/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M?blobs=true"
+      },
+      "cleared_requirements": [
+        "Research-only allowed and disallowed use copy is present in playground_config.safety_notice.",
+        "Safety notice requires explicit research-use acknowledgement before inference.",
+        "Default probe body carries research_use_acknowledgement=true.",
+        "The non-root digest is mirrored to all active Forge regions and has five-cell matrix evidence."
+      ],
+      "copy_surfaces": {
+        "acknowledgement_field": "research_use_acknowledgement",
+        "api_body_requires_acknowledgement": true,
+        "default_probe_acknowledgement": true,
+        "endpoint_contract_requires_acknowledgement": true,
+        "playground_safety_notice": "present_must_acknowledge",
+        "visible_acknowledgement_control": true
+      },
+      "decision": "copy_and_acknowledgement_ready_not_product_approved",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient care",
+        "patient-specific interpretation of symptoms, records, imaging, laboratory results, or genetic results"
+      ],
+      "publishable": false,
+      "recommended_catalog_state": {
+        "default_eligible": false,
+        "public_publication": "do_not_publish_until_hcls_product_safety_approval",
+        "stability": "experimental",
+        "status": "onboarding"
+      },
+      "remaining_requirements": [
+        "HCLS product safety reviewer approval for customer-visible publication.",
+        "Customer-visible catalog copy owner signoff for nonclinical positioning."
+      ],
+      "report_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T14Z-product-safety-gate.json",
+      "report_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T14Z-product-safety-gate.md",
+      "technical_evidence": {
+        "benchmark_runs": 10,
+        "container_digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "image_user": "10001:10001",
+        "matrix_report_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.json",
+        "matrix_report_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.md",
+        "matrix_status": "five_cells_supported",
+        "regional_mirrors_verified": [
+          "us-central1",
+          "eu-north1",
+          "eu-north2",
+          "uk-south1"
+        ],
+        "request_time_source": "model_time_ms",
+        "warmup_runs": 3
+      }
+    },
+    "image_config_security_20260531T13Z": {
+      "checked_digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+      "checked_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-nonroot-20260531t13z@sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+      "crane_config_checked_at": "2026-05-31T13:10:00Z",
+      "image_cmd": [
+        "uvicorn",
+        "services.models.hcls.openmed_ner_diseasedetect_biomed_335m.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ],
+      "image_rootfs_layers": 15,
+      "image_user": "10001:10001",
+      "image_workdir": "/app",
+      "next_action": "live-upsert this non-root digest and rerun the four-cell probe plus RTX6000 when inventory is available",
+      "publication_decision": "root_image_user_blocker_resolved_keep_hidden_until_hcls_safety_and_matrix_refresh_complete",
+      "scheduler_pod_security_context": {
+        "automount_service_account_token": false,
+        "container_allow_privilege_escalation": false,
+        "container_capabilities_drop": [
+          "ALL"
+        ],
+        "container_read_only_root_filesystem": true,
+        "enable_service_links": false,
+        "seccomp_profile": "RuntimeDefault"
+      },
+      "status": "nonroot_digest_config_verified_hidden_onboarding_only"
+    },
+    "image_config_security_20260531Tcycle4": {
+      "checked_digest": "sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+      "checked_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-20260531t0503z@sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+      "crane_config_checked_at": "2026-05-31Tcurrent-cycle4",
+      "image_cmd": [
+        "uvicorn",
+        "services.models.hcls.openmed_ner_diseasedetect_biomed_335m.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ],
+      "image_rootfs_layers": 13,
+      "image_user": null,
+      "image_workdir": "/app",
+      "next_action": "rebuild wrapper with explicit non-root USER, mirror the new digest, then rerun the four-cell probe and RTX6000 when inventory is available",
+      "publication_decision": "do_not_publish_until_non_root_digest_or_security_owner_exception",
+      "scheduler_pod_security_context": {
+        "automount_service_account_token": false,
+        "container_allow_privilege_escalation": false,
+        "container_capabilities_drop": [
+          "ALL"
+        ],
+        "container_read_only_root_filesystem": true,
+        "enable_service_links": false,
+        "seccomp_profile": "RuntimeDefault"
+      },
+      "status": "hidden_onboarding_pass_publication_blocked",
+      "superseded_at": "2026-05-31T15Z",
+      "superseded_by": "image_config_security_20260531T13Z",
+      "superseded_reason": "The active wrapper-cuda12-nonroot digest has USER 10001:10001, regional digest verification, and five supported GPU cells."
+    },
+    "local_container_build": {
+      "image_id": "sha256:4fb229da0b2d57f6c6cdb97535a9ecda99070f4c02e0735fa83b97e01f56bf09",
+      "image_ref": "forge-local/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-20260531t0503z",
+      "image_size_bytes": 7749546445,
+      "smoke": {
+        "device": "cpu",
+        "entity_count": 1,
+        "first_entity": {
+          "end": 39,
+          "label": "DISEASE",
+          "score": 0.9534578323364258,
+          "start": 24,
+          "text": "Crohn's disease"
+        },
+        "input": "A possible link between Crohn's disease and gut microbiota is being investigated in PubMed abstracts.",
+        "model_time_ms": 66,
+        "ready": true,
+        "torch_dtype": "fp32"
+      },
+      "status": "built_and_cpu_smoke_passed"
+    },
+    "local_container_build_20260531T13Z": {
+      "cache_root": "/opt/nim/.cache/huggingface/openmed-ner-diseasedetect-biomed-335m/wrapper-cuda12-nonroot",
+      "image_id": "sha256:2c3469d3d8f56a038d148a3ecdb16cef8e61c41b7343624138690c18809d14ed",
+      "image_ref": "forge-local/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-nonroot-20260531t13z",
+      "image_size_bytes": 7749630484,
+      "image_user": "10001:10001",
+      "smoke": {
+        "device": "cpu",
+        "entity_count": 1,
+        "first_entity": {
+          "end": 39,
+          "label": "DISEASE",
+          "score": 0.9534578323364258,
+          "start": 24,
+          "text": "Crohn's disease"
+        },
+        "input": "A possible link between Crohn's disease and gut microbiota is being investigated in PubMed abstracts.",
+        "model_time_ms": 81,
+        "ready": true,
+        "torch_dtype": "fp32"
+      },
+      "status": "built_nonroot_and_cpu_smoke_passed"
+    },
+    "mirror_state": {
+      "digest": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+      "method": "push local non-root wrapper image to primary us-central1 registry, then mirror via scripts/mirror_via_k8s_job.py to all active regions",
+      "regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ],
+      "status": "completed"
+    },
+    "onboarding_state": "cve_fixed_r2_hidden_upserted_standard_matrix_supported_product_safety_catalog_copy_pending",
+    "planned_container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-torch2100-20260630@sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+    "probe_state": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B200_us-central1": {
+          "gpu_node": "computeinstance-u00jt6wekmrm7dfwjd",
+          "measured_model_time_samples_ms": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-b200-us-central1-eb9aa1",
+          "request_ms_p50": 7,
+          "startup_ms": 19002,
+          "vram_used_gb": 1.42
+        },
+        "B300_uk-south1": {
+          "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+          "measured_model_time_samples_ms": [
+            8,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            8,
+            7,
+            7
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-b300-uk-south1-5c0a93",
+          "request_ms_p50": 7,
+          "startup_ms": 177228,
+          "vram_used_gb": 1.42
+        },
+        "H200_eu-north1": {
+          "gpu_node": "computeinstance-e00pe4t12jr46n1why",
+          "measured_model_time_samples_ms": [
+            9,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            8,
+            8,
+            8
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-h200-eu-north1-4d16f6",
+          "request_ms_p50": 8,
+          "startup_ms": 196791,
+          "vram_used_gb": 1.33
+        },
+        "H200_eu-north2": {
+          "gpu_node": "computeinstance-e02bf73e3ecaj6cvh5",
+          "measured_model_time_samples_ms": [
+            9,
+            9,
+            9,
+            10,
+            9,
+            8,
+            9,
+            9,
+            9,
+            8
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-h200-eu-north2-80bf98",
+          "request_ms_p50": 9,
+          "startup_ms": 197509,
+          "vram_used_gb": 1.33
+        },
+        "H200_us-central1": {
+          "gpu_node": "computeinstance-u00azrr7783th92h4x",
+          "measured_model_time_samples_ms": [
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-h200-us-central1-f4ac1c",
+          "request_ms_p50": 9,
+          "startup_ms": 185144,
+          "vram_used_gb": 1.33
+        },
+        "L40S_eu-north1": {
+          "gpu_node": "computeinstance-e00knmqbn7kxszaff1",
+          "measured_model_time_samples_ms": [
+            13,
+            13,
+            12,
+            12,
+            12,
+            13,
+            12,
+            13,
+            13,
+            13
+          ],
+          "pod": "forge-probe-openmed-ner-diseasedetec-l40s-eu-north1-d56bd2",
+          "request_ms_p50": 13,
+          "startup_ms": 203411,
+          "vram_used_gb": 1.16
+        }
+      },
+      "container_digest": "sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+      "endpoint_path": "/token_classification",
+      "live_upsert": true,
+      "model_time_source": "model_time_ms",
+      "persisted": true,
+      "prior_matrix_superseded_for_current_digest": true,
+      "report_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604Tcurrent-r2-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260604Tcurrent-r2-full-matrix.md",
+      "rtx6000_state": "requested_but_no_inventory_cell_in_20260604T08Z_probe",
+      "status": "cve_fixed_r2_hidden_upserted_standard_matrix_supported",
+      "warmup_runs": 3
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_readiness_20260531T15Z": {
+      "decision": "technical_publication_readiness_packet_complete_not_product_approved",
+      "evidence_files": {
+        "matrix_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.json",
+        "matrix_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.md",
+        "research_json": "docs/supervisor/model-research/hcls-openmed-diseasedetect-publication-readiness-20260531T15Z.json",
+        "research_md": "docs/supervisor/model-research/hcls-openmed-diseasedetect-publication-readiness-20260531T15Z.md",
+        "safety_gate_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T14Z-product-safety-gate.json",
+        "safety_gate_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T14Z-product-safety-gate.md",
+        "worker_note": "docs/supervisor/worker-notes/hcls-2026-05-31T15Z.md"
+      },
+      "fallback_attempts": [
+        "Rejected the public Bytez container because provenance, source/license labels, cache behavior, and Forge runtime contract were not established.",
+        "Kept the Forge-owned CUDA 12 wrapper hidden/default-ineligible because safety approval is not complete.",
+        "Did not run another matrix probe in this pass because the active non-root digest already has 3 warmups and 10 measured requests on five cells."
+      ],
+      "publishable": false,
+      "recommended_catalog_state": {
+        "default_eligible": false,
+        "is_latest": true,
+        "public_publication": "blocked_until_hcls_product_safety_and_catalog_copy_owner_approval",
+        "stability": "experimental",
+        "status": "onboarding"
+      },
+      "remaining_blockers": [
+        "HCLS product safety reviewer approval for customer-visible publication.",
+        "Customer-visible catalog copy owner signoff for nonclinical positioning."
+      ],
+      "superseded_blockers": [
+        {
+          "blocker": "The 2026-05-31Tcycle4 image-config gate found no explicit image user on the earlier wrapper-cuda12 digest.",
+          "resolution": "The active non-root digest is configured with USER 10001:10001 and has five-cell matrix evidence.",
+          "superseded_by": "image_config_security_20260531T13Z"
+        }
+      ],
+      "technical_clearances": {
+        "artifact": {
+          "checked_at": "2026-05-31T15Z",
+          "disabled": false,
+          "gated": false,
+          "library_name": "transformers",
+          "license": "apache-2.0",
+          "model_safetensors_sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+          "pipeline_tag": "token-classification",
+          "private": false,
+          "revision": "a62e2a2da5ff7d6b79024ba906f481581466ea61"
+        },
+        "container": {
+          "digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+          "image_user": "10001:10001",
+          "image_workdir": "/app",
+          "rootfs_layers": 15,
+          "security_gate": "passed_empty_findings"
+        },
+        "matrix": {
+          "benchmark_runs": 10,
+          "container_digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+          "request_time_source": "model_time_ms",
+          "status": "five_cells_supported",
+          "supported_cells": [
+            "B200/us-central1",
+            "B300/uk-south1",
+            "H200/eu-north2",
+            "L40S/eu-north1",
+            "RTX6000/us-central1"
+          ],
+          "warmup_runs": 3
+        },
+        "regional_mirrors": {
+          "checked_at": "2026-05-31T15Z",
+          "eu-north1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+          "eu-north2": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+          "uk-south1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+          "us-central1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d"
+        },
+        "safety_controls": {
+          "acknowledgement_field": "research_use_acknowledgement",
+          "allowed_scope": "Nonclinical biomedical literature mining, curation, benchmark evaluation, knowledge graph preprocessing, and disease-name span extraction from permitted article-style text.",
+          "api_body_requires_acknowledgement": true,
+          "disallowed_uses": [
+            "medical advice",
+            "clinical decision-making",
+            "diagnosis, treatment, triage, or medication recommendations",
+            "patient care",
+            "patient-specific interpretation of symptoms, records, imaging, laboratory results, or genetic results"
+          ],
+          "playground_notice_must_acknowledge": true,
+          "visible_acknowledgement_control": true
+        }
+      }
+    },
+    "publication_readiness_refresh_20260601Tcurrent": {
+      "artifact_recheck": {
+        "checked_at": "2026-06-01Tcurrent",
+        "config": {
+          "architectures": [
+            "BertForTokenClassification"
+          ],
+          "hidden_size": 1024,
+          "labels": [
+            "O",
+            "B-DISEASE",
+            "I-DISEASE"
+          ],
+          "max_position_embeddings": 512,
+          "model_type": "bert",
+          "num_attention_heads": 16,
+          "num_hidden_layers": 24,
+          "torch_dtype": "bfloat16"
+        },
+        "disabled": false,
+        "downloads_observed": 149260,
+        "gated": false,
+        "last_modified": "2025-08-05T09:41:31.000Z",
+        "library_name": "transformers",
+        "license": "apache-2.0",
+        "likes_observed": 8,
+        "model_file": {
+          "path": "model.safetensors",
+          "sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+          "size_bytes": 668237670
+        },
+        "model_page": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "revision": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+        "source": "https://huggingface.co/api/models/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M?blobs=true"
+      },
+      "container_recheck": {
+        "architecture": "amd64",
+        "checked_at": "2026-06-01Tcurrent",
+        "digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "image_user": "10001:10001",
+        "image_workdir": "/app",
+        "os": "linux",
+        "primary_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-nonroot-20260531t13z@sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "rootfs_layers": 15
+      },
+      "decision": "technical_readiness_reconfirmed_not_product_approved",
+      "evidence_files": {
+        "refresh_note": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260601Tcurrent-publication-refresh.md",
+        "worker_note": "docs/supervisor/worker-notes/hcls-2026-06-01T-current.md"
+      },
+      "matrix_reuse": {
+        "benchmark_runs": 10,
+        "reason": "No runtime digest, wrapper code, request contract, or manifest routing changed; customer-visible publication remains blocked on HCLS product-safety and catalog-copy approval.",
+        "request_time_source": "model_time_ms",
+        "status": "reused_20260531T13Z_five_cell_matrix_no_new_probe",
+        "supported_cells": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "H200/eu-north2",
+          "L40S/eu-north1",
+          "RTX6000/us-central1"
+        ],
+        "warmup_runs": 3
+      },
+      "publishable": false,
+      "regional_digest_verification": {
+        "checked_at": "2026-06-01Tcurrent",
+        "eu-north1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "eu-north2": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "method": "crane digest each regional_container_images entry",
+        "uk-south1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "us-central1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d"
+      },
+      "safety_gate": {
+        "allowed_scope": "Nonclinical biomedical literature mining, curation, benchmark evaluation, knowledge graph preprocessing, and disease-name span extraction from public or otherwise permitted article-style text.",
+        "remaining_blockers": [
+          "HCLS product safety reviewer approval for customer-visible publication.",
+          "Customer-visible catalog copy owner signoff for nonclinical positioning."
+        ],
+        "status": "unchanged_external_approval_blocker"
+      }
+    },
+    "publication_review_20260602T20Z": {
+      "artifact_recheck": {
+        "checked_at": "2026-06-02T20Z",
+        "config": {
+          "architectures": [
+            "BertForTokenClassification"
+          ],
+          "hidden_size": 1024,
+          "labels": [
+            "O",
+            "B-DISEASE",
+            "I-DISEASE"
+          ],
+          "max_position_embeddings": 512,
+          "model_type": "bert",
+          "num_attention_heads": 16,
+          "num_hidden_layers": 24,
+          "torch_dtype": "bfloat16"
+        },
+        "disabled": false,
+        "gated": false,
+        "last_modified": "2025-08-05T09:41:31.000Z",
+        "library_name": "transformers",
+        "license": "apache-2.0",
+        "model_file": {
+          "path": "model.safetensors",
+          "sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+          "size_bytes": 668237670
+        },
+        "model_page": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "pipeline_tag": "token-classification",
+        "private": false,
+        "revision": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+        "source": "https://huggingface.co/api/models/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M?blobs=true"
+      },
+      "container_recheck": {
+        "architecture": "amd64",
+        "checked_at": "2026-06-02T20Z",
+        "config_digest": "sha256:2c3469d3d8f56a038d148a3ecdb16cef8e61c41b7343624138690c18809d14ed",
+        "created": "2026-05-31T13:06:43.163925036Z",
+        "image_user": "10001:10001",
+        "image_workdir": "/app",
+        "manifest_digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "media_type": "application/vnd.docker.distribution.manifest.v2+json",
+        "os": "linux",
+        "primary_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-nonroot-20260531t13z@sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "rootfs_layers": 15
+      },
+      "decision": "blocked_by_transformers_cve_2026_4372",
+      "evidence_files": {
+        "publication_note": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260602T20Z-security-blocked.md",
+        "worker_note": "docs/supervisor/worker-notes/hcls-2026-06-02T20Z.md"
+      },
+      "matrix_basis": {
+        "benchmark_runs": 10,
+        "reason": "No runtime digest, wrapper code, endpoint contract, default body, or GPU compatibility changed; the active non-root digest already has 3 warmups and 10 measured requests on all five live GPU cells.",
+        "report_json": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.json",
+        "report_md": "docs/model-onboarding/hcls/openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12-20260531T13Z-nonroot-full-matrix.md",
+        "request_time_source": "model_time_ms",
+        "status": "reused_20260531T13Z_five_cell_matrix_same_digest",
+        "supported_cells": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "H200/eu-north2",
+          "L40S/eu-north1",
+          "RTX6000/us-central1"
+        ],
+        "warmup_runs": 3
+      },
+      "publishable": false,
+      "recommended_catalog_state": {
+        "default_eligible": false,
+        "is_latest": true,
+        "public_publication": "do_not_publish_until_transformers_cve_2026_4372_remediated",
+        "stability": "experimental",
+        "status": "onboarding"
+      },
+      "regional_digest_verification": {
+        "checked_at": "2026-06-02T20Z",
+        "eu-north1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "eu-north2": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "method": "crane digest each regional_container_images entry",
+        "uk-south1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "us-central1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d"
+      },
+      "safety_review": {
+        "approved_scope": "Nonclinical biomedical literature mining, curation, benchmark evaluation, knowledge graph preprocessing, and disease-name span extraction from public or otherwise permitted article-style text.",
+        "default_route_blockers": [
+          "Healthcare disease-name extraction can be misread as clinical interpretation if routed by default.",
+          "Default routing needs separate HCLS product routing review, source controls for customer text, and monitoring beyond this onboarding manifest."
+        ],
+        "default_route_decision": "default_ineligible",
+        "disallowed_uses": [
+          "medical advice",
+          "clinical decision-making",
+          "diagnosis, treatment, triage, or medication recommendations",
+          "patient care",
+          "patient-specific interpretation of symptoms, records, imaging, laboratory results, or genetic results"
+        ],
+        "required_controls": [
+          "playground_config.safety_notice.must_acknowledge=true",
+          "research_use_acknowledgement is visible and defaults true in the playground",
+          "wrapper endpoint requires research_use_acknowledgement=true",
+          "default probe body includes research_use_acknowledgement=true",
+          "catalog copy limits the model to nonclinical literature-mining workflows"
+        ]
+      },
+      "security_blocker": {
+        "advisory": "CVE-2026-4372",
+        "current_transformers": "4.48.3",
+        "finding_reason": "vulnerable_transformers_dependency",
+        "fixed_floor": "5.3.0",
+        "scanner": "scripts/security/check_transformers_cve_2026_4372.py",
+        "source": "https://nvd.nist.gov/vuln/detail/CVE-2026-4372",
+        "source_remediation": {
+          "dockerfile": "services/models/hcls/openmed_ner_diseasedetect_biomed_335m/Dockerfile",
+          "fixed_package_requirement": "transformers==5.3.0",
+          "local_image_id": "sha256:1ea4fdd9834f3c66ce272d8dd24cc11e8a41e013757676662270af9ec6c14d03",
+          "local_image_ref": "forge-local/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-cvefix-20260602tnext",
+          "status": "local_fixed_image_cpu_smoke_passed_push_pending",
+          "validated_by": "Dockerfile CVE scanner, local Docker build, in-container package import, wrapper compile, and CPU classification smoke"
+        },
+        "supervisor_decision": "Keep hidden/onboarding until a fixed-runtime image is built, mirrored, security-scanned, and GPU-probed."
+      },
+      "supersedes": [
+        "publication_readiness_20260531T15Z",
+        "publication_readiness_refresh_20260601Tcurrent"
+      ]
+    },
+    "publication_state": {
+      "blockers": [
+        "Healthcare product safety reviewer approval is still required for customer-visible publication.",
+        "Customer-visible catalog copy owner signoff is still required for nonclinical positioning.",
+        "RTX6000 remains unclassified for the r2 digest because no RTX6000 inventory cell appeared in the 2026-06-04T08Z standard probe.",
+        "Healthcare disease-entity extraction is not approved as a default route because outputs can be misused for diagnosis, treatment, triage, medication recommendations, patient care, or patient-specific interpretation."
+      ],
+      "decision": "keep_hidden_until_hcls_product_review_and_catalog_copy_approve",
+      "default_eligible": false,
+      "last_review": "hcls_product_safety_catalog_copy_refresh_20260604Tcurrent",
+      "status": "blocked",
+      "technical_state": "cve_fixed_r2_digest_hidden_upserted_security_clean_standard_matrix_supported_safety_copy_refresh_recorded_rtx6000_unclassified"
+    },
+    "registry_publish_20260531T07Z": {
+      "digest": "sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+      "primary": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-20260531t0503z@sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+      "regional_digest_verification": {
+        "eu-north1": "sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+        "eu-north2": "sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+        "uk-south1": "sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e",
+        "us-central1": "sha256:cad31655c4b61e5a3ebc519bf05ec290cb62dc08ab2ef32eb45d74ebfd91077e"
+      },
+      "status": "pushed_mirrored_digest_verified"
+    },
+    "registry_publish_20260531T13Z": {
+      "digest": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+      "primary": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-nonroot-20260531t13z@sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+      "regional_digest_verification": {
+        "eu-north1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "eu-north2": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "uk-south1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d",
+        "us-central1": "sha256:76545394951f6b8f3a4999cab511ca67c9a7256c3e706201ff0ad2f6ea631c6d"
+      },
+      "status": "pushed_mirrored_digest_verified"
+    },
+    "runtime_stack": {
+      "Brotli": "1.2.0",
+      "fastapi": "0.136.1",
+      "huggingface_hub": "1.3.7",
+      "jaraco.context": "6.1.0",
+      "pillow": "12.2.0",
+      "safetensors": "0.5.2",
+      "setuptools": "82.0.1",
+      "starlette": "1.0.1",
+      "torch": "2.10.0+cu128",
+      "transformers": "5.3.0",
+      "urllib3": "2.7.0",
+      "uvicorn": "0.34.0",
+      "wheel": "0.46.2"
+    },
+    "wrapper_source": "services/models/hcls/openmed_ner_diseasedetect_biomed_335m"
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "biomedical_nlp",
+    "token_classification",
+    "named_entity_recognition",
+    "disease_entity_recognition",
+    "literature_mining",
+    "transformers",
+    "bert",
+    "safetensors",
+    "cuda12",
+    "research_only",
+    "text",
+    "structured_output"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-torch2100-20260630@sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+  "container_image_size_bytes": 7801351263,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-31T07:08:58.066101+00:00",
+  "default_eligible": true,
+  "description": "OpenMed-NER-DiseaseDetect-BioMed-335M is an Apache-2.0 Hugging Face Transformers token-classification model for disease entity recognition in biomedical text. The Hugging Face model page and API rechecked on 2026-06-04T05Z report a public, ungated, enabled, safetensors-backed model with library_name=transformers, pipeline_tag=token-classification, revision a62e2a2da5ff7d6b79024ba906f481581466ea61, Apache-2.0 metadata, and model.safetensors SHA256 5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26. The model card documents Transformers token-classification usage with aggregation_strategy and reports BC5CDR disease NER metrics of F1 0.9005, precision 0.8887, recall 0.9126, and accuracy 0.9838. This Forge-owned wrapper is the safe fallback for the previously inspected Bytez container because it keeps executable serving code in this repo, verifies the pinned checkpoint before load, exposes /token_classification, /v1/token_classification, and /run, returns label/start/end/text/score disease spans plus model_time_ms, clears inherited Hugging Face token env vars, disables HF telemetry, runs as UID/GID 10001:10001, and stores model/runtime caches under /opt/nim/.cache backed by Forge shared /mnt/data/forge-weights. The 2026-06-04T05Z r2 image replaces the prior CVE-blocked mirrored runtime with Transformers 5.3.0 and Hugging Face Hub 1.3.7, updates fixed OS/Python package findings, passes Trivy HIGH/CRITICAL fixed-vulnerability scanning, and is mirrored to all active Forge regions at digest sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64. The 2026-06-04T08Z hidden live upsert and standard matrix probe persisted support for B200/us-central1, B300/uk-south1, H200/us-central1, H200/eu-north1, H200/eu-north2, and L40S/eu-north1 on this exact r2 digest with 3 warmups plus 10 measured requests per cell using model_time_ms. RTX6000 remains false because no RTX6000 inventory cell appeared in the run. It remains hidden/onboarding/default-ineligible and must not be used for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, patient care, or patient-specific interpretation.",
+  "family_id": "a737f2c2-072d-495b-a856-8b63db346fe9",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface/openmed-ner-diseasedetect-biomed-335m/wrapper-cuda12-nonroot",
+      "HF_HUB_DISABLE_TELEMETRY": "1",
+      "HF_TOKEN": "",
+      "HOME": "/opt/nim/.cache/home/openmed-ner-diseasedetect-biomed-335m",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/openmed-ner-diseasedetect-biomed-335m/wrapper-cuda12-nonroot/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "OPENMED_NER_ALLOW_REMOTE_DOWNLOAD": "true",
+      "OPENMED_NER_CHECKPOINT_SHA256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+      "OPENMED_NER_DEVICE": "auto",
+      "OPENMED_NER_HF_REVISION": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+      "OPENMED_NER_MAX_LENGTH": "512",
+      "OPENMED_NER_MODEL_ID": "OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+      "OPENMED_NER_MODEL_SLUG": "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+      "OPENMED_NER_TORCH_DTYPE": "auto",
+      "SERVED_MODEL_NAME": "OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+      "TORCH_HOME": "/opt/nim/.cache/huggingface/openmed-ner-diseasedetect-biomed-335m/wrapper-cuda12-nonroot/torch",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/openmed-ner-diseasedetect-biomed-335m/wrapper-cuda12-nonroot/transformers",
+      "XDG_CACHE_HOME": "/opt/nim/.cache/huggingface/openmed-ner-diseasedetect-biomed-335m/wrapper-cuda12-nonroot/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T08:05:37.830312+00:00",
+      "region": "us-central1",
+      "request_ms": 7,
+      "request_ms_p50": 7,
+      "request_ms_p95": 8,
+      "request_ms_p99": 8,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 19002,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.42,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.62
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T08:08:40.388958+00:00",
+      "region": "uk-south1",
+      "request_ms": 7,
+      "request_ms_p50": 8,
+      "request_ms_p95": 8,
+      "request_ms_p99": 8,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 177228,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.42,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.62
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T08:08:33.642032+00:00",
+      "region": "eu-north1",
+      "request_ms": 8,
+      "request_ms_p50": 8,
+      "request_ms_p95": 9,
+      "request_ms_p99": 9,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 196791,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.33,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.62
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T08:08:35.118985+00:00",
+      "region": "eu-north2",
+      "request_ms": 9,
+      "request_ms_p50": 8,
+      "request_ms_p95": 9,
+      "request_ms_p99": 10,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 197509,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.33,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.62
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T08:08:23.464389+00:00",
+      "region": "us-central1",
+      "request_ms": 9,
+      "request_ms_p50": 9,
+      "request_ms_p95": 9,
+      "request_ms_p99": 9,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 185144,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.33,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.62
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-04T08:08:41.079828+00:00",
+      "region": "eu-north1",
+      "request_ms": 13,
+      "request_ms_p50": 12,
+      "request_ms_p95": 13,
+      "request_ms_p99": 13,
+      "request_ms_samples": 40,
+      "startup_ms_first": null,
+      "startup_ms_probe": 203411,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.16,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.62
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-31T13:20:06.944303+00:00",
+      "region": "us-central1",
+      "request_ms": 8,
+      "request_ms_p50": 8,
+      "request_ms_p95": 9,
+      "request_ms_p99": 9,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 489604,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.29,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.62
+    }
+  ],
+  "gpu_type": null,
+  "id": "42942942-3198-4638-8542-77055c9da978",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "json"
+  ],
+  "model_family": "openmed-ner-diseasedetect-biomed-335m",
+  "name": "OpenMed DiseaseDetect BioMed 335M",
+  "parameter_count": 335000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "aggregation_strategy": "{{aggregation_strategy}}",
+        "batch_size": "{{batch_size}}",
+        "model": "{{model_slug}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "return_text": "{{return_text}}",
+        "text": "{{text}}"
+      },
+      "endpoint": "/token_classification",
+      "method": "POST",
+      "upstream_model_id": "OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+    },
+    "input_fields": [
+      {
+        "default": "A possible link between Crohn's disease and gut microbiota is being investigated in PubMed abstracts.",
+        "key": "text",
+        "label": "Biomedical text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "entity_spans",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": "simple",
+        "key": "aggregation_strategy",
+        "label": "Aggregation",
+        "options": [
+          "simple",
+          "first",
+          "average",
+          "max",
+          "none"
+        ],
+        "type": "select"
+      },
+      {
+        "default": 8,
+        "key": "batch_size",
+        "label": "Batch size",
+        "max": 16,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "return_text",
+        "label": "Return source text",
+        "type": "checkbox"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/opt/nim/.cache/huggingface/openmed-ner-diseasedetect-biomed-335m/wrapper-cuda12-nonroot",
+      "checkpoint_file": "model.safetensors",
+      "checkpoint_sha256": "5c32d7bd84387f349490cf84e2b3ee2ddc2e965fc9926dcc047da625587d1a26",
+      "input_contract": "biomedical_text",
+      "kind": "forge_openmed_disease_ner",
+      "max_sequence_length": 512,
+      "model_id": "OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+      "model_revision": "a62e2a2da5ff7d6b79024ba906f481581466ea61",
+      "output_contract": "disease_entity_spans",
+      "served_model_name": "OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical biomedical literature mining and disease-name span extraction.",
+      "body": "Use only for biomedical literature mining, curation, benchmark evaluation, and knowledge graph preprocessing. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, patient care, or patient-specific medical interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient care",
+        "patient-specific interpretation of symptoms, records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Nonclinical biomedical text mining only"
+    },
+    "schema_version": 1,
+    "type": "token_classification"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-torch2100-20260630@sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-torch2100-20260630@sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-torch2100-20260630@sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/u00xf2pqq3cr2q8xsz-models-openmed-ner-diseasedetect-biomed-335m:wrapper-cuda12-torch2100-20260630@sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64"
+  },
+  "release_rank": 99,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "biomedical-nlp",
+    "token-classification",
+    "named-entity-recognition",
+    "disease-entity-recognition",
+    "literature-mining",
+    "transformers",
+    "bert",
+    "safetensors",
+    "cuda12",
+    "research-only"
+  ],
+  "updated_at": "2026-06-30T13:52:14.597976+00:00",
+  "version": "hf-a62e2a2-cuda12-cvefix-20260604t05z-r2",
+  "version_description": "Hidden Forge-owned CUDA 12 wrapper for OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M. The wrapper pins revision a62e2a2da5ff7d6b79024ba906f481581466ea61, verifies model.safetensors SHA256 before load, runs as UID/GID 10001:10001, routes model/runtime caches under /opt/nim/.cache backed by Forge shared /mnt/data/forge-weights, and exposes stable token-classification endpoints for nonclinical biomedical literature mining. The 2026-06-04T05Z cycle rebuilt the wrapper with Transformers 5.3.0, Hugging Face Hub 1.3.7, fixed OS package updates, and fixed Python package floors for the scanner findings observed in the first 05Z pushed digest. The r2 image passed the Transformers CVE source gate, in-container package checks, py_compile, and Trivy HIGH/CRITICAL fixed-vulnerability gate, then was pushed and mirrored to all active Forge regions at digest sha256:3079527b56fad10db80932459b16c1d52fd769a7694dc82eca893f12fe7a3c64. The 2026-06-04T08Z hidden live upsert and standard matrix probe persisted six supported cells for the r2 digest: B200/us-central1, B300/uk-south1, H200/us-central1, H200/eu-north1, H200/eu-north2, and L40S/eu-north1. RTX6000 remains false because no RTX6000 inventory cell appeared in that probe. Keep hidden/onboarding/default-ineligible pending HCLS product safety and catalog-copy review.",
+  "version_key": "hf-a62e2a2-cuda12-cvefix-20260604t05z-r2",
+  "version_label": "Forge CUDA 12 CVE-fixed wrapper"
+}

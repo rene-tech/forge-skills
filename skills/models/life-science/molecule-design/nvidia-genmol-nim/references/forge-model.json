@@ -1,0 +1,336 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "chemistry",
+    "drug_discovery",
+    "molecule_generation",
+    "nvidia_nim",
+    "molecule",
+    "structured_output"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/genmol:latest",
+  "container_image_size_bytes": null,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-27T12:35:31.577216+00:00",
+  "default_eligible": true,
+  "description": "NVIDIA GenMol NIM for fragment-based molecular generation with SMILES or SAFE input. Forge keeps the image small and uses the shared /mnt/data-backed NIM cache for hydrated artifacts.",
+  "family_id": "99b1dd39-9b5d-499b-81fd-b981c4da8a26",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": "runtime_http_400:{\"error\":\"Incorrect input molecule description - CUDA error: no kernel image is available for execution on the device\\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\\n\"}",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T00:37:43.102847+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 357759,
+      "startup_ms_probe": 0,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 3,
+      "total_warm_starts": 2,
+      "vram_measured_gb": 1.34,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "No inventory cells matched requested filters for nvidia-genmol-nim B300/uk-south1 during healthcare wave3 continuation.",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-28T09:29:12.743982+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T02:56:30.565359+00:00",
+      "region": "eu-north2",
+      "request_ms": 1995,
+      "request_ms_p50": 1221,
+      "request_ms_p95": 1918,
+      "request_ms_p99": 1980,
+      "request_ms_samples": 2,
+      "startup_ms_first": 277709,
+      "startup_ms_probe": 14123,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 1.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 277709,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": 1.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T05:21:30.282897+00:00",
+      "region": "eu-north1",
+      "request_ms": 2305,
+      "request_ms_p50": 2305,
+      "request_ms_p95": 2305,
+      "request_ms_p99": 2305,
+      "request_ms_samples": 1,
+      "startup_ms_first": 12000,
+      "startup_ms_probe": 9915,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 1.23,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": "runtime_http_400:{\"error\":\"Incorrect input molecule description - CUDA error: no kernel image is available for execution on the device\\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\\n\"}",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-14T22:31:57.128590+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": 312160,
+      "startup_ms_probe": 317073,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 1.27,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "76a4af3b-e9d7-41bf-bb37-2c941a14cbb2",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-ai-foundation-models-community/mit",
+  "modality_input": [
+    "molecule"
+  ],
+  "modality_output": [
+    "molecule",
+    "json"
+  ],
+  "model_family": "nvidia-genmol",
+  "name": "GenMol",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "noise": "{{noise}}",
+        "num_molecules": "{{num_molecules}}",
+        "scoring": "{{scoring}}",
+        "smiles": "{{smiles}}",
+        "step_size": "{{step_size}}",
+        "temperature": "{{temperature}}",
+        "unique": "{{unique}}"
+      },
+      "endpoint": "/generate",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "C124CN3C1.S3(=O)(=O)CC.C4C#N.[*{20-20}]",
+        "key": "smiles",
+        "label": "SMILES or SAFE sequence",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "QED",
+        "key": "scoring",
+        "label": "Scoring",
+        "options": [
+          "QED",
+          "LogP"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "unique",
+        "label": "Unique molecules only",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 30,
+        "key": "num_molecules",
+        "label": "Number of molecules",
+        "max": 1000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 10,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "noise",
+        "label": "Noise",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "step_size",
+        "label": "Diffusion step size",
+        "max": 10,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-genmol:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-genmol:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-genmol:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-genmol:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-genmol-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/genmol-generate",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "chemistry",
+    "drug-discovery",
+    "molecule-generation",
+    "nvidia-nim"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

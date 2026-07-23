@@ -1,0 +1,138 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "f090de78a10bb7da23c84d0b73347b56982fd7ceeb9e1d153ccf93e510715d75",
+  "defaultEligible": true,
+  "displayName": "Use NVIDIA Nemotron Parse",
+  "domain": "vision-language",
+  "downloadUrl": "/v1/model-skills/nvidia-nemotron-parse-nim/markdown?download=true",
+  "group": "vision-language",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "vision-language",
+    "nvidia-nemotron-parse-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII=",
+      "fieldType": "text",
+      "key": "image_url",
+      "label": "Image URL or data URL",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "document",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-nemotron-parse-nim\ndescription: Use the exact Forge model nvidia-nemotron-parse-nim for document, image to text, layout tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Nemotron Parse\n\n- Model slug: `nvidia-nemotron-parse-nim`\n- Model family: `nvidia-nemotron-parse`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / vision-language / nvidia-nemotron-parse-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `nvidia-nim; third-party model license`\n\n## Purpose\n\nNVIDIA Nemotron Parse NIM for parsing document images into structured text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.\n\n## Use this exact model when\n\n- Use this exact `nvidia-nemotron-parse-nim` version when the task supplies document, image and needs text, layout.\n- NVIDIA Nemotron Parse NIM for parsing document images into structured text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['document', 'image'] \u2192 ['text', 'layout'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `image_url` (text, optional): Image URL or data URL\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": 256,\n  \"messages\": [\n    {\n      \"content\": [\n        {\n          \"image_url\": {\n            \"url\": \"{{image_url}}\"\n          },\n          \"type\": \"image_url\"\n        }\n      ],\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"{{model_slug}}\",\n  \"stream\": false\n}\n```\n\n## Exact output\n\n- `text`\n- `layout`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-nemotron-parse-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-nemotron-parse-nim`\n- Routes: `/v1/models/nvidia-nemotron-parse-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-nemotron-parse-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-nemotron-parse-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/nvidia-nemotron-parse-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/nvidia-nemotron-parse-nim/SKILL.md\n\n## References\n\n- [NVIDIA Nemotron Parse source](https://build.nvidia.com/nvidia/nemotron-parse) (model-card)\n",
+  "license": "nvidia-nim; third-party model license",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-nemotron-parse-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-nemotron-parse-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-nemotron-parse",
+    "modelUrl": "/v1/models/nvidia-nemotron-parse-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-nemotron-parse-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-nemotron-parse-nim/markdown",
+  "modelFamily": "nvidia-nemotron-parse",
+  "modelSlug": "nvidia-nemotron-parse-nim",
+  "modelUrl": "/v1/models/nvidia-nemotron-parse-nim",
+  "outputFields": [
+    "text",
+    "layout"
+  ],
+  "outputModalities": [
+    "text",
+    "layout"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA Nemotron Parse NIM for parsing document images into structured text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/vision-language/nvidia-nemotron-parse-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Nemotron Parse source",
+      "url": "https://build.nvidia.com/nvidia/nemotron-parse"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/nvidia-nemotron-parse-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/vision-language/nvidia-nemotron-parse-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": 256,
+    "messages": [
+      {
+        "content": [
+          {
+            "image_url": {
+              "url": "{{image_url}}"
+            },
+            "type": "image_url"
+          }
+        ],
+        "role": "user"
+      }
+    ],
+    "model": "{{model_slug}}",
+    "stream": false
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/nemotron-parse",
+    "tags": [
+      "document-parsing",
+      "ocr",
+      "vlm",
+      "nvidia-nim"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "NVIDIA Nemotron Parse NIM for parsing document images into structured text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+  "skillName": "use-forge-nvidia-nemotron-parse-nim",
+  "skillUrl": "/v1/model-skills/nvidia-nemotron-parse-nim",
+  "slug": "nvidia-nemotron-parse-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['document', 'image'] \u2192 ['text', 'layout'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-nemotron-parse-nim` version when the task supplies document, image and needs text, layout.",
+    "NVIDIA Nemotron Parse NIM for parsing document images into structured text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-nemotron-parse-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

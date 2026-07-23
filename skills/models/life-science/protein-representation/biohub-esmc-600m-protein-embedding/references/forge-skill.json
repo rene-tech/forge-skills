@@ -1,0 +1,178 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "d1ec0287caab0ca72c0ed6869fd07c7ebaa47001eaa90f4683af5c3ca702a069",
+  "defaultEligible": true,
+  "displayName": "Use Biohub ESMC 600M Protein Embeddings",
+  "domain": "protein-representation",
+  "downloadUrl": "/v1/model-skills/biohub-esmc-600m-protein-embedding/markdown?download=true",
+  "group": "protein-representation",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "protein-representation",
+    "biohub-esmc-600m-protein-embedding"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/biohub-esmc-600m-protein-embedding",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMK",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_length",
+      "label": "Max sequence length",
+      "maximum": 2048,
+      "minimum": 32,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "normalize",
+      "label": "Normalize embedding",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "return_embedding",
+      "label": "Return full embedding vector",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-only use acknowledged",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence"
+  ],
+  "instructions": "---\nname: use-forge-biohub-esmc-600m-protein-embedding\ndescription: Use the exact Forge model biohub-esmc-600m-protein-embedding for protein_sequence to embedding, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Biohub ESMC 600M Protein Embeddings\n\n- Model slug: `biohub-esmc-600m-protein-embedding`\n- Model family: `biohub-esmc`\n- Version: `hf-465f758-python312-cuda128-wrapper-20260529` (`hf-465f758-python312-cuda128-wrapper-20260529`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / protein-representation / biohub-esmc-600m-protein-embedding`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `mit-with-third-party-notices`\n\n## Purpose\n\nBiohub ESMC 600M is a 2026 protein language model for protein representation learning, protein engineering, variant-effect research, and masked-language modeling.\n\n## Use this exact model when\n\n- Use this exact `biohub-esmc-600m-protein-embedding` version when the task supplies protein_sequence and needs embedding, json.\n- Biohub ESMC 600M is a 2026 protein language model for protein representation learning, protein engineering, variant-effect research, and masked-language modeling.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['embedding', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, required): Protein sequence\n- `max_length` (number, optional; bounds 32..2048): Max sequence length\n- `normalize` (checkbox, optional): Normalize embedding\n- `return_embedding` (checkbox, optional): Return full embedding vector\n- `research_use_acknowledgement` (checkbox, optional): Research-only use acknowledged\n\nRequest template:\n\n```json\n{\n  \"max_length\": \"{{max_length}}\",\n  \"normalize\": \"{{normalize}}\",\n  \"research_use_acknowledgement\": \"{{research_use_acknowledgement}}\",\n  \"return_embedding\": \"{{return_embedding}}\",\n  \"sequence\": \"{{sequence}}\"\n}\n```\n\n## Exact output\n\n- `task`\n- `sequence_length`\n- `embedding_dim`\n- `embedding_preview`\n- `embedding_l2`\n- `model_time_ms`\n\n## Route\n\n`POST /v1/inference/biohub-esmc-600m-protein-embedding`\n\n## Workflow\n\n1. Load this skill and pin model slug `biohub-esmc-600m-protein-embedding` with version key `hf-465f758-python312-cuda128-wrapper-20260529`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/biohub-esmc-600m-protein-embedding` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 2048.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/biohub-esmc-600m-protein-embedding`\n- Routes: `/v1/models/biohub-esmc-600m-protein-embedding/inference-routes`\n- Regional deployment: `/v1/models/biohub-esmc-600m-protein-embedding/regional-deployment`\n- Deployment handoff: `/v1/models/biohub-esmc-600m-protein-embedding/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/biohub-esmc-600m-protein-embedding/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-representation/biohub-esmc-600m-protein-embedding/SKILL.md\n\n## References\n\n- [Biohub ESMC 600M Protein Embeddings source](https://huggingface.co/biohub/ESMC-600M) (model-card)\n",
+  "license": "mit-with-third-party-notices",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 2048."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/biohub-esmc-600m-protein-embedding/deploy",
+    "inferenceRoutesUrl": "/v1/models/biohub-esmc-600m-protein-embedding/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/biohub-esmc",
+    "modelUrl": "/v1/models/biohub-esmc-600m-protein-embedding",
+    "regionalDeploymentUrl": "/v1/models/biohub-esmc-600m-protein-embedding/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/biohub-esmc-600m-protein-embedding/markdown",
+  "modelFamily": "biohub-esmc",
+  "modelSlug": "biohub-esmc-600m-protein-embedding",
+  "modelUrl": "/v1/models/biohub-esmc-600m-protein-embedding",
+  "outputFields": [
+    "task",
+    "sequence_length",
+    "embedding_dim",
+    "embedding_preview",
+    "embedding_l2",
+    "model_time_ms"
+  ],
+  "outputModalities": [
+    "embedding",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Biohub ESMC 600M is a 2026 protein language model for protein representation learning, protein engineering, variant-effect research, and masked-language modeling.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-representation/biohub-esmc-600m-protein-embedding/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Biohub ESMC 600M Protein Embeddings source",
+      "url": "https://huggingface.co/biohub/ESMC-600M"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/biohub-esmc-600m-protein-embedding/SKILL.md",
+  "repositoryPath": "skills/models/life-science/protein-representation/biohub-esmc-600m-protein-embedding/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_length": "{{max_length}}",
+    "normalize": "{{normalize}}",
+    "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+    "return_embedding": "{{return_embedding}}",
+    "sequence": "{{sequence}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 2048,
+    "parameterCount": 575036992,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/biohub/ESMC-600M",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "embedding",
+      "sequence",
+      "masked-language-modeling",
+      "variant-effect-prediction",
+      "protein-engineering",
+      "esmc",
+      "forge-wrapper",
+      "open-source"
+    ],
+    "versionLabel": "ESMC 600M HF 465f758 via Python 3.12 CUDA 12.8 Forge wrapper"
+  },
+  "shortDescription": "Biohub ESMC 600M is a 2026 protein language model for protein representation learning, protein engineering, variant-effect research, and masked-language modeling.",
+  "skillName": "use-forge-biohub-esmc-600m-protein-embedding",
+  "skillUrl": "/v1/model-skills/biohub-esmc-600m-protein-embedding",
+  "slug": "biohub-esmc-600m-protein-embedding",
+  "stability": "testing",
+  "version": "hf-465f758-python312-cuda128-wrapper-20260529",
+  "versionKey": "hf-465f758-python312-cuda128-wrapper-20260529",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['embedding', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `biohub-esmc-600m-protein-embedding` version when the task supplies protein_sequence and needs embedding, json.",
+    "Biohub ESMC 600M is a 2026 protein language model for protein representation learning, protein engineering, variant-effect research, and masked-language modeling.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `biohub-esmc-600m-protein-embedding` with version key `hf-465f758-python312-cuda128-wrapper-20260529`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/biohub-esmc-600m-protein-embedding` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

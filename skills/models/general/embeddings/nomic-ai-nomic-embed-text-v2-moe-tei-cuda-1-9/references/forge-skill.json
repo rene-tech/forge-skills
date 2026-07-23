@@ -1,0 +1,140 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "84fc344bc7cac5b3ae377119ddbd51f9ace65302563f2914e474dd5ee6840fbc",
+  "defaultEligible": false,
+  "displayName": "Use Nomic Embed Text v2 MoE",
+  "domain": "embeddings",
+  "downloadUrl": "/v1/model-skills/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/markdown?download=true",
+  "group": "embeddings",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "embeddings",
+    "nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "search_query: How can multilingual embeddings improve support-ticket retrieval across English, Spanish, and Japanese knowledge bases?",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Input text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "float"
+      ],
+      "default": "float",
+      "fieldType": "select",
+      "key": "encoding_format",
+      "label": "Encoding format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9\ndescription: Use the exact Forge model nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Nomic Embed Text v2 MoE\n\n- Model slug: `nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9`\n- Model family: `nomic-ai-nomic-embed-text-v2-moe`\n- Version: `tei-cuda-1.9.3` (`tei-cuda-1-9-3`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / embeddings / nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nNomic Embed Text v2 MoE is a public Apache-2.0 multilingual text embedding model for retrieval, RAG indexing, semantic search, and clustering.\n\n## Use this exact model when\n\n- Use this exact `nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9` version when the task supplies text and needs embedding.\n- Nomic Embed Text v2 MoE is a public Apache-2.0 multilingual text embedding model for retrieval, RAG indexing, semantic search, and clustering.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Input text\n- `encoding_format` (select, optional): Encoding format\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"{{encoding_format}}\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9` with version key `tei-cuda-1-9-3`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9`\n- Routes: `/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/inference-routes`\n- Regional deployment: `/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/regional-deployment`\n- Deployment handoff: `/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/embeddings/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/SKILL.md\n\n## References\n\n- [Nomic Embed Text v2 MoE source](https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/deploy",
+    "inferenceRoutesUrl": "/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nomic-ai-nomic-embed-text-v2-moe",
+    "modelUrl": "/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+    "regionalDeploymentUrl": "/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/markdown",
+  "modelFamily": "nomic-ai-nomic-embed-text-v2-moe",
+  "modelSlug": "nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+  "modelUrl": "/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Nomic Embed Text v2 MoE is a public Apache-2.0 multilingual text embedding model for retrieval, RAG indexing, semantic search, and clustering.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/embeddings/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Nomic Embed Text v2 MoE source",
+      "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/SKILL.md",
+  "repositoryPath": "skills/models/general/embeddings/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "{{encoding_format}}",
+    "input": "{{input}}",
+    "model": "{{model_slug}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 475000000,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+    "tags": [
+      "embedding",
+      "retrieval",
+      "rag",
+      "multilingual",
+      "mixture-of-experts",
+      "matryoshka",
+      "nomic",
+      "huggingface",
+      "tei"
+    ],
+    "versionLabel": "TEI CUDA 1.9.3"
+  },
+  "shortDescription": "Nomic Embed Text v2 MoE is a public Apache-2.0 multilingual text embedding model for retrieval, RAG indexing, semantic search, and clustering.",
+  "skillName": "use-forge-nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+  "skillUrl": "/v1/model-skills/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+  "slug": "nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+  "stability": "testing",
+  "version": "tei-cuda-1.9.3",
+  "versionKey": "tei-cuda-1-9-3",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9` version when the task supplies text and needs embedding.",
+    "Nomic Embed Text v2 MoE is a public Apache-2.0 multilingual text embedding model for retrieval, RAG indexing, semantic search, and clustering.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9` with version key `tei-cuda-1-9-3`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

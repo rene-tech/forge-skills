@@ -1,0 +1,124 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "ecc7bd3692b6842f4964145f08afe2992f20b33b1639c7268c9915bb2388208d",
+  "defaultEligible": true,
+  "displayName": "Use NVIDIA Llama Nemotron Embed 1B v2",
+  "domain": "embeddings",
+  "downloadUrl": "/v1/model-skills/nvidia-llama-nemotron-embed-1b-v2-nim/markdown?download=true",
+  "group": "embeddings",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "embeddings",
+    "nvidia-llama-nemotron-embed-1b-v2-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "What is the capital of France?",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Input text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-llama-nemotron-embed-1b-v2-nim\ndescription: Use the exact Forge model nvidia-llama-nemotron-embed-1b-v2-nim for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Llama Nemotron Embed 1B v2\n\n- Model slug: `nvidia-llama-nemotron-embed-1b-v2-nim`\n- Model family: `nvidia-llama-nemotron-embed-1b-v2`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / embeddings / nvidia-llama-nemotron-embed-1b-v2-nim`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `nvidia-open-model-license; llama-3.2-community-license`\n\n## Purpose\n\n1B NVIDIA NeMo Retriever text embedding NIM for semantic retrieval/RAG; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave4.\n\n## Use this exact model when\n\n- Use this exact `nvidia-llama-nemotron-embed-1b-v2-nim` version when the task supplies text and needs embedding.\n- 1B NVIDIA NeMo Retriever text embedding NIM for semantic retrieval/RAG; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave4.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Input text\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"float\",\n  \"input\": \"{{input}}\",\n  \"input_type\": \"query\",\n  \"model\": \"{{model_slug}}\",\n  \"truncate\": \"NONE\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-llama-nemotron-embed-1b-v2-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 8192.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim`\n- Routes: `/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/nvidia-llama-nemotron-embed-1b-v2-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/embeddings/nvidia-llama-nemotron-embed-1b-v2-nim/SKILL.md\n\n## References\n\n- [NVIDIA Llama Nemotron Embed 1B v2 source](https://build.nvidia.com/nvidia/llama-nemotron-embed-1b-v2) (model-card)\n",
+  "license": "nvidia-open-model-license; llama-3.2-community-license",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 8192."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-llama-nemotron-embed-1b-v2",
+    "modelUrl": "/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-llama-nemotron-embed-1b-v2-nim/markdown",
+  "modelFamily": "nvidia-llama-nemotron-embed-1b-v2",
+  "modelSlug": "nvidia-llama-nemotron-embed-1b-v2-nim",
+  "modelUrl": "/v1/models/nvidia-llama-nemotron-embed-1b-v2-nim",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "1B NVIDIA NeMo Retriever text embedding NIM for semantic retrieval/RAG; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave4.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/embeddings/nvidia-llama-nemotron-embed-1b-v2-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Llama Nemotron Embed 1B v2 source",
+      "url": "https://build.nvidia.com/nvidia/llama-nemotron-embed-1b-v2"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/nvidia-llama-nemotron-embed-1b-v2-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/embeddings/nvidia-llama-nemotron-embed-1b-v2-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "float",
+    "input": "{{input}}",
+    "input_type": "query",
+    "model": "{{model_slug}}",
+    "truncate": "NONE"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 8192,
+    "parameterCount": 1000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/llama-nemotron-embed-1b-v2",
+    "tags": [
+      "retrieval",
+      "embedding",
+      "nvidia-nim"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "1B NVIDIA NeMo Retriever text embedding NIM for semantic retrieval/RAG; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave4.",
+  "skillName": "use-forge-nvidia-llama-nemotron-embed-1b-v2-nim",
+  "skillUrl": "/v1/model-skills/nvidia-llama-nemotron-embed-1b-v2-nim",
+  "slug": "nvidia-llama-nemotron-embed-1b-v2-nim",
+  "stability": "stable",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-llama-nemotron-embed-1b-v2-nim` version when the task supplies text and needs embedding.",
+    "1B NVIDIA NeMo Retriever text embedding NIM for semantic retrieval/RAG; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave4.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-llama-nemotron-embed-1b-v2-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

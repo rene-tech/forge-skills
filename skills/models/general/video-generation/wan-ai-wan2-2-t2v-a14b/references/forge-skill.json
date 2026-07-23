@@ -1,0 +1,179 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "4f5835aaae4506ce174a87091016074173623fefddc1c057d10ce69a0a0c894c",
+  "defaultEligible": true,
+  "displayName": "Use Wan2.2 T2V A14B",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/wan-ai-wan2-2-t2v-a14b/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "wan-ai-wan2-2-t2v-a14b"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/wan-ai-wan2-2-t2v-a14b",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A cinematic product video of a GPU cluster room powering up, cables and LEDs moving subtly, clean realistic lighting",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "overexposed, static, blurry, subtitles, watermark, low quality, distorted",
+      "fieldType": "textarea",
+      "key": "negative_prompt",
+      "label": "Negative Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 23,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 20,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 10,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 8,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 49,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 121,
+      "minimum": 17,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-wan-ai-wan2-2-t2v-a14b\ndescription: Use the exact Forge model wan-ai-wan2-2-t2v-a14b for text to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Wan2.2 T2V A14B\n\n- Model slug: `wan-ai-wan2-2-t2v-a14b`\n- Model family: `wan-ai-wan2-2`\n- Version: `a14b-diffusers` (`a14b-diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / wan-ai-wan2-2-t2v-a14b`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nWan2.2 T2V A14B text-to-video generation through the Forge Diffusers wrapper.\n\n## Use this exact model when\n\n- Use this exact `wan-ai-wan2-2-t2v-a14b` version when the task supplies text and needs video.\n- Wan2.2 T2V A14B text-to-video generation through the Forge Diffusers wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `negative_prompt` (textarea, optional): Negative Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_inference_steps` (number, optional; bounds 10..50): Steps\n- `guidance_scale` (number, optional; bounds 1..8): Guidance\n- `num_frames` (number, optional; bounds 17..121): Frames\n\nRequest template:\n\n```json\n{\n  \"fps\": 24,\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"height\": 480,\n  \"negative_prompt\": \"{{negative_prompt}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"width\": 832\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/wan-ai-wan2-2-t2v-a14b`\n\n## Workflow\n\n1. Load this skill and pin model slug `wan-ai-wan2-2-t2v-a14b` with version key `a14b-diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/wan-ai-wan2-2-t2v-a14b` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/wan-ai-wan2-2-t2v-a14b`\n- Routes: `/v1/models/wan-ai-wan2-2-t2v-a14b/inference-routes`\n- Regional deployment: `/v1/models/wan-ai-wan2-2-t2v-a14b/regional-deployment`\n- Deployment handoff: `/v1/models/wan-ai-wan2-2-t2v-a14b/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/wan-ai-wan2-2-t2v-a14b/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/wan-ai-wan2-2-t2v-a14b/SKILL.md\n\n## References\n\n- [Wan2.2 T2V A14B source](https://github.com/Wan-Video/Wan2.2) (repository)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/wan-ai-wan2-2-t2v-a14b/deploy",
+    "inferenceRoutesUrl": "/v1/models/wan-ai-wan2-2-t2v-a14b/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/wan-ai-wan2-2",
+    "modelUrl": "/v1/models/wan-ai-wan2-2-t2v-a14b",
+    "regionalDeploymentUrl": "/v1/models/wan-ai-wan2-2-t2v-a14b/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/wan-ai-wan2-2-t2v-a14b/markdown",
+  "modelFamily": "wan-ai-wan2-2",
+  "modelSlug": "wan-ai-wan2-2-t2v-a14b",
+  "modelUrl": "/v1/models/wan-ai-wan2-2-t2v-a14b",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Wan2.2 T2V A14B text-to-video generation through the Forge Diffusers wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/wan-ai-wan2-2-t2v-a14b/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "Wan2.2 T2V A14B source",
+      "url": "https://github.com/Wan-Video/Wan2.2"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/wan-ai-wan2-2-t2v-a14b/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/wan-ai-wan2-2-t2v-a14b/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "fps": 24,
+    "guidance_scale": "{{guidance_scale}}",
+    "height": 480,
+    "negative_prompt": "{{negative_prompt}}",
+    "num_frames": "{{num_frames}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "width": 832
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 14000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/Wan-Video/Wan2.2",
+    "tags": [
+      "video-generation",
+      "text-to-video",
+      "diffusion",
+      "wan2.2",
+      "single-gpu"
+    ],
+    "versionLabel": "A14B Diffusers"
+  },
+  "shortDescription": "Wan2.2 T2V A14B text-to-video generation through the Forge Diffusers wrapper.",
+  "skillName": "use-forge-wan-ai-wan2-2-t2v-a14b",
+  "skillUrl": "/v1/model-skills/wan-ai-wan2-2-t2v-a14b",
+  "slug": "wan-ai-wan2-2-t2v-a14b",
+  "stability": "experimental",
+  "version": "a14b-diffusers",
+  "versionKey": "a14b-diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `wan-ai-wan2-2-t2v-a14b` version when the task supplies text and needs video.",
+    "Wan2.2 T2V A14B text-to-video generation through the Forge Diffusers wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `wan-ai-wan2-2-t2v-a14b` with version key `a14b-diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/wan-ai-wan2-2-t2v-a14b` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

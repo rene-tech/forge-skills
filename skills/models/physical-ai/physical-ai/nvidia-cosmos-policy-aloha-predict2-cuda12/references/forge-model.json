@@ -1,0 +1,350 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robotics_policy",
+    "aloha",
+    "cosmos",
+    "text",
+    "vision",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos-policy-aloha:cu128@sha256:1ddd909131f7384c31b3b4fb7311de90a1536d4ee1f48fdb3d9d690755d78eee",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T05:46:16.610202+00:00",
+  "default_eligible": true,
+  "description": "Cosmos Policy ALOHA checkpoint for real-world bimanual robot tasks. The Forge wrapper serves the upstream server-side ALOHA policy API, accepts a primary camera, two wrist cameras, and 14D proprioception, and returns a 50-step robot action trace.",
+  "family_id": "804ca8dd-2515-4479-b51a-9a3b6db76dfb",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-08T08:20:15.134880+00:00",
+      "region": "us-central1",
+      "request_ms": 578,
+      "request_ms_p50": 578,
+      "request_ms_p95": 580,
+      "request_ms_p99": 580,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 529000,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 6.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T04:14:36.776863+00:00",
+      "region": "uk-south1",
+      "request_ms": 12716,
+      "request_ms_p50": 12716,
+      "request_ms_p95": 12716,
+      "request_ms_p99": 12716,
+      "request_ms_samples": 1,
+      "startup_ms_first": 30227,
+      "startup_ms_probe": 30227,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 6.28,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-28T18:02:22.311906+00:00",
+      "region": "eu-north2",
+      "request_ms": 666,
+      "request_ms_p50": 666,
+      "request_ms_p95": 666,
+      "request_ms_p99": 666,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 34965,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 6.32,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-15T03:22:22.310139+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 714,
+      "request_ms_p95": 714,
+      "request_ms_p99": 714,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 6.32,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:28:55.712470+00:00",
+      "region": "eu-north1",
+      "request_ms": 2773,
+      "request_ms_p50": 108095,
+      "request_ms_p95": 202885,
+      "request_ms_p99": 211311,
+      "request_ms_samples": 2,
+      "startup_ms_first": 39887,
+      "startup_ms_probe": 39887,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 23.41,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T05:48:11.601661+00:00",
+      "region": "us-central1",
+      "request_ms": 1833,
+      "request_ms_p50": 1833,
+      "request_ms_p95": 1833,
+      "request_ms_p99": 1833,
+      "request_ms_samples": 1,
+      "startup_ms_first": 221055,
+      "startup_ms_probe": 31943,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 2,
+      "total_warm_starts": 1,
+      "vram_measured_gb": 5.49,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    }
+  ],
+  "gpu_type": null,
+  "id": "a2faa180-d61a-4f1b-8078-86d644d5175a",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "proprio"
+  ],
+  "modality_output": [
+    "json"
+  ],
+  "model_family": "nvidia-cosmos-policy-aloha-predict2",
+  "name": "NVIDIA Cosmos Policy ALOHA Predict2 2B",
+  "parameter_count": 2000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "model": "{{model_slug}}",
+        "num_denoising_steps_action": "{{num_denoising_steps_action}}",
+        "observation": {
+          "left_wrist_image": "{{left_wrist_image}}",
+          "primary_image": "{{primary_image}}",
+          "proprio": "{{proprio}}",
+          "right_wrist_image": "{{right_wrist_image}}",
+          "use_sample_observation": "{{use_sample_observation}}"
+        },
+        "randomize_seed": "{{randomize_seed}}",
+        "seed": "{{seed}}",
+        "task_description": "{{task_description}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos-policy-aloha-predict2-2b",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "fold the shirt",
+        "key": "task_description",
+        "label": "Task Description",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "use_sample_observation",
+        "label": "Use Placeholder Observation",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "accept": "image/*",
+        "default": "",
+        "key": "primary_image",
+        "label": "Primary Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/*",
+        "default": "",
+        "key": "left_wrist_image",
+        "label": "Left Wrist Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/*",
+        "default": "",
+        "key": "right_wrist_image",
+        "label": "Right Wrist Camera Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+        "key": "proprio",
+        "label": "ALOHA Proprioception",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "randomize_seed",
+        "label": "Randomize Seed",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "robotics_trace"
+    },
+    "parameter_controls": [
+      {
+        "default": 195,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 10,
+        "key": "num_denoising_steps_action",
+        "label": "Action Denoising Steps",
+        "max": 32,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-cosmos-policy-aloha@sha256:1ddd909131f7384c31b3b4fb7311de90a1536d4ee1f48fdb3d9d690755d78eee",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-cosmos-policy-aloha@sha256:1ddd909131f7384c31b3b4fb7311de90a1536d4ee1f48fdb3d9d690755d78eee",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-cosmos-policy-aloha@sha256:1ddd909131f7384c31b3b4fb7311de90a1536d4ee1f48fdb3d9d690755d78eee",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-cosmos-policy-aloha@sha256:1ddd909131f7384c31b3b4fb7311de90a1536d4ee1f48fdb3d9d690755d78eee"
+  },
+  "release_rank": 10,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-cosmos-policy-aloha-predict2-cuda12",
+  "source": "custom_container",
+  "source_url": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "policy",
+    "aloha",
+    "cosmos"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "cuda12",
+  "version_description": "CUDA 12.8 / PyTorch 2.7 ALOHA serving build.",
+  "version_key": "cuda12",
+  "version_label": "CUDA 12"
+}

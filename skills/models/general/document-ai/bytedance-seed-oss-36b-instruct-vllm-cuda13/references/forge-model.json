@@ -1,0 +1,553 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "SeedOssForCausalLM"
+      ],
+      "auto_map": null,
+      "head_dim": 128,
+      "hidden_size": 5120,
+      "max_position_embeddings": 524288,
+      "model_type": "seed_oss",
+      "num_attention_heads": 80,
+      "num_hidden_layers": 64,
+      "num_key_value_heads": 8,
+      "torch_dtype": "bfloat16",
+      "vocab_size": 155136
+    },
+    "artifact_evidence": "Hugging Face API reported ByteDance-Seed/Seed-OSS-36B-Instruct as public, ungated, enabled, transformers, text-generation, license:apache-2.0, revision 497f1dca95ebdec98e41d517b9f060ee753c902f, 40,027 downloads, 499 likes, and 36,151,104,512 BF16 safetensors parameters on 2026-06-05T05Z.",
+    "artifact_last_modified": "2025-08-26T02:33:00.000Z",
+    "artifact_parameters": {
+      "BF16": 36151104512,
+      "total": 36151104512
+    },
+    "artifact_revision": "497f1dca95ebdec98e41d517b9f060ee753c902f",
+    "blockers": [
+      "The NVIDIA NIM route is blocked by a registry integrity mismatch: Seed-OSS image labels but Kimi-K2 embedded model manifest.",
+      "L40S and RTX6000 remain false until startup, readiness, and at least 10 measured warm requests pass or fail with classified evidence.",
+      "L40S and RTX6000 are likely OOM for this BF16 36B profile at 32768 context because the successful H200 probe measured 122.18 GB VRAM, above both 48 GB L40S and 96 GB RTX6000 classes.",
+      "RTX6000/SM120 still needs startup-log review for SeedOss attention, Triton, FlashInfer, and Blackwell dispatch if a lower-memory profile is selected."
+    ],
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, XDG, and TorchInductor caches are pointed at versioned /opt/nim/.cache/forge-vllm/bytedance-seed-oss-36b-instruct/vllm-0.22.0-cuda13 paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights.",
+    "container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "container_runtime_evidence": {
+      "architecture": "amd64",
+      "created": "2026-05-29T06:57:18.414235433Z",
+      "cuda_version": "13.0.2",
+      "image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "image_size_bytes": 9219894117,
+      "os": "linux",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+      "vllm_build_commit": "799c3afa5d5b17b676d04e0b58a5628943bb4003",
+      "vllm_enable_cuda_compatibility": "0"
+    },
+    "container_source_decision": "rejected_nvidia_nim_due_embedded_manifest_mismatch; reuse_existing_mirrored_vllm_openai_0_22_0_cuda13_for_hidden_manifest",
+    "license_evidence": "Hugging Face API and README metadata report license=apache-2.0; the README states the Seed-OSS series is released under Apache-2.0.",
+    "next_steps": [
+      "Run a focused public/admin page check for the hidden route before any active/testing promotion.",
+      "Keep L40S disabled unless a lower-memory profile is selected; a BF16 32K probe is expected to OOM.",
+      "Probe RTX6000 only after memory expectations and SM120 dispatch risk are reviewed, and keep the NIM route rejected until NVIDIA publishes a corrected digest."
+    ],
+    "nvidia_nim_route_blocker": {
+      "decision": "Do not mirror or upsert the NIM route until NVIDIA registry metadata is clarified or a corrected digest is available.",
+      "embedded_manifest_model": "moonshotai/Kimi-K2-Instruct",
+      "latest_digest": "sha256:1fbd009686d18fc87f5cb9e9628c4ba22125ab92190ad951a73ad0a654ae57e9",
+      "latest_ref": "nvcr.io/nim/bytedance/seed-oss-36b-instruct:latest",
+      "outer_labels": "com.nvidia.nim.model and com.nvidia.nim.name report ByteDance-Seed/Seed-OSS-36B-Instruct",
+      "versioned_digest": "sha256:9738a416b04fc25ccfd961cf87991b655ca2b9917c1e1c2bfb3605c2a2f83827",
+      "versioned_ref": "nvcr.io/nim/bytedance/seed-oss-36b-instruct:1.0.0"
+    },
+    "onboarding_state": "vllm_0_22_hidden_manifest_b200_b300_h200_supported_pending_l40s_rtx6000",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "regional_mirror_verified_at": "2026-06-05T05Z",
+    "regional_mirrors_verified": [
+      "us-central1",
+      "eu-north1",
+      "eu-north2",
+      "uk-south1"
+    ],
+    "rejected_candidates": {
+      "nanonets-nanonets-ocr-s": "Useful OCR candidate with documented vLLM serving, but rejected for this cycle because the live Hugging Face API returned cardData.license=null and the raw README front matter did not include a license field, despite stale search snippets claiming Apache-2.0.",
+      "nvidia_nim_seed_oss": "Rejected as the first container route because the pullable NIM image embeds a model.manifest.yaml for moonshotai/Kimi-K2-Instruct even though outer labels name Seed-OSS.",
+      "qwen-qwen3-omni-30b-a3b-instruct": "Deferred because current upstream guidance still points at a Qwen3-Omni-specific vLLM branch/source build and audio-output support is not fully available through a standard Forge runtime image."
+    },
+    "runtime_evidence": "vLLM latest supported-model documentation lists SeedOssForCausalLM and ByteDance-Seed/Seed-OSS-36B-Instruct. The vLLM Seed-OSS recipe documents BF16 serving, thinking_budget via chat_template_kwargs, --enable-auto-tool-choice, and --tool-call-parser seed_oss, but also says support was recently added to vLLM main branch; therefore the selected vLLM 0.22.0 image must prove SeedOss parser and model support at runtime before any GPU compatibility claim.",
+    "secret_policy": "This public, ungated Hugging Face artifact explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so the runtime does not receive unnecessary platform Hugging Face credentials.",
+    "selection_rationale": "Selected as a useful current general model because Forge has many Qwen and small chat profiles but no Seed-OSS entry; Seed-OSS 36B adds an Apache-2.0 dense long-context reasoning and agentic model with explicit vLLM support and NIM catalog presence.",
+    "source_evidence": [
+      "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+      "https://huggingface.co/api/models/ByteDance-Seed/Seed-OSS-36B-Instruct?blobs=true",
+      "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct/raw/main/README.md",
+      "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct/raw/main/config.json",
+      "https://docs.vllm.ai/en/latest/models/supported_models/",
+      "https://docs.vllm.ai/projects/recipes/en/latest/Seed/Seed-OSS-36B.html",
+      "https://docs.vllm.ai/en/v0.22.0/deployment/docker/",
+      "https://build.nvidia.com/bytedance/seed-oss-36b-instruct/modelcard",
+      "https://docs.api.nvidia.com/nim/reference/bytedance-seed-oss-36b-instruct-infer"
+    ],
+    "validation_20260601": {
+      "forge_onboarding_workflow_dry_run": "planned_upsert_only",
+      "git_origin_main": "even_0_0_after_fetch",
+      "hf_api_metadata": "passed_public_ungated_apache2_revision_497f1dca95ebdec98e41d517b9f060ee753c902f",
+      "hf_config": "passed_seed_oss_bf16_no_remote_auto_map_524288_positions",
+      "image_gates_from_docs_draft": "passed_empty_findings",
+      "manifest_dry_run_from_docs_draft": "passed",
+      "manifest_promoted_to_general_tree": "2026-06-01T20Z",
+      "nim_image_inspect": "blocked_outer_seed_oss_labels_but_embedded_manifest_model_kimi_k2_instruct",
+      "nim_latest_label_decode": "confirmed_outer_seed_oss_labels_but_embedded_model_moonshotai_kimi_k2_instruct",
+      "promoted_manifest_image_gates": "passed_empty_findings",
+      "promoted_manifest_jq": "passed",
+      "promoted_manifest_upsert_dry_run": "passed",
+      "regional_mirror_digest_check": "passed_all_four_regions_match_vllm_digest",
+      "vllm_image_inspect": "passed_digest_sha256_a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9_cuda_13_0_2_arch_list_sm100_sm120_ptx"
+    },
+    "validation_20260605T05Z": {
+      "b200_us_central1_full_probe": {
+        "model_time_source": "client_wall_ms",
+        "node": "computeinstance-u00g1azra7vs54h1s4",
+        "persisted": true,
+        "pod": "forge-probe-bytedance-seed-oss-36b-i-b200-us-central1-bed996",
+        "report_json": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T05Z-b200.json",
+        "report_md": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T05Z-b200.md",
+        "request_ms_p50": 11068,
+        "request_ms_p95": 11070,
+        "request_ms_p99": 11070,
+        "request_ms_samples": 10,
+        "startup_ms": 59058,
+        "status": "supported",
+        "tokens_per_second": 82.4,
+        "vram_measured_gb": 156.18
+      },
+      "b200_us_central1_smoke_nonroot": {
+        "persisted": false,
+        "report_json": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T05Z-b200-smoke-nonroot.json",
+        "report_md": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T05Z-b200-smoke-nonroot.md",
+        "request_ms": 11069,
+        "startup_ms": 154046,
+        "status": "supported",
+        "tokens_per_second": 82.39,
+        "vram_measured_gb": 156.14
+      },
+      "b200_us_central1_smoke_pre_uid_gid": {
+        "failure_summary": "CreateContainerConfigError after image pull: container has runAsNonRoot and image will run as root.",
+        "fallback": "Added container_run_as_user=65532 and container_run_as_group=65532, plus versioned Forge vLLM cache paths, following the existing vLLM 0.22.0 Ministral manifest precedent.",
+        "report_json": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T05Z-b200-smoke.json",
+        "report_md": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T05Z-b200-smoke.md",
+        "status": "other_error"
+      },
+      "git_origin_main": "even_0_0_after_fetch",
+      "hf_api_metadata": "passed_public_ungated_apache2_revision_497f1dca95ebdec98e41d517b9f060ee753c902f_downloads_40027_likes_499",
+      "hf_config": "passed_seed_oss_bf16_no_remote_auto_map_524288_positions",
+      "hidden_live_upsert_initial": "passed_output_slug_only_status_onboarding_default_eligible_false_support_rows_0",
+      "manifest_runtime_refresh": "moved_from_vllm_0_21_0_to_already_mirrored_vllm_0_22_0_before_live_hidden_probe",
+      "non_root_runtime_override": {
+        "container_run_as_group": 65532,
+        "container_run_as_user": 65532,
+        "reason": "The stock vLLM OpenAI image defaults to root. Forge generated model pods enforce runAsNonRoot, so the hidden row must carry explicit non-root UID/GID runtime settings before a meaningful startup probe."
+      },
+      "regional_vllm_0_22_digest_check": "passed_all_four_active_regions_match_sha256_0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "upstream_vllm_0_22_image_inspect": "passed_digest_sha256_0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416_created_2026_05_29_cuda_13_0_2_build_799c3afa5d5b17b676d04e0b58a5628943bb4003"
+    },
+    "validation_20260605T06Z": {
+      "b300_dispatch_log_review": {
+        "architecture": "SeedOssForCausalLM",
+        "attention_backend": "FLASHINFER",
+        "cuda_graphs": "captured mixed prefill/decode and decode graphs",
+        "errors": "none observed in focused startup log review",
+        "gpu_kv_cache_tokens": 679216,
+        "kv_cache_layout": "HND",
+        "prefill_attention": "TRTLLM prefill attention auto-detected by FlashInfer",
+        "runtime": "vLLM 0.22.0",
+        "tool_call_parser": "seed_oss"
+      },
+      "b300_uk_south1_full_probe": {
+        "model_time_source": "client_wall_ms",
+        "node": "computeinstance-e03cdt2m6dscactrnd",
+        "persisted": true,
+        "pod": "forge-probe-bytedance-seed-oss-36b-i-b300-uk-south1-d9174b",
+        "report_json": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T06Z-b300.json",
+        "report_md": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T06Z-b300.md",
+        "request_ms_p50": 10973,
+        "request_ms_p95": 10974,
+        "request_ms_p99": 10974,
+        "request_ms_samples": 10,
+        "startup_ms": 119082,
+        "status": "supported",
+        "tokens_per_second": 83.11,
+        "vram_measured_gb": 234.81
+      },
+      "b300_uk_south1_smoke_keep": {
+        "cleanup": "retained smoke pod was deleted after log capture",
+        "model_time_source": "client_wall_ms",
+        "node": "computeinstance-e03n331ngk3v1z71a4",
+        "persisted": false,
+        "pod": "forge-probe-bytedance-seed-oss-36b-i-b300-uk-south1-b14a85",
+        "report_json": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T06Z-b300-smoke-keep.json",
+        "report_md": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T06Z-b300-smoke-keep.md",
+        "request_ms": 10984,
+        "startup_ms": 596363,
+        "status": "supported",
+        "tokens_per_second": 83.03,
+        "vram_measured_gb": 234.76
+      },
+      "git_origin_main": "even_0_0_after_fetch",
+      "h200_dispatch_log_review": {
+        "architecture": "SeedOssForCausalLM",
+        "attention_backend": "FLASH_ATTN",
+        "available_kv_cache_memory_gb": 53.56,
+        "cuda_graphs": "captured mixed prefill/decode and decode graphs",
+        "errors": "none observed in focused startup log review",
+        "gpu_kv_cache_tokens": 219360,
+        "max_concurrency_32768_tokens": 6.69,
+        "model_weight_memory_gb": 67.48,
+        "runtime": "vLLM 0.22.0",
+        "tool_call_parser": "seed_oss"
+      },
+      "h200_us_central1_full_probe": {
+        "model_time_source": "client_wall_ms",
+        "node": "computeinstance-u00n8zcsnbynzhnyxt",
+        "persisted": true,
+        "pod": "forge-probe-bytedance-seed-oss-36b-i-h200-us-central1-ff464c",
+        "report_json": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T06Z-h200.json",
+        "report_md": "docs/model-onboarding/general/bytedance-seed-oss-36b-instruct-vllm-cuda13-20260605T06Z-h200.md",
+        "request_ms_p50": 15974,
+        "request_ms_p95": 15983,
+        "request_ms_p99": 15983,
+        "request_ms_samples": 10,
+        "startup_ms": 82153,
+        "status": "supported",
+        "tokens_per_second": 57.09,
+        "vram_measured_gb": 122.18
+      },
+      "image_gates": "passed_empty_findings",
+      "live_manifest_upsert": "passed_output_slug_only_status_onboarding_default_eligible_false_b200_b300_h200_true",
+      "manifest_dry_run": "passed"
+    }
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "reasoning",
+    "agentic",
+    "code",
+    "tool_calling",
+    "long_context",
+    "seed_oss",
+    "bytedance",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "hidden_onboarding",
+    "text",
+    "general",
+    "openai_compatible",
+    "streaming"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 9219894117,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-01T20:09:33.027842+00:00",
+  "default_eligible": false,
+  "description": "Seed-OSS 36B Instruct is a public Apache-2.0 dense causal language model from ByteDance Seed for long-context reasoning, coding, agentic workflows, tool-use style prompts, and international English/Chinese usage. Hugging Face API metadata refreshed on 2026-06-05T05Z reports private=false, gated=false, disabled=false, pipeline_tag=text-generation, library_name=transformers, revision 497f1dca95ebdec98e41d517b9f060ee753c902f, lastModified 2025-08-26T02:33:00Z, 40,027 downloads, 499 likes, and 36,151,104,512 BF16 safetensors parameters. The upstream config reports SeedOssForCausalLM, model_type seed_oss, 64 layers, hidden size 5120, 80 attention heads, 8 KV heads, 524,288 max positions, BF16 weights, and no remote-code auto_map. The model card states Apache-2.0 licensing, 36B parameters, GQA, a 512K context, flexible thinking budget control, reasoning, agentic intelligence, and vLLM usage. vLLM latest documentation lists SeedOssForCausalLM with ByteDance-Seed/Seed-OSS-36B-Instruct as supported, and the Seed-OSS recipe recommends vLLM serving with --enable-auto-tool-choice and --tool-call-parser seed_oss while also warning that recent support may require main-branch bits. This hidden Forge manifest uses the already mirrored official vLLM 0.22.0 CUDA 13 image digest sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416, caps served context to 32768 for initial probes, sets explicit non-root UID/GID 65532 for the stock vLLM image, and clears unnecessary Hugging Face tokens because the artifact is public and ungated. Persisted probes now support B200/us-central1, B300/uk-south1, and H200/us-central1 with 3 warmups and 10 measured requests each. The B300/SM103 runtime selected SeedOssForCausalLM, the seed_oss tool parser, FLASHINFER attention, HND KV cache layout, TRTLLM prefill attention, CUDA graph capture, and a 679k-token GPU KV cache before serving HTTP 200 responses. The H200 runtime selected FLASH_ATTN, loaded 67.48 GiB of weights, allocated 53.56 GiB KV cache, exposed 219,360 GPU KV tokens, and completed HTTP 200 chat responses. L40S and RTX6000 remain false until their own probes validate startup, memory headroom, and kernel dispatch.",
+  "family_id": "54b15d54-2018-4f56-8d0a-1eaf5a5decc8",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "ByteDance-Seed/Seed-OSS-36B-Instruct",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "ByteDance-Seed/Seed-OSS-36B-Instruct",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.88",
+      "--max-num-seqs",
+      "4",
+      "--enable-auto-tool-choice",
+      "--tool-call-parser",
+      "seed_oss"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/forge-vllm/bytedance-seed-oss-36b-instruct/vllm-0.22.0-cuda13/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/forge-vllm/bytedance-seed-oss-36b-instruct/vllm-0.22.0-cuda13/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "LOGNAME": "forge",
+      "TORCHINDUCTOR_CACHE_DIR": "/opt/nim/.cache/forge-vllm/bytedance-seed-oss-36b-instruct/vllm-0.22.0-cuda13/torchinductor",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/forge-vllm/bytedance-seed-oss-36b-instruct/vllm-0.22.0-cuda13/huggingface/hub",
+      "USER": "forge",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/forge-vllm/bytedance-seed-oss-36b-instruct/vllm-0.22.0-cuda13/vllm",
+      "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+      "XDG_CACHE_HOME": "/opt/nim/.cache/forge-vllm/bytedance-seed-oss-36b-instruct/vllm-0.22.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 65532,
+    "container_run_as_user": 65532,
+    "min_gpus": 1,
+    "min_vram_gb": 96.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T05:17:19.007440+00:00",
+      "region": "us-central1",
+      "request_ms": 11068,
+      "request_ms_p50": 11068,
+      "request_ms_p95": 11070,
+      "request_ms_p99": 11070,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 59058,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 82.4,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 156.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 67.34
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T06:20:37.673323+00:00",
+      "region": "uk-south1",
+      "request_ms": 10973,
+      "request_ms_p50": 10973,
+      "request_ms_p95": 10974,
+      "request_ms_p99": 10974,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 119082,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 83.11,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 234.81,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 67.34
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T06:29:33.541942+00:00",
+      "region": "us-central1",
+      "request_ms": 15974,
+      "request_ms_p50": 15974,
+      "request_ms_p95": 15983,
+      "request_ms_p99": 15983,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 82153,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 57.09,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 122.18,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 67.34
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:model:terminated:Error",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T07:37:16.353410+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 67.34
+    }
+  ],
+  "gpu_type": null,
+  "id": "9bde1482-e3fb-4b77-8586-e51b756154be",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "bytedance-seed-oss-36b-instruct",
+  "name": "Seed-OSS 36B Instruct",
+  "parameter_count": 36151104512,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "chat_template_kwargs": {
+          "thinking_budget": "{{thinking_budget}}"
+        },
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": true,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "ByteDance-Seed/Seed-OSS-36B-Instruct"
+    },
+    "input_fields": [
+      {
+        "default": "You are helping review a pull request. Summarize the likely bug, propose the smallest safe fix, and list two tests to add.\n\nThe retry loop should try three times, but production logs show it exits after the first timeout.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "reasoning_chat",
+      "type": "streaming_text"
+    },
+    "parameter_controls": [
+      {
+        "default": 512,
+        "key": "thinking_budget",
+        "label": "Thinking Budget",
+        "max": 8192,
+        "min": 0,
+        "step": 512,
+        "type": "number"
+      },
+      {
+        "default": 0.7,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 768,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 4096,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 82,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "bytedance-seed-oss-36b-instruct-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "reasoning",
+    "agentic",
+    "coding",
+    "tool-calling",
+    "long-context",
+    "seed-oss",
+    "bytedance",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "hidden-onboarding"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.22.0-cuda13-hidden",
+  "version_description": "Hidden onboarding manifest for ByteDance Seed-OSS 36B Instruct served with the already mirrored vLLM 0.22.0 CUDA 13 OpenAI-compatible image. B200, B300, and H200 have persisted support rows; L40S and RTX6000 remain unproven. Keep onboarding/default-ineligible until the remaining matrix and the NVIDIA NIM image-label mismatch are resolved.",
+  "version_key": "vllm-0-22-0-cuda13-hidden",
+  "version_label": "vLLM 0.22.0 CUDA 13 Hidden"
+}

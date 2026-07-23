@@ -1,0 +1,159 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "690d23e139ebac49046dc188cb3c14103907212997f2e69bede6a4af9f65507b",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos Policy LIBERO 2B (FP8, Blackwell/Hopper)",
+  "domain": "physical-ai",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos-policy-libero-predict2-fp8/markdown?download=true",
+  "group": "physical-ai",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "physical-ai",
+    "nvidia-cosmos-policy-libero-predict2-fp8"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos-policy-libero-2b-nvfp4",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "put both the alphabet soup and the tomato sauce in the basket",
+      "fieldType": "textarea",
+      "key": "task_description",
+      "label": "Task Description",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "{\"use_sample_observation\": true}",
+      "fieldType": "json_editor",
+      "key": "observation",
+      "label": "Observation JSON",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 195,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "num_denoising_steps_action",
+      "label": "Denoising Steps",
+      "maximum": 32,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "proprio"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos-policy-libero-predict2-fp8\ndescription: Use the exact Forge model nvidia-cosmos-policy-libero-predict2-fp8 for text, image, proprio to json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos Policy LIBERO 2B (FP8, Blackwell/Hopper)\n\n- Model slug: `nvidia-cosmos-policy-libero-predict2-fp8`\n- Model family: `nvidia-cosmos-policy-libero-predict2`\n- Version: `fp8` (`fp8`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / physical-ai / nvidia-cosmos-policy-libero-predict2-fp8`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nFP8 dynamic-activation/weight variant of the LIBERO checkpoint using torchao Float8DynamicActivationFloat8WeightConfig(PerTensor) and torch.compile(max-autotune).\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos-policy-libero-predict2-fp8` version when the task supplies text, image, proprio and needs json.\n- FP8 dynamic-activation/weight variant of the LIBERO checkpoint using torchao Float8DynamicActivationFloat8WeightConfig(PerTensor) and torch.compile(max-autotune).\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'proprio'] \u2192 ['json'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `task_description` (textarea, optional): Task Description\n- `observation` (json_editor, optional): Observation JSON\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_denoising_steps_action` (number, optional; bounds 1..32): Denoising Steps\n\nRequest template:\n\n```json\n{\n  \"model\": \"{{model_slug}}\",\n  \"num_denoising_steps_action\": \"{{num_denoising_steps_action}}\",\n  \"observation\": \"{{observation}}\",\n  \"seed\": \"{{seed}}\",\n  \"task_description\": \"{{task_description}}\"\n}\n```\n\n## Exact output\n\n- `json`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos-policy-libero-2b-nvfp4`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos-policy-libero-predict2-fp8` with version key `fp8`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos-policy-libero-2b-nvfp4` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos-policy-libero-predict2-fp8`\n- Routes: `/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-fp8/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-fp8/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos Policy LIBERO 2B (FP8, Blackwell/Hopper) source](https://github.com/NVlabs/cosmos-policy) (repository)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos-policy-libero-predict2",
+    "modelUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-fp8",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos-policy-libero-predict2-fp8/markdown",
+  "modelFamily": "nvidia-cosmos-policy-libero-predict2",
+  "modelSlug": "nvidia-cosmos-policy-libero-predict2-fp8",
+  "modelUrl": "/v1/models/nvidia-cosmos-policy-libero-predict2-fp8",
+  "outputFields": [
+    "json"
+  ],
+  "outputModalities": [
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "FP8 dynamic-activation/weight variant of the LIBERO checkpoint using torchao Float8DynamicActivationFloat8WeightConfig(PerTensor) and torch.compile(max-autotune).",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-fp8/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "NVIDIA Cosmos Policy LIBERO 2B (FP8, Blackwell/Hopper) source",
+      "url": "https://github.com/NVlabs/cosmos-policy"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-fp8/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-fp8/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "model": "{{model_slug}}",
+    "num_denoising_steps_action": "{{num_denoising_steps_action}}",
+    "observation": "{{observation}}",
+    "seed": "{{seed}}",
+    "task_description": "{{task_description}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 2000000000,
+    "quantization": "fp8_da_w",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/NVlabs/cosmos-policy",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "policy",
+      "libero",
+      "cosmos",
+      "fp8",
+      "blackwell-optimized"
+    ],
+    "versionLabel": "FP8"
+  },
+  "shortDescription": "FP8 dynamic-activation/weight variant of the LIBERO checkpoint using torchao Float8DynamicActivationFloat8WeightConfig(PerTensor) and torch.compile(max-autotune).",
+  "skillName": "use-forge-nvidia-cosmos-policy-libero-predict2-fp8",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos-policy-libero-predict2-fp8",
+  "slug": "nvidia-cosmos-policy-libero-predict2-fp8",
+  "stability": "experimental",
+  "version": "fp8",
+  "versionKey": "fp8",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'proprio'] \u2192 ['json'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos-policy-libero-predict2-fp8` version when the task supplies text, image, proprio and needs json.",
+    "FP8 dynamic-activation/weight variant of the LIBERO checkpoint using torchao Float8DynamicActivationFloat8WeightConfig(PerTensor) and torch.compile(max-autotune).",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos-policy-libero-predict2-fp8` with version key `fp8`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos-policy-libero-2b-nvfp4` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "c5a23ba25221a74d28c75080ca3c7ca0e994c5a38241875e0b0321d1a0f14f08",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos Reason 2 (2B)",
+  "domain": "physical-ai",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos-reason2-2b/markdown?download=true",
+  "group": "physical-ai",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "physical-ai",
+    "nvidia-cosmos-reason2-2b"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/chat/completions",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Given a rainy dashcam clip, list the physical cues that show the road is wet and explain how they affect autonomous-driving perception.",
+      "fieldType": "chat_history",
+      "key": "messages",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "slider",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 256,
+      "fieldType": "slider",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "video"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos-reason2-2b\ndescription: Use the exact Forge model nvidia-cosmos-reason2-2b for text, image, video to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos Reason 2 (2B)\n\n- Model slug: `nvidia-cosmos-reason2-2b`\n- Model family: `nvidia-cosmos-reason2`\n- Version: `2b` (`2b`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / physical-ai / nvidia-cosmos-reason2-2b`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `nvidia-open-model-license`\n\n## Purpose\n\nDownloadable Cosmos Reason2 2B NIM for physical-world image/video reasoning.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos-reason2-2b` version when the task supplies text, image, video and needs text.\n- Downloadable Cosmos Reason2 2B NIM for physical-world image/video reasoning.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `messages` (chat_history, optional): Prompt\n- `temperature` (slider, optional; bounds 0..2): Temperature\n- `max_tokens` (slider, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": \"{{messages}}\",\n  \"model\": \"{{model_slug}}\",\n  \"stream\": true,\n  \"temperature\": \"{{temperature}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/chat/completions`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos-reason2-2b` with version key `2b`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/chat/completions` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos-reason2-2b`\n- Routes: `/v1/models/nvidia-cosmos-reason2-2b/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos-reason2-2b/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos-reason2-2b/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-reason2-2b/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-reason2-2b/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos Reason 2 (2B) source](https://build.nvidia.com/nvidia/cosmos-reason2-8b/modelcard) (model-card)\n",
+  "license": "nvidia-open-model-license",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos-reason2-2b/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos-reason2-2b/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos-reason2",
+    "modelUrl": "/v1/models/nvidia-cosmos-reason2-2b",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos-reason2-2b/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos-reason2-2b/markdown",
+  "modelFamily": "nvidia-cosmos-reason2",
+  "modelSlug": "nvidia-cosmos-reason2-2b",
+  "modelUrl": "/v1/models/nvidia-cosmos-reason2-2b",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Downloadable Cosmos Reason2 2B NIM for physical-world image/video reasoning.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-reason2-2b/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Cosmos Reason 2 (2B) source",
+      "url": "https://build.nvidia.com/nvidia/cosmos-reason2-8b/modelcard"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-reason2-2b/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/physical-ai/nvidia-cosmos-reason2-2b/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "max_tokens": "{{max_tokens}}",
+    "messages": "{{messages}}",
+    "model": "{{model_slug}}",
+    "stream": true,
+    "temperature": "{{temperature}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 2000000000,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/cosmos-reason2-8b/modelcard",
+    "tags": [
+      "physical-ai",
+      "reasoning",
+      "robotics",
+      "vision-language",
+      "video-understanding"
+    ],
+    "versionLabel": "2B"
+  },
+  "shortDescription": "Downloadable Cosmos Reason2 2B NIM for physical-world image/video reasoning.",
+  "skillName": "use-forge-nvidia-cosmos-reason2-2b",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos-reason2-2b",
+  "slug": "nvidia-cosmos-reason2-2b",
+  "stability": "testing",
+  "version": "2b",
+  "versionKey": "2b",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos-reason2-2b` version when the task supplies text, image, video and needs text.",
+    "Downloadable Cosmos Reason2 2B NIM for physical-world image/video reasoning.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos-reason2-2b` with version key `2b`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/chat/completions` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

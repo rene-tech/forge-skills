@@ -1,0 +1,155 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "4674a1830a3b705955df61aff290b520c8eb7bf9918b295f53643be215326df6",
+  "defaultEligible": false,
+  "displayName": "Use MedEmbed Base",
+  "domain": "biomedical-retrieval",
+  "downloadUrl": "/v1/model-skills/abhinand-medembed-base-v0-1-vllm-cuda13/markdown?download=true",
+  "group": "biomedical-retrieval",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-retrieval",
+    "abhinand-medembed-base-v0-1-vllm-cuda13"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Clinical retrieval query: What evidence supports statin therapy for primary prevention in adults with elevated cardiovascular risk?\n\nCandidate passage: Large randomized trials and meta-analyses report lower rates of major vascular events for statin therapy in appropriately selected adults, with absolute benefit depending on baseline risk.",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Medical or clinical text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "float"
+      ],
+      "default": "float",
+      "fieldType": "select",
+      "key": "encoding_format",
+      "label": "Encoding format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-only use acknowledged",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-abhinand-medembed-base-v0-1-vllm-cuda13\ndescription: Use the exact Forge model abhinand-medembed-base-v0-1-vllm-cuda13 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use MedEmbed Base\n\n- Model slug: `abhinand-medembed-base-v0-1-vllm-cuda13`\n- Model family: `abhinand-medembed-base`\n- Version: `hf-7a90c50-vllm-0.22.0-cuda13-pooling` (`hf-7a90c50-vllm-0-22-0-cuda13-pooling`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-retrieval / abhinand-medembed-base-v0-1-vllm-cuda13`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nMedEmbed Base is Abhinand Balachandran's Apache-2.0 sentence-transformers embedding model fine-tuned from BAAI/bge-base-en-v1.5 for medical and clinical information retrieval.\n\n## Use this exact model when\n\n- Use this exact `abhinand-medembed-base-v0-1-vllm-cuda13` version when the task supplies text and needs embedding.\n- MedEmbed Base is Abhinand Balachandran's Apache-2.0 sentence-transformers embedding model fine-tuned from BAAI/bge-base-en-v1.5 for medical and clinical information retrieval.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Medical or clinical text\n- `encoding_format` (select, optional): Encoding format\n- `research_use_acknowledgement` (checkbox, optional): Research-only use acknowledged\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"{{encoding_format}}\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `abhinand-medembed-base-v0-1-vllm-cuda13` with version key `hf-7a90c50-vllm-0-22-0-cuda13-pooling`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13`\n- Routes: `/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13/inference-routes`\n- Regional deployment: `/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13/regional-deployment`\n- Deployment handoff: `/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/abhinand-medembed-base-v0-1-vllm-cuda13/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/abhinand-medembed-base-v0-1-vllm-cuda13/SKILL.md\n\n## References\n\n- [MedEmbed Base source](https://huggingface.co/abhinand/MedEmbed-base-v0.1) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13/deploy",
+    "inferenceRoutesUrl": "/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/abhinand-medembed-base",
+    "modelUrl": "/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13",
+    "regionalDeploymentUrl": "/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/abhinand-medembed-base-v0-1-vllm-cuda13/markdown",
+  "modelFamily": "abhinand-medembed-base",
+  "modelSlug": "abhinand-medembed-base-v0-1-vllm-cuda13",
+  "modelUrl": "/v1/models/abhinand-medembed-base-v0-1-vllm-cuda13",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "MedEmbed Base is Abhinand Balachandran's Apache-2.0 sentence-transformers embedding model fine-tuned from BAAI/bge-base-en-v1.5 for medical and clinical information retrieval.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/abhinand-medembed-base-v0-1-vllm-cuda13/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "MedEmbed Base source",
+      "url": "https://huggingface.co/abhinand/MedEmbed-base-v0.1"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/abhinand-medembed-base-v0-1-vllm-cuda13/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-retrieval/abhinand-medembed-base-v0-1-vllm-cuda13/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "{{encoding_format}}",
+    "input": "{{input}}",
+    "model": "{{model_slug}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 109482240,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/abhinand/MedEmbed-base-v0.1",
+    "tags": [
+      "healthcare",
+      "life-science",
+      "medical",
+      "clinical",
+      "medical-literature",
+      "embedding",
+      "retrieval",
+      "rag",
+      "sentence-transformers",
+      "vllm",
+      "cuda13",
+      "blackwell",
+      "open-source",
+      "research-only"
+    ],
+    "versionLabel": "HF 7a90c50 via vLLM 0.22 CUDA 13 pooling"
+  },
+  "shortDescription": "MedEmbed Base is Abhinand Balachandran's Apache-2.0 sentence-transformers embedding model fine-tuned from BAAI/bge-base-en-v1.5 for medical and clinical information retrieval.",
+  "skillName": "use-forge-abhinand-medembed-base-v0-1-vllm-cuda13",
+  "skillUrl": "/v1/model-skills/abhinand-medembed-base-v0-1-vllm-cuda13",
+  "slug": "abhinand-medembed-base-v0-1-vllm-cuda13",
+  "stability": "testing",
+  "version": "hf-7a90c50-vllm-0.22.0-cuda13-pooling",
+  "versionKey": "hf-7a90c50-vllm-0-22-0-cuda13-pooling",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `abhinand-medembed-base-v0-1-vllm-cuda13` version when the task supplies text and needs embedding.",
+    "MedEmbed Base is Abhinand Balachandran's Apache-2.0 sentence-transformers embedding model fine-tuned from BAAI/bge-base-en-v1.5 for medical and clinical information retrieval.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `abhinand-medembed-base-v0-1-vllm-cuda13` with version key `hf-7a90c50-vllm-0-22-0-cuda13-pooling`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

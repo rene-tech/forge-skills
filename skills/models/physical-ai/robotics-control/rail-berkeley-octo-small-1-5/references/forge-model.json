@@ -1,0 +1,1025 @@
+{
+  "benchmark_scores": {
+    "action_clamp_b300_validation_20260529T210125Z": {
+      "action_stats_source": {
+        "gripper_dim": 6,
+        "gripper_max": 1.0,
+        "gripper_min": 0.0,
+        "path": "bridge_dataset.action",
+        "revision": "dc9aa3019f764726c770814b27e4ab0fc6e32a58",
+        "source": "https://huggingface.co/rail-berkeley/octo-small-1.5/resolve/dc9aa3019f764726c770814b27e4ab0fc6e32a58/dataset_statistics.json"
+      },
+      "cleanup": "Port-forward was stopped and the retained B300 probe pod was deleted; immediate follow-up showed the pod Terminating.",
+      "container": {
+        "compressed_size_bytes": 7799431104,
+        "digest": "sha256:04db30a3505c5526d414f74d6d849eba869a1d0944f90fca9320481820f95c42",
+        "local_image_id": "sha256:9b3f9b18034594fc56fd0dcca0967bc1918785fc78d5eb302e7c63833928df80",
+        "local_ref": "forge-local/forge-rail-berkeley-octo-small-1-5:wrapper-20260529t-current-action-clamp",
+        "regional_refs": {
+          "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:04db30a3505c5526d414f74d6d849eba869a1d0944f90fca9320481820f95c42",
+          "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:04db30a3505c5526d414f74d6d849eba869a1d0944f90fca9320481820f95c42",
+          "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:04db30a3505c5526d414f74d6d849eba869a1d0944f90fca9320481820f95c42",
+          "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260529t-current-action-clamp@sha256:04db30a3505c5526d414f74d6d849eba869a1d0944f90fca9320481820f95c42"
+        }
+      },
+      "decision": "b300_probe_and_static_bounds_passed_keep_manifest_image_on_prior_five_cell_digest",
+      "deterministic_argmax_check": {
+        "action_bounds_applied": true,
+        "query_time_ms": 389,
+        "response_sha256": "8fd0120d338ed92e3c5bf23835ee3de15f40b6d5cd749ee21dc72d4d19008896",
+        "strict_violation_count": 0,
+        "violations": [],
+        "within_bridge_dataset_action_min_max": true
+      },
+      "full_response_check": {
+        "action_bounds_applied": true,
+        "action_bounds_source": "bridge_dataset.action.min_max",
+        "action_convention": "octo_bridge_dataset_7d_action_horizon_4",
+        "dim_max": [
+          -0.00021145219216123223,
+          0.022838596254587173,
+          0.002252961043268442,
+          0.004837395157665014,
+          0.018679333850741386,
+          0.10023155063390732,
+          0.0009705583215691149
+        ],
+        "dim_min": [
+          -0.006969652604311705,
+          -0.0017766072414815426,
+          -0.001454682438634336,
+          -0.00828468706458807,
+          -0.008116980083286762,
+          -0.008563708513975143,
+          0.0
+        ],
+        "max": 0.10023155063390732,
+        "min": -0.008563708513975143,
+        "query_time_ms": 52,
+        "request": "default_playground_request",
+        "response_sha256": "cee93c87a03c93f139e0d10f46dd8c2d590398404e910c6cbb5c079980f280d2",
+        "shape": [
+          1,
+          4,
+          7
+        ],
+        "strict_violation_count": 0,
+        "violations": [],
+        "within_bridge_dataset_action_min_max": true
+      },
+      "manifest_image_promoted": false,
+      "next_required_gate": "Run retained action-clamp digest reprobes on RTX6000/us-central1, B200/us-central1, L40S/eu-north1, and H200/eu-north2, then complete simulator replay, HIL dry run, or external robot-policy safety signoff before publication.",
+      "probe": {
+        "cache_volume_mode": "emptyDir",
+        "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+        "gpu": "B300",
+        "model_time_source": "query_time_ms",
+        "node": "computeinstance-e03n331ngk3v1z71a4",
+        "persisted_support_row": true,
+        "pod": "forge-probe-rail-berkeley-octo-small-b300-uk-south1-24666b",
+        "region": "uk-south1",
+        "report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260529T210125Z-b300-action-clamp-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260529T210125Z-b300-action-clamp-probe.md",
+        "request_ms_p50": 46,
+        "request_ms_samples": [
+          50,
+          61,
+          46,
+          47,
+          50,
+          40,
+          46,
+          46,
+          45,
+          46
+        ],
+        "response_status": 200,
+        "startup_ms": 214248,
+        "status": "supported",
+        "vram_used_gb": 201.49,
+        "warmup_model_ms": [
+          15719,
+          128,
+          48
+        ]
+      },
+      "promotion_blocker": "The action-clamp digest has only B300/uk-south1 retained 3-warmup/10-run evidence. RTX6000/us-central1, B200/us-central1, L40S/eu-north1, and H200/eu-north2 still need retained reprobes before this digest replaces the manifest image.",
+      "publication_decision": "keep_hidden_onboarding",
+      "status": "b300_supported_strict_action_bounds_clear"
+    },
+    "artifact_files": {
+      "checkpoint": {
+        "path": "300000/default/checkpoint",
+        "sha256": "644b2d8102f6d2a3145243223a7f0cc77165486ff9da087af590d8f814152c50",
+        "size_bytes": 546696551
+      },
+      "config_json_size_bytes": 15062,
+      "dataset_statistics_json_size_bytes": 17259,
+      "example_batch_msgpack": {
+        "path": "example_batch.msgpack",
+        "sha256": "705a7a4edc67acaa2c0fffd24b6e8ba7f49f0b73676496a19e2ce73f57bb828e",
+        "size_bytes": 738353
+      }
+    },
+    "blocked_actions": [
+      "remaining_four_cell_action_clamp_reprobe",
+      "robot_policy_safety_validation",
+      "publish"
+    ],
+    "blockers": [
+      "Action-clamp digest sha256:04db30a3505c5526d414f74d6d849eba869a1d0944f90fca9320481820f95c42 has only B300/uk-south1 retained 3-warmup/10-run support; RTX6000/us-central1, B200/us-central1, L40S/eu-north1, and H200/eu-north2 still need retained reprobes before manifest-image promotion.",
+      "No simulator replay, HIL dry run, or external robot-policy safety signoff exists for the clamped action path."
+    ],
+    "checked_at": "2026-05-29T21:12:00Z",
+    "container_search_20260527T16Z": {
+      "checked_refs": [
+        {
+          "ref": "ghcr.io/octo-models/octo:latest",
+          "status": "denied",
+          "tool": "docker manifest inspect"
+        },
+        {
+          "ref": "docker.io/octo-models/octo:latest",
+          "status": "denied_or_unauthorized",
+          "tool": "docker manifest inspect"
+        }
+      ],
+      "fallback_decision": "Build a Forge-owned FastAPI/JAX wrapper. Keep all regional_container_images empty until a real immutable image digest exists.",
+      "official_serving_container_found": false
+    },
+    "hf_api_url": "https://huggingface.co/api/models/rail-berkeley/octo-small-1.5?blobs=true",
+    "hf_card_license": "mit",
+    "hf_last_modified": "2024-05-21T00:56:24.000Z",
+    "hf_library_name": "transformers",
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "rail-berkeley/octo-small-1.5",
+    "hf_model_private": false,
+    "hf_model_revision": "dc9aa3019f764726c770814b27e4ab0fc6e32a58",
+    "hf_pipeline_tag": "robotics",
+    "local_image_build_20260527T17Z": {
+      "dockerfile_change": "Switched the wrapper image from Python 3.10 plus silently ignored jax[cuda13] to Python 3.12 with an explicit jax-cuda13-plugin metadata check, then added missing Octo runtime dependencies dlimp, tensorflow-datasets, and tf-keras.",
+      "gpu_smoke": {
+        "docker_gpus_all": "nvidia-container-cli: initialization error: nvml error: driver not loaded",
+        "nvidia_smi": "NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver.",
+        "reason": "local nvidia driver unavailable",
+        "status": "not_run"
+      },
+      "image": "forge-local/rail-berkeley-octo-small-1-5:wrapper-build-20260527T17Z-cuda13-octoimport",
+      "image_id": "sha256:d62e465b033a1305f8844ffba5e2176d67fb5cd88cae3fda7c0a2f1f4a5d176d",
+      "non_gpu_smoke": {
+        "dlimp": "0.0.1",
+        "jax": "0.10.1",
+        "jax_cuda13_plugin": "0.10.1",
+        "jax_devices_without_nvidia_driver": [
+          "cpu:0"
+        ],
+        "octo_model_import_with_runtime_shim": "ok",
+        "routes_present": [
+          "/v1/health/ready",
+          "/v1/inference/rail-berkeley-octo-small-1-5",
+          "/v1/policies/rail-berkeley-octo-small-1-5/actions",
+          "/v1/policies/rail-berkeley-octo-small-1-5/reset"
+        ],
+        "status": "passed_with_expected_no_driver_cpu_fallback",
+        "tensorflow_datasets": "4.9.10",
+        "tf_keras": "2.21.0",
+        "unloaded_predict": "ModelNotReadyError model_not_loaded"
+      },
+      "repo_digests": [],
+      "size_bytes": 15341203481
+    },
+    "matrix_probe_20260528T07Z": {
+      "cache_volume_mode": "hostPath",
+      "cells": [
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "evidence_report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcurrent-rtx6000-us-jax-clip.md",
+          "gpu": "RTX6000",
+          "model_time_source": "query_time_ms",
+          "region": "us-central1",
+          "request_ms_p50": 51,
+          "request_ms_samples": [
+            50,
+            46,
+            61,
+            56,
+            53,
+            46,
+            52,
+            47,
+            50,
+            54
+          ],
+          "startup_ms": 26905,
+          "status": "supported",
+          "vram_used_gb": 71.88
+        },
+        {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "evidence_report_md": "docs/supervisor/model-candidates/physical-ai-20260528T03Z.md",
+          "gpu": "B200",
+          "model_time_source": "query_time_ms",
+          "region": "us-central1",
+          "request_ms_p50": 38,
+          "request_ms_samples": [
+            39,
+            37,
+            35,
+            39,
+            38,
+            42,
+            40,
+            35,
+            39,
+            37
+          ],
+          "startup_ms": 313202,
+          "status": "supported",
+          "vram_used_gb": 134.49
+        },
+        {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "evidence_report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcycle-worker-l40s-eu-north1.json",
+          "evidence_report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcycle-worker-l40s-eu-north1.md",
+          "gpu": "L40S",
+          "model_time_source": "query_time_ms",
+          "region": "eu-north1",
+          "request_ms_p50": 39,
+          "request_ms_samples": [
+            39,
+            39,
+            39,
+            39,
+            39,
+            38,
+            38,
+            39,
+            38,
+            38
+          ],
+          "startup_ms": 22571,
+          "status": "supported",
+          "vram_used_gb": 33.74
+        },
+        {
+          "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+          "evidence_report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcycle-worker-h200-eu-north2.json",
+          "evidence_report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcycle-worker-h200-eu-north2.md",
+          "gpu": "H200",
+          "model_time_source": "query_time_ms",
+          "region": "eu-north2",
+          "request_ms_p50": 32,
+          "request_ms_samples": [
+            32,
+            119,
+            33,
+            32,
+            33,
+            32,
+            32,
+            33,
+            31,
+            32
+          ],
+          "startup_ms": 298377,
+          "status": "supported",
+          "vram_used_gb": 105.47
+        },
+        {
+          "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+          "evidence_report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcycle-worker-b300-uk-south1.json",
+          "evidence_report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcycle-worker-b300-uk-south1.md",
+          "gpu": "B300",
+          "model_time_source": "query_time_ms",
+          "region": "uk-south1",
+          "request_ms_p50": 44,
+          "request_ms_samples": [
+            39,
+            55,
+            47,
+            38,
+            42,
+            42,
+            50,
+            52,
+            47,
+            41
+          ],
+          "startup_ms": 277707,
+          "status": "supported",
+          "vram_used_gb": 201.48
+        }
+      ],
+      "cleanup": "L40S cleaned normally. B300 cleaned normally after wait. H200 remained Terminating after the probe and was force-deleted by exact pod name; follow-up label checks returned no probe pods.",
+      "digest": "sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+      "new_support_rows_upserted": [
+        "L40S/eu-north1",
+        "H200/eu-north2",
+        "B300/uk-south1"
+      ],
+      "status": "five_cell_supported"
+    },
+    "model_spec": {
+      "action_dim": 7,
+      "action_horizon": 4,
+      "history_window": 2,
+      "language_encoder": "t5-base",
+      "parameters": 27000000,
+      "policy_head": "DiffusionActionHead",
+      "primary_image_shape": [
+        256,
+        256,
+        3
+      ],
+      "reported_inference_on_4090": "17 it/sec",
+      "wrist_image_shape": [
+        128,
+        128,
+        3
+      ]
+    },
+    "onboarding_state": "action_clamp_digest_b300_supported_safety_clear_pending_remaining_four_cell_reprobe_and_robot_policy_signoff",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "registry_push_mirror_20260527T19Z": {
+      "commands": [
+        "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/release_model_wrapper.py --image-name forge-rail-berkeley-octo-small-1-5 --dockerfile services/models/physical-ai/rail_berkeley_octo_small_1_5/Dockerfile --skip-build --source-ref forge-local/rail-berkeley-octo-small-1-5:wrapper-build-20260527T19Z-jax-tree-map --tag wrapper-20260527t19z-jax-tree-map --region us-central1",
+        "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/mirror_via_k8s_job.py --upstream cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260527t19z-jax-tree-map@sha256:5ac8bd366eda9185f65ae40a218c4a6e39221780b381fbc8399c5e321f13e530 --only-region eu-north1 --only-region eu-north2 --only-region uk-south1 --wait --timeout 2400"
+      ],
+      "digest": "sha256:5ac8bd366eda9185f65ae40a218c4a6e39221780b381fbc8399c5e321f13e530",
+      "image_id": "sha256:d62e465b033a1305f8844ffba5e2176d67fb5cd88cae3fda7c0a2f1f4a5d176d",
+      "live_health_preflight": {
+        "registry_secrets_seen": [
+          "nebius-cr-credentials",
+          "forge-mirror-registry-creds"
+        ],
+        "us_forge_models_active_nonterminal_pods": "No resources found in forge-models namespace.",
+        "us_gpu_nodes_seen": [
+          "gpu-h200-sxm",
+          "gpu-rtx6000"
+        ]
+      },
+      "manifest_media_type": "application/vnd.docker.distribution.manifest.v2+json",
+      "mirrored_regions": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:5ac8bd366eda9185f65ae40a218c4a6e39221780b381fbc8399c5e321f13e530",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:5ac8bd366eda9185f65ae40a218c4a6e39221780b381fbc8399c5e321f13e530",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:5ac8bd366eda9185f65ae40a218c4a6e39221780b381fbc8399c5e321f13e530",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260527t19z-jax-tree-map@sha256:5ac8bd366eda9185f65ae40a218c4a6e39221780b381fbc8399c5e321f13e530"
+      },
+      "note": "Non-US mirror tag lookups returned not found after digest-copy, so non-US regional_container_images are pinned as digest-only repository references.",
+      "pushed_us_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260527t19z-jax-tree-map",
+      "size_bytes": 15341203481,
+      "source_local_image": "forge-local/rail-berkeley-octo-small-1-5:wrapper-build-20260527T19Z-jax-tree-map"
+    },
+    "registry_push_mirror_20260527T21Z": {
+      "blocked_next_step": "Run retained RTX6000/us-central1 checkpoint-load/action smoke against this 21Z digest, then run 3 warmups and 10 measured requests before any support or publication claim.",
+      "commands": [
+        "skopeo copy docker-daemon:forge-local/rail-berkeley-octo-small-1-5:wrapper-build-20260527T20Z-transformers-flax docker://cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260527t20z-transformers-flax",
+        "in-cluster crane copy jobs from the us-central1 ref to eu-north1, eu-north2, and uk-south1 completed"
+      ],
+      "config_digest": "sha256:8677278ca01972f071974b292bbe85bd058839c256e0f4da3732ce0682ab439a",
+      "digest": "sha256:5610f4699398ba2cb098072ab8040d05d190a91cbec62832150ccbbc5ffeb2df",
+      "fix": "Pin transformers==4.47.1 so Octo can import FlaxAutoModel and FlaxT5EncoderModel while retaining the 19Z JAX tree_map compatibility shim.",
+      "image_created": "2026-05-27T20:08:31.798739428Z",
+      "manifest_media_type": "application/vnd.docker.distribution.manifest.v2+json",
+      "mirrored_regions": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5:wrapper-20260527t20z-transformers-flax@sha256:5610f4699398ba2cb098072ab8040d05d190a91cbec62832150ccbbc5ffeb2df",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5:wrapper-20260527t20z-transformers-flax@sha256:5610f4699398ba2cb098072ab8040d05d190a91cbec62832150ccbbc5ffeb2df",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5:wrapper-20260527t20z-transformers-flax@sha256:5610f4699398ba2cb098072ab8040d05d190a91cbec62832150ccbbc5ffeb2df",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260527t20z-transformers-flax@sha256:5610f4699398ba2cb098072ab8040d05d190a91cbec62832150ccbbc5ffeb2df"
+      },
+      "pushed_us_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260527t20z-transformers-flax",
+      "size_bytes": 7797660637,
+      "source_local_image": "forge-local/rail-berkeley-octo-small-1-5:wrapper-build-20260527T20Z-transformers-flax"
+    },
+    "registry_push_mirror_20260528T02Z": {
+      "commands": [
+        "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/release_model_wrapper.py --image-name forge-rail-berkeley-octo-small-1-5 --dockerfile services/models/physical-ai/rail_berkeley_octo_small_1_5/Dockerfile --tag wrapper-20260528t-current-jax-clip --build-only",
+        "skopeo copy docker-daemon:forge-local/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip docker://cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip",
+        "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/mirror_via_k8s_job.py --upstream cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2 --only-region eu-north1 --only-region eu-north2 --only-region uk-south1 --wait --timeout 2400"
+      ],
+      "config_digest": "sha256:73e3843350309b01f1f4d4b9f49742d23a40cc06b8b7d6fae688eca1e0d43125",
+      "digest": "sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+      "fix": "Install a wrapper-level JAX compatibility shim that maps legacy jnp.clip(a_min=..., a_max=...) calls to current JAX min/max kwargs for the Transformers Flax T5 path used by OctoModel.load_pretrained.",
+      "image_created": "2026-05-28T02:06:05.933274677Z",
+      "local_smoke": {
+        "flax_t5_smoke_shape": [
+          1,
+          4,
+          8
+        ],
+        "legacy_clip_result": 3,
+        "octo_model_import_with_runtime_shim": "ok"
+      },
+      "manifest_media_type": "application/vnd.docker.distribution.manifest.v2+json",
+      "mirrored_regions": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2"
+      },
+      "note": "The first docker push was stopped after it hung before manifest publication; skopeo copy published the visible digest.",
+      "pushed_us_ref": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip",
+      "size_bytes": 7799022022,
+      "source_local_image": "forge-local/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip"
+    },
+    "retained_gpu_smoke_20260527T19Z": {
+      "cell": {
+        "gpu": "RTX6000",
+        "node": "computeinstance-u00q2bv4rkq7sth2vf",
+        "region": "us-central1"
+      },
+      "evidence_report": "docs/supervisor/workers/physical-ai-onboarding-20260527T19Z.md",
+      "failure": "OctoModel.load_pretrained raised AttributeError: module 'jax' has no attribute 'tree_map'.",
+      "fix": {
+        "changed_path": "services/models/physical-ai/rail_berkeley_octo_small_1_5/octo_wrapper/runtime.py",
+        "patched_digest": "sha256:5ac8bd366eda9185f65ae40a218c4a6e39221780b381fbc8399c5e321f13e530",
+        "patched_local_image": "forge-local/rail-berkeley-octo-small-1-5:wrapper-build-20260527T19Z-jax-tree-map",
+        "status": "patched_pushed_mirrored",
+        "test_path": "tests/test_physical_ai_octo_wrapper.py"
+      },
+      "initial_digest": "sha256:5c9b52a4a57f1b3d43ba1539e964069f1af7af97ce2b8aa088645bc673444250",
+      "patched_reprobe": {
+        "failure": "RuntimeError: pod_start_failure:pod_failed",
+        "gpu": "RTX6000",
+        "region": "us-central1",
+        "report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260527T19Z-rtx6000-us-patched-keep.json",
+        "report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260527T19Z-rtx6000-us-patched-keep.md",
+        "status": "other_error"
+      },
+      "pull_result": "Pinned us-central1 image pulled successfully in 4m47.46s; kubelet reported image size 7641607111 bytes.",
+      "startup_result": "failed_before_ready"
+    },
+    "retained_gpu_smoke_20260527T22Z": {
+      "benchmark_result": {
+        "benchmark_runs_requested": 10,
+        "completed_benchmark_samples": 0,
+        "reason": "pod never became ready",
+        "warmup_runs_requested": 3
+      },
+      "cell": {
+        "cluster_id": "mk8scluster-u00eyp43c8have384b",
+        "gpu": "RTX6000",
+        "node": "computeinstance-u00q2bv4rkq7sth2vf",
+        "pod": "forge-probe-rail-berkeley-octo-small-rtx6000-us-central1-a9d84f",
+        "region": "us-central1"
+      },
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug rail-berkeley-octo-small-1-5 --include-status onboarding --gpu RTX6000 --region us-central1 --container-image-override cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260527t20z-transformers-flax@sha256:5610f4699398ba2cb098072ab8040d05d190a91cbec62832150ccbbc5ffeb2df --timeout 2400 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --keep-pods --report-json docs/model-onboarding/physical-ai/octo-small-1-5-20260527T22Z-rtx6000-us-10run.json --report-md docs/model-onboarding/physical-ai/octo-small-1-5-20260527T22Z-rtx6000-us-10run.md",
+      "digest": "sha256:5610f4699398ba2cb098072ab8040d05d190a91cbec62832150ccbbc5ffeb2df",
+      "evidence_report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260527T22Z-rtx6000-us-startup-blocker.json",
+      "evidence_report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260527T22Z-rtx6000-us-startup-blocker.md",
+      "failure": "OctoModel.load_pretrained reached FlaxT5EncoderModel initialization, then transformers.models.t5.modeling_flax_t5 called jnp.clip(relative_position_if_large, a_max=num_buckets - 1), which raised TypeError: clip() got an unexpected keyword argument 'a_max' under the current JAX runtime.",
+      "manifest_decision": "Keep status=onboarding, default_eligible=false, and all gpu_compatibility cells false. Do not publish until a rebuilt digest passes checkpoint-load/action smoke and 3-warmup/10-run benchmark.",
+      "pull_result": "Pinned us-central1 image pulled successfully in 3m44.631s; kubelet reported image size 7797687519 bytes.",
+      "startup_result": "failed_before_ready"
+    },
+    "retained_gpu_smoke_20260528T02Z": {
+      "cell": {
+        "cluster_id": "mk8scluster-u00eyp43c8have384b",
+        "gpu": "RTX6000",
+        "node": "computeinstance-u00q2bv4rkq7sth2vf",
+        "pod": "forge-probe-rail-berkeley-octo-small-rtx6000-us-central1-887f25",
+        "region": "us-central1"
+      },
+      "cleanup": "probe pod removed; forge-models had no rail-berkeley-octo-small-1-5 probe pod after completion",
+      "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug rail-berkeley-octo-small-1-5 --include-status onboarding --gpu RTX6000 --region us-central1 --container-image-override cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2 --timeout 2400 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --report-json docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcurrent-rtx6000-us-jax-clip.json --report-md docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcurrent-rtx6000-us-jax-clip.md",
+      "digest": "sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+      "evidence_report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcurrent-rtx6000-us-jax-clip.json",
+      "evidence_report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260528Tcurrent-rtx6000-us-jax-clip.md",
+      "model_time_source": "query_time_ms",
+      "request_ms_p50": 51,
+      "request_ms_samples": [
+        50,
+        46,
+        61,
+        56,
+        53,
+        46,
+        52,
+        47,
+        50,
+        54
+      ],
+      "response_status": 200,
+      "startup_ms": 26905,
+      "status": "supported",
+      "vram_used_gb": 71.88,
+      "warmup_model_ms": [
+        21644,
+        141,
+        56
+      ]
+    },
+    "robot_policy_safety_preflight_20260529T18Z": {
+      "action_stats_source": {
+        "gripper_dim": 6,
+        "gripper_max": 1.0,
+        "gripper_min": 0.0,
+        "path": "bridge_dataset.action",
+        "revision": "dc9aa3019f764726c770814b27e4ab0fc6e32a58",
+        "source": "https://huggingface.co/rail-berkeley/octo-small-1.5/resolve/dc9aa3019f764726c770814b27e4ab0fc6e32a58/dataset_statistics.json"
+      },
+      "cleanup": "Port-forward was stopped and the retained B300 probe pod was deleted; follow-up label check returned no Octo probe pods.",
+      "decision": "preflight_executed_publish_blocked",
+      "deterministic_argmax_check": {
+        "query_time_ms": 409,
+        "response_sha256": "4b1d6f372f73207ff58848005617b1411f3a3a70d18657f6f15c4dbe779024bd",
+        "result": "same_action_bounds_failure"
+      },
+      "full_response_check": {
+        "action_convention": "octo_bridge_dataset_7d_action_horizon_4",
+        "finite": true,
+        "max": 0.0999261885881424,
+        "max_abs": 0.0999261885881424,
+        "max_abs_z_score": 1.6784908528393567,
+        "max_delta_dim": 5,
+        "max_delta_step": 2,
+        "max_single_step_abs_delta": 0.08870646264404058,
+        "max_z_dim": 1,
+        "max_z_step": 3,
+        "min": -0.009904737584292889,
+        "query_time_ms": 58,
+        "request": "default_playground_request",
+        "response_sha256": "1056c05ea672a864750fcd60c38d49e697bbb6ac1021153b6eabc92fbc249043",
+        "shape": [
+          1,
+          4,
+          7
+        ],
+        "violations": [
+          {
+            "dim": 6,
+            "max": 1.0,
+            "min": 0.0,
+            "step": 1,
+            "value": -0.0022365006152540445
+          },
+          {
+            "dim": 6,
+            "max": 1.0,
+            "min": 0.0,
+            "step": 2,
+            "value": -0.008084540255367756
+          },
+          {
+            "dim": 6,
+            "max": 1.0,
+            "min": 0.0,
+            "step": 3,
+            "value": -0.009904737584292889
+          }
+        ],
+        "within_bridge_dataset_action_min_max": false
+      },
+      "next_required_gate": "Add and benchmark an explicit gripper/action-bounds clamp or run simulator/HIL safety validation before publication.",
+      "probe": {
+        "cache_volume_mode": "emptyDir",
+        "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+        "failed_hostpath_reason": "Kubernetes ApiException 403 before pod creation; fallback used emptyDir cache volumes.",
+        "failed_hostpath_report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260529T18Z-b300-safety-probe.json",
+        "failed_hostpath_report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260529T18Z-b300-safety-probe.md",
+        "failed_hostpath_status": "other_error",
+        "first_request_model_ms": 16769,
+        "gpu": "B300",
+        "model_time_source": "query_time_ms",
+        "node": "computeinstance-e03n331ngk3v1z71a4",
+        "pod": "forge-probe-rail-berkeley-octo-small-b300-uk-south1-f60157",
+        "region": "uk-south1",
+        "report_json": "docs/model-onboarding/physical-ai/octo-small-1-5-20260529T18Z-b300-ephemeral-safety-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/octo-small-1-5-20260529T18Z-b300-ephemeral-safety-probe.md",
+        "response_status": 200,
+        "startup_ms": 272505,
+        "vram_used_gb": 201.49
+      },
+      "publication_decision": "keep_hidden_onboarding",
+      "status": "failed_strict_action_bounds_gripper_underflow"
+    },
+    "selected_candidate": "rail-berkeley/octo-small-1.5",
+    "selected_reason": "Recent docs-only Octo draft had clean MIT license evidence and was blocked on lack of a Forge wrapper; SpatialVLA was not safe to mirror or probe because license inheritance remains unresolved.",
+    "source_repo": "https://github.com/octo-models/octo",
+    "source_repo_license": "MIT",
+    "source_repo_license_file": "https://raw.githubusercontent.com/octo-models/octo/main/LICENSE",
+    "source_repo_license_sha": "239522dcb0271245b5486e598a98737d445b3cd6",
+    "source_repo_main_commit": "241fb3514b7c40957a86d869fecb7c7fc353f540",
+    "source_repo_pushed_at": "2024-07-31T00:26:15Z",
+    "source_repo_updated_at": "2026-05-29T08:27:21Z",
+    "source_repo_v1_5_tag": "5eaa5c6960398925ae6f52ed072d843d2f3ecb0b",
+    "wrapper_scaffold_20260527T16Z": {
+      "build_status": "local_cuda13_image_built",
+      "dockerfile": "services/models/physical-ai/rail_berkeley_octo_small_1_5/Dockerfile",
+      "mirror_status": "completed_20260527T19Z",
+      "probe_status": "five_cell_supported_20260528T07Z",
+      "routes": [
+        "/v1/health/ready",
+        "/v1/inference/rail-berkeley-octo-small-1-5",
+        "/v1/policies/rail-berkeley-octo-small-1-5/actions",
+        "/v1/policies/rail-berkeley-octo-small-1-5/reset"
+      ],
+      "runtime": "services/models/physical-ai/rail_berkeley_octo_small_1_5/octo_wrapper/runtime.py",
+      "runtime_contract": {
+        "input": "language instruction, two-frame primary camera history, optional two-frame wrist camera history, stats_key",
+        "model_call": "OctoModel.sample_actions(observation, task, unnormalization_statistics=model.dataset_statistics[stats_key]['action'])",
+        "output": "robotics_trace JSON with actions, action shape, observation summary, and query_time_ms"
+      },
+      "runtime_stack_candidate": {
+        "base_image": "nvidia/cuda:13.0.0-cudnn-runtime-ubuntu24.04",
+        "dlimp": "0.0.1 at 5edaa4691567873d495633f2708982b42edf1972",
+        "jax_cuda13_plugin": "0.10.1",
+        "jax_install": "jax[cuda13]",
+        "jax_version": "0.10.1",
+        "octo_source_commit": "5eaa5c6960398925ae6f52ed072d843d2f3ecb0b",
+        "octo_source_tag": "v1.5",
+        "python": "3.12",
+        "risk": "The CUDA 13 stack now passes retained 3-warmup/10-run checkpoint-load/action probes across RTX6000, B200, L40S, H200, and B300. Keep hidden until robot-policy safety validation is complete.",
+        "tensorflow_datasets": "4.9.10",
+        "tf_keras": "2.21.0"
+      },
+      "service_dir": "services/models/physical-ai/rail_berkeley_octo_small_1_5",
+      "status": "source_scaffolded_not_built"
+    }
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "diffusion_policy",
+    "generalist_robot_policy",
+    "open_x_embodiment",
+    "jax",
+    "cuda13",
+    "blackwell_candidate",
+    "forge_wrapper_candidate",
+    "regional_image_mirrored",
+    "text",
+    "vision",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5:wrapper-20260528t-current-jax-clip@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+  "container_image_size_bytes": 7799022022,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-05T17:59:17.148202+00:00",
+  "default_eligible": false,
+  "description": "Octo Small 1.5 is a 27M-parameter transformer-based generalist robot policy trained on a mix of Open X-Embodiment robot datasets. It consumes language-conditioned primary and wrist camera observations with a history window up to two timesteps and predicts 7D robot actions four steps into the future through a diffusion policy. This Forge row is hidden because the patched digest has retained 3-warmup/10-run support on RTX6000, B200, L40S, H200, and B300, while the newer action-clamp digest has so far cleared B300/uk-south1 with 3 warmups, 10 measured requests, and strict Bridge action-bounds checks. Keep hidden until the action-clamp digest completes the remaining four-cell reprobe and robot-policy safety clearance through simulator replay, HIL dry run, or external signoff.",
+  "family_id": "882a2e17-dc56-423c-8444-9b7887444038",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/rail-berkeley/octo-small-1.5",
+      "FORGE_MODEL_ID": "rail-berkeley/octo-small-1.5",
+      "FORGE_MODEL_REVISION": "dc9aa3019f764726c770814b27e4ab0fc6e32a58",
+      "FORGE_MODEL_SLUG": "rail-berkeley-octo-small-1-5",
+      "HF_HOME": "/mnt/data/forge-weights/rail-berkeley/octo-small-1.5/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/rail-berkeley/octo-small-1.5/huggingface/hub",
+      "JAX_COMPILATION_CACHE_DIR": "/mnt/data/forge-weights/rail-berkeley/octo-small-1.5/jax-cache",
+      "JAX_ENABLE_COMPILATION_CACHE": "true",
+      "OCTO_ACTION_DIM": "7",
+      "OCTO_ACTION_HORIZON": "4",
+      "OCTO_DEFAULT_STATS_NAME": "bridge_dataset",
+      "OCTO_DEVICE": "cuda",
+      "OCTO_HISTORY_WINDOW": "2",
+      "OCTO_IMAGE_PRIMARY_SIZE": "256",
+      "OCTO_IMAGE_WRIST_SIZE": "128",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/rail-berkeley/octo-small-1.5/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T00:09:13.997755+00:00",
+      "region": "us-central1",
+      "request_ms": 38,
+      "request_ms_p50": 38,
+      "request_ms_p95": 42,
+      "request_ms_p99": 42,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 243031,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 134.49,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-29T21:07:19.096753+00:00",
+      "region": "uk-south1",
+      "request_ms": 46,
+      "request_ms_p50": 47,
+      "request_ms_p95": 59,
+      "request_ms_p99": 11757,
+      "request_ms_samples": 31,
+      "startup_ms_first": null,
+      "startup_ms_probe": 214248,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 201.49,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-05-13T00:59:41.145466+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-30T00:09:14.643768+00:00",
+      "region": "eu-north2",
+      "request_ms": 32,
+      "request_ms_p50": 33,
+      "request_ms_p95": 84,
+      "request_ms_p99": 120,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 236571,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 105.47,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: model catalog marks H200 unsupported",
+      "last_failed_at": "2026-05-13T00:59:41.145466+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 1,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-30T00:09:35.064499+00:00",
+      "region": "eu-north1",
+      "request_ms": 40,
+      "request_ms_p50": 40,
+      "request_ms_p95": 43,
+      "request_ms_p99": 45,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 255965,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 33.75,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-28T02:12:18.754561+00:00",
+      "region": "us-central1",
+      "request_ms": 51,
+      "request_ms_p50": 51,
+      "request_ms_p95": 59,
+      "request_ms_p99": 61,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 26905,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 71.88,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "eed5246e-1f9d-4193-991a-5db6d78ac5ed",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "rail-berkeley-octo",
+  "name": "RAIL Berkeley Octo Small",
+  "parameter_count": 27000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "argmax": "{{argmax}}",
+        "image_primary_t": "{{image_primary_t}}",
+        "image_primary_t_minus_1": "{{image_primary_t_minus_1}}",
+        "image_wrist_t": "{{image_wrist_t}}",
+        "image_wrist_t_minus_1": "{{image_wrist_t_minus_1}}",
+        "language_instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "num_samples": "{{num_samples}}",
+        "stats_key": "{{stats_key}}",
+        "temperature": "{{temperature}}"
+      },
+      "endpoint": "/v1/inference/rail-berkeley-octo-small-1-5",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "pick up the spoon",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+        "key": "image_primary_t_minus_1",
+        "label": "Primary Image T-1",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+        "key": "image_primary_t",
+        "label": "Primary Image T",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+        "key": "image_wrist_t_minus_1",
+        "label": "Wrist Image T-1",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+        "key": "image_wrist_t",
+        "label": "Wrist Image T",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": "bridge_dataset",
+        "key": "stats_key",
+        "label": "Action Statistics",
+        "options": [
+          "bridge_dataset"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 1,
+        "key": "num_samples",
+        "label": "Samples",
+        "max": 4,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": false,
+        "key": "argmax",
+        "label": "Deterministic",
+        "type": "checkbox"
+      },
+      {
+        "default": 1.0,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2.0,
+        "min": 0.1,
+        "step": 0.1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "jax-checkpoint",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/u00xf2pqq3cr2q8xsz-models-forge-rail-berkeley-octo-small-1-5@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-rail-berkeley-octo-small-1-5@sha256:ff50c14c8f52c3d9e50a240fa104260710f8a61901fed271e38d4d88af5630a2"
+  },
+  "release_rank": 500,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "rail-berkeley-octo-small-1-5",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/rail-berkeley/octo-small-1.5",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "diffusion-policy",
+    "generalist-robot-policy",
+    "open-x-embodiment",
+    "jax",
+    "cuda13",
+    "blackwell-candidate",
+    "forge-wrapper-candidate",
+    "regional-image-mirrored"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "small-1.5-cuda13-jax-clip-20260528tcurrent",
+  "version_description": "Hidden onboarding manifest for rail-berkeley/octo-small-1.5, a MIT-licensed Octo generalist robot policy checkpoint. The artifact is public, ungated, and source-backed by an MIT GitHub repository. The 2026-05-28 current pass added a wrapper-level JAX compatibility shim for legacy a_min/a_max jnp.clip keyword calls used by Transformers' Flax T5 path, verified the shim in-container with a minimal Flax T5 smoke, pushed and mirrored the patched CUDA 13 digest into all Forge regions, and passed retained 3-warmup/10-run checkpoint-load/action probes on RTX6000/us-central1, B200/us-central1, L40S/eu-north1, H200/eu-north2, and B300/uk-south1. The 2026-05-29T18Z B300 no-actuation static safety preflight reached the runtime and captured a finite 1x4x7 action chunk, but strict Bridge action-bounds review found a small gripper-channel underflow. The 2026-05-29T210125Z pass then validated the new action-clamp digest on B300/uk-south1 with 3 warmups, 10 measured requests, and strict Bridge bounds checks with zero violations. Keep hidden and keep the manifest image on the prior five-cell digest until the action-clamp digest completes remaining RTX6000, B200, L40S, and H200 reprobes plus simulator, HIL, or external robot-policy safety signoff.",
+  "version_key": "small-1-5",
+  "version_label": "Small 1.5 CUDA 13 JAX clip shim wrapper"
+}

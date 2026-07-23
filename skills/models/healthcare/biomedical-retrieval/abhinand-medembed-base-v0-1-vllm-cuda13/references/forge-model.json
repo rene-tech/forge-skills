@@ -1,0 +1,692 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/abhinand/MedEmbed-base-v0.1",
+    "artifact_checked_at": "2026-05-30T02:06:13Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "hidden_size": 768,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pooling": "cls",
+      "pooling_normalized": true,
+      "torch_dtype": "float32",
+      "vocab_size": 30522
+    },
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 77300,
+    "artifact_evidence": "Hugging Face API returned private=false, gated=false, disabled=false, cardData.license=apache-2.0, library_name=sentence-transformers, revision 7a90c50263f620dff743eb9794b89a42bfc5d765, and safetensors total 109,482,240 F32 parameters. Raw files show tokenizer.json, model.safetensors, 1_Pooling/config.json with pooling_mode_cls_token=true, and modules.json entries Transformer, Pooling, and Normalize.",
+    "artifact_gated": false,
+    "artifact_last_modified": "2024-10-21T06:49:35.000Z",
+    "artifact_license": "apache-2.0",
+    "artifact_likes_observed": 19,
+    "artifact_parameters": {
+      "F32": 109482240,
+      "total": 109482240
+    },
+    "artifact_private": false,
+    "artifact_recheck_20260602T01Z": {
+      "checked_at": "2026-06-02T01:05:34Z",
+      "config": {
+        "architectures": [
+          "BertModel"
+        ],
+        "hidden_size": 768,
+        "max_position_embeddings": 512,
+        "model_type": "bert",
+        "num_attention_heads": 12,
+        "num_hidden_layers": 12,
+        "pooling": "cls",
+        "pooling_normalized": true,
+        "torch_dtype": "float32",
+        "vocab_size": 30522
+      },
+      "disabled": false,
+      "downloads_observed": 178870,
+      "gated": false,
+      "last_modified": "2024-10-21T06:49:35.000Z",
+      "library_name": "sentence-transformers",
+      "license": "apache-2.0",
+      "likes_observed": 19,
+      "model_file": {
+        "path": "model.safetensors",
+        "sha256": "38d02ca786508b64df2c5dfbc8b62261320eef1eeb81536c2a0a422bb657d4da",
+        "size_bytes": 437951328
+      },
+      "private": false,
+      "sha": "7a90c50263f620dff743eb9794b89a42bfc5d765",
+      "source": "https://huggingface.co/api/models/abhinand/MedEmbed-base-v0.1?blobs=true"
+    },
+    "artifact_recheck_20260602T08Z": {
+      "checked_at": "2026-06-02T08:00:00Z",
+      "disabled": false,
+      "downloads_observed": 191254,
+      "gated": false,
+      "last_modified": "2024-10-21T06:49:35.000Z",
+      "library_name": "sentence-transformers",
+      "license": "apache-2.0",
+      "likes_observed": 19,
+      "model_file": {
+        "path": "model.safetensors",
+        "sha256": "38d02ca786508b64df2c5dfbc8b62261320eef1eeb81536c2a0a422bb657d4da",
+        "size_bytes": 437951328
+      },
+      "private": false,
+      "sha": "7a90c50263f620dff743eb9794b89a42bfc5d765",
+      "source": "https://huggingface.co/api/models/abhinand/MedEmbed-base-v0.1?blobs=true"
+    },
+    "artifact_sha": "7a90c50263f620dff743eb9794b89a42bfc5d765",
+    "artifact_source": "https://huggingface.co/abhinand/MedEmbed-base-v0.1",
+    "b300_probe_20260602T08Z": {
+      "benchmark_runs": 10,
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "gpu_type": "B300",
+      "image_pull_ms": 324080,
+      "inventory": {
+        "free_gpus": 8,
+        "total_gpus": 8
+      },
+      "persisted": true,
+      "pod_name": "forge-probe-abhinand-medembed-base-v-b300-uk-south1-677621",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/hcls/abhinand-medembed-base-v0-1-vllm-cuda13-20260602T08Z-b300.json",
+      "report_md": "docs/model-onboarding/hcls/abhinand-medembed-base-v0-1-vllm-cuda13-20260602T08Z-b300.md",
+      "request_ms_p50": 73,
+      "request_ms_samples": [
+        73,
+        78,
+        73,
+        73,
+        73,
+        73,
+        74,
+        73,
+        73,
+        74
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "runtime_log_evidence": "vLLM 0.21.0 resolved BertModel, found sentence-transformers pooling configuration, used CLS pooling with activation, downcasted torch.float32 to torch.float16, selected FLASH_ATTN with FlashAttention version 4, and used /mnt/data/vllm/abhinand-medembed-base-v0-1/vllm-0.21.0-cuda13/torch_compile_cache.",
+      "startup_ms": 412280,
+      "status": "supported",
+      "tokens_per_second": 780.82,
+      "vram_used_gb": 1.16,
+      "warmup_runs": 3
+    },
+    "container_config_snapshot_20260530T02Z": {
+      "architecture": "amd64",
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "entrypoint": [
+        "vllm",
+        "serve"
+      ],
+      "image_version": "vllm/vllm-openai:v0.21.0",
+      "os": "linux",
+      "source": "https://github.com/vllm-project/vllm",
+      "source_revision": "ad7125a431e176d4161099480a66f0169609a690",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX"
+    },
+    "container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+    "container_image_size_bytes": 8669266122,
+    "container_license_evidence": "The selected OCI config labels point to https://github.com/vllm-project/vllm at revision ad7125a431e176d4161099480a66f0169609a690; vLLM upstream is Apache-2.0 licensed.",
+    "container_recheck_20260602T01Z": {
+      "architecture": "amd64",
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "entrypoint": [
+        "vllm",
+        "serve"
+      ],
+      "image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "os": "linux",
+      "source": "https://github.com/vllm-project/vllm",
+      "source_revision": "ad7125a431e176d4161099480a66f0169609a690",
+      "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX"
+    },
+    "container_search": {
+      "forge_owned_wrapper_built": false,
+      "forge_owned_wrapper_reason": "Not built because the official vLLM OpenAI-compatible image supports pooling mode, is already mirrored to all active Forge regions, and avoids adding a new image before a live probe proves the candidate.",
+      "hf_text_embeddings_inference_available": true,
+      "hf_text_embeddings_inference_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+      "hf_text_embeddings_inference_reason_deferred": "TEI CUDA 1.9.3 is a smaller portable embedding runtime, but existing Forge TEI CUDA 1.9.3 HCLS embedding rows record B300/SM103 startup failure with cuda compute cap 103 unsupported; this candidate starts with the CUDA 13 vLLM pooling fallback to target Blackwell first.",
+      "nvidia_nim_or_nvcr_model_container_found": false
+    },
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_for_first_hidden_candidate",
+    "fallback_attempted": {
+      "selected_fallback": "vLLM 0.21.0 CUDA 13 pooling using an already mirrored digest-qualified runtime.",
+      "tei_runtime": "Checked ghcr.io/huggingface/text-embeddings-inference:cuda-1.9; digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a is current and mirrored, but neighboring Forge TEI CUDA 1.9.3 embedding manifests already document B300/SM103 startup rejection."
+    },
+    "onboarding_state": "hidden_b300_supported_persisted_pending_non_blackwell_matrix_embedding_parity_and_healthcare_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_recheck_20260530T02Z": {
+      "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      }
+    },
+    "regional_mirror_recheck_20260602T01Z": {
+      "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      }
+    },
+    "regional_mirror_status": "verified_existing_all_four_regions_vllm_0_22_20260608",
+    "runtime_plan": {
+      "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, VLLM_CACHE_ROOT, and XDG_CACHE_HOME are versioned under /mnt/data for first-run model hydration and vLLM artifacts.",
+      "endpoint": "/v1/embeddings",
+      "pooler_config": {
+        "pooling_type": "CLS",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so vLLM does not receive unnecessary platform Hugging Face credentials.",
+      "served_model_name": "abhinand/MedEmbed-base-v0.1"
+    },
+    "source_evidence": [
+      "https://huggingface.co/abhinand/MedEmbed-base-v0.1",
+      "https://huggingface.co/api/models/abhinand/MedEmbed-base-v0.1",
+      "https://huggingface.co/abhinand/MedEmbed-base-v0.1/raw/main/README.md",
+      "https://huggingface.co/abhinand/MedEmbed-base-v0.1/raw/main/config.json",
+      "https://huggingface.co/abhinand/MedEmbed-base-v0.1/raw/main/1_Pooling/config.json",
+      "https://huggingface.co/abhinand/MedEmbed-base-v0.1/raw/main/modules.json",
+      "https://github.com/vllm-project/vllm"
+    ],
+    "validation_commands_completed": [
+      "jq empty manifests/models/hcls/abhinand-medembed-base-v0-1-vllm-cuda13.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/hcls/abhinand-medembed-base-v0-1-vllm-cuda13.json --dry-run",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/security/check_model_server_image_gate.py manifests/models/hcls/abhinand-medembed-base-v0-1-vllm-cuda13.json --format json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/forge_onboarding_workflow.py --manifest manifests/models/hcls/abhinand-medembed-base-v0-1-vllm-cuda13.json --skip-mirror --skip-matrix --skip-genai-perf --dry-run",
+      "timeout 60s crane digest docker.io/vllm/vllm-openai:v0.21.0",
+      "timeout 60s crane config docker.io/vllm/vllm-openai:v0.21.0",
+      "timeout 60s crane digest cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0",
+      "timeout 60s crane digest cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0",
+      "timeout 60s crane digest cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0",
+      "timeout 60s crane digest cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0"
+    ],
+    "validation_results_20260530T02Z": {
+      "live_probe": "pending",
+      "live_upsert": "pending",
+      "manifest_json": "pending",
+      "model_server_image_gate": "pending",
+      "upsert_dry_run": "pending"
+    },
+    "validation_results_20260602T01Z": {
+      "live_probe": "not_run_this_cycle",
+      "live_upsert": "not_run_this_cycle",
+      "manifest_json": "passed",
+      "model_server_image_gate": "passed_empty_findings",
+      "onboarding_workflow_dry_run": "passed_planned_upsert_model_only",
+      "probe_blocker": "A previous 2026-05-30 supervisor cycle recorded hidden live upsert success but an interrupted B300 probe with no report. This cycle closed manifest and image validation only; keep all gpu_compatibility values false until a clean B300 probe, non-Blackwell matrix expansion, and embedding parity complete.",
+      "regional_mirrors": "passed_all_four_regions_match_selected_digest",
+      "upsert_dry_run": "passed"
+    },
+    "validation_results_20260602T08Z": {
+      "b300_probe": "supported_persisted_3_warmups_10_measured_requests",
+      "live_upsert": "blocked_missing_postgres_url_in_worker_shell",
+      "manifest_json": "passed",
+      "model_server_image_gate": "passed_empty_findings",
+      "publication_decision": "keep_hidden_onboarding_default_ineligible",
+      "runtime_log_audit": "vllm_pooling_cls_activation_flashattention4_on_b300",
+      "upsert_dry_run": "passed"
+    },
+    "vllm_0_22_security_refresh_20260608": {
+      "previous_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "reason": "Forge admission blocks vLLM OpenAI-compatible images in >=v0.3.0,<v0.22.0; refresh to already mirrored v0.22.0 before public-preview probes.",
+      "refreshed_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "status": "staged_for_live_reprobe",
+      "updated_at": "2026-06-08T12:11:14+00:00"
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "life_science",
+    "medical",
+    "clinical",
+    "medical_literature",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence_transformers",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "open_source",
+    "research_only",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-30T02:08:22.127457+00:00",
+  "default_eligible": false,
+  "description": "MedEmbed Base is Abhinand Balachandran's Apache-2.0 sentence-transformers embedding model fine-tuned from BAAI/bge-base-en-v1.5 for medical and clinical information retrieval. Hugging Face metadata checked on 2026-06-02T08Z reports private=false, gated=false, disabled=false, library_name=sentence-transformers, revision 7a90c50263f620dff743eb9794b89a42bfc5d765, and license:apache-2.0. Raw config reports BertModel, hidden_size 768, 12 layers, 12 attention heads, and max_position_embeddings 512; 1_Pooling/config.json enables CLS pooling and modules.json includes Normalize. The model is useful as a higher-capacity sibling to the existing Forge MedEmbed Small row for nonclinical HCLS retrieval and RAG evaluation. Container search found no model-specific NIM or vendor serving image; Hugging Face TEI CUDA 1.9.3 is available and mirrored, but the same digest is already blocked for B300/SM103 in neighboring TEI embedding rows. This manifest therefore stages the already mirrored official vLLM 0.21.0 CUDA 13 image in pooling mode with CLS pooling plus activation, stores Hugging Face and vLLM caches under /mnt/data, and clears inherited Hugging Face token env vars because the artifact is public and ungated. A 2026-06-02T08Z B300/uk-south1 probe persisted support with 10 measured requests, but the timing source is client wall time. Keep hidden/onboarding/default-ineligible until non-Blackwell matrix expansion, embedding parity check, and healthcare product safety review complete.",
+  "family_id": "125a955c-cd6b-4be7-ad9e-4439b5a9389d",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": true,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "abhinand/MedEmbed-base-v0.1",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "abhinand/MedEmbed-base-v0.1",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "float16",
+      "--max-model-len",
+      "512",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.35",
+      "--max-num-seqs",
+      "32",
+      "--pooler-config",
+      "{\"pooling_type\":\"CLS\",\"use_activation\":true}"
+    ],
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "LOGNAME": "forge",
+      "TORCHINDUCTOR_CACHE_DIR": "/opt/nim/.cache/forge-vllm/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13/torchinductor",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13/hub",
+      "TRITON_CACHE_DIR": "/opt/nim/.cache/forge-vllm/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13/triton",
+      "USER": "forge",
+      "VLLM_CACHE_ROOT": "/mnt/data/vllm/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13",
+      "XDG_CACHE_HOME": "/mnt/data/vllm/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "container_run_as_group": 65532,
+    "container_run_as_user": 65532,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T12:59:27.313176+00:00",
+      "region": "us-central1",
+      "request_ms": 164,
+      "request_ms_p50": 164,
+      "request_ms_p95": 165,
+      "request_ms_p99": 165,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 392502,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 347.56,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.17,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T08:11:43.266452+00:00",
+      "region": "uk-south1",
+      "request_ms": 73,
+      "request_ms_p50": 73,
+      "request_ms_p95": 76,
+      "request_ms_p99": 78,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 412280,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 780.82,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.16,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T12:59:30.360022+00:00",
+      "region": "eu-north1",
+      "request_ms": 97,
+      "request_ms_p50": 97,
+      "request_ms_p95": 98,
+      "request_ms_p99": 98,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 377414,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 587.63,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.08,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T13:06:22.411791+00:00",
+      "region": "eu-north1",
+      "request_ms": 96,
+      "request_ms_p50": 96,
+      "request_ms_p95": 99,
+      "request_ms_p99": 100,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 405870,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 593.75,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.08,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T12:43:00.655691+00:00",
+      "region": "eu-north2",
+      "request_ms": 100,
+      "request_ms_p50": 100,
+      "request_ms_p95": 101,
+      "request_ms_p99": 101,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 386886,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 570.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.08,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T13:06:14.564370+00:00",
+      "region": "us-central1",
+      "request_ms": 168,
+      "request_ms_p50": 168,
+      "request_ms_p95": 169,
+      "request_ms_p99": 169,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 393831,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 339.29,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.08,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": "ApiException: (422)\nReason: Unprocessable Entity\nHTTP response headers: HTTPHeaderDict({'Audit-Id': '53717945-2391-4c9b-a086-f2d10d48dd38', 'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'X-Kubernetes-Pf-Flowschema-Uid': 'd1686236-3960-49a4-8029-02bf65ca7622', 'X-Kubernetes-Pf-Prioritylevel-Uid': '00e0abb3-5692-4c2b-b83f-d566518dec78', 'Date': 'Mon, 08 Jun 2026 12:04:18 GMT', 'Content-Length': '1098'})\nHTTP response body: {\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T12:04:18.500290+00:00",
+      "region": "eu-north1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-08T12:53:04.653254+00:00",
+      "region": "us-central1",
+      "request_ms": 164,
+      "request_ms_p50": 164,
+      "request_ms_p95": 165,
+      "request_ms_p99": 165,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 480205,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 347.56,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.08,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "06dcaf84-bc85-4eaa-9a73-731a2d92153d",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "abhinand-medembed-base",
+  "name": "MedEmbed Base",
+  "parameter_count": 109482240,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "abhinand/MedEmbed-base-v0.1"
+    },
+    "input_fields": [
+      {
+        "default": "Clinical retrieval query: What evidence supports statin therapy for primary prevention in adults with elevated cardiovascular risk?\n\nCandidate passage: Large randomized trials and meta-analyses report lower rates of major vascular events for statin therapy in appropriately selected adults, with absolute benefit depending on baseline risk.",
+        "key": "input",
+        "label": "Medical or clinical text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-only use acknowledged",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13",
+      "embedding_dimension": 768,
+      "kind": "vllm_pooling_embeddings",
+      "model_id": "abhinand/MedEmbed-base-v0.1",
+      "model_revision": "7a90c50263f620dff743eb9794b89a42bfc5d765",
+      "pooler_config": {
+        "pooling_type": "CLS",
+        "use_activation": true
+      },
+      "pooling": "cls",
+      "runner": "pooling",
+      "served_model_name": "abhinand/MedEmbed-base-v0.1",
+      "vllm_cache_target": "/mnt/data/vllm/abhinand-medembed-base-v0-1/vllm-0.22.0-cuda13"
+    },
+    "safety_notice": {
+      "acknowledgement_field": "research_use_acknowledgement",
+      "allowed_scope": "Nonclinical medical and clinical text retrieval, clustering, semantic search, and RAG evaluation.",
+      "body": "Use only for nonclinical medical and clinical text retrieval, clustering, semantic search, and RAG evaluation. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": true,
+      "severity": "warning",
+      "title": "Research-only medical retrieval embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 52,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "abhinand-medembed-base-v0-1-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/abhinand/MedEmbed-base-v0.1",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "life-science",
+    "medical",
+    "clinical",
+    "medical-literature",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence-transformers",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "open-source",
+    "research-only"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "hf-7a90c50-vllm-0.22.0-cuda13-pooling",
+  "version_description": "Hidden onboarding candidate for MedEmbed Base using the already mirrored vLLM 0.22.0 CUDA 13 image in pooling mode. The artifact is public, ungated, Apache-2.0, safetensors-backed, and larger than the existing MedEmbed Small Forge row; one B300/uk-south1 probe is persisted as supported, but the row remains default-ineligible pending non-Blackwell matrix expansion, embedding parity, and healthcare product safety review.",
+  "version_key": "hf-7a90c50-vllm-0-22-0-cuda13-pooling",
+  "version_label": "HF 7a90c50 via vLLM 0.22 CUDA 13 pooling"
+}

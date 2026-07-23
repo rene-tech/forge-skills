@@ -1,0 +1,217 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "ad8c3b38b659cd6ff6dde2e62978e64e1161c45f879a393b11371de518af278e",
+  "defaultEligible": true,
+  "displayName": "Use MOVA 360p",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/openmoss-team-mova-360p-sglang/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "openmoss-team-mova-360p-sglang"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/openmoss-team-mova",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A cinematic tracking shot as the subject turns toward the camera, natural motion, realistic lighting, synchronized ambient sound.",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR42mP8//8/AwMDEwMDAwMDAwAkBgMB/umWrAAAAABJRU5ErkJggg==",
+      "fieldType": "file_upload",
+      "key": "input_image",
+      "label": "Starting Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "640x352",
+        "352x640"
+      ],
+      "default": "640x352",
+      "fieldType": "select",
+      "key": "size",
+      "label": "Frame Size",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "negative_prompt",
+      "label": "Negative Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 49,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 193,
+      "minimum": 9,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 24,
+      "fieldType": "number",
+      "key": "fps",
+      "label": "FPS",
+      "maximum": 30,
+      "minimum": 8,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 20,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Inference Steps",
+      "maximum": 50,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "slider",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 20,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 42,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 2147483647,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-openmoss-team-mova-360p-sglang\ndescription: Use the exact Forge model openmoss-team-mova-360p-sglang for text, image to video, audio tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use MOVA 360p\n\n- Model slug: `openmoss-team-mova-360p-sglang`\n- Model family: `openmoss-team-mova`\n- Version: `360p-sglang-0.5.11` (`360p`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / openmoss-team-mova-360p-sglang`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nMOVA 360p generates a synchronized video-and-audio clip from a starting image and text direction.\n\n## Use this exact model when\n\n- Use this exact `openmoss-team-mova-360p-sglang` version when the task supplies text, image and needs video, audio.\n- MOVA 360p generates a synchronized video-and-audio clip from a starting image and text direction.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['video', 'audio'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `input_image` (file_upload, optional): Starting Image\n- `size` (select, optional): Frame Size\n- `negative_prompt` (textarea, optional): Negative Prompt\n- `num_frames` (number, optional; bounds 9..193): Frames\n- `fps` (number, optional; bounds 8..30): FPS\n- `num_inference_steps` (number, optional; bounds 1..50): Inference Steps\n- `guidance_scale` (slider, optional; bounds 0..20): Guidance\n- `seed` (number, optional; bounds 0..2147483647): Seed\n\nRequest template:\n\n```json\n{\n  \"fps\": \"{{fps}}\",\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"input_image\": \"{{input_image}}\",\n  \"mode\": \"image2video\",\n  \"negative_prompt\": \"{{negative_prompt}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"size\": \"{{size}}\"\n}\n```\n\n## Exact output\n\n- `video`\n- `audio`\n\n## Route\n\n`POST /v1/inference/openmoss-team-mova`\n\n## Workflow\n\n1. Load this skill and pin model slug `openmoss-team-mova-360p-sglang` with version key `360p`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/openmoss-team-mova` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/openmoss-team-mova-360p-sglang`\n- Routes: `/v1/models/openmoss-team-mova-360p-sglang/inference-routes`\n- Regional deployment: `/v1/models/openmoss-team-mova-360p-sglang/regional-deployment`\n- Deployment handoff: `/v1/models/openmoss-team-mova-360p-sglang/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/openmoss-team-mova-360p-sglang/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/openmoss-team-mova-360p-sglang/SKILL.md\n\n## References\n\n- [MOVA 360p source](https://huggingface.co/OpenMOSS-Team/MOVA-360p) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/openmoss-team-mova-360p-sglang/deploy",
+    "inferenceRoutesUrl": "/v1/models/openmoss-team-mova-360p-sglang/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/openmoss-team-mova",
+    "modelUrl": "/v1/models/openmoss-team-mova-360p-sglang",
+    "regionalDeploymentUrl": "/v1/models/openmoss-team-mova-360p-sglang/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/openmoss-team-mova-360p-sglang/markdown",
+  "modelFamily": "openmoss-team-mova",
+  "modelSlug": "openmoss-team-mova-360p-sglang",
+  "modelUrl": "/v1/models/openmoss-team-mova-360p-sglang",
+  "outputFields": [
+    "video",
+    "audio"
+  ],
+  "outputModalities": [
+    "video",
+    "audio"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "MOVA 360p generates a synchronized video-and-audio clip from a starting image and text direction.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/openmoss-team-mova-360p-sglang/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "MOVA 360p source",
+      "url": "https://huggingface.co/OpenMOSS-Team/MOVA-360p"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/openmoss-team-mova-360p-sglang/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/openmoss-team-mova-360p-sglang/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "fps": "{{fps}}",
+    "guidance_scale": "{{guidance_scale}}",
+    "input_image": "{{input_image}}",
+    "mode": "image2video",
+    "negative_prompt": "{{negative_prompt}}",
+    "num_frames": "{{num_frames}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "size": "{{size}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/OpenMOSS-Team/MOVA-360p",
+    "tags": [
+      "video-generation",
+      "image-to-video",
+      "text-guided-video",
+      "audio-video",
+      "mova",
+      "sglang"
+    ],
+    "versionLabel": "360p"
+  },
+  "shortDescription": "MOVA 360p generates a synchronized video-and-audio clip from a starting image and text direction.",
+  "skillName": "use-forge-openmoss-team-mova-360p-sglang",
+  "skillUrl": "/v1/model-skills/openmoss-team-mova-360p-sglang",
+  "slug": "openmoss-team-mova-360p-sglang",
+  "stability": "stable",
+  "version": "360p-sglang-0.5.11",
+  "versionKey": "360p",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['video', 'audio'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `openmoss-team-mova-360p-sglang` version when the task supplies text, image and needs video, audio.",
+    "MOVA 360p generates a synchronized video-and-audio clip from a starting image and text direction.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `openmoss-team-mova-360p-sglang` with version key `360p`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/openmoss-team-mova` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

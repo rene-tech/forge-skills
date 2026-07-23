@@ -1,0 +1,1380 @@
+{
+  "benchmark_scores": {
+    "base_image": "docker.io/huggingface/lerobot-gpu@sha256:3bf82d106c710ef0d3115281ca04cf94d7af7706271f202ad4e05be7fa78bf75",
+    "checked_at": "2026-06-02T05:11:28Z",
+    "current_checks_20260531T07Z": {
+      "dry_run_upsert": "passed",
+      "hf_model_disabled": false,
+      "hf_model_gated": false,
+      "hf_model_license": "apache-2.0",
+      "hf_model_private": false,
+      "hf_model_revision": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+      "live_upsert": "passed_after_control_secret_env",
+      "local_nvidia_driver_available": false,
+      "official_serving_container_found": false,
+      "regional_digest_checks": {
+        "eu-north1": "sha256:69d1d45ed5e149ecdd6943a56fa1e40d5567ff2e8ae7c5ec6d374a93e923be34",
+        "eu-north2": "sha256:69d1d45ed5e149ecdd6943a56fa1e40d5567ff2e8ae7c5ec6d374a93e923be34",
+        "uk-south1": "sha256:69d1d45ed5e149ecdd6943a56fa1e40d5567ff2e8ae7c5ec6d374a93e923be34",
+        "us-central1": "sha256:69d1d45ed5e149ecdd6943a56fa1e40d5567ff2e8ae7c5ec6d374a93e923be34"
+      },
+      "source_license": "MIT",
+      "source_revision": "952a80c3f57880b7db4fb9280d1a4ef27b12f843"
+    },
+    "current_checks_20260531T08Z": {
+      "b300_probe": "supported_uk_south1_3_warmup_10_measured_no_actuation",
+      "dry_run_upsert": "passed",
+      "hf_model_disabled": false,
+      "hf_model_gated": false,
+      "hf_model_license": "apache-2.0",
+      "hf_model_private": false,
+      "hf_model_revision": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+      "image_smoke": "real_transformers_qwen3_vl_rot_pos_emb_and_get_image_features_patched_without_hydration",
+      "live_upsert": "passed_after_control_secret_env",
+      "official_container_checks": {
+        "docker.io/sberroboticscenter/greenvla:latest": "denied_unauthorized",
+        "ghcr.io/greenvla/greenvla:latest": "denied"
+      },
+      "official_serving_container_found": false,
+      "regional_digest_checks": {
+        "eu-north1": "sha256:d979368b1a0401d88f08fb700b328bdb2957cab6437f82970250b35a550d796b",
+        "eu-north2": "sha256:d979368b1a0401d88f08fb700b328bdb2957cab6437f82970250b35a550d796b",
+        "uk-south1": "sha256:d979368b1a0401d88f08fb700b328bdb2957cab6437f82970250b35a550d796b",
+        "us-central1": "sha256:d979368b1a0401d88f08fb700b328bdb2957cab6437f82970250b35a550d796b"
+      },
+      "source_license": "MIT",
+      "source_revision": "952a80c3f57880b7db4fb9280d1a4ef27b12f843"
+    },
+    "current_checks_20260531T09Z": {
+      "b200_request_ms": 141,
+      "h200_request_ms": 166,
+      "l40s_request_ms": 224,
+      "model_time_source": "query_time_ms",
+      "persisted": true,
+      "publication_decision": "do_not_publish_pending_remaining_gpu_probes_provenance_hardening_robot_policy_safety",
+      "remaining_gpu_probes": [
+        "RTX6000"
+      ],
+      "safety4_b200_probe": "supported_us_central1_3_warmup_10_measured_no_actuation",
+      "safety4_h200_probe": "supported_eu_north2_3_warmup_10_measured_no_actuation",
+      "safety4_l40s_probe": "supported_eu_north1_3_warmup_10_measured_no_actuation",
+      "safety4_rtx6000_probe": "started_us_central1_then_aborted_by_supervisor_request_before_ready"
+    },
+    "current_checks_20260531T10Z": {
+      "physical_intelligence_fast_provenance": "revision_ec4d7aa71691cac0b8bed6942be45684db2110f4_hashes_resolved_static_py_compile_passed",
+      "publication_decision": "do_not_publish_pending_rtx6000_inventory_return_vendor_pin_fast_custom_code_robot_policy_safety",
+      "safety4_rtx6000_probe_all_regions": "inventory_absent_before_scheduling",
+      "safety4_rtx6000_probe_us_central1": "inventory_absent_before_scheduling",
+      "visible_inventory": [
+        "B200/us-central1 total=8 free=8",
+        "L40S/eu-north1 total=8 free=8",
+        "H200/eu-north2 total=8 free=8",
+        "B300/uk-south1 total=8 free=8"
+      ]
+    },
+    "current_checks_20260531T13Z": {
+      "b300_smoke_probe": "supported_uk_south1_new_fastvendored_digest_no_persist_1_warmup_2_measured",
+      "b300_smoke_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T13Z-fastvendored-b300-smoke.json",
+      "b300_smoke_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T13Z-fastvendored-b300-smoke.md",
+      "b300_smoke_request_ms": 150,
+      "b300_smoke_startup_ms": 273865,
+      "b300_smoke_vram_used_gb": 5.43,
+      "fast_vendored_image_digest": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+      "image_smoke": "rebuilt_image_verified_FAST_hashes_in_container_and_exposed_inference_route_without_weight_hydration",
+      "layer_size_bytes": 5713756160,
+      "local_build": "passed_with_scripts_release_model_wrapper_build_only",
+      "local_image_id": "sha256:5bb9f9cf2975aa0b59e5047e614bb6cbcdffe6387e571b537b553de546d93d69",
+      "local_image_ref": "forge-local/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z",
+      "local_image_size_bytes": 12109515500,
+      "manifest_default_image_decision": "keep_safety4_default_until_fastvendored_digest_has_publish_grade_matrix_evidence",
+      "manifest_dry_run": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/physical_ai/sberroboticscenter-greenvla-2b-base.json --dry-run passed",
+      "publication_decision": "do_not_publish_pending_full_fastvendored_matrix_rtx6000_inventory_return_robot_policy_safety",
+      "regional_digest_checks": {
+        "eu-north1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "eu-north2": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "uk-south1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "us-central1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591"
+      },
+      "wrapper_unit_tests": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q services/models/physical-ai/sberroboticscenter_greenvla_2b_base/tests/test_greenvla_wrapper.py passed: 12 passed, 2 skipped"
+    },
+    "current_checks_20260531T14Z": {
+      "b200_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b200-probe.json",
+      "b200_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b200-probe.md",
+      "b200_request_ms": 142,
+      "b200_startup_ms": 572065,
+      "b200_vram_used_gb": 5.43,
+      "b300_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b300-probe.json",
+      "b300_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b300-probe.md",
+      "b300_request_ms": 137,
+      "b300_startup_ms": 265615,
+      "b300_vram_used_gb": 5.43,
+      "fast_vendored_full_matrix_probe": "supported_b200_b300_h200_l40s_3_warmup_10_measured_no_actuation_no_persist",
+      "fast_vendored_image_digest": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+      "h200_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-h200-probe.json",
+      "h200_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-h200-probe.md",
+      "h200_request_ms": 146,
+      "h200_startup_ms": 591482,
+      "h200_vram_used_gb": 5.36,
+      "l40s_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-l40s-probe.json",
+      "l40s_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-l40s-probe.md",
+      "l40s_request_ms": 223,
+      "l40s_startup_ms": 599814,
+      "l40s_vram_used_gb": 5.15,
+      "manifest_default_image_decision": "promote_local_manifest_default_to_fastvendored_digest_after_full_no_persist_matrix_evidence",
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_decision": "do_not_publish_pending_rtx6000_inventory_return_robot_policy_safety",
+      "regional_digest_checks": {
+        "eu-north1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "eu-north2": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "uk-south1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "us-central1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591"
+      },
+      "rtx6000_fallback": "public_gpu_inventory_had_no_rtx6000_cell; filtered_probe_script_started_but_was_killed_after_no_output_before_report_write",
+      "visible_inventory": [
+        "B200/us-central1 total=8 free=8",
+        "L40S/eu-north1 total=8 free=8",
+        "H200/eu-north2 total=8 free=8",
+        "B300/uk-south1 total=8 free=8"
+      ]
+    },
+    "current_checks_20260531T15Z": {
+      "fast_vendored_image_digest": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+      "fast_vendored_rtx6000_probe": "supported_rtx6000_us_central1_3_warmup_10_measured_no_actuation_no_persist",
+      "live_health_precheck": "public inventory exposed RTX6000/us-central1 total=7 used=1 free=6 before this worker launched the fast-vendored probe; existing running RTX6000 pod forge-probe-sberroboticscenter-green-rtx6000-us-central1-71135c was the older safety4 digest and was left untouched",
+      "model_time_source": "query_time_ms",
+      "persisted": false,
+      "publication_decision": "do_not_publish_pending_live_upsert_or_deliberate_support_row_persistence_publication_review_and_robot_policy_safety",
+      "rtx6000_gpu_node": "computeinstance-u00hpscz2ptvbpd6pq",
+      "rtx6000_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T15Z-fastvendored-rtx6000-probe.json",
+      "rtx6000_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T15Z-fastvendored-rtx6000-probe.md",
+      "rtx6000_request_ms": 174,
+      "rtx6000_startup_ms": 565164,
+      "rtx6000_vram_used_gb": 5.3,
+      "visible_inventory": [
+        "B200/us-central1 total=8 free=8",
+        "RTX6000/us-central1 total=7 free=6",
+        "L40S/eu-north1 total=8 free=8",
+        "H200/eu-north2 total=8 free=8",
+        "B300/uk-south1 total=8 free=7"
+      ]
+    },
+    "current_checks_20260531Tcycle4": {
+      "image_state": "not_rebuilt_current_safety4_digest_d979368b1a0401d88f08fb700b328bdb2957cab6437f82970250b35a550d796b_still_runtime_downloaded_fast",
+      "physical_intelligence_fast_vendoring": "repo_patch_added_under_services/models/physical-ai/sberroboticscenter_greenvla_2b_base/greenvla_wrapper/vendor/physical_intelligence_fast",
+      "publication_decision": "do_not_publish_pending_rebuild_mirror_probe_rtx6000_inventory_return_robot_policy_safety",
+      "rtx6000_inventory_probe": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug sberroboticscenter-greenvla-2b-base --include-status onboarding --gpu RTX6000 --ephemeral-cache-volumes --timeout 600 --request-timeout 120 --warmup-runs 0 --benchmark-runs 1 --max-parallel 1 --no-persist exited with No inventory cells matched the requested filters before report files were written",
+      "runtime_gate": "wrapper_verifies_expected_sha256s_at_startup_and_patches_GreenVLATokenizer_default_fast_tokenizer_path_to_the_local_vendor_directory_before_load_pretrained_policy_builds_transforms",
+      "unit_tests": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q services/models/physical-ai/sberroboticscenter_greenvla_2b_base/tests/test_greenvla_wrapper.py passed: 12 passed, 2 skipped",
+      "vendored_fast_revision": "ec4d7aa71691cac0b8bed6942be45684db2110f4"
+    },
+    "current_checks_20260601T02Z": {
+      "artifact_header_check": {
+        "lfs_sha256": "b1c8c8d1ef704b574496c1bac06752eca49a55ec62cf9ed568d07ac152e4cb50",
+        "primary_artifact": "pretrained_model/model.safetensors",
+        "size_bytes": 4658645560
+      },
+      "manifest_update": "local manifest gpu_compatibility.RTX6000 changed from false to true and onboarding_state/check_at/publication blockers were synced to the persisted five-cell matrix; status remains onboarding and default_eligible remains false",
+      "persisted_matrix_cells": {
+        "b200_us_central1": {
+          "benchmark_samples_ms": [
+            135,
+            136,
+            135,
+            135,
+            135,
+            136,
+            135,
+            138,
+            137,
+            137
+          ],
+          "gpu_node": "computeinstance-u00kraen1pxk791bbq",
+          "model_time_source": "query_time_ms",
+          "pod": "forge-probe-sberroboticscenter-green-b200-us-central1-c69985",
+          "request_ms": 136,
+          "startup_ms": 313372,
+          "status": "supported",
+          "vram_used_gb": 5.43
+        },
+        "b300_uk_south1": {
+          "benchmark_samples_ms": [
+            138,
+            137,
+            138,
+            137,
+            137,
+            137,
+            137,
+            137,
+            136,
+            141
+          ],
+          "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+          "model_time_source": "query_time_ms",
+          "pod": "forge-probe-sberroboticscenter-green-b300-uk-south1-4551ad",
+          "request_ms": 137,
+          "startup_ms": 105013,
+          "status": "supported",
+          "vram_used_gb": 5.43
+        },
+        "h200_eu_north2": {
+          "benchmark_samples_ms": [
+            163,
+            163,
+            163,
+            163,
+            161,
+            162,
+            165,
+            160,
+            167,
+            167
+          ],
+          "gpu_node": "computeinstance-e02fa1dvbwvhme53cq",
+          "model_time_source": "query_time_ms",
+          "pod": "forge-probe-sberroboticscenter-green-h200-eu-north2-b410c0",
+          "request_ms": 163,
+          "startup_ms": 313114,
+          "status": "supported",
+          "vram_used_gb": 5.36
+        },
+        "l40s_eu_north1": {
+          "benchmark_samples_ms": [
+            219,
+            223,
+            223,
+            221,
+            219,
+            220,
+            222,
+            222,
+            223,
+            224
+          ],
+          "gpu_node": "computeinstance-e00zfvvbpd91rkzq5b",
+          "model_time_source": "query_time_ms",
+          "pod": "forge-probe-sberroboticscenter-green-l40s-eu-north1-a84777",
+          "request_ms": 222,
+          "startup_ms": 83960,
+          "status": "supported",
+          "vram_used_gb": 5.15
+        },
+        "rtx6000_us_central1": {
+          "benchmark_samples_ms": [
+            162,
+            155,
+            160,
+            160,
+            154,
+            153,
+            161,
+            152,
+            155,
+            157
+          ],
+          "gpu_node": "computeinstance-u00qp7rmfggmasvss4",
+          "model_time_source": "query_time_ms",
+          "pod": "forge-probe-sberroboticscenter-green-rtx6000-us-central1-6f68a6",
+          "request_ms": 156,
+          "startup_ms": 304796,
+          "status": "supported",
+          "vram_used_gb": 5.3
+        }
+      },
+      "persisted_matrix_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260601T-current-persisted-matrix.json",
+      "persisted_matrix_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260601T-current-persisted-matrix.md",
+      "publication_decision": "do_not_publish_pending_live_manifest_upsert_publication_review_and_robot_policy_safety_validation",
+      "regional_digest_checks": {
+        "eu-north1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "eu-north2": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "uk-south1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "us-central1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591"
+      },
+      "selected_next_step": "manifest_metadata_sync_after_persisted_matrix",
+      "source_refresh": {
+        "fast_processor_license": "apache-2.0",
+        "fast_processor_revision": "ec4d7aa71691cac0b8bed6942be45684db2110f4",
+        "hf_library_name": "lerobot",
+        "hf_model_disabled": false,
+        "hf_model_gated": false,
+        "hf_model_license": "apache-2.0",
+        "hf_model_private": false,
+        "hf_model_revision": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+        "hf_pipeline_tag": "robotics",
+        "source_license": "MIT"
+      }
+    },
+    "current_checks_20260601T23Z": {
+      "artifact_header_check": {
+        "head_x_linked_etag": "b1c8c8d1ef704b574496c1bac06752eca49a55ec62cf9ed568d07ac152e4cb50",
+        "head_x_linked_size_bytes": 4658645560,
+        "lfs_sha256": "b1c8c8d1ef704b574496c1bac06752eca49a55ec62cf9ed568d07ac152e4cb50",
+        "primary_artifact": "pretrained_model/model.safetensors",
+        "size_bytes": 4658645560
+      },
+      "blocked_actions": [
+        "live_manifest_upsert",
+        "full_action_response_capture",
+        "representative_bridge_or_widowx_sim_replay_hil_or_external_safety_signoff",
+        "public_activation",
+        "publish"
+      ],
+      "persisted_matrix_review": {
+        "benchmark_runs_per_cell": 10,
+        "full_action_response_artifact_present": false,
+        "model_time_source": "query_time_ms",
+        "report_generated_at": "2026-06-01T01:13:07.704742+00:00",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260601T-current-persisted-matrix.json",
+        "response_preview_bytes_per_cell": 400,
+        "response_preview_complete_json": false,
+        "response_status_all_200": true,
+        "safety_conclusion": "matrix_proves_runtime_support_not_publication_safety",
+        "status": "five_cell_supported_persisted",
+        "supported_cells": [
+          "B200/us-central1",
+          "B300/uk-south1",
+          "H200/eu-north2",
+          "L40S/eu-north1",
+          "RTX6000/us-central1"
+        ],
+        "warmup_runs_per_cell": 3
+      },
+      "publication_decision": "do_not_publish_keep_hidden_pending_live_manifest_upsert_full_action_response_and_robot_policy_safety_validation",
+      "publication_review_report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260601T23Z-publication-readiness.json",
+      "publication_review_report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260601T23Z-publication-readiness.md",
+      "regional_digest_recheck": {
+        "eu-north1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "eu-north2": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "uk-south1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "us-central1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591"
+      },
+      "selected_next_step": "publication_readiness_review_after_persisted_matrix",
+      "source_refresh": {
+        "fast_processor_disabled": false,
+        "fast_processor_gated": false,
+        "fast_processor_license": "apache-2.0",
+        "fast_processor_private": false,
+        "fast_processor_revision": "ec4d7aa71691cac0b8bed6942be45684db2110f4",
+        "hf_last_modified": "2026-03-05T12:20:06.000Z",
+        "hf_library_name": "lerobot",
+        "hf_model_disabled": false,
+        "hf_model_gated": false,
+        "hf_model_license": "apache-2.0",
+        "hf_model_private": false,
+        "hf_model_revision": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+        "hf_pipeline_tag": "robotics",
+        "source_license": "MIT"
+      },
+      "validation": {
+        "json_valid": "passed",
+        "manifest_upsert_dry_run": "passed",
+        "model_server_image_gate_findings": 0,
+        "postgres_env_present": false
+      }
+    },
+    "current_checks_20260602Tcurrent": {
+      "artifact_header_check": {
+        "lfs_sha256": "b1c8c8d1ef704b574496c1bac06752eca49a55ec62cf9ed568d07ac152e4cb50",
+        "primary_artifact": "pretrained_model/model.safetensors",
+        "size_bytes": 4658645560
+      },
+      "b300_full_action_capture_probe": {
+        "cell": "B300/uk-south1",
+        "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+        "command": "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug sberroboticscenter-greenvla-2b-base --include-status onboarding --gpu B300 --region uk-south1 --warmup-runs 0 --benchmark-runs 1 --request-timeout 600 --timeout 1800 --max-parallel 1 --keep-pods --no-persist --report-json /tmp/greenvla-20260602Tcurrent-b300-full-action-capture-probe.json --report-md /tmp/greenvla-20260602Tcurrent-b300-full-action-capture-probe.md",
+        "gpu_node": "computeinstance-e03n331ngk3v1z71a4",
+        "model_time_source": "query_time_ms",
+        "persisted": false,
+        "pod": "forge-probe-sberroboticscenter-green-b300-uk-south1-f1e1d7",
+        "report_json": "/tmp/greenvla-20260602Tcurrent-b300-full-action-capture-probe.json",
+        "report_md": "/tmp/greenvla-20260602Tcurrent-b300-full-action-capture-probe.md",
+        "request_ms": 43572,
+        "retained_pod_deleted": true,
+        "startup_ms": 301716,
+        "status": "supported",
+        "vram_used_gb": 5.43
+      },
+      "blocked_actions": [
+        "live_manifest_upsert",
+        "representative_bridge_or_widowx_sim_replay_hil_or_external_safety_signoff",
+        "public_activation",
+        "publish"
+      ],
+      "full_action_response_capture": {
+        "actions_all_finite": true,
+        "actions_count": 70,
+        "actions_shape": [
+          1,
+          10,
+          7
+        ],
+        "captured_from": "retained_b300_probe_pod_via_local_port_forward",
+        "data_config_name": "bridge",
+        "endpoint_path": "/v1/inference/sberroboticscenter-greenvla-2b-base",
+        "full_trace_artifact": "docs/supervisor/worker-notes/physical-ai-2026-06-02T-current.md",
+        "last_dim_max": 0.15483912825584412,
+        "last_dim_min": -0.007337599527090788,
+        "max_abs_action": 0.15483912825584412,
+        "max_abs_step_delta": 0.05272587714716792,
+        "max_action": 0.15483912825584412,
+        "min_action": -0.031275421380996704,
+        "model_revision": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+        "no_actuation": true,
+        "query_time_ms": 163,
+        "response_bytes": 4952,
+        "response_sha256_canonical_json": "88119e5b9cdb464f42be99aa8ec9b6112d1d3d15f4cb2cbb88491b350c6a4464",
+        "response_status": 200,
+        "source_revision": "952a80c3f57880b7db4fb9280d1a4ef27b12f843",
+        "static_preflight": "passed_shape_finite_magnitude_and_adjacent_step_delta_review"
+      },
+      "publication_decision": "do_not_publish_keep_hidden_pending_live_manifest_upsert_and_representative_bridge_or_widowx_sim_replay_hil_or_external_safety_signoff",
+      "regional_digest_recheck": {
+        "eu-north1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "eu-north2": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "uk-south1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "us-central1": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591"
+      },
+      "selected_next_step": "full_action_response_capture_static_preflight_after_persisted_matrix",
+      "source_refresh": {
+        "fast_processor_disabled": false,
+        "fast_processor_gated": false,
+        "fast_processor_license": "apache-2.0",
+        "fast_processor_private": false,
+        "fast_processor_revision": "ec4d7aa71691cac0b8bed6942be45684db2110f4",
+        "hf_last_modified": "2026-03-05T12:20:06.000Z",
+        "hf_library_name": "lerobot",
+        "hf_model_disabled": false,
+        "hf_model_gated": false,
+        "hf_model_license": "apache-2.0",
+        "hf_model_private": false,
+        "hf_model_revision": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+        "hf_pipeline_tag": "robotics",
+        "source_license": "MIT",
+        "source_revision": "952a80c3f57880b7db4fb9280d1a4ef27b12f843"
+      },
+      "validation": {
+        "json_valid": "passed_before_manifest_edit",
+        "no_persist_probe": "passed",
+        "retained_pod_cleanup": "passed"
+      }
+    },
+    "dispatch_audit": {
+      "runtime_gpu_smoke": "B200/us-central1, B300/uk-south1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 are supported on the current fast-vendored digest with 3 warmup plus 10 measured no-actuation requests per cell. The earlier safety3 digest reached B300 readiness but failed at Qwen3VLModel.get_image_features image_grid_thw.prod(-1), which safety4 fixed by keeping image split-size planning on CPU; the fast-vendored digest keeps that patch and removes runtime FAST remote custom-code download.",
+      "source_findings": [
+        "GreenVLA config default mentions flash_attention_2, but the selected checkpoint config uses sdpa.",
+        "GreenVLA source has flash_attention_2 and sdpa attention branches in greenvla_utils.py and modeling_greenvla_policy.py.",
+        "Forge wrapper disables cuDNN SDPA on SM103/B300 and enables flash, memory-efficient, and math SDPA fallbacks.",
+        "Safety3 patched Qwen3VLVisionModel.rot_pos_emb so scalar grid_thw planning uses CPU values and avoided the first SM103 NVRTC torch.prod reduction.",
+        "Safety4 also patches Qwen3VLModel.get_image_features split-size planning so image_grid_thw.prod(-1) is computed from CPU shape values."
+      ]
+    },
+    "fast_vendored_20260531T13Z_forge_image_digest": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+    "fast_vendored_20260531T13Z_layer_size_bytes": 5713756160,
+    "fast_vendored_20260531T13Z_local_build_image_id": "sha256:5bb9f9cf2975aa0b59e5047e614bb6cbcdffe6387e571b537b553de546d93d69",
+    "forge_image_digest": "sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+    "forge_image_layer_size_bytes": 5713756160,
+    "hf_last_modified": "2026-03-05T12:20:06.000Z",
+    "hf_library_name": "lerobot",
+    "hf_model_disabled": false,
+    "hf_model_gated": false,
+    "hf_model_id": "SberRoboticsCenter/GreenVLA-2b-base",
+    "hf_model_license": "apache-2.0",
+    "hf_model_private": false,
+    "hf_model_revision": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+    "hf_pipeline_tag": "robotics",
+    "image_smoke": {
+      "action_trace_shape_finite_guard": "passed_in_image_numpy_smoke",
+      "actuation_routing_key_guard": "passed_value_error_actuation_routing_not_allowed",
+      "greenvla_policy_import": "passed",
+      "no_actuation_string_false_guard": "passed_value_error_no_actuation_required",
+      "qwen3_vl_get_image_features_cpu_grid_patch": "passed_real_transformers_method_attr_smoke",
+      "qwen3_vl_rot_pos_cpu_grid_patch": "passed_real_transformers_method_attr_smoke",
+      "transformers_version": "4.57.3",
+      "wrapper_routes_without_hydration": "root_200_ready_503_unloaded_inference_503_model_not_loaded"
+    },
+    "local_build_image_id": "sha256:e48a51ec0abb23da5e7652e18f0b72046cfcf679221070b5c7fe6d34229b71fa",
+    "official_container_checks": {
+      "docker.io/sberroboticscenter/greenvla:latest": "unauthorized_or_denied",
+      "ghcr.io/greenvla/greenvla:latest": "denied"
+    },
+    "official_serving_container_found": false,
+    "onboarding_state": "hidden_manifest_fastvendored_digest_backed_mirrored_b200_b300_h200_l40s_rtx6000_persisted_matrix_full_action_capture_static_preflight_passed_keep_hidden_pending_live_manifest_upsert_and_robot_policy_safety",
+    "previous_safety2_forge_image_digest": "sha256:69d1d45ed5e149ecdd6943a56fa1e40d5567ff2e8ae7c5ec6d374a93e923be34",
+    "previous_safety3_forge_image_digest": "sha256:a9648ad9e145d6d5f1386a9f97c8c62b9dd6af517148b758c5d6402d8632227e",
+    "primary_artifact": "pretrained_model/model.safetensors",
+    "primary_artifact_lfs_sha256": "b1c8c8d1ef704b574496c1bac06752eca49a55ec62cf9ed568d07ac152e4cb50",
+    "primary_artifact_size_bytes": 4658645560,
+    "probe_attempts": {
+      "b200_us_central1_20260531T07Z": {
+        "benchmark_samples_ms": [
+          143,
+          143,
+          143,
+          144,
+          142,
+          142,
+          143,
+          143,
+          141,
+          142
+        ],
+        "cell": "B200/us-central1",
+        "mode": "digest_override_ephemeral_cache_3_warmup_10_benchmark_persisted",
+        "model_time_source": "query_time_ms",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T07Z-b200-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T07Z-b200-probe.md",
+        "request_ms": 143,
+        "result": "supported",
+        "startup_ms": 589689,
+        "vram_used_gb": 5.43
+      },
+      "b200_us_central1_20260531T09Z_safety4_cpugrid2": {
+        "benchmark_samples_ms": [
+          141,
+          143,
+          141,
+          141,
+          141,
+          141,
+          141,
+          142,
+          141,
+          141
+        ],
+        "cell": "B200/us-central1",
+        "gpu_node": "computeinstance-u00pyd1rnq28tmd2b2",
+        "inventory": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "mode": "manifest_safety4_ephemeral_cache_3_warmup_10_benchmark_persisted",
+        "model_time_source": "query_time_ms",
+        "pod": "forge-probe-sberroboticscenter-green-b200-us-central1-b8e5b7",
+        "provenance_warning": "Runtime downloaded physical-intelligence/fast processing_action_tokenizer.py through Transformers remote custom code; pin or vendor the revision before publication.",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-safety4-b200-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-safety4-b200-probe.md",
+        "request_ms": 141,
+        "result": "supported",
+        "startup_ms": 573789,
+        "vram_used_gb": 5.43,
+        "warmup_samples_ms": [
+          2338,
+          143,
+          143
+        ]
+      },
+      "b200_us_central1_20260531T14Z_fastvendored": {
+        "benchmark_samples_ms": [
+          143,
+          143,
+          144,
+          141,
+          144,
+          143,
+          141,
+          141,
+          141,
+          141
+        ],
+        "cell": "B200/us-central1",
+        "gpu_node": "computeinstance-u00jt6wekmrm7dfwjd",
+        "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "inventory": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "mode": "container_image_override_fastvendored_digest_ephemeral_cache_3_warmup_10_benchmark_no_persist",
+        "model_time_source": "query_time_ms",
+        "persisted": false,
+        "pod": "forge-probe-sberroboticscenter-green-b200-us-central1-2c7495",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b200-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b200-probe.md",
+        "request_ms": 142,
+        "result": "supported",
+        "startup_ms": 572065,
+        "vram_used_gb": 5.43,
+        "warmup_samples_ms": [
+          2335,
+          146,
+          143
+        ]
+      },
+      "b300_uk_south1_20260531T06Z": {
+        "cell": "B300/uk-south1",
+        "mode": "digest_override_ephemeral_cache_3_warmup_10_benchmark_no_persist_keep_pod",
+        "reason": "First no-actuation inference returned HTTP 500. Pod logs show qwen3_vl rot_pos_emb torch.prod triggers PyTorch CUDA JIT reduction and NVRTC rejects --gpu-architecture for B300 SM103 under torch 2.11.0+cu128 / CUDA 12.8.",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T06Z-b300-debug-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T06Z-b300-debug-probe.md",
+        "requires": "Rebuild on a CUDA/PyTorch stack with SM103 NVRTC support, or patch the Qwen3-VL position-embedding path to avoid the CUDA JIT reduction on grid_thw before reprobe.",
+        "result": "other_error",
+        "runtime": {
+          "compute_capability": "10.3",
+          "cuda": "12.8",
+          "driver": "580.126.09",
+          "gpu": "NVIDIA B300 SXM6 AC",
+          "torch": "2.11.0+cu128"
+        }
+      },
+      "b300_uk_south1_20260531T08Z_safety3_cpugrid": {
+        "cell": "B300/uk-south1",
+        "inventory": {
+          "free_gpus": 7,
+          "total_gpus": 8
+        },
+        "mode": "digest_override_ephemeral_cache_3_warmup_10_benchmark_persisted_keep_pod",
+        "reason": "Safety3 reached Ready and avoided the prior rot_pos_emb total_tokens reduction, but first no-actuation inference failed at transformers qwen3_vl get_image_features: image_grid_thw.prod(-1) triggered the same SM103 NVRTC invalid --gpu-architecture error under torch 2.11.0+cu128 / CUDA 12.8.",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T08Z-b300-cpugrid-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T08Z-b300-cpugrid-probe.md",
+        "requires": "Patch Qwen3VLModel.get_image_features split-size planning to avoid image_grid_thw.prod(-1) on CUDA, then reprobe B300.",
+        "result": "other_error",
+        "retained_pod": "forge-probe-sberroboticscenter-green-b300-uk-south1-01801b",
+        "retained_pod_deleted": true,
+        "vram_used_gb": 5.19
+      },
+      "b300_uk_south1_20260531T08Z_safety4_cpugrid2": {
+        "benchmark_samples_ms": [
+          135,
+          135,
+          135,
+          135,
+          137,
+          133,
+          135,
+          134,
+          135,
+          135
+        ],
+        "cell": "B300/uk-south1",
+        "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+        "inventory": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "mode": "digest_override_ephemeral_cache_3_warmup_10_benchmark_persisted_keep_pod",
+        "model_time_source": "query_time_ms",
+        "provenance_warning": "Runtime downloaded physical-intelligence/fast processing_action_tokenizer.py through Transformers remote custom code; pin or vendor the revision before publication.",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T08Z-b300-cpugrid2-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T08Z-b300-cpugrid2-probe.md",
+        "request_ms": 135,
+        "result": "supported",
+        "retained_pod": "forge-probe-sberroboticscenter-green-b300-uk-south1-450c63",
+        "retained_pod_deleted": true,
+        "startup_ms": 279775,
+        "vram_used_gb": 5.43,
+        "warmup_samples_ms": [
+          34841,
+          140,
+          138
+        ]
+      },
+      "b300_uk_south1_20260531T13Z_fastvendored_smoke": {
+        "benchmark_samples_ms": [
+          153,
+          148
+        ],
+        "cell": "B300/uk-south1",
+        "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+        "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "inventory": {
+          "free_gpus": 7,
+          "total_gpus": 8
+        },
+        "mode": "container_image_override_fastvendored_digest_ephemeral_cache_1_warmup_2_benchmark_no_persist",
+        "model_time_source": "query_time_ms",
+        "persisted": false,
+        "pod": "forge-probe-sberroboticscenter-green-b300-uk-south1-74eca3",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T13Z-fastvendored-b300-smoke.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T13Z-fastvendored-b300-smoke.md",
+        "request_ms": 150,
+        "result": "supported",
+        "startup_ms": 273865,
+        "vram_used_gb": 5.43,
+        "warmup_samples_ms": [
+          34046
+        ]
+      },
+      "b300_uk_south1_20260531T14Z_fastvendored": {
+        "benchmark_samples_ms": [
+          139,
+          139,
+          137,
+          137,
+          138,
+          138,
+          137,
+          136,
+          136,
+          136
+        ],
+        "cell": "B300/uk-south1",
+        "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+        "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "inventory": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "mode": "container_image_override_fastvendored_digest_ephemeral_cache_3_warmup_10_benchmark_no_persist",
+        "model_time_source": "query_time_ms",
+        "persisted": false,
+        "pod": "forge-probe-sberroboticscenter-green-b300-uk-south1-ab9fe2",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b300-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-b300-probe.md",
+        "request_ms": 137,
+        "result": "supported",
+        "startup_ms": 265615,
+        "vram_used_gb": 5.43,
+        "warmup_samples_ms": [
+          34400,
+          142,
+          139
+        ]
+      },
+      "h200_eu_north2_20260531T06Z": {
+        "benchmark_samples_ms": [
+          169,
+          166,
+          172,
+          167,
+          167,
+          168,
+          166,
+          169,
+          165,
+          165
+        ],
+        "cell": "H200/eu-north2",
+        "mode": "digest_override_ephemeral_cache_3_warmup_10_benchmark_persisted",
+        "model_time_source": "query_time_ms",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T06Z-h200-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T06Z-h200-probe.md",
+        "request_ms": 167,
+        "result": "supported",
+        "startup_ms": 605565,
+        "vram_used_gb": 5.36
+      },
+      "h200_eu_north2_20260531T09Z_safety4_cpugrid2": {
+        "benchmark_samples_ms": [
+          166,
+          165,
+          167,
+          167,
+          166,
+          169,
+          167,
+          165,
+          165,
+          164
+        ],
+        "cell": "H200/eu-north2",
+        "gpu_node": "computeinstance-e02bf73e3ecaj6cvh5",
+        "inventory": {
+          "free_gpus": 7,
+          "total_gpus": 8
+        },
+        "mode": "manifest_safety4_ephemeral_cache_3_warmup_10_benchmark_persisted",
+        "model_time_source": "query_time_ms",
+        "pod": "forge-probe-sberroboticscenter-green-h200-eu-north2-c0ed1a",
+        "provenance_warning": "Runtime downloaded physical-intelligence/fast processing_action_tokenizer.py through Transformers remote custom code; pin or vendor the revision before publication.",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-safety4-h200-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-safety4-h200-probe.md",
+        "request_ms": 166,
+        "result": "supported",
+        "startup_ms": 598249,
+        "vram_used_gb": 5.36,
+        "warmup_samples_ms": [
+          2489,
+          167,
+          167
+        ]
+      },
+      "h200_eu_north2_20260531T14Z_fastvendored": {
+        "benchmark_samples_ms": [
+          146,
+          146,
+          149,
+          146,
+          146,
+          145,
+          148,
+          146,
+          146,
+          148
+        ],
+        "cell": "H200/eu-north2",
+        "gpu_node": "computeinstance-e02xkjz43xcbx889xb",
+        "image": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "inventory": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "mode": "container_image_override_fastvendored_digest_ephemeral_cache_3_warmup_10_benchmark_no_persist",
+        "model_time_source": "query_time_ms",
+        "persisted": false,
+        "pod": "forge-probe-sberroboticscenter-green-h200-eu-north2-373d6c",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-h200-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-h200-probe.md",
+        "request_ms": 146,
+        "result": "supported",
+        "startup_ms": 591482,
+        "vram_used_gb": 5.36,
+        "warmup_samples_ms": [
+          2222,
+          146,
+          146
+        ]
+      },
+      "l40s_eu_north1_20260531T09Z_safety4_cpugrid2": {
+        "benchmark_samples_ms": [
+          230,
+          225,
+          225,
+          224,
+          226,
+          223,
+          226,
+          223,
+          221,
+          223
+        ],
+        "cell": "L40S/eu-north1",
+        "gpu_node": "computeinstance-e00knmqbn7kxszaff1",
+        "inventory": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "mode": "manifest_safety4_ephemeral_cache_3_warmup_10_benchmark_persisted",
+        "model_time_source": "query_time_ms",
+        "pod": "forge-probe-sberroboticscenter-green-l40s-eu-north1-9f8957",
+        "provenance_warning": "Runtime downloaded physical-intelligence/fast processing_action_tokenizer.py through Transformers remote custom code; pin or vendor the revision before publication.",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-safety4-l40s-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-safety4-l40s-probe.md",
+        "request_ms": 224,
+        "result": "supported",
+        "startup_ms": 607144,
+        "vram_used_gb": 5.15,
+        "warmup_samples_ms": [
+          848,
+          225,
+          224
+        ]
+      },
+      "l40s_eu_north1_20260531T14Z_fastvendored": {
+        "benchmark_samples_ms": [
+          224,
+          221,
+          224,
+          222,
+          223,
+          222,
+          223,
+          223,
+          222,
+          223
+        ],
+        "cell": "L40S/eu-north1",
+        "gpu_node": "computeinstance-e00zfvvbpd91rkzq5b",
+        "image": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "inventory": {
+          "free_gpus": 8,
+          "total_gpus": 8
+        },
+        "mode": "container_image_override_fastvendored_digest_ephemeral_cache_3_warmup_10_benchmark_no_persist",
+        "model_time_source": "query_time_ms",
+        "persisted": false,
+        "pod": "forge-probe-sberroboticscenter-green-l40s-eu-north1-a28188",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-l40s-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T14Z-fastvendored-l40s-probe.md",
+        "request_ms": 223,
+        "result": "supported",
+        "startup_ms": 599814,
+        "vram_used_gb": 5.15,
+        "warmup_samples_ms": [
+          850,
+          230,
+          223
+        ]
+      },
+      "rtx6000_20260531T10Z_safety4_inventory_absent": {
+        "cell": "RTX6000",
+        "commands": [
+          "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug sberroboticscenter-greenvla-2b-base --include-status onboarding --gpu RTX6000 --region us-central1 --ephemeral-cache-volumes --timeout 3600 --request-timeout 600 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-cycle3-safety4-rtx6000-probe.json --report-md docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-cycle3-safety4-rtx6000-probe.md",
+          "PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug sberroboticscenter-greenvla-2b-base --include-status onboarding --gpu RTX6000 --ephemeral-cache-volumes --timeout 600 --request-timeout 120 --warmup-runs 0 --benchmark-runs 1 --max-parallel 1 --no-persist --report-json docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-cycle3-rtx6000-inventory-check.json --report-md docs/model-onboarding/physical-ai/greenvla-2b-base-20260531Tcurrent-cycle3-rtx6000-inventory-check.md"
+        ],
+        "mode": "manifest_safety4_ephemeral_cache_inventory_filter_before_probe",
+        "reason": "scripts/probe_model_parallel_matrix.py exited with No inventory cells matched the requested filters before creating a pod or report file.",
+        "report_json": "not_created_script_exited_before_report_write",
+        "report_md": "not_created_script_exited_before_report_write",
+        "result": "inventory_absent_before_scheduling",
+        "visible_inventory": [
+          {
+            "free_gpus": 8,
+            "gpu_type": "B200",
+            "region": "us-central1",
+            "total_gpus": 8
+          },
+          {
+            "free_gpus": 8,
+            "gpu_type": "L40S",
+            "region": "eu-north1",
+            "total_gpus": 8
+          },
+          {
+            "free_gpus": 8,
+            "gpu_type": "H200",
+            "region": "eu-north2",
+            "total_gpus": 8
+          },
+          {
+            "free_gpus": 8,
+            "gpu_type": "B300",
+            "region": "uk-south1",
+            "total_gpus": 8
+          }
+        ]
+      },
+      "rtx6000_us_central1_20260531T09Z_safety4_cpugrid2_aborted": {
+        "cell": "RTX6000/us-central1",
+        "events": [
+          "Scheduled to computeinstance-u00gt8bz94x9mgx62r",
+          "Pulled safety4 digest in 4m1.863s",
+          "Container started, then deletion requested before readiness",
+          "Readiness probe still failed with connection refused at stop time"
+        ],
+        "mode": "manifest_safety4_ephemeral_cache_3_warmup_10_benchmark",
+        "pod": "forge-probe-sberroboticscenter-green-rtx6000-us-central1-36a8df",
+        "reason": "Supervisor requested stopping nonessential long-running work before the pod reached readiness.",
+        "report_json": "not_created",
+        "report_md": "not_created",
+        "result": "aborted_before_ready"
+      },
+      "rtx6000_us_central1_20260531T15Z_fastvendored": {
+        "benchmark_samples_ms": [
+          174,
+          179,
+          178,
+          170,
+          168,
+          170,
+          175,
+          176,
+          173,
+          172
+        ],
+        "cell": "RTX6000/us-central1",
+        "gpu_node": "computeinstance-u00hpscz2ptvbpd6pq",
+        "image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+        "inventory": {
+          "free_gpus": 6,
+          "total_gpus": 7
+        },
+        "mode": "container_image_override_fastvendored_digest_ephemeral_cache_3_warmup_10_benchmark_no_persist",
+        "model_time_source": "query_time_ms",
+        "persisted": false,
+        "pod": "forge-probe-sberroboticscenter-green-rtx6000-us-central1-2328fb",
+        "report_json": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T15Z-fastvendored-rtx6000-probe.json",
+        "report_md": "docs/model-onboarding/physical-ai/greenvla-2b-base-20260531T15Z-fastvendored-rtx6000-probe.md",
+        "request_ms": 174,
+        "result": "supported",
+        "startup_ms": 565164,
+        "vram_used_gb": 5.3,
+        "warmup_samples_ms": [
+          1591,
+          184,
+          178
+        ]
+      }
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_blockers": [
+      "The fast-vendored image digest sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591 has persisted 3 warmup plus 10 measured no-actuation support evidence on B200, B300, H200, L40S, and RTX6000, and the 2026-06-01T23Z publication review passed local manifest/image gates; this worker still did not perform the live manifest upsert because no POSTGRES_URL, DATABASE_URL, PGHOST, PGDATABASE, or PGUSER was present.",
+      "The 2026-06-02T05Z B300 retained-pod capture produced a full no-actuation 1x10x7 action response with canonical SHA-256 88119e5b9cdb464f42be99aa8ec9b6112d1d3d15f4cb2cbb88491b350c6a4464 and passed static shape, finite, max-absolute-action, last-dimension-range, and adjacent-step-delta checks; this clears the previous truncated-preview-only blocker.",
+      "No representative Bridge/WidowX simulator replay, HIL dry run, or external robot-policy safety signoff exists for the exact fast-vendored digest and no-actuation wrapper.",
+      "Keep default_eligible=false and status=onboarding until live manifest upsert and robot-policy safety validation pass."
+    ],
+    "remote_custom_code_provenance": {
+      "physical_intelligence_fast": {
+        "disabled": false,
+        "files": {
+          "README.md": {
+            "sha256": "eeb548bbc962193940ee078225752c2cd8df91fda904467fc2206f641743038f",
+            "size_bytes": 3243
+          },
+          "processing_action_tokenizer.py": {
+            "sha256": "6f021ca1f4c1b194ab6fa399d80baf3d642eadb17efb8f73301e4ac401522c20",
+            "size_bytes": 6145
+          },
+          "processor_config.json": {
+            "sha256": "f40cfbb1020858fe1d48c0f946b0c1315a90d6e84aa82710036f24f4c167706a",
+            "size_bytes": 253
+          },
+          "tokenizer.json": {
+            "sha256": "6507dd709287fd018882120c0071787f1f62bad9f180f1e8c5235bda1b71fa78",
+            "size_bytes": 686974
+          },
+          "tokenizer_config.json": {
+            "sha256": "b4030e2a13a0dea22e99d54c086fb320c71e66ad034ac4eba4301a0a27d5e5cd",
+            "size_bytes": 322
+          }
+        },
+        "gated": false,
+        "last_modified": "2025-01-16T16:33:50.000Z",
+        "license": "apache-2.0",
+        "private": false,
+        "repo_id": "physical-intelligence/fast",
+        "revision": "ec4d7aa71691cac0b8bed6942be45684db2110f4",
+        "static_review": {
+          "pattern_scan": "no matches for requests/httpx/socket/subprocess/os/sys/open/eval/exec/compile/importlib/__import__/pickle/torch.hub/snapshot_download/from_pretrained/trust_remote_code/file_write_delete_permission patterns in processing_action_tokenizer.py",
+          "py_compile": "passed"
+        },
+        "status": "vendored_in_repo_with_startup_hash_verification_and_tokenizer_path_patch_built_mirrored_and_full_matrix_probed_on_b200_b300_h200_l40s",
+        "usage_source": "greenvla/GreenVLA lerobot/common/policies/greenvla_policy/greenvla_tokenizer.py at source revision 952a80c3f57880b7db4fb9280d1a4ef27b12f843 defaults fast_tokenizer_path to physical-intelligence/fast and calls AutoProcessor.from_pretrained(..., trust_remote_code=True) when model_mode is not flow_matching; this checkpoint config has model_mode=mixed."
+      }
+    },
+    "safety4_20260531T08Z_forge_image_digest": "sha256:d979368b1a0401d88f08fb700b328bdb2957cab6437f82970250b35a550d796b",
+    "safety4_20260531T08Z_layer_size_bytes": 5713744229,
+    "selected_candidate": "SberRoboticsCenter/GreenVLA-2b-base",
+    "selected_reason": "Public ungated Apache-2.0 GreenVLA checkpoint with safetensors artifact and MIT upstream source; prior candidate path already had Forge wrapper scaffold.",
+    "upstream_source_license": "MIT",
+    "upstream_source_repo": "https://github.com/greenvla/GreenVLA",
+    "upstream_source_revision": "952a80c3f57880b7db4fb9280d1a4ef27b12f843"
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robot_policy",
+    "vision_language_action",
+    "greenvla",
+    "lerobot",
+    "bridge",
+    "widowx",
+    "safetensors",
+    "apache_2_0",
+    "forge_wrapper_candidate",
+    "publication_reviewed_keep_hidden",
+    "robot_policy_safety_pending",
+    "text",
+    "vision",
+    "robot_state",
+    "robot_action",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-sberroboticscenter-greenvla-2b-base:gpu-wrapper-952a80c-noact-fastvendored-20260531t13z@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+  "container_image_size_bytes": 5713756160,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-31T05:03:38.989832+00:00",
+  "default_eligible": false,
+  "description": "GreenVLA 2B Base is an Apache-2.0 vision-language-action robot policy checkpoint from SberRoboticsCenter for Bridge/WidowX-style manipulation. This hidden Forge candidate uses a Forge-owned FastAPI wrapper that rejects real actuation and returns only a no-actuation action trace. The current fast-vendored digest is mirrored to all active regions, keeps the Qwen3-VL rotary position and image split-size CPU-grid patches for the prior B300/SM103 NVRTC blockers, vendors physical-intelligence/fast with startup hash verification, and is benchmarked on B200/us-central1, B300/uk-south1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 10 measured warm no-actuation requests per cell. The 2026-06-02 B300 retained-pod capture records a full finite 1x10x7 no-actuation action trace and static safety metrics. Publication remains blocked pending live manifest upsert plus representative simulator replay, HIL dry run, or external robot-policy safety signoff.",
+  "family_id": "dacd8e1c-7593-4945-815e-54f0842c9630",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "FORGE_CACHE_ROOT": "/mnt/data/forge-weights/sberroboticscenter/greenvla-2b-base",
+      "FORGE_MODEL_ID": "SberRoboticsCenter/GreenVLA-2b-base",
+      "FORGE_MODEL_REVISION": "58aeae14740bcc313e1915a200e7ce8fa0cca3df",
+      "FORGE_MODEL_SLUG": "sberroboticscenter-greenvla-2b-base",
+      "GREENVLA_ACTION_DIM": "7",
+      "GREENVLA_ACTION_HORIZON": "10",
+      "GREENVLA_DATA_CONFIG": "bridge",
+      "GREENVLA_DEVICE": "cuda",
+      "GREENVLA_DISABLE_CUDNN_SDP_ON_SM103": "true",
+      "GREENVLA_FAST_PROCESSOR_PATH": "/app/greenvla_wrapper/vendor/physical_intelligence_fast",
+      "GREENVLA_FAST_PROCESSOR_REVISION": "ec4d7aa71691cac0b8bed6942be45684db2110f4",
+      "GREENVLA_IMAGE_KEY": "image",
+      "GREENVLA_PATCH_QWEN3_VL_ROT_POS_CPU_GRID": "true",
+      "GREENVLA_SOURCE_REVISION": "952a80c3f57880b7db4fb9280d1a4ef27b12f843",
+      "GREENVLA_STATE_DIM": "8",
+      "HF_HOME": "/mnt/data/forge-weights/sberroboticscenter/greenvla-2b-base/huggingface",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/forge-weights/sberroboticscenter/greenvla-2b-base/huggingface/hub",
+      "TORCH_HOME": "/mnt/data/forge-weights/sberroboticscenter/greenvla-2b-base/torch",
+      "TRANSFORMERS_CACHE": "/mnt/data/forge-weights/sberroboticscenter/greenvla-2b-base/huggingface",
+      "TRITON_CACHE_DIR": "/mnt/data/forge-weights/sberroboticscenter/greenvla-2b-base/triton",
+      "XDG_CACHE_HOME": "/mnt/data/forge-weights/sberroboticscenter/greenvla-2b-base/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T01:10:53.193839+00:00",
+      "region": "us-central1",
+      "request_ms": 136,
+      "request_ms_p50": 141,
+      "request_ms_p95": 143,
+      "request_ms_p99": 144,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 313372,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 5.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T01:13:07.200376+00:00",
+      "region": "uk-south1",
+      "request_ms": 137,
+      "request_ms_p50": 136,
+      "request_ms_p95": 138,
+      "request_ms_p99": 140,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 105013,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 5.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T01:12:23.528456+00:00",
+      "region": "eu-north2",
+      "request_ms": 163,
+      "request_ms_p50": 166,
+      "request_ms_p95": 169,
+      "request_ms_p99": 171,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 313114,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 5.36,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T01:07:02.068439+00:00",
+      "region": "eu-north1",
+      "request_ms": 222,
+      "request_ms_p50": 223,
+      "request_ms_p95": 226,
+      "request_ms_p99": 229,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 83960,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 5.15,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-01T01:10:43.501677+00:00",
+      "region": "us-central1",
+      "request_ms": 156,
+      "request_ms_p50": 156,
+      "request_ms_p95": 162,
+      "request_ms_p99": 162,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 304796,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 5.3,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "4b3f830e-c383-4a73-a012-d44d98088e3d",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "modality_output": [
+    "robot_action",
+    "json"
+  ],
+  "model_family": "sberroboticscenter-greenvla",
+  "name": "SberRoboticsCenter GreenVLA 2B Base",
+  "parameter_count": 2000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "data_config_name": "{{data_config_name}}",
+        "image": "{{image}}",
+        "instruction": "{{instruction}}",
+        "model": "{{model_slug}}",
+        "no_actuation": "{{no_actuation}}",
+        "robot_state": "{{robot_state}}"
+      },
+      "endpoint": "/v1/inference/sberroboticscenter-greenvla-2b-base",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "pick up the green block and place it on the plate",
+        "key": "instruction",
+        "label": "Instruction",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "accept": "image/png,image/jpeg,image/webp",
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAACVT/22AAABr0lEQVR42u3SAQkAAAgEsY9qBCMY3RoKgyU4Lj0FZ0UCDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDKoCBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBlUBg4JBMSgYFAyKQcGgGBQMCgbFoGBQDAoGBYNiUDAoBgWDgkExKBgUg4JBwaAYFAwKBsWgYFAMCgYFg2JQMCgGBYOCQTEoGBSDgkHBoBgUDIpBwaBgUAwKBgWDYlAwKAYFg4JBMSgYFIOCQcGgGBQMikHBoGBQDAoGxaBgUDAoBgWDgkExKBgUg4JBwaAYFAyKQcGgYFAMCgbFoGBQMCgGBYNiUDAoGBSDgkHBoBgUDIpBwaBgUAwKBsWgYFAwKAYFg2JQMCgYFIOCQTEoGBQMikHBoGBQDAoGxaBgUDAoBgWDYlAwKBgUg4JBMSgYFAyKQcGgGBQMCgbFoGBQMCgGBYNiUDAoGBSDgkExKBgUDIpBwaAYFAwKBsWgYFAMCgYFg2JQMCgYFIOCQTEoGBQMikHBoBgUDAoG5aMFsn9PELKPO74AAAAASUVORK5CYII=",
+        "key": "image",
+        "label": "Bridge RGB Image",
+        "type": "file_upload",
+        "visible": true
+      },
+      {
+        "default": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "key": "robot_state",
+        "label": "8D Bridge Robot State",
+        "type": "json_editor",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "robotics_trace",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": "bridge",
+        "key": "data_config_name",
+        "label": "Data Config",
+        "options": [
+          "bridge"
+        ],
+        "type": "select"
+      },
+      {
+        "default": true,
+        "key": "no_actuation",
+        "label": "No Actuation",
+        "type": "checkbox"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bfloat16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/forge-sberroboticscenter-greenvla-2b-base@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/forge-sberroboticscenter-greenvla-2b-base@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-sberroboticscenter-greenvla-2b-base@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/forge-sberroboticscenter-greenvla-2b-base@sha256:233cdc1468521b43d83fe74008227be9d92e2e8a4fced5b27812d4c37a812591"
+  },
+  "release_rank": 715,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "sberroboticscenter-greenvla-2b-base",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/SberRoboticsCenter/GreenVLA-2b-base",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "robot-policy",
+    "vision-language-action",
+    "greenvla",
+    "lerobot",
+    "bridge",
+    "widowx",
+    "safetensors",
+    "apache-2.0",
+    "forge-wrapper-candidate",
+    "publication-reviewed-keep-hidden",
+    "robot-policy-safety-pending"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "2b-base-gpu-wrapper-952a80c-noact-fastvendored",
+  "version_description": "Hidden onboarding manifest for the Apache-2.0 SberRoboticsCenter/GreenVLA-2b-base checkpoint served through a Forge-owned no-actuation GreenVLA HTTP wrapper. The current fast-vendored image is digest-backed, mirrored to all active Forge regional registries, import-smoked without hydrating weights, string-form no-actuation bypass-checked, actuator-routing keys rejected, action-trace shape/finite-checked, statically dispatch-audited, and patches Qwen3-VL rotary position scalar planning plus image split-size planning to keep tiny grid_thw reductions on CPU for B300/SM103. It also vendors physical-intelligence/fast revision ec4d7aa71691cac0b8bed6942be45684db2110f4 with startup SHA-256 verification plus a local tokenizer-path patch. The 2026-06-01T01Z persisted matrix verified the fast-vendored digest on B200/us-central1, B300/uk-south1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 3 warmup plus 10 measured no-actuation requests per cell. The 2026-06-02T05Z retained B300 no-persist probe captured a full no-actuation action response for static review and passed finite, shape, magnitude, and adjacent step-delta checks. Keep hidden until live manifest upsert and Bridge/WidowX simulator replay, HIL dry run, or external robot-policy safety signoff are complete.",
+  "version_key": "2b-base",
+  "version_label": "2B Base wrapper candidate"
+}

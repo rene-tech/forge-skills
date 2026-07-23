@@ -1,0 +1,231 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "3dd4101bf2fe373d47f1d1a070d76c22f2c03c4919d7bab5282a8d141ce77c4e",
+  "defaultEligible": false,
+  "displayName": "Use Hugging Face LeRobot SmolVLA Libero Plus",
+  "domain": "robotics-control",
+  "downloadUrl": "/v1/model-skills/huggingface-lerobot-smolvla-libero-plus/markdown?download=true",
+  "group": "robotics-control",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "robotics-control",
+    "huggingface-lerobot-smolvla-libero-plus"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/huggingface-lerobot-smolvla-libero-plus",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Pick up the red cube and place it in the target bowl.",
+      "fieldType": "textarea",
+      "key": "instruction",
+      "label": "Instruction",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "camera1_image",
+      "label": "Camera 1 Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "camera2_image",
+      "label": "Camera 2 Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "camera3_image",
+      "label": "Camera 3 Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "empty_camera_0_image",
+      "label": "Empty Camera 0",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAGjChXjAAAAAElFTkSuQmCC",
+      "fieldType": "file_upload",
+      "key": "empty_camera_1_image",
+      "label": "Empty Camera 1",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fieldType": "json_editor",
+      "key": "robot_state",
+      "label": "8D Robot State",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "so100_follower",
+        "so101_follower"
+      ],
+      "default": "so100_follower",
+      "fieldType": "select",
+      "key": "robot_type",
+      "label": "Robot Type",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "return_chunk",
+      "label": "Return Action Chunk",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "robot_state"
+  ],
+  "instructions": "---\nname: use-forge-huggingface-lerobot-smolvla-libero-plus\ndescription: Use the exact Forge model huggingface-lerobot-smolvla-libero-plus for text, image, robot_state to robot_action, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Hugging Face LeRobot SmolVLA Libero Plus\n\n- Model slug: `huggingface-lerobot-smolvla-libero-plus`\n- Model family: `huggingface-lerobot-smolvla`\n- Version: `libero-plus-7bb70aa-state8-sm103-sdpa-02z` (`libero-plus`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / robotics-control / huggingface-lerobot-smolvla-libero-plus`\n- Stability: `experimental`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nSmolVLA Libero Plus is a compact LeRobot vision-language-action policy checkpoint trained for LIBERO Plus-style manipulation.\n\n## Use this exact model when\n\n- Use this exact `huggingface-lerobot-smolvla-libero-plus` version when the task supplies text, image, robot_state and needs robot_action, json.\n- SmolVLA Libero Plus is a compact LeRobot vision-language-action policy checkpoint trained for LIBERO Plus-style manipulation.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.\n- Do not hide its `experimental` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `instruction` (textarea, optional): Instruction\n- `camera1_image` (file_upload, optional): Camera 1 Image\n- `camera2_image` (file_upload, optional): Camera 2 Image\n- `camera3_image` (file_upload, optional): Camera 3 Image\n- `empty_camera_0_image` (file_upload, optional): Empty Camera 0\n- `empty_camera_1_image` (file_upload, optional): Empty Camera 1\n- `robot_state` (json_editor, optional): 8D Robot State\n- `robot_type` (select, optional): Robot Type\n- `return_chunk` (checkbox, optional): Return Action Chunk\n\nRequest template:\n\n```json\n{\n  \"images\": {\n    \"camera1\": \"{{camera1_image}}\",\n    \"camera2\": \"{{camera2_image}}\",\n    \"camera3\": \"{{camera3_image}}\",\n    \"empty_camera_0\": \"{{empty_camera_0_image}}\",\n    \"empty_camera_1\": \"{{empty_camera_1_image}}\"\n  },\n  \"instruction\": \"{{instruction}}\",\n  \"model\": \"{{model_slug}}\",\n  \"return_chunk\": \"{{return_chunk}}\",\n  \"robot_state\": \"{{robot_state}}\",\n  \"robot_type\": \"{{robot_type}}\"\n}\n```\n\n## Exact output\n\n- `robot_action`\n- `json`\n\n## Route\n\n`POST /v1/inference/huggingface-lerobot-smolvla-libero-plus`\n\n## Workflow\n\n1. Load this skill and pin model slug `huggingface-lerobot-smolvla-libero-plus` with version key `libero-plus`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/huggingface-lerobot-smolvla-libero-plus` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/huggingface-lerobot-smolvla-libero-plus`\n- Routes: `/v1/models/huggingface-lerobot-smolvla-libero-plus/inference-routes`\n- Regional deployment: `/v1/models/huggingface-lerobot-smolvla-libero-plus/regional-deployment`\n- Deployment handoff: `/v1/models/huggingface-lerobot-smolvla-libero-plus/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-libero-plus/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-libero-plus/SKILL.md\n\n## References\n\n- [Hugging Face LeRobot SmolVLA Libero Plus source](https://huggingface.co/lerobot/smolvla_libero_plus) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/huggingface-lerobot-smolvla-libero-plus/deploy",
+    "inferenceRoutesUrl": "/v1/models/huggingface-lerobot-smolvla-libero-plus/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/huggingface-lerobot-smolvla",
+    "modelUrl": "/v1/models/huggingface-lerobot-smolvla-libero-plus",
+    "regionalDeploymentUrl": "/v1/models/huggingface-lerobot-smolvla-libero-plus/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/huggingface-lerobot-smolvla-libero-plus/markdown",
+  "modelFamily": "huggingface-lerobot-smolvla",
+  "modelSlug": "huggingface-lerobot-smolvla-libero-plus",
+  "modelUrl": "/v1/models/huggingface-lerobot-smolvla-libero-plus",
+  "outputFields": [
+    "robot_action",
+    "json"
+  ],
+  "outputModalities": [
+    "robot_action",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "SmolVLA Libero Plus is a compact LeRobot vision-language-action policy checkpoint trained for LIBERO Plus-style manipulation.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-libero-plus/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Hugging Face LeRobot SmolVLA Libero Plus source",
+      "url": "https://huggingface.co/lerobot/smolvla_libero_plus"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-libero-plus/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-libero-plus/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "images": {
+      "camera1": "{{camera1_image}}",
+      "camera2": "{{camera2_image}}",
+      "camera3": "{{camera3_image}}",
+      "empty_camera_0": "{{empty_camera_0_image}}",
+      "empty_camera_1": "{{empty_camera_1_image}}"
+    },
+    "instruction": "{{instruction}}",
+    "model": "{{model_slug}}",
+    "return_chunk": "{{return_chunk}}",
+    "robot_state": "{{robot_state}}",
+    "robot_type": "{{robot_type}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 450000000,
+    "quantization": "fp32",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/lerobot/smolvla_libero_plus",
+    "tags": [
+      "physical-ai",
+      "robotics",
+      "robot-policy",
+      "vision-language-action",
+      "lerobot",
+      "smolvla",
+      "libero-plus",
+      "forge-wrapper-candidate"
+    ],
+    "versionLabel": "Libero Plus wrapper"
+  },
+  "shortDescription": "SmolVLA Libero Plus is a compact LeRobot vision-language-action policy checkpoint trained for LIBERO Plus-style manipulation.",
+  "skillName": "use-forge-huggingface-lerobot-smolvla-libero-plus",
+  "skillUrl": "/v1/model-skills/huggingface-lerobot-smolvla-libero-plus",
+  "slug": "huggingface-lerobot-smolvla-libero-plus",
+  "stability": "experimental",
+  "version": "libero-plus-7bb70aa-state8-sm103-sdpa-02z",
+  "versionKey": "libero-plus",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'robot_state'] \u2192 ['robot_action', 'json'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `huggingface-lerobot-smolvla-libero-plus` version when the task supplies text, image, robot_state and needs robot_action, json.",
+    "SmolVLA Libero Plus is a compact LeRobot vision-language-action policy checkpoint trained for LIBERO Plus-style manipulation.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `huggingface-lerobot-smolvla-libero-plus` with version key `libero-plus`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/huggingface-lerobot-smolvla-libero-plus` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

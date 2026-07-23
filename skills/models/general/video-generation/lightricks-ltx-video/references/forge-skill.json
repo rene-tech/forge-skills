@@ -1,0 +1,222 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "279b4562fa24a74ac2b998218f3d54fa3790ccf472757a9cf9d94577d6e5aa1f",
+  "defaultEligible": true,
+  "displayName": "Use LTX-Video",
+  "domain": "video-generation",
+  "downloadUrl": "/v1/model-skills/lightricks-ltx-video/markdown?download=true",
+  "group": "video-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "video-generation",
+    "lightricks-ltx-video"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/lightricks-ltx-video",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A close-up product shot of a compact AI workstation powering on, indicator lights pulsing, smooth camera push-in, realistic motion",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "worst quality, inconsistent motion, blurry, jittery, distorted",
+      "fieldType": "textarea",
+      "key": "negative_prompt",
+      "label": "Negative Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 11,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 20,
+      "fieldType": "number",
+      "key": "num_inference_steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 4,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 5,
+      "fieldType": "number",
+      "key": "guidance_scale",
+      "label": "Guidance",
+      "maximum": 10,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 768,
+      "fieldType": "number",
+      "key": "width",
+      "label": "Width",
+      "maximum": 1280,
+      "minimum": 320,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "height",
+      "label": "Height",
+      "maximum": 768,
+      "minimum": 320,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 49,
+      "fieldType": "number",
+      "key": "num_frames",
+      "label": "Frames",
+      "maximum": 161,
+      "minimum": 17,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.03,
+      "fieldType": "number",
+      "key": "decode_timestep",
+      "label": "Decode Timestep",
+      "maximum": 0.1,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.025,
+      "fieldType": "number",
+      "key": "decode_noise_scale",
+      "label": "Decode Noise",
+      "maximum": 0.1,
+      "minimum": 0,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-lightricks-ltx-video\ndescription: Use the exact Forge model lightricks-ltx-video for text to video tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use LTX-Video\n\n- Model slug: `lightricks-ltx-video`\n- Model family: `lightricks-ltx-video`\n- Version: `diffusers` (`diffusers`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / video-generation / lightricks-ltx-video`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `openrail`\n\n## Purpose\n\nLTX-Video text-to-video generation through the reusable Forge Diffusers media wrapper.\n\n## Use this exact model when\n\n- Use this exact `lightricks-ltx-video` version when the task supplies text and needs video.\n- LTX-Video text-to-video generation through the reusable Forge Diffusers media wrapper.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `negative_prompt` (textarea, optional): Negative Prompt\n- `seed` (number, optional; bounds 0..999999): Seed\n- `num_inference_steps` (number, optional; bounds 4..50): Steps\n- `guidance_scale` (number, optional; bounds 1..10): Guidance\n- `width` (number, optional; bounds 320..1280): Width\n- `height` (number, optional; bounds 320..768): Height\n- `num_frames` (number, optional; bounds 17..161): Frames\n- `decode_timestep` (number, optional; bounds 0..0.1): Decode Timestep\n- `decode_noise_scale` (number, optional; bounds 0..0.1): Decode Noise\n\nRequest template:\n\n```json\n{\n  \"decode_noise_scale\": \"{{decode_noise_scale}}\",\n  \"decode_timestep\": \"{{decode_timestep}}\",\n  \"fps\": 24,\n  \"guidance_scale\": \"{{guidance_scale}}\",\n  \"height\": \"{{height}}\",\n  \"negative_prompt\": \"{{negative_prompt}}\",\n  \"num_frames\": \"{{num_frames}}\",\n  \"num_inference_steps\": \"{{num_inference_steps}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"width\": \"{{width}}\"\n}\n```\n\n## Exact output\n\n- `video`\n\n## Route\n\n`POST /v1/inference/lightricks-ltx-video`\n\n## Workflow\n\n1. Load this skill and pin model slug `lightricks-ltx-video` with version key `diffusers`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/lightricks-ltx-video` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/lightricks-ltx-video`\n- Routes: `/v1/models/lightricks-ltx-video/inference-routes`\n- Regional deployment: `/v1/models/lightricks-ltx-video/regional-deployment`\n- Deployment handoff: `/v1/models/lightricks-ltx-video/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/lightricks-ltx-video/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/lightricks-ltx-video/SKILL.md\n\n## References\n\n- [LTX-Video source](https://github.com/Lightricks/LTX-Video) (repository)\n",
+  "license": "openrail",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/lightricks-ltx-video/deploy",
+    "inferenceRoutesUrl": "/v1/models/lightricks-ltx-video/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/lightricks-ltx-video",
+    "modelUrl": "/v1/models/lightricks-ltx-video",
+    "regionalDeploymentUrl": "/v1/models/lightricks-ltx-video/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/lightricks-ltx-video/markdown",
+  "modelFamily": "lightricks-ltx-video",
+  "modelSlug": "lightricks-ltx-video",
+  "modelUrl": "/v1/models/lightricks-ltx-video",
+  "outputFields": [
+    "video"
+  ],
+  "outputModalities": [
+    "video"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "LTX-Video text-to-video generation through the reusable Forge Diffusers media wrapper.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/video-generation/lightricks-ltx-video/SKILL.md",
+  "references": [
+    {
+      "kind": "repository",
+      "title": "LTX-Video source",
+      "url": "https://github.com/Lightricks/LTX-Video"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/lightricks-ltx-video/SKILL.md",
+  "repositoryPath": "skills/models/general/video-generation/lightricks-ltx-video/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "decode_noise_scale": "{{decode_noise_scale}}",
+    "decode_timestep": "{{decode_timestep}}",
+    "fps": 24,
+    "guidance_scale": "{{guidance_scale}}",
+    "height": "{{height}}",
+    "negative_prompt": "{{negative_prompt}}",
+    "num_frames": "{{num_frames}}",
+    "num_inference_steps": "{{num_inference_steps}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "width": "{{width}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": "bf16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://github.com/Lightricks/LTX-Video",
+    "tags": [
+      "video-generation",
+      "text-to-video",
+      "image-to-video",
+      "diffusion",
+      "ltx-video",
+      "single-gpu"
+    ],
+    "versionLabel": "Diffusers"
+  },
+  "shortDescription": "LTX-Video text-to-video generation through the reusable Forge Diffusers media wrapper.",
+  "skillName": "use-forge-lightricks-ltx-video",
+  "skillUrl": "/v1/model-skills/lightricks-ltx-video",
+  "slug": "lightricks-ltx-video",
+  "stability": "experimental",
+  "version": "diffusers",
+  "versionKey": "diffusers",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['video'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `lightricks-ltx-video` version when the task supplies text and needs video.",
+    "LTX-Video text-to-video generation through the reusable Forge Diffusers media wrapper.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `lightricks-ltx-video` with version key `diffusers`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/lightricks-ltx-video` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

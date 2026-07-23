@@ -1,0 +1,327 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "protein",
+    "protein_folding",
+    "structure_prediction",
+    "nvidia_nim",
+    "protein_sequence",
+    "protein_structure",
+    "structured_output"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/deepmind/alphafold2:latest",
+  "container_image_size_bytes": null,
+  "context_window": 4096,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-27T12:35:28.378640+00:00",
+  "default_eligible": true,
+  "description": "DeepMind AlphaFold2 NVIDIA NIM for protein structure prediction from amino acid sequence. This manifest remains onboarding-only until the pod-start failure observed on H200/eu-north2 is diagnosed and a successful Forge probe is recorded.",
+  "family_id": "04875b23-a676-4093-9357-b348ced42c80",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H200": false,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 40.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": "gpu_incompatible: model catalog marks B200 unsupported",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 134.4,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "gpu_incompatible: model catalog marks B300 unsupported",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": "gpu_incompatible: model catalog marks H200 unsupported",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "eu-north2",
+      "request_ms": null,
+      "request_ms_p50": 475289,
+      "request_ms_p95": 475289,
+      "request_ms_p99": 475289,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-28T00:16:04.320550+00:00",
+      "region": "eu-north1",
+      "request_ms": 549001,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 33.8,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": "gpu_incompatible: model catalog marks RTX6000 unsupported",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-13T16:34:32.989433+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 71.8,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "69da217c-c2d3-4457-b854-4bbe73d744fa",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0/cc-by-4.0",
+  "modality_input": [
+    "protein_sequence"
+  ],
+  "modality_output": [
+    "structure",
+    "json"
+  ],
+  "model_family": "deepmind-alphafold2",
+  "name": "AlphaFold2",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "algorithm": "{{algorithm}}",
+        "databases": "{{databases}}",
+        "e_value": "{{e_value}}",
+        "iterations": "{{iterations}}",
+        "relax_prediction": "{{relax_prediction}}",
+        "sequence": "{{sequence}}",
+        "structure_model_preset": "{{structure_model_preset}}",
+        "structure_models_to_relax": "{{structure_models_to_relax}}"
+      },
+      "endpoint": "/protein-structure/alphafold2/predict-structure-from-sequence",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "MKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVF",
+        "key": "sequence",
+        "label": "Protein sequence",
+        "type": "protein_sequence",
+        "visible": true
+      },
+      {
+        "default": "mmseqs2",
+        "key": "algorithm",
+        "label": "MSA algorithm",
+        "options": [
+          "jackhmmer",
+          "mmseqs2"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "[\"uniref90\", \"mgnify\", \"small_bfd\"]",
+        "key": "databases",
+        "label": "MSA databases",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "relax_prediction",
+        "label": "Perform geometry refinement",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": "monomer",
+        "key": "structure_model_preset",
+        "label": "Structure model preset",
+        "options": [
+          "monomer",
+          "casp14",
+          "monomer_ptm"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "none",
+        "key": "structure_models_to_relax",
+        "label": "Models to relax",
+        "options": [
+          "none",
+          "best",
+          "all"
+        ],
+        "type": "select",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "pdb",
+      "type": "structure_3d"
+    },
+    "parameter_controls": [
+      {
+        "default": 1,
+        "key": "e_value",
+        "label": "E-value",
+        "max": 10,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "iterations",
+        "label": "MSA iterations",
+        "max": 3,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-deepmind-alphafold2:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-deepmind-alphafold2:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-deepmind-alphafold2:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-deepmind-alphafold2:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "deepmind-alphafold2-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/deepmind/alphafold2",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "eu-north1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "protein",
+    "protein-folding",
+    "structure-prediction",
+    "nvidia-nim"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

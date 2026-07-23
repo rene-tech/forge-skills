@@ -1,0 +1,389 @@
+{
+  "benchmark_scores": {
+    "deployment_note": "Forge-owned ProteinMPNN wrapper built as hcls-proteinmpnn-suite:20260519-proteinmpnn, mirrored to all active regional registries at one digest, and probed successfully on B200, B300, H200, L40S, and RTX6000.",
+    "probe_completed_at": "2026-05-19T07:45:00Z",
+    "probe_samples_per_cell": 10,
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "protein_design",
+    "inverse_folding",
+    "sequence_design",
+    "proteinmpnn",
+    "open_source",
+    "protein_structure",
+    "structured_output",
+    "protein_sequence",
+    "score",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-proteinmpnn-suite:20260519-proteinmpnn",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-04T20:06:53.700793+00:00",
+  "default_eligible": true,
+  "description": "ProteinMPNN inverse-folding and sequence-design wrapper for vanilla, soluble, and CA-only ProteinMPNN. LigandMPNN, HyperMPNN, and antibody-MPNN are separate follow-up wrappers because they are not provided by the public Dauparas ProteinMPNN repository.",
+  "family_id": "e64cfaf5-b2eb-4d82-a12a-b3b99462faf9",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 16.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-19T07:39:31.636536+00:00",
+      "region": "us-central1",
+      "request_ms": 12777,
+      "request_ms_p50": 12170,
+      "request_ms_p95": 12773,
+      "request_ms_p99": 12776,
+      "request_ms_samples": 10,
+      "startup_ms_first": 1418,
+      "startup_ms_probe": 4877,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-19T07:39:49.412873+00:00",
+      "region": "uk-south1",
+      "request_ms": 7721,
+      "request_ms_p50": 7675,
+      "request_ms_p95": 10152,
+      "request_ms_p99": 11682,
+      "request_ms_samples": 10,
+      "startup_ms_first": 5880,
+      "startup_ms_probe": 8380,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-19T07:37:04.099854+00:00",
+      "region": "eu-north2",
+      "request_ms": 2661,
+      "request_ms_p50": 2909,
+      "request_ms_p95": 3452,
+      "request_ms_p99": 3482,
+      "request_ms_samples": 10,
+      "startup_ms_first": 7120,
+      "startup_ms_probe": 7300,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 6,
+      "total_warm_starts": 5,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-19T07:39:21.355381+00:00",
+      "region": "eu-north1",
+      "request_ms": 9327,
+      "request_ms_p50": 9313,
+      "request_ms_p95": 9679,
+      "request_ms_p99": 9685,
+      "request_ms_samples": 10,
+      "startup_ms_first": 4735,
+      "startup_ms_probe": 6168,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-19T07:39:41.552413+00:00",
+      "region": "us-central1",
+      "request_ms": 5277,
+      "request_ms_p50": 4906,
+      "request_ms_p95": 5292,
+      "request_ms_p99": 5302,
+      "request_ms_samples": 10,
+      "startup_ms_first": 739,
+      "startup_ms_probe": 4471,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "a5853ea2-6f04-4142-9b19-3eae1ee6c22a",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "structure",
+    "json"
+  ],
+  "modality_output": [
+    "protein_sequence",
+    "score",
+    "json"
+  ],
+  "model_family": "dauparas-proteinmpnn",
+  "name": "ProteinMPNN Suite",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "bias_AA": "{{bias_aa}}",
+        "bias_AA_per_residue": "{{bias_aa_per_residue}}",
+        "designedChains": "{{designed_chains}}",
+        "designedResidues": "{{designed_residues}}",
+        "homo_oligomer": "{{homo_oligomer}}",
+        "modelType": "{{model_type}}",
+        "noiseLevel": "{{noise_level}}",
+        "numSequences": "{{num_sequences}}",
+        "omitAAs": "{{omit_aas}}",
+        "omit_AA_per_residue": "{{omit_aa_per_residue}}",
+        "pdbFile": "{{pdb_file}}",
+        "temperature": "{{temperature}}",
+        "verifySequences": "{{verify_sequences}}"
+      },
+      "endpoint": "/v1/inference/dauparas-proteinmpnn-suite",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "",
+        "key": "pdb_file",
+        "label": "Protein structure PDB content",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "A",
+        "key": "designed_chains",
+        "label": "Designed chains",
+        "type": "text",
+        "visible": true
+      },
+      {
+        "default": "{\"A\":\"1-20\"}",
+        "key": "designed_residues",
+        "label": "Designed residues",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": "proteinmpnn",
+        "key": "model_type",
+        "label": "Model type",
+        "options": [
+          "proteinmpnn",
+          "solublempnn",
+          "ca-proteinmpnn"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "0.2",
+        "key": "noise_level",
+        "label": "Noise level",
+        "options": [
+          "0.02",
+          "0.1",
+          "0.2",
+          "0.3"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "C",
+        "key": "omit_aas",
+        "label": "Amino acids to omit",
+        "type": "text",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "verify_sequences",
+        "label": "Verify sequences",
+        "options": [
+          "",
+          "verify-alphafold",
+          "verify-chai"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "bias_aa",
+        "label": "Bias AA",
+        "type": "text",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "bias_aa_per_residue",
+        "label": "Bias AA per residue",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "omit_aa_per_residue",
+        "label": "Omit AA per residue",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "FASTA sequences with per-sequence score, global_score, sampled temperature, and fixed/designed chain metadata",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 2,
+        "key": "num_sequences",
+        "label": "Number of sequences",
+        "max": 10000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 0.1,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 1,
+        "min": 0,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 0,
+        "key": "homo_oligomer",
+        "label": "Homo-oligomer copies",
+        "max": 24,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "interface_reference": "tamarind:proteinmpnn",
+      "kind": "proteinmpnn",
+      "model_id": "dauparas/ProteinMPNN",
+      "upstream_ref": "8907e6671bfbfc92303b5f79c4b5e6ce47cdef57"
+    },
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/hcls-proteinmpnn-suite:20260519-proteinmpnn",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/hcls-proteinmpnn-suite:20260519-proteinmpnn",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/hcls-proteinmpnn-suite:20260519-proteinmpnn",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/hcls-proteinmpnn-suite:20260519-proteinmpnn"
+  },
+  "release_rank": 40,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "dauparas-proteinmpnn-suite",
+  "source": "custom_container",
+  "source_url": "https://github.com/dauparas/ProteinMPNN",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "protein-design",
+    "inverse-folding",
+    "sequence-design",
+    "proteinmpnn",
+    "open-source"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "proteinmpnn-solublempnn-ca",
+  "version_description": "ProteinMPNN inverse-folding interface backed by the public Dauparas ProteinMPNN repository, with vanilla, soluble, and CA-only ProteinMPNN variants.",
+  "version_key": "proteinmpnn-solublempnn-ca",
+  "version_label": "ProteinMPNN suite"
+}

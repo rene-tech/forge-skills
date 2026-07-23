@@ -1,0 +1,390 @@
+{
+  "benchmark_scores": {
+    "artifact_gated": false,
+    "artifact_license": "cc-by-nc-sa-4.0",
+    "artifact_private": false,
+    "artifact_source": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+    "hf_api_checked_at": "2026-06-05T00:00:00Z",
+    "hf_hub_disable_xet": true,
+    "hf_library_name": "transformers",
+    "hf_pipeline_tag": "fill-mask",
+    "hf_tags": [
+      "transformers",
+      "safetensors",
+      "custom_code",
+      "license:cc-by-nc-sa-4.0"
+    ],
+    "onboarding_state": "h200_eu_north2_supported_full_matrix_pending",
+    "probe_status": {
+      "h200_eu_north2": {
+        "report_json": "docs/model-onboarding/hcls/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding-20260605T-event-h200-benchmark-mlm-no-xet-fp32.json",
+        "report_md": "docs/model-onboarding/hcls/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding-20260605T-event-h200-benchmark-mlm-no-xet-fp32.md",
+        "request_ms_p50": 12,
+        "request_ms_samples": [
+          13,
+          13,
+          12,
+          13,
+          12,
+          12,
+          12,
+          12,
+          13,
+          12
+        ],
+        "request_time_source": "model_time_ms",
+        "startup_ms": 23278,
+        "vram_used_gb": 2.58
+      },
+      "next_command": ".venv312/bin/python scripts/probe_model_parallel_matrix.py --slug instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding --include-status onboarding --timeout 2400 --request-timeout 300 --warmup-runs 1 --benchmark-runs 10 --max-parallel 1 --ephemeral-cache-volumes",
+      "status": "supported_partial",
+      "supported_cells": [
+        "H200/eu-north2"
+      ],
+      "unsupported_or_unprobed_cells": [
+        "B200",
+        "B300",
+        "H100",
+        "L40S",
+        "RTX6000",
+        "other H200 regions"
+      ]
+    },
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_verified_at": "2026-06-05T00:00:00Z",
+    "remote_code_required": true,
+    "remote_code_review_status": "pending",
+    "runtime_image_digest": "sha256:8bfaae2e3102e1c2987bcc6468efc3f6d59325b85edbdd708753af78afd0b902",
+    "runtime_image_family": "life-science-transformers:clawbio-dna-mlm-20260605"
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "genomics",
+    "dna",
+    "embedding",
+    "sequence",
+    "nucleotide_transformer",
+    "transformers",
+    "custom_code",
+    "forge_wrapper",
+    "clawbio",
+    "dna_sequence",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-transformers:clawbio-dna-mlm-20260605@sha256:8bfaae2e3102e1c2987bcc6468efc3f6d59325b85edbdd708753af78afd0b902",
+  "container_image_size_bytes": null,
+  "context_window": 1000,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-05T10:59:20.810666+00:00",
+  "default_eligible": false,
+  "description": "InstaDeep Nucleotide Transformer v2 500M multi-species is a DNA foundation model for sequence representation and regulatory/genomics tasks. This hidden onboarding manifest uses the Forge life-science transformer wrapper with the ClawBio DNA embedding runtime path. Hugging Face metadata marks the repository public, transformers-based, custom-code backed, safetensors-backed, and licensed CC-BY-NC-SA-4.0; publication must therefore remain non-default and non-commercial/research scoped unless approved. GPU matrix probes are still pending.",
+  "family_id": "37f2df79-40c8-42ce-a4d6-f61e2097a55f",
+  "gpu_compatibility": {
+    "B200": false,
+    "B300": false,
+    "H100": false,
+    "H200": true,
+    "L40S": false,
+    "RTX6000": false
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "BIO_MAX_LENGTH": "1000",
+      "BIO_MODEL_ID": "InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+      "BIO_MODEL_KIND": "dna_embedding",
+      "BIO_MODEL_LOADER": "masked_lm",
+      "BIO_MODEL_SLUG": "instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+      "BIO_TORCH_DTYPE": "float32",
+      "BIO_TRUST_REMOTE_CODE": "true",
+      "HF_HOME": "/mnt/data/hf-cache/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+      "HF_HUB_DISABLE_XET": "1",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/hf-cache/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/hub",
+      "TORCH_HOME": "/mnt/data/torch-cache/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+      "TRANSFORMERS_CACHE": "/mnt/data/hf-cache/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/transformers",
+      "XDG_CACHE_HOME": "/mnt/data/cache/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": "2026-06-06T15:08:39.201740+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-06-06T15:27:11.777655+00:00",
+      "region": "us-central1",
+      "request_ms": 12,
+      "request_ms_p50": 12,
+      "request_ms_p95": 12,
+      "request_ms_p99": 12,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 19180,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.66,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.93
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-06T15:38:50.433973+00:00",
+      "region": "uk-south1",
+      "request_ms": 12,
+      "request_ms_p50": 12,
+      "request_ms_p95": 13,
+      "request_ms_p99": 13,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 199709,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.66,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.93
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-06T15:31:48.293417+00:00",
+      "region": "eu-north1",
+      "request_ms": 13,
+      "request_ms_p50": 13,
+      "request_ms_p95": 14,
+      "request_ms_p99": 14,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 46778,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.93
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-05T11:58:41.270984+00:00",
+      "region": "eu-north2",
+      "request_ms": 12,
+      "request_ms_p50": 12,
+      "request_ms_p95": 13,
+      "request_ms_p99": 13,
+      "request_ms_samples": 11,
+      "startup_ms_first": null,
+      "startup_ms_probe": 23278,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.93
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-06T15:35:09.049107+00:00",
+      "region": "eu-north1",
+      "request_ms": 18,
+      "request_ms_p50": 18,
+      "request_ms_p95": 19,
+      "request_ms_p99": 19,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 197758,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.4,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.93
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-06T15:30:59.085819+00:00",
+      "region": "us-central1",
+      "request_ms": 11,
+      "request_ms_p50": 11,
+      "request_ms_p95": 11,
+      "request_ms_p99": 11,
+      "request_ms_samples": 3,
+      "startup_ms_first": null,
+      "startup_ms_probe": 222467,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.54,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.93
+    }
+  ],
+  "gpu_type": null,
+  "id": "e46634ce-2e7e-4425-a7ef-8cfe0dceccb8",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "cc-by-nc-sa-4.0",
+  "modality_input": [
+    "dna_sequence"
+  ],
+  "modality_output": [
+    "embedding",
+    "json"
+  ],
+  "model_family": "instadeep-nucleotide-transformer-v2-500m-multi-species",
+  "name": "Nucleotide Transformer v2 500M Multi-Species DNA Embeddings",
+  "parameter_count": 500000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_length": "{{max_length}}",
+        "sequence": "{{sequence}}"
+      },
+      "endpoint": "/v1/inference/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "ACGTGTCAGTGATCGTAGCTAGCTAGCTAGCTA",
+        "key": "sequence",
+        "label": "DNA sequence",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 512,
+        "key": "max_length",
+        "label": "Max sequence length",
+        "max": 1000,
+        "min": 32,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/hf-cache/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+      "kind": "dna_embedding",
+      "model_id": "InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+      "model_loader": "masked_lm",
+      "served_model_name": "instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+      "trust_remote_code": true
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "max_length"
+      ],
+      "required": [
+        "sequence"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/life-science-transformers:clawbio-dna-mlm-20260605@sha256:8bfaae2e3102e1c2987bcc6468efc3f6d59325b85edbdd708753af78afd0b902",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/life-science-transformers:clawbio-dna-mlm-20260605@sha256:8bfaae2e3102e1c2987bcc6468efc3f6d59325b85edbdd708753af78afd0b902",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/life-science-transformers:clawbio-dna-mlm-20260605@sha256:8bfaae2e3102e1c2987bcc6468efc3f6d59325b85edbdd708753af78afd0b902",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/life-science-transformers:clawbio-dna-mlm-20260605@sha256:8bfaae2e3102e1c2987bcc6468efc3f6d59325b85edbdd708753af78afd0b902"
+  },
+  "release_rank": 86,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+  "stability": "experimental",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "genomics",
+    "dna",
+    "embedding",
+    "sequence",
+    "nucleotide-transformer",
+    "transformers",
+    "custom-code",
+    "forge-wrapper",
+    "clawbio"
+  ],
+  "updated_at": "2026-06-30T13:03:10.080247+00:00",
+  "version": "hf-main-clawbio-dna-mlm-20260605",
+  "version_description": "InstaDeep Nucleotide Transformer v2 500M multi-species checkpoint served as a hidden Forge DNA sequence embedding endpoint.",
+  "version_key": "hf-main-clawbio-dna-mlm-20260605",
+  "version_label": "HF main via Forge life-science DNA wrapper"
+}

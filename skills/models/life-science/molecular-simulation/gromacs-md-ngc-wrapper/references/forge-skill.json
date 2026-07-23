@@ -1,0 +1,262 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "4abe5af5860a8dc8d0253562c322275a4be3a937fcbccebb5ce24962557d8fe8",
+  "defaultEligible": true,
+  "displayName": "Use GROMACS Molecular Dynamics",
+  "domain": "molecular-simulation",
+  "downloadUrl": "/v1/model-skills/gromacs-md-ngc-wrapper/markdown?download=true",
+  "group": "molecular-simulation",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "molecular-simulation",
+    "gromacs-md-ngc-wrapper"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/gromacs-md-ngc-wrapper",
+  "inputFields": [
+    {
+      "choices": [
+        "argon"
+      ],
+      "default": "argon",
+      "fieldType": "select",
+      "key": "template",
+      "label": "Template",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "coordinate_gro",
+      "label": "Coordinate .gro",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "topology_top",
+      "label": "Topology .top",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "mdp",
+      "label": "MD parameter .mdp",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "textarea",
+      "key": "tpr_base64",
+      "label": "Prepared .tpr (base64)",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 100,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 100000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.001,
+      "fieldType": "number",
+      "key": "timestep_ps",
+      "label": "Timestep (ps)",
+      "maximum": 0.02,
+      "minimum": 0.0001,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 120,
+      "fieldType": "number",
+      "key": "temperature_k",
+      "label": "Temperature (K)",
+      "maximum": 1000,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 17,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 2147483647,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [
+        "auto",
+        "gpu",
+        "cpu"
+      ],
+      "default": "auto",
+      "fieldType": "select",
+      "key": "gpu_mode",
+      "label": "GPU mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "threads",
+      "label": "CPU threads",
+      "maximum": 32,
+      "minimum": 1,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": true,
+      "fieldType": "checkbox",
+      "key": "research_use_acknowledgement",
+      "label": "Research-use acknowledgement",
+      "maximum": null,
+      "minimum": null,
+      "required": true
+    }
+  ],
+  "inputModalities": [
+    "structure",
+    "topology",
+    "simulation_parameters",
+    "json"
+  ],
+  "instructions": "---\nname: use-forge-gromacs-md-ngc-wrapper\ndescription: Use the exact Forge model gromacs-md-ngc-wrapper for structure, topology, simulation_parameters, json to trajectory, energy, log, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use GROMACS Molecular Dynamics\n\n- Model slug: `gromacs-md-ngc-wrapper`\n- Model family: `gromacs-md`\n- Version: `ngc-2023.2-wrapper-20260602` (`ngc-2023-2-wrapper-20260602`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / molecular-simulation / gromacs-md-ngc-wrapper`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `LGPL-2.1-or-later; NVIDIA CUDA/HPC container terms`\n\n## Purpose\n\nGROMACS Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.\n\n## Use this exact model when\n\n- Use this exact `gromacs-md-ngc-wrapper` version when the task supplies structure, topology, simulation_parameters, json and needs trajectory, energy, log, json.\n- GROMACS Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['structure', 'topology', 'simulation_parameters', 'json'] \u2192 ['trajectory', 'energy', 'log', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `template` (select, optional): Template\n- `coordinate_gro` (textarea, optional): Coordinate .gro\n- `topology_top` (textarea, optional): Topology .top\n- `mdp` (textarea, optional): MD parameter .mdp\n- `tpr_base64` (textarea, optional): Prepared .tpr (base64)\n- `steps` (number, optional; bounds 1..100000): Steps\n- `timestep_ps` (number, optional; bounds 0.0001..0.02): Timestep (ps)\n- `temperature_k` (number, optional; bounds 1..1000): Temperature (K)\n- `seed` (number, optional; bounds 0..2147483647): Seed\n- `gpu_mode` (select, optional): GPU mode\n- `threads` (number, optional; bounds 1..32): CPU threads\n- `research_use_acknowledgement` (checkbox, required): Research-use acknowledgement\n\nRequest template:\n\n```json\n{\n  \"coordinate_gro\": \"{{coordinate_gro}}\",\n  \"gpu_mode\": \"{{gpu_mode}}\",\n  \"mdp\": \"{{mdp}}\",\n  \"research_use_acknowledgement\": \"{{research_use_acknowledgement}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\",\n  \"temperature_k\": \"{{temperature_k}}\",\n  \"template\": \"{{template}}\",\n  \"threads\": \"{{threads}}\",\n  \"timestep_ps\": \"{{timestep_ps}}\",\n  \"topology_top\": \"{{topology_top}}\",\n  \"tpr_base64\": \"{{tpr_base64}}\"\n}\n```\n\n## Exact output\n\n- `trajectory`\n- `energy`\n- `log`\n- `json`\n\n## Route\n\n`POST /v1/inference/gromacs-md-ngc-wrapper`\n\n## Workflow\n\n1. Load this skill and pin model slug `gromacs-md-ngc-wrapper` with version key `ngc-2023-2-wrapper-20260602`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/gromacs-md-ngc-wrapper` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/gromacs-md-ngc-wrapper`\n- Routes: `/v1/models/gromacs-md-ngc-wrapper/inference-routes`\n- Regional deployment: `/v1/models/gromacs-md-ngc-wrapper/regional-deployment`\n- Deployment handoff: `/v1/models/gromacs-md-ngc-wrapper/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/gromacs-md-ngc-wrapper/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/gromacs-md-ngc-wrapper/SKILL.md\n\n## References\n\n- [GROMACS Molecular Dynamics source](https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs) (model-card)\n",
+  "license": "LGPL-2.1-or-later; NVIDIA CUDA/HPC container terms",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/gromacs-md-ngc-wrapper/deploy",
+    "inferenceRoutesUrl": "/v1/models/gromacs-md-ngc-wrapper/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/gromacs-md",
+    "modelUrl": "/v1/models/gromacs-md-ngc-wrapper",
+    "regionalDeploymentUrl": "/v1/models/gromacs-md-ngc-wrapper/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/gromacs-md-ngc-wrapper/markdown",
+  "modelFamily": "gromacs-md",
+  "modelSlug": "gromacs-md-ngc-wrapper",
+  "modelUrl": "/v1/models/gromacs-md-ngc-wrapper",
+  "outputFields": [
+    "trajectory",
+    "energy",
+    "log",
+    "json"
+  ],
+  "outputModalities": [
+    "trajectory",
+    "energy",
+    "log",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "GROMACS Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/molecular-simulation/gromacs-md-ngc-wrapper/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "GROMACS Molecular Dynamics source",
+      "url": "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/gromacs-md-ngc-wrapper/SKILL.md",
+  "repositoryPath": "skills/models/life-science/molecular-simulation/gromacs-md-ngc-wrapper/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "coordinate_gro": "{{coordinate_gro}}",
+    "gpu_mode": "{{gpu_mode}}",
+    "mdp": "{{mdp}}",
+    "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}",
+    "temperature_k": "{{temperature_k}}",
+    "template": "{{template}}",
+    "threads": "{{threads}}",
+    "timestep_ps": "{{timestep_ps}}",
+    "topology_top": "{{topology_top}}",
+    "tpr_base64": "{{tpr_base64}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+    "tags": [
+      "life-science",
+      "biology",
+      "molecular-dynamics",
+      "simulation",
+      "gromacs",
+      "cuda",
+      "hpc",
+      "forge-wrapper",
+      "open-source",
+      "lgpl"
+    ],
+    "versionLabel": "NGC 2023.2 wrapper"
+  },
+  "shortDescription": "GROMACS Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.",
+  "skillName": "use-forge-gromacs-md-ngc-wrapper",
+  "skillUrl": "/v1/model-skills/gromacs-md-ngc-wrapper",
+  "slug": "gromacs-md-ngc-wrapper",
+  "stability": "testing",
+  "version": "ngc-2023.2-wrapper-20260602",
+  "versionKey": "ngc-2023-2-wrapper-20260602",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['structure', 'topology', 'simulation_parameters', 'json'] \u2192 ['trajectory', 'energy', 'log', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `gromacs-md-ngc-wrapper` version when the task supplies structure, topology, simulation_parameters, json and needs trajectory, energy, log, json.",
+    "GROMACS Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `gromacs-md-ngc-wrapper` with version key `ngc-2023-2-wrapper-20260602`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/gromacs-md-ngc-wrapper` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "78a4c9fad5bb9df1b25f59bbe80fa237473c16af7902fbdebe1d3f08856cee77",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Llama Nemotron Rerank 1B v2",
+  "domain": "retrieval-and-reranking",
+  "downloadUrl": "/v1/model-skills/nvidia-llama-nemotron-rerank-1b-v2-nim/markdown?download=true",
+  "group": "retrieval-and-reranking",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "retrieval-and-reranking",
+    "nvidia-llama-nemotron-rerank-1b-v2-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/ranking",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Which passage explains why regional image mirrors improve inference reliability?",
+      "fieldType": "textarea",
+      "key": "query",
+      "label": "Query",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": [
+        {
+          "text": "Regional container mirrors reduce dependence on a single upstream registry and keep image pulls close to the target compute cluster."
+        },
+        {
+          "text": "Reranking models compare a query with retrieved passages and assign relevance scores before final answer generation."
+        },
+        {
+          "text": "A low temperature setting makes a chat model less random, but it does not change container pull behavior."
+        }
+      ],
+      "fieldType": "json_editor",
+      "key": "passages",
+      "label": "Candidate passages",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "END",
+        "NONE"
+      ],
+      "default": "END",
+      "fieldType": "select",
+      "key": "truncate",
+      "label": "Truncate",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-llama-nemotron-rerank-1b-v2-nim\ndescription: Use the exact Forge model nvidia-llama-nemotron-rerank-1b-v2-nim for text to ranking tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Llama Nemotron Rerank 1B v2\n\n- Model slug: `nvidia-llama-nemotron-rerank-1b-v2-nim`\n- Model family: `nvidia-llama-nemotron-rerank-1b-v2`\n- Version: `nim-1.10.0-rofs-wrapper-2026-05-27` (`nim-1-10-0-rofs-wrapper-2026-05-27`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / retrieval-and-reranking / nvidia-llama-nemotron-rerank-1b-v2-nim`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `nvidia-open-model-license; llama-3.2-community-license; nvidia-nim-container-terms`\n\n## Purpose\n\nNVIDIA Llama Nemotron Rerank 1B v2 is a multilingual retrieval reranker that scores query/passage relevance for RAG pipelines.\n\n## Use this exact model when\n\n- Use this exact `nvidia-llama-nemotron-rerank-1b-v2-nim` version when the task supplies text and needs ranking.\n- NVIDIA Llama Nemotron Rerank 1B v2 is a multilingual retrieval reranker that scores query/passage relevance for RAG pipelines.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['ranking'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `query` (textarea, optional): Query\n- `passages` (json_editor, optional): Candidate passages\n- `truncate` (select, optional): Truncate\n\nRequest template:\n\n```json\n{\n  \"model\": \"{{model_slug}}\",\n  \"passages\": \"{{passages}}\",\n  \"query\": {\n    \"text\": \"{{query}}\"\n  },\n  \"truncate\": \"{{truncate}}\"\n}\n```\n\n## Exact output\n\n- `ranking`\n\n## Route\n\n`POST /v1/ranking`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-llama-nemotron-rerank-1b-v2-nim` with version key `nim-1-10-0-rofs-wrapper-2026-05-27`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/ranking` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 8192.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim`\n- Routes: `/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim/inference-routes`\n- Regional deployment: `/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/nvidia-llama-nemotron-rerank-1b-v2-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/retrieval-and-reranking/nvidia-llama-nemotron-rerank-1b-v2-nim/SKILL.md\n\n## References\n\n- [NVIDIA Llama Nemotron Rerank 1B v2 source](https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard) (model-card)\n",
+  "license": "nvidia-open-model-license; llama-3.2-community-license; nvidia-nim-container-terms",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 8192."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-llama-nemotron-rerank-1b-v2",
+    "modelUrl": "/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim",
+    "regionalDeploymentUrl": "/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-llama-nemotron-rerank-1b-v2-nim/markdown",
+  "modelFamily": "nvidia-llama-nemotron-rerank-1b-v2",
+  "modelSlug": "nvidia-llama-nemotron-rerank-1b-v2-nim",
+  "modelUrl": "/v1/models/nvidia-llama-nemotron-rerank-1b-v2-nim",
+  "outputFields": [
+    "ranking"
+  ],
+  "outputModalities": [
+    "ranking"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NVIDIA Llama Nemotron Rerank 1B v2 is a multilingual retrieval reranker that scores query/passage relevance for RAG pipelines.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/retrieval-and-reranking/nvidia-llama-nemotron-rerank-1b-v2-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Llama Nemotron Rerank 1B v2 source",
+      "url": "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/nvidia-llama-nemotron-rerank-1b-v2-nim/SKILL.md",
+  "repositoryPath": "skills/models/general/retrieval-and-reranking/nvidia-llama-nemotron-rerank-1b-v2-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "model": "{{model_slug}}",
+    "passages": "{{passages}}",
+    "query": {
+      "text": "{{query}}"
+    },
+    "truncate": "{{truncate}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 8192,
+    "parameterCount": 1000000000,
+    "quantization": "nim-auto-fp16-fp8",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard",
+    "tags": [
+      "retrieval",
+      "rerank",
+      "rag",
+      "multilingual",
+      "nvidia-nim",
+      "nemotron"
+    ],
+    "versionLabel": "NIM 1.10.0 read-only-root wrapper"
+  },
+  "shortDescription": "NVIDIA Llama Nemotron Rerank 1B v2 is a multilingual retrieval reranker that scores query/passage relevance for RAG pipelines.",
+  "skillName": "use-forge-nvidia-llama-nemotron-rerank-1b-v2-nim",
+  "skillUrl": "/v1/model-skills/nvidia-llama-nemotron-rerank-1b-v2-nim",
+  "slug": "nvidia-llama-nemotron-rerank-1b-v2-nim",
+  "stability": "testing",
+  "version": "nim-1.10.0-rofs-wrapper-2026-05-27",
+  "versionKey": "nim-1-10-0-rofs-wrapper-2026-05-27",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['ranking'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-llama-nemotron-rerank-1b-v2-nim` version when the task supplies text and needs ranking.",
+    "NVIDIA Llama Nemotron Rerank 1B v2 is a multilingual retrieval reranker that scores query/passage relevance for RAG pipelines.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-llama-nemotron-rerank-1b-v2-nim` with version key `nim-1-10-0-rofs-wrapper-2026-05-27`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/ranking` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

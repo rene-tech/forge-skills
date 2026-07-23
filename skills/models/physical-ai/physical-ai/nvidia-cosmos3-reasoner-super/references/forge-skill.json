@@ -1,0 +1,186 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "physical-ai",
+  "contentSha256": "3e2cd7b41f83a2fb4ff87177185231fed3b3e24fbb08ac4dc4f1d1401d956a4d",
+  "defaultEligible": false,
+  "displayName": "Use NVIDIA Cosmos 3 Reasoner (Super)",
+  "domain": "physical-ai",
+  "downloadUrl": "/v1/model-skills/nvidia-cosmos3-reasoner-super/markdown?download=true",
+  "group": "physical-ai",
+  "hierarchyPath": [
+    "models",
+    "physical-ai",
+    "physical-ai",
+    "nvidia-cosmos3-reasoner-super"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/nvidia-cosmos3-reasoner",
+  "inputFields": [
+    {
+      "choices": [
+        "text",
+        "image",
+        "video"
+      ],
+      "default": "text",
+      "fieldType": "select",
+      "key": "mode",
+      "label": "Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "Analyze whether a humanoid robot should open a glass door in this scene and explain the physical evidence.",
+      "fieldType": "chat_history",
+      "key": "messages",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "input_image",
+      "label": "Input Image",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "",
+      "fieldType": "file_upload",
+      "key": "input_video",
+      "label": "Input Video",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0.2,
+      "fieldType": "slider",
+      "key": "temperature",
+      "label": "Temperature",
+      "maximum": 2,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 512,
+      "fieldType": "number",
+      "key": "max_tokens",
+      "label": "Max Tokens",
+      "maximum": 4096,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image",
+    "video"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-cosmos3-reasoner-super\ndescription: Use the exact Forge model nvidia-cosmos3-reasoner-super for text, image, video to text tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NVIDIA Cosmos 3 Reasoner (Super)\n\n- Model slug: `nvidia-cosmos3-reasoner-super`\n- Model family: `nvidia-cosmos3-reasoner`\n- Version: `super-bf16-ea` (`super-bf16`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / physical-ai / physical-ai / nvidia-cosmos3-reasoner-super`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `nvidia-software-model-evaluation-license`\n\n## Purpose\n\nEarly-access Cosmos 3 Super Reasoner VLM served through a Forge-owned Qwen3-VL runtime.\n\n## Use this exact model when\n\n- Use this exact `nvidia-cosmos3-reasoner-super` version when the task supplies text, image, video and needs text.\n- Early-access Cosmos 3 Super Reasoner VLM served through a Forge-owned Qwen3-VL runtime.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video'] \u2192 ['text'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `mode` (select, optional): Mode\n- `messages` (chat_history, optional): Prompt\n- `input_image` (file_upload, optional): Input Image\n- `input_video` (file_upload, optional): Input Video\n- `temperature` (slider, optional; bounds 0..2): Temperature\n- `max_tokens` (number, optional; bounds 1..4096): Max Tokens\n\nRequest template:\n\n```json\n{\n  \"image\": \"{{input_image}}\",\n  \"max_tokens\": \"{{max_tokens}}\",\n  \"messages\": \"{{messages}}\",\n  \"mode\": \"{{mode}}\",\n  \"temperature\": \"{{temperature}}\",\n  \"video\": \"{{input_video}}\"\n}\n```\n\n## Exact output\n\n- `text`\n\n## Route\n\n`POST /v1/inference/nvidia-cosmos3-reasoner`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-cosmos3-reasoner-super` with version key `super-bf16`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/nvidia-cosmos3-reasoner` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 32768.\n\n## Safety\n\n- Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.\n- Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.\n- Keep model revision, request, response, environment, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-cosmos3-reasoner-super`\n- Routes: `/v1/models/nvidia-cosmos3-reasoner-super/inference-routes`\n- Regional deployment: `/v1/models/nvidia-cosmos3-reasoner-super/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-cosmos3-reasoner-super/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos3-reasoner-super/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos3-reasoner-super/SKILL.md\n\n## References\n\n- [NVIDIA Cosmos 3 Reasoner (Super) source](https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner) (model-card)\n",
+  "license": "nvidia-software-model-evaluation-license",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 32768."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-cosmos3-reasoner-super/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-cosmos3-reasoner-super/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-cosmos3-reasoner",
+    "modelUrl": "/v1/models/nvidia-cosmos3-reasoner-super",
+    "regionalDeploymentUrl": "/v1/models/nvidia-cosmos3-reasoner-super/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-cosmos3-reasoner-super/markdown",
+  "modelFamily": "nvidia-cosmos3-reasoner",
+  "modelSlug": "nvidia-cosmos3-reasoner-super",
+  "modelUrl": "/v1/models/nvidia-cosmos3-reasoner-super",
+  "outputFields": [
+    "text"
+  ],
+  "outputModalities": [
+    "text"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Early-access Cosmos 3 Super Reasoner VLM served through a Forge-owned Qwen3-VL runtime.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/physical-ai/physical-ai/nvidia-cosmos3-reasoner-super/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NVIDIA Cosmos 3 Reasoner (Super) source",
+      "url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos3-reasoner-super/SKILL.md",
+  "repositoryPath": "skills/models/physical-ai/physical-ai/nvidia-cosmos3-reasoner-super/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "image": "{{input_image}}",
+    "max_tokens": "{{max_tokens}}",
+    "messages": "{{messages}}",
+    "mode": "{{mode}}",
+    "temperature": "{{temperature}}",
+    "video": "{{input_video}}"
+  },
+  "safety": [
+    "Validate outputs in simulation or a bounded sandbox before connecting them to physical systems.",
+    "Do not permit unreviewed model output to actuate safety-critical equipment; retain interlocks, emergency stops, and human control.",
+    "Keep model revision, request, response, environment, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 32768,
+    "parameterCount": 32000000000,
+    "quantization": "bf16",
+    "requiresHfToken": true,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner",
+    "tags": [
+      "physical-ai",
+      "cosmos",
+      "cosmos3",
+      "reasoning",
+      "robotics",
+      "vision-language",
+      "video-understanding",
+      "early-access"
+    ],
+    "versionLabel": "Super BF16 EA"
+  },
+  "shortDescription": "Early-access Cosmos 3 Super Reasoner VLM served through a Forge-owned Qwen3-VL runtime.",
+  "skillName": "use-forge-nvidia-cosmos3-reasoner-super",
+  "skillUrl": "/v1/model-skills/nvidia-cosmos3-reasoner-super",
+  "slug": "nvidia-cosmos3-reasoner-super",
+  "stability": "testing",
+  "version": "super-bf16-ea",
+  "versionKey": "super-bf16",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image', 'video'] \u2192 ['text'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-cosmos3-reasoner-super` version when the task supplies text, image, video and needs text.",
+    "Early-access Cosmos 3 Super Reasoner VLM served through a Forge-owned Qwen3-VL runtime.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-cosmos3-reasoner-super` with version key `super-bf16`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/nvidia-cosmos3-reasoner` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

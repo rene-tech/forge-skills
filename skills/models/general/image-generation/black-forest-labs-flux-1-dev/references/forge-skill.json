@@ -1,0 +1,158 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "b4ab0b56d79a67d3eead75d6092769beb41c5e87ed2c2ef42e83bb4a35a3493f",
+  "defaultEligible": true,
+  "displayName": "Use FLUX.1 Dev",
+  "domain": "image-generation",
+  "downloadUrl": "/v1/model-skills/black-forest-labs-flux-1-dev/markdown?download=true",
+  "group": "image-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "image-generation",
+    "black-forest-labs-flux-1-dev"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/black-forest-labs-flux-1-dev",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A cinematic product photo of a compact GPU server in a clean studio, softbox lighting, sharp details",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "base"
+      ],
+      "default": "base",
+      "fieldType": "select",
+      "key": "mode",
+      "label": "Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 50,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-black-forest-labs-flux-1-dev\ndescription: Use the exact Forge model black-forest-labs-flux-1-dev for text, image to image tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use FLUX.1 Dev\n\n- Model slug: `black-forest-labs-flux-1-dev`\n- Model family: `black-forest-labs-flux-1-dev`\n- Version: `1.2.2` (`1-2-2`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / image-generation / black-forest-labs-flux-1-dev`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `black-forest-labs-flux-1-dev-license`\n\n## Purpose\n\nBlack Forest Labs FLUX.1 Dev image generation packaged as NVIDIA Visual GenAI NIM.\n\n## Use this exact model when\n\n- Use this exact `black-forest-labs-flux-1-dev` version when the task supplies text, image and needs image.\n- Black Forest Labs FLUX.1 Dev image generation packaged as NVIDIA Visual GenAI NIM.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `mode` (select, optional): Mode\n- `seed` (number, optional; bounds 0..999999): Seed\n- `steps` (number, optional; bounds 1..50): Steps\n\nRequest template:\n\n```json\n{\n  \"mode\": \"{{mode}}\",\n  \"model\": \"{{model_slug}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\"\n}\n```\n\n## Exact output\n\n- `image`\n\n## Route\n\n`POST /v1/inference/black-forest-labs-flux-1-dev`\n\n## Workflow\n\n1. Load this skill and pin model slug `black-forest-labs-flux-1-dev` with version key `1-2-2`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/black-forest-labs-flux-1-dev` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/black-forest-labs-flux-1-dev`\n- Routes: `/v1/models/black-forest-labs-flux-1-dev/inference-routes`\n- Regional deployment: `/v1/models/black-forest-labs-flux-1-dev/regional-deployment`\n- Deployment handoff: `/v1/models/black-forest-labs-flux-1-dev/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-1-dev/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/black-forest-labs-flux-1-dev/SKILL.md\n\n## References\n\n- [FLUX.1 Dev source](https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html) (model-card)\n",
+  "license": "black-forest-labs-flux-1-dev-license",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/black-forest-labs-flux-1-dev/deploy",
+    "inferenceRoutesUrl": "/v1/models/black-forest-labs-flux-1-dev/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/black-forest-labs-flux-1-dev",
+    "modelUrl": "/v1/models/black-forest-labs-flux-1-dev",
+    "regionalDeploymentUrl": "/v1/models/black-forest-labs-flux-1-dev/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/black-forest-labs-flux-1-dev/markdown",
+  "modelFamily": "black-forest-labs-flux-1-dev",
+  "modelSlug": "black-forest-labs-flux-1-dev",
+  "modelUrl": "/v1/models/black-forest-labs-flux-1-dev",
+  "outputFields": [
+    "image"
+  ],
+  "outputModalities": [
+    "image"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Black Forest Labs FLUX.1 Dev image generation packaged as NVIDIA Visual GenAI NIM.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/black-forest-labs-flux-1-dev/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "FLUX.1 Dev source",
+      "url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-1-dev/SKILL.md",
+  "repositoryPath": "skills/models/general/image-generation/black-forest-labs-flux-1-dev/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "mode": "{{mode}}",
+    "model": "{{model_slug}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 12000000000,
+    "quantization": "nim-profile",
+    "requiresHfToken": true,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+    "tags": [
+      "image-generation",
+      "text-to-image",
+      "diffusion",
+      "flux",
+      "black-forest-labs"
+    ],
+    "versionLabel": "1.2.2"
+  },
+  "shortDescription": "Black Forest Labs FLUX.1 Dev image generation packaged as NVIDIA Visual GenAI NIM.",
+  "skillName": "use-forge-black-forest-labs-flux-1-dev",
+  "skillUrl": "/v1/model-skills/black-forest-labs-flux-1-dev",
+  "slug": "black-forest-labs-flux-1-dev",
+  "stability": "experimental",
+  "version": "1.2.2",
+  "versionKey": "1-2-2",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `black-forest-labs-flux-1-dev` version when the task supplies text, image and needs image.",
+    "Black Forest Labs FLUX.1 Dev image generation packaged as NVIDIA Visual GenAI NIM.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `black-forest-labs-flux-1-dev` with version key `1-2-2`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/black-forest-labs-flux-1-dev` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

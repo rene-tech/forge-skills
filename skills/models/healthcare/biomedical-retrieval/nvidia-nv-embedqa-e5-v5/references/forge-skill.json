@@ -1,0 +1,123 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "f5c895d12c9bec893a06870ed8710352df2f2466dcf05a7049d8279a505a1cdc",
+  "defaultEligible": true,
+  "displayName": "Use NV EmbedQA E5",
+  "domain": "biomedical-retrieval",
+  "downloadUrl": "/v1/model-skills/nvidia-nv-embedqa-e5-v5/markdown?download=true",
+  "group": "biomedical-retrieval",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-retrieval",
+    "nvidia-nv-embedqa-e5-v5"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Cold starts matter for public inference systems.",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Text to embed",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-nvidia-nv-embedqa-e5-v5\ndescription: Use the exact Forge model nvidia-nv-embedqa-e5-v5 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use NV EmbedQA E5\n\n- Model slug: `nvidia-nv-embedqa-e5-v5`\n- Model family: `nvidia-nv-embedqa-e5`\n- Version: `v5` (`v5`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-retrieval / nvidia-nv-embedqa-e5-v5`\n- Stability: `stable`\n- Default eligible: `true`\n- License: `apache-2.0`\n\n## Purpose\n\nDomain-tuned embedding model suitable for retrieval, semantic search, and document ranking.\n\n## Use this exact model when\n\n- Use this exact `nvidia-nv-embedqa-e5-v5` version when the task supplies text and needs embedding.\n- Domain-tuned embedding model suitable for retrieval, semantic search, and document ranking.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `stable` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Text to embed\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"float\",\n  \"input\": \"{{input}}\",\n  \"input_type\": \"query\",\n  \"model\": \"{{model_slug}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `nvidia-nv-embedqa-e5-v5` with version key `v5`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `stable` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 8192.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/nvidia-nv-embedqa-e5-v5`\n- Routes: `/v1/models/nvidia-nv-embedqa-e5-v5/inference-routes`\n- Regional deployment: `/v1/models/nvidia-nv-embedqa-e5-v5/regional-deployment`\n- Deployment handoff: `/v1/models/nvidia-nv-embedqa-e5-v5/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/nvidia-nv-embedqa-e5-v5/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/nvidia-nv-embedqa-e5-v5/SKILL.md\n\n## References\n\n- [NV EmbedQA E5 source](https://build.nvidia.com) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `stable` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 8192."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/nvidia-nv-embedqa-e5-v5/deploy",
+    "inferenceRoutesUrl": "/v1/models/nvidia-nv-embedqa-e5-v5/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/nvidia-nv-embedqa-e5",
+    "modelUrl": "/v1/models/nvidia-nv-embedqa-e5-v5",
+    "regionalDeploymentUrl": "/v1/models/nvidia-nv-embedqa-e5-v5/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/nvidia-nv-embedqa-e5-v5/markdown",
+  "modelFamily": "nvidia-nv-embedqa-e5",
+  "modelSlug": "nvidia-nv-embedqa-e5-v5",
+  "modelUrl": "/v1/models/nvidia-nv-embedqa-e5-v5",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Domain-tuned embedding model suitable for retrieval, semantic search, and document ranking.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/nvidia-nv-embedqa-e5-v5/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "NV EmbedQA E5 source",
+      "url": "https://build.nvidia.com"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/nvidia-nv-embedqa-e5-v5/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-retrieval/nvidia-nv-embedqa-e5-v5/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "float",
+    "input": "{{input}}",
+    "input_type": "query",
+    "model": "{{model_slug}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 8192,
+    "parameterCount": null,
+    "quantization": "none",
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com",
+    "tags": [
+      "embedding",
+      "retrieval",
+      "biomedical"
+    ],
+    "versionLabel": "v5"
+  },
+  "shortDescription": "Domain-tuned embedding model suitable for retrieval, semantic search, and document ranking.",
+  "skillName": "use-forge-nvidia-nv-embedqa-e5-v5",
+  "skillUrl": "/v1/model-skills/nvidia-nv-embedqa-e5-v5",
+  "slug": "nvidia-nv-embedqa-e5-v5",
+  "stability": "stable",
+  "version": "v5",
+  "versionKey": "v5",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `stable` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `nvidia-nv-embedqa-e5-v5` version when the task supplies text and needs embedding.",
+    "Domain-tuned embedding model suitable for retrieval, semantic search, and document ranking.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `nvidia-nv-embedqa-e5-v5` with version key `v5`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

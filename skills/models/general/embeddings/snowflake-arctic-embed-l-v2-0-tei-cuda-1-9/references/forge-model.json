@@ -1,0 +1,481 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "XLMRobertaModel"
+      ],
+      "hidden_size": 1024,
+      "max_position_embeddings": 8194,
+      "model_type": "xlm-roberta",
+      "num_attention_heads": 16,
+      "num_hidden_layers": 24,
+      "torch_dtype": "float32"
+    },
+    "artifact_parameters": 567754752,
+    "artifact_revision": "ac6544c8a46e00af67e330e85a9028c66b8cfd9a",
+    "b200_us_central1_probe": {
+      "latency_samples_ms": [
+        164,
+        164,
+        165,
+        165,
+        165,
+        165,
+        172,
+        165,
+        164,
+        165
+      ],
+      "model_p50_ms": 165,
+      "model_p95_ms": 169,
+      "node": "computeinstance-u00yrerrrt69zg54e8",
+      "pod_name": "forge-probe-snowflake-arctic-embed-l-b200-us-central1-3518e1",
+      "report_json": "docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T16Z-b200.json",
+      "report_md": "docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T16Z-b200.md",
+      "source": "client_wall_ms",
+      "startup_ms": 270039,
+      "status": "supported",
+      "tokens_per_second": 115.15,
+      "vram_gb": 1.87
+    },
+    "b300_uk_south1_probe": {
+      "error": "RuntimeError: pod_start_failure:pod_failed",
+      "node": "computeinstance-e03n331ngk3v1z71a4",
+      "pod_name": "forge-probe-snowflake-arctic-embed-l-b300-uk-south1-a91196",
+      "report_json": "docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T14Z-b300-diagnostic.json",
+      "report_md": "docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T14Z-b300-diagnostic.md",
+      "runtime_log": "cuda compute cap 103 is not supported",
+      "status": "other_error"
+    },
+    "blockers": [
+      "B300/uk-south1 is runtime-incompatible for this TEI CUDA 1.9.3 digest: the retained diagnostic pod exited 1 with `cuda compute cap 103 is not supported`.",
+      "The supported cells use client wall time because TEI did not return an internal model-time field; treat timings as direct pod request latency, not pure GPU kernel time."
+    ],
+    "container_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "container_license_evidence": "skopeo inspect labels for ghcr.io/huggingface/text-embeddings-inference:cuda-1.9 report org.opencontainers.image.licenses=Apache-2.0 and org.opencontainers.image.version=cuda-1.9.3.",
+    "container_source_decision": "reuse_existing_mirrored_huggingface_tei_cuda_1_9_3_image",
+    "h200_eu_north2_probe": {
+      "latency_samples_ms": [
+        94,
+        94,
+        94,
+        94,
+        94,
+        94,
+        94,
+        94,
+        94,
+        94
+      ],
+      "model_p50_ms": 94,
+      "node": "computeinstance-e02xmpc3hhyvpwf4qg",
+      "pod_name": "forge-probe-snowflake-arctic-embed-l-h200-eu-north2-fbeb63",
+      "source": "client_wall_ms",
+      "startup_ms": 362580,
+      "status": "supported",
+      "tokens_per_second": 202.13,
+      "vram_gb": 1.77
+    },
+    "hosted_support_readback": {
+      "checked_at": "2026-05-24T16:08:30Z",
+      "rows": {
+        "B200/us-central1": {
+          "request_ms_p50": 165,
+          "request_ms_p95": 169,
+          "request_ms_samples": 10,
+          "startup_ms": 270039,
+          "status": "supported",
+          "tokens_per_second": 115.15,
+          "vram_measured_gb": 1.87
+        },
+        "B300/uk-south1": {
+          "last_error": "RuntimeError: pod_start_failure:pod_failed",
+          "request_ms_samples": 0,
+          "status": "other_error"
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 94,
+          "request_ms_p95": 94,
+          "request_ms_samples": 10,
+          "startup_ms": 362580,
+          "status": "supported",
+          "tokens_per_second": 202.13,
+          "vram_measured_gb": 1.77
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 101,
+          "request_ms_p95": 102,
+          "request_ms_samples": 10,
+          "startup_ms": 346447,
+          "status": "supported",
+          "tokens_per_second": 188.12,
+          "vram_measured_gb": 1.6
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 167,
+          "request_ms_p95": 167,
+          "request_ms_samples": 10,
+          "startup_ms": 242910,
+          "status": "supported",
+          "tokens_per_second": 113.77,
+          "vram_measured_gb": 1.75
+        }
+      }
+    },
+    "l40s_eu_north1_probe": {
+      "latency_samples_ms": [
+        101,
+        101,
+        102,
+        102,
+        101,
+        101,
+        101,
+        101,
+        101,
+        101
+      ],
+      "model_p50_ms": 101,
+      "node": "computeinstance-e00knmqbn7kxszaff1",
+      "pod_name": "forge-probe-snowflake-arctic-embed-l-l40s-eu-north1-e7684a",
+      "source": "client_wall_ms",
+      "startup_ms": 346447,
+      "status": "supported",
+      "tokens_per_second": 188.12,
+      "vram_gb": 1.6
+    },
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_blocked": [
+        "B300/uk-south1"
+      ],
+      "cells_supported": [
+        "B200/us-central1",
+        "H200/eu-north2",
+        "L40S/eu-north1",
+        "RTX6000/us-central1"
+      ],
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug snowflake-arctic-embed-l-v2-0-tei-cuda-1-9 --include-status onboarding --gpu B200 --region us-central1 --timeout 1800 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T16Z-b200.json --report-md docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T16Z-b200.md",
+      "probed_at": "2026-05-24T16:08:06Z",
+      "report_json": "docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T16Z-b200.json",
+      "report_md": "docs/model-onboarding/general/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9-20260524T16Z-b200.md",
+      "request_body": {
+        "encoding_format": "float",
+        "input": "query: How can shared GPU caches reduce model inference cold starts?",
+        "model": "Snowflake/snowflake-arctic-embed-l-v2.0"
+      },
+      "request_time_source": "client_wall_ms",
+      "status": "four_cell_supported_b300_incompatible",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model card metadata report license:apache-2.0; the model is public and ungated.",
+    "live_upserted_at": "2026-05-24T16:03:00Z",
+    "onboarding_state": "four_cell_tei_cuda_1_9_3_publishable_active_non_default_b300_sm103_incompatible",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "published_at": "2026-05-24T16:09:00Z",
+    "regional_mirror_digest": "sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "regional_mirror_verified_at": "2026-05-24T14:05:54Z",
+    "rtx6000_us_central1_probe": {
+      "latency_samples_ms": [
+        167,
+        167,
+        166,
+        167,
+        167,
+        166,
+        167,
+        167,
+        166,
+        167
+      ],
+      "model_p50_ms": 167,
+      "node": "computeinstance-u00hap2htj7q8wn7fc",
+      "pod_name": "forge-probe-snowflake-arctic-embed-l-rtx6000-us-central1-45d9b0",
+      "source": "client_wall_ms",
+      "startup_ms": 242910,
+      "status": "supported",
+      "tokens_per_second": 113.77,
+      "vram_gb": 1.75
+    },
+    "runtime_evidence": "Hugging Face API tags include text-embeddings-inference and endpoints_compatible; the selected TEI image provides the /v1/embeddings endpoint used by existing Forge embedding manifests.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so TEI does not receive unnecessary platform Hugging Face credentials.",
+    "source_evidence": [
+      "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+      "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/raw/main/config.json",
+      "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/raw/main/README.md",
+      "https://github.com/huggingface/text-embeddings-inference"
+    ]
+  },
+  "capabilities": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "long_context",
+    "arctic",
+    "snowflake",
+    "huggingface",
+    "tei",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "ghcr.io/huggingface/text-embeddings-inference:cuda-1.9",
+  "container_image_size_bytes": 3110096066,
+  "context_window": 8192,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-24T14:07:26.053510+00:00",
+  "default_eligible": false,
+  "description": "Snowflake Arctic Embed L v2.0 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic search, enterprise RAG, clustering, and retrieval workloads. Hugging Face metadata reports the model is public, ungated, Apache-2.0, sentence-transformers based, text-embeddings-inference compatible, and backed by 567,754,752 safetensors parameters. The model card describes Arctic Embed 2.0 as a multilingual retrieval model that preserves English retrieval quality, supports 74 languages, 1024-dimensional embeddings, Matryoshka-friendly compression, and up to 8192-token inputs. This Forge profile reuses the already mirrored TEI CUDA 1.9.3 image digest sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a, serves the standard OpenAI-compatible dense embedding endpoint, clears unnecessary Hugging Face token env for the public artifact, and stores Hugging Face cache under the /opt/nim/.cache hostPath backed by /mnt/data/forge-weights. Live Forge probes on 2026-05-24 support B200/us-central1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 10 measured warm embedding requests per supported cell. B300/uk-south1 is disabled because this TEI image exits on SM103 with `cuda compute cap 103 is not supported`. This model is active but not default-eligible because B300 needs a newer SM103-capable TEI runtime and all current timings are client-wall request latency rather than runtime-internal model time.",
+  "family_id": "b33aa575-62b0-4791-abca-b2c07e4008cb",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_env": {
+      "AUTO_TRUNCATE": "true",
+      "DTYPE": "float16",
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "MAX_BATCH_TOKENS": "8192",
+      "MAX_CLIENT_BATCH_SIZE": "32",
+      "MODEL_ID": "Snowflake/snowflake-arctic-embed-l-v2.0",
+      "PORT": "8000",
+      "SERVED_MODEL_NAME": "Snowflake/snowflake-arctic-embed-l-v2.0"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T16:08:05.706959+00:00",
+      "region": "us-central1",
+      "request_ms": 165,
+      "request_ms_p50": 165,
+      "request_ms_p95": 169,
+      "request_ms_p99": 171,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 270039,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 115.15,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.87,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": "RuntimeError: pod_start_failure:pod_failed",
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T14:19:03.075178+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "other_error",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T14:13:47.690369+00:00",
+      "region": "eu-north2",
+      "request_ms": 94,
+      "request_ms_p50": 94,
+      "request_ms_p95": 94,
+      "request_ms_p99": 94,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 362580,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 202.13,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.77,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T14:13:32.004982+00:00",
+      "region": "eu-north1",
+      "request_ms": 101,
+      "request_ms_p50": 101,
+      "request_ms_p95": 102,
+      "request_ms_p99": 102,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 346447,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 188.12,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.6,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T14:11:49.684764+00:00",
+      "region": "us-central1",
+      "request_ms": 167,
+      "request_ms_p50": 167,
+      "request_ms_p95": 167,
+      "request_ms_p99": 167,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 242910,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 113.77,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.75,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "7399aa65-57ed-4409-949b-2a23ec968b85",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "snowflake-arctic-embed-l-v2-0",
+  "name": "Snowflake Arctic Embed L v2.0",
+  "parameter_count": 567754752,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "float",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "Snowflake/snowflake-arctic-embed-l-v2.0"
+    },
+    "input_fields": [
+      {
+        "default": "query: How can shared GPU caches reduce model inference cold starts?",
+        "key": "input",
+        "label": "Input text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/huggingface-text-embeddings-inference@sha256:249a0bc87522bfe2f1012b4d194f0225878f47079115ada3aeb0b1ef257b402a"
+  },
+  "release_rank": 56,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "snowflake-arctic-embed-l-v2-0-tei-cuda-1-9",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "embedding",
+    "retrieval",
+    "rag",
+    "multilingual",
+    "long-context",
+    "arctic",
+    "snowflake",
+    "huggingface",
+    "tei"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "tei-cuda-1.9.3",
+  "version_description": "Hugging Face Text Embeddings Inference CUDA 1.9.3 runtime for Snowflake Arctic Embed L v2.0.",
+  "version_key": "tei-cuda-1-9-3",
+  "version_label": "TEI CUDA 1.9.3"
+}

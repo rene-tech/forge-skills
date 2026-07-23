@@ -1,0 +1,306 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "vision_language",
+    "chat",
+    "nvidia_nim",
+    "text",
+    "vision",
+    "general",
+    "openai_compatible",
+    "text_generation"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-vl-8b-v1:latest",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-28T15:20:32.550670+00:00",
+  "default_eligible": true,
+  "description": "Nvidia Llama 3 1 Nemotron Nano VL 8b V1 NIM for vision-language chat; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave7.",
+  "family_id": "58ed8f62-497a-4ef2-a428-10537f9f947f",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": false,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 24.0,
+    "runtime_env": {
+      "NIM_ENABLE_WARMUP": "0"
+    }
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-15T02:48:46.247235+00:00",
+      "region": "us-central1",
+      "request_ms": 711,
+      "request_ms_p50": 711,
+      "request_ms_p95": 711,
+      "request_ms_p99": 711,
+      "request_ms_samples": 1,
+      "startup_ms_first": null,
+      "startup_ms_probe": 0,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 450.07,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": true,
+      "last_error": "gpu_incompatible: TensorRT release in the NIM does not support B300 SM 103",
+      "last_failed_at": "2026-05-13T17:30:50.187940+00:00",
+      "observed_success_rate": 0.0,
+      "probed_at": "2026-05-13T17:31:34.492037+00:00",
+      "region": "uk-south1",
+      "request_ms": null,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "unavailable",
+      "tokens_per_second": null,
+      "total_failures": 3,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:01:37.165560+00:00",
+      "region": "eu-north2",
+      "request_ms": 517,
+      "request_ms_p50": 454,
+      "request_ms_p95": 511,
+      "request_ms_p99": 516,
+      "request_ms_samples": 2,
+      "startup_ms_first": 206533,
+      "startup_ms_probe": 206533,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 611.22,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": true,
+      "last_error": "skipped_no_live_gpu_pool: H200 is not currently advertised in us-central1 inventory",
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T03:15:53.492142+00:00",
+      "region": "us-central1",
+      "request_ms": null,
+      "request_ms_p50": 576,
+      "request_ms_p95": 576,
+      "request_ms_p99": 576,
+      "request_ms_samples": 1,
+      "startup_ms_first": 206533,
+      "startup_ms_probe": null,
+      "startup_ms_warm_cache": null,
+      "status": "probe_pending",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T07:01:45.494963+00:00",
+      "region": "eu-north1",
+      "request_ms": 333,
+      "request_ms_p50": 333,
+      "request_ms_p95": 333,
+      "request_ms_p99": 333,
+      "request_ms_samples": 3,
+      "startup_ms_first": 772107,
+      "startup_ms_probe": 207130,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 870.87,
+      "total_failures": 0,
+      "total_starts": 4,
+      "total_warm_starts": 3,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": true,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": 1.0,
+      "probed_at": "2026-05-15T06:52:20.842075+00:00",
+      "region": "us-central1",
+      "request_ms": 2682,
+      "request_ms_p50": 2660,
+      "request_ms_p95": 2680,
+      "request_ms_p99": 2682,
+      "request_ms_samples": 2,
+      "startup_ms_first": 266771,
+      "startup_ms_probe": 266771,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 153.24,
+      "total_failures": 0,
+      "total_starts": 1,
+      "total_warm_starts": 0,
+      "vram_measured_gb": null,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "bf439f37-dff8-4c9f-906a-3b5e9c103053",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "nvidia-nim; third-party model license",
+  "modality_input": [
+    "text",
+    "image"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1",
+  "name": "Nvidia Llama 3 1 Nemotron Nano VL 8b V1",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": 128,
+        "messages": [
+          {
+            "content": [
+              {
+                "text": "{{prompt}}",
+                "type": "text"
+              },
+              {
+                "image_url": {
+                  "url": "{{image_url}}"
+                },
+                "type": "image_url"
+              }
+            ],
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "nvidia/llama-3.1-nemotron-nano-vl-8b-v1"
+    },
+    "input_fields": [
+      {
+        "default": "Describe this image briefly.",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII=",
+        "key": "image_url",
+        "label": "Image URL or data URL",
+        "type": "text",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "vision_chat",
+      "type": "markdown"
+    },
+    "parameter_controls": [],
+    "schema_version": 1,
+    "type": "vision_chat"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-llama-3.1-nemotron-nano-vl-8b-v1:latest",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-llama-3.1-nemotron-nano-vl-8b-v1:latest",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-llama-3.1-nemotron-nano-vl-8b-v1:latest",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-llama-3.1-nemotron-nano-vl-8b-v1:latest"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+  "stability": "stable",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2"
+  ],
+  "tags": [
+    "vision-language",
+    "chat",
+    "nvidia-nim"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "v1",
+  "version_description": null,
+  "version_key": "v1",
+  "version_label": "v1"
+}

@@ -1,0 +1,173 @@
+{
+  "benchmarkClaims": [
+    {
+      "caveats": [
+        "The result depends on the compatible article encoder, corpus preparation, indexing, and similarity pipeline.",
+        "Do not attribute the full-system ranking result to the single query-embedding endpoint."
+      ],
+      "checkedAt": "2026-07-23",
+      "conditions": "Full paired query/article system trained from 255 million PubMed query-article pairs; no Forge scientific-benchmark reproduction is claimed.",
+      "dataset": "Five biomedical BEIR tasks reported in the MedCPT paper",
+      "direction": "higher-is-better",
+      "metric": "nDCG@10",
+      "modelScope": "The full 330M-parameter MedCPT dual-encoder retrieval system, not the Forge query encoder in isolation.",
+      "provenance": "reported",
+      "sourceKind": "paper",
+      "sourceTitle": "MedCPT: Contrastive Pre-trained Transformers with large-scale PubMed search logs for zero-shot biomedical information retrieval",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12478430/",
+      "split": "Paper-defined zero-shot evaluation",
+      "value": "The paper reports best performance on three of five tasks and the best average among compared dense retrievers"
+    }
+  ],
+  "benchmarkEvidenceNote": "Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "acc488dc79b68eef74829f0bf7e27b9a00b42d551345ccd0b77a244b44f5196c",
+  "defaultEligible": false,
+  "displayName": "Use MedCPT Query Encoder",
+  "domain": "biomedical-retrieval",
+  "downloadUrl": "/v1/model-skills/ncbi-medcpt-query-encoder-tei-cuda-1-9/markdown?download=true",
+  "group": "biomedical-retrieval",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-retrieval",
+    "ncbi-medcpt-query-encoder-tei-cuda-1-9"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "How do PARP inhibitors affect homologous recombination deficient ovarian cancer?",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Biomedical query",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "float"
+      ],
+      "default": "float",
+      "fieldType": "select",
+      "key": "encoding_format",
+      "label": "Encoding format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-ncbi-medcpt-query-encoder-tei-cuda-1-9\ndescription: Use the exact Forge model ncbi-medcpt-query-encoder-tei-cuda-1-9 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use MedCPT Query Encoder\n\n- Model slug: `ncbi-medcpt-query-encoder-tei-cuda-1-9`\n- Model family: `ncbi-medcpt-query-encoder`\n- Version: `hf-d83a36c-tei-cuda-1.9.3` (`hf-d83a36c-tei-cuda-1-9-3`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-retrieval / ncbi-medcpt-query-encoder-tei-cuda-1-9`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `public-domain`\n\n## Purpose\n\nMedCPT Query Encoder is NCBI's public-domain biomedical dense retrieval encoder for short texts such as search queries, questions, and sentences.\n\n## Use this exact model when\n\n- Use this exact `ncbi-medcpt-query-encoder-tei-cuda-1-9` version when the task supplies text and needs embedding.\n- MedCPT Query Encoder is NCBI's public-domain biomedical dense retrieval encoder for short texts such as search queries, questions, and sentences.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Biomedical query\n- `encoding_format` (select, optional): Encoding format\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"{{encoding_format}}\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `ncbi-medcpt-query-encoder-tei-cuda-1-9` with version key `hf-d83a36c-tei-cuda-1-9-3`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `reviewed`\n\nReviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.\n\n### MedCPT: Contrastive Pre-trained Transformers with large-scale PubMed search logs for zero-shot biomedical information retrieval\n\n- Scope: The full 330M-parameter MedCPT dual-encoder retrieval system, not the Forge query encoder in isolation.\n- Dataset/split: Five biomedical BEIR tasks reported in the MedCPT paper / Paper-defined zero-shot evaluation\n- Metric/value: nDCG@10 / The paper reports best performance on three of five tasks and the best average among compared dense retrievers\n- Provenance: reported\n- Conditions: Full paired query/article system trained from 255 million PubMed query-article pairs; no Forge scientific-benchmark reproduction is claimed.\n- Caveat: The result depends on the compatible article encoder, corpus preparation, indexing, and similarity pipeline.\n- Caveat: Do not attribute the full-system ranking result to the single query-embedding endpoint.\n- Primary source: https://pmc.ncbi.nlm.nih.gov/articles/PMC12478430/\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9`\n- Routes: `/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/inference-routes`\n- Regional deployment: `/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/regional-deployment`\n- Deployment handoff: `/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-query-encoder-tei-cuda-1-9/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-query-encoder-tei-cuda-1-9/SKILL.md\n\n## References\n\n- [MedCPT paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC12478430/) (paper)\n- [MedCPT repository](https://github.com/ncbi/MedCPT) (repository)\n- [MedCPT Query Encoder model card](https://huggingface.co/ncbi/MedCPT-Query-Encoder) (model-card)\n",
+  "license": "public-domain",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/deploy",
+    "inferenceRoutesUrl": "/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/ncbi-medcpt-query-encoder",
+    "modelUrl": "/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9",
+    "regionalDeploymentUrl": "/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/ncbi-medcpt-query-encoder-tei-cuda-1-9/markdown",
+  "modelFamily": "ncbi-medcpt-query-encoder",
+  "modelSlug": "ncbi-medcpt-query-encoder-tei-cuda-1-9",
+  "modelUrl": "/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 1,
+  "publicEvidenceStatus": "reviewed",
+  "purpose": "MedCPT Query Encoder is NCBI's public-domain biomedical dense retrieval encoder for short texts such as search queries, questions, and sentences.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-query-encoder-tei-cuda-1-9/SKILL.md",
+  "references": [
+    {
+      "kind": "paper",
+      "title": "MedCPT paper",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12478430/"
+    },
+    {
+      "kind": "repository",
+      "title": "MedCPT repository",
+      "url": "https://github.com/ncbi/MedCPT"
+    },
+    {
+      "kind": "model-card",
+      "title": "MedCPT Query Encoder model card",
+      "url": "https://huggingface.co/ncbi/MedCPT-Query-Encoder"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-query-encoder-tei-cuda-1-9/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-query-encoder-tei-cuda-1-9/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "{{encoding_format}}",
+    "input": "{{input}}",
+    "model": "{{model_slug}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 109482240,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/ncbi/MedCPT-Query-Encoder",
+    "tags": [
+      "healthcare",
+      "life-science",
+      "biomedical",
+      "medical-literature",
+      "pubmed",
+      "embedding",
+      "retrieval",
+      "rag",
+      "semantic-search",
+      "bert",
+      "tei",
+      "public-domain",
+      "open-source"
+    ],
+    "versionLabel": "HF d83a36c via TEI CUDA 1.9.3"
+  },
+  "shortDescription": "MedCPT Query Encoder is NCBI's public-domain biomedical dense retrieval encoder for short texts such as search queries, questions, and sentences.",
+  "skillName": "use-forge-ncbi-medcpt-query-encoder-tei-cuda-1-9",
+  "skillUrl": "/v1/model-skills/ncbi-medcpt-query-encoder-tei-cuda-1-9",
+  "slug": "ncbi-medcpt-query-encoder-tei-cuda-1-9",
+  "stability": "testing",
+  "version": "hf-d83a36c-tei-cuda-1.9.3",
+  "versionKey": "hf-d83a36c-tei-cuda-1-9-3",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `ncbi-medcpt-query-encoder-tei-cuda-1-9` version when the task supplies text and needs embedding.",
+    "MedCPT Query Encoder is NCBI's public-domain biomedical dense retrieval encoder for short texts such as search queries, questions, and sentences.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `ncbi-medcpt-query-encoder-tei-cuda-1-9` with version key `hf-d83a36c-tei-cuda-1-9-3`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

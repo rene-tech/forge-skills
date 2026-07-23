@@ -1,0 +1,213 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "life-science",
+  "contentSha256": "9ac64dde298dbff155c3395a100b4f80ec6b56c5cfcd863e3e7d3174f93e8ca9",
+  "defaultEligible": true,
+  "displayName": "Use AlphaFold2",
+  "domain": "protein-structure",
+  "downloadUrl": "/v1/model-skills/deepmind-alphafold2-nim/markdown?download=true",
+  "group": "protein-structure",
+  "hierarchyPath": [
+    "models",
+    "life-science",
+    "protein-structure",
+    "deepmind-alphafold2-nim"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/protein-structure/alphafold2/predict-structure-from-sequence",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "MKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVF",
+      "fieldType": "protein_sequence",
+      "key": "sequence",
+      "label": "Protein sequence",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "jackhmmer",
+        "mmseqs2"
+      ],
+      "default": "mmseqs2",
+      "fieldType": "select",
+      "key": "algorithm",
+      "label": "MSA algorithm",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": "[\"uniref90\", \"mgnify\", \"small_bfd\"]",
+      "fieldType": "json_editor",
+      "key": "databases",
+      "label": "MSA databases",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": false,
+      "fieldType": "checkbox",
+      "key": "relax_prediction",
+      "label": "Perform geometry refinement",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "monomer",
+        "casp14",
+        "monomer_ptm"
+      ],
+      "default": "monomer",
+      "fieldType": "select",
+      "key": "structure_model_preset",
+      "label": "Structure model preset",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "none",
+        "best",
+        "all"
+      ],
+      "default": "none",
+      "fieldType": "select",
+      "key": "structure_models_to_relax",
+      "label": "Models to relax",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "e_value",
+      "label": "E-value",
+      "maximum": 10,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 1,
+      "fieldType": "number",
+      "key": "iterations",
+      "label": "MSA iterations",
+      "maximum": 3,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "protein_sequence"
+  ],
+  "instructions": "---\nname: use-forge-deepmind-alphafold2-nim\ndescription: Use the exact Forge model deepmind-alphafold2-nim for protein_sequence to structure, json tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use AlphaFold2\n\n- Model slug: `deepmind-alphafold2-nim`\n- Model family: `deepmind-alphafold2`\n- Version: `v1` (`v1`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / life-science / protein-structure / deepmind-alphafold2-nim`\n- Stability: `testing`\n- Default eligible: `true`\n- License: `apache-2.0/cc-by-4.0`\n\n## Purpose\n\nDeepMind AlphaFold2 NVIDIA NIM for protein structure prediction from amino acid sequence.\n\n## Use this exact model when\n\n- Use this exact `deepmind-alphafold2-nim` version when the task supplies protein_sequence and needs structure, json.\n- DeepMind AlphaFold2 NVIDIA NIM for protein structure prediction from amino acid sequence.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['structure', 'json'] contract.\n- Do not hide its `testing` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `sequence` (protein_sequence, optional): Protein sequence\n- `algorithm` (select, optional): MSA algorithm\n- `databases` (json_editor, optional): MSA databases\n- `relax_prediction` (checkbox, optional): Perform geometry refinement\n- `structure_model_preset` (select, optional): Structure model preset\n- `structure_models_to_relax` (select, optional): Models to relax\n- `e_value` (number, optional; bounds 0..10): E-value\n- `iterations` (number, optional; bounds 1..3): MSA iterations\n\nRequest template:\n\n```json\n{\n  \"algorithm\": \"{{algorithm}}\",\n  \"databases\": \"{{databases}}\",\n  \"e_value\": \"{{e_value}}\",\n  \"iterations\": \"{{iterations}}\",\n  \"relax_prediction\": \"{{relax_prediction}}\",\n  \"sequence\": \"{{sequence}}\",\n  \"structure_model_preset\": \"{{structure_model_preset}}\",\n  \"structure_models_to_relax\": \"{{structure_models_to_relax}}\"\n}\n```\n\n## Exact output\n\n- `structure`\n- `json`\n\n## Route\n\n`POST /protein-structure/alphafold2/predict-structure-from-sequence`\n\n## Workflow\n\n1. Load this skill and pin model slug `deepmind-alphafold2-nim` with version key `v1`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /protein-structure/alphafold2/predict-structure-from-sequence` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 4096.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/deepmind-alphafold2-nim`\n- Routes: `/v1/models/deepmind-alphafold2-nim/inference-routes`\n- Regional deployment: `/v1/models/deepmind-alphafold2-nim/regional-deployment`\n- Deployment handoff: `/v1/models/deepmind-alphafold2-nim/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/deepmind-alphafold2-nim/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-structure/deepmind-alphafold2-nim/SKILL.md\n\n## References\n\n- [AlphaFold2 source](https://build.nvidia.com/deepmind/alphafold2) (model-card)\n",
+  "license": "apache-2.0/cc-by-4.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 4096."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/deepmind-alphafold2-nim/deploy",
+    "inferenceRoutesUrl": "/v1/models/deepmind-alphafold2-nim/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/deepmind-alphafold2",
+    "modelUrl": "/v1/models/deepmind-alphafold2-nim",
+    "regionalDeploymentUrl": "/v1/models/deepmind-alphafold2-nim/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/deepmind-alphafold2-nim/markdown",
+  "modelFamily": "deepmind-alphafold2",
+  "modelSlug": "deepmind-alphafold2-nim",
+  "modelUrl": "/v1/models/deepmind-alphafold2-nim",
+  "outputFields": [
+    "structure",
+    "json"
+  ],
+  "outputModalities": [
+    "structure",
+    "json"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "DeepMind AlphaFold2 NVIDIA NIM for protein structure prediction from amino acid sequence.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/life-science/protein-structure/deepmind-alphafold2-nim/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "AlphaFold2 source",
+      "url": "https://build.nvidia.com/deepmind/alphafold2"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/deepmind-alphafold2-nim/SKILL.md",
+  "repositoryPath": "skills/models/life-science/protein-structure/deepmind-alphafold2-nim/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "algorithm": "{{algorithm}}",
+    "databases": "{{databases}}",
+    "e_value": "{{e_value}}",
+    "iterations": "{{iterations}}",
+    "relax_prediction": "{{relax_prediction}}",
+    "sequence": "{{sequence}}",
+    "structure_model_preset": "{{structure_model_preset}}",
+    "structure_models_to_relax": "{{structure_models_to_relax}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 4096,
+    "parameterCount": null,
+    "quantization": null,
+    "requiresHfToken": false,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://build.nvidia.com/deepmind/alphafold2",
+    "tags": [
+      "life-science",
+      "biology",
+      "protein",
+      "protein-folding",
+      "structure-prediction",
+      "nvidia-nim"
+    ],
+    "versionLabel": "v1"
+  },
+  "shortDescription": "DeepMind AlphaFold2 NVIDIA NIM for protein structure prediction from amino acid sequence.",
+  "skillName": "use-forge-deepmind-alphafold2-nim",
+  "skillUrl": "/v1/model-skills/deepmind-alphafold2-nim",
+  "slug": "deepmind-alphafold2-nim",
+  "stability": "testing",
+  "version": "v1",
+  "versionKey": "v1",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['protein_sequence'] \u2192 ['structure', 'json'] contract.",
+    "Do not hide its `testing` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `deepmind-alphafold2-nim` version when the task supplies protein_sequence and needs structure, json.",
+    "DeepMind AlphaFold2 NVIDIA NIM for protein structure prediction from amino acid sequence.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `deepmind-alphafold2-nim` with version key `v1`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /protein-structure/alphafold2/predict-structure-from-sequence` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

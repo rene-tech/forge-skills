@@ -1,0 +1,589 @@
+{
+  "benchmark_scores": {
+    "artifact_config": {
+      "architectures": [
+        "Phi3ForCausalLM"
+      ],
+      "hidden_size": 3072,
+      "intermediate_size": 8192,
+      "max_position_embeddings": 131072,
+      "model_type": "phi3",
+      "num_attention_heads": 24,
+      "num_hidden_layers": 32,
+      "num_key_value_heads": 8,
+      "original_max_position_embeddings": 4096,
+      "rope_scaling": "longrope",
+      "torch_dtype": "bfloat16",
+      "vocab_size": 200064
+    },
+    "artifact_parameters": {
+      "BF16": 3836021760,
+      "total": 3836021760
+    },
+    "artifact_refresh_20260527T09Z": {
+      "checked_at": "2026-05-27T09:03:34Z",
+      "container": {
+        "created": "2026-05-15T05:00:10.16705162Z",
+        "cuda_version": "13.0.2",
+        "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "image": "docker.io/vllm/vllm-openai:v0.21.0",
+        "torch_cuda_arch_list": "7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX",
+        "vllm_build_commit": "ad7125a431e176d4161099480a66f0169609a690",
+        "vllm_enable_cuda_compatibility": "0"
+      },
+      "decision": "Keep active/testing/non-default. Current public artifact, MIT license, vLLM-compatible serving path, and mirrored digest still match the five-cell 2026-05-27T01Z probe evidence; no publish/default escalation this cycle because the 128K native context remains capped at 32K in Forge.",
+      "hf_api": {
+        "architecture": "Phi3ForCausalLM",
+        "disabled": false,
+        "gated": false,
+        "id": "microsoft/Phi-4-mini-reasoning",
+        "library_name": "transformers",
+        "license": "mit",
+        "model_type": "phi3",
+        "pipeline_tag": "text-generation",
+        "private": false,
+        "safetensors_total": 3836021760,
+        "sha": "0e3b1e2d02ee478a3743abe3f629e9c0cb722e0a"
+      },
+      "status": "no_manifest_runtime_change_needed"
+    },
+    "artifact_revision": "0e3b1e2d02ee478a3743abe3f629e9c0cb722e0a",
+    "b300_uk_south1_probe_20260527T01Z": {
+      "attention_backend": "FlashInfer",
+      "benchmark_runs": 10,
+      "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+      "model_p50_ms": 2709,
+      "model_time_source": "client_wall_ms",
+      "pod_name": "forge-probe-microsoft-phi-4-mini-rea-b300-uk-south1-4874a6",
+      "report_json": "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-b300.json",
+      "report_md": "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-b300.md",
+      "startup_ms": 143272,
+      "status": "supported",
+      "tokens_per_second": 414.91,
+      "vram_used_gb": 227.06,
+      "warmup_runs": 3
+    },
+    "blockers": [
+      "Keep default_eligible=false until product review decides whether a math-specialized compact reasoning model belongs in general default routing.",
+      "Native 128K context is not advertised in this Forge profile; validate a separate long-context probe before raising served context above 32768 tokens.",
+      "Request timing will likely be client_wall_ms unless the OpenAI-compatible runtime exposes a model execution time field."
+    ],
+    "cache_strategy": "Runtime image contains code and dependencies only. Hugging Face, Transformers, vLLM, and XDG caches are pointed at /opt/nim/.cache paths, matching existing Forge vLLM manifests that back these paths with shared /mnt/data/forge-weights.",
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image_size_bytes": 8669299461,
+    "container_runtime_evidence": "skopeo inspect --no-tags docker://docker.io/vllm/vllm-openai:v0.21.0 completed on 2026-05-27T01Z and returned digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, created 2026-05-15T05:00:10Z, CUDA_VERSION=13.0.2, VLLM_ENABLE_CUDA_COMPATIBILITY=0, TORCH_CUDA_ARCH_LIST='7.5 8.0 8.6 8.9 9.0 10.0 12.0+PTX', and vLLM build commit ad7125a431e176d4161099480a66f0169609a690.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image",
+    "latest_matrix_probe": {
+      "benchmark_runs": 10,
+      "cells": 5,
+      "cells_failed": {},
+      "cells_pending": [],
+      "cells_supported": {
+        "B200/us-central1": {
+          "gpu_node": "computeinstance-u00cgag8p8bm56qgja",
+          "pod_name": "forge-probe-microsoft-phi-4-mini-rea-b200-us-central1-17a133",
+          "request_ms_p50": 2821,
+          "request_ms_samples": [
+            2821,
+            2544,
+            2821,
+            2821,
+            2822,
+            2821,
+            2818,
+            2822,
+            2821,
+            2821
+          ],
+          "startup_ms": 566786,
+          "tokens_per_second": 398.44,
+          "vram_used_gb": 151.12
+        },
+        "B300/uk-south1": {
+          "attention_backend": "FlashInfer",
+          "gpu_node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod_name": "forge-probe-microsoft-phi-4-mini-rea-b300-uk-south1-4874a6",
+          "request_ms_p50": 2709,
+          "request_ms_samples": [
+            2709,
+            2435,
+            2709,
+            2709,
+            2710,
+            2709,
+            2709,
+            2709,
+            2709,
+            2710
+          ],
+          "startup_ms": 143272,
+          "tokens_per_second": 414.91,
+          "vram_used_gb": 227.06
+        },
+        "H200/eu-north2": {
+          "gpu_node": "computeinstance-e02qrr5b7wych6gj31",
+          "pod_name": "forge-probe-microsoft-phi-4-mini-rea-h200-eu-north2-fe13d0",
+          "request_ms_p50": 3495,
+          "request_ms_samples": [
+            3495,
+            3494,
+            3495,
+            3494,
+            3495,
+            3495,
+            3495,
+            3495,
+            3496,
+            3493
+          ],
+          "startup_ms": 99267,
+          "tokens_per_second": 321.6,
+          "vram_used_gb": 119.43
+        },
+        "L40S/eu-north1": {
+          "gpu_node": "computeinstance-e00df18tkn1sh37ez7",
+          "pod_name": "forge-probe-microsoft-phi-4-mini-rea-l40s-eu-north1-59d55a",
+          "request_ms_p50": 11960,
+          "request_ms_samples": [
+            11960,
+            11961,
+            11961,
+            11960,
+            11961,
+            11957,
+            11959,
+            11964,
+            11969,
+            11959
+          ],
+          "startup_ms": 112062,
+          "tokens_per_second": 93.98,
+          "vram_used_gb": 37.13
+        },
+        "RTX6000/us-central1": {
+          "attention_backend": "FlashAttention v2",
+          "gpu_node": "computeinstance-u00ttxyyc35e5zw1e9",
+          "pod_name": "forge-probe-microsoft-phi-4-mini-rea-rtx6000-us-central1-b5ea47",
+          "request_ms_p50": 7123,
+          "request_ms_samples": [
+            7147,
+            7131,
+            7148,
+            7123,
+            7122,
+            7123,
+            7123,
+            7121,
+            7122,
+            7121
+          ],
+          "startup_ms": 548165,
+          "tokens_per_second": 157.8,
+          "vram_used_gb": 80.2
+        }
+      },
+      "checked_at": "2026-05-27T01:22:44Z",
+      "report_markdown": [
+        "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-b300.md",
+        "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-remaining.md"
+      ],
+      "reports": [
+        "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-b300.json",
+        "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-remaining.json"
+      ],
+      "request_time_source": "client_wall_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "license_evidence": "Hugging Face API and model page metadata report license:mit; the model is public, ungated, and enabled. The model card states the model is licensed under the MIT license.",
+    "live_upsert_20260527T01Z": {
+      "command": "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/microsoft-phi-4-mini-reasoning-vllm-cuda13.json --keep-existing-family-latest",
+      "status": "succeeded"
+    },
+    "onboarding_state": "active_testing_non_default_five_cell_supported",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_decision": "publish_candidate_active_non_default",
+    "publication_decision_reason": "The vLLM CUDA 13 profile has current MIT license evidence, public ungated weights, an already mirrored digest-pinned runtime image, dry-run validation, focused regression coverage, and five live supported GPU-family cells with 3 warmups and 10 measured requests per cell. Keep default_eligible=false because the model is math-reasoning-specialized and the served context is capped below its 128K native context.",
+    "regional_mirror_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "regional_mirror_status": "existing_four_region_vllm_cuda13_digest_reused_not_re_mirrored_this_cycle",
+    "remaining_cells_probe_20260527T01Z": {
+      "cells_supported": [
+        "B200/us-central1",
+        "H200/eu-north2",
+        "L40S/eu-north1",
+        "RTX6000/us-central1"
+      ],
+      "report_json": "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-remaining.json",
+      "report_md": "docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-remaining.md",
+      "status": "supported"
+    },
+    "runtime_evidence": "The Hugging Face model page generated vLLM serving instructions for microsoft/Phi-4-mini-reasoning using `vllm serve` and OpenAI-compatible /v1/chat/completions. The artifact config has no auto_map entry and reports the standard Phi3ForCausalLM architecture, so this Forge profile does not enable remote code. Live probe startup logs resolved Phi3ForCausalLM with trust_remote_code=False on every probed cell; B300/SM103 and B200 selected the FlashInfer attention backend, H200 and L40S served successfully, and RTX6000 selected FlashAttention v2.",
+    "secret_policy": "This public, non-gated model explicitly overrides HF_TOKEN and HUGGING_FACE_HUB_TOKEN with empty values so vLLM does not receive unnecessary platform Hugging Face credentials.",
+    "security_runtime_refresh_20260605Tci": {
+      "previous_container_image": "docker.io/vllm/vllm-openai:v0.21.0",
+      "previous_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.21.0@sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      },
+      "reason": "Remediate required vllm_openai_api_auth_bypass CI gate for public/default OpenAI-compatible vLLM manifests by moving from affected vLLM <0.22.0 image refs to the already mirrored v0.22.0 digest.",
+      "refreshed_container_digest": "sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+      "refreshed_container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+      "refreshed_regional_container_images": {
+        "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+        "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.0@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+      },
+      "validation_scope": "source manifest security-gate remediation only; rerun live upsert and GPU matrix before treating prior benchmark timings as v0.22.0 performance evidence"
+    },
+    "selection_rationale": "Selected as a non-Qwen, non-HCLS, non-physical-AI general utility candidate with small BF16 weights, clear MIT license, public ungated access, math/symbolic reasoning customer value, and a likely one-GPU vLLM CUDA 13 path. The newer Phi-4-mini-flash-reasoning was researched but deferred because its model card links in-progress vLLM V0/V1 PRs and requires custom_code plus mamba/causal-conv dependencies.",
+    "source_urls": [
+      "https://huggingface.co/microsoft/Phi-4-mini-reasoning",
+      "https://huggingface.co/api/models/microsoft/Phi-4-mini-reasoning",
+      "https://huggingface.co/microsoft/Phi-4-mini-reasoning/raw/main/config.json",
+      "https://huggingface.co/microsoft/Phi-4-mini-reasoning/raw/main/README.md",
+      "https://huggingface.co/microsoft/Phi-4-mini-flash-reasoning",
+      "https://docs.vllm.ai/en/v0.21.0/getting_started/installation/gpu/",
+      "https://hub.docker.com/r/vllm/vllm-openai"
+    ],
+    "validation_commands": [
+      "jq empty manifests/models/general/microsoft-phi-4-mini-reasoning-vllm-cuda13.json",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/microsoft-phi-4-mini-reasoning-vllm-cuda13.json --dry-run",
+      "PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python -m pytest -q tests/test_onboarding_manifests.py -k 'phi_4_mini_reasoning' -p no:cacheprovider",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/upsert_model.py manifests/models/general/microsoft-phi-4-mini-reasoning-vllm-cuda13.json --keep-existing-family-latest",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-phi-4-mini-reasoning-vllm-cuda13 --include-status onboarding --gpu B300 --region uk-south1 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 1 --report-json docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-b300.json --report-md docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-b300.md",
+      "POSTGRES_URL=<from forge-platform-secrets> PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 .venv312/bin/python scripts/probe_model_parallel_matrix.py --slug microsoft-phi-4-mini-reasoning-vllm-cuda13 --include-status onboarding --gpu B200 --gpu H200 --gpu L40S --gpu RTX6000 --timeout 2400 --request-timeout 300 --warmup-runs 3 --benchmark-runs 10 --max-parallel 4 --report-json docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-remaining.json --report-md docs/operations/model-onboarding/general/microsoft-phi-4-mini-reasoning-vllm-cuda13-20260527T01Z-remaining.md"
+    ]
+  },
+  "capabilities": [
+    "text_generation",
+    "chat",
+    "reasoning",
+    "math",
+    "symbolic",
+    "code",
+    "phi",
+    "vllm",
+    "cuda13",
+    "blackwell",
+    "text",
+    "general",
+    "openai_compatible"
+  ],
+  "category": "general",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.0",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 32768,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-27T01:08:01.396213+00:00",
+  "default_eligible": false,
+  "description": "Microsoft Phi-4 Mini Reasoning is a public MIT-licensed 3.8B-parameter dense text-generation model for multi-step mathematical reasoning, symbolic problem solving, formal proof-style prompts, and compact reasoning use cases where latency and GPU footprint matter. Hugging Face API metadata refreshed on 2026-05-27 reports private=false, gated=false, disabled=false, library_name=transformers, pipeline_tag=text-generation, license=mit, revision 0e3b1e2d02ee478a3743abe3f629e9c0cb722e0a, Phi3ForCausalLM architecture, 131,072 native max positions, and 3,836,021,760 BF16 safetensors parameters. The Hugging Face model page exposes generated vLLM instructions using `vllm serve \"microsoft/Phi-4-mini-reasoning\"` and OpenAI-compatible `/v1/chat/completions`. This Forge profile reuses the already mirrored official vLLM 0.21.0 CUDA 13 OpenAI-compatible image digest sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9, caps served context to 32,768 tokens for bounded probes, clears unnecessary Hugging Face token env for this public artifact, and stores Hugging Face and vLLM caches under the /opt/nim/.cache hostPath backed by Forge's shared /mnt/data cache. The 2026-05-27T01Z live matrix supports B200/us-central1, B300/uk-south1, H200/eu-north2, L40S/eu-north1, and RTX6000/us-central1 with 3 warmups and 10 measured chat requests per cell. Keep the model active/testing, non-default, and 32K-capped until product review validates whether this math-specialized Phi profile should be exposed in broader general routing or receive a separate 128K long-context profile.",
+  "family_id": "beb158a9-419c-465d-82be-60c79e4d293a",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "microsoft/Phi-4-mini-reasoning",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "microsoft/Phi-4-mini-reasoning",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.85",
+      "--max-num-seqs",
+      "8"
+    ],
+    "container_env": {
+      "HF_HOME": "/opt/nim/.cache/huggingface",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/opt/nim/.cache/huggingface/hub",
+      "VLLM_CACHE_ROOT": "/opt/nim/.cache/vllm",
+      "XDG_CACHE_HOME": "/opt/nim/.cache"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T01:22:07.220866+00:00",
+      "region": "us-central1",
+      "request_ms": 2821,
+      "request_ms_p50": 2821,
+      "request_ms_p95": 2822,
+      "request_ms_p99": 2822,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 566786,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 398.44,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 151.12,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 7.15
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T01:11:24.629066+00:00",
+      "region": "uk-south1",
+      "request_ms": 2709,
+      "request_ms_p50": 2709,
+      "request_ms_p95": 2710,
+      "request_ms_p99": 2710,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 143272,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 414.91,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 227.06,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 7.15
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T01:14:25.710882+00:00",
+      "region": "eu-north2",
+      "request_ms": 3495,
+      "request_ms_p50": 3495,
+      "request_ms_p95": 3496,
+      "request_ms_p99": 3496,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 99267,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 321.6,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 119.43,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 7.15
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T01:16:28.787921+00:00",
+      "region": "eu-north1",
+      "request_ms": 11960,
+      "request_ms_p50": 11960,
+      "request_ms_p95": 11967,
+      "request_ms_p99": 11969,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 112062,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 93.98,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 37.13,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 7.15
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T01:22:43.717820+00:00",
+      "region": "us-central1",
+      "request_ms": 7123,
+      "request_ms_p50": 7123,
+      "request_ms_p95": 7148,
+      "request_ms_p99": 7148,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 548165,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 157.8,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 80.2,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 7.15
+    }
+  ],
+  "gpu_type": null,
+  "id": "67bc49df-f317-492f-87b6-5798d9a7912f",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "mit",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "text"
+  ],
+  "model_family": "microsoft-phi-4-mini-reasoning",
+  "name": "Microsoft Phi-4 Mini Reasoning",
+  "parameter_count": 3836021760,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "max_tokens": "{{max_tokens}}",
+        "messages": [
+          {
+            "content": "You are Phi, a compact reasoning assistant. Show concise reasoning and put the final answer at the end.",
+            "role": "system"
+          },
+          {
+            "content": "{{prompt}}",
+            "role": "user"
+          }
+        ],
+        "model": "{{model_slug}}",
+        "stream": false,
+        "temperature": "{{temperature}}",
+        "top_p": "{{top_p}}"
+      },
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "upstream_model_id": "microsoft/Phi-4-mini-reasoning"
+    },
+    "input_fields": [
+      {
+        "default": "Solve this step by step and return the final answer clearly: A factory makes 18 valves per hour on line A and 24 valves per hour on line B. If line B runs for 2 fewer hours than line A and together they make 300 valves, how many hours did line A run?",
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "reasoning_chat",
+      "type": "markdown"
+    },
+    "parameter_controls": [
+      {
+        "default": 0.2,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 2,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 0.95,
+        "key": "top_p",
+        "label": "Top P",
+        "max": 1,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1024,
+        "key": "max_tokens",
+        "label": "Max Tokens",
+        "max": 8192,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "chat"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai@sha256:0fec7ec5f3e6bc168e54899935fb0557da908a4832a1dbc88e2debcf2f889416"
+  },
+  "release_rank": 42,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "microsoft-phi-4-mini-reasoning-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/microsoft/Phi-4-mini-reasoning",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "llm",
+    "chat",
+    "reasoning",
+    "math",
+    "symbolic",
+    "code",
+    "phi",
+    "vllm",
+    "cuda13",
+    "blackwell"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "vllm-0.21.0-cuda13",
+  "version_description": "Microsoft Phi-4 Mini Reasoning served by the already mirrored vLLM OpenAI-compatible CUDA 13 image as an active non-default Forge testing candidate with five-cell GPU support evidence for compact math and symbolic reasoning workloads.",
+  "version_key": "vllm-0-21-0-cuda13",
+  "version_label": "vLLM 0.21.0 CUDA 13"
+}

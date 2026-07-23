@@ -1,0 +1,661 @@
+{
+  "benchmark_scores": {
+    "artifact_api": "https://huggingface.co/api/models/NeuML/pubmedbert-base-embeddings",
+    "artifact_checked_at": "2026-05-27T09:00:00Z",
+    "artifact_config": {
+      "architectures": [
+        "BertModel"
+      ],
+      "hidden_size": 768,
+      "max_position_embeddings": 512,
+      "model_type": "bert",
+      "num_attention_heads": 12,
+      "num_hidden_layers": 12,
+      "pooling": "mean",
+      "pooling_normalized": true,
+      "torch_dtype": "float32",
+      "vocab_size": 30522
+    },
+    "artifact_disabled": false,
+    "artifact_downloads_observed": 711380,
+    "artifact_evidence_20260527T09Z": "Hugging Face API returned private=false, gated=false, disabled=false, cardData.license=apache-2.0, pipeline_tag=sentence-similarity, library_name=sentence-transformers, revision b79526d6ef3645e0df4530322e266f24c829f5ef, and safetensors total 109,482,240 F32 parameters. The pinned config has architectures=[BertModel], hidden_size=768, max_position_embeddings=512; 1_Pooling/config.json has pooling_mode_mean_tokens=true.",
+    "artifact_gated": false,
+    "artifact_license": "apache-2.0",
+    "artifact_parameters": {
+      "F32": 109482240,
+      "total": 109482240
+    },
+    "artifact_private": false,
+    "artifact_sha": "b79526d6ef3645e0df4530322e266f24c829f5ef",
+    "artifact_source": "https://huggingface.co/NeuML/pubmedbert-base-embeddings",
+    "b300_probe_20260527T10Z": {
+      "benchmark_runs": 10,
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_type": "B300",
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "pod_name": "forge-probe-neuml-pubmedbert-base-em-b300-uk-south1-544c31",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-vllm-cuda13-20260527T10Z-b300-10run.json",
+      "report_md": "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-vllm-cuda13-20260527T10Z-b300-10run.md",
+      "request_ms_p50": 70,
+      "request_ms_samples": [
+        70,
+        70,
+        71,
+        70,
+        70,
+        70,
+        70,
+        69,
+        70,
+        69
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_status": 200,
+      "startup_ms": 53281,
+      "status": "supported",
+      "tokens_per_second": 542.86,
+      "vram_used_gb": 1.13,
+      "warmup_ms_samples": [
+        3370,
+        72,
+        71
+      ],
+      "warmup_runs": 3
+    },
+    "container_config_snapshot_20260527T09Z": {
+      "architecture": "amd64",
+      "created": "2026-05-15T05:00:10.16705162Z",
+      "cuda_version": "13.0.2",
+      "entrypoint": [
+        "vllm",
+        "serve"
+      ],
+      "image_version": "vllm/vllm-openai:v0.22.1",
+      "layer_size_bytes": 8669299461,
+      "os": "linux",
+      "source": "https://github.com/vllm-project/vllm",
+      "source_revision": "ad7125a431e176d4161099480a66f0169609a690"
+    },
+    "container_digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+    "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+    "container_license_evidence": "The vLLM upstream repository is Apache-2.0 licensed; the selected OCI config labels point to https://github.com/vllm-project/vllm at revision ad7125a431e176d4161099480a66f0169609a690.",
+    "container_source_decision": "reuse_existing_mirrored_vllm_openai_0_21_0_cuda13_image_as_sm103_fallback_candidate_after_tei_100_latest_rejected_b300",
+    "default_routing_gate_20260608": {
+      "reason": "Active public-preview vLLM 0.21 profile lacks the required VLLM_MAX_N_SEQUENCES guard; keep visible but non-default until refreshed or guarded.",
+      "status": "default_routing_disabled_for_public_preview",
+      "updated_at": "2026-06-08T13:11:37+00:00"
+    },
+    "fallback_reason": {
+      "blocked_runtime": "neuml-pubmedbert-base-embeddings-tei-100-latest",
+      "blocked_runtime_digest": "sha256:943ef544a9baf4aa22fb1de9f8d39d133930340ef334bc8678ac57529b055c4d",
+      "blocked_runtime_failure": "Runtime compute cap 103 is not compatible with compile time compute cap 100",
+      "selected_fallback": "vLLM 0.21.0 CUDA 13 pooling profile using an already mirrored digest"
+    },
+    "healthcare_safety_gate": {
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG over scientific text.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "publication_decision": "keep_hidden_onboarding",
+      "routable_enablement_requirements": [
+        "Embedding parity against the TEI CUDA 1.9.3 row",
+        "Healthcare product safety review approval",
+        "Catalog publication decision comparing vLLM resource cost against the lower-footprint TEI CUDA 1.9.3 row"
+      ]
+    },
+    "latest_matrix_probe_20260527T17Z": {
+      "benchmark_runs": 10,
+      "cells": 6,
+      "cells_failed": [],
+      "cells_pending": [],
+      "cells_supported": {
+        "B200/us-central1": {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00n3ve27xm9ysefze",
+          "pod_name": "forge-probe-neuml-pubmedbert-base-em-b200-us-central1-13d53b",
+          "request_ms_p50": 163,
+          "request_ms_samples": [
+            163,
+            162,
+            162,
+            163,
+            162,
+            163,
+            163,
+            163,
+            163,
+            163
+          ],
+          "startup_ms": 381647,
+          "tokens_per_second": 233.13,
+          "vram_used_gb": 1.16
+        },
+        "B300/uk-south1": {
+          "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+          "node": "computeinstance-e03cdt2m6dscactrnd",
+          "pod_name": "forge-probe-neuml-pubmedbert-base-em-b300-uk-south1-8f11eb",
+          "request_ms_p50": 70,
+          "request_ms_samples": [
+            70,
+            70,
+            69,
+            70,
+            69,
+            69,
+            70,
+            69,
+            70,
+            69
+          ],
+          "startup_ms": 53372,
+          "tokens_per_second": 542.86,
+          "vram_used_gb": 1.13
+        },
+        "H200/eu-north2": {
+          "cluster_id": "mk8scluster-e02q80x7frtvf9rj9e",
+          "node": "computeinstance-e02xmpc3hhyvpwf4qg",
+          "pod_name": "forge-probe-neuml-pubmedbert-base-em-h200-eu-north2-40ecd3",
+          "request_ms_p50": 100,
+          "request_ms_samples": [
+            100,
+            99,
+            100,
+            100,
+            100,
+            100,
+            101,
+            100,
+            101,
+            100
+          ],
+          "startup_ms": 63465,
+          "tokens_per_second": 380.0,
+          "vram_used_gb": 1.07
+        },
+        "H200/us-central1": {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00yndx8m1gmdjb48t",
+          "pod_name": "forge-probe-neuml-pubmedbert-base-em-h200-us-central1-d19367",
+          "request_ms_p50": 158,
+          "request_ms_samples": [
+            159,
+            159,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158,
+            158
+          ],
+          "startup_ms": 359644,
+          "tokens_per_second": 240.51,
+          "vram_used_gb": 1.07
+        },
+        "L40S/eu-north1": {
+          "cluster_id": "mk8scluster-e00tjerrz0axkghmbm",
+          "node": "computeinstance-e00rbwdyfy2va3jj09",
+          "pod_name": "forge-probe-neuml-pubmedbert-base-em-l40s-eu-north1-b1217f",
+          "request_ms_p50": 102,
+          "request_ms_samples": [
+            103,
+            102,
+            103,
+            103,
+            102,
+            102,
+            102,
+            101,
+            101,
+            103
+          ],
+          "startup_ms": 459833,
+          "tokens_per_second": 372.55,
+          "vram_used_gb": 0.85
+        },
+        "RTX6000/us-central1": {
+          "cluster_id": "mk8scluster-u00eyp43c8have384b",
+          "node": "computeinstance-u00wwny590gq5dcyh9",
+          "pod_name": "forge-probe-neuml-pubmedbert-base-em-rtx6000-us-central1-a432af",
+          "request_ms_p50": 162,
+          "request_ms_samples": [
+            162,
+            162,
+            162,
+            162,
+            162,
+            162,
+            162,
+            162,
+            162,
+            162
+          ],
+          "startup_ms": 42083,
+          "tokens_per_second": 234.57,
+          "vram_used_gb": 1.04
+        }
+      },
+      "report_json": "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-vllm-cuda13-20260527T17Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-vllm-cuda13-20260527T17Z-full-matrix.md",
+      "request_time_source": "client_wall_ms",
+      "status": "supported",
+      "warmup_runs": 3
+    },
+    "next_probe_plan": [
+      "Compare the full 768-dimensional embedding for the default prompt against the TEI CUDA 1.9.3 row before treating this vLLM profile as a routable replacement.",
+      "Keep this row hidden/onboarding/default-ineligible until healthcare product safety review approves the route and the catalog decision weighs vLLM resource cost against the lower-footprint TEI row."
+    ],
+    "onboarding_state": "six_cell_matrix_supported_pending_embedding_parity_and_healthcare_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_recheck_20260527T09Z": {
+      "digest": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+      "status": "verified_existing_all_four_regions",
+      "verified_regions": {
+        "eu-north1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "eu-north2": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "uk-south1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9",
+        "us-central1": "sha256:a230095847e93bd4df9888b33dab956fa9504537b828a23657d2b26fed57b5c9"
+      }
+    },
+    "runtime_fix_20260527T10Z": {
+      "evidence_reports": [
+        "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-vllm-cuda13-20260527T10Z-b300-diagnostic.md",
+        "docs/model-onboarding/hcls/neuml-pubmedbert-base-embeddings-vllm-cuda13-20260527T10Z-b300-fixed-diagnostic.md"
+      ],
+      "initial_failure": "vLLM 0.21.0 rejected --override-pooler-config as an unrecognized argument and exited with code 2 before readiness.",
+      "second_failure": "vLLM 0.21.0 accepted --pooler-config but rejected the PoolerConfig key normalize as an unexpected keyword.",
+      "selected_pooler_config": {
+        "pooling_type": "MEAN",
+        "use_activation": true
+      }
+    },
+    "runtime_plan": {
+      "cache_strategy": "HF_HOME, HUGGINGFACE_HUB_CACHE, TRANSFORMERS_CACHE, VLLM_CACHE_ROOT, and XDG_CACHE_HOME are versioned under /mnt/data for first-run model hydration and vLLM artifacts.",
+      "endpoint": "/v1/embeddings",
+      "pooler_config": {
+        "pooling_type": "MEAN",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "secret_policy": "This public, ungated model explicitly clears HF_TOKEN and HUGGING_FACE_HUB_TOKEN so vLLM does not receive unnecessary platform Hugging Face credentials.",
+      "served_model_name": "NeuML/pubmedbert-base-embeddings"
+    },
+    "source_evidence": [
+      "https://huggingface.co/NeuML/pubmedbert-base-embeddings",
+      "https://huggingface.co/api/models/NeuML/pubmedbert-base-embeddings",
+      "https://docs.vllm.ai/en/v0.21.0/models/pooling_models/",
+      "https://docs.vllm.ai/en/v0.21.0/api/vllm/config/pooler/",
+      "https://docs.vllm.ai/en/v0.8.1/models/supported_models.html",
+      "https://github.com/vllm-project/vllm"
+    ],
+    "validation_state": {
+      "embedding_parity": "not_run",
+      "gpu_probe": "six_cell_supported_3_warmup_10run_20260527T17Z",
+      "live_upsert": "succeeded_hidden_20260527T10Z",
+      "manifest_schema": "validated_by_scripts_upsert_model_dry_run_20260527T17Z",
+      "publication_decision": "keep_hidden_onboarding"
+    }
+  },
+  "capabilities": [
+    "healthcare",
+    "medical_literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence_transformers",
+    "vllm",
+    "blackwell",
+    "sm103_candidate",
+    "open_source",
+    "text",
+    "openai_compatible"
+  ],
+  "category": "healthcare",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "docker.io/vllm/vllm-openai:v0.22.1",
+  "container_image_size_bytes": 8669299461,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-27T10:04:43.038523+00:00",
+  "default_eligible": false,
+  "description": "NeuML PubMedBERT Base Embeddings is an Apache-2.0 sentence-transformers model fine-tuned from PubMedBERT for biomedical sentence and paragraph embeddings. The established TEI CUDA 1.9.3 Forge row supports B200, H200, L40S, and RTX6000 but not B300/SM103; the separate TEI 100-latest Blackwell experiment was mirrored to all regions and then failed before readiness with `Runtime compute cap 103 is not compatible with compile time compute cap 100`. This hidden manifest adds the next fallback candidate without changing either TEI row: reuse the already mirrored official vLLM 0.21.0 CUDA 13 image, launch it with `--runner pooling`, and force mean pooling with embedding activation to match the upstream sentence-transformers pooling config. Current research on 2026-05-27 confirms the Hugging Face artifact remains public, ungated, enabled, Apache-2.0 licensed, sentence-transformers based, and tagged for text-embeddings-inference. The vLLM 0.21.0 image digest is already present in all four active Forge registries, reports CUDA 13.0.2, and comes from the Apache-2.0 vllm-project/vllm repository. The hidden six-cell 3-warmup/10-run matrix passed after correcting the vLLM 0.21 PoolerConfig flags, but this row must stay onboarding/default-ineligible until full embedding parity against the TEI CUDA 1.9.3 row and healthcare product safety review are complete.",
+  "family_id": "f36c8169-44dd-4bbb-a5e7-c2c89e3e4506",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "NeuML/pubmedbert-base-embeddings",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "NeuML/pubmedbert-base-embeddings",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "float16",
+      "--max-model-len",
+      "512",
+      "--max-num-batched-tokens",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.35",
+      "--max-num-seqs",
+      "32",
+      "--pooler-config",
+      "{\"pooling_type\":\"MEAN\",\"use_activation\":true}"
+    ],
+    "container_env": {
+      "HF_HOME": "/mnt/data/huggingface/neuml-pubmedbert-base-embeddings/vllm-0.21.0-cuda13",
+      "HF_TOKEN": "",
+      "HUGGINGFACE_HUB_CACHE": "/mnt/data/huggingface/neuml-pubmedbert-base-embeddings/vllm-0.21.0-cuda13/hub",
+      "HUGGING_FACE_HUB_TOKEN": "",
+      "TRANSFORMERS_CACHE": "/mnt/data/huggingface/neuml-pubmedbert-base-embeddings/vllm-0.21.0-cuda13/hub",
+      "VLLM_CACHE_ROOT": "/mnt/data/vllm/neuml-pubmedbert-base-embeddings/vllm-0.21.0-cuda13",
+      "XDG_CACHE_HOME": "/mnt/data/vllm/neuml-pubmedbert-base-embeddings/vllm-0.21.0-cuda13/xdg"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:10:06.772804+00:00",
+      "region": "us-central1",
+      "request_ms": 163,
+      "request_ms_p50": 163,
+      "request_ms_p95": 163,
+      "request_ms_p99": 163,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 381647,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 233.13,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.16,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:12:47.106452+00:00",
+      "region": "uk-south1",
+      "request_ms": 70,
+      "request_ms_p50": 70,
+      "request_ms_p95": 71,
+      "request_ms_p99": 72,
+      "request_ms_samples": 21,
+      "startup_ms_first": null,
+      "startup_ms_probe": 53372,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 542.86,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.13,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:11:48.204457+00:00",
+      "region": "eu-north2",
+      "request_ms": 100,
+      "request_ms_p50": 100,
+      "request_ms_p95": 101,
+      "request_ms_p99": 101,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 63465,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 380.0,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.07,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:09:42.313973+00:00",
+      "region": "us-central1",
+      "request_ms": 158,
+      "request_ms_p50": 158,
+      "request_ms_p95": 159,
+      "request_ms_p99": 159,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 359644,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 240.51,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.07,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:17:50.297038+00:00",
+      "region": "eu-north1",
+      "request_ms": 102,
+      "request_ms_p50": 102,
+      "request_ms_p95": 103,
+      "request_ms_p99": 103,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 459833,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 372.55,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.85,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-27T17:10:41.598961+00:00",
+      "region": "us-central1",
+      "request_ms": 162,
+      "request_ms_p50": 162,
+      "request_ms_p95": 162,
+      "request_ms_p99": 162,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 42083,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": 234.57,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 1.04,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "bd84b77b-f007-444c-b1c8-b1d8ed742fb3",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text"
+  ],
+  "modality_output": [
+    "embedding"
+  ],
+  "model_family": "neuml-pubmedbert-base-embeddings",
+  "name": "PubMedBERT Base Embeddings",
+  "parameter_count": 109482240,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "encoding_format": "{{encoding_format}}",
+        "input": "{{input}}",
+        "model": "{{model_slug}}"
+      },
+      "endpoint": "/v1/embeddings",
+      "method": "POST",
+      "upstream_model_id": "NeuML/pubmedbert-base-embeddings"
+    },
+    "input_fields": [
+      {
+        "default": "Title: Protein language models for antibody engineering\nAbstract: Dense embeddings can help retrieve related biomedical literature and cluster nonclinical research summaries by mechanism, assay type, and target family.",
+        "key": "input",
+        "label": "Biomedical text",
+        "type": "textarea",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "embedding_vector"
+    },
+    "parameter_controls": [
+      {
+        "default": "float",
+        "key": "encoding_format",
+        "label": "Encoding format",
+        "options": [
+          "float"
+        ],
+        "type": "select"
+      }
+    ],
+    "runtime": {
+      "cache_target": "/mnt/data/huggingface/neuml-pubmedbert-base-embeddings/vllm-0.21.0-cuda13",
+      "kind": "vllm_pooling_embeddings",
+      "model_id": "NeuML/pubmedbert-base-embeddings",
+      "model_revision": "b79526d6ef3645e0df4530322e266f24c829f5ef",
+      "pooler_config": {
+        "pooling_type": "MEAN",
+        "use_activation": true
+      },
+      "runner": "pooling",
+      "served_model_name": "NeuML/pubmedbert-base-embeddings",
+      "vllm_cache_target": "/mnt/data/vllm/neuml-pubmedbert-base-embeddings/vllm-0.21.0-cuda13"
+    },
+    "safety_notice": {
+      "allowed_scope": "Nonclinical biomedical literature retrieval, clustering, semantic search, and RAG over scientific text.",
+      "body": "Use only for nonclinical biomedical literature retrieval, clustering, semantic search, and RAG over scientific text. Do not use for medical advice, clinical decision-making, diagnosis, treatment, triage, medication recommendations, or patient-specific interpretation.",
+      "disallowed_uses": [
+        "medical advice",
+        "clinical decision-making",
+        "diagnosis, treatment, triage, or medication recommendations",
+        "patient-specific interpretation of medical records, imaging, laboratory results, or genetic results"
+      ],
+      "must_acknowledge": false,
+      "severity": "warning",
+      "title": "Research-only biomedical literature embeddings"
+    },
+    "schema_version": 1,
+    "type": "embedding"
+  },
+  "quantization": "float16",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/vllm-vllm-openai:v0.22.1@sha256:953d3a06d5e64ab582985cd7401289d3abf2a2c14ef2158e9a84313daeec77d7"
+  },
+  "release_rank": 56,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "neuml-pubmedbert-base-embeddings-vllm-cuda13",
+  "source": "custom_container",
+  "source_url": "https://huggingface.co/NeuML/pubmedbert-base-embeddings",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "healthcare",
+    "biomedical",
+    "medical-literature",
+    "pubmed",
+    "embedding",
+    "retrieval",
+    "rag",
+    "sentence-transformers",
+    "vllm",
+    "blackwell",
+    "sm103-candidate",
+    "open-source"
+  ],
+  "updated_at": "2026-06-30T13:36:39.452381+00:00",
+  "version": "hf-b79526d-vllm-0.21.0-cuda13-pooling",
+  "version_description": "Hidden PubMedBERT Base Embeddings runtime fallback using the already mirrored vLLM 0.21.0 CUDA 13 image in pooling mode after TEI 100-latest rejected B300/SM103 at startup.",
+  "version_key": "hf-b79526d-vllm-0-21-0-cuda13-pooling",
+  "version_label": "HF b79526d via vLLM 0.21 CUDA 13 pooling"
+}

@@ -1,0 +1,142 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "healthcare",
+  "contentSha256": "feb30792c33f980ac2f9089b7d801fdeff47e26c08cf7c1fc2eae3990f5d0991",
+  "defaultEligible": false,
+  "displayName": "Use PubMedBERT Base Embeddings Matryoshka",
+  "domain": "biomedical-retrieval",
+  "downloadUrl": "/v1/model-skills/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/markdown?download=true",
+  "group": "biomedical-retrieval",
+  "hierarchyPath": [
+    "models",
+    "healthcare",
+    "biomedical-retrieval",
+    "neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/embeddings",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "Query: What mechanisms connect chronic inflammation with atherosclerosis progression?\n\nPassage: Inflammatory cytokines can promote endothelial dysfunction, monocyte recruitment, and plaque instability during atherosclerosis.",
+      "fieldType": "textarea",
+      "key": "input",
+      "label": "Biomedical literature text",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "float"
+      ],
+      "default": "float",
+      "fieldType": "select",
+      "key": "encoding_format",
+      "label": "Encoding format",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text"
+  ],
+  "instructions": "---\nname: use-forge-neuml-pubmedbert-base-embeddings-matryoshka-5cb5fc55\ndescription: Use the exact Forge model neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9 for text to embedding tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use PubMedBERT Base Embeddings Matryoshka\n\n- Model slug: `neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9`\n- Model family: `neuml-pubmedbert-base-embeddings-matryoshka`\n- Version: `hf-723775e-tei-cuda-1.9.3` (`hf-723775e-tei-cuda-1-9-3`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / healthcare / biomedical-retrieval / neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9`\n- Stability: `testing`\n- Default eligible: `false`\n- License: `apache-2.0`\n\n## Purpose\n\nNeuML PubMedBERT Base Embeddings Matryoshka is a public Apache-2.0 sentence-transformers model for nonclinical biomedical literature semantic search, clustering, RAG retrieval, and dimensionality-tradeoff experiments.\n\n## Use this exact model when\n\n- Use this exact `neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9` version when the task supplies text and needs embedding.\n- NeuML PubMedBERT Base Embeddings Matryoshka is a public Apache-2.0 sentence-transformers model for nonclinical biomedical literature semantic search, clustering, RAG retrieval, and dimensionality-tradeoff experiments.\n- Select this version only after explicitly accepting its experimental/non-default status.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.\n- Do not hide its `testing` stability or default-eligible=false status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `input` (textarea, optional): Biomedical literature text\n- `encoding_format` (select, optional): Encoding format\n\nRequest template:\n\n```json\n{\n  \"encoding_format\": \"{{encoding_format}}\",\n  \"input\": \"{{input}}\",\n  \"model\": \"{{model_slug}}\"\n}\n```\n\n## Exact output\n\n- `embedding`\n\n## Route\n\n`POST /v1/embeddings`\n\n## Workflow\n\n1. Load this skill and pin model slug `neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9` with version key `hf-723775e-tei-cuda-1-9-3`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/embeddings` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `testing` and default-eligible is `false`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n- Declared context/sequence window: 512.\n\n## Safety\n\n- Use research, synthetic, public, or explicitly approved non-identifiable data.\n- Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.\n- Keep source license, model revision, request, response, and evidence provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9`\n- Routes: `/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/inference-routes`\n- Regional deployment: `/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/regional-deployment`\n- Deployment handoff: `/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/SKILL.md\n\n## References\n\n- [PubMedBERT Base Embeddings Matryoshka source](https://huggingface.co/NeuML/pubmedbert-base-embeddings-matryoshka) (model-card)\n",
+  "license": "apache-2.0",
+  "limitations": [
+    "Catalog stability is `testing` and default-eligible is `false`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+    "Declared context/sequence window: 512."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/deploy",
+    "inferenceRoutesUrl": "/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/neuml-pubmedbert-base-embeddings-matryoshka",
+    "modelUrl": "/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9",
+    "regionalDeploymentUrl": "/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/markdown",
+  "modelFamily": "neuml-pubmedbert-base-embeddings-matryoshka",
+  "modelSlug": "neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9",
+  "modelUrl": "/v1/models/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9",
+  "outputFields": [
+    "embedding"
+  ],
+  "outputModalities": [
+    "embedding"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "NeuML PubMedBERT Base Embeddings Matryoshka is a public Apache-2.0 sentence-transformers model for nonclinical biomedical literature semantic search, clustering, RAG retrieval, and dimensionality-tradeoff experiments.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/healthcare/biomedical-retrieval/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "PubMedBERT Base Embeddings Matryoshka source",
+      "url": "https://huggingface.co/NeuML/pubmedbert-base-embeddings-matryoshka"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/SKILL.md",
+  "repositoryPath": "skills/models/healthcare/biomedical-retrieval/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "encoding_format": "{{encoding_format}}",
+    "input": "{{input}}",
+    "model": "{{model_slug}}"
+  },
+  "safety": [
+    "Use research, synthetic, public, or explicitly approved non-identifiable data.",
+    "Require qualified domain review for consequential biological or healthcare conclusions; model output is not diagnosis or treatment advice.",
+    "Keep source license, model revision, request, response, and evidence provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": 512,
+    "parameterCount": 109482240,
+    "quantization": "float16",
+    "requiresHfToken": false,
+    "source": "custom_container",
+    "sourceUrl": "https://huggingface.co/NeuML/pubmedbert-base-embeddings-matryoshka",
+    "tags": [
+      "healthcare",
+      "life-science",
+      "biomedical",
+      "medical-literature",
+      "embedding",
+      "retrieval",
+      "rag",
+      "sentence-transformers",
+      "matryoshka",
+      "tei",
+      "open-source"
+    ],
+    "versionLabel": "HF 723775e via TEI CUDA 1.9.3"
+  },
+  "shortDescription": "NeuML PubMedBERT Base Embeddings Matryoshka is a public Apache-2.0 sentence-transformers model for nonclinical biomedical literature semantic search, clustering, RAG retrieval, and dimensionality-tradeoff experiments.",
+  "skillName": "use-forge-neuml-pubmedbert-base-embeddings-matryoshka-5cb5fc55",
+  "skillUrl": "/v1/model-skills/neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9",
+  "slug": "neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9",
+  "stability": "testing",
+  "version": "hf-723775e-tei-cuda-1.9.3",
+  "versionKey": "hf-723775e-tei-cuda-1-9-3",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text'] \u2192 ['embedding'] contract.",
+    "Do not hide its `testing` stability or default-eligible=false status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9` version when the task supplies text and needs embedding.",
+    "NeuML PubMedBERT Base Embeddings Matryoshka is a public Apache-2.0 sentence-transformers model for nonclinical biomedical literature semantic search, clustering, RAG retrieval, and dimensionality-tradeoff experiments.",
+    "Select this version only after explicitly accepting its experimental/non-default status."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9` with version key `hf-723775e-tei-cuda-1-9-3`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/embeddings` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}

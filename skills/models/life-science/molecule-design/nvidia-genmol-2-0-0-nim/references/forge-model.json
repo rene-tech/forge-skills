@@ -1,0 +1,714 @@
+{
+  "benchmark_scores": {
+    "artifact_license": "apache-2.0_source_nvidia_open_model_license_weights",
+    "artifact_source": "https://github.com/NVIDIA-Digital-Bio/genmol",
+    "b300_revalidation_20260525T01Z": {
+      "benchmark_runs": 10,
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "gpu_type": "B300",
+      "live_row_request_ms_samples": 20,
+      "live_support_upsert": true,
+      "model_status": "onboarding",
+      "node": "computeinstance-e03xrnnk8zqkvrw8sc",
+      "pod_name": "forge-probe-nvidia-genmol-2-0-0-nim-b300-uk-south1-08e9ca",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260525T01Z-b300-revalidation.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260525T01Z-b300-revalidation.md",
+      "request_ms_p50_live_row": 432,
+      "request_ms_p50_probe": 416,
+      "request_ms_p95_live_row": 483,
+      "request_ms_samples": [
+        380,
+        460,
+        430,
+        396,
+        415,
+        416,
+        418,
+        402,
+        371,
+        478
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": {
+        "first_score": 0.453,
+        "molecule_count_returned": 3,
+        "status": "success"
+      },
+      "response_status": 200,
+      "startup_ms": 499117,
+      "status": "supported",
+      "vram_used_gb": 2.58,
+      "warmup_runs": 3
+    },
+    "b300_workspace_reprobe_20260524T13Z": {
+      "cluster_id": "mk8scluster-e03sgjb79s092hrvc4",
+      "container_exit": {
+        "exit_code": 1,
+        "reason": "Error"
+      },
+      "env_observed": {
+        "NIM_CACHE_PATH": "/opt/nim/.cache",
+        "NIM_WORKSPACE": "/opt/nim/.cache/workspace"
+      },
+      "gpu_type": "B300",
+      "image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-genmol:2.0.0@sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+      "log_evidence": "nim_sdk.py logged 'Using the workspace specified during init: /opt/nim/workspace' followed by ManifestDownloadError: [Errno 30] Read-only file system: '/opt/nim/workspace'.",
+      "node": "computeinstance-e03cdt2m6dscactrnd",
+      "pod_name": "forge-probe-nvidia-genmol-2-0-0-nim-b300-uk-south1-e8a86e",
+      "region": "uk-south1",
+      "report_json": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T13Z-b300-workspace-reprobe.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T13Z-b300-workspace-reprobe.md",
+      "required_fix": "Mount a writable volume at /opt/nim/workspace for this NIM, or override the NIM startup path/command so nimlib is initialized with a writable workspace before retrying B300/H200/L40S/RTX6000.",
+      "root_cause": "GenMol nimlib ignores the NIM_WORKSPACE environment override for this startup path and attempts to create /opt/nim/workspace on the read-only image filesystem.",
+      "status": "other_error"
+    },
+    "cache_strategy": "Mount Forge shared /mnt/data-backed cache at /opt/nim/.cache, set NIM_CACHE_PATH to /opt/nim/.cache, and place NIM_WORKSPACE under /opt/nim/.cache/workspace so first-start checkpoint hydration and workspace materialization use writable persistent storage.",
+    "container_source_decision": "Selected NVIDIA NIM over a Forge-built container because the current docs publish a maintained v2 NIM contract, a broad GPU validation matrix including Blackwell, the /generate API, readiness endpoint, and cache guidance.",
+    "direct_upstream_digest_check": {
+      "checked_at": "2026-05-24T11:03:29Z",
+      "command": "timeout 60s crane digest nvcr.io/nim/nvidia/genmol:2.0.0",
+      "error": "401 Unauthorized from nvcr.io before digest resolution",
+      "status": "blocked_without_local_ngc_auth"
+    },
+    "hcls_safety_gate": {
+      "allowed_scope": "Nonclinical molecular generation, fragment completion, and lead-optimization research.",
+      "completed_enablement_evidence": [
+        "Versioned GenMol 2.0.0 NIM mirrors are digest-pinned in us-central1, eu-north1, eu-north2, and uk-south1",
+        "B200, B300, H200, L40S, and RTX6000 have supported hidden/onboarding probes with 3 warmups and 10 measured requests",
+        "The model-folder override resolved the read-only /opt/nim/workspace blocker without a custom wrapper image"
+      ],
+      "disallowed_uses": [
+        "clinical decision-making",
+        "therapeutic efficacy claims",
+        "patient-specific recommendations",
+        "wet-lab safety or toxicity claims"
+      ],
+      "publication_decision": "keep_hidden_onboarding_until_hcls_product_safety_review",
+      "routable_enablement_requirements": [
+        "HCLS product and safety review for nonclinical positioning",
+        "Production terms review for NVIDIA NIM and NVIDIA Open Model License weights",
+        "Supervisor decision on promoting this hidden versioned candidate versus retaining the existing public GenMol route"
+      ]
+    },
+    "latest_b200_probe_20260524T1119Z": {
+      "benchmark_runs": 10,
+      "cluster_id": "mk8scluster-u00eyp43c8have384b",
+      "free_gpus_before_probe": 8,
+      "gpu_type": "B200",
+      "live_support_upsert": true,
+      "model_status": "onboarding",
+      "node": "computeinstance-u00fpn0y7x36tzfjfq",
+      "pod_name": "forge-probe-nvidia-genmol-2-0-0-nim-b200-us-central1-28f726",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "region": "us-central1",
+      "report_json": "docs/models/hcls/nvidia-genmol-2-0-0-nim-b200-20260524.json",
+      "report_md": "docs/models/hcls/nvidia-genmol-2-0-0-nim-b200-20260524.md",
+      "request_body": {
+        "filter": false,
+        "gamma": 0,
+        "min_add_len": 24,
+        "noise": 1,
+        "num_molecules": 5,
+        "scoring": "QED",
+        "smiles": "[C@H]1O[C@@H](CO)[C@H](O)[C@@H]1O.[*{15-15}]",
+        "temperature": 1,
+        "unique": true
+      },
+      "request_ms_p50": 499,
+      "request_ms_samples": [
+        547,
+        484,
+        522,
+        479,
+        473,
+        496,
+        502,
+        512,
+        488,
+        572
+      ],
+      "request_time_source": "client_wall_ms",
+      "response_preview": {
+        "first_score": 0.704,
+        "molecule_count_returned": 2,
+        "status": "success"
+      },
+      "response_status": 200,
+      "startup_ms": 491790,
+      "status": "supported",
+      "vram_used_gb": 2.59,
+      "warmup_runs": 3
+    },
+    "model_folder_override_20260524T14Z": {
+      "benchmark_runs": 10,
+      "cells_supported": {
+        "B300/uk-south1": {
+          "report_json": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T14Z-b300-model-folder-override.json",
+          "report_md": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T14Z-b300-model-folder-override.md",
+          "request_ms_p50": 456,
+          "request_ms_samples": [
+            441,
+            492,
+            467,
+            434,
+            478,
+            483,
+            421,
+            424,
+            446,
+            465
+          ],
+          "startup_ms": 14592,
+          "vram_used_gb": 2.58
+        },
+        "H200/eu-north2": {
+          "request_ms_p50": 554,
+          "request_ms_samples": [
+            571,
+            512,
+            539,
+            545,
+            620,
+            551,
+            604,
+            588,
+            517,
+            558
+          ],
+          "startup_ms": 505893,
+          "vram_used_gb": 2.51
+        },
+        "L40S/eu-north1": {
+          "request_ms_p50": 654,
+          "request_ms_samples": [
+            661,
+            628,
+            654,
+            642,
+            603,
+            675,
+            666,
+            651,
+            712,
+            654
+          ],
+          "startup_ms": 500743,
+          "vram_used_gb": 2.31
+        },
+        "RTX6000/us-central1": {
+          "request_ms_p50": 562,
+          "request_ms_samples": [
+            516,
+            600,
+            561,
+            514,
+            562,
+            535,
+            569,
+            579,
+            556,
+            601
+          ],
+          "startup_ms": 619537,
+          "vram_used_gb": 2.51
+        }
+      },
+      "live_support_upsert": true,
+      "manifest_fix": "Set MODEL_FOLDER=/opt/nim/.cache/workspace and patch SdkModelManifest.__init__.__defaults__[2] from NIM_WORKSPACE before nimlib.start_server.main() so materialization and inference use the same writable workspace.",
+      "publication_change": "none_kept_hidden_onboarding_default_ineligible",
+      "report_json": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T14Z-h200-l40s-rtx6000-model-folder-override.json",
+      "report_md": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T14Z-h200-l40s-rtx6000-model-folder-override.md",
+      "request_time_source": "client_wall_ms",
+      "status": "supported_hidden_onboarding",
+      "warmup_runs": 3
+    },
+    "model_server_image_gate": {
+      "evidence": "Forge operator verified the OCI config for this digest: BASE_IMAGE=nvcr.io/nvidia/pytorch:26.03-py3, NVIDIA_PYTORCH_VERSION=26.03, BACKEND_TYPE=pytorch, and com.nvidia.nim.version=2.0.0; no Triton server runtime is used by this NIM image.",
+      "validated_at": "2026-06-25",
+      "validated_image_digest": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+      "validated_no_triton_server": true,
+      "validated_runtime_backend": "pytorch"
+    },
+    "nvidia_checkpoint": "NV-GenMol-89M-v2",
+    "nvidia_docs": [
+      "https://docs.nvidia.com/nim/bionemo/genmol/latest/release-notes.html",
+      "https://docs.nvidia.com/nim/bionemo/genmol/latest/support-matrix.html",
+      "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html",
+      "https://docs.nvidia.com/nim/bionemo/genmol/latest/prerequisites.html"
+    ],
+    "nvidia_docs_last_updated": "2026-05-19",
+    "nvidia_model_version": "GenMol-2.0.0",
+    "nvidia_support_matrix": {
+      "forge_relevant_documented_gpus": [
+        "B200",
+        "B300",
+        "H200",
+        "L40S",
+        "RTX6000 Ada"
+      ],
+      "min_compute_capability": "7.0",
+      "min_gpu_memory_gb": 24,
+      "profile": "FP32",
+      "profile_disk_space": "340MB",
+      "single_gpu_per_container": true
+    },
+    "onboarding_state": "five_cell_matrix_supported_pending_hcls_review",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "regional_mirror_20260524T11Z": {
+      "command": ".venv312/bin/python scripts/mirror_via_k8s_job.py --upstream nvcr.io/nim/nvidia/genmol:2.0.0 --wait --timeout 1200",
+      "digest": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+      "jobs": {
+        "eu-north1": "mirror-genmol-7ce73c",
+        "eu-north2": "mirror-genmol-74d397",
+        "uk-south1": "mirror-genmol-bd81fe",
+        "us-central1": "mirror-genmol-a6a9fa"
+      },
+      "manifest": {
+        "manifests": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+        "platform_digests": {
+          "linux/amd64": "sha256:ead01aa98cd5c4af98f9b6148a1d901236d7797031effe30d49c78c12ff8d2ff",
+          "linux/arm64": "sha256:4ab7efeff1d200ef214e145ffb00e3bac9a0c4bb0c5a7a830aedfd35ff642544"
+        },
+        "schemaVersion": 2
+      },
+      "status": "succeeded",
+      "verified_regions": {
+        "eu-north1": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+        "eu-north2": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+        "uk-south1": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+        "us-central1": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541"
+      }
+    },
+    "regional_mirror_revalidation_20260525T01Z": {
+      "amd64_size_bytes": 10138835887,
+      "command": ".venv312/bin/python scripts/mirror_via_k8s_job.py --upstream nvcr.io/nim/nvidia/genmol:2.0.0 --wait --timeout 1200",
+      "digest": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+      "image_config": {
+        "created": "2026-05-06T05:50:09.634509225Z",
+        "cuda_version": "13.2.0.046",
+        "nim_cache_path": "/opt/nim/.cache",
+        "nim_model_version": "2.0.0",
+        "nvidia_pytorch_version": "26.03",
+        "telemetry_default": "0"
+      },
+      "status": "succeeded",
+      "verified_regions": {
+        "eu-north1": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+        "eu-north2": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+        "uk-south1": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+        "us-central1": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541"
+      }
+    },
+    "research_checked_at": "2026-05-24T11:10:00Z",
+    "research_refresh_20260525T01Z": {
+      "checked_at": "2026-05-25T01:08:00Z",
+      "current_docs_confirmed": [
+        "https://docs.nvidia.com/nim/bionemo/genmol/2.0.0/release-notes.html",
+        "https://docs.nvidia.com/nim/bionemo/genmol/2.0.0/getting-started.html",
+        "https://docs.nvidia.com/nim/bionemo/genmol/2.0.0/support-matrix.html",
+        "https://docs.nvidia.com/nim/bionemo/genmol/2.0.0/endpoints.html",
+        "https://build.nvidia.com/nvidia/genmol-generate"
+      ],
+      "release_summary": "Current NVIDIA docs identify GenMol NIM 2.0.0 as the NV-GenMol-89M-v2 checkpoint with the v2 /generate contract, persistent /opt/nim/.cache guidance, and a documented validation matrix covering B200, B300, H200, L40S, and RTX 6000-class GPUs."
+    },
+    "security_gate_remediation_20260625": {
+      "digest": "sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+      "status": "non_triton_runtime_attested"
+    },
+    "workspace_command_override_20260524T13Z": {
+      "b300_probe_pod": "forge-probe-nvidia-genmol-2-0-0-nim-b300-uk-south1-0af719",
+      "b300_probe_result": "The override materialized the workspace under /opt/nim/.cache/workspace, but inference then failed with FileNotFoundError for /opt/nim/workspace/model_v2.ckpt.",
+      "cleanup": "Deleted the running command-override probe pod and reverted the failed command override from this manifest before wrap-up.",
+      "local_smoke_command": "docker run --rm --entrypoint /usr/bin/env -e NIM_WORKSPACE=/tmp/nim-workspace -e NIM_CACHE_PATH=/tmp/nim-cache <genmol_digest> python3 -c '<patch SdkModelManifest.__init__.__defaults__; start nimlib.start_server.main()>'",
+      "local_smoke_result": "The patched startup printed /tmp/nim-workspace as SdkModelManifest.__init__.__defaults__[2] before failing later because the local shell intentionally did not provide an NGC/NIM API key.",
+      "manifest_change": "Temporarily set gpu_requirements.container_command to /usr/bin/python3 -c and container_args to patch SdkModelManifest.__init__.__defaults__[2] from NIM_WORKSPACE before calling nimlib.start_server.main().",
+      "reason": "In-image inspection showed SdkModelManifest.__init__ captures nimlib.NIM_WORKSPACE_ENV_DEFAULT as a Python default argument, so the stock start_server path does not honor NIM_WORKSPACE for model_cache_path.",
+      "required_fix": "Mount a writable volume at /opt/nim/workspace or build/wrap the image so both nimlib materialization and GenMol inference agree on the same writable workspace path.",
+      "status": "failed_on_b300_probe_then_reverted_from_manifest"
+    },
+    "workspace_retry_20260524T12Z": {
+      "attempted_fix": "Set NIM_WORKSPACE=/opt/nim/.cache/workspace so workspace materialization would use Forge's writable NIM cache mount.",
+      "diagnostic_log_excerpt": "ManifestDownloadError: Error downloading manifest: [Errno 30] Read-only file system: '/opt/nim/workspace'",
+      "diagnostic_report_json": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T12Z-b300-diagnostic.json",
+      "diagnostic_report_md": "docs/model-onboarding/hcls/nvidia-genmol-2-0-0-nim-20260524T12Z-b300-diagnostic.md",
+      "reason": "B300, H200, L40S, and RTX6000 probes reached the GenMol NIM container but failed before readiness because nimlib tried to create /opt/nim/workspace on the read-only container filesystem.",
+      "result": "The 2026-05-24T13Z B300 retry showed this is insufficient because nimlib still logs 'Using the workspace specified during init: /opt/nim/workspace'.",
+      "status": "failed_on_b300_reprobe"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "chemistry",
+    "drug_discovery",
+    "molecule_generation",
+    "fragment_generation",
+    "safe",
+    "nvidia_nim",
+    "blackwell_candidate",
+    "molecule",
+    "score",
+    "structured_output"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "nvcr.io/nim/nvidia/genmol:2.0.0",
+  "container_image_size_bytes": 10138835887,
+  "context_window": 512,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-05-24T11:11:05.779067+00:00",
+  "default_eligible": true,
+  "description": "NVIDIA GenMol 2.0.0 NIM is a life-science molecular generation service for de novo and fragment-guided molecule design using SMILES or SAFE templates. NVIDIA documents the v2 service as using NV-GenMol-89M-v2, a single FP32 profile, and a /generate endpoint returning generated molecule SMILES with scores. This Forge candidate uses versioned, digest-pinned regional mirrors and remains hidden while live probes classify Forge GPU support. The 2026-05-24T14Z manifest-only workspace override aligns nimlib materialization and GenMol inference on /opt/nim/.cache/workspace, resolving the earlier non-B200 read-only /opt/nim/workspace blocker; B200, B300, H200, L40S, and RTX6000 now have supported hidden/onboarding probe evidence. This is a nonclinical molecular-design research workflow and must not be positioned as clinical, therapeutic, safety, efficacy, or patient-specific guidance.",
+  "family_id": "99b1dd39-9b5d-499b-81fd-b981c4da8a26",
+  "gpu_compatibility": {
+    "B200": true,
+    "B300": true,
+    "H200": true,
+    "L40S": true,
+    "RTX6000": true
+  },
+  "gpu_requirements": {
+    "container_args": [
+      "import os\nimport nimlib.nim_sdk as ns\ndefaults = list(ns.SdkModelManifest.__init__.__defaults__)\ndefaults[2] = os.environ.get('NIM_WORKSPACE', defaults[2])\nns.SdkModelManifest.__init__.__defaults__ = tuple(defaults)\nimport nimlib.start_server as start_server\nstart_server.main()"
+    ],
+    "container_command": [
+      "/usr/bin/python3",
+      "-c"
+    ],
+    "container_env": {
+      "MODEL_FOLDER": "/opt/nim/.cache/workspace",
+      "NIM_CACHE_PATH": "/opt/nim/.cache",
+      "NIM_HTTP_API_PORT": "8000",
+      "NIM_TELEMETRY_MODE": "0",
+      "NIM_WORKSPACE": "/opt/nim/.cache/workspace"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 24.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-24T11:19:46.507407+00:00",
+      "region": "us-central1",
+      "request_ms": 499,
+      "request_ms_p50": 499,
+      "request_ms_p95": 561,
+      "request_ms_p99": 570,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 491790,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.59,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.33
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T02:12:52.654131+00:00",
+      "region": "uk-south1",
+      "request_ms": 429,
+      "request_ms_p50": 432,
+      "request_ms_p95": 481,
+      "request_ms_p99": 489,
+      "request_ms_samples": 30,
+      "startup_ms_first": null,
+      "startup_ms_probe": 518415,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.58,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.33
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T02:12:53.509723+00:00",
+      "region": "eu-north2",
+      "request_ms": 588,
+      "request_ms_p50": 572,
+      "request_ms_p95": 620,
+      "request_ms_p99": 620,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 540453,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.51,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.33
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T02:12:20.359961+00:00",
+      "region": "eu-north1",
+      "request_ms": 645,
+      "request_ms_p50": 654,
+      "request_ms_p95": 712,
+      "request_ms_p99": 714,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 501697,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.31,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.33
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-05-25T02:14:25.986873+00:00",
+      "region": "us-central1",
+      "request_ms": 632,
+      "request_ms_p50": 590,
+      "request_ms_p95": 677,
+      "request_ms_p99": 678,
+      "request_ms_samples": 20,
+      "startup_ms_first": null,
+      "startup_ms_probe": 631591,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 2.51,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 0.33
+    }
+  ],
+  "gpu_type": null,
+  "id": "a108fe96-d069-451d-ab0d-c95f44d5afdd",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "Apache-2.0 source code; NVIDIA Open Model License weights; NVIDIA NIM terms",
+  "modality_input": [
+    "molecule"
+  ],
+  "modality_output": [
+    "molecule",
+    "score",
+    "json"
+  ],
+  "model_family": "nvidia-genmol",
+  "name": "GenMol NIM",
+  "parameter_count": 89000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "filter": "{{filter}}",
+        "gamma": "{{gamma}}",
+        "min_add_len": "{{min_add_len}}",
+        "noise": "{{noise}}",
+        "num_molecules": "{{num_molecules}}",
+        "scoring": "{{scoring}}",
+        "smiles": "{{smiles}}",
+        "temperature": "{{temperature}}",
+        "unique": "{{unique}}"
+      },
+      "endpoint": "/generate",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "[C@H]1O[C@@H](CO)[C@H](O)[C@@H]1O.[*{15-15}]",
+        "key": "smiles",
+        "label": "SMILES or SAFE template",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "QED",
+        "key": "scoring",
+        "label": "Scoring",
+        "options": [
+          "QED",
+          "LogP"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": true,
+        "key": "unique",
+        "label": "Unique molecules only",
+        "type": "checkbox",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "filter",
+        "label": "Preserve input fragment",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "generated molecule SMILES and scores",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 5,
+        "key": "num_molecules",
+        "label": "Molecules",
+        "max": 1000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "temperature",
+        "label": "Temperature",
+        "max": 10,
+        "min": 0.01,
+        "step": 0.01,
+        "type": "number"
+      },
+      {
+        "default": 1,
+        "key": "noise",
+        "label": "Noise",
+        "max": 2,
+        "min": 0,
+        "step": 0.1,
+        "type": "number"
+      },
+      {
+        "default": 0,
+        "key": "gamma",
+        "label": "Guidance",
+        "max": 1,
+        "min": 0,
+        "step": 0.05,
+        "type": "number"
+      },
+      {
+        "default": 24,
+        "key": "min_add_len",
+        "label": "Minimum added MASK tokens",
+        "max": 128,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "runtime": {
+      "cache_mount": "/opt/nim/.cache",
+      "forge_cache_target": "/mnt/data/nim-cache/nvidia-genmol/2.0.0",
+      "kind": "nvidia_nim",
+      "nim_id": "nvidia/genmol",
+      "nim_version": "2.0.0",
+      "readiness_path": "/v1/health/ready"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "smiles",
+        "num_molecules",
+        "temperature",
+        "noise",
+        "gamma",
+        "min_add_len",
+        "scoring",
+        "unique",
+        "filter"
+      ],
+      "required": []
+    },
+    "type": "custom"
+  },
+  "quantization": "fp32",
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/nim-nvidia-genmol:2.0.0@sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/nim-nvidia-genmol:2.0.0@sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/nim-nvidia-genmol:2.0.0@sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/nim-nvidia-genmol:2.0.0@sha256:139b909a450fe1fb81198214784a15f67e172e766a93a1569827ba5aa05b4541"
+  },
+  "release_rank": 55,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "nvidia-genmol-2-0-0-nim",
+  "source": "nvidia_nim",
+  "source_url": "https://docs.nvidia.com/nim/bionemo/genmol/latest/",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "chemistry",
+    "drug-discovery",
+    "molecule-generation",
+    "fragment-generation",
+    "safe",
+    "nvidia-nim",
+    "blackwell-candidate"
+  ],
+  "updated_at": "2026-06-25T14:00:57.342246+00:00",
+  "version": "2.0.0",
+  "version_description": "Hidden Forge candidate for NVIDIA GenMol 2.0.0 with NV-GenMol-89M-v2, versioned regional mirrors, five-cell GPU validation, and HCLS review pending.",
+  "version_key": "nim-2-0-0-candidate",
+  "version_label": "NIM 2.0.0"
+}

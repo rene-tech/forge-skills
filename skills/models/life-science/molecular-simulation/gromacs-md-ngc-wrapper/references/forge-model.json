@@ -1,0 +1,868 @@
+{
+  "benchmark_scores": {
+    "cache_strategy": "Generated trajectories, logs, and temporary simulation work directories are written under /mnt/data/model-outputs/gromacs-md-ngc-wrapper; no model weights are baked into the image.",
+    "comparative_benchmark_20260603T12Z": {
+      "best_confirmed_ns_day": [
+        {
+          "case": "1AKI",
+          "gpu_type": "B200",
+          "layout": "1x12, npme=0",
+          "ns_per_day": 624.312
+        },
+        {
+          "case": "IDRF",
+          "gpu_type": "B200",
+          "layout": "1x16, npme=0",
+          "ns_per_day": 545.151
+        },
+        {
+          "case": "1AKI",
+          "gpu_type": "B300",
+          "layout": "1x20, npme=0",
+          "ns_per_day": 573.895
+        },
+        {
+          "case": "IDRF",
+          "gpu_type": "B300",
+          "layout": "1x4, npme=0",
+          "ns_per_day": 519.055
+        },
+        {
+          "case": "1AKI",
+          "gpu_type": "H100",
+          "layout": "1x12, npme=0",
+          "ns_per_day": 654.456
+        },
+        {
+          "case": "IDRF",
+          "gpu_type": "H100",
+          "layout": "1x16, npme=0",
+          "ns_per_day": 552.555
+        },
+        {
+          "case": "1AKI",
+          "gpu_type": "H200",
+          "layout": "1x16, npme=0",
+          "ns_per_day": 700.877
+        },
+        {
+          "case": "IDRF",
+          "gpu_type": "H200",
+          "layout": "1x16, npme=0",
+          "ns_per_day": 545.209
+        },
+        {
+          "case": "1AKI",
+          "gpu_type": "L40S",
+          "layout": "1x8, npme=0",
+          "ns_per_day": 678.166
+        },
+        {
+          "case": "IDRF",
+          "gpu_type": "L40S",
+          "layout": "1x8, npme=0",
+          "ns_per_day": 568.886
+        },
+        {
+          "case": "1AKI",
+          "gpu_type": "RTX6000",
+          "layout": "1x16, npme=0",
+          "ns_per_day": 629.668
+        },
+        {
+          "case": "IDRF",
+          "gpu_type": "RTX6000",
+          "layout": "1x16, npme=0",
+          "ns_per_day": 587.506
+        }
+      ],
+      "checked_at": "2026-06-03T12:00:00Z",
+      "hecbiosim_3000k_confirmed_activity_timing_s": {
+        "L40S": {
+          "cpu_percent_time_v": 308.0,
+          "gpu_power_w_avg": 237.636,
+          "gpu_sm_avg_pct": 60.449,
+          "gromacs_total": 104.239,
+          "pme_wait_for_pp": 102.617,
+          "wait_gpu_state_copy": 51.718
+        },
+        "RTX6000": {
+          "cpu_percent_time_v": 352.0,
+          "gpu_power_w_avg": 345.797,
+          "gpu_sm_avg_pct": 63.508,
+          "gromacs_total": 57.041,
+          "pme_wait_for_pp": 56.257,
+          "wait_gpu_state_copy": 24.295
+        }
+      },
+      "input_artifacts": {
+        "1aki_tpr_sha256": "32f432028479218fa8170eceddcd83e1fc9d2d81352151c89079866486580f3a",
+        "genomics_bucket_zip_sha256": "1992bf61b7bf5d5dea65185798209930ca5042e8b55a3731d3817724d3fc2d2d",
+        "hecbiosim_3000k_tpr_sha256": "8b919b40e12a29affb9e015e359b4bf85d75c38e4a7b7203ba3c8b4daffd7ba2",
+        "hecbiosim_suite_archive_sha256": "5251c4b146cd1b68ef9e966cc31730dc04db366031937c287c9d7d5bd7737f48",
+        "idrf_tpr_sha256": "019a63cddb1c930304dac2eaed495434c313753a0ecf7131483c47c713adfcce",
+        "license_notes": "Public nonclinical molecular-dynamics benchmark inputs; active Forge wrapper license state remains LGPL-2.1-or-later plus NVIDIA CUDA/HPC container terms.",
+        "protected_medical_data": false
+      },
+      "l40s_rtx6000_comparison": {
+        "1AKI": {
+          "l40s_ns_per_day": 678.166,
+          "rtx6000_ns_per_day": 629.668,
+          "rtx6000_over_l40s": 0.93
+        },
+        "HECBioSim_3000k": {
+          "l40s_ns_per_day": 8.29,
+          "rtx6000_ns_per_day": 15.15,
+          "rtx6000_over_l40s": 1.83
+        },
+        "IDRF": {
+          "l40s_ns_per_day": 568.886,
+          "rtx6000_ns_per_day": 587.506,
+          "rtx6000_over_l40s": 1.03
+        }
+      },
+      "limitations": [
+        "The comparative benchmark used standalone GROMACS 2026.1 CLI runs, while the active Forge HTTP wrapper remains NGC GROMACS 2023.2.",
+        "Small-system genomics results are single 100k-step confirmations after screening and should not be generalized to larger MD workloads.",
+        "HECBioSim 3000k activity timing, CPU utilization, SM utilization, and power fields are parsed from the 5000-step confirmation logs, but the public input is not the same science workload as the bucket molecules."
+      ],
+      "next_steps": [
+        "The Forge web model detail page renders these comparative molecular-dynamics ns/day results from benchmark_scores so users can choose GPUs by molecule/system size.",
+        "For RTX6000 positioning, add longer public large-system runs and multi-GPU layouts before making broad hardware claims."
+      ],
+      "publication_impact": "none_active_manifest_state_unchanged",
+      "raw_artifacts": {
+        "asset_dir": "docs/model-onboarding/hcls/assets/gromacs-20260603",
+        "best_confirmed_by_gpu_case_csv": "docs/model-onboarding/hcls/assets/gromacs-20260603/best_confirmed_by_gpu_case.csv",
+        "hecbiosim_3000k_l40s_rtx6000_csv": "docs/model-onboarding/hcls/assets/gromacs-20260603/hecbiosim_3000k_l40s_rtx6000_runs.csv"
+      },
+      "reports": {
+        "comparative_report_md": "docs/model-onboarding/hcls/gromacs-gpu-comparative-report-20260603.md",
+        "comparative_report_pdf": "docs/model-onboarding/hcls/gromacs-gpu-comparative-report-20260603.pdf",
+        "genomics_report_md": "docs/model-onboarding/hcls/gromacs-2026-1-genomics-gpu-benchmark-20260603.md"
+      },
+      "runtime_scope": "Standalone GROMACS 2026.1 CLI benchmark artifacts; not used to replace the Forge HTTP wrapper support matrix for the NGC 2023.2 wrapper image.",
+      "status": "standalone_gromacs_2026_1_gpu_size_sensitivity_benchmark_recorded"
+    },
+    "container_search": {
+      "dockerhub_gromacs": "Public GROMACS image namespace exists but CUDA tags listed by crane are old; no 2025.x or 2026.x Docker Hub tag was present at check time.",
+      "nvidia_ngc_hpc_gromacs": {
+        "amd64_manifest_digest": "sha256:d1ed1e13321db8914a84c50348ab4859f258e78f70e6444ebee81b28563f9223",
+        "manifest_digest": "sha256:04d5ac4416523624bbfcb36c85a63fd8a6ac8acf7c2eeb1af89dd03c60d45daf",
+        "ref": "nvcr.io/hpc/gromacs:2023.2",
+        "status": "selected_as_cuda_hpc_base_image"
+      }
+    },
+    "container_source_decision": "Build a Forge-owned HTTP wrapper on the digest-pinned NVIDIA NGC GROMACS 2023.2 image because available upstream images expose a CLI/HPC contract, while Forge scheduler probes require an HTTP readiness and inference contract.",
+    "full_matrix_probe": {
+      "benchmark_runs_per_supported_cell": 10,
+      "cells": 8,
+      "checked_at": "2026-06-02T15:28:50.109871+00:00",
+      "gpu_execution_confirmed": "response previews recorded gpu_selected=true for every supported cell",
+      "model_time_ms_by_cell": [
+        {
+          "gpu_type": "B200",
+          "model_p50_ms": 1212,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 19131,
+          "status": "supported",
+          "warm_samples": [
+            1593,
+            1429,
+            1150,
+            1226,
+            1233,
+            1155,
+            1136,
+            1214,
+            1165,
+            1209
+          ]
+        },
+        {
+          "gpu_type": "B300",
+          "model_p50_ms": 1612,
+          "model_time_source": "model_time_ms",
+          "region": "uk-south1",
+          "startup_ms": 14890,
+          "status": "supported",
+          "warm_samples": [
+            1667,
+            1611,
+            1554,
+            1578,
+            1614,
+            1537,
+            1641,
+            1615,
+            1657,
+            1598
+          ]
+        },
+        {
+          "gpu_type": "H100",
+          "model_p50_ms": 648,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 16238,
+          "status": "supported",
+          "warm_samples": [
+            639,
+            650,
+            639,
+            647,
+            644,
+            652,
+            640,
+            651,
+            672,
+            725
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 602,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 16091,
+          "status": "supported",
+          "warm_samples": [
+            625,
+            615,
+            604,
+            595,
+            609,
+            600,
+            624,
+            597,
+            588,
+            600
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 622,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north2",
+          "startup_ms": 16382,
+          "status": "supported",
+          "warm_samples": [
+            606,
+            615,
+            639,
+            619,
+            619,
+            609,
+            629,
+            626,
+            625,
+            641
+          ]
+        },
+        {
+          "gpu_type": "H200",
+          "model_p50_ms": 627,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 19078,
+          "status": "supported",
+          "warm_samples": [
+            642,
+            618,
+            638,
+            631,
+            639,
+            628,
+            608,
+            614,
+            626,
+            612
+          ]
+        },
+        {
+          "gpu_type": "L40S",
+          "model_p50_ms": 530,
+          "model_time_source": "model_time_ms",
+          "region": "eu-north1",
+          "startup_ms": 15897,
+          "status": "supported",
+          "warm_samples": [
+            542,
+            535,
+            540,
+            543,
+            521,
+            524,
+            531,
+            521,
+            527,
+            528
+          ]
+        },
+        {
+          "gpu_type": "RTX6000",
+          "model_p50_ms": 1362,
+          "model_time_source": "model_time_ms",
+          "region": "us-central1",
+          "startup_ms": 19124,
+          "status": "supported",
+          "warm_samples": [
+            1320,
+            1424,
+            1400,
+            1246,
+            1367,
+            1362,
+            1260,
+            1266,
+            1388,
+            1362
+          ]
+        }
+      ],
+      "oom": 0,
+      "other_error": 0,
+      "probe_pending": 0,
+      "report_json": "docs/model-onboarding/hcls/gromacs-md-ngc-wrapper-20260602T1525Z-full-matrix.json",
+      "report_md": "docs/model-onboarding/hcls/gromacs-md-ngc-wrapper-20260602T1525Z-full-matrix.md",
+      "status": "all_available_gpu_region_cells_supported",
+      "supported": 8,
+      "unavailable": 0,
+      "warmup_runs_per_cell": 3
+    },
+    "local_wrapper_build": {
+      "checked_at": "2026-06-02T15:09:33Z",
+      "default_smoke": {
+        "gpu_selected": false,
+        "produced_files": [
+          "input.gro",
+          "input.mdp",
+          "input.tpr",
+          "mdout.mdp",
+          "run.cpt",
+          "run.edr",
+          "run.gro",
+          "run.log",
+          "topol.top"
+        ],
+        "request": {
+          "gpu_mode": "auto",
+          "research_use_acknowledgement": true,
+          "steps": 5
+        },
+        "result": "HTTP 200"
+      },
+      "image": "forge-local/hcls-gromacs-md-ngc-wrapper:20260602",
+      "local_image_id": "sha256:b2621315c90ff272e82d7fe63f83ca33e2dca281d0e152ac0d4069308ed65bee",
+      "local_image_size_bytes": 1038112587,
+      "readiness": "GET /v1/health/ready returned ready=true with GROMACS 2023.2 CUDA-capable AVX2 binary.",
+      "status": "local_image_built_and_default_cpu_smoke_passed"
+    },
+    "onboarding_state": "active_full_gpu_matrix_supported_and_benchmarked",
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    },
+    "publication_blockers": [],
+    "publication_decision": "active_user_ready_after_full_gpu_matrix",
+    "regional_mirror": {
+      "checked_at": "2026-06-02T15:24:46Z",
+      "manifest_digest": "sha256:44714aff8ab62fcbff6b8c4ab2c0b9934a2b5c03bc12f6dc5df4c9b3776f1bf7",
+      "regions": [
+        "us-central1",
+        "eu-north1",
+        "eu-north2",
+        "uk-south1"
+      ],
+      "status": "all_active_regions_pushed_and_verified"
+    },
+    "research_checked_at": "2026-06-02T15:00:00Z",
+    "upstream_license": "LGPL-2.1-or-later",
+    "upstream_sources": {
+      "gromacs_about": "https://www.gromacs.org/about.html",
+      "gromacs_dockerhub": "https://hub.docker.com/r/gromacs/gromacs",
+      "nvidia_ngc_gromacs": "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+    }
+  },
+  "capabilities": [
+    "life_science",
+    "biology",
+    "molecular_dynamics",
+    "simulation",
+    "gromacs",
+    "cuda",
+    "hpc",
+    "forge_wrapper",
+    "open_source",
+    "lgpl",
+    "protein_structure",
+    "topology",
+    "simulation_parameters",
+    "structured_output",
+    "trajectory",
+    "energy",
+    "log",
+    "custom_inference"
+  ],
+  "category": "life-science",
+  "configured_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "container_image": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/gromacs-md-ngc-wrapper:20260602@sha256:44714aff8ab62fcbff6b8c4ab2c0b9934a2b5c03bc12f6dc5df4c9b3776f1bf7",
+  "container_image_size_bytes": 1038112587,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-06-02T15:26:21.607173+00:00",
+  "default_eligible": true,
+  "description": "GROMACS Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations. Official GROMACS and NVIDIA NGC images are CLI/HPC oriented, so Forge serves a FastAPI wrapper around the NGC 2023.2 CUDA image. The wrapper can run a default argon Lennard-Jones smoke system, accept custom .gro/.top/.mdp text, or run a supplied base64 .tpr, and writes generated simulation artifacts under /mnt/data/model-outputs/gromacs-md-ngc-wrapper.",
+  "family_id": "1e949e06-2346-41fc-9df6-66da945c4032",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "container_env": {
+      "GROMACS_BINARY": "/usr/local/gromacs/avx2_256/bin/gmx",
+      "GROMACS_DEFAULT_THREADS": "1",
+      "GROMACS_MODEL_SLUG": "gromacs-md-ngc-wrapper",
+      "GROMACS_OUTPUT_ROOT": "/mnt/data/model-outputs/gromacs-md-ngc-wrapper",
+      "GROMACS_TIMEOUT_SECONDS": "900",
+      "HOME": "/mnt/data/home/gromacs-md-ngc-wrapper"
+    },
+    "container_port": 8000,
+    "min_gpus": 1,
+    "min_vram_gb": 8.0
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.15,
+      "gpu_type": "B200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:27:35.020313+00:00",
+      "region": "us-central1",
+      "request_ms": 1212,
+      "request_ms_p50": 1212,
+      "request_ms_p95": 1519,
+      "request_ms_p99": 1578,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 19131,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:28:49.593035+00:00",
+      "region": "uk-south1",
+      "request_ms": 1612,
+      "request_ms_p50": 1612,
+      "request_ms_p95": 1662,
+      "request_ms_p99": 1666,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 14890,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 3.85,
+      "gpu_type": "H100",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:27:44.588668+00:00",
+      "region": "eu-north1",
+      "request_ms": 648,
+      "request_ms_p50": 648,
+      "request_ms_p95": 701,
+      "request_ms_p99": 720,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 16238,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:28:02.090275+00:00",
+      "region": "eu-north1",
+      "request_ms": 602,
+      "request_ms_p50": 602,
+      "request_ms_p95": 625,
+      "request_ms_p99": 625,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 16091,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:28:12.283583+00:00",
+      "region": "eu-north2",
+      "request_ms": 622,
+      "request_ms_p50": 622,
+      "request_ms_p95": 640,
+      "request_ms_p99": 641,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 16382,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 4.5,
+      "gpu_type": "H200",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:27:16.016723+00:00",
+      "region": "us-central1",
+      "request_ms": 627,
+      "request_ms_p50": 627,
+      "request_ms_p95": 641,
+      "request_ms_p99": 642,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 19078,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.82,
+      "gpu_type": "L40S",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:28:03.046621+00:00",
+      "region": "eu-north1",
+      "request_ms": 530,
+      "request_ms_p50": 530,
+      "request_ms_p95": 543,
+      "request_ms_p99": 543,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 15897,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    },
+    {
+      "cost_per_gpu_hour_usd": 1.8,
+      "gpu_type": "RTX6000",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-06-02T15:27:36.378393+00:00",
+      "region": "us-central1",
+      "request_ms": 1362,
+      "request_ms_p50": 1362,
+      "request_ms_p95": 1413,
+      "request_ms_p99": 1422,
+      "request_ms_samples": 10,
+      "startup_ms_first": null,
+      "startup_ms_probe": 19124,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 0.0,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": null
+    }
+  ],
+  "gpu_type": null,
+  "id": "0ff5d9d8-ba07-432b-ad84-c4116b09cf11",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "LGPL-2.1-or-later; NVIDIA CUDA/HPC container terms",
+  "modality_input": [
+    "structure",
+    "topology",
+    "simulation_parameters",
+    "json"
+  ],
+  "modality_output": [
+    "trajectory",
+    "energy",
+    "log",
+    "json"
+  ],
+  "model_family": "gromacs-md",
+  "name": "GROMACS Molecular Dynamics",
+  "parameter_count": null,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "coordinate_gro": "{{coordinate_gro}}",
+        "gpu_mode": "{{gpu_mode}}",
+        "mdp": "{{mdp}}",
+        "research_use_acknowledgement": "{{research_use_acknowledgement}}",
+        "seed": "{{seed}}",
+        "steps": "{{steps}}",
+        "temperature_k": "{{temperature_k}}",
+        "template": "{{template}}",
+        "threads": "{{threads}}",
+        "timestep_ps": "{{timestep_ps}}",
+        "topology_top": "{{topology_top}}",
+        "tpr_base64": "{{tpr_base64}}"
+      },
+      "endpoint": "/v1/inference/gromacs-md-ngc-wrapper",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "argon",
+        "key": "template",
+        "label": "Template",
+        "options": [
+          "argon"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": "",
+        "key": "coordinate_gro",
+        "label": "Coordinate .gro",
+        "type": "textarea",
+        "visible": false
+      },
+      {
+        "default": "",
+        "key": "topology_top",
+        "label": "Topology .top",
+        "type": "textarea",
+        "visible": false
+      },
+      {
+        "default": "",
+        "key": "mdp",
+        "label": "MD parameter .mdp",
+        "type": "textarea",
+        "visible": false
+      },
+      {
+        "default": "",
+        "key": "tpr_base64",
+        "label": "Prepared .tpr (base64)",
+        "type": "textarea",
+        "visible": false
+      }
+    ],
+    "output_display": {
+      "format_hint": "json with generated file names, log tail, GPU selection, and model_time_ms",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 100,
+        "key": "steps",
+        "label": "Steps",
+        "max": 100000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 0.001,
+        "key": "timestep_ps",
+        "label": "Timestep (ps)",
+        "max": 0.02,
+        "min": 0.0001,
+        "step": 0.0001,
+        "type": "number"
+      },
+      {
+        "default": 120,
+        "key": "temperature_k",
+        "label": "Temperature (K)",
+        "max": 1000,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 17,
+        "key": "seed",
+        "label": "Seed",
+        "max": 2147483647,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": "auto",
+        "key": "gpu_mode",
+        "label": "GPU mode",
+        "options": [
+          "auto",
+          "gpu",
+          "cpu"
+        ],
+        "type": "select",
+        "visible": true
+      },
+      {
+        "default": 1,
+        "key": "threads",
+        "label": "CPU threads",
+        "max": 32,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": true,
+        "key": "research_use_acknowledgement",
+        "label": "Research-use acknowledgement",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "base_image": "nvcr.io/hpc/gromacs:2023.2@sha256:04d5ac4416523624bbfcb36c85a63fd8a6ac8acf7c2eeb1af89dd03c60d45daf",
+      "engine": "gromacs",
+      "engine_version": "2023.2",
+      "kind": "molecular_dynamics",
+      "output_target": "/mnt/data/model-outputs/gromacs-md-ngc-wrapper",
+      "wrapper_dockerfile": "services/models/hcls/gromacs_md/Dockerfile",
+      "wrapper_path": "services/models/hcls/gromacs_md"
+    },
+    "schema_version": 1,
+    "tamarind_schema": {
+      "optional": [
+        "template",
+        "steps",
+        "timestep_ps",
+        "temperature_k",
+        "seed",
+        "gpu_mode",
+        "threads",
+        "coordinate_gro",
+        "topology_top",
+        "mdp",
+        "tpr_base64"
+      ],
+      "required": [
+        "research_use_acknowledgement"
+      ]
+    },
+    "type": "custom"
+  },
+  "quantization": null,
+  "region": null,
+  "regional_container_images": {
+    "eu-north1": "cr.eu-north1.nebius.cloud/e00h91c5sa606xfwpj/models/gromacs-md-ngc-wrapper@sha256:44714aff8ab62fcbff6b8c4ab2c0b9934a2b5c03bc12f6dc5df4c9b3776f1bf7",
+    "eu-north2": "cr.eu-north2.nebius.cloud/e02r841y79yvyt971e/models/gromacs-md-ngc-wrapper@sha256:44714aff8ab62fcbff6b8c4ab2c0b9934a2b5c03bc12f6dc5df4c9b3776f1bf7",
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/gromacs-md-ngc-wrapper@sha256:44714aff8ab62fcbff6b8c4ab2c0b9934a2b5c03bc12f6dc5df4c9b3776f1bf7",
+    "us-central1": "cr.us-central1.nebius.cloud/u00xf2pqq3cr2q8xsz/models/gromacs-md-ngc-wrapper@sha256:44714aff8ab62fcbff6b8c4ab2c0b9934a2b5c03bc12f6dc5df4c9b3776f1bf7"
+  },
+  "release_rank": 100,
+  "requires_hf_token": false,
+  "single_region_risk": false,
+  "slug": "gromacs-md-ngc-wrapper",
+  "source": "custom_container",
+  "source_url": "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "us-central1",
+    "eu-north1",
+    "eu-north2",
+    "uk-south1"
+  ],
+  "tags": [
+    "life-science",
+    "biology",
+    "molecular-dynamics",
+    "simulation",
+    "gromacs",
+    "cuda",
+    "hpc",
+    "forge-wrapper",
+    "open-source",
+    "lgpl"
+  ],
+  "updated_at": "2026-06-23T18:26:07.168833+00:00",
+  "version": "ngc-2023.2-wrapper-20260602",
+  "version_description": "Active Forge-owned HTTP wrapper around the NVIDIA NGC GROMACS 2023.2 CUDA/HPC image. The upstream image is CLI-oriented, so this wrapper exposes bounded /v1/inference molecular-dynamics jobs and keeps generated artifacts under /mnt/data.",
+  "version_key": "ngc-2023-2-wrapper-20260602",
+  "version_label": "NGC 2023.2 wrapper"
+}

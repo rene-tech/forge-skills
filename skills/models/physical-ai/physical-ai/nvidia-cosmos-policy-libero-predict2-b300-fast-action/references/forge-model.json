@@ -1,0 +1,180 @@
+{
+  "benchmark_scores": {
+    "public_preview_promotion": {
+      "approved_at": "2026-06-08T11:58:12+00:00",
+      "licensing": "deferred_for_poc",
+      "product_safety": "temporarily_approved",
+      "reason": "Product-safety and licensing gates are temporarily approved for Forge public preview POC only; revisit before GA or production default routing.",
+      "scope": "public_preview_poc"
+    }
+  },
+  "capabilities": [
+    "physical_ai",
+    "robotics",
+    "robotics_policy",
+    "libero",
+    "cosmos",
+    "b300_optimized",
+    "action_only",
+    "text",
+    "vision",
+    "structured_output",
+    "custom_inference"
+  ],
+  "category": "physical_ai",
+  "configured_regions": [
+    "uk-south1"
+  ],
+  "container_image": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-cosmos-policy-libero:cu130",
+  "container_image_size_bytes": null,
+  "context_window": null,
+  "cost_per_gpu_hour_usd": null,
+  "created_at": "2026-04-27T07:50:09.834457+00:00",
+  "default_eligible": false,
+  "description": "B300-focused fast-action preset for Cosmos Policy LIBERO. This is an explicit latency/quality mode, not the default full-output request: it skips future-state/value decode and lowers action denoising steps from 5 to 3.",
+  "family_id": "92dd2018-5513-42ee-95fc-d87c4d747c85",
+  "gpu_compatibility": {},
+  "gpu_requirements": {
+    "min_gpus": 1,
+    "min_vram_gb": 8.0,
+    "runtime_config_map_mount_path": "/app/services/models/cosmos_policy_libero",
+    "runtime_config_map_name": "forge-cosmos-policy-libero-wrapper"
+  },
+  "gpu_support": [
+    {
+      "cost_per_gpu_hour_usd": 7.85,
+      "gpu_type": "B300",
+      "is_compatible": null,
+      "last_error": null,
+      "last_failed_at": null,
+      "observed_success_rate": null,
+      "probed_at": "2026-04-27T07:52:02.456598+00:00",
+      "region": "uk-south1",
+      "request_ms": 276,
+      "request_ms_p50": null,
+      "request_ms_p95": null,
+      "request_ms_p99": null,
+      "request_ms_samples": 0,
+      "startup_ms_first": null,
+      "startup_ms_probe": 38536,
+      "startup_ms_warm_cache": null,
+      "status": "supported",
+      "tokens_per_second": null,
+      "total_failures": 0,
+      "total_starts": 0,
+      "total_warm_starts": 0,
+      "vram_measured_gb": 8.88,
+      "vram_override_gb": null,
+      "vram_theoretical_gb": 3.73
+    }
+  ],
+  "gpu_type": null,
+  "id": "a1f26e7a-de04-41fc-ac7f-ef886b6459f5",
+  "keep_warm": false,
+  "keep_warm_gpu_type": null,
+  "license": "apache-2.0",
+  "modality_input": [
+    "text",
+    "image",
+    "proprio"
+  ],
+  "modality_output": [
+    "json"
+  ],
+  "model_family": "nvidia-cosmos-policy-libero-predict2",
+  "name": "NVIDIA Cosmos Policy LIBERO Predict2 2B (B300 Fast Action)",
+  "parameter_count": 2000000000,
+  "playground_config": {
+    "api_mapping": {
+      "body_template": {
+        "generate_future_state_and_value": "{{generate_future_state_and_value}}",
+        "model": "{{model_slug}}",
+        "num_denoising_steps_action": "{{num_denoising_steps_action}}",
+        "observation": "{{observation}}",
+        "seed": "{{seed}}",
+        "task_description": "{{task_description}}"
+      },
+      "endpoint": "/v1/inference/nvidia-cosmos-policy-libero-predict2-2b",
+      "method": "POST"
+    },
+    "input_fields": [
+      {
+        "default": "put both the alphabet soup and the tomato sauce in the basket",
+        "key": "task_description",
+        "label": "Task Description",
+        "type": "textarea",
+        "visible": true
+      },
+      {
+        "default": "{\"use_sample_observation\": true}",
+        "key": "observation",
+        "label": "Observation JSON",
+        "type": "json_editor",
+        "visible": true
+      },
+      {
+        "default": false,
+        "key": "generate_future_state_and_value",
+        "label": "Generate Future State and Value",
+        "type": "checkbox",
+        "visible": true
+      }
+    ],
+    "output_display": {
+      "format_hint": "json",
+      "type": "json"
+    },
+    "parameter_controls": [
+      {
+        "default": 195,
+        "key": "seed",
+        "label": "Seed",
+        "max": 999999,
+        "min": 0,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "default": 3,
+        "key": "num_denoising_steps_action",
+        "label": "Denoising Steps",
+        "max": 32,
+        "min": 1,
+        "step": 1,
+        "type": "number"
+      }
+    ],
+    "schema_version": 1,
+    "type": "custom"
+  },
+  "quantization": "bf16",
+  "region": null,
+  "regional_container_images": {
+    "uk-south1": "cr.uk-south1.nebius.cloud/e03y8d9eq5248fc3q8/models/forge-cosmos-policy-libero:cu130"
+  },
+  "release_rank": 30,
+  "requires_hf_token": false,
+  "single_region_risk": true,
+  "slug": "nvidia-cosmos-policy-libero-predict2-b300-fast-action",
+  "source": "custom_container",
+  "source_url": "https://github.com/NVlabs/cosmos-policy",
+  "stability": "testing",
+  "status": "cold",
+  "supported_regions": [
+    "uk-south1"
+  ],
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "policy",
+    "libero",
+    "cosmos",
+    "b300-optimized",
+    "action-only"
+  ],
+  "updated_at": "2026-06-08T11:58:14.328686+00:00",
+  "version": "b300-fast-action",
+  "version_description": "B300-focused CUDA 13 action-only preset. Skips future-state/value decode and uses 3 denoising steps by default.",
+  "version_key": "b300-fast-action",
+  "version_label": "B300 Fast Action"
+}

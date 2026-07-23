@@ -1,0 +1,158 @@
+{
+  "benchmarkClaims": [],
+  "benchmarkEvidenceNote": "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.",
+  "capabilitySkill": "use-forge-models",
+  "category": "general",
+  "contentSha256": "7a62d9a2d86be5478c4a41fd8f235104b9c34c73bfdb5b74ea466b6b5d1acd01",
+  "defaultEligible": true,
+  "displayName": "Use Stable Diffusion 3.5 Large",
+  "domain": "image-generation",
+  "downloadUrl": "/v1/model-skills/stabilityai-stable-diffusion-3-5-large/markdown?download=true",
+  "group": "image-generation",
+  "hierarchyPath": [
+    "models",
+    "general",
+    "image-generation",
+    "stabilityai-stable-diffusion-3-5-large"
+  ],
+  "inferenceMethod": "POST",
+  "inferencePath": "/v1/inference/stabilityai-stable-diffusion-3-5-large",
+  "inputFields": [
+    {
+      "choices": [],
+      "default": "A high-resolution concept art render of a cloud GPU control room, cinematic lighting, detailed but realistic",
+      "fieldType": "textarea",
+      "key": "prompt",
+      "label": "Prompt",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [
+        "base"
+      ],
+      "default": "base",
+      "fieldType": "select",
+      "key": "mode",
+      "label": "Mode",
+      "maximum": null,
+      "minimum": null,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 0,
+      "fieldType": "number",
+      "key": "seed",
+      "label": "Seed",
+      "maximum": 999999,
+      "minimum": 0,
+      "required": false
+    },
+    {
+      "choices": [],
+      "default": 50,
+      "fieldType": "number",
+      "key": "steps",
+      "label": "Steps",
+      "maximum": 50,
+      "minimum": 1,
+      "required": false
+    }
+  ],
+  "inputModalities": [
+    "text",
+    "image"
+  ],
+  "instructions": "---\nname: use-forge-stabilityai-stable-diffusion-3-5-large\ndescription: Use the exact Forge model stabilityai-stable-diffusion-3-5-large for text, image to image tasks. Load this skill when choosing, calling, evaluating, or deploying this specific model version.\n---\n\n# Use Stable Diffusion 3.5 Large\n\n- Model slug: `stabilityai-stable-diffusion-3-5-large`\n- Model family: `stabilityai-stable-diffusion-3-5-large`\n- Version: `1.1.0` (`1-1-0`)\n- Capability playbook: `$use-forge-models`\n- Hierarchy: `models / general / image-generation / stabilityai-stable-diffusion-3-5-large`\n- Stability: `experimental`\n- Default eligible: `true`\n- License: `stability-ai-community-license`\n\n## Purpose\n\nStability AI Stable Diffusion 3.5 Large Visual GenAI NIM for high-quality text-to-image generation on a single GPU.\n\n## Use this exact model when\n\n- Use this exact `stabilityai-stable-diffusion-3-5-large` version when the task supplies text, image and needs image.\n- Stability AI Stable Diffusion 3.5 Large Visual GenAI NIM for high-quality text-to-image generation on a single GPU.\n- Prefer this version for normal Forge routing because it is marked default-eligible.\n\n## Do not use it when\n\n- Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image'] contract.\n- Do not hide its `experimental` stability or default-eligible=true status from the user.\n- Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill.\n\n## Exact input\n\n- `prompt` (textarea, optional): Prompt\n- `mode` (select, optional): Mode\n- `seed` (number, optional; bounds 0..999999): Seed\n- `steps` (number, optional; bounds 1..50): Steps\n\nRequest template:\n\n```json\n{\n  \"mode\": \"{{mode}}\",\n  \"model\": \"{{model_slug}}\",\n  \"prompt\": \"{{prompt}}\",\n  \"seed\": \"{{seed}}\",\n  \"steps\": \"{{steps}}\"\n}\n```\n\n## Exact output\n\n- `image`\n\n## Route\n\n`POST /v1/inference/stabilityai-stable-diffusion-3-5-large`\n\n## Workflow\n\n1. Load this skill and pin model slug `stabilityai-stable-diffusion-3-5-large` with version key `1-1-0`.\n2. Fetch the live model detail and inference-routes endpoints before every run.\n3. Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.\n4. Call `POST /v1/inference/stabilityai-stable-diffusion-3-5-large` using the declared request template.\n5. Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.\n6. Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance.\n\n## Public benchmark evidence\n\nStatus: `source-linked`\n\nForge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Limitations\n\n- Catalog stability is `experimental` and default-eligible is `true`.\n- Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.\n\n## Safety\n\n- Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.\n- Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.\n- Keep source license, model revision, request, response, and evaluation provenance with derived artifacts.\n\n## Live Forge contract\n\n- Model detail: `/v1/models/stabilityai-stable-diffusion-3-5-large`\n- Routes: `/v1/models/stabilityai-stable-diffusion-3-5-large/inference-routes`\n- Regional deployment: `/v1/models/stabilityai-stable-diffusion-3-5-large/regional-deployment`\n- Deployment handoff: `/v1/models/stabilityai-stable-diffusion-3-5-large/deploy`\n- Portable repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/stabilityai-stable-diffusion-3-5-large/SKILL.md\n- Portable raw SKILL.md: https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/stabilityai-stable-diffusion-3-5-large/SKILL.md\n\n## References\n\n- [Stable Diffusion 3.5 Large source](https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html) (model-card)\n",
+  "license": "stability-ai-community-license",
+  "limitations": [
+    "Catalog stability is `experimental` and default-eligible is `true`.",
+    "Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence."
+  ],
+  "liveContract": {
+    "deployGuideUrl": "/v1/models/stabilityai-stable-diffusion-3-5-large/deploy",
+    "inferenceRoutesUrl": "/v1/models/stabilityai-stable-diffusion-3-5-large/inference-routes",
+    "modelFamilyUrl": "/v1/model-families/stabilityai-stable-diffusion-3-5-large",
+    "modelUrl": "/v1/models/stabilityai-stable-diffusion-3-5-large",
+    "regionalDeploymentUrl": "/v1/models/stabilityai-stable-diffusion-3-5-large/regional-deployment"
+  },
+  "markdownUrl": "/v1/model-skills/stabilityai-stable-diffusion-3-5-large/markdown",
+  "modelFamily": "stabilityai-stable-diffusion-3-5-large",
+  "modelSlug": "stabilityai-stable-diffusion-3-5-large",
+  "modelUrl": "/v1/models/stabilityai-stable-diffusion-3-5-large",
+  "outputFields": [
+    "image"
+  ],
+  "outputModalities": [
+    "image"
+  ],
+  "publicBenchmarkClaimCount": 0,
+  "publicEvidenceStatus": "source-linked",
+  "purpose": "Stability AI Stable Diffusion 3.5 Large Visual GenAI NIM for high-quality text-to-image generation on a single GPU.",
+  "rawSkillUrl": "https://raw.githubusercontent.com/rene-tech/forge-skills/main/skills/models/general/image-generation/stabilityai-stable-diffusion-3-5-large/SKILL.md",
+  "references": [
+    {
+      "kind": "model-card",
+      "title": "Stable Diffusion 3.5 Large source",
+      "url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+    }
+  ],
+  "repositoryFileUrl": "https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/stabilityai-stable-diffusion-3-5-large/SKILL.md",
+  "repositoryPath": "skills/models/general/image-generation/stabilityai-stable-diffusion-3-5-large/SKILL.md",
+  "repositoryUrl": "https://github.com/rene-tech/forge-skills",
+  "requestTemplate": {
+    "mode": "{{mode}}",
+    "model": "{{model_slug}}",
+    "prompt": "{{prompt}}",
+    "seed": "{{seed}}",
+    "steps": "{{steps}}"
+  },
+  "safety": [
+    "Do not send credentials, secrets, personal data, or confidential content without an approved processing basis.",
+    "Require human review before consequential, safety-critical, legal, financial, or high-impact decisions.",
+    "Keep source license, model revision, request, response, and evaluation provenance with derived artifacts."
+  ],
+  "selectionFacts": {
+    "contextWindow": null,
+    "parameterCount": 8000000000,
+    "quantization": "nim-profile",
+    "requiresHfToken": true,
+    "source": "nvidia_nim",
+    "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+    "tags": [
+      "image-generation",
+      "text-to-image",
+      "diffusion",
+      "stable-diffusion",
+      "stability-ai"
+    ],
+    "versionLabel": "1.1.0"
+  },
+  "shortDescription": "Stability AI Stable Diffusion 3.5 Large Visual GenAI NIM for high-quality text-to-image generation on a single GPU.",
+  "skillName": "use-forge-stabilityai-stable-diffusion-3-5-large",
+  "skillUrl": "/v1/model-skills/stabilityai-stable-diffusion-3-5-large",
+  "slug": "stabilityai-stable-diffusion-3-5-large",
+  "stability": "experimental",
+  "version": "1.1.0",
+  "versionKey": "1-1-0",
+  "whenNotToUse": [
+    "Do not use it when the task's input or required output differs from the declared ['text', 'image'] \u2192 ['image'] contract.",
+    "Do not hide its `experimental` stability or default-eligible=true status from the user.",
+    "Do not make quality, safety, efficacy, or suitability claims beyond the reviewed evidence attached to this exact skill."
+  ],
+  "whenToUse": [
+    "Use this exact `stabilityai-stable-diffusion-3-5-large` version when the task supplies text, image and needs image.",
+    "Stability AI Stable Diffusion 3.5 Large Visual GenAI NIM for high-quality text-to-image generation on a single GPU.",
+    "Prefer this version for normal Forge routing because it is marked default-eligible."
+  ],
+  "workflow": [
+    "Load this skill and pin model slug `stabilityai-stable-diffusion-3-5-large` with version key `1-1-0`.",
+    "Fetch the live model detail and inference-routes endpoints before every run.",
+    "Validate the exact required fields and parameter bounds listed below; do not silently coerce, truncate, or omit inputs.",
+    "Call `POST /v1/inference/stabilityai-stable-diffusion-3-5-large` using the declared request template.",
+    "Validate the returned fields/modalities and preserve the exact model slug, version, region, accelerator, cold-start, and latency metadata.",
+    "Use the public-evidence section only within its stated scope; use Forge probe history only for runtime placement and performance."
+  ]
+}
