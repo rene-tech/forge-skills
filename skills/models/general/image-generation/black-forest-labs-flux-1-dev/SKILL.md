@@ -67,6 +67,16 @@ Route: `POST /v1/inference/black-forest-labs-flux-1-dev`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-visual-genai-latest-getting-started-html-black-forest-labs-flux-1-dev-51a0d62834`
+- Recommended: Text-to-image generation (single text prompt → generated image) — Upstream model card and the Hugging Face model landing describe FLUX.1 [dev] as a generative text→image model and provide usage examples and Diffusers-style runtime guidance.
+- Recommended: Image-conditioned generation/editing using explicitly enumerated FLUX.1 [dev] variants (e.g., Fill, Canny, Depth, Kontext) when those variants are selected upstream — The upstream model card and repository enumerate dev variants intended for image-conditioned uses and document variant-specific usage.
+- Avoid: Commercial or production deployment without obtaining a separate commercial license from Black Forest Labs — The upstream FLUX.1 [dev] license files published in the upstream repository and on the Hugging Face model repo identify the FLUX.1 [dev] Non‑Commercial License and restrict the dev-model weights and inference code to non-commercial/non-production use per the upstream license text.
+- Avoid: Relying on model-generated calibrated likelihoods/log-probabilities/confidence scores for automated decision-making — Inspected upstream documentation (model card and README) describes generated image artifacts and usage examples but does not document probabilistic numeric outputs (likelihoods/log-probabilities/calibrated confidence scores) for the checkpoint at those locators.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -84,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/black-forest-labs-flux-1-dev/inference-routes`
 - Regional deployment: `/v1/models/black-forest-labs-flux-1-dev/regional-deployment`
 - Serverless handoff: `/v1/models/black-forest-labs-flux-1-dev/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-1-dev/SKILL.md

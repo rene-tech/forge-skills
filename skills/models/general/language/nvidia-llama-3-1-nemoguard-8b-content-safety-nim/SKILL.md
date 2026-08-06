@@ -66,6 +66,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-llama-3-1-nemoguard-8b-content-safety-15a952b714`
+- Recommended: Content moderation / safety classification of user prompts and LLM responses — Hugging Face model repository and README blobs and the NIM prompt-template documentation describe this checkpoint as a content safety moderator that classifies prompts and model responses as safe or unsafe and returns violated category labels per the vendor taxonomy; example prompt templates and example output JSON are provided.
+- Recommended: Integration into NIM/NemoGuard microservice safety pipelines for moderated agent workflows — NIM/container deploy documentation and build.nvidia deploy page document NIM packaging and container invocation patterns appropriate for integration into guarded inference pipelines.
+- Avoid: Assuming vendor-published numeric benchmark tables exist for this exact LoRA-tuned checkpoint and using them as-is for selection/tuning decisions — Inspected primary sources do not publish numeric benchmark table rows scoped to the exact tuned checkpoint (dataset/split/metric/model-tag/conditions) for nvidia/llama-3.1-nemoguard-8b-content-safety; upstream Llama-3.1-8B-Instruct materials are upstream-checkpoint evidence only and do not substitute for tuned-checkpoint evidence.
+- Avoid: Using the checkpoint as a general-purpose high-reasoning/math assistant without validation — Vendor materials frame Nemoguard as a moderation/judge model intended to classify safety risks rather than as a general-purpose high-reasoning assistant; the model card and README emphasize content-safety classification.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-llama-3-1-nemoguard-8b-content-safety-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-llama-3-1-nemoguard-8b-content-safety-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-llama-3-1-nemoguard-8b-content-safety-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/nvidia-llama-3-1-nemoguard-8b-content-safety-nim/SKILL.md

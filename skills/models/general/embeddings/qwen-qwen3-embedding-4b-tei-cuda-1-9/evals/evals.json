@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model qwen-qwen3-embedding-4b-tei-cuda-1-9 for this task: Multilingual semantic search / text retrieval. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use qwen-qwen3-embedding-4b-tei-cuda-1-9 or another Forge model for Multilingual semantic search / text retrieval?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use qwen-qwen3-embedding-4b-tei-cuda-1-9 for Direct multimodal (image/video) inputs to this checkpoint, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "qwen-qwen3-embedding-4b-tei-cuda-1-9",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-qwen-qwen3-embedding-4b-tei-cuda-1-9"
+}

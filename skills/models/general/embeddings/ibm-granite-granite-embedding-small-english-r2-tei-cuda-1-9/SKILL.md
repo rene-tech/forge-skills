@@ -62,6 +62,18 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-ibm-granite-granite-embedding-small-english-r2-c0cb6b7a27`
+- Recommended: Semantic search and document retrieval (query↔passage bi-encoder embeddings) — Hugging Face checkpoint model card and the family README/paper describe the checkpoint as a retrieval-oriented bi-encoder producing fixed-length vectors and report retrieval benchmark aggregates supporting retrieval use.
+- Recommended: Retrieval-Augmented Generation (RAG) retrieval stage using dense embeddings (embedding-only retrieval stage) — Primary model-card and family README describe the checkpoint as producing fixed-length vectors suitable for retrieval stages in RAG pipelines (encoder-only bi-encoder).
+- Recommended: Long-document retrieval using sliding-window chunking (encoding long documents into chunk embeddings) — Primary README and the paper report a maximum context length of 8192 tokens and describe benchmarking with a sliding-window 512-token chunking protocol for encoding-speed measurement; follow those chunking protocols when reproducing throughput numbers.
+- Avoid: Non-English inputs or multilingual retrieval — Primary artifacts identify this checkpoint as English-targeted; authors label the checkpoint and family artifacts as English models and training provenance notes indicate English-targeted data.
+- Avoid: Code retrieval tasks — Primary repository and model-card artifacts document English checkpoints targeted at text retrieval and do not claim code-specialized training; authors recommend code-specific models for code retrieval in family-level notes.
+- Avoid: Clinical decision-making or medical diagnostics — Primary artifacts do not report evaluation on medical/clinical datasets and authors do not claim clinical validation for this checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -80,11 +92,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/ibm-granite-granite-embedding-small-english-r2-tei-cuda-1-9/SKILL.md

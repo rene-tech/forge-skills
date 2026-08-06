@@ -1,0 +1,420 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2] uses forbidden secondary URL https://huggingface.co/papers/2511.14993",
+        "path": "$.sources[2] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 3 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Kandinsky 5.0 Image Lite SFT text-to-image generation through the Forge Diffusers wrapper.",
+      "displayName": "Use Kandinsky 5.0 T2I Lite SFT",
+      "group": "image-generation",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "kandinskylab-kandinsky-5-0",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "kandinskylab-kandinsky-5-0-t2i-lite-sft",
+      "sourceUrl": "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image",
+      "version": "t2i-lite-sft-diffusers",
+      "versionKey": "t2i-lite-sft-diffusers"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2511.14993",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true"
+        ],
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+        "reason": "No checkpoint-scoped numeric benchmark tables (dataset, split, metric, numeric value, and experiment conditions) are present in the inspected primary sources for this exact Diffusers checkpoint.",
+        "useCase": "Assuming checkpoint-scoped numeric benchmarks for model selection"
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/html/2511.14993v1",
+          "https://arxiv.org/html/2511.14993v2",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers"
+        ],
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers (family- and checkpoint-level inspection)",
+        "reason": "The canonical arXiv preprint (v1 and v2) documents that authors did not implement built-in content-filtering systems and places responsibility on users; the checkpoint blobs do not provide checkpoint-scoped content-filtering mechanisms.",
+        "useCase": "Relying on built-in content-filtering or assuming the checkpoint enforces content-safety"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [],
+    "conditionalUseCases": [
+      {
+        "conditions": "Enable YaRN per the checkpoint text_encoder README/config and validate memory, performance, and task-specific impact in your runtime; the checkpoint text_encoder README notes YaRN impacts but does not publish runtime measurements or recommended runtime limits.",
+        "evidenceUrls": [
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/config.json"
+        ],
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers (text_encoder configuration blobs)",
+        "useCase": "Extended-context or length-extrapolated text conditioning using YaRN-enabled text encoder configuration"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No checkpoint-scoped numeric benchmark results (dataset names, splits, exact metrics, numeric values, and experiment conditions) for kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers were found at the following primary locators checked: https://arxiv.org/abs/2511.14993, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true",
+      "Evidence gap: No immutable checkpoint revision or immutable checksum/hash for kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers was published in these primary blobs: https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+      "Evidence gap: Operational runtime metrics (latency, memory usage, GPU requirements, throughput) for this exact Diffusers checkpoint are not published in the inspected primary sources: https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true, https://github.com/huggingface/diffusers/commit/d0c54e5563c3245b57d2b374e8e334da77305c05",
+      "Evidence gap: The inspected primary artifacts do not publish calibrated per-image probabilities, logits, or numeric confidence outputs returned by this checkpoint: https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers, https://arxiv.org/abs/2511.14993",
+      "Evidence gap: Exact training-data composition, dataset-level provenance, and per-dataset contribution numbers for the SFT/post-training stages of this exact checkpoint are not reported at these primary locators: https://arxiv.org/abs/2511.14993, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+      "Evidence gap: Precise prompt-engineering templates or special control tokens beyond repository-described processor/encoder usage are not published in the inspected blobs: https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+      "Evidence gap (comparisons): No verified, protocol-matching comparison rows for this exact checkpoint against named alternatives were present in the inspected primary sources. Sources checked: https://arxiv.org/abs/2511.14993, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers, https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json"
+    ],
+    "family": "huggingface-co-docs-diffusers-api-pipelines-kandinsky5-image-e9e2461bb8",
+    "identity": {
+      "architecture": "Diffusers Kandinsky5T2IPipeline with components declared in model_index.json: Kandinsky5Transformer3DModel (transformer), AutoencoderKL (VAE), primary text encoder Qwen2_5_VLForConditionalGeneration, secondary text encoder CLIPTextModel, and FlowMatchEulerDiscreteScheduler (scheduler)",
+      "checkpoint": "Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+      "evidenceUrls": [
+        "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+        "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+        "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true",
+        "https://arxiv.org/html/2511.14993v1",
+        "https://arxiv.org/html/2511.14993v2"
+      ],
+      "license": "MIT (as stated in arXiv v1 and v2)",
+      "parameterScale": "6 billion parameters",
+      "revision": "not reported",
+      "upstreamName": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json"
+          ],
+          "statement": "The checkpoint is published and documented as a text-to-image Diffusers checkpoint (T2I); the model repository and model_index.json identify the pipeline and its intended T2I usage."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md"
+          ],
+          "statement": "Text preprocessing/tokenization for the primary and secondary encoders is indicated by the model_index.json and the text_encoder README (references to Qwen2VLProcessor and CLIP tokenizer usage are present in the repository blobs)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md"
+          ],
+          "statement": "Image resize handling and rounding behavior: the text_encoder README documents that resized_height and resized_width are rounded to the nearest multiple of 28 and that images may be resized to fit within min_pixels and max_pixels while preserving aspect ratio."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json"
+          ],
+          "statement": "Primary input modality is text prompts for text-to-image generation (single prompt or batched prompts as per repository usage descriptions)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md"
+          ],
+          "statement": "The checkpoint uses dual text-encoder conditioning: a primary Qwen2_5_VLForConditionalGeneration encoder and a secondary CLIPTextModel encoder as declared in model_index.json, implying text tokenization/processing via the referenced processors/tokenizers."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers"
+          ],
+          "statement": "The checkpoint repository describes text-to-image usage patterns and the presence of dual encoders and processor configuration (text_encoder README and model_index.json); the inspected blobs do not publish special prompt-control tokens or canonical prompt templates beyond the repository's descriptions of encoder/processor usage."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json"
+          ],
+          "statement": "The inspected repository blobs (model README, text_encoder README, model_index.json) document processor and size semantics but do not provide a canonical strict input-rejection validator API or a complete upstream-enforced bounds list for all out-of-range inputs for this checkpoint."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/html/2511.14993v1",
+          "https://arxiv.org/html/2511.14993v2"
+        ],
+        "statement": "Family-level limitations documented in the canonical preprint include challenges in text-visual alignment, long-term temporal modelling, and generalization across visual domains (family-level limitations reported in the paper)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json"
+        ],
+        "statement": "Evidence gap: No immutable checkpoint revision/hash for kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers was reported in the inspected model card or model_index.json blobs."
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2511.14993",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true"
+        ],
+        "statement": "Evidence gap: Checkpoint-scoped numeric benchmark results (dataset names, splits, metrics, numeric values, and experiment conditions) for kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers are not present in the inspected primary sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+            "https://arxiv.org/abs/2511.14993"
+          ],
+          "statement": "The inspected primary artifacts do not document calibrated per-image probabilities, logits, or numeric confidence scores returned by this checkpoint; generated images should be treated as opaque generated artifacts and require application-level QA or calibration if numeric confidences are needed."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true"
+          ],
+          "statement": "This checkpoint produces generated image artifacts as its primary output (text-to-image generation), as documented by the model README and model_index.json which identify the checkpoint as an Image Lite T2I model."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+            "https://arxiv.org/html/2511.14993v1"
+          ],
+          "statement": "The checkpoint blobs and the canonical preprint do not provide canonical post-inference numeric calibration or quality thresholds for this checkpoint; downstream users must apply their own perceptual-quality and content-policy validation."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json",
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true"
+        ],
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+        "useCase": "Text-to-image generation (single prompt or batched prompts → generated image artifacts)",
+        "why": "The model repository README and model_index.json identify this checkpoint as a Kandinsky5 text-to-image checkpoint (Kandinsky5T2IPipeline) and the repository README describes the Kandinsky 5.0 Image Lite family and T2I usage."
+      }
+    ],
+    "researchSummary": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers is an Image Lite supervised fine-tuned Kandinsky 5.0-family Diffusers checkpoint (reported as a 6 billion parameter Image Lite model). The checkpoint's model_index.json declares the Diffusers pipeline class Kandinsky5T2IPipeline and lists its main components (Kandinsky5Transformer3DModel transformer, AutoencoderKL VAE, primary text encoder Qwen2_5_VLForConditionalGeneration, secondary text encoder CLIPTextModel, and FlowMatchEulerDiscreteScheduler). The checkpoint repository blobs (model README, text_encoder README and config) document processor/tokenizer and text-encoder configuration (including YaRN-related entries and image resize parameter semantics such as rounding resized dimensions to a multiple of 28). The canonical arXiv preprint HTML (v1 and v2) states family-level license (MIT) and documents family-level limitations and that the authors did not ship built-in content-filtering; the inspected checkpoint blobs do not publish an immutable checkpoint revision/hash, checkpoint-scoped numeric benchmarks, or runtime metrics for this exact Diffusers checkpoint—those absences are recorded as evidence gaps.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/html/2511.14993v1",
+          "https://arxiv.org/html/2511.14993v2"
+        ],
+        "statement": "The canonical arXiv preprint (v1 and v2) states the authors deliberately did not implement built-in content-filtering systems and places responsibility on users for ethical and legal use of generated content."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+          "https://arxiv.org/abs/2511.14993"
+        ],
+        "statement": "Evidence gap: No checkpoint-scoped privacy, clinical, biosecurity mitigations, or detailed data-handling requirements are published in the inspected repository blobs for this exact checkpoint; downstream deployments requiring such mitigations must perform their own audits."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model repository and model card for the exact checkpoint identifier; contains the checkpoint README and metadata blobs for this checkpoint.",
+        "publisher": "kandinskylab (Hugging Face model repo)",
+        "sourceType": "model-card",
+        "supports": [
+          "checkpoint identifier and repository-level README",
+          "family-level descriptive text about Kandinsky 5.0 Image Lite"
+        ],
+        "title": "Kandinsky 5.0 T2I Lite SFT — model card",
+        "url": "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers"
+      },
+      {
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+        "primary": true,
+        "primaryReason": "model_index.json lists the Diffusers pipeline class and the exact component class names and scheduler for this checkpoint, providing component-level identity for the Diffusers pipeline.",
+        "publisher": "kandinskylab (Hugging Face model repo files)",
+        "sourceType": "repository",
+        "supports": [
+          "pipeline class: Kandinsky5T2IPipeline",
+          "transformer component: Kandinsky5Transformer3DModel",
+          "VAE component: AutoencoderKL",
+          "text encoder: Qwen2_5_VLForConditionalGeneration",
+          "secondary text encoder: CLIPTextModel",
+          "scheduler: FlowMatchEulerDiscreteScheduler",
+          "diffusers version reference for the checkpoint"
+        ],
+        "title": "Model model_index.json (model repo blob)",
+        "url": "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/model_index.json"
+      },
+      {
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers (text_encoder configuration)",
+        "primary": true,
+        "primaryReason": "Repository-level README for the model's text encoder and processor configuration; documents YaRN settings, context-length configuration, and image resize/config parameters used by the checkpoint.",
+        "publisher": "kandinskylab (Hugging Face model repo files)",
+        "sourceType": "repository",
+        "supports": [
+          "text encoder configuration entries including YaRN settings and original_max_position_embeddings",
+          "processor/tokenizer usage guidance",
+          "image resizing parameters (min_pixels, max_pixels, resized_height, resized_width) and rounding behavior",
+          "large-context configuration notes"
+        ],
+        "title": "Model text_encoder README (model repo blob)",
+        "url": "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/README.md"
+      },
+      {
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+        "primary": true,
+        "primaryReason": "Repository-level README describing the Kandinsky 5.0 family and the Image Lite checkpoint (6B) and intended usage for the checkpoint.",
+        "publisher": "kandinskylab (Hugging Face model repo files)",
+        "sourceType": "repository",
+        "supports": [
+          "family and checkpoint descriptive metadata (Image Lite 6B)",
+          "high-level usage guidance for the checkpoint"
+        ],
+        "title": "Model README (model repo blob)",
+        "url": "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/README.md?code=true"
+      },
+      {
+        "modelScope": "kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers (text_encoder config)",
+        "primary": true,
+        "primaryReason": "Configuration blob for the checkpoint's text_encoder providing concrete config fields (rope/mrope sections, sliding window sizes, torch_dtype, vision_config parameters) used by the checkpoint.",
+        "publisher": "kandinskylab (Hugging Face model repo files)",
+        "sourceType": "repository",
+        "supports": [
+          "text_encoder configuration parameters (rope/mrope, sliding_window, torch_dtype, vision_config details)"
+        ],
+        "title": "text_encoder config.json (model repo blob)",
+        "url": "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers/blob/main/text_encoder/config.json"
+      },
+      {
+        "modelScope": "Kandinsky 5.0 family",
+        "primary": true,
+        "primaryReason": "Canonical arXiv abstract/entry for the Kandinsky 5.0 preprint; entry point to the canonical preprint content describing the family.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "paper metadata and canonical preprint reference for Kandinsky 5.0"
+        ],
+        "title": "Kandinsky 5.0 paper (arXiv abstract)",
+        "url": "https://arxiv.org/abs/2511.14993"
+      },
+      {
+        "modelScope": "Kandinsky 5.0 family (v1)",
+        "primary": true,
+        "primaryReason": "Versioned canonical preprint HTML (v1) containing family-level descriptions, license statement, and limitations.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "family-level architecture, limitations, and license statement (MIT)",
+          "statement that authors did not include built-in content-filtering"
+        ],
+        "title": "Kandinsky 5.0 paper (arXiv v1 HTML)",
+        "url": "https://arxiv.org/html/2511.14993v1"
+      },
+      {
+        "modelScope": "Kandinsky 5.0 family (v2)",
+        "primary": true,
+        "primaryReason": "Versioned canonical preprint HTML (v2) containing family-level descriptions and parameter-scale statements.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "family-level model lineups and parameter-scale statements",
+          "family-level descriptions of training and post-training stages"
+        ],
+        "title": "Kandinsky 5.0 paper (arXiv v2 HTML)",
+        "url": "https://arxiv.org/html/2511.14993v2"
+      },
+      {
+        "modelScope": "Diffusers repository evidence referencing kandinskylab/Kandinsky-5.0-T2I-Lite-sft-Diffusers",
+        "primary": true,
+        "primaryReason": "GitHub commit referenced in the findings that documents adding the named kandinskylab checkpoint to the diffusers repository listing (serves as an official implementation-level artifact in the inspected evidence set).",
+        "publisher": "Hugging Face diffusers (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "repository-level commit that references addition of the 6B SFT Kandinsky-5.0-T2I-Lite-sft-Diffusers checkpoint"
+        ],
+        "title": "Diffusers repo commit that added the checkpoint (GitHub commit)",
+        "url": "https://github.com/huggingface/diffusers/commit/d0c54e5563c3245b57d2b374e8e334da77305c05"
+      },
+      {
+        "modelScope": "kandinskylab-kandinsky-5-0",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "afc3a975ad830aca598289c98fde742eeb4c55550572248f32d8fdf0fb12065a",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-docs-diffusers-api-pipelines-kandinsky5-image-e9e2461bb8",
+  "researchedAt": "2026-08-06T11:26:55.050481+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image",
+  "sourceUrls": [
+    "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

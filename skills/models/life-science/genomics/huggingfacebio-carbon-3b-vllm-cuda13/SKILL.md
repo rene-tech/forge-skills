@@ -69,6 +69,17 @@ Route: `POST /v1/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-huggingfacebio-carbon-3b-8f075f26ab`
+- Recommended: Research generative DNA sequence modelling and long‑context autoregressive generation (exploratory design and evaluation) — Primary sources describe Carbon‑3B as a generative DNA foundation model trained on DNA/RNA corpora with non‑overlapping 6‑mer tokenization and autoregressive generation; the demo and repository examples show generate and score_sequence usage for DNA generation and scoring.
+- Recommended: Research fine‑tuning for discriminative tasks (variant‑effect prediction, regression heads) using repository fine‑tuning scripts and reported evaluation protocols — The authors provide fine‑tuning and evaluation scripts in the Carbon repository and report fine‑tuned evaluation results in the preprint/tech‑report; the repository indicates workflows to fine‑tune the base checkpoint with task‑specific heads.
+- Recommended: Sequence recovery and motif/perturbation discrimination in research evaluation suites (training‑free and fine‑tuned benchmarks described by the authors) — The preprint and repo describe training‑free evaluation suites and fine‑tuned evaluation tasks including sequence recovery and perturbation discrimination where Carbon‑3B is evaluated.
+- Avoid: Unreviewed clinical decision‑making or clinical deployment without expert review — Primary sources do not provide an author declaration of clinical suitability or clinical validation procedures; the materials present research benchmarks and code but not clinical validation.
+- Avoid: Feeding DNA payloads without the expected tokenizer tagging/formatting (risking BPE fallback and degraded DNA modelling quality) — The repository tokenizer implementation requires DNA regions to be wrapped in <dna>...</dna> tags to be tokenized as non‑overlapping 6‑mers; without tags the tokenizer will treat input as regular BPE text.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -87,11 +98,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/huggingfacebio-carbon-3b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/huggingfacebio-carbon-3b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/huggingfacebio-carbon-3b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/genomics/huggingfacebio-carbon-3b-vllm-cuda13/SKILL.md

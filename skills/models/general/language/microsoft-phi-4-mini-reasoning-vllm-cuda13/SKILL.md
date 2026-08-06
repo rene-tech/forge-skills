@@ -77,6 +77,14 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-microsoft-phi-4-mini-reasoning-511de4e658`
+- Recommended: Compact/math reasoning and lightweight deployment scenarios (embedded tutoring, edge/mobile inference) as suggested by the model card's stated potential use cases. — The Hugging Face model page lists Phi-4-mini-reasoning as optimized for mathematical reasoning and as suitable for constrained-compute or latency-sensitive environments; potential use cases include educational applications, embedded tutoring, and lightweight edge or mobile deployment.
+- Avoid: Evidence gap: No primary-source evidence in the repository explicitly documents avoid-use boundaries tied to this exact checkpoint (for example, explicit prohibitions on high-stakes clinical, legal, or safety-critical uses). — Evidence gap: The Hugging Face model page and repository blobs inspected do not contain explicit avoid-use or forbidden-application statements for this checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -95,11 +103,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/microsoft-phi-4-mini-reasoning-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/microsoft-phi-4-mini-reasoning-vllm-cuda13/SKILL.md

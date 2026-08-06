@@ -77,6 +77,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-14b-245877f208`
+- Recommended: Instruction-following text generation — Upstream model card and Qwen3-14B-GGUF documentation describe Qwen3-14B as a causal text-generation model designed for instruction-following and related text-generation tasks.
+- Recommended: Agent-style multi-turn interaction and reasoning over text — Upstream descriptions in the official model card and the Qwen3 series documentation indicate agent-style capabilities and multi-turn reasoning as intended uses for Qwen3-14B.
+- Avoid: Non-text modalities or expecting a structured numeric/serialized output contract — Evidence gap: upstream primary sources inspected do not document support for multimodal inputs/outputs or a formal structured numeric output schema for Qwen3-14B.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -95,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-14b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-14b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-14b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/qwen-qwen3-14b-vllm-cuda13/SKILL.md

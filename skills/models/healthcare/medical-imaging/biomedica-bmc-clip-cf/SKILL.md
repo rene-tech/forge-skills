@@ -73,6 +73,14 @@ Route: `POST /v1/inference/biomedica-bmc-clip-cf`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-biomedica-bmc-clip-cf-936c5098c5`
+- Recommended: Repository snapshot inspection and audit (verify files and commit state) — The immutable Hugging Face commit tree and commits page document the repository snapshot and files at commit 68e06746...; these artifacts support auditing the repository state at that exact commit.
+- Avoid: Assuming the inspected repository snapshot provides model weights, tokenizer vocabularies, or low-level inference contracts suitable for direct deployment — The inspected immutable commit-tree and commits pages list only a .gitattributes and README.md at the checked commit and do not contain model-weights files, tokenizer/vocabulary files, or inference-time constants in the checked locators.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -91,11 +99,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/biomedica-bmc-clip-cf/inference-routes`
 - Regional deployment: `/v1/models/biomedica-bmc-clip-cf/regional-deployment`
 - Serverless handoff: `/v1/models/biomedica-bmc-clip-cf/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/medical-imaging/biomedica-bmc-clip-cf/SKILL.md

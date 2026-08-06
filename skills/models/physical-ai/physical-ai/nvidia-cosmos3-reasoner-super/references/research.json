@@ -1,0 +1,401 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$: missing required property safety",
+        "path": "$",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.safety must contain at least one scoped item",
+        "path": "$.safety must contain at least one scoped item",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 4 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "Early-access Cosmos 3 Super Reasoner VLM served through a Forge-owned Qwen3-VL runtime.",
+      "displayName": "Use NVIDIA Cosmos 3 Reasoner (Super)",
+      "group": "physical-ai",
+      "inputModalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "license": "nvidia-software-model-evaluation-license",
+      "modelFamily": "nvidia-cosmos3-reasoner",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "nvidia-cosmos3-reasoner-super",
+      "sourceUrl": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner",
+      "version": "super-bf16-ea",
+      "versionKey": "super-bf16"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "modelScope": "nvidia/Cosmos3-Super-Reasoner (Reasoner tower)",
+        "reason": "Evidence gap: The provided primary findings do not include a primary-source statement or certification that Cosmos3 Super-Reasoner outputs are suitable as safety-certified control commands or guaranteed physically accurate simulation; per-input bounds, safety certification, and validated control guarantees were not found in the checked primary sources.",
+        "useCase": "Treating Reasoner outputs as safety-certified control commands or as guaranteed physically accurate simulations for closed-loop control"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "nvidia-cosmos-embed1 (Cosmos Embed1 NIM)",
+        "comparisonConditions": "Benchmark-level comparisons require matching dataset/split, exact checkpoint labels, and identical evaluation protocols; those items were not present in the provided findings.",
+        "criteria": "No primary-source, protocol-matched numeric head-to-head benchmarks in the provided findings comparing Embed1 versus the exact Super Reasoner checkpoint.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "rationale": "The provided findings include an NGC container listing and the Hugging Face model page for the Super Reasoner and do not contain numeric, checkpoint-matched evaluation tables for Embed1 vs Super Reasoner.",
+        "task": "Embedding generation and representation tasks",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-cosmos-policy-aloha-predict2 (ALOHA / policy models)",
+        "comparisonConditions": "Direct comparison would require the same dataset/split and explicit checkpoint labels; these were not found in the provided findings.",
+        "criteria": "No primary-source, checkpoint-matched numeric comparisons between ALOHA/policy models and the Super Reasoner checkpoint exist in the provided findings.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "rationale": "The provided findings do not include numeric head-to-head metrics or a shared evaluation table tying the Super Reasoner to ALOHA results under the same protocol.",
+        "task": "Policy / predictive models for robot tasks",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-cosmos-reason1-7b / nvidia-cosmos-reason2-8b (earlier Reasoner families)",
+        "comparisonConditions": "Comparability requires checkpoint-labeled benchmark rows and matching datasets/splits; not present in the provided findings.",
+        "criteria": "No primary-source numeric, checkpoint-matched comparison data for the exact Super Reasoner checkpoint versus earlier Reasoner checkpoints is present in the provided findings.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+        ],
+        "rationale": "The provided findings list model versions and the Super config reference but do not include numeric head-to-head tables with exact checkpoint labels and matched evaluation protocols.",
+        "task": "Physical-AI reasoning across Reasoner family members",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires downstream validation, domain-specific testing, and system-level safety analysis because the provided primary evidence does not enumerate formal safety certifications, per-input validation bounds, or numeric calibration/accuracy guarantees for safety-critical deployment.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "modelScope": "nvidia/Cosmos3-Super-Reasoner (Reasoner tower) as named in the Super config.json",
+        "useCase": "Prototyping embodied-reasoning tasks (captioning, temporal localization, 2D grounding, plan-like outputs) only after task-specific validation"
+      }
+    ],
+    "evidenceGaps": [
+      "No primary-source evidence in the provided findings reports an immutable checkpoint revision or hash matching the Forge suffix 'e2bbd9dcb7'. Sources checked in the provided findings: https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json, https://huggingface.co/nvidia/Cosmos3-Super, and https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner.",
+      "No primary-source specification of tokenizer name, vocabulary, special tokens, or exact tokenization implementation for the Super Reasoner was present in the provided findings (checked: https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json and https://huggingface.co/nvidia/Cosmos3-Super).",
+      "No primary-source description of exact input file formats (image MIME types, video container formats), permitted resolutions, frame-rate bounds, maximum file sizes, or explicit preprocessing steps (resize/crop, color-space conversion, normalization, frame sampling) for Reasoner inference was found in the provided findings (checked: https://huggingface.co/nvidia/Cosmos3-Super and https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner and https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json).",
+      "No primary-source statement of truncation/window behavior, explicit context-window token size, or where input truncation occurs for long text or long video was found in the provided findings (checked: https://huggingface.co/nvidia/Cosmos3-Super and https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json).",
+      "No primary-source numeric benchmark tables (dataset/split/metric/value tied to the exact Super Reasoner checkpoint) were found in the provided findings (checked: https://huggingface.co/nvidia/Cosmos3-Super, https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json, and https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner).",
+      "No primary-source head-to-head task-specific comparison metrics between the exact Super Reasoner checkpoint and alternative Forge candidates (Embed1, ALOHA/policy models, Reason1/Reason2 variants) were found in the provided findings (checked: https://huggingface.co/nvidia/Cosmos3-Super and https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner).",
+      "No primary-source publication of output tensor shapes, logits, token-id arrays, probability or calibrated-confidence semantics, or a canonical JSON output schema for the Reasoner text outputs was present in the provided findings (checked: https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json and https://huggingface.co/nvidia/Cosmos3-Super).",
+      "No primary-source mapping in the provided findings explicitly ties the Forge runtime identifier 'huggingface-co-nvidia-cosmos-ea-cosmos3-super-reasoner-e2bbd9dcb7' to a published upstream immutable weight file or release artifact (checked: https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json, https://huggingface.co/nvidia/Cosmos3-Super, https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner).",
+      "No primary-source detailed deployment hardware performance numbers (latency, memory footprint) for the Super Reasoner checkpoint were present in the provided findings (checked: https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner and https://huggingface.co/nvidia/Cosmos3-Super)."
+    ],
+    "family": "huggingface-co-nvidia-cosmos-ea-cosmos3-super-reasoner-e2bbd9dcb7",
+    "identity": {
+      "architecture": "Mixture-of-Transformers (MoT) two-tower design (Reasoner vision-language tower and Generator tower) \u2014 inferred from the config target referencing qwen3_vl_mot",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json",
+        "https://huggingface.co/nvidia/Cosmos3-Super",
+        "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+      ],
+      "license": "OpenMDW 1.1 (model use); NVIDIA container/software license applies to NGC container artifacts",
+      "parameterScale": "32B",
+      "revision": "not reported",
+      "upstreamName": "nvidia/Cosmos3-Super-Reasoner"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+          ],
+          "statement": "Evidence gap: The provided primary sources describe multimodal inputs (text, image, video) but do not enumerate exact allowed image MIME types, exact video container formats, permitted resolutions, frame-rate bounds, or maximum file sizes."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+          ],
+          "statement": "Config-level model flags visible in the Super config (e.g., qk_norm_for_text=true, qk_norm=false, tie_word_embeddings=false) are present in the model config; these are model-configuration parameters rather than a documented end-user preprocessing pipeline."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+          ],
+          "statement": "Evidence gap: The provided primary sources do not publish an explicit image/video preprocessing pipeline (resize/crop, color-space, normalization), frame-extraction or sampling rules, or canonical preprocessing commands for the Reasoner inference."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+          ],
+          "statement": "Accepted input modalities: text, image, and video for the Reasoner inference path."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+            "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: The provided primary findings do not include a canonical, exhaustive prompt template or a definitive HTTP/JSON request body schema for the Super Reasoner; the model card and container listing describe multimodal inputs and outputs but do not publish a detailed per-field API contract in the provided findings."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+          ],
+          "statement": "Evidence gap: The provided primary sources do not contain per-input validation rules (e.g., hard bounds for frame rate, resolution, file size) or canonical rejection criteria to apply before submission to the Reasoner inference."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json",
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+        ],
+        "statement": "Evidence gap: The provided findings do not include an immutable upstream checkpoint hash or revision matching the Forge suffix 'e2bbd9dcb7'; no primary-source mapping to that exact identifier was found in the provided findings."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+        ],
+        "statement": "Model/Container license distinction: the provided primary findings show model usage governed by OpenMDW 1.1 while the NGC container is governed by NVIDIA container/software terms (container-level license)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "statement": "The Super config references a Qwen3-VL-32B configuration target and a backbone_path pointing to an S3 location for pretrained weights; the config also contains model flags (qk_norm_for_text=true, qk_norm=false, tie_word_embeddings=false) and indicates pretrained_weights.enabled=false in the visible fields."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: The provided findings do not publish numeric deployment/performance numbers (latency, memory footprint) for the exact Super Reasoner checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: The provided findings do not publish the tokenizer name, vocabulary, special tokens, or exact tokenization implementation for the Super Reasoner checkpoint."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json",
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+          ],
+          "statement": "Evidence gap: The provided primary findings do not publish output tensor shapes, token-id arrays, logits, probability or calibrated-confidence semantics, or a machine-readable JSON output schema for the Reasoner text outputs."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+          ],
+          "statement": "The Reasoner inference path returns coherent text responses from multimodal inputs (text, image, video) according to the Hugging Face model page and the NGC container listing."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Super",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+          ],
+          "statement": "Evidence gap: The provided primary sources do not include explicit recommended post-inference calibration checks, numeric calibration numbers, or canonical sanity tests for output validation."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "modelScope": "nvidia/Cosmos3-Super-Reasoner (Reasoner tower) as identified in the Super config.json and the Hugging Face model page",
+        "useCase": "Multimodal vision-language reasoning and text responses grounded in images and video for Physical AI research and prototyping",
+        "why": "Hugging Face model page and the NGC container listing describe Cosmos3 Super/Reasoner as a multimodal VLM that accepts text, images, and video and returns coherent text responses aimed at Physical AI/robotics reasoning."
+      }
+    ],
+    "researchSummary": "Verified primary-source items from the provided findings: (1) The Hugging Face repository nvidia/Cosmos3-Super contains a model card and a config.json which sets model_name to \"nvidia/Cosmos3-Super-Reasoner\" and references a Qwen3-VL-32B config and an S3 backbone_path; (2) the NGC catalog listing describes a Cosmos3 Reasoner container for Physical AI/robotics that returns coherent text responses from multimodal inputs and notes licensing under OpenMDW 1.1 and NVIDIA container terms. Primary evidence in the provided findings does not contain an immutable upstream checkpoint hash or revision matching the Forge suffix 'e2bbd9dcb7', does not publish tokenizer/vocabulary details for the Reasoner, does not list canonical input-file format MIME types or exact preprocessing pipelines, and does not publish numeric benchmark tables for the exact Super Reasoner checkpoint. Where primary evidence is absent in the provided findings, explicit evidence-gap statements are included in the dossier.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Super",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: The provided primary findings do not contain a dedicated, machine-readable safety guidance section, nor do they publish explicit system-level safety validation procedures, healthcare/clinical restrictions, or PII-handling rules for the Super Reasoner checkpoint in the examined sources."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "nvidia/Cosmos3-Super model card and landing page",
+        "primary": true,
+        "primaryReason": "Primary Hugging Face model page for the Cosmos3 Super model; contains high-level model description, license statement, and references to model versions.",
+        "publisher": "NVIDIA / Hugging Face model repository",
+        "sourceType": "model-card",
+        "supports": [
+          "researchSummary",
+          "recommendedUseCases",
+          "inputPreparation.semanticInputs",
+          "limitations",
+          "outputInterpretation.outputs",
+          "identity.license"
+        ],
+        "title": "Hugging Face model page: nvidia/Cosmos3-Super",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Super"
+      },
+      {
+        "modelScope": "nvidia/Cosmos3-Super-Reasoner config-level artifact",
+        "primary": true,
+        "primaryReason": "Contains the explicit model_name field \"nvidia/Cosmos3-Super-Reasoner\", references to a Qwen3-VL-32B JSON config target, backbone_path for pretrained weights, and model configuration flags visible in the config.",
+        "publisher": "NVIDIA / Hugging Face model repository (config file)",
+        "sourceType": "model-card",
+        "supports": [
+          "identity.upstreamName",
+          "identity.parameterScale",
+          "inputPreparation.preprocessing",
+          "limitations"
+        ],
+        "title": "Hugging Face model config: nvidia/Cosmos3-Super (config.json)",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Super/blob/main/config.json"
+      },
+      {
+        "modelScope": "Cosmos3 Reasoner NGC container listing",
+        "primary": true,
+        "primaryReason": "Official NGC listing describing the Cosmos3 Reasoner container, its target domain (Physical AI/robotics), and licensing/container-level governance.",
+        "publisher": "NVIDIA NGC catalog",
+        "sourceType": "official-documentation",
+        "supports": [
+          "researchSummary",
+          "recommendedUseCases",
+          "inputPreparation.semanticInputs",
+          "limitations",
+          "identity.license"
+        ],
+        "title": "NGC catalog: Cosmos3 Reasoner container",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+      },
+      {
+        "modelScope": "nvidia-cosmos3-reasoner",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "8e9625c5b6ba619dcb4272d74d75789bcf3a5d6adb5d5bb4b136a8cff6a31fa7",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-nvidia-cosmos-ea-cosmos3-super-reasoner-e2bbd9dcb7",
+  "researchedAt": "2026-08-06T13:10:01.323089+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner",
+  "sourceUrls": [
+    "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Super-Reasoner"
+  ],
+  "upstreamAgentSkills": [
+    {
+      "forgeSlugs": [
+        "nvidia-cosmos3-reasoner-nano",
+        "nvidia-cosmos3-reasoner-super"
+      ],
+      "notes": "NVIDIA's Cosmos Reason skill gives first-party video-QA data, checkpoint-conversion, evaluation, and SFT guidance. Its packaged default is Cosmos3-Nano; treat the Forge Nano/Super aliases as separate exact checkpoints and verify the selected weight, format, and overrides before applying the workflow, especially for Super.",
+      "relation": "related-model-workflow",
+      "skills": [
+        {
+          "name": "tao-finetune-cosmos-reason",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/tao-finetune-cosmos-reason"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

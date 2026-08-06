@@ -1,0 +1,504 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources must not contain duplicate URLs",
+        "path": "$.sources must not contain duplicate URLs",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://huggingface.co/biohub/ESMC-600M",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4] uses forbidden secondary URL https://biohub.org/blog/esm-cambrian-unsupervised-learning",
+        "path": "$.sources[4] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8] uses unapproved repository owner 'facebook' for this exact model scope",
+        "path": "$.sources[8] uses unapproved repository owner 'facebook' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10] uses unapproved repository owner 'facebookresearch' for this exact model scope",
+        "path": "$.sources[10] uses unapproved repository owner 'facebookresearch' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://huggingface.co/facebook/esm2_t33_650M_UR50D",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://www.youtube.com/watch?v=gAHKQmPnjao",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.limitations[5] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.limitations[5] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 15 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "Biohub ESMC 600M is a 2026 protein language model for protein representation learning, protein engineering, variant-effect research, and masked-language modeling.",
+      "displayName": "Use Biohub ESMC 600M Protein Embeddings",
+      "group": "protein-representation",
+      "inputModalities": [
+        "protein_sequence"
+      ],
+      "license": "mit-with-third-party-notices",
+      "modelFamily": "biohub-esmc",
+      "outputModalities": [
+        "embedding",
+        "json"
+      ],
+      "slug": "biohub-esmc-600m-protein-embedding",
+      "sourceUrl": "https://huggingface.co/biohub/ESMC-600M",
+      "version": "hf-465f758-python312-cuda128-wrapper-20260529",
+      "versionKey": "hf-465f758-python312-cuda128-wrapper-20260529"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://huggingface.co/biohub/esmc-600m-2024-12/commit/4bd0526d5e04a7d088c00c8884c18f0f8eaa9d8c",
+          "https://github.com/Biohub/esm/blob/main/README.md"
+        ],
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "reason": "Evidence gap: The inspected primary sources for this checkpoint do not include explicit checkpoint-scoped clinical-validation guidance or an unambiguous, separate model-weights vs code license mapping; therefore high-consequence clinical deployment is not supported by the checked primary documents.",
+        "useCase": "Unverified clinical decision-making or deployment without independent validation and explicit licensing confirmation."
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "facebook/esm2_t36_3B_UR50D",
+        "comparisonConditions": "Inspected locators: model card root, README blobs, commit history, and Colab notebook; no checkpoint-scoped numeric benchmark rows present for this checkpoint at these locators.",
+        "criteria": "No primary, checkpoint-scoped numeric benchmark rows or identical-protocol comparisons for biohub/esmc-600m-2024-12 were found in the inspected primary locators; therefore a direct numeric comparison cannot be supported from the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main",
+          "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+        ],
+        "rationale": "The inspected primary locators for biohub/esmc-600m-2024-12 (model card, README blobs, commit history, and Colab cookbook) contain model identification and usage examples but do not contain same-protocol numeric evaluation rows for this checkpoint to compare against the named alternative.",
+        "task": "protein-embedding",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "facebook/esm2_t33_650M_UR50D",
+        "comparisonConditions": "Inspected locators: model card root, README blobs, commit history, and Colab notebook; no checkpoint-scoped numeric benchmark rows present for this checkpoint at these locators.",
+        "criteria": "No primary, checkpoint-scoped numeric benchmark rows or identical-protocol comparisons for biohub/esmc-600m-2024-12 were found in the inspected primary locators; therefore a direct numeric comparison cannot be supported from the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main",
+          "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+        ],
+        "rationale": "The inspected primary locators for biohub/esmc-600m-2024-12 provide identification and example usage but do not contain same-protocol numeric evaluation rows for this checkpoint for direct comparison.",
+        "task": "protein-embedding",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Evidence gap: The inspected primary sources do not publish checkpoint-scoped clinical-validation guidance, dataset-specific clinical evaluation, or an explicit, unambiguous mapping of model-weights vs code/documentation license terms for biohub/esmc-600m-2024-12 at the checked locations.",
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://huggingface.co/biohub/esmc-600m-2024-12/commit/4bd0526d5e04a7d088c00c8884c18f0f8eaa9d8c",
+          "https://github.com/Biohub/esm/blob/main/README.md",
+          "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+        ],
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "useCase": "Use in downstream wet-lab, clinical pipelines, or other high-consequence decision workflows only after independent wet-lab validation and explicit license confirmation."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No checkpoint-scoped tokenizer.json, vocab file, or explicit tokenizer artifact path was found for biohub/esmc-600m-2024-12 at the inspected primary URLs: https://huggingface.co/biohub/esmc-600m-2024-12 and https://huggingface.co/biohub/esmc-600m-2024-12/commits/main. (A tokenizer.json exists for the sibling variant esmc-6b at https://huggingface.co/biohub/esmc-6b-2024-12/blob/6ae7b4dd8630350e620a806d0b7ba67e53bcfd46/tokenizer.json but that file path does not establish a tokenizer artifact for esmc-600m-2024-12 at the checked locations.)",
+      "Evidence gap: No checkpoint-scoped JSON output schema, explicit numeric embedding-dimension values, or definitive per-residue vs per-sequence output shape declaration for biohub/esmc-600m-2024-12 were found at the inspected primary URLs: https://huggingface.co/biohub/esmc-600m-2024-12, https://github.com/Biohub/esm/blob/main/README.md, https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb.",
+      "Evidence gap: No checkpoint-scoped numeric benchmark tables or figures for biohub/esmc-600m-2024-12 were found at the inspected primary URLs: https://huggingface.co/biohub/esmc-600m-2024-12 (model card root and README blobs) and https://github.com/Biohub/esm/blob/main/README.md (upstream README).",
+      "Evidence gap: No authoritative Forge wrapper manifest or manifest-equivalent mapping was discovered in the inspected primary sources that maps hf-465f758-python312-cuda128-wrapper-20260529 to the upstream checkpoint; inspected primary URLs: https://huggingface.co/biohub/esmc-600m-2024-12, https://huggingface.co/biohub/esmc-600m-2024-12/commits/main, https://github.com/Biohub/esm/blob/main/README.md.",
+      "Evidence gap: The inspected primary sources do not include explicit checkpoint-scoped input-validation rules (allowed alphabet, explicit maximum sequence length) for biohub/esmc-600m-2024-12 at these locations: https://huggingface.co/biohub/esmc-600m-2024-12, https://huggingface.co/biohub/esmc-600m-2024-12/commits/main, https://github.com/Biohub/esm/blob/main/README.md.",
+      "Evidence gap: The inspected primary sources do not provide checkpoint-scoped post-inference calibration, normalization, or downstream validation procedures for biohub/esmc-600m-2024-12 at these locations: https://huggingface.co/biohub/esmc-600m-2024-12, https://github.com/Biohub/esm/blob/main/README.md, https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb."
+    ],
+    "family": "huggingface-co-biohub-esmc-600m-50cdefa50a",
+    "identity": {
+      "architecture": "Transformer; 36 layers; model dimension 1,152; 18 attention heads; head dimension 64; feed-forward hidden dimension 3,072; vocabulary size 64",
+      "checkpoint": "biohub/esmc-600m-2024-12",
+      "evidenceUrls": [
+        "https://huggingface.co/biohub/esmc-600m-2024-12",
+        "https://huggingface.co/biohub/esmc-600m-2024-12/commit/7b9acd43a0736e7d5027ac3eb8a011783ecc4590",
+        "https://huggingface.co/biohub/esmc-600m-2024-12/commit/4bd0526d5e04a7d088c00c8884c18f0f8eaa9d8c"
+      ],
+      "license": "cambrian-non-commercial-license-agreement",
+      "parameterScale": "600M",
+      "revision": "7b9acd43a0736e7d5027ac3eb8a011783ecc4590",
+      "upstreamName": "ESMC"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/biohub/esmc-600m-2024-12",
+            "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main",
+            "https://huggingface.co/biohub/esmc-6b-2024-12/blob/6ae7b4dd8630350e620a806d0b7ba67e53bcfd46/tokenizer.json"
+          ],
+          "statement": "Evidence gap: No checkpoint-scoped tokenizer.json, vocab file, or explicit tokenizer artifact path for biohub/esmc-600m-2024-12 was found in the inspected repository blobs/commits and model page; the esmc-6b tokenizer.json exists at a sibling repo path but does not establish an esmc-600m tokenizer artifact at the checked locations."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/biohub/esmc-600m-2024-12",
+            "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main",
+            "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+          ],
+          "statement": "Evidence gap: The inspected primary sources (model page, repository commits, and Colab notebook) do not publish checkpoint-scoped preprocessing/tokenization implementation files or explicit tokenization step-by-step code for biohub/esmc-600m-2024-12 at the checked paths."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/biohub/esmc-600m-2024-12",
+            "https://github.com/Biohub/esm/blob/main/README.md"
+          ],
+          "statement": "Protein-sequence inputs (the model and repository README identify this artifact as an ESMC protein model)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+          ],
+          "statement": "The upstream Colab cookbook demonstrates programmatic usage patterns and sets model_name to \"esmc-600m-2024-12\" in example code cells (usage example for sequence encoding/workflows)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/biohub/esmc-600m-2024-12",
+            "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main",
+            "https://github.com/Biohub/esm/blob/main/README.md"
+          ],
+          "statement": "Evidence gap: The inspected primary sources do not include explicit checkpoint-scoped input-validation rules (allowed alphabet, explicit maximum sequence length, or sanity bounds) for biohub/esmc-600m-2024-12 at the checked model page, README, or commit blobs."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://github.com/Biohub/esm/blob/main/README.md"
+        ],
+        "statement": "Training-data provenance and dataset-composition limitations: the ESMC family documentation and repository-level materials report pretraining data sources and sampling regimes at the family/variant level (used to inform model limitations), but checkpoint-scoped dataset-split or per-checkpoint provenance tables were not located at the checked model-card/commit blobs for biohub/esmc-600m-2024-12."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://huggingface.co/biohub/esmc-600m-2024-12/commit/7b9acd43a0736e7d5027ac3eb8a011783ecc4590"
+        ],
+        "statement": "Model-size and architecture reporting: architectural hyperparameters for the 600M variant (36 layers, model dim 1,152, 18 heads, head dim 64, FFN 3,072, vocab size 64) are reported in the model-card/commit-level repository blobs for the ESMC family and the 600M variant."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main",
+          "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+        ],
+        "statement": "Evidence gap: Exact context-length (maximum sequence length), checkpoint-scoped tokenizer files (tokenizer.json, vocab files) in the model repository blobs, explicit numeric embedding-dimension declarations for per-residue/per-sequence outputs, and a checkpoint-scoped JSON output schema were not found in the inspected primary locators for biohub/esmc-600m-2024-12."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/biohub/esmc-600m-2024-12",
+            "https://github.com/Biohub/esm/blob/main/README.md",
+            "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+          ],
+          "statement": "Evidence gap: No recommended normalization, pooling, calibration, or interpretation guidance for embedding outputs specific to biohub/esmc-600m-2024-12 was found in the inspected primary sources."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/biohub/esmc-600m-2024-12",
+            "https://github.com/Biohub/esm/blob/main/README.md",
+            "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+          ],
+          "statement": "Evidence gap: The inspected primary sources (model page, README, commits, and Colab cookbook) do not publish a checkpoint-scoped JSON output schema nor do they declare explicit numeric embedding-dimension values or a definitive per-residue vs per-sequence output shape for biohub/esmc-600m-2024-12 at the checked locations."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/biohub/esmc-600m-2024-12",
+            "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main"
+          ],
+          "statement": "Evidence gap: The inspected primary sources do not document post-inference quality-calibration procedures or explicit downstream validation checks for checkpoint outputs at the checked model repository blobs, commits, or Colab cells."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://github.com/Biohub/esm/blob/main/README.md",
+          "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+        ],
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "useCase": "Research and development: loading and experimentation with the esmc-600m-2024-12 checkpoint for protein representation and exploratory embedding extraction.",
+        "why": "The Hugging Face model page and repository README identify the checkpoint and packaging format; the upstream Biohub README demonstrates programmatic usage and the Colab cookbook sets model_name to \"esmc-600m-2024-12\" and shows encode/logits usage patterns."
+      }
+    ],
+    "researchSummary": "Primary-source inspection of the Hugging Face model landing page and repository commits for biohub/esmc-600m-2024-12, the upstream Biohub GitHub repository (Biohub/esm), and the official ESMC cookbook Colab notebook verifies the existence of the checkpoint biohub/esmc-600m-2024-12, the association to the ESMC family, the 600M parameter scale, and the architectural hyperparameters (36 layers; model dim 1152; 18 heads; head dim 64; FFN 3072; vocab size 64) as reported in the model card and commit-level repository blobs. The repository initial commit records a license name value of \"cambrian-non-commercial-license-agreement\" and LFS filters for large model artifacts. The Colab cookbook demonstrates programmatic usage with model_name set to \"esmc-600m-2024-12\". Primary gaps found in the inspected canonical locators include: no checkpoint-scoped tokenizer.json or explicit tokenizer artifact path for esmc-600m-2024-12 in the checked blobs, no explicit checkpoint-scoped JSON output schema or numeric embedding-dimension declaration for per-residue vs per-sequence outputs in the checked locators, no checkpoint-scoped numeric benchmark table/figure rows for this checkpoint in the checked model card/README/commits, and no authoritative Forge wrapper manifest mapping (hf-465f758-python312-cuda128-wrapper-20260529) discovered in the checked primary sources.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/biohub/esmc-600m-2024-12",
+          "https://github.com/Biohub/esm/blob/main/README.md",
+          "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+        ],
+        "statement": "Evidence gap: The inspected primary sources (model card, README blobs, commit history, and Colab cookbook) do not contain explicit checkpoint-scoped safety, privacy, or data-handling guidance specific to biohub/esmc-600m-2024-12 at the checked locations; consult repository owners or additional authoritative documents for safety-critical guidance."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model landing page for the checkpoint; used to verify model identifier, high-level metadata, and links to repository blobs/commits.",
+        "publisher": "HuggingFace",
+        "sourceType": "model-card",
+        "supports": [
+          "identity",
+          "model-identification",
+          "distribution",
+          "repositoryMetadata"
+        ],
+        "title": "biohub/esmc-600m-2024-12 model page",
+        "url": "https://huggingface.co/biohub/esmc-600m-2024-12"
+      },
+      {
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "primary": true,
+        "primaryReason": "Repository commit blob containing model-card lines and variant table entries that report the 600M variant hyperparameters and parameter counts.",
+        "publisher": "HuggingFace",
+        "sourceType": "repository",
+        "supports": [
+          "identity",
+          "architecture",
+          "model-identification"
+        ],
+        "title": "biohub/esmc-600m-2024-12 commit 7b9acd43a0736e7d5027ac3eb8a011783ecc4590",
+        "url": "https://huggingface.co/biohub/esmc-600m-2024-12/commit/7b9acd43a0736e7d5027ac3eb8a011783ecc4590"
+      },
+      {
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "primary": true,
+        "primaryReason": "Initial commit that adds LFS filters for model file extensions and records the repository license name value (cambrian-non-commercial-license-agreement).",
+        "publisher": "HuggingFace",
+        "sourceType": "repository",
+        "supports": [
+          "distribution",
+          "license",
+          "repositoryMetadata"
+        ],
+        "title": "biohub/esmc-600m-2024-12 commit 4bd0526d5e04a7d088c00c8884c18f0f8eaa9d8c (LFS filters and license entry)",
+        "url": "https://huggingface.co/biohub/esmc-600m-2024-12/commit/4bd0526d5e04a7d088c00c8884c18f0f8eaa9d8c"
+      },
+      {
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "primary": true,
+        "primaryReason": "Repository blob recording LFS/diff rules for model artifact file extensions, used to verify storage conventions for large model files.",
+        "publisher": "HuggingFace",
+        "sourceType": "repository",
+        "supports": [
+          "distribution",
+          "repositoryMetadata"
+        ],
+        "title": "biohub/esmc-600m-2024-12 .gitattributes (blame view)",
+        "url": "https://huggingface.co/biohub/esmc-600m-2024-12/blame/main/.gitattributes"
+      },
+      {
+        "modelScope": "biohub/esmc-600m-2024-12",
+        "primary": true,
+        "primaryReason": "Commit history page for the checkpoint repository used to inspect listed commits, README updates, and config additions/changes.",
+        "publisher": "HuggingFace",
+        "sourceType": "repository",
+        "supports": [
+          "revision",
+          "repositoryMetadata"
+        ],
+        "title": "biohub/esmc-600m-2024-12 commit history (commits main)",
+        "url": "https://huggingface.co/biohub/esmc-600m-2024-12/commits/main"
+      },
+      {
+        "modelScope": "ESMC family / upstream tooling",
+        "primary": true,
+        "primaryReason": "Canonical upstream project repository for the ESMC family; used to verify cookbook locations, README usage examples, and upstream tooling.",
+        "publisher": "Biohub (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "implementation",
+          "usage-example",
+          "upstream-code"
+        ],
+        "title": "Biohub/esm upstream GitHub repository",
+        "url": "https://github.com/Biohub/esm"
+      },
+      {
+        "modelScope": "ESMC family / upstream README",
+        "primary": true,
+        "primaryReason": "Upstream README demonstrating example code that creates an ESMC client with model=\"esmc-600m-2024-12\" and example encoding calls.",
+        "publisher": "Biohub (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "usage-example",
+          "implementation-example",
+          "model-identification"
+        ],
+        "title": "Biohub/esm README (upstream repository README)",
+        "url": "https://github.com/Biohub/esm/blob/main/README.md"
+      },
+      {
+        "modelScope": "ESMC family / cookbook",
+        "primary": true,
+        "primaryReason": "Official Colab tutorial demonstrating usage examples and showing model_name set to \"esmc-600m-2024-12\" in example notebook cells.",
+        "publisher": "Google Colab / Biohub",
+        "sourceType": "official-documentation",
+        "supports": [
+          "usage-example",
+          "tokenizer-retrieval-example",
+          "implementation-example"
+        ],
+        "title": "ESM cookbook — ESMC layer-sweep tutorial (Colab notebook)",
+        "url": "https://colab.research.google.com/github/biohub/esm/blob/main/cookbook/tutorials/esmc_layer_sweep.ipynb"
+      },
+      {
+        "modelScope": "ESMC family / esmc-6b-2024-12 (sibling artifact)",
+        "primary": true,
+        "primaryReason": "Tokenizer artifact observed for a sibling ESMC variant (esmc-6b-2024-12); inspected to check tokenization artifact conventions though it does not establish a tokenizer artifact for esmc-600m-2024-12.",
+        "publisher": "HuggingFace",
+        "sourceType": "repository",
+        "supports": [
+          "tokenizer-artifact-example",
+          "artifact-format"
+        ],
+        "title": "biohub/esmc-6b-2024-12 tokenizer.json (sibling variant artifact)",
+        "url": "https://huggingface.co/biohub/esmc-6b-2024-12/blob/6ae7b4dd8630350e620a806d0b7ba67e53bcfd46/tokenizer.json"
+      },
+      {
+        "modelScope": "biohub/ESMC-600M (Forge starting source)",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official starting source for the covered serving variant in the expected scope.",
+        "publisher": "HuggingFace",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/biohub/ESMC-600M"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "0144315a97ddf6dc213c9825431f28298b0385aeec4f97e55ca42a2986cacfd6",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-biohub-esmc-600m-50cdefa50a",
+  "researchedAt": "2026-08-06T11:20:37.793421+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/biohub/ESMC-600M",
+  "sourceUrls": [
+    "https://huggingface.co/biohub/ESMC-600M"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

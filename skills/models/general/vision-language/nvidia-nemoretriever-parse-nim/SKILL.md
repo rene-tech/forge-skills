@@ -76,6 +76,14 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-nemoretriever-parse-bf48b279ab`
+- Recommended: Document OCR and structured extraction from document images, producing reading-order text, per-element class labels, and bounding boxes — Official NVIDIA model card and VLM examples describe nemoretriever-parse as a document-focused vision-language model that extracts formatted text with bounding boxes and semantic class labels from images (e.g., title, section, caption, index, footnote, lists, tables, bibliography, image).
+- Avoid: Tasks requiring guaranteed production-grade reliability, regulatory certification, or formal external validation without additional engineering controls — The NVIDIA model card documents the artifact as intended for demonstration purposes and not recommended for production use (NIM/container-level statement).
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -93,11 +101,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-nemoretriever-parse-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-nemoretriever-parse-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-nemoretriever-parse-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/nvidia-nemoretriever-parse-nim/SKILL.md

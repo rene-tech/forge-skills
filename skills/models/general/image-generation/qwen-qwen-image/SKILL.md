@@ -63,6 +63,16 @@ Route: `POST /v1/inference/qwen-qwen-image`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-visual-genai-latest-getting-started-html-qwen-qwen-image-d3119f508b`
+- Recommended: Multilingual text-to-image generation with strong text rendering emphasis — NVIDIA overview documentation describes Qwen-Image as a text-to-image foundation model with strong capabilities in complex text rendering for English and Chinese, high-resolution output, and versatile styles. The upstream Qwen-Image model card also states strong capabilities in complex text rendering for alphabetic and logographic scripts.
+- Recommended: Self-hosted NVIDIA NIM deployment for Qwen-Image text-to-image inference — NVIDIA getting-started documentation explicitly documents the Qwen-Image NIM runtime, the NIM_MODEL_VERSION selector, and that the container defaults to qwen-image-2512 when unset.
+- Avoid: Using base Qwen-Image for image-editing workflows that require image inputs — NVIDIA documents Qwen-Image as a text-to-image foundation-model family, while Qwen-Image-Edit is separately documented as the image-editing family built on Qwen-Image.
+- Avoid: Deploying the NVIDIA NIM container without guardrails and safety mechanisms — The NGC Qwen-Image container page states that users are responsible for model inputs and outputs and must implement guardrails and safety mechanisms before deployment.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -80,11 +90,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen-image/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen-image/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen-image/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/qwen-qwen-image/SKILL.md

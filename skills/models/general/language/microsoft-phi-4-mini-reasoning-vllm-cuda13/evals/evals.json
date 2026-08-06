@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model microsoft-phi-4-mini-reasoning-vllm-cuda13 for this task: Compact/math reasoning and lightweight deployment scenarios (embedded tutoring, edge/mobile inference) as suggested by the model card's stated potential use cases.. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use microsoft-phi-4-mini-reasoning-vllm-cuda13 or another Forge model for Compact/math reasoning and lightweight deployment scenarios (embedded tutoring, edge/mobile inference) as suggested by the model card's stated potential use cases.?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use microsoft-phi-4-mini-reasoning-vllm-cuda13 for Evidence gap: No primary-source evidence in the repository explicitly documents avoid-use boundaries tied to this exact checkpoint (for example, explicit prohibitions on high-stakes clinical, legal, or safety-critical uses)., even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "microsoft-phi-4-mini-reasoning-vllm-cuda13",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-microsoft-phi-4-mini-reasoning-vllm-cuda13"
+}

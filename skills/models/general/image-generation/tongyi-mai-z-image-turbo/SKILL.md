@@ -71,6 +71,17 @@ Route: `POST /v1/inference/tongyi-mai-z-image-turbo`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-docs-diffusers-v0-38-0-en-api-pipelines-z-image-5995c81381`
+- Recommended: Text-to-image generation (photorealistic outputs) — Model README and commit metadata describe Z-Image-Turbo as a distilled variant optimized for photorealistic generation and list the pipeline tag as text-to-image; the arXiv paper describes Z-Image as an image-generation foundation model built on S3-DiT.
+- Recommended: Image-to-image editing / img2img workflows (where supported by pipeline instantiation) — Model README and model_index.json enumerate multiple Z-Image pipeline classes and the model repository describes generation and editing task scope; the model_index.json declares a pipeline of class "ZImagePipeline" and the model README describes generation and editing capabilities for the family.
+- Recommended: Inpainting / mask-guided editing (pipeline variants within the Z-Image family) — The README and model-index describe inpainting/editing variants in the Z-Image family and the model repository exposes pipeline classes tied to editing tasks.
+- Avoid: Clinical or medical diagnostic use — No primary-source clinical validation, regulatory claims, or PHI-handling guidance for this checkpoint are present in the inspected upstream artifacts; the model repository and paper do not provide documented clinical validation materials for Turbo.
+- Avoid: Safety-/compliance-critical use requiring built-in NSFW flags or calibrated safety/confidence outputs — The examined primary upstream artifacts do not document emitted NSFW scores, calibrated confidence outputs, or built-in safety flags for the checkpoint; no upstream evidence shows the checkpoint provides such signals.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -89,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/tongyi-mai-z-image-turbo/inference-routes`
 - Regional deployment: `/v1/models/tongyi-mai-z-image-turbo/regional-deployment`
 - Serverless handoff: `/v1/models/tongyi-mai-z-image-turbo/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/tongyi-mai-z-image-turbo/SKILL.md

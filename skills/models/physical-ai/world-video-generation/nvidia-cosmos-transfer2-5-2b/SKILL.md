@@ -73,6 +73,18 @@ Route: `POST /v1/inference/nvidia-cosmos-transfer2-5-2b`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-cosmos-transfer2-5-2b-modelcard-e510edc819`
+- Recommended: Physics-aware video/world-state generation conditioned on text plus multiple structured video control modalities for Physical AI research and synthetic-data generation (robotics, autonomous-vehicle perception) — Model card, product docs, and the research lab page describe the model as purpose-built for Physical AI and accepting multiple structured video control modalities for generating world-state video/images.
+- Recommended: Controlled video-to-video transfer and sim-to-real synthetic-data generation using simulator-derived control maps (depth, segmentation, edges, blur) for data augmentation and training downstream perception models — Product documentation and research lab examples describe workflows for simulation-to-photorealism and scaling world-state diversity using structured control inputs accepted by Transfer2.5.
+- Recommended: Multi-view/multi-camera conditional generation producing view-consistent frames per camera in multi-camera world scenarios — Model card and research examples document multi-view/multi-camera example inputs (seven-camera examples) and show view-consistent generation examples at 1280×720 resolution.
+- Avoid: Applications requiring provable, formal physical‑law guarantees or certified multi-agent-dynamics correctness without downstream validation — Evidence gap: primary NVIDIA model card, product docs, and research lab page describe physics-aware world-state generation but do not provide proofs, formal guarantees, or evaluation protocols certifying provable physics-grounding or multi-agent dynamics correctness for the named checkpoint.
+- Avoid: Production deployment on non-Linux operating systems without vendor validation — Evidence gap: available primary documentation includes Docker/NIM container usage and runtime flags but does not publish explicit cross-platform (non-Linux) support claims or validated runtime matrices for non-Linux OSes.
+- Avoid: Assuming upstream-checkpoint parity with NIM/container TensorRT/FP8 quantized performance/precision without explicit validation — Evidence gap / NIM-only: NGC container listing documents container-level optimizations (TensorRT, FP8) but primary model pages do not publish the exact precisions tested/supported for the upstream checkpoint itself; treat container optimizations as NIM-level evidence.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -90,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-transfer2-5-2b/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-transfer2-5-2b/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-transfer2-5-2b/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-transfer2-5-2b/SKILL.md

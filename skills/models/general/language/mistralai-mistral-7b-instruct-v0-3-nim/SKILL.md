@@ -66,6 +66,14 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-mistralai-mistral-7b-instruct-v0-3-7fdb5ba9c3`
+- Recommended: Instruction-following text tasks (general QA, summarization, instruction-following dialogue) — Upstream model card and README describe Mistral-7B-Instruct-v0.3 as an instruct-fine-tuned variant and provide examples demonstrating instruction-following and chat usage.
+- Avoid: Deploying as an autonomous safety- or clinical-decision-maker without human/expert oversight — Upstream README and model-card explicitly state the model does not include built-in moderation mechanisms and recommend applying external guardrails before high-stakes use.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +92,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/inference-routes`
 - Regional deployment: `/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/regional-deployment`
 - Serverless handoff: `/v1/models/mistralai-mistral-7b-instruct-v0-3-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/mistralai-mistral-7b-instruct-v0-3-nim/SKILL.md

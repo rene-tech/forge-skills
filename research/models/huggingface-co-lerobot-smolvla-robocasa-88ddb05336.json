@@ -1,0 +1,584 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5] uses forbidden secondary URL https://huggingface.co/papers/2506.01844",
+        "path": "$.sources[5] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.inputPreparation.acceptedFormats[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.inputPreparation.acceptedFormats[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.inputPreparation.validation[3] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.inputPreparation.validation[3] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.outputInterpretation.outputs[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.outputInterpretation.outputs[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.outputInterpretation.interpretation[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.outputInterpretation.interpretation[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.outputInterpretation.validation[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.outputInterpretation.validation[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.limitations[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.limitations[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.limitations[5] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.limitations[5] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.safety[3] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.safety[3] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 10 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "Hidden onboarding candidate for lerobot/smolvla_robocasa, a SmolVLA-family vision-language-action policy fine-tuned on the RoboCasa target-human unified dataset.",
+      "displayName": "Use Hugging Face LeRobot SmolVLA RoboCasa",
+      "group": "robotics-control",
+      "inputModalities": [
+        "text",
+        "image",
+        "robot_state"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "huggingface-lerobot-smolvla",
+      "outputModalities": [
+        "robot_action"
+      ],
+      "slug": "huggingface-lerobot-smolvla-robocasa",
+      "sourceUrl": "https://huggingface.co/lerobot/smolvla_robocasa",
+      "version": "robocasa-38d38bf-wrapper-candidate-20260601t03z",
+      "versionKey": "robocasa"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4",
+          "https://github.com/huggingface/lerobot/issues/1377"
+        ],
+        "modelScope": "lerobot/smolvla_robocasa",
+        "reason": "No checkpoint-scoped public benchmark table rows (dataset, split, metric, value) were present in the checked primary sources for lerobot/smolvla_robocasa.",
+        "useCase": "Selecting this checkpoint on the basis of verified public benchmark superiority"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "modelScope": "lerobot/smolvla_robocasa",
+        "reason": "Commit metadata and model card provide configuration values but do not expose a full serialized request schema, explicit robot-state field names, action units or bounds, or output-confidence semantics for this checkpoint.",
+        "useCase": "Treating the checkpoint as a fully specified control-interface contract (serialized request schema, robot-state field names, action units/bounds, confidence semantics)"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "allenai/MolmoAct2-SO100_101",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows were found comparing lerobot/smolvla_robocasa to this alternative on the same dataset/split/metric.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "Checked the checkpoint's model card and commit metadata; neither contains a protocol-matched benchmark row comparing the exact checkpoints.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_libero",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "Model card and commit page do not present direct comparative benchmark rows between lerobot/smolvla_robocasa and lerobot/smolvla_libero.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_libero_plus",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "No direct comparison rows or protocol-matched evaluations found on the checkpoint's model card or commit page.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_robotwin",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "No direct comparison rows or protocol-matched evaluations found on the checkpoint's model card or commit page.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_vlabench",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "No direct comparison rows or protocol-matched evaluations found on the checkpoint's model card or commit page.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/xvla-base",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "No direct comparison rows or protocol-matched evaluations found on the checkpoint's model card or commit page.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/xvla-google-robot",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "No direct comparison rows or protocol-matched evaluations found on the checkpoint's model card or commit page.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "rail-berkeley/octo-small-1.5",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "No direct comparison rows or protocol-matched evaluations found on the checkpoint's model card or commit page.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "SberRoboticsCenter/GreenVLA-2b-base",
+        "comparisonConditions": "No shared dataset/split/metric rows present in the checked sources.",
+        "criteria": "No protocol-matched primary benchmark rows comparing these exact checkpoints were present in the checked sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "rationale": "No direct comparison rows or protocol-matched evaluations found on the checkpoint's model card or commit page.",
+        "task": "Robotics-control comparison",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Model card asserts deployability on consumer-grade hardware but the commit metadata does not provide checkpoint-specific latency, memory, throughput, or control-loop validation; downstream runtime validation required.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "modelScope": "lerobot/smolvla_robocasa (checkpoint page claim applied cautiously)",
+        "useCase": "Deployment on consumer-grade hardware (validate runtime suitability before production)"
+      },
+      {
+        "conditions": "Commit metadata lists chunk_size=50, n_action_steps=50, max_state_dim=32, max_action_dim=32 and action shape [12], but the serialized request schema and exact field names are not provided; downstream validation required.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "modelScope": "lerobot/smolvla_robocasa revision b828f0619690645c9e306cedcc09e17b422339e4",
+        "useCase": "Integrating checkpoint where exact observation/action schema compatibility matters"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No checkpoint-scoped public benchmark rows (dataset, split, metric, numeric value) found in the checked primary URLs: https://huggingface.co/lerobot/smolvla_robocasa (model card), https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4 (commit page), https://github.com/huggingface/lerobot/issues/1377 (repo issue).",
+      "Evidence gap: Parameter count for lerobot/smolvla_robocasa is not reported in the checked primary sources: https://huggingface.co/lerobot/smolvla_robocasa, https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4.",
+      "Evidence gap: The full serialized input schema and explicit robot-state field names for this checkpoint are not present in the checked primary sources: https://huggingface.co/lerobot/smolvla_robocasa, https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4.",
+      "Evidence gap: Action units, explicit action bounds, and calibrated output-confidence semantics are not present in the checked primary sources: https://huggingface.co/lerobot/smolvla_robocasa, https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4.",
+      "Evidence gap: A distinct code license or model-weight license string is not reported in the commit metadata (license field is null) at https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4."
+    ],
+    "family": "huggingface-co-lerobot-smolvla-robocasa-88ddb05336",
+    "identity": {
+      "architecture": "SmolVLA-family vision-language-action policy",
+      "checkpoint": "lerobot/smolvla_robocasa",
+      "evidenceUrls": [
+        "https://huggingface.co/lerobot/smolvla_robocasa",
+        "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4",
+        "https://github.com/huggingface/lerobot/issues/1377"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "b828f0619690645c9e306cedcc09e17b422339e4",
+      "upstreamName": "lerobot/smolvla_robocasa"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa"
+          ],
+          "statement": "Hugging Face model card provides usage instructions for inference via libraries, inference providers, notebooks, and local applications (no checkpoint-scoped serialized request schema provided)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa",
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Evidence gap: The primary findings do not specify the full serialized request schema or explicit robot-state field names for this checkpoint."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Images are resized with padding to [512, 512] (commit metadata lists resize_imgs_with_padding = [512, 512])."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Normalization mapping in commit metadata: VISUAL -> IDENTITY."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Normalization mapping in commit metadata: STATE -> MEAN_STD."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Normalization mapping in commit metadata: ACTION -> MEAN_STD."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot/issues/1377",
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "pad_language_to is set to 'max_length' and add_image_special_tokens is false in the commit metadata."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa"
+          ],
+          "statement": "The model accepts vision (multi-camera) inputs as part of SmolVLA family behavior (family-level description in model card)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa"
+          ],
+          "statement": "The model accepts robot sensorimotor state as an input (family-level SmolVLA description on the model card)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa"
+          ],
+          "statement": "The model conditions on a natural-language instruction (family-level SmolVLA description on the model card)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa"
+          ],
+          "statement": "Family-level documentation (model card) states SmolVLA conditions on natural language, multi-camera views, and robot state to generate an action chunk; no checkpoint-scoped prompt template is provided."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa",
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Evidence gap: No exact official prompt template or serialized request example for lerobot/smolvla_robocasa was found in the checked primary sources."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4",
+            "https://github.com/huggingface/lerobot/issues/1377"
+          ],
+          "statement": "Validate that inputs do not exceed configured dimensional caps: max_state_dim = 32 and max_action_dim = 32 (commit metadata)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot/issues/1377",
+            "https://huggingface.co/lerobot/smolvla_robocasa"
+          ],
+          "statement": "Evidence gap: The primary findings do not specify batching limits, truncation behavior beyond pad_language_to, or an exact observation-history length (n_obs_steps is reported in an issue snippet but full serialized schema is absent)."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "statement": "No checkpoint-scoped public benchmark rows (dataset, split, metric, numeric value) were found in the checked primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "statement": "Parameter count for this exact checkpoint is not reported in the checked primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://github.com/huggingface/lerobot/issues/1377"
+        ],
+        "statement": "The checked primary findings do not provide a full serialized input contract (explicit robot-state field names or complete request schema)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4",
+          "https://huggingface.co/lerobot/smolvla_robocasa"
+        ],
+        "statement": "Action units, explicit action bounds, and confidence-score semantics for outputs are not specified in the checked primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "statement": "The commit metadata's 'license' field is null; no distinct code license or model-weight license string is reported in the checked primary sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa",
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Interpret the model outputs as robot-action feature vectors (the commit metadata and model card describe action generation; no confidence-score semantics are provided)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa",
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Evidence gap: The primary findings do not specify action units, explicit action bounds, or calibrated confidence semantics for outputs."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Commit metadata lists an output feature named 'action' with type 'ACTION' and shape [12]."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Commit metadata lists chunk_size = 50 and n_action_steps = 50 (these configure action-chunk length at the checkpoint level)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa"
+          ],
+          "statement": "Family-level documentation describes outputs as action chunks (model card)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+          ],
+          "statement": "Post-inference validation should confirm downstream consumers interpret outputs consistent with type ACTION and shape [12], and apply ACTION normalization (commit metadata maps ACTION -> MEAN_STD)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robocasa",
+            "https://github.com/huggingface/lerobot/issues/1377"
+          ],
+          "statement": "Evidence gap: The primary findings do not describe calibrated quality, robustness checks, or acceptance/rejection rules for individual actions."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa"
+        ],
+        "modelScope": "lerobot/smolvla_robocasa",
+        "useCase": "Use as a RoboCasa robotics policy checkpoint within the LeRobot framework",
+        "why": "The Hugging Face model card identifies the checkpoint as lerobot/smolvla_robocasa and describes SmolVLA as a compact vision-language-action model trained/pushed using LeRobot (model-card)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa"
+        ],
+        "modelScope": "Family-level SmolVLA guidance cautiously applied to lerobot/smolvla_robocasa",
+        "useCase": "Family-level SmolVLA fine-tuning or adaptation workflows using the LeRobot toolchain (apply cautiously to this checkpoint)",
+        "why": "The model card indicates SmolVLA family intent and that the model was trained/pushed with LeRobot; this supports family-level fine-tuning/adaptation guidance but not checkpoint-scoped templates."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "modelScope": "lerobot/smolvla_robocasa revision b828f0619690645c9e306cedcc09e17b422339e4",
+        "useCase": "RoboCasa-targeted development using the training-data lineage stated in the checkpoint commit metadata",
+        "why": "The commit metadata lists pretrained_path 'lerobot/smolvla_base' and identifies the checkpoint as tied to RoboCasa-target training metadata (commit page)."
+      }
+    ],
+    "researchSummary": "Primary upstream evidence verifies the exact checkpoint upstreamName lerobot/smolvla_robocasa at revision b828f0619690645c9e306cedcc09e17b422339e4 (Hugging Face model page and the commit page). Family-level description on the model card and commit-scoped metadata identify SmolVLA as a compact vision-language-action policy suitable for RoboCasa use. The commit metadata (commit page) lists chunk_size=50, n_action_steps=50, output_features includes an action feature type ACTION with shape [12], max_state_dim=32, max_action_dim=32, resize_imgs_with_padding=[512,512], and normalization_mapping mapping VISUAL->IDENTITY, STATE->MEAN_STD, ACTION->MEAN_STD. The primary findings do not report a parameter count, do not provide an explicit model-weight or code license string on the commit page, and do not include any checkpoint-scoped public benchmark table rows, serialized request schema, explicit robot-state field names, action units/bounds, or calibrated output-confidence semantics.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa",
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "statement": "Evidence gap: The checked primary sources do not report checkpoint-specific safety-validation criteria, action-filtering rules, or calibrated acceptance/rejection rules for model outputs."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+        ],
+        "statement": "Evidence gap: Because action units and bounds are not reported, downstream human review and controlled validation are recommended before safety-critical actuation."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robocasa"
+        ],
+        "statement": "Evidence gap: The checked primary sources do not specify privacy, clinical, or biosecurity handling requirements for this checkpoint."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "lerobot/smolvla_robocasa",
+        "primary": true,
+        "primaryReason": "Official upstream model page for the exact checkpoint named in scope; contains family description and usage instructions.",
+        "publisher": "Hugging Face LeRobot",
+        "sourceType": "model-card",
+        "supports": [
+          "identity",
+          "researchSummary",
+          "recommendedUseCases",
+          "conditionalUseCases",
+          "avoidUseCases",
+          "inputPreparation",
+          "outputInterpretation",
+          "limitations",
+          "safety"
+        ],
+        "title": "lerobot/smolvla_robocasa",
+        "url": "https://huggingface.co/lerobot/smolvla_robocasa"
+      },
+      {
+        "modelScope": "lerobot/smolvla_robocasa revision b828f0619690645c9e306cedcc09e17b422339e4",
+        "primary": true,
+        "primaryReason": "Official commit page for the exact checkpoint revision; contains checkpoint-scoped configuration metadata (chunk_size, n_action_steps, output_features, normalization mapping, max dims, resize settings).",
+        "publisher": "Hugging Face LeRobot",
+        "sourceType": "model-card",
+        "supports": [
+          "identity",
+          "researchSummary",
+          "conditionalUseCases",
+          "inputPreparation",
+          "outputInterpretation",
+          "limitations",
+          "safety"
+        ],
+        "title": "smolvla_robocasa commit b828f0619690645c9e306cedcc09e17b422339e4",
+        "url": "https://huggingface.co/lerobot/smolvla_robocasa/commit/b828f0619690645c9e306cedcc09e17b422339e4"
+      },
+      {
+        "modelScope": "lerobot/smolvla family/config snippets",
+        "primary": true,
+        "primaryReason": "Repository issue page included in the provided research findings and containing additional reported configuration snippets used as primary evidence in this dossier.",
+        "publisher": "GitHub - Hugging Face/lerobot",
+        "sourceType": "repository",
+        "supports": [
+          "inputPreparation",
+          "limitations",
+          "researchSummary"
+        ],
+        "title": "GitHub issue: lerobot #1377",
+        "url": "https://github.com/huggingface/lerobot/issues/1377"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "966790a41bdc59d10546a6db09e38d4663225d505e09f60c1e7ea26ba728f7fb",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-lerobot-smolvla-robocasa-88ddb05336",
+  "researchedAt": "2026-08-06T12:08:14.255398+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/lerobot/smolvla_robocasa",
+  "sourceUrls": [
+    "https://huggingface.co/lerobot/smolvla_robocasa"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

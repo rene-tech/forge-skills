@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model bytedance-seed-oss-36b-instruct-vllm-cuda13 for this task: Instruction\u2011following and chat-style generation (instruct/checkpoint canonical formatting). Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use bytedance-seed-oss-36b-instruct-vllm-cuda13 or another Forge model for Instruction\u2011following and chat-style generation (instruct/checkpoint canonical formatting)?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use bytedance-seed-oss-36b-instruct-vllm-cuda13 for Clinical, medical, or PHI-sensitive applications without explicit upstream clinical validation or PHI-handling guidance, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "bytedance-seed-oss-36b-instruct-vllm-cuda13",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-bytedance-seed-oss-36b-instruct-vllm-cuda13"
+}

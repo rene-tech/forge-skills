@@ -92,6 +92,17 @@ Route: `POST /v1/inference/nvidia-cosmos3-omni`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-nvidia-cosmos-ea-cosmos3-nano-d55efb7b36`
+- Recommended: Physical‑AI world modeling and multimodal generation for research and synthetic-data creation (text->image, text->video, image->video) — The Hugging Face Cosmos3-Nano model card and the NIM model card describe Cosmos3-Nano as an omnimodal world model intended for Physical AI applications and synthetic-data generation; the model page lists supported modalities and intended application domains.
+- Recommended: Research and experimentation with policy/action SFT variants (policy-tuned Nano research variants) — The Hugging Face model card facts reference policy variants (e.g., Cosmos3-Nano-Policy-DROID) and the model assets include example prompts and tokenizer/config artifacts that support research workflows for action/policy modeling.
+- Avoid: Turnkey clinical or medical decision‑making without independent clinical validation — The SAFETY.md states the model is not safety‑certified for life‑critical use and requires system‑level validation and safeguards; no clinical validation artifacts or approvals are present in the supplied findings.
+- Avoid: Assuming per‑sample calibrated confidence outputs are provided by the checkpoint for automated safety decisions — The supplied findings (model card and blobs) do not document calibrated per-sample confidence outputs or a calibration protocol for generated modalities.
+- Avoid: High‑resolution, long‑horizon video generation assumed to be physically accurate without downstream verification — The Hugging Face model facts in the supplied findings state outputs should not be treated as physically accurate simulation or safety‑certified decision making and advise additional validation for robotics/control applications.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -109,11 +120,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos3-omni-nano/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos3-omni-nano/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos3-omni-nano/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-nano/SKILL.md

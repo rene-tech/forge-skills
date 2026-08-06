@@ -73,6 +73,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-gliner-pii-59057755e4`
+- Recommended: Automated detection and redaction of Personally Identifiable Information (PII) and Protected Health Information (PHI) in structured and unstructured UTF-8 text for enterprise/regulatory workflows — NVIDIA model-card and NIM documentation state the model is intended to detect and classify PII/PHI and to emit span-level annotations with confidence scores across 55+ categories, making it suitable as a component in redaction workflows.
+- Recommended: Integration as a PII detection/masking guardrail in NeMo Guardrails-based pipelines for input/output monitoring and masking — NeMo Guardrails documentation references the model identifier and documents request/response fields and default thresholding behavior, supporting integration as a Guardrails component.
+- Avoid: Using the model as a generative language model for text synthesis or instruction-following — Primary-source facts describe GLiNER PII as a non-generative span-tagging model that performs span-level entity annotation rather than text generation.
+- Avoid: Non-text input modalities (audio, image) without upstream conversion to UTF-8 text — All primary-source facts indicate the checkpoint accepts UTF-8 text strings as input; no primary evidence indicates the checkpoint accepts raw audio or images.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -91,11 +101,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-gliner-pii-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-gliner-pii-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-gliner-pii-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/multimodal-and-specialized/nvidia-gliner-pii-nim/SKILL.md

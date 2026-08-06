@@ -87,6 +87,14 @@ Route: `POST /biology/mit/boltz2/predict`
 Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.
 Read `references/evidence.md` for 1 reviewed public claim(s) and their exact scope.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-mit-boltz2-596898d726`
+- Recommended: High-throughput binding-affinity prediction and hit-discovery workflows for small molecules and ligands — Primary sources describe Boltz-2 as capable of both structure prediction and binding-affinity prediction with an affinity head and high-throughput screening utility; the MF-PCBA benchmark results reported in canonical sources support affinity-screening usage
+- Avoid: Clinical or patient-data-driven predictions — No primary evidence supporting clinical applicability; licensing and safety boundaries apply per NVIDIA NIM terms and model-card scope
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -105,11 +113,15 @@ Read `references/evidence.md` for 1 reviewed public claim(s) and their exact sco
 - Routes: `/v1/models/boltz2-nim/inference-routes`
 - Regional deployment: `/v1/models/boltz2-nim/regional-deployment`
 - Serverless handoff: `/v1/models/boltz2-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/docking-affinity/boltz2-nim/SKILL.md

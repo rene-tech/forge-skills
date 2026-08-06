@@ -1,0 +1,396 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://huggingface.co/lerobot/smolvla_robotwin",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[1] uses unapproved repository owner 'arrow-hf' for this exact model scope",
+        "path": "$.sources[1] uses unapproved repository owner 'arrow-hf' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2] uses unapproved repository owner 'collections' for this exact model scope",
+        "path": "$.sources[2] uses unapproved repository owner 'collections' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "path": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 4 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "SmolVLA RobotWin is an Apache-2.0 LeRobot SmolVLA policy checkpoint fine-tuned from lerobot/smolvla_base on the pepijn223/robotwin_unified_v3 dataset.",
+      "displayName": "Use Hugging Face LeRobot SmolVLA RobotWin",
+      "group": "robotics-control",
+      "inputModalities": [
+        "text",
+        "image",
+        "robot_state"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "huggingface-lerobot-smolvla",
+      "outputModalities": [
+        "robot_action",
+        "json"
+      ],
+      "slug": "huggingface-lerobot-smolvla-robotwin",
+      "sourceUrl": "https://huggingface.co/lerobot/smolvla_robotwin",
+      "version": "robotwin-967623a-wrapper-candidate-20260528t09z",
+      "versionKey": "robotwin"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+        ],
+        "modelScope": "lerobot/smolvla_robotwin (blob/main/config.json)",
+        "reason": "The checkpoint-scoped config.json sets \"license\" to null (no declared model-weight license text) and the inspected checkpoint-scoped primary files do not include an immutable checkpoint version tag or commit hash; therefore provenance and licensing are not verifiably documented for this checkpoint.",
+        "useCase": "Avoid use in safety-critical deployments that require a declared model-weight license, an immutable checkpoint revision, or explicit creator-published safety guidance."
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "lerobot/smolvla_base",
+        "comparisonConditions": "Protocol-matched comparison is not possible from checkpoint-scoped primary evidence; any comparison would require explicit checkpoint-scoped evaluation artifacts for lerobot/smolvla_robotwin or re-evaluation under a documented protocol.",
+        "criteria": "No checkpoint-scoped numeric benchmark rows or same-protocol evaluation entries for lerobot/smolvla_robotwin were found to enable a protocol-matched quantitative comparison to lerobot/smolvla_base; upstream-family results exist in the SmolVLA paper but are not scoped to this fine-tuned checkpoint.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json",
+          "https://huggingface.co/lerobot/smolvla_base",
+          "https://arxiv.org/pdf/2506.01844"
+        ],
+        "rationale": "The lerobot/smolvla_robotwin config.json declares pretrained_path = \"lerobot/smolvla_base\" indicating a fine-tune relationship, but the inspected checkpoint-scoped primary files do not contain numeric benchmark results or evaluation protocol details that would support a direct numeric comparison under the same protocol.",
+        "task": "robot-policy evaluation (checkpoint-scoped numeric benchmarks)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [],
+    "evidenceGaps": [
+      "Evidence gap: Exact immutable checkpoint locator (file name, release tag, git commit hash, or other immutable revision) for lerobot/smolvla_robotwin is not present in the inspected checkpoint-scoped primary source (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json).",
+      "Evidence gap: Tokenizer artifact files (tokenizer.json, vocab files, tokenizer_config.json) and tokenization implementation for lerobot/smolvla_robotwin are not present in the inspected checkpoint-scoped primary files; only tokenizer_max_length is declared in config.json (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json).",
+      "Evidence gap: Parameter count (number of model parameters / model scale) for lerobot/smolvla_robotwin is not reported in the inspected checkpoint-scoped primary source; upstream-base parameter-count claims (if any) were not used as checkpoint-scoped evidence for this fine-tuned checkpoint (checked sources: https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json, https://huggingface.co/lerobot/smolvla_base).",
+      "Evidence gap: No creator-published recommended-use statement for lerobot/smolvla_robotwin was found in the inspected checkpoint-scoped primary source (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json).",
+      "Evidence gap: No creator-published safety, privacy, adversarial, or deployment guidance specific to lerobot/smolvla_robotwin was found in the inspected checkpoint-scoped primary files (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json).",
+      "Evidence gap: No checkpoint-scoped numeric benchmark results (dataset/split/metric/value) or same-protocol benchmark tables for lerobot/smolvla_robotwin were found in the inspected checkpoint-scoped primary files (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json); upstream family-level benchmarks exist in the SmolVLA paper (https://arxiv.org/pdf/2506.01844) but are not scoped to this exact fine-tuned checkpoint.",
+      "Evidence gap: No explicit input JSON/HTTP contract, example request payloads, or formal request schema for lerobot/smolvla_robotwin were found in the inspected checkpoint-scoped primary files (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json).",
+      "Evidence gap: No checkpoint-scoped declaration of action-parameter units, coordinate-frame conventions, or an output JSON schema for action payloads for lerobot/smolvla_robotwin was found in the inspected primary files (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json).",
+      "Evidence gap: No post-inference validation rules, bounds checks, or example output validation guidance for this checkpoint were found in the inspected checkpoint-scoped primary files (https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json).",
+      "Evidence gap: No checkpoint-scoped comparisons with numeric, protocol-matched benchmarks for lerobot/smolvla_robotwin were found; therefore protocol-matched numeric comparison is not possible from checkpoint-scoped primary evidence (checked sources: https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json; upstream context: https://arxiv.org/pdf/2506.01844)."
+    ],
+    "family": "huggingface-co-lerobot-smolvla-robotwin-74d33dc92d",
+    "identity": {
+      "architecture": "type = \"smolvla\" (as declared in config.json)",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json",
+        "https://huggingface.co/lerobot/smolvla_robotwin"
+      ],
+      "license": "null (config.json sets \"license\" = null; no declared model-weight license text present in inspected checkpoint-scoped primary source)",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "lerobot/smolvla_robotwin"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Visual inputs are declared as type \"VISUAL\" with per-camera shape [3, 256, 256] in the checkpoint config."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "State inputs are declared as type \"STATE\" with shape [6] in the checkpoint config; checkpoint config also declares max_state_dim = 32."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "resize_imgs_with_padding is set to [512, 512] in the checkpoint config."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Normalization mappings are declared in the checkpoint config as: VISUAL \u2192 IDENTITY; STATE \u2192 MEAN_STD; ACTION \u2192 MEAN_STD."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Temporal/chunking parameters are declared in the checkpoint config: chunk_size = 50 and n_action_steps = 50."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "tokenizer_max_length is set to 48 in the checkpoint config."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Input feature observation.images.camera1 is declared as type VISUAL with shape [3, 256, 256] in the checkpoint config."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Input feature observation.images.camera2 is declared as type VISUAL with shape [3, 256, 256] in the checkpoint config."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Input feature observation.images.camera3 is declared as type VISUAL with shape [3, 256, 256] in the checkpoint config."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Input feature observation.state is declared as type STATE with shape [6] in the checkpoint config (config also declares max_state_dim = 32)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: The inspected checkpoint-scoped primary source (config.json) does not list tokenizer artifact files (tokenizer.json, vocab files, tokenizer_config.json) or tokenization implementation for this checkpoint; only tokenizer_max_length is present."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: The inspected checkpoint-scoped primary source (config.json) does not include an explicit input JSON/HTTP contract, example request payloads, or a formal request schema; only feature shapes and normalization mappings are declared."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+        ],
+        "statement": "The checkpoint config.json sets \"license\" to null; no declared model-weight license text for this checkpoint was found in the inspected checkpoint-scoped primary source."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: Exact immutable checkpoint locator (file name, release tag, git commit hash, or other immutable revision) for lerobot/smolvla_robotwin is not present in the inspected checkpoint-scoped primary source."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: Tokenizer artifact files (tokenizer.json, vocab files, tokenizer_config.json) and tokenization implementation for lerobot/smolvla_robotwin are not present in the inspected checkpoint-scoped primary files; only tokenizer_max_length is declared in config.json."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: Parameter count (number of model parameters / model scale) for lerobot/smolvla_robotwin is not reported in the inspected checkpoint-scoped primary source; upstream-family or upstream-base parameter-count claims (if any) were not used as checkpoint-scoped evidence for this fine-tuned checkpoint."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: The checkpoint-scoped primary source (config.json) does not define units for action parameters, coordinate-frame conventions, or an output JSON schema for action payloads."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Policy output configuration declared in the checkpoint config: action feature is of type ACTION with shape [14]; chunk_size = 50; n_action_steps = 50; max_action_dim = 32."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: The checkpoint-scoped primary source (config.json) does not provide post-inference validation rules, bounds checks, or example output validation guidance for action outputs."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+        ],
+        "modelScope": "lerobot/smolvla_robotwin (blob/main/config.json)",
+        "useCase": "Evidence gap: No creator-published recommended-use statement for lerobot/smolvla_robotwin was found in the inspected checkpoint-scoped primary source.",
+        "why": "The checkpoint config.json contains configuration keys describing input/output feature shapes, temporal parameters, and runtime flags but does not contain an explicit creator-published 'intended use' or recommended-use section for this checkpoint."
+      }
+    ],
+    "researchSummary": "Checkpoint-scoped primary evidence for lerobot/smolvla_robotwin in the inspected canonical repository files and model hub page is limited to the model hub listing and the repository config.json. The config.json (lerobot/smolvla_robotwin blob/main/config.json) declares: pretrained_path = \"lerobot/smolvla_base\" (indicating this checkpoint is fine-tuned from an upstream base), type = \"smolvla\", input feature shapes observation.images.camera1/2/3 = [3, 256, 256], observation.state shape = [6], output action shape = [14], chunk_size = 50, n_action_steps = 50, max_state_dim = 32, max_action_dim = 32, resize_imgs_with_padding = [512, 512], normalization mappings VISUAL \u2192 IDENTITY, STATE \u2192 MEAN_STD, ACTION \u2192 MEAN_STD, tokenizer_max_length = 48, tokenizer-related artifacts are not listed in the checkpoint files inspected, optimizer and scheduler hyperparameters (learning rate, betas, eps, weight_decay, grad_clip_norm, warmup_steps, decay_steps, decay_lr) are present in the config.json, device and runtime flags (device=\"cuda\", use_amp=false, use_peft=false, push_to_hub=true, use_cache=true, attention_mode=\"cross_attn\", freeze_vision_encoder=false, train_expert_only=false, train_state_proj=true) are declared, and the VLM model name used is declared as \"HuggingFaceTB/SmolVLM2-500M-Video-Instruct\" with load_vlm_weights = true. The config.json explicitly sets \"license\" = null. The Hugging Face model hub page (lerobot/smolvla_robotwin) is the canonical listing entry point. Upstream family-level context (SmolVLA paper on arXiv and the lerobot/smolvla_base model page) exist and were inspected only as upstream/family context; no checkpoint-scoped numeric benchmark rows, immutable checkpoint locator (file name, release tag, commit hash), tokenizer artifact files, or declared parameter-count for this exact checkpoint were found in the inspected checkpoint-scoped primary sources.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: No creator-published safety, privacy, adversarial, or deployment guidance specific to the lerobot/smolvla_robotwin checkpoint was found in the inspected checkpoint-scoped primary source."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "lerobot/smolvla_robotwin (blob/main/config.json)",
+        "primary": true,
+        "primaryReason": "This checkpoint-scoped config.json contains the checkpoint's declared pretrained_path, input/output feature shapes, normalization mappings, tokenizer_max_length, policy temporal parameters, runtime flags, optimizer/scheduler hyperparameters, and the explicit license = null field used for checkpoint-scoped claims and evidence gaps.",
+        "publisher": "lerobot (Hugging Face model repository)",
+        "sourceType": "repository",
+        "supports": [
+          "\"pretrained_path\" = \"lerobot/smolvla_base\"",
+          "\"type\" = \"smolvla\"",
+          "input features: observation.images.camera1/camera2/camera3 shape [3, 256, 256]",
+          "input feature: observation.state shape [6]",
+          "output feature: action shape [14]",
+          "\"chunk_size\" = 50",
+          "\"n_action_steps\" = 50",
+          "\"max_state_dim\" = 32",
+          "\"max_action_dim\" = 32",
+          "\"resize_imgs_with_padding\" = [512, 512]",
+          "\"normalization\" mappings: VISUAL \u2192 IDENTITY, STATE \u2192 MEAN_STD, ACTION \u2192 MEAN_STD",
+          "\"tokenizer_max_length\" = 48",
+          "optimizer hyperparameters (learning rate, betas, eps, weight_decay, grad_clip_norm)",
+          "scheduler parameters (warmup_steps, decay_steps, decay learning rate)",
+          "\"device\" = \"cuda\"",
+          "\"use_amp\" = false",
+          "\"use_peft\" = false",
+          "\"push_to_hub\" = true",
+          "\"attention_mode\" = \"cross_attn\"",
+          "\"use_cache\" = true",
+          "\"freeze_vision_encoder\" = false",
+          "\"train_expert_only\" = false",
+          "\"train_state_proj\" = true",
+          "\"vlm_model_name\" = \"HuggingFaceTB/SmolVLM2-500M-Video-Instruct\"",
+          "\"load_vlm_weights\" = true",
+          "\"license\" = null"
+        ],
+        "title": "lerobot/smolvla_robotwin config.json (model repository file)",
+        "url": "https://huggingface.co/lerobot/smolvla_robotwin/blob/main/config.json"
+      },
+      {
+        "modelScope": "lerobot/smolvla_robotwin (model hub page)",
+        "primary": true,
+        "primaryReason": "The Hugging Face model page is the canonical checkpoint listing and hub page; it is the declared starting source for the checkpoint and references the repository files used for checkpoint-scoped claims.",
+        "publisher": "lerobot (Hugging Face model repository)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Canonical model hub listing for lerobot/smolvla_robotwin",
+          "Entry point to checkpoint-scoped files (config.json and other repository files)"
+        ],
+        "title": "lerobot/smolvla_robotwin (model page)",
+        "url": "https://huggingface.co/lerobot/smolvla_robotwin"
+      },
+      {
+        "modelScope": "lerobot/smolvla_base (model hub page)",
+        "primary": true,
+        "primaryReason": "Upstream base-model repository listed in the checkpoint config.json as pretrained_path; used strictly as upstream-checkpoint evidence for base-model identity and configuration context, not as checkpoint-scoped evidence for lerobot/smolvla_robotwin.",
+        "publisher": "lerobot (Hugging Face model repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Upstream base-model identity and config references",
+          "Context for pretrained_path declared by lerobot/smolvla_robotwin"
+        ],
+        "title": "lerobot/smolvla_base model page (upstream base model)",
+        "url": "https://huggingface.co/lerobot/smolvla_base"
+      },
+      {
+        "modelScope": "SmolVLA family (arXiv preprint)",
+        "primary": true,
+        "primaryReason": "Canonical arXiv preprint for SmolVLA used as upstream family-level evidence for architecture and evaluation protocol descriptions; inspected only for family/upstream context and not attributed as checkpoint-scoped evidence unless the paper explicitly reports results for this exact checkpoint.",
+        "publisher": "arXiv (preprint)",
+        "sourceType": "paper",
+        "supports": [
+          "Family-level architectural and benchmark descriptions for SmolVLA used as upstream context"
+        ],
+        "title": "SmolVLA paper (arXiv PDF)",
+        "url": "https://arxiv.org/pdf/2506.01844"
+      },
+      {
+        "modelScope": "huggingface/lerobot (LICENSE)",
+        "primary": true,
+        "primaryReason": "Project-level LICENSE file for the LeRobot repository; supports project-code license statements but does not override the checkpoint-scoped \"license\" = null in the checkpoint config.json.",
+        "publisher": "Hugging Face (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "LeRobot project-level licensing statements (project code license text and patent grant) as published in the repository LICENSE file"
+        ],
+        "title": "LeRobot GitHub LICENSE (project-level license file)",
+        "url": "https://github.com/huggingface/lerobot/blob/main/LICENSE"
+      },
+      {
+        "modelScope": "huggingface/lerobot (pyproject.toml)",
+        "primary": true,
+        "primaryReason": "Project metadata file listing the project license as Apache-2.0; used as upstream project evidence regarding repository packaging metadata but not documented as the model-weight license for the checkpoint.",
+        "publisher": "Hugging Face (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Project-level license field set to Apache-2.0 in pyproject.toml (project packaging metadata)"
+        ],
+        "title": "LeRobot pyproject.toml (project metadata including license field)",
+        "url": "https://github.com/huggingface/lerobot/blob/main/pyproject.toml"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "a2ac7775b9faa331b81fa0168bdaa5855582e1440e351d66b441c59a4b75a012",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-lerobot-smolvla-robotwin-74d33dc92d",
+  "researchedAt": "2026-08-06T12:44:52.431152+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/lerobot/smolvla_robotwin",
+  "sourceUrls": [
+    "https://huggingface.co/lerobot/smolvla_robotwin"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

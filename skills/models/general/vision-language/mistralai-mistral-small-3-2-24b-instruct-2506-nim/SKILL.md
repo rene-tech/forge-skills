@@ -83,6 +83,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-vision-language-models-1-3-1-examples-mistral-small-3-2-api-html-97f486063a`
+- Recommended: Multimodal instruction-following (text+image) with post-processing and user-provided guardrails — NGC container entry and NVIDIA NIM release notes document multimodal/image support and instruction-following improvements for Mistral-Small-3.2-24B-Instruct-2506; HuggingFace model card describes the checkpoint as an instruct-tuned variant with instruction-following improvements.
+- Avoid: Relying on native structured-generation outputs from the upstream checkpoint without wrapper/tooling — NVIDIA NIM release notes explicitly state that structured generation is not supported for Mistral Small 3.2 24B Instruct 2506 in the NIM release-notes entry for this model.
+- Avoid: Accuracy-critical text-only inference when using FP8 profiles on Hopper GPUs — NVIDIA NIM release notes note that accuracy of text-only requests may be lower on FP8 profiles on Hopper GPUs for this model.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -101,11 +110,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/inference-routes`
 - Regional deployment: `/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/regional-deployment`
 - Serverless handoff: `/v1/models/mistralai-mistral-small-3-2-24b-instruct-2506-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/mistralai-mistral-small-3-2-24b-instruct-2506-nim/SKILL.md

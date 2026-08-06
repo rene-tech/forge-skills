@@ -1,0 +1,660 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forge checkpoint-scoped model research dossier",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "family",
+    "identity",
+    "researchSummary",
+    "recommendedUseCases",
+    "conditionalUseCases",
+    "avoidUseCases",
+    "inputPreparation",
+    "outputInterpretation",
+    "benchmarks",
+    "comparisons",
+    "limitations",
+    "safety",
+    "sources",
+    "evidenceGaps"
+  ],
+  "properties": {
+    "family": {
+      "type": "string",
+      "description": "The exact Forge research key supplied in the prompt; copy it verbatim."
+    },
+    "identity": {
+      "type": "object",
+      "description": "Checkpoint-scoped identity and license facts verified from primary sources.",
+      "additionalProperties": false,
+      "required": [
+        "upstreamName",
+        "checkpoint",
+        "revision",
+        "parameterScale",
+        "architecture",
+        "license",
+        "evidenceUrls"
+      ],
+      "properties": {
+        "upstreamName": {
+          "type": "string",
+          "description": "The canonical upstream model or service name."
+        },
+        "checkpoint": {
+          "type": "string",
+          "description": "The exact checkpoint, model version, or NIM/service version; say not reported when absent."
+        },
+        "revision": {
+          "type": "string",
+          "description": "The immutable source/model revision when published; say not reported when absent."
+        },
+        "parameterScale": {
+          "type": "string",
+          "description": "Parameter count or other model scale exactly as reported; say not reported when absent."
+        },
+        "architecture": {
+          "type": "string",
+          "description": "The model architecture and task head at the scope covered by this dossier."
+        },
+        "license": {
+          "type": "string",
+          "description": "The exact model-weight and code license distinction; say not reported where necessary."
+        },
+        "evidenceUrls": {
+          "type": "array",
+          "description": "Primary-source URLs supporting the identity fields.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "researchSummary": {
+      "type": "string",
+      "description": "A concise checkpoint-scoped summary of supported uses and the most important evidence limits."
+    },
+    "recommendedUseCases": {
+      "type": "array",
+      "description": "Tasks directly supported for this exact checkpoint by primary evidence.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "useCase",
+          "why",
+          "modelScope",
+          "evidenceUrls"
+        ],
+        "properties": {
+          "useCase": {
+            "type": "string",
+            "description": "A concrete task for which this exact checkpoint is recommended."
+          },
+          "why": {
+            "type": "string",
+            "description": "The checkpoint-scoped evidence supporting the recommendation."
+          },
+          "modelScope": {
+            "type": "string",
+            "description": "The exact checkpoint, head, adapter, or serving mode to which the recommendation applies."
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs supporting the recommendation.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "conditionalUseCases": {
+      "type": "array",
+      "description": "Tasks appropriate only under explicit constraints or after downstream validation.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "useCase",
+          "conditions",
+          "modelScope",
+          "evidenceUrls"
+        ],
+        "properties": {
+          "useCase": {
+            "type": "string",
+            "description": "A concrete task that may be appropriate conditionally."
+          },
+          "conditions": {
+            "type": "string",
+            "description": "Required constraints, calibration, expert review, or downstream validation."
+          },
+          "modelScope": {
+            "type": "string",
+            "description": "The exact model scope covered by the conditional recommendation."
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs supporting the conditional recommendation.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "avoidUseCases": {
+      "type": "array",
+      "description": "Tasks for which the checkpoint should not be selected.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "useCase",
+          "reason",
+          "modelScope",
+          "evidenceUrls"
+        ],
+        "properties": {
+          "useCase": {
+            "type": "string",
+            "description": "A concrete task to avoid."
+          },
+          "reason": {
+            "type": "string",
+            "description": "The evidence-based limitation or explicit absence of validation."
+          },
+          "modelScope": {
+            "type": "string",
+            "description": "The model scope to which the exclusion applies."
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs supporting the exclusion; empty only when the stated reason is a documented evidence gap.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputPreparation": {
+      "type": "object",
+      "description": "Scientific/task-level input semantics and preparation, independent of the Forge transport envelope.",
+      "additionalProperties": false,
+      "required": [
+        "semanticInputs",
+        "acceptedFormats",
+        "preprocessing",
+        "validation",
+        "taskSpecificFormatting"
+      ],
+      "properties": {
+        "semanticInputs": {
+          "type": "array",
+          "description": "The real-world entities or data types consumed by the model.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic input-semantics claim."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the claim.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "acceptedFormats": {
+          "type": "array",
+          "description": "Officially accepted upstream formats and scope.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic accepted-format claim."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the claim.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "preprocessing": {
+          "type": "array",
+          "description": "Ordered normalization, tokenization, resizing, featurization, or preprocessing requirements.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic preprocessing requirement."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the requirement.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "validation": {
+          "type": "array",
+          "description": "Checks required before submission, including bounds and invalid or ambiguous cases.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic input-validation rule."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the rule.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "taskSpecificFormatting": {
+          "type": "array",
+          "description": "Official prompt templates, paired-input order, control fields, or task formatting.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic task-formatting rule."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the rule.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "outputInterpretation": {
+      "type": "object",
+      "description": "Output objects, valid interpretation, and post-inference validation.",
+      "additionalProperties": false,
+      "required": [
+        "outputs",
+        "interpretation",
+        "validation"
+      ],
+      "properties": {
+        "outputs": {
+          "type": "array",
+          "description": "Objects emitted by the official model or implementation.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic output-contract claim, including shape, unit, or score semantics when known."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the claim.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "interpretation": {
+          "type": "array",
+          "description": "How to interpret output values without overstating confidence or meaning.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic output-interpretation rule."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the rule.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "validation": {
+          "type": "array",
+          "description": "Post-inference quality, calibration, sanity, or downstream validation checks.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statement",
+              "evidenceUrls"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "description": "One atomic post-inference validation rule."
+              },
+              "evidenceUrls": {
+                "type": "array",
+                "description": "Primary-source URLs supporting the rule.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "benchmarks": {
+      "type": "array",
+      "description": "Checkpoint-matched public benchmark claims with enough protocol detail to prevent invalid comparisons.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "task",
+          "dataset",
+          "split",
+          "metric",
+          "value",
+          "direction",
+          "modelScope",
+          "conditions",
+          "sourceUrl",
+          "sourceLocator",
+          "caveats"
+        ],
+        "properties": {
+          "task": {
+            "type": "string",
+            "description": "The evaluated task."
+          },
+          "dataset": {
+            "type": "string",
+            "description": "The exact benchmark dataset or suite."
+          },
+          "split": {
+            "type": "string",
+            "description": "The exact split/subset; say not reported when the primary source omits it."
+          },
+          "metric": {
+            "type": "string",
+            "description": "The exact metric name and aggregation."
+          },
+          "value": {
+            "type": "string",
+            "description": "The reported value with units, uncertainty, or range when present."
+          },
+          "direction": {
+            "type": "string",
+            "description": "The metric direction; copy one enum value exactly.",
+            "enum": [
+              "higher-is-better",
+              "lower-is-better",
+              "context-only"
+            ]
+          },
+          "modelScope": {
+            "type": "string",
+            "description": "The exact checkpoint, scale, adapter, precision, task head, and evaluation mode covered by the claim."
+          },
+          "conditions": {
+            "type": "string",
+            "description": "Protocol details required for comparability, including prompting, retrieval, fine-tuning, ensemble, input shape, or leakage caveats."
+          },
+          "sourceUrl": {
+            "type": "string",
+            "description": "The primary source URL containing the benchmark claim."
+          },
+          "sourceLocator": {
+            "type": "string",
+            "description": "The exact table, figure, section, appendix, page, model-card heading, or repository path containing the claim."
+          },
+          "caveats": {
+            "type": "array",
+            "description": "Reasons this result may not be directly comparable to another.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "comparisons": {
+      "type": "array",
+      "description": "Task- and criterion-specific comparisons with named alternatives; no global winner claims.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "alternative",
+          "task",
+          "verdict",
+          "criteria",
+          "rationale",
+          "comparisonConditions",
+          "evidenceUrls"
+        ],
+        "properties": {
+          "alternative": {
+            "type": "string",
+            "description": "The exact alternative model/checkpoint or family."
+          },
+          "task": {
+            "type": "string",
+            "description": "The task and setting for which the comparison applies."
+          },
+          "verdict": {
+            "type": "string",
+            "description": "The scoped selection result; copy one enum value exactly.",
+            "enum": [
+              "prefer-this",
+              "prefer-alternative",
+              "tradeoff",
+              "insufficient-evidence"
+            ]
+          },
+          "criteria": {
+            "type": "string",
+            "description": "The decisive quality, cost, latency, modality, license, context, or operational criteria."
+          },
+          "rationale": {
+            "type": "string",
+            "description": "A scoped explanation grounded in comparable primary evidence."
+          },
+          "comparisonConditions": {
+            "type": "string",
+            "description": "The protocol conditions that match, differ, or prevent direct comparison."
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs supporting both sides of the comparison.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "description": "Scientific, data, architecture, evaluation, licensing, and operational limitations.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement",
+          "evidenceUrls"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "One atomic documented limitation."
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs supporting the limitation; empty only for an explicitly labeled conservative policy guard.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "safety": {
+      "type": "array",
+      "description": "Model-specific privacy, biosecurity, clinical, dual-use, human-review, and data-handling requirements.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement",
+          "evidenceUrls"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "One atomic safety or data-handling requirement; label conservative Forge policy when not stated upstream."
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs supporting the statement; empty only for a clearly labeled conservative Forge policy guard.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "The primary evidence set used by this dossier.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "url",
+          "publisher",
+          "sourceType",
+          "primary",
+          "primaryReason",
+          "modelScope",
+          "supports"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The source title."
+          },
+          "url": {
+            "type": "string",
+            "description": "The canonical source URL."
+          },
+          "publisher": {
+            "type": "string",
+            "description": "The model creator, official repository owner, original study authors, or standards body."
+          },
+          "sourceType": {
+            "type": "string",
+            "description": "The primary evidence type; copy one enum value exactly.",
+            "enum": [
+              "paper",
+              "model-card",
+              "repository",
+              "official-documentation",
+              "technical-report"
+            ]
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "True only for first-party documentation/repository/model card or an original research publication."
+          },
+          "primaryReason": {
+            "type": "string",
+            "description": "Why this publisher/source is primary for the specific claims it supports."
+          },
+          "modelScope": {
+            "type": "string",
+            "description": "The checkpoint, family, runtime, benchmark study, or implementation scope covered by the source."
+          },
+          "supports": {
+            "type": "array",
+            "description": "The specific dossier claims supported by this source.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "evidenceGaps": {
+      "type": "array",
+      "description": "Important unanswered questions, missing checkpoint results, incomparable benchmarks, or unvalidated runtime behavior.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

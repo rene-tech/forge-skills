@@ -15,7 +15,8 @@
         "required": [
           "slug", "skillName", "path", "category", "group", "modelFamily",
           "versionKey", "inputModalities", "outputModalities",
-          "researchStatus", "contentSha256"
+          "researchStatus", "deepResearchStatus", "researchKey",
+          "researchDossierPath", "groupResearchPath", "contentSha256"
         ],
         "properties": {
           "slug": {"type": "string"},
@@ -30,6 +31,13 @@
           "researchStatus": {
             "enum": ["reviewed", "source-linked", "pending-review"]
           },
+          "deepResearchStatus": {
+            "enum": ["accepted", "revised", "missing"]
+          },
+          "researchKey": {"type": ["string", "null"]},
+          "researchDossierPath": {"type": ["string", "null"]},
+          "groupResearchPath": {"type": ["string", "null"]},
+          "upstreamAgentSkillCount": {"type": "integer", "minimum": 0},
           "contentSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
         },
         "additionalProperties": true

@@ -1,0 +1,503 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3].primary must be true",
+        "path": "$.sources[3].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[1]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[1]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 2 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "Early-access Cosmos 3 Nano Reasoner VLM served through a Forge-owned Qwen3-VL runtime.",
+      "displayName": "Use NVIDIA Cosmos 3 Reasoner (Nano)",
+      "group": "physical-ai",
+      "inputModalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "license": "nvidia-software-model-evaluation-license",
+      "modelFamily": "nvidia-cosmos3-reasoner",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "nvidia-cosmos3-reasoner-nano",
+      "sourceUrl": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner",
+      "version": "nano-bf16-ea",
+      "versionKey": "nano-bf16"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+        ],
+        "modelScope": "Cosmos3 family / Cosmos3-Nano Reasoner (family-level provenance)",
+        "reason": "Family-level documentation and the model entry note that outputs should not be treated as physically accurate simulation or safety-certified decision making; safety-critical applications require additional validation and guardrails.",
+        "useCase": "Treating Cosmos3-Nano outputs as physically accurate simulation or provably safe/safety-certified decision-making"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "The reported Table 28 row lacks explicit dataset name and split in the checked artifact.",
+          "Full protocol details (prompting, input preprocessing, precision, batching) are not present in the checked Table 28 entry necessary for direct reproduction."
+        ],
+        "conditions": "Table 28 reports domain-aggregate scores but does not include explicit dataset name(s), exact evaluation split identifiers, prompting or input-shaping protocol, batching/precision details, or full evaluation script/config needed for protocol reproduction in the checked artifact.",
+        "dataset": "not reported (dataset name/split not specified in the checked Table 28 row)",
+        "direction": "higher-is-better",
+        "metric": "Domain score (aggregate domain-level scores reported in Table 28)",
+        "modelScope": "Cosmos3-Nano Reasoner as referenced in Table 28 of the NVIDIA technical report (family/checkpoint-referenced row in the technical report).",
+        "sourceLocator": "Table 28 (technical report)",
+        "sourceUrl": "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+        "split": "not reported",
+        "task": "Text-to-video (family/domain aggregate scores reported)",
+        "value": "Reported in Table 28: overall T2V domain score improved from 73.7 to 75.7 when replacing Qwen3-VL-8B with Cosmos3\u2011Nano Reasoner; Robot domain +4.8 (66.5\u219271.3), Physics +0.5 (88.7\u219289.2), Autonomous Vehicles +2.3 (52.6\u219254.9)."
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "nvidia-cosmos3-reasoner-super",
+        "comparisonConditions": "Checked primary locations: technical-report Table 28 and surrounding tables; Build model card; NVIDIA GitHub inference_benchmarks.md. These do not contain the full paired protocol rows for the two checkpoints under identical, fully-described evaluation conditions.",
+        "criteria": "No primary-source, protocol-matched head-to-head comparison rows binding both explicit evaluated checkpoint identifiers and full protocol details were found in the checked primary artifacts.",
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+          "https://research.nvidia.com/labs/cosmos-lab"
+        ],
+        "rationale": "The NVIDIA technical report and Cosmos Lab materials present family-level and some checkpoint-referenced improvements (e.g., Table 28 mentions Cosmos3\u2011Nano Reasoner replacement effects) but do not provide matched, protocol-complete numeric rows naming both Cosmos3-Nano and the alternative checkpoint with dataset/split/metric and immutable checkpoint artifact identifiers required for direct head-to-head comparability.",
+        "task": "family-level domain understanding/generation comparisons",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "The Generator pathway and Generator-serving artifacts are described at family level in NVIDIA materials; confirm the availability, exact image/tag, and serving contract of a published Generator NIM/container (if required) before assuming deployed inference capability or claiming precise runtime behavior.",
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+          "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md"
+        ],
+        "modelScope": "Cosmos3 family Generator pathway (family-level provenance)",
+        "useCase": "Use of the Generator pathway for multimodal generation (images, video, actions) in production workflows"
+      },
+      {
+        "conditions": "Family-level documentation and the NVIDIA Build model card indicate Nano targets lower inference cost; validate precise runtime/precision/quantization support, exact container image tags, and tested hardware from authoritative NGC or container product pages before deployment.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+          "https://research.nvidia.com/labs/cosmos-lab"
+        ],
+        "modelScope": "Cosmos3-Nano (family-level/Build model-card provenance)",
+        "useCase": "Workstation/accelerated inference deployments of Cosmos3-Nano for efficient inference"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: The checked primary artifacts do not publish immutable checkpoint filename(s), exact upstream model-weight download URL(s), or cryptographic hash(es) for Cosmos3-Nano Reasoner. Checked locations: research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf (see architecture and tables), build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune (model card), github.com/NVIDIA/cosmos cookbooks README and inference_benchmarks.md, catalog.ngc.nvidia.com org/container page, and arXiv record https://arxiv.org/abs/2606.02800.",
+      "Evidence gap: The checked primary artifacts do not list tokenizer artifact filenames (tokenizer.json, vocab files, merges, tokenizer config) or explicit tokenization/truncation rules (max token lengths, special token semantics). Checked locations: Build model card, NVIDIA GitHub cookbooks README, technical report PDF.",
+      "Evidence gap: The checked primary artifacts do not provide per-dataset provenance tables or explicit per-dataset filtering rules enumerating exclusion of restricted content at the per-dataset or per-example level. Checked locations: technical report (checked benchmark/appendix sections including Table 28), arXiv preprint record.",
+      "Evidence gap: Canonical Hugging Face repository/asset listing for the exact Forge-declared slug 'huggingface-co-nvidia-cosmos-ea-cosmos3-nano-reasoner-4225bbfc6d' (immutable model-card files, per-checkpoint asset listing) was not found among the inspected primary artifacts; checked locations: Hugging Face model entry https://huggingface.co/nvidia/Cosmos3-Nano and NVIDIA Build model card and NVIDIA GitHub cookbooks README.",
+      "Evidence gap: Exact serving/container image digests, immutable container artifact digests/tags and compressed image sizes for published NIM/container artifacts are not published in the inspected NGC catalog entry or Build model card; checked locations: NGC catalog page and GitHub README.",
+      "Evidence gap: Protocol-complete, checkpoint-scoped benchmark rows that include dataset name, dataset split, metric definition, numeric value, and an immutable evaluated checkpoint identifier (filename/hash) suitable for direct reproduction were not found in the inspected primary artifacts (see technical report Table 28 for family/checkpoint-referenced deltas but missing dataset/split/protocol binding)."
+    ],
+    "family": "huggingface-co-nvidia-cosmos-ea-cosmos3-nano-reasoner-4225bbfc6d",
+    "identity": {
+      "architecture": "Mixture-of-Transformers two-tower design (Reasoner: autoregressive transformer; Generator: diffusion transformer). Includes 3D multimodal RoPE (mRoPE). (Family-level architecture reported in the NVIDIA Cosmos3 technical report and Cosmos Lab landing materials.)",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+        "https://research.nvidia.com/labs/cosmos-lab",
+        "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune"
+      ],
+      "license": "OpenMDW-1.1 (stated in the NVIDIA build model card entry)",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "Cosmos3-Nano Reasoner"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+            "https://research.nvidia.com/labs/cosmos-lab"
+          ],
+          "statement": "The authoritative sources describe accepted modalities (text, image, video, audio, actions) at family level but do not enumerate exact file codecs, MIME types, container formats, resolution/bitrate limits, or exact audio sample-rate constraints in the checked primary artifacts."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Reasoner pathway: text is handled via autoregressive next-token generation semantics; Generator pathway: non-text modalities are synthesized via iterative denoising and the pipeline conditions the Generator on structured JSON from the Reasoner (family-level description)."
+        },
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Architectural preprocessing detail: Cosmos3 uses a 3D multimodal RoPE (mRoPE) positional encoding mechanism for multimodal inputs (family-level architectural description)."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Family-level accepted semantic modalities: text, image, video, audio, and action/trajectory sequences."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+            "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+            "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md"
+          ],
+          "statement": "Evidence gap: The checked primary artifacts do not provide canonical prompt templates, paired-input ordering conventions, or explicit inference instruction-format examples for the Cosmos3-Nano Reasoner checkpoint."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+            "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+            "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+            "https://arxiv.org/abs/2606.02800"
+          ],
+          "statement": "Evidence gap: Immutable checkpoint filenames, exact upstream model-weight download URLs, and cryptographic hashes for Cosmos3-Nano Reasoner are not reported in the checked primary artifacts (technical report, Build model card, NVIDIA GitHub cookbook, NGC catalog, arXiv entry)."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+            "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Evidence gap: Tokenizer artifact filenames (tokenizer.json, vocab files, merges, tokenizer config) and explicit tokenization/truncation rules (max token counts, special token semantics) are not enumerated in the checked primary artifacts."
+        },
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+            "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune"
+          ],
+          "statement": "Evidence gap: The checked primary artifacts do not enumerate precise accepted file-codec/container constraints (permitted video codecs, maximum resolution limits, audio codecs, or exact sample rates) for serving inputs."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+          "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+          "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://arxiv.org/abs/2606.02800"
+        ],
+        "statement": "Evidence gap: Immutable checkpoint filenames, exact upstream model-weight download URLs, and cryptographic hashes (e.g., SHA256) for the Cosmos3-Nano Reasoner checkpoint are not present in the checked primary artifacts (technical report, Build model card, NVIDIA GitHub cookbook, NGC catalog, arXiv record)."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+          "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+        ],
+        "statement": "Evidence gap: Tokenizer artifacts (tokenizer.json, vocab files, merges, tokenizer-config) and explicit tokenization/truncation rules (max tokens, special tokens) for Cosmos3-Nano Reasoner are not enumerated in the checked primary artifacts."
+      },
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+          "https://arxiv.org/abs/2606.02800"
+        ],
+        "statement": "Evidence gap: Per-dataset provenance, per-dataset licensing metadata, and explicit per-example filtering rules for pretraining and evaluation corpora are not enumerated in the checked primary artifacts (technical report and arXiv record do not provide per-dataset tables with provenance in the inspected sections)."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner",
+          "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md",
+          "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune"
+        ],
+        "statement": "Evidence gap: Canonical serving/container image tags, compressed image sizes, and exact NGC container artifact metadata (including explicit NGC product terms for any containers) for a published Cosmos3 Generator or Reasoner NIM are not present in the checked primary artifacts; the NGC catalog page describes the Reasoner container product but the checked page does not publish immutable container digests or downloadable checkpoint file hashes."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Text outputs should be interpreted under standard autoregressive next-token semantics; the primary artifacts do not document calibrated per-token probability export or a standardized confidence-score format."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Evidence gap: The checked primary artifacts do not specify per-token probability export fields, calibrated confidence scores, or a canonical per-output confidence schema."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Text outputs: autoregressively generated discrete token sequences from the Reasoner pathway (next-token decoding semantics described at family level)."
+        },
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Image and video outputs: non-text modalities synthesized by the Generator pathway via iterative denoising, conditioned on Reasoner-produced structured JSON (family-level description)."
+        },
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+          ],
+          "statement": "Action outputs: structured action states/trajectories (JSON-style) are described as an output modality produced by the Reasoner and used to condition the Generator or downstream systems (family-level description)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+            "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune"
+          ],
+          "statement": "Evidence gap: Post-inference validation checks, recommended downstream sanity tests, or explicit calibration/verification procedures for generated modalities are not specified in the checked primary artifacts."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+        ],
+        "modelScope": "Cosmos3 family / Cosmos3-Nano Reasoner (family-level Reasoner pathway provenance)",
+        "useCase": "Multimodal reasoning (question answering, spatial grounding, temporal reasoning, action understanding) from paired vision-language inputs",
+        "why": "The NVIDIA Cosmos3 technical report describes the Reasoner pathway as trained on paired vision-language data to support question answering, spatial grounding, temporal reasoning, and action understanding."
+      },
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+        ],
+        "modelScope": "Cosmos3 family / Cosmos3-Nano Reasoner (Reasoner pathway, family-level provenance)",
+        "useCase": "Autoregressive text generation conditioned on multimodal context (next-token decoding via the Reasoner pathway)",
+        "why": "The technical report describes the Reasoner as an autoregressive tower that generates discrete structured/text outputs (next-token semantics) for downstream conditioning and interpretation."
+      },
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+        ],
+        "modelScope": "Cosmos3 family / Cosmos3-Nano (family-level provenance)",
+        "useCase": "Physical-AI world understanding and simulation support (foundational building block for robotics, autonomous vehicles, and smart spaces) when integrated with appropriate domain validation",
+        "why": "The Cosmos Lab landing and technical report describe Cosmos3 as targeted at Physical AI tasks (robotics, AV, smart spaces) and as a world-modeling foundation combining reasoning and generation."
+      }
+    ],
+    "researchSummary": "Cosmos3 is a two-tower Mixture-of-Transformers family (Reasoner + Generator) developed by NVIDIA Cosmos Lab. The Reasoner pathway is an autoregressive vision-language model trained on paired vision-language data for multimodal reasoning tasks; the Generator pathway performs iterative denoising generation and can be conditioned on Reasoner outputs. The NVIDIA technical report documents family-level architecture details (layer counts, hidden dimensions, attention heads) and reports family/ checkpoint-referenced ablations (e.g., Table 28 shows replacing Qwen3-VL-8B with Cosmos3\u2011Nano Reasoner yields measured domain-score improvements on text-to-video understanding domains). The primary authoritative artifacts checked for this dossier were: the NVIDIA Cosmos3 technical report PDF (Table 28 and architecture tables), the NVIDIA Cosmos Lab landing page, the NVIDIA GitHub cookbooks README and inference benchmark docs, the NVIDIA Build model card for cosmos3-nano-reasoner, the NVIDIA NGC catalog entry for the Cosmos3 Reasoner container, and the arXiv preprint record. Where checkpoint-scoped immutable artifacts (exact checkpoint filenames, stable weight download URLs, cryptographic hashes), tokenizer file listings, per-dataset provenance tables, canonical Hugging Face model-card files for the exact Forge catalog slug, or protocol-complete benchmark rows were not present in those primary locations, this dossier records explicit evidence gaps and names the exact primary locations inspected.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+        ],
+        "statement": "The Build.NVIDIA model card and NVIDIA materials state the model and NIMs are provided for commercial usage under OpenMDW-1.1 as listed on the Build model card entry; confirm licensing terms from the Build model card and NGC product pages prior to redistribution or embedding in commercial products."
+      },
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+          "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+        ],
+        "statement": "Evidence gap: The checked primary artifacts do not enumerate operational data-handling policies (PHI/PII-specific rules), clinical-use restrictions, or explicit mandatory human-review requirements; such operational safety/data-handling policies are not documented in the inspected technical report, Build model card, NGC catalog entry, or GitHub cookbook README."
+      },
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf",
+          "https://arxiv.org/abs/2606.02800"
+        ],
+        "statement": "Evidence gap: Per-dataset filtering rules and explicit statements enumerating exclusion of restricted content at a per-dataset or per-example granularity are not present in the checked primary artifacts (technical report and arXiv record)."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Cosmos3 family technical report (family-level architecture, Reasoner and Generator pathway descriptions, Table 28 benchmarks)",
+        "primary": true,
+        "primaryReason": "Official NVIDIA technical report documenting family architecture, training description, and benchmark tables (e.g., Table 28).",
+        "publisher": "NVIDIA (Cosmos Lab)",
+        "sourceType": "technical-report",
+        "supports": [
+          "architecture",
+          "Reasoner and Generator pathway design",
+          "3D multimodal RoPE (mRoPE)",
+          "benchmark tables referenced as Table 28"
+        ],
+        "title": "Cosmos3 technical report",
+        "url": "https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf"
+      },
+      {
+        "modelScope": "Cosmos3 family landing and summary",
+        "primary": true,
+        "primaryReason": "Official NVIDIA landing page summarizing Cosmos3 family capabilities and linking to primary artifacts.",
+        "publisher": "NVIDIA (Cosmos Lab)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "family-level capability summary",
+          "statements about family targets (Physical AI, robotics, smart spaces)"
+        ],
+        "title": "NVIDIA Cosmos Lab (Cosmos3 family landing)",
+        "url": "https://research.nvidia.com/labs/cosmos-lab"
+      },
+      {
+        "modelScope": "Canonical arXiv preprint record for Cosmos3 (paper-level metadata)",
+        "primary": true,
+        "primaryReason": "Canonical preprint record for the Cosmos3 paper as an authoritative preprint entry; used for paper metadata verification.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "canonical preprint identifier and metadata"
+        ],
+        "title": "arXiv: Cosmos 3: Omnimodal World Models for Physical AI",
+        "url": "https://arxiv.org/abs/2606.02800"
+      },
+      {
+        "modelScope": "NVIDIA/cosmos GitHub cookbook for Cosmos3 (cookbook README content, NIM image names, runtime hints)",
+        "primary": true,
+        "primaryReason": "Official NVIDIA repository documentation describing NIM images, cookbook usage, and runtime notes (Reasoner and Generator NIM image names referenced here).",
+        "publisher": "NVIDIA (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "NIM image names and README-level runtime notes",
+          "cookbook deployment and configuration examples"
+        ],
+        "title": "NVIDIA GitHub: Cosmos3 cookbooks README",
+        "url": "https://github.com/NVIDIA/cosmos/blob/main/cookbooks/cosmos3/README.md"
+      },
+      {
+        "modelScope": "Inference benchmarks for Cosmos3-Nano Reasoner (vLLM and other engine measurements)",
+        "primary": true,
+        "primaryReason": "Official NVIDIA repository benchmarking notes describing inference performance experiments for Cosmos3-Nano Reasoner.",
+        "publisher": "NVIDIA (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "inference performance measurements (TTFT, latency, throughput) as reported by NVIDIA"
+        ],
+        "title": "NVIDIA GitHub: inference_benchmarks.md (Cosmos)",
+        "url": "https://github.com/NVIDIA/cosmos/blob/main/inference_benchmarks.md"
+      },
+      {
+        "modelScope": "cosmos3-nano-reasoner Build model card",
+        "primary": true,
+        "primaryReason": "Official NVIDIA Build model card entry for the cosmos3-nano-reasoner product, providing licensing and release metadata.",
+        "publisher": "NVIDIA (Build.NVIDIA)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "license statement (OpenMDW-1.1) as presented on the Build model card",
+          "release metadata and product description"
+        ],
+        "title": "Build.NVIDIA model card: cosmos3-nano-reasoner",
+        "url": "https://build.nvidia.com/nvidia/cosmos3-nano-reasoner/modelcard?modal=fine-tune"
+      },
+      {
+        "modelScope": "NGC catalog entry for Cosmos3 Reasoner container",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC catalog product page describing the Cosmos3 Reasoner container offering.",
+        "publisher": "NVIDIA (NGC Catalog)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "catalog description of the Cosmos3 Reasoner container and its commercial/NGC listing"
+        ],
+        "title": "NVIDIA NGC catalog: Cosmos3 Reasoner container",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos3-reasoner"
+      },
+      {
+        "modelScope": "Hugging Face nvidia/Cosmos3-Nano model page (example prompt, usage notes, family-level caution language)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model repository entry for a Cosmos3 Nano family artifact (used as an available primary Hugging Face-hosted reference in the research findings set).",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "usage caution about not treating outputs as physically accurate",
+          "example prompts and high-level usage notes"
+        ],
+        "title": "Hugging Face model entry: nvidia/Cosmos3-Nano",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano"
+      },
+      {
+        "modelScope": "nvidia-cosmos3-reasoner",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "3f53dda6d507c8ea1a2aa91fe107ab0c821508e34f9b22dd5448e4d44cbf9aa3",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-nvidia-cosmos-ea-cosmos3-nano-reasoner-4225bbfc6d",
+  "researchedAt": "2026-08-06T13:21:04.511871+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner",
+  "sourceUrls": [
+    "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano-Reasoner"
+  ],
+  "upstreamAgentSkills": [
+    {
+      "forgeSlugs": [
+        "nvidia-cosmos3-reasoner-nano",
+        "nvidia-cosmos3-reasoner-super"
+      ],
+      "notes": "NVIDIA's Cosmos Reason skill gives first-party video-QA data, checkpoint-conversion, evaluation, and SFT guidance. Its packaged default is Cosmos3-Nano; treat the Forge Nano/Super aliases as separate exact checkpoints and verify the selected weight, format, and overrides before applying the workflow, especially for Super.",
+      "relation": "related-model-workflow",
+      "skills": [
+        {
+          "name": "tao-finetune-cosmos-reason",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/tao-finetune-cosmos-reason"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

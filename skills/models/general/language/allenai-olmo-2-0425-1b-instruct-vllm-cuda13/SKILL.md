@@ -73,6 +73,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-allenai-olmo-2-0425-1b-instruct-4c1e79ec03`
+- Recommended: Instruction-following chat and conversational Q&A — The Instruct repository and README identify this artifact as an instruction‑tuned / post‑trained variant intended for instruction-following and chat scenarios; the README documents the post‑training recipe (SFT -> DPO -> RLVR) and provides chat-style usage guidance.
+- Recommended: Research/experimentation for lightweight on-prem or local inference (1B-class model) — The model card and README present the artifact as an open-weight, self-hostable instruct-tuned checkpoint with Transformers and vLLM integration examples suitable for local research or experimentation.
+- Avoid: Clinical decision-making or production healthcare use without documented clinical validation — The upstream model card and README do not publish explicit clinical/PHI handling guidance or clinical validation claims for this specific Instruct checkpoint; therefore clinical use without documented validation is unsupported by the inspected primary artifacts.
+- Avoid: Safety‑critical or unmoderated deployment where harmful outputs are unacceptable — The upstream repository does not document an in‑the‑loop filtering mechanism or exhaustive safety guarantees for this Instruct checkpoint in the inspected primary files.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +101,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/allenai-olmo-2-0425-1b-instruct-vllm-cuda13/SKILL.md

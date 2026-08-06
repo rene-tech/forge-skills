@@ -63,6 +63,15 @@ Route: `POST /v1/inference/instadeep-nucleotide-transformer-v2-500m-multi-specie
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-instadeepai-nucleotide-transformer-v2-500m-multi-species-d6a0a7b1d7`
+- Recommended: Sequence representation extraction for downstream genomics tasks (embedding extraction / probing) — Upstream README, the example notebook, and the paper describe extracting transformer representations for probing and downstream evaluation; the model is published as EsmForMaskedLM which exposes hidden states suitable for representation extraction.
+- Recommended: Fine‑tuning for regulatory and functional genomics prediction tasks (e.g., chromatin accessibility, promoter/enhancer prediction) using supervised heads — The canonical paper reports fine‑tuning downstream evaluations across curated genomic prediction tasks and lists these categories as intended downstream applications for the family; authors fine‑tuned pre‑trained NT‑v2 models on task suites and reported MCCs.
+- Avoid: Clinical diagnostic or direct clinical‑decision use without expert review — Primary upstream sources (model card, README, and canonical paper) do not state the model is validated or approved for clinical use and provide no clinical certification, PHI handling instructions, or clinical deployment guidance for the checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -81,11 +90,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/inference-routes`
 - Regional deployment: `/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/regional-deployment`
 - Serverless handoff: `/v1/models/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/genomics/instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding/SKILL.md

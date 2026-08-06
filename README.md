@@ -22,15 +22,23 @@ skills/
 ├── nebius/                      # Nebius operations router
 │   ├── project-discovery/
 │   ├── registry-and-secrets/
+│   ├── forge-model-deployment/
 │   ├── serverless-endpoints/
 │   └── serverless-jobs/
 └── models/
-    └── <category>/<group>/<model-slug>/
-        ├── SKILL.md              # concise exact-model operating skill
-        └── references/
-            ├── forge-model.json  # full public Forge metadata snapshot
-            ├── forge-skill.json  # full exact-skill API snapshot
-            └── evidence.md       # scoped benchmark/source evidence
+    └── <category>/<group>/
+        ├── research.md           # audited group selection/comparison guide
+        ├── research.json         # machine-readable group dossier
+        └── <model-slug>/
+            ├── SKILL.md          # concise exact-model operating skill
+            ├── agents/openai.yaml
+            ├── evals/evals.json
+            └── references/
+                ├── research.md   # full audited checkpoint dossier
+                ├── research.json
+                ├── forge-model.json
+                ├── forge-skill.json
+                └── evidence.md
 ```
 
 Start with [`skills/forge-models/SKILL.md`](skills/forge-models/SKILL.md).
@@ -42,6 +50,8 @@ until needed, preventing the full catalog from consuming an agent's context.
 
 - `catalog/models.json` — compact exact-model lookup.
 - `catalog/hierarchy.json` — category/group/family tree.
+- `catalog/groups.json` — lazy links to audited group-selection dossiers.
+- `catalog/groups.schema.json` — machine-readable group-catalog contract.
 - `catalog/schema.json` — machine-readable catalog contract.
 - `catalog/research-status.json` — evidence coverage and review queue.
 
@@ -54,6 +64,74 @@ Every generated skill records:
 - reviewed public benchmark claims when Forge has curated them;
 - an explicit research status when no reviewed public claim is attached;
 - live inference and Nebius Serverless deployment handoff URLs.
+
+## Deep research
+
+The catalog is researched in two layers:
+
+- 178 checkpoint/source units cover all 203 exact Forge serving variants;
+- 28 category/group dossiers define model-selection questions, comparable
+  benchmark protocols, and evidence-backed conditional routing rules. Group
+  rules may name only exact Forge slugs (or `insufficient-evidence`) and must
+  collectively cover every candidate in the group.
+
+Each checkpoint dossier covers identity/license, use and non-use cases,
+input preparation, output interpretation, public benchmarks, comparisons,
+limitations, safety, primary sources, and evidence gaps. Every input/output
+claim carries source URLs; every benchmark includes exact checkpoint scope and
+a table/figure/section locator.
+
+Research is two-pass. A second independent pass opens and verifies the sources,
+removes secondary material, checks checkpoint and numeric benchmark scope, and
+returns a corrected dossier in the same schema as the draft. The runner derives
+the accepted/revised audit record from that correction and preserves every
+deterministic draft defect supplied to the second pass. Keeping the provider
+contract flat avoids losing fields from deeply nested structured output. A
+result is publishable only after the audit and local schema/source checks pass.
+An empty benchmark or comparison section is valid only with a specific
+evidence-gap statement after the official starting source, canonical model
+card/repository, and original paper have been checked. Serving packages such
+as NIMs and wrappers are traced to the underlying checkpoint where primary
+identity evidence permits it; upstream quality evidence remains explicitly
+separate from container and Forge-runtime measurements.
+For a third-party model packaged through NVIDIA Build, publication additionally
+requires a primary source controlled by the original creator. NVIDIA's serving
+documentation remains required for the package/runtime contract, but cannot by
+itself establish the upstream checkpoint's task identity, behavior, or quality.
+Redistribution catalogs such as Ollama and third-party model-card mirrors are
+not accepted as primary evidence.
+Representative manual checks are recorded in
+`research/manual-review-hints.json`. They point the independent auditor at a
+primary-source locator to verify; they are not copied into a dossier as trusted
+claims.
+
+```bash
+python3 scripts/research_catalog.py plan
+python3 scripts/research_catalog.py run \
+  --kind models --model pro --workers 16 --max-active 16 --max-attempts 30
+python3 scripts/research_catalog.py run \
+  --kind groups --model pro --workers 4 --max-active 4 --max-attempts 30
+python3 scripts/research_catalog.py prepare-publication --kind all
+python3 scripts/research_catalog.py validate --kind all
+```
+
+Model and group controllers use separate ignored state files and per-kind
+process locks. This permits those two queues to run concurrently while
+preventing two controllers from racing over the same queue provenance.
+Rejected audit attempts are preserved, and the next retry starts from the
+prior correction with the fewest deterministic validation errors rather than
+discarding good corrections and returning to the original draft.
+`prepare-publication` removes provider request IDs from accepted public
+dossiers; ignored local state retains the operational request history.
+
+For NVIDIA models, `research/upstream-agent-skills.json` pins relevant official
+NVIDIA Agent Skills for MAISI, Cosmos-Embed, Cosmos Reason, and Nemotron
+customization/retrieval; the separate NVIDIA BioNeMo Agent Toolkit model/NIM
+skills and multi-model pipelines; and the Nebius BioNeMo agent integration.
+Their payload, artifact, validator, failure-mode, recipe, and deployment
+guidance is reused only at the exact declared scope. Version-mismatched
+workflows and deterministic integration harnesses are labeled as related
+guidance and are never treated as model-quality evidence.
 
 `references/forge-model.json` preserves the complete public Forge model record,
 including all benchmark/probe/artifact metadata available at generation time;
@@ -83,6 +161,11 @@ is usable, but the agent must not invent a quality claim and must consult the
 linked primary model card or paper before comparing quality. `pending-review`
 means Forge has not yet linked enough primary-source evidence for that exact
 version.
+
+Deep research adds a stricter publication state: the checkpoint and group
+dossiers must have an independent `accepted` or `revised` audit, all source and
+scope gates must pass, and every exact catalog slug must be covered exactly
+once.
 
 ## Security
 

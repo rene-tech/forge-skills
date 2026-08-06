@@ -75,6 +75,16 @@ Route: `POST /v1/inference/wan-ai-wan2-2-ti2v-5b`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-wan-ai-wan2-2-ti2v-5b-diffusers-a89380e6a9`
+- Recommended: Text-to-video generation (T2V) at 720P/24fps for short outputs (example 5-second clip) — Model page and README assert T2V capability and include an example 5-second generation at 720P and 24 FPS.
+- Recommended: Image-to-video generation (I2V) using reference images — README and model page describe unified text-image-video (TI2V) support indicating both T2V and I2V workflows.
+- Recommended: Integration with Hugging Face Diffusers tooling using the listed pipeline and components — model_index.json enumerates pipeline and component classes enabling Diffusers-based integration.
+- Avoid: Safety-critical decision-making or clinical/medical diagnostic use — Evidence gap: Upstream primary sources for this exact checkpoint do not provide safety, privacy, or clinical validation guidance; no suitability claims for safety-critical or clinical tasks are documented.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -92,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/wan-ai-wan2-2-ti2v-5b/inference-routes`
 - Regional deployment: `/v1/models/wan-ai-wan2-2-ti2v-5b/regional-deployment`
 - Serverless handoff: `/v1/models/wan-ai-wan2-2-ti2v-5b/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/wan-ai-wan2-2-ti2v-5b/SKILL.md

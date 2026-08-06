@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9 for this task: Multilingual retrieval. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9 or another Forge model for Multilingual retrieval?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9 for Using unprefixed retrieval inputs for search tasks (omitting documented task/document/query prefixes), even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9"
+}

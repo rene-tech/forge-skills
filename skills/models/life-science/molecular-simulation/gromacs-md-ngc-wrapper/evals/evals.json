@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model gromacs-md-ngc-wrapper for this task: Running bounded nonclinical molecular-dynamics simulations with the NVIDIA NGC hpc/gromacs:2023.2 container. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use gromacs-md-ngc-wrapper or another Forge model for Running bounded nonclinical molecular-dynamics simulations with the NVIDIA NGC hpc/gromacs:2023.2 container?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use gromacs-md-ngc-wrapper for Clinical decision-making or regulated clinical use, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "gromacs-md-ngc-wrapper",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-gromacs-md-ngc-wrapper"
+}

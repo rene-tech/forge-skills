@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model pixart-alpha-pixart-sigma-xl-2-1024-ms for this task: Text-to-image generation at advertised native resolutions (1024 px, 2K, 4K) from text prompts using the PixArt-Sigma-XL-2-1024-MS checkpoint.. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use pixart-alpha-pixart-sigma-xl-2-1024-ms or another Forge model for Text-to-image generation at advertised native resolutions (1024 px, 2K, 4K) from text prompts using the PixArt-Sigma-XL-2-1024-MS checkpoint.?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use pixart-alpha-pixart-sigma-xl-2-1024-ms for Assuming the checkpoint provides primary-source numeric benchmark results (e.g., FID, IS, CLIP-similarity, human-eval) for image-generation quality., even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "pixart-alpha-pixart-sigma-xl-2-1024-ms",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-pixart-alpha-pixart-sigma-xl-2-1024-ms"
+}

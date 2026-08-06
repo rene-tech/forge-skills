@@ -9,10 +9,12 @@ description: Route Nebius operations to the smallest relevant project, registry/
    existing resource state with `$nebius-project-discovery`.
 2. Load `$nebius-registry-and-secrets` only when private images or runtime
    secrets are required.
-3. Use `$nebius-serverless-endpoints` for interactive inference services.
-4. Use `$nebius-serverless-jobs` for training, batch evaluation, preprocessing,
+3. For a model selected from Forge, load
+   `$nebius-forge-model-deployment` before the generic endpoint skill.
+4. Use `$nebius-serverless-endpoints` for interactive inference services.
+5. Use `$nebius-serverless-jobs` for training, batch evaluation, preprocessing,
    or finite scientific workloads.
-5. Record resource IDs, operations, platform/preset, preemptible choice, image
+6. Record resource IDs, operations, platform/preset, preemptible choice, image
    digest, representative request, outputs/metrics, and cleanup.
 
 Stop on authentication or authorization failure. Never switch credentials,

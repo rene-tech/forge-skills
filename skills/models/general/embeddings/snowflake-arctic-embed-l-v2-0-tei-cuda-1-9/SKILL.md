@@ -62,6 +62,16 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-snowflake-snowflake-arctic-embed-l-v2-0-d8e9bdd569`
+- Recommended: Multilingual semantic search and retrieval — Hugging Face model card and Snowflake Cortex Search documentation present this checkpoint as a multilingual text embedding model with 1024 output dimensions and report retrieval-oriented evaluation aggregates.
+- Recommended: Enterprise retrieval / RAG pipelines, clustering and indexing of text — Owner model card and Snowflake AI_EMBED/Cortex embed runtime docs describe the model and how Snowflake exposes embeddings for SQL and REST consumption; the 1024-dim embedding shape is suitable for vector-store indexing and similarity search.
+- Avoid: Using this checkpoint as a generative language model (text completion / LM logits source) — Upstream owner-provided materials document this checkpoint as a text embedding model that emits dense vectors (1024-dim). There is no primary-source evidence in the inspected owner materials that the checkpoint exposes LM logits or a decoding/generation head appropriate for text generation.
+- Avoid: Assuming clinical or regulated suitability without formal validation — Primary owner materials inspected do not label this checkpoint as clinically validated or certified; such deployments require domain expert review and formal validation beyond the documented owner materials.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -80,11 +90,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/snowflake-arctic-embed-l-v2-0-tei-cuda-1-9/SKILL.md

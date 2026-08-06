@@ -1,0 +1,436 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12] uses unapproved repository owner 'hearbenchmark' for this exact model scope",
+        "path": "$.sources[12] uses unapproved repository owner 'hearbenchmark' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 1 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "Google HeAR (Health Acoustic Representations) is a health-acoustic embedding model from Google Health, exposed here as a research-only representation model rather than a diagnostic model or cough-type classifier.",
+      "displayName": "Use Google HeAR Health Acoustic Embeddings",
+      "group": "health-audio",
+      "inputModalities": [
+        "audio"
+      ],
+      "license": "Health AI Developer Foundations terms of use; code examples under Apache-2.0 where applicable",
+      "modelFamily": "google-hear-health-acoustics",
+      "outputModalities": [
+        "embedding",
+        "json"
+      ],
+      "slug": "google-hear-health-acoustic-embeddings",
+      "sourceUrl": "https://huggingface.co/google/hear",
+      "version": "hear-tensorflow-1-0-0-wrapper-20260706",
+      "versionKey": "hear-tensorflow-1-0-0-wrapper-20260706"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+        ],
+        "modelScope": "google/hear (upstream HeAR model as described in primary sources).",
+        "reason": "Primary-source documentation states the current HeAR model size is large and not suitable for on-device deployment without further research or adaptation.",
+        "useCase": "On-device deployment in constrained hardware where model size is a constraint (production on-device inference without adaptation)."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card"
+        ],
+        "modelScope": "google/hear (upstream HeAR model as described in primary sources).",
+        "reason": "Primary sources state HeAR\u2019s primary training and encoder scope target two-second audio clips and document cropping/zero-padding guidance for 2 s inputs; they do not document support for longer-duration inputs without adaptation.",
+        "useCase": "Encoding audio segments significantly longer than two seconds without downstream adaptation or segmentation."
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Checked arXiv paper, Google model card, Hugging Face model pages, and repository READMEs for per-checkpoint numeric tables; none were found at the examined locators.",
+        "criteria": "Missing per-checkpoint numeric benchmark tables and immutable checkpoint identifiers that would allow protocol-matched comparisons (per-dataset/split metrics tied to exact checkpoint).",
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2403.02522",
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://huggingface.co/google/hear",
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+        ],
+        "rationale": "Primary sources do not publish per-dataset/split numeric benchmark tables tied to an immutable upstream checkpoint; therefore direct numeric comparisons to alternatives under matched protocol cannot be supported from the inspected primary sources.",
+        "task": "per-dataset/split numeric comparisons of HeAR against named alternatives",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Primary sources indicate HeAR is intended for research and requires independent downstream task-specific validation and appropriate regulatory/compliance review before clinical use; any clinical deployment must follow independent evaluation.",
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+          "https://arxiv.org/abs/2403.02522"
+        ],
+        "modelScope": "google/hear (upstream HeAR encoder as described in primary sources).",
+        "useCase": "Supporting research into screening or monitoring workflows for respiratory-related conditions (augmentation, feature extraction for task-specific models)."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Canonical immutable upstream checkpoint identifier (checksum or revision string) for the exact HeAR checkpoint corresponding to the Forge wrapper was not found in the inspected primary-source locators (checked: https://huggingface.co/google/hear, https://developers.google.com/health-ai-developer-foundations/hear/model-card, https://github.com/Google-Health/hear, https://github.com/google-health/hear).",
+      "Evidence gap: Per-dataset and per-split numeric benchmark tables (dataset, split, metric name, numeric value with evaluation protocol) tied to the exact upstream HeAR checkpoint are not published at the inspected primary-source locators (checked: https://arxiv.org/abs/2403.02522 [paper main text/figures], https://developers.google.com/health-ai-developer-foundations/hear/model-card [entire page], https://huggingface.co/google/hear [model page], https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md [repository README], https://github.com/Google-Health/hear and https://github.com/google-health/hear [HeAR repository READMEs]).",
+      "Evidence gap: Exact low-level featurization/preprocessing hyperparameters required to reproduce spectrogram inputs (STFT/window/hop sizes, mel-bin counts, log-mel scaling, normalization, deterministic cropping/truncation/overlap rules) were not specified at the inspected primary-source locators (checked: https://arxiv.org/abs/2403.02522, https://huggingface.co/google/hear, https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md, https://github.com/Google-Health/hear).",
+      "Evidence gap: Exact Forge wrapper hear-tensorflow-1-0-0-wrapper-20260706 request/response JSON schema, field names, example wrapper call signatures, and wrapper-specific flags are not present in the inspected primary sources (checked: https://huggingface.co/google/hear, https://developers.google.com/health-ai-developer-foundations/hear/model-card, https://github.com/Google-Health/hear).",
+      "Evidence gap: Explicit canonical statements labelling the upstream HeAR checkpoint as research-only or explicitly non-diagnostic were not found at the inspected primary-source locators (checked: https://developers.google.com/health-ai-developer-foundations/hear/model-card, https://huggingface.co/google/hear, https://arxiv.org/abs/2403.02522).",
+      "Evidence gap: Canonical per-embedding calibration procedures, embedding-failure mode handling (e.g., NaN/Inf behavior), and authoritative normalization semantics are not documented in the checked primary sources (checked: https://huggingface.co/google/hear, https://developers.google.com/health-ai-developer-foundations/hear/model-card, https://github.com/Google-Health/hear)."
+    ],
+    "family": "huggingface-co-google-hear-084246ebc4",
+    "identity": {
+      "architecture": "Vision Transformer (Large) trained with a masked autoencoding objective (masked spectrogram-patch reconstruction encoder)",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+        "https://huggingface.co/google/hear",
+        "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+        "https://huggingface.co/google/hear-pytorch",
+        "https://github.com/Google-Health/hear",
+        "https://github.com/google-health/hear",
+        "https://arxiv.org/abs/2403.02522"
+      ],
+      "license": "Model weights: Health AI Developer Foundations License; Repository/code: Apache-2.0",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "HeAR (Health Acoustic Representations)"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/google/hear",
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+          ],
+          "statement": "Primary sources do not specify accepted file/container types (e.g., WAV/FLAC) for the upstream model pages; the google-health repository README documents an API payload shape expectation (JSON 'instances' of numeric waveform samples) for an upstream service endpoint."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2403.02522",
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+          ],
+          "statement": "HeAR is trained using masked spectrogram-patch reconstruction; the encoder is a ViT-style architecture operating on spectrogram patches according to primary-source descriptions."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+            "https://huggingface.co/google/hear",
+            "https://arxiv.org/abs/2403.02522"
+          ],
+          "statement": "The google-health README documents that audio longer than 2 seconds should be cropped and shorter clips zero-padded before sending to the API, and that no additional preprocessing (e.g., cough detection) is applied by the upstream API; however, exact low-level spectrogram/STFT/mel/log-mel hyperparameters are not specified in the inspected primary sources."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://huggingface.co/google/hear",
+            "https://arxiv.org/abs/2403.02522"
+          ],
+          "statement": "Two-second health-acoustic audio clips (biological sounds such as coughs and breaths) are the intended input entity for the upstream HeAR encoder."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+          ],
+          "statement": "Upstream repository README documents an API input shape: a JSON payload with an 'instances' key containing a list of up to four sub-lists, each with exactly 32,000 floating-point numbers (2 s at 16 kHz). This is upstream service documentation and not a documented Forge wrapper request/response schema."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/google/hear",
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://github.com/Google-Health/hear"
+          ],
+          "statement": "Evidence gap: The Forge wrapper hear-tensorflow-1-0-0-wrapper-20260706 request/response JSON schema, exact field names, or wrapper-specific flags were not found in the inspected primary sources; the documented input shape above is upstream service documentation, not wrapper-specific documentation."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://huggingface.co/google/hear"
+          ],
+          "statement": "The google-health README defines per-instance shape expectations for an upstream API (JSON 'instances' with up to four sub-lists each containing exactly 32,000 floating-point numbers representing 2 s at 16 kHz) and prescribes cropping/zero-padding conventions; primary sources do not provide exhaustive per-input validation rules (e.g., explicit sample-rate validation behavior, channel-count checks) beyond these documented expectations."
+        },
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2403.02522",
+            "https://huggingface.co/google/hear",
+            "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+            "https://github.com/Google-Health/hear"
+          ],
+          "statement": "Evidence gap: Exact low-level featurization hyperparameters required to reproduce the spectrogram inputs (STFT/window/hop sizes, mel-bin counts, log-mel scaling parameters, normalization details, deterministic cropping/truncation/slide-overlap rules) are not specified in the checked primary-source files/pages."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+        ],
+        "statement": "HeAR is designed primarily for two-second audio clips; primary sources repeatedly state the two-second clip design constraint which may limit performance on longer sequences."
+      },
+      {
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+        ],
+        "statement": "Model size: primary sources state the current HeAR model is large and unsuitable for direct on-device deployment without further research or adaptation."
+      },
+      {
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://huggingface.co/google/hear"
+        ],
+        "statement": "Potential demographic and recording-device biases are documented as limitations in primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+          "https://github.com/Google-Health/hear",
+          "https://github.com/google-health/hear"
+        ],
+        "statement": "Inconsistent reporting of training-data scale across primary sources: the google-health README states training on approximately 175,000 hours of 2-second clips while the HeAR repository states training on more than 300 million two-second clips, indicating an ambiguity in primary-source reporting."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/google/hear",
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://arxiv.org/abs/2403.02522",
+          "https://github.com/Google-Health/hear"
+        ],
+        "statement": "Evidence gap: The canonical immutable upstream checkpoint identifier (checksum or revision string) for the checkpoint corresponding to the Forge wrapper was not found in the inspected primary-source locators."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2403.02522",
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://huggingface.co/google/hear"
+          ],
+          "statement": "Primary sources describe embeddings as features to be used for downstream supervised tasks and evaluated via linear probes; the upstream sources do not define calibrated probability semantics or a canonical normalization/calibration procedure for the embeddings in the inspected materials."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://huggingface.co/google/hear",
+            "https://arxiv.org/abs/2403.02522"
+          ],
+          "statement": "HeAR produces low-dimensional embeddings for two-second audio clips (the primary sources describe embeddings but do not report a canonical numeric embedding dimensionality in the inspected facts)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2403.02522",
+            "https://huggingface.co/google/hear"
+          ],
+          "statement": "Primary sources describe evaluation via linear probes and task-specific classifiers, implying downstream validation is required; they do not provide a canonical post-embedding calibration, thresholding, or failure-mode handling procedure (e.g., NaN/Inf handling) in the inspected sources."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/google/hear",
+            "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+            "https://github.com/Google-Health/hear"
+          ],
+          "statement": "Evidence gap: Explicit per-embedding calibration procedures, embedding-failure handling behavior, and authoritative normalization semantics for embeddings are not documented in the checked primary sources."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://huggingface.co/google/hear",
+          "https://arxiv.org/abs/2403.02522"
+        ],
+        "modelScope": "google/hear (upstream HeAR encoder as described in Google model card, Hugging Face model page, and arXiv preprint).",
+        "useCase": "Generate embeddings for two-second health-acoustic audio clips to be used as input features for downstream supervised classifiers or linear-probe evaluations (research use).",
+        "why": "Primary sources describe HeAR as producing low-dimensional representations of two-second audio clips and evaluating those embeddings via linear probes on health acoustic tasks, indicating suitability as feature inputs for downstream classifiers and linear-probe evaluation."
+      }
+    ],
+    "researchSummary": "HeAR (Health Acoustic Representations) is a Vision-Transformer-style masked autoencoder developed by Google Health to produce low-dimensional embeddings of two-second health-acoustic audio clips (e.g., coughs, breaths). Primary sources describe training by reconstructing masked spectrogram patches and evaluating embeddings via linear-probe downstream tasks. Canonical primary sources (Google model card, Hugging Face model pages, Google-Health repositories, arXiv preprint) do not report an immutable upstream checkpoint identifier, revision hash, or explicit per-dataset/split numeric benchmark tables for the exact upstream checkpoint. Low-level featurization hyperparameters (explicit STFT/mel/log-mel parameters) are not specified in the inspected primary locations; the google-health README documents an API payload shape (JSON instances of 32,000 floats representing 2 s at 16 kHz) and cropping/zero-padding guidance for 2 s clips, but wrapper-specific request/response schema for the Forge wrapper was not found in the reviewed sources. Model-weight versus code-license distinction is reported in the primary repositories: weights governed by Health AI Developer Foundations terms and repository code under Apache-2.0. Evidence checked: https://developers.google.com/health-ai-developer-foundations/hear/model-card, https://huggingface.co/google/hear, https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md, https://huggingface.co/google/hear-pytorch, https://github.com/Google-Health/hear, https://github.com/google-health/hear, https://arxiv.org/abs/2403.02522",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://huggingface.co/google/hear"
+        ],
+        "statement": "Primary sources list potential demographic and recording-device biases and explicitly note limitations related to these biases."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+        ],
+        "statement": "Privacy: the google-health README documents that Google does not retain copies of any audio files sent to the HeAR API (privacy-related operational claim)."
+      },
+      {
+        "evidenceUrls": [
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card",
+          "https://huggingface.co/google/hear",
+          "https://arxiv.org/abs/2403.02522"
+        ],
+        "statement": "Primary sources do not provide an explicit canonical statement labelling the upstream HeAR checkpoint as research-only or non-diagnostic at the inspected locators."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md",
+          "https://developers.google.com/health-ai-developer-foundations/hear/model-card"
+        ],
+        "statement": "Requirement: Independent clinical validation and regulatory/compliance review are required before any clinical or diagnostic use, per the upstream documentation's statements that downstream technology must undergo adequate clinical validation before real-world healthcare use."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+        ],
+        "statement": "Contact point: repository documentation supplies a contact (health_acoustic_representations@google.com) for inquiries as documented in the google-health README."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "HeAR upstream model (google/hear) as described in the model card",
+        "primary": true,
+        "primaryReason": "Official first-party model card and documentation authored by Google Health describing HeAR model design, intended clip length, intended uses, and limitations.",
+        "publisher": "Google Developers / Google Health",
+        "sourceType": "official-documentation",
+        "supports": [
+          "HeAR is a health acoustic foundation model pre-trained to represent non-semantic respiratory sounds and generates low-dimensional representations of two-second audio clips.",
+          "Lists potential applications (screening, monitoring) and notes limitations including clip-length constraint and possible demographic/recording-device biases.",
+          "States access is governed by the Health AI Developer Foundations terms of use."
+        ],
+        "title": "HeAR model card \u2014 Google Health AI Developer Foundations",
+        "url": "https://developers.google.com/health-ai-developer-foundations/hear/model-card"
+      },
+      {
+        "modelScope": "google/hear (upstream TensorFlow SavedModel hosted on Hugging Face)",
+        "primary": true,
+        "primaryReason": "Canonical hosted model page for the upstream HeAR TensorFlow SavedModel; contains model description, intended clip length, and access/license notes.",
+        "publisher": "Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "Describes HeAR as a health acoustic foundation model for two-second clips and notes access requires agreeing to Health AI Developer Foundations terms of use.",
+          "Confirms use for downstream linear-probe evaluations and that embeddings are produced (dimension not asserted in inspected facts)."
+        ],
+        "title": "Hugging Face model page: google/hear",
+        "url": "https://huggingface.co/google/hear"
+      },
+      {
+        "modelScope": "Implementation notes and operational documentation related to HeAR within the google-health repository",
+        "primary": true,
+        "primaryReason": "First-party repository README describing HeAR model name, training objective, intended 2 s clip usage, API input-shape guidance, and limitations.",
+        "publisher": "Google-Health (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Documents that HeAR\u2019s primary training uses two-second audio clips and that after training the encoder generates low-dimensional embeddings of 2-second clips.",
+          "States training-reported scale (~175,000 hours of 2-second clips) and includes API input-shape guidance (JSON 'instances' with sub-lists of 32,000 floats representing 2 s at 16 kHz), cropping/zero-padding guidance, and that Google does not retain copies of audio sent to the API."
+        ],
+        "title": "Google-Health repository: health_acoustic_representations README (google-health repo)",
+        "url": "https://github.com/Google-Health/google-health/blob/master/health_acoustic_representations/README.md"
+      },
+      {
+        "modelScope": "google/hear-pytorch (PyTorch variant of upstream model)",
+        "primary": true,
+        "primaryReason": "Hosted PyTorch variant page mirroring upstream HeAR descriptions and confirming alternate implementation availability.",
+        "publisher": "Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "Confirms a PyTorch variant is available and access is governed by Health AI Developer Foundations terms of use.",
+          "States repository code licensing distinction (model weights under Health AI Developer Foundations terms; code under Apache-2.0)."
+        ],
+        "title": "Hugging Face model page: google/hear-pytorch",
+        "url": "https://huggingface.co/google/hear-pytorch"
+      },
+      {
+        "modelScope": "HeAR supporting code and materials (official repository)",
+        "primary": true,
+        "primaryReason": "Official HeAR repository containing supporting code, materials, and statements about training scale and license.",
+        "publisher": "Google-Health (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "States HeAR was trained on more than 300 million two-second audio clips (reporting a training-scale figure in the repository).",
+          "Confirms licensing: model weights under Health AI Developer Foundations License; repository code under Apache-2.0.",
+          "Includes notebooks and deployment notes for using the model from Hugging Face and Vertex AI."
+        ],
+        "title": "Google-Health HeAR repository (supporting code and materials)",
+        "url": "https://github.com/Google-Health/hear"
+      },
+      {
+        "modelScope": "HeAR supporting code and materials (official repository)",
+        "primary": true,
+        "primaryReason": "Alternate canonical repository URL for HeAR that contains the same repository facts about training scale and materials.",
+        "publisher": "Google-Health (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "States HeAR was trained on more than 300 million two-second audio clips."
+        ],
+        "title": "Google-Health HeAR repository (alternate URL)",
+        "url": "https://github.com/google-health/hear"
+      },
+      {
+        "modelScope": "HeAR upstream model as described in the arXiv preprint",
+        "primary": true,
+        "primaryReason": "Canonical preprint record describing HeAR architecture, large training corpus, masked-spectrogram reconstruction training, and linear-probe evaluation approach.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "Describes HeAR architecture and masked spectrogram-patch reconstruction training objective and evaluation via linear probes across health acoustic tasks."
+        ],
+        "title": "HeAR research paper (arXiv record)",
+        "url": "https://arxiv.org/abs/2403.02522"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "6319d963f78a5efd94a94d34feb6ba52394a3d5360b9053fba2f36e004ea17c2",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-google-hear-084246ebc4",
+  "researchedAt": "2026-08-06T11:42:38.217629+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/google/hear",
+  "sourceUrls": [
+    "https://huggingface.co/google/hear"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

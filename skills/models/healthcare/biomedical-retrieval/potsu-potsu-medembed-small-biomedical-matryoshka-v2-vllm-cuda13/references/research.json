@@ -1,0 +1,344 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3] uses forbidden secondary host docs.vllm.ai",
+        "path": "$.sources[3] uses forbidden secondary host docs.vllm.ai",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4] uses forbidden secondary URL https://ashraf-bhuiyan.com/blog/embed-03-serving",
+        "path": "$.sources[4] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5] uses unapproved repository owner 'blog' for this exact model scope",
+        "path": "$.sources[5] uses unapproved repository owner 'blog' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5] uses forbidden secondary URL https://huggingface.co/blog/matryoshka",
+        "path": "$.sources[5] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses forbidden secondary host docs.vllm.ai",
+        "path": "$.sources[6] uses forbidden secondary host docs.vllm.ai",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 7 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "MedEmbed Small Biomedical Matryoshka v2 is a public Apache-2.0 sentence-transformers embedding model for biomedical semantic similarity and retrieval.",
+      "displayName": "Use MedEmbed Small Biomedical Matryoshka v2",
+      "group": "biomedical-retrieval",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "potsu-potsu-medembed-small-biomedical-matryoshka",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9",
+      "sourceUrl": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "version": "hf-0e64af8-tei-cuda-1.9.3",
+      "versionKey": "hf-0e64af8-tei-cuda-1-9-3"
+    },
+    {
+      "category": "healthcare",
+      "description": "MedEmbed Small Biomedical Matryoshka v2 is a public Apache-2.0 sentence-transformers model for biomedical semantic similarity and retrieval.",
+      "displayName": "Use MedEmbed Small Biomedical Matryoshka v2",
+      "group": "biomedical-retrieval",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "potsu-potsu-medembed-small-biomedical-matryoshka",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "potsu-potsu-medembed-small-biomedical-matryoshka-v2-vllm-cuda13",
+      "sourceUrl": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+      "version": "hf-0e64af8-vllm-0.21.0-cuda13-pooling",
+      "versionKey": "hf-0e64af8-vllm-0-21-0-cuda13-pooling"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "modelScope": "checked source file: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json",
+        "reason": "The checked primary-source configuration file contains only model configuration metadata (library-version requirements, similarity function, empty prompts) and does not provide checkpoint-scoped certification, clinical-use claims, PHI-handling guidance, or clinical benchmarks in the inspected file.",
+        "useCase": "Direct use for clinical decision-making, diagnosis, or other high-stakes clinical automation without expert review"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Checked file: config_sentence_transformers.json; no benchmark tables/rows present.",
+        "criteria": "No comparable numeric benchmarks in the inspected primary source file.",
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "rationale": "The inspected config file contains configuration metadata only and no numeric evaluation results to support task- or dataset-specific comparisons.",
+        "task": "Evidence gap: No checkpoint-scoped numeric benchmark data were found to enable a primary-evidence comparison versus alternative checkpoints.",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Only applicable if the upstream checkpoint's configuration explicitly declares Matryoshka support (for example an explicit is_matryoshka boolean or a matryoshka_dimensions list) in the checkpoint files; such an explicit key or list must be present for this checkpoint before assuming adjustable output dimensions.",
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "modelScope": "checked source file: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json",
+        "useCase": "Adjustable-dimension (Matryoshka) embeddings via runtime dimension overrides"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No numeric benchmark results (datasets, splits, metrics, or values) for potsu-potsu/medembed-small-biomedical-matryoshka-v2 were found in the checked primary-source file: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json (file: config_sentence_transformers.json \u2014 no Evaluation section or benchmark table rows present).",
+      "Evidence gap: The checkpoint's tokenizer metadata (tokenizer type, vocabulary files, merges, or max token length) is not reported in the checked config file: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json (file: config_sentence_transformers.json).",
+      "Evidence gap: The embedding dimensionality (vector size) for this checkpoint is not reported in the checked config file: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json (file: config_sentence_transformers.json).",
+      "Evidence gap: No explicit is_matryoshka flag or matryoshka_dimensions list was found in the checked config file; Matryoshka support for this checkpoint is therefore unconfirmed: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json (file: config_sentence_transformers.json).",
+      "Evidence gap: The checkpoint's revision identifier, parameter count, and model-weight license text are not reported in the checked config file and must be obtained from upstream model page metadata or repository files: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json (file: config_sentence_transformers.json).",
+      "Evidence gap: No checkpoint-scoped numeric benchmark or evaluation data were found to enable evidence-backed task-specific comparisons versus alternative checkpoints; additional primary-source benchmark data are required. Checked path: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json (file: config_sentence_transformers.json)."
+    ],
+    "family": "huggingface-co-potsu-potsu-medembed-small-biomedical-matryoshka-v2-8730ebfc38",
+    "identity": {
+      "architecture": "not reported",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "not reported"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Evidence gap: The checked config file does not report tokenizer type, vocabulary/merges files, SentencePiece model, or max token length; tokenizer identity and accepted input encoding must be confirmed from repository tokenizer files."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "The checked config file contains an explicit __version__ block that records required library versions which can affect preprocessing and tokenization behavior: sentence_transformers = \"4.1.0\", transformers = \"4.52.4\", pytorch = \"2.6.0+cu124\"."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Evidence gap: The checked config file does not specify tokenization rules, truncation behavior, or tokenizers' max_length; confirm tokenization/truncation semantics from tokenizer files in the repository."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Evidence gap: The checked config file does not explicitly declare the accepted input formats (for example plain text, tokenized inputs, or paired-input formats); confirm accepted input formats in repository files or model card."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Evidence gap: The checked config file contains no prompt templates, and default_prompt_name is null and prompts is an empty object; there is no upstream-provided prompt/template guidance in the inspected file."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Evidence gap: The checked config file does not provide input validation rules (bounds, prohibited content, or PHI handling guidance); add validation checks and governance controls before production use."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "statement": "The checked config file declares required library versions in a __version__ block: sentence_transformers = \"4.1.0\", transformers = \"4.52.4\", pytorch = \"2.6.0+cu124\"; mismatching runtime libraries may cause incompatibilities."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "statement": "The checked config file contains similarity_fn_name = \"cosine\" and contains no prompt templates (prompts is an empty object and default_prompt_name is null)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "statement": "Evidence gap: The inspected primary-source file does not provide tokenizer metadata (tokenizer type, vocab/merges, or max token length); tokenizer identity and tokenization constraints must be confirmed from repository tokenizer files."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "statement": "Evidence gap: The inspected primary-source file does not report embedding dimensionality, checkpoint revision identifier, parameter count, or model-weight license text for this specific checkpoint."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Use cosine similarity to compare embeddings when following the checkpoint's configured similarity function as recorded in the config file."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Evidence gap: The checked config file does not state whether embeddings are L2-normalized by default, nor does it provide calibration or reliability statistics for embeddings; downstream calibration and validation are required for risk-sensitive applications."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "The checked configuration sets similarity_fn_name = \"cosine\", indicating the intended similarity metric for embedding outputs in this config file is cosine similarity."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+          ],
+          "statement": "Evidence gap: The checked config file does not report output dimensionality or dtype defaults for embeddings; confirm returned vector dimensionality and numeric dtype from the model weights or serving metadata before downstream use."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "modelScope": "checked source file: https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json",
+        "useCase": "Extract dense text embeddings for cosine-based semantic similarity or retrieval",
+        "why": "The checked checkpoint configuration file sets similarity_fn_name = \"cosine\", indicating embeddings are intended for cosine-similarity comparisons as recorded in the model config file."
+      }
+    ],
+    "researchSummary": "Primary verified facts come from the model repository file at https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json. That file contains a top-level \"__version__\" key whose entries include sentence_transformers = \"4.1.0\", transformers = \"4.52.4\", and pytorch = \"2.6.0+cu124\"; it contains a top-level key \"prompts\" with an empty object; it contains a top-level key \"default_prompt_name\" with a null value; and it contains a top-level key \"similarity_fn_name\" with the value \"cosine\". The checked primary source does not provide checkpoint-scoped numeric benchmarks, tokenizer metadata (tokenizer type, vocab/merges, or max token length), embedding dimensionality, is_matryoshka or matryoshka_dimensions keys, checkpoint revision identifier, parameter count, or model-weight license text in that file (these items were not present in the checked config file).",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+        ],
+        "statement": "Evidence gap: The inspected configuration file does not contain explicit clinical-use claims, PHI handling guidance, or certified clinical suitability statements; do not assume suitability for clinical decision-making without independent validation and expert review."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "config_sentence_transformers.json in potsu-potsu/medembed-small-biomedical-matryoshka-v2 repository (file-level)",
+        "primary": true,
+        "primaryReason": "Official model repository configuration file containing the checkpoint's sentence-transformers configuration keys and values as inspected.",
+        "publisher": "huggingface.co",
+        "sourceType": "model-card",
+        "supports": [
+          "The config_sentence_transformers.json file contains a top-level key \"__version__\".",
+          "Within \"__version__\", the key \"sentence_transformers\" has the value \"4.1.0\".",
+          "Within \"__version__\", the key \"transformers\" has the value \"4.52.4\".",
+          "Within \"__version__\", the key \"pytorch\" has the value \"2.6.0+cu124\".",
+          "The config file includes a top-level key \"prompts\" with an empty object as its value.",
+          "The config file includes a top-level key \"default_prompt_name\" with a null value.",
+          "The config file includes a top-level key \"similarity_fn_name\" with the value \"cosine\"."
+        ],
+        "title": "config_sentence_transformers.json (potsu-potsu/medembed-small-biomedical-matryoshka-v2)",
+        "url": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2/blob/main/config_sentence_transformers.json"
+      },
+      {
+        "modelScope": "potsu-potsu-medembed-small-biomedical-matryoshka",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "ea158bc38fe75e6a883459be6c92b11c006e93c7ad23e8c97cdd491ed686abc0",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-potsu-potsu-medembed-small-biomedical-matryoshka-v2-8730ebfc38",
+  "researchedAt": "2026-08-06T13:26:50.295182+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2",
+  "sourceUrls": [
+    "https://huggingface.co/potsu-potsu/medembed-small-biomedical-matryoshka-v2"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

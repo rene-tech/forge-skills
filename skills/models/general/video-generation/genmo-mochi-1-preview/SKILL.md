@@ -69,6 +69,15 @@ Route: `POST /v1/inference/genmo-mochi-1-preview`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-genmoai-mochi-e002a7537d`
+- Recommended: Text-to-video generation (research and experimentation) with text prompts — The Hugging Face model page and the Diffusers Mochi pipeline documentation describe Mochi 1 as a video-generation model that encodes text prompts with a single T5-XXL encoder and is intended for text-conditioned video generation experiments.
+- Recommended: Research & development of text-conditioned video inference harnesses (integration with Diffusers) — The Genmo repository README and Diffusers documentation provide code examples and pipeline integration points suitable for R&D and controlled experimentation using the checkpoint.
+- Avoid: Commercial deployment without organizational safety protocols and review — The named commit README for the checkpoint states steps have been taken to limit NSFW content but explicitly advises organizations to implement additional safety protocols before commercial deployment.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -86,11 +95,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/genmo-mochi-1-preview/inference-routes`
 - Regional deployment: `/v1/models/genmo-mochi-1-preview/regional-deployment`
 - Serverless handoff: `/v1/models/genmo-mochi-1-preview/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/genmo-mochi-1-preview/SKILL.md

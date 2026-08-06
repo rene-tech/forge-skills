@@ -1,0 +1,529 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses unapproved repository owner '2toinf' for this exact model scope",
+        "path": "$.sources[6] uses unapproved repository owner '2toinf' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7] uses unapproved repository owner '2toinf' for this exact model scope",
+        "path": "$.sources[7] uses unapproved repository owner '2toinf' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "path": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/lerobot/xvla-google-robot",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 4 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "X-VLA Google Robot is an Apache-2.0 LeRobot vision-language-action policy checkpoint adapted for Google Robot platforms.",
+      "displayName": "Use Hugging Face LeRobot X-VLA Google Robot",
+      "group": "robotics-control",
+      "inputModalities": [
+        "text",
+        "image",
+        "robot_state"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "huggingface-lerobot-xvla",
+      "outputModalities": [
+        "robot_action",
+        "json"
+      ],
+      "slug": "huggingface-lerobot-xvla-google-robot",
+      "sourceUrl": "https://huggingface.co/lerobot/xvla-google-robot",
+      "version": "google-robot-f60504c-wrapper-cdb7964e-20260531t16z",
+      "versionKey": "google-robot"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+        ],
+        "modelScope": "lerobot/xvla-google-robot upstream repository blobs",
+        "reason": "Primary sources inspected do not publish coordinate-frame conventions, command-unit mappings, gripper conventions, or an explicit hardware-safe actuation contract for this checkpoint; therefore direct actuation would exceed the documented evidence.",
+        "useCase": "Sending model outputs directly to physical robot actuators without human supervision, embodiment-specific de-normalization, and hardware safety interlocks."
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "lerobot/xvla-base",
+        "comparisonConditions": "No aligned numeric benchmark or protocol evidence present in the checked model repository tree or config blobs.",
+        "criteria": "embodiment specialization for Google Robot platforms",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol-aligned, checkpoint-scoped numeric benchmark evidence for either lerobot/xvla-google-robot or lerobot/xvla-base was found in the inspected canonical repository blobs for this checkpoint.",
+        "task": "embodiment-specialization for Google Robot platform (robot-control policy transfer/adaptation)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "allenai/MolmoAct2-SO100_101",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources for this checkpoint scope.",
+        "criteria": "task-aligned robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No primary-source, protocol-aligned benchmark evidence for the alternative was present in the checked canonical sources for this dossier; no direct numeric comparison is verifiable from the inspected blobs.",
+        "task": "task-aligned robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_libero",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources.",
+        "criteria": "robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol- or checkpoint-aligned numeric benchmark evidence was found in the inspected primary sources to support a quantitative comparison.",
+        "task": "robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_libero_plus",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources.",
+        "criteria": "robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol- or checkpoint-aligned numeric benchmark evidence was found in the inspected primary sources to support a quantitative comparison.",
+        "task": "robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_robocasa",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources.",
+        "criteria": "robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol- or checkpoint-aligned numeric benchmark evidence was found in the inspected primary sources to support a quantitative comparison.",
+        "task": "robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_robotwin",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources.",
+        "criteria": "robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol- or checkpoint-aligned numeric benchmark evidence was found in the inspected primary sources to support a quantitative comparison.",
+        "task": "robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "lerobot/smolvla_vlabench",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources.",
+        "criteria": "robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol- or checkpoint-aligned numeric benchmark evidence was found in the inspected primary sources to support a quantitative comparison.",
+        "task": "robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "rail-berkeley/octo-small-1.5",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources.",
+        "criteria": "robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol- or checkpoint-aligned numeric benchmark evidence was found in the inspected primary sources to support a quantitative comparison.",
+        "task": "robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "SberRoboticsCenter/GreenVLA-2b-base",
+        "comparisonConditions": "No aligned primary evidence for the alternative exists in the examined sources.",
+        "criteria": "robot-control quality",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "rationale": "No protocol- or checkpoint-aligned numeric benchmark evidence was found in the inspected primary sources to support a quantitative comparison.",
+        "task": "robot-control quality comparison",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Require explicit downstream validation of coordinate frames, command units, gripper conventions, and de-normalization mappings from the action tensor to hardware commands; the inspected canonical config and README blobs do not publish a hardware-safe actuation contract or de-normalization mapping.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+        ],
+        "modelScope": "lerobot/xvla-google-robot upstream repository blobs",
+        "useCase": "Real-robot control on Google Robot-like embodiments (only after embodiment-specific downstream validation and verification of coordinate frames, command units, gripper conventions, and de-normalization mappings)."
+      },
+      {
+        "conditions": "Apply only with task-specific validation and verification; the canonical README/config expose architecture and tokenizer settings appropriate for adaptation but do not publish checkpoint-scoped transfer metrics or a fine-tuning recipe tied to this exact commit.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "modelScope": "lerobot/xvla-google-robot upstream repository blobs",
+        "useCase": "Using the checkpoint as a compatibility or fine-tuning target inside LeRobot pipelines (research/fine-tuning workflows)."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: An explicit published model-weight artifact hash or single canonical immutable artifact identifier is not declared in the repository config.json or README blobs; inspected https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and https://huggingface.co/lerobot/xvla-google-robot/tree/main and found no canonical artifact-hash field.",
+      "Evidence gap: Parameter count (parameterScale) for this exact checkpoint is not reported in the inspected config or README blobs; inspected https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and https://huggingface.co/lerobot/xvla-google-robot/tree/main and found no parameter-count entry.",
+      "Evidence gap: No checkpoint-scoped public numeric benchmark rows tied to this exact repository revision were found in the inspected model repository files; inspected https://huggingface.co/lerobot/xvla-google-robot/tree/main and https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and found no benchmark tables or numeric results.",
+      "Evidence gap: Coordinate-frame conventions, gripper conventions, command-unit mappings, and explicit de-normalization mappings from ACTION tensor values to hardware commands are not specified in the inspected canonical blobs; inspected https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and https://huggingface.co/lerobot/xvla-google-robot/tree/main and found no such mappings.",
+      "Evidence gap: Exact per-image-feature shapes versus preprocessing resize settings (on-disk image shapes, dtypes, and explicit resize/pad rules) are not resolved in the inspected canonical files; inspected https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and https://huggingface.co/lerobot/xvla-google-robot/tree/main and found no explicit per-feature image-shape or preprocessing contract.",
+      "Evidence gap: No official prompt template, instruction-format contract, or episode-packing specification was found in the inspected README/config blobs; inspected https://huggingface.co/lerobot/xvla-google-robot/tree/main and https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and found none.",
+      "Evidence gap: Tokenizer truncation/truncation-semantics when textual inputs exceed tokenizer_max_length (1024) are not documented in the inspected config blobs; inspected https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and found no truncation-policy field.",
+      "Evidence gap: No latency, throughput, memory, control-frequency, batching, or episode-window operational measurements for this exact checkpoint are published in the inspected primary sources; inspected https://huggingface.co/lerobot/xvla-google-robot/tree/main and https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json and found no runtime measurements."
+    ],
+    "family": "huggingface-co-lerobot-xvla-google-robot-123e023f09",
+    "identity": {
+      "architecture": "Text encoder: Florence2 (florence_config.model_type = \"florence2\"); Vision encoder: not reported in inspected config blobs.",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+        "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+        "https://huggingface.co/lerobot/xvla-google-robot/blob/6c9e9c9028638289c2e02d8a1fc0b8063cdd303b/model.safetensors",
+        "https://huggingface.co/lerobot/xvla-google-robot/commits/main/config.json"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "6c9e9c9028638289c2e02d8a1fc0b8063cdd303b",
+      "upstreamName": "lerobot/xvla-google-robot"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "Tokenizer declared as \"facebook/bart-large\" with tokenizer_max_length = 1024 and tokenizer_padding_side = \"right\"."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+            "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+          ],
+          "statement": "Evidence gap: exact image feature keys, per-feature channel/height/width shapes, and official on-disk image dtype/encoding are not specified in the inspected canonical repository blobs."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+            "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+          ],
+          "statement": "Evidence gap: explicit image preprocessing steps (resize/pad parameters, interpolation, and color-space conversion) are not specified in the inspected config or repository README blobs."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "Evidence gap: explicit state normalization and action de-normalization numeric mappings to hardware units are not published in the inspected canonical files (normalization_mapping entries exist but do not define hardware-unit conversions)."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+            "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+          ],
+          "statement": "The checkpoint accepts textual, visual (image), and proprioceptive/robot-state inputs (multimodal vision-language-action policy)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "Proprioceptive inputs are enabled according to the config (use_proprio = true)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "The config declares multiple image observations and an empty-camera count (num_image_views = 3, empty_cameras = 1)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "Evidence gap: no official prompt template, instruction-format contract, or episode-packing specification was found in the inspected README/config blobs."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "Verify that textual inputs do not exceed tokenizer_max_length (1024) before encoding."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+            "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+          ],
+          "statement": "Evidence gap: the canonical repository blobs do not document how to handle image inputs that do not match any declared on-disk shape or how to treat excess state dimensions—these behaviors require downstream validation."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/6c9e9c9028638289c2e02d8a1fc0b8063cdd303b/model.safetensors"
+        ],
+        "statement": "Evidence gap: An explicit, published model-weight or artifact hash identifying a single immutable released checkpoint artifact is not present in the inspected config.json or README blobs (the repository contains a model weight blob at a committed path but the config.json does not publish a canonical artifact-hash field)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+        ],
+        "statement": "Evidence gap: Parameter count (parameterScale) for this exact checkpoint is not specified in the inspected config or README blobs."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "statement": "Evidence gap: No checkpoint-scoped public numeric benchmark (table/figure/section/row) tied to this exact repository revision was found in the checked primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+        ],
+        "statement": "Evidence gap: The inspected config/README do not specify coordinate-frame conventions, gripper conventions, command units, or explicit de-normalization mappings from ACTION tensor values to hardware commands."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+        ],
+        "statement": "Evidence gap: The canonical blobs do not resolve explicit per-image-feature shapes versus preprocessing resize settings (no explicit per-feature image shapes or preprocessing resolution found)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "statement": "Evidence gap: No runtime operational measurements (latency, throughput, control frequency, memory footprint) for this exact checkpoint were published in the inspected primary sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+            "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+          ],
+          "statement": "The model outputs should be interpreted as policy action outputs for downstream systems; the canonical blobs do not provide per-output uncertainty semantics or hardware-unit mappings."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "The checkpoint config declares n_action_steps = 30 and action_mode = \"ee6d\" (policy/action-sequence settings present in config.json)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+          ],
+          "statement": "Normalization mapping declarations in the config map STATE->IDENTITY, ACTION->IDENTITY, and VISUAL->MEAN_STD, indicating how some modality-level normalization is intended but not how to de-normalize to hardware units."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+            "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+          ],
+          "statement": "Before hardware execution, downstream validation must ensure generated actions conform to embodiment expectations, numeric range limits, and hardware safety constraints because such mappings are not provided in the canonical repository blobs."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/6c9e9c9028638289c2e02d8a1fc0b8063cdd303b/model.safetensors"
+        ],
+        "modelScope": "lerobot/xvla-google-robot upstream repository blobs (config.json PR blob and repository tree/weights)",
+        "useCase": "Research experimentation with multimodal vision-language-action policies adapted for Google Robot-like platforms (non-safety-critical research, simulation, and offline evaluation).",
+        "why": "The repository config declares X-VLA policy settings (florence_config.model_type = \"florence2\"), tokenizer settings (facebook/bart-large, max length 1024), multimodal flags (use_proprio = true, num_image_views = 3), and an action_mode identifier (\"ee6d\"), which together indicate this checkpoint is a vision-language-action policy artifact appropriate for research/fine-tuning and integration experiments rather than direct hardware actuation."
+      }
+    ],
+    "researchSummary": "The inspected canonical repository blobs for lerobot/xvla-google-robot (config.json PR blob and repository tree/commits) show a Florence2 text encoder (florence_config.model_type = \"florence2\") with tokenizer settings (tokenizer_name = \"facebook/bart-large\", tokenizer_max_length = 1024, tokenizer_padding_side = \"right\"). The checkpoint config exposes multimodal policy settings: use_proprio = true, num_image_views = 3, empty_cameras = 1, n_action_steps = 30, normalization_mapping that maps STATE->IDENTITY, ACTION->IDENTITY, VISUAL->MEAN_STD, and action_mode = \"ee6d\". The repository also contains a model weight blob at a committed path (model.safetensors at commit 6c9e9c9028638289c2e02d8a1fc0b8063cdd303b). The inspected config blobs do not publish a parameter count, an explicit code-or-weight license entry, per-output coordinate-frame or de-normalization mappings to hardware units, per-feature on-disk image dtype/encoding, explicit image preprocessing/resizing/interpolation contracts, prompt templates, or checkpoint-scoped numeric benchmarks. Where fields are absent or ambiguous in the canonical blobs, I record evidence gaps and list the exact Hugging Face repository blobs and commit pages inspected.",
+    "safety": [
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: Do not send generated actions directly to physical hardware without human oversight, embodiment-specific de-normalization, and hardware safety interlocks because the inspected canonical repository blobs do not provide a safe-actuation contract."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "statement": "Evidence gap: The inspected canonical blobs do not publish an upstream privacy or data-handling statement for captured camera observations and robot logs; treat such data according to applicable data-protection practices."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main",
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+        ],
+        "statement": "Use embodiment-specific validation for Google Robot platforms because the checkpoint is described in the repository as adapted for Google Robot-like embodiments while exact frame and command semantics are not specified in the canonical blobs."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json",
+          "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+        ],
+        "statement": "Evidence gap: License for model weights and code is not specified in the inspected config.json (license field is null); downstream deployers should verify licensing before reuse."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "lerobot/xvla-google-robot upstream repository (config.json PR blob)",
+        "primary": true,
+        "primaryReason": "Configuration artifact exposing checkpoint-scoped architecture, tokenizer, multimodal settings, action_mode, n_action_steps, normalization mappings, and other configuration parameters used as direct primary evidence.",
+        "publisher": "Hugging Face / LeRobot",
+        "sourceType": "repository",
+        "supports": [
+          "architecture (florence_config entries)",
+          "tokenizer name and tokenizer_max_length",
+          "multimodal flags (use_proprio, num_image_views, empty_cameras)",
+          "action_mode and n_action_steps",
+          "normalization_mapping entries"
+        ],
+        "title": "lerobot/xvla-google-robot config.json (PR blob)",
+        "url": "https://huggingface.co/lerobot/xvla-google-robot/blob/refs%2Fpr%2F1/config.json"
+      },
+      {
+        "modelScope": "lerobot/xvla-google-robot upstream repository (tree/main)",
+        "primary": true,
+        "primaryReason": "Repository root/tree view used to verify which files are present alongside the checkpoint (README, config, and integration instructions) and general repository-level provenance.",
+        "publisher": "Hugging Face / LeRobot",
+        "sourceType": "repository",
+        "supports": [
+          "presence of README/instructions",
+          "presence of model files and usage instructions"
+        ],
+        "title": "lerobot/xvla-google-robot repository tree (main)",
+        "url": "https://huggingface.co/lerobot/xvla-google-robot/tree/main"
+      },
+      {
+        "modelScope": "lerobot/xvla-google-robot upstream repository (config.json commit history)",
+        "primary": true,
+        "primaryReason": "Commit-history view for config.json used to verify commit events and short commit prefixes referenced in the repository.",
+        "publisher": "Hugging Face / LeRobot",
+        "sourceType": "repository",
+        "supports": [
+          "revision/commit history evidence for config.json changes"
+        ],
+        "title": "lerobot/xvla-google-robot commit history (config.json)",
+        "url": "https://huggingface.co/lerobot/xvla-google-robot/commits/main/config.json"
+      },
+      {
+        "modelScope": "lerobot/xvla-google-robot upstream repository (specific commit view)",
+        "primary": true,
+        "primaryReason": "Specific commit page inspected to verify commit metadata referenced by the repository.",
+        "publisher": "Hugging Face / LeRobot",
+        "sourceType": "repository",
+        "supports": [
+          "specific commit metadata"
+        ],
+        "title": "lerobot/xvla-google-robot commit page (specific commit)",
+        "url": "https://huggingface.co/lerobot/xvla-google-robot/commits/d5d78f35bf78372900ccf0ab84615a92a52ba575"
+      },
+      {
+        "modelScope": "lerobot/xvla-google-robot upstream repository (weights blob at commit 6c9e9c9... )",
+        "primary": true,
+        "primaryReason": "Committed model weight artifact path observed in the repository (used as evidence that a weights blob exists at a specific committed path).",
+        "publisher": "Hugging Face / LeRobot",
+        "sourceType": "repository",
+        "supports": [
+          "presence of model weight file at a committed path"
+        ],
+        "title": "lerobot/xvla-google-robot model weights blob (committed path)",
+        "url": "https://huggingface.co/lerobot/xvla-google-robot/blob/6c9e9c9028638289c2e02d8a1fc0b8063cdd303b/model.safetensors"
+      },
+      {
+        "modelScope": "huggingface-lerobot-xvla",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/lerobot/xvla-google-robot"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "c81602a9520409f519fed584d198f18c651abec8033e47f3b6c4834dde259274",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-lerobot-xvla-google-robot-123e023f09",
+  "researchedAt": "2026-08-06T12:40:42.770104+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/lerobot/xvla-google-robot",
+  "sourceUrls": [
+    "https://huggingface.co/lerobot/xvla-google-robot"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

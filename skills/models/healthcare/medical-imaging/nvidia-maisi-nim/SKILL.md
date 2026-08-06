@@ -76,6 +76,16 @@ Route: `POST /v1/maisi/run`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-medical-maisi-latest-2a51c97c80`
+- Recommended: Research-grade generation of synthetic 3D CT volumes for data augmentation (paired image + segmentation) — NVIDIA NIM documentation and the NGC model bundle listing describe MAISI as a 3D latent-diffusion generative model that produces CT volumes with paired segmentation masks and exposes parameters for sample count, body region, anatomy conditioning, output_size, spacing, and controllable anatomy size; MONAI tutorials also integrate MAISI examples.
+- Recommended: Generation of paired segmentation masks alongside synthetic CT volumes for training/augmenting segmentation models (research/benchmarking) — NIM model details and the NGC model bundle listing report that MAISI produces paired segmentation label maps when anatomy conditioning is used.
+- Avoid: Clinical diagnostic use or deployment for clinical decision-making — NVIDIA NIM documentation explicitly states MAISI is intended for research purposes only and not for clinical usage.
+- Avoid: Treating generated images or segmentation outputs as per-voxel calibrated likelihoods for clinical interpretation — Inspected primary sources do not provide evidence that MAISI returns per-voxel or per-structure calibrated confidence scores; segmentation outputs are reported as paired label maps but no calibration outputs are documented.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -93,11 +103,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-maisi-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-maisi-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-maisi-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/medical-imaging/nvidia-maisi-nim/SKILL.md

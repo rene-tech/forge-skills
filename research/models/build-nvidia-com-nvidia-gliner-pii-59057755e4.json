@@ -1,0 +1,498 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/gliner-pii"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://build.nvidia.com/nvidia/gliner-pii",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 3 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "NVIDIA GLiNER PII NIM for extracting personally identifiable information spans from text; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave5.",
+      "displayName": "Use NVIDIA GLiNER PII",
+      "group": "multimodal-and-specialized",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "nvidia-open-model-license; apache-2.0",
+      "modelFamily": "nvidia-gliner-pii",
+      "outputModalities": [
+        "entities"
+      ],
+      "slug": "nvidia-gliner-pii-nim",
+      "sourceUrl": "https://build.nvidia.com/nvidia/gliner-pii",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://huggingface.co/nvidia/gliner-PII"
+        ],
+        "modelScope": "nvidia/gliner-PII",
+        "reason": "Primary-source facts describe GLiNER PII as a non-generative span-tagging model that performs span-level entity annotation rather than text generation.",
+        "useCase": "Using the model as a generative language model for text synthesis or instruction-following"
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+        ],
+        "modelScope": "nvidia/gliner-PII",
+        "reason": "All primary-source facts indicate the checkpoint accepts UTF-8 text strings as input; no primary evidence indicates the checkpoint accepts raw audio or images.",
+        "useCase": "Non-text input modalities (audio, image) without upstream conversion to UTF-8 text"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "knowledgator/gliner-bi-large-v1.0",
+        "comparisonConditions": "Checked Build.NVIDIA model card, NIM reference, Hugging Face model page, and Hugging Face commit pages for numeric comparisons; none contain head-to-head numeric tables tied to the exact NVIDIA checkpoint.",
+        "criteria": "No primary-source numeric head-to-head metrics tied to the exact nvidia/gliner-PII checkpoint were found to support a comparative verdict.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff"
+        ],
+        "rationale": "Primary sources reference an upstream GLiNER variant in lineage statements but do not publish numeric head-to-head benchmarks for the exact NVIDIA checkpoint; therefore direct comparison is unsupported by the checked primary locators.",
+        "task": "PII/PHI detection (span-level entity recognition)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Allowed only after domain-specific validation, threshold tuning, and human review; primary NVIDIA documentation explicitly recommends validation and human review because performance varies by domain, format, and confidence threshold.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard"
+        ],
+        "modelScope": "nvidia/gliner-PII",
+        "useCase": "High-stakes regulatory redaction without human review"
+      },
+      {
+        "conditions": "Requires downstream validation and likely additional fine-tuning or calibration; primary findings report the model was developed based on an upstream GLiNER variant but do not publish in-domain benchmark numbers for the NVIDIA checkpoint.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+        ],
+        "modelScope": "nvidia/gliner-PII",
+        "useCase": "Domain adaptation or deployment to niche industry ontologies"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No single authoritative NVIDIA-hosted immutable checkpoint filename/tag or checksum was found in the checked NVIDIA primary locators. Checked locators: https://build.nvidia.com/nvidia/gliner-pii/modelcard (model card page), https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii (NIM reference page). Hugging Face commit snapshots exist but a single canonical NVIDIA-hosted immutable artifact was not located at the NVIDIA pages.",
+      "Evidence gap: Tokenizer provenance ambiguity — Hugging Face repository contains tokenizer_config.json (https://huggingface.co/nvidia/gliner-PII/blob/main/tokenizer_config.json) listing special tokens and IDs, but the NVIDIA-hosted documentation does not explicitly state that this tokenizer_config.json is the immutable tokenizer shipped with the NVIDIA-served checkpoint. Checked locators: NVIDIA model card (https://build.nvidia.com/nvidia/gliner-pii/modelcard) and NIM reference (https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii).",
+      "Evidence gap: No unambiguous numeric benchmark tables (dataset + split + metric + numeric value) tied to the exact nvidia/gliner-PII checkpoint were found at checked primary locators. Checked locators: https://build.nvidia.com/nvidia/gliner-pii/modelcard (model card page), https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii (NIM reference page), https://huggingface.co/nvidia/gliner-PII (model page), https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff (commit-level files).",
+      "Evidence gap: Upstream lineage ambiguity — some primary locators state the model was developed based on knowledgator/gliner-bi-large-v1.0 while other repository metadata references different GLiNER base descriptors; the primary locators checked include https://build.nvidia.com/nvidia/gliner-pii/modelcard and https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff."
+    ],
+    "family": "build-nvidia-com-nvidia-gliner-pii-59057755e4",
+    "identity": {
+      "architecture": "Transformer (GLiNER network design)",
+      "checkpoint": "nvidia/gliner-PII",
+      "evidenceUrls": [
+        "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+        "https://huggingface.co/nvidia/gliner-PII",
+        "https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff",
+        "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+        "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-"
+      ],
+      "license": "NVIDIA Open Model License; Apache-2.0; NVIDIA Software License / Product-Specific Terms (NGC)",
+      "parameterScale": "5.7 × 10^8",
+      "revision": "eb01413053b8084409708759193671f56b429cff",
+      "upstreamName": "nvidia/gliner-PII"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+          ],
+          "statement": "UTF-8 text strings are the accepted input format for the model."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+          ],
+          "statement": "Primary sources report the input type as UTF-8 text strings but do not publish a complete, explicit tokenizer provenance statement that unambiguously ties an immutable tokenizer artifact to the NVIDIA-served checkpoint."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/gliner-PII/blob/main/tokenizer_config.json",
+            "https://huggingface.co/nvidia/gliner-PII"
+          ],
+          "statement": "Hugging Face repository for nvidia/gliner-PII includes a tokenizer_config.json listing special tokens and token IDs, but the primary findings do not explicitly state that these tokenizer files are an immutable artifact shipped with the NVIDIA-served checkpoint."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff",
+            "https://huggingface.co/nvidia/gliner-PII/commit/b0851dd8139301516282d2c8c4bb326ef043f54b"
+          ],
+          "statement": "Training metadata in Hugging Face commit entries reports vocabulary size, backbone, hidden size, number of layers, and training sequence length (commit-level metadata), but the NIM/NVIDIA documentation does not duplicate a single immutable tokenizer file fingerprint for the NVIDIA-served checkpoint."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+          ],
+          "statement": "One-dimensional UTF-8 text strings representing structured or unstructured textual content (plain text)."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+            "https://huggingface.co/nvidia/gliner-PII"
+          ],
+          "statement": "Inputs can represent structured records or unstructured free text; the model is reported to support both forms of textual content."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog"
+          ],
+          "statement": "Guardrails integration documentation shows request/response fields and configuration parameters for the model (e.g., 'model' field set to 'nvidia/gliner-pii', optional 'labels' array, 'threshold' float, and chunking parameters) describing how Guardrails formats requests to the model."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+            "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-"
+          ],
+          "statement": "NVIDIA NIM documentation and NGC catalog describe packaging and usage for the NIM/NGC container, but low-level transport framing or every runtime SDK call signature is not exhaustively specified in the available primary locators."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+            "https://build.nvidia.com/nvidia/gliner-pii/modelcard"
+          ],
+          "statement": "Inputs should be validated as UTF-8 text; NVIDIA documentation recommends validation, threshold tuning, and human review prior to high-stakes deployment because performance varies by domain, format, and confidence threshold."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog",
+            "https://developer.nvidia.com/nemo-guardrails"
+          ],
+          "statement": "NeMo Guardrails integrations referencing this model include optional request fields such as 'labels', 'threshold', 'chunk_length', and 'overlap' for configuring detection behavior and chunking; these are configuration-level controls used in validation and deployment."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard"
+        ],
+        "statement": "Performance varies by domain, format, and confidence threshold; validation and human review are recommended for high-stakes deployments."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/gliner-PII/blob/main/tokenizer_config.json",
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard"
+        ],
+        "statement": "The primary sources do not publish exhaustive tokenizer/tokenization internals or a single immutable tokenizer fingerprint for the NVIDIA-served checkpoint; Hugging Face repository includes tokenizer_config.json but the NVIDIA documentation does not explicitly declare that file as the immutable tokenizer artifact for the NVIDIA-served checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff",
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+        ],
+        "statement": "Exact immutable revision identifiers (single canonical checkpoint filename with immutable tag or an NVIDIA-hosted checksum) for the nvidia/gliner-PII checkpoint are not consistently reported in the NVIDIA-hosted documentation; commit-level snapshots exist in the Hugging Face repository but an authoritative single immutable NVIDIA-hosted checkpoint filename/tag is not reported in the checked NVIDIA pages."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://huggingface.co/nvidia/gliner-PII"
+        ],
+        "statement": "No unambiguous numeric benchmark tables (dataset, split, metric, numeric value) tied to the exact nvidia/gliner-PII checkpoint were found at the checked primary locators."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog"
+          ],
+          "statement": "The 'score' field is presented as a confidence score; NeMo Guardrails documentation indicates a default confidence threshold of 0.5 and implies a 0.0–1.0 score range for configuration, so scores should be interpreted as probabilities/confidence values within that range when Guardrails is used."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+          ],
+          "statement": "Start/end offsets are provided to indicate span positions in the input UTF-8 text; interpreting offsets requires mapping them back to the original UTF-8 input."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+            "https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff"
+          ],
+          "statement": "The model returns an 'entities' array (list of dictionaries/EntitySpan objects) with keys that include text, label, start, end, and score."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+            "https://huggingface.co/nvidia/gliner-PII"
+          ],
+          "statement": "Span-level entity annotations cover 55+ categories as reported in NVIDIA documentation and Hugging Face metadata."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+            "https://build.nvidia.com/nvidia/gliner-pii/modelcard"
+          ],
+          "statement": "NVIDIA documentation recommends calibration of confidence thresholds and human review for high-stakes scenarios; downstream validation practices should include threshold tuning on in-domain data and human review of redaction decisions."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog"
+          ],
+          "statement": "NeMo Guardrails default configuration uses a 0.5 confidence threshold by default for GLiNER integrations; this default can be adjusted as part of postprocessing and deployment configuration."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://huggingface.co/nvidia/gliner-PII"
+        ],
+        "modelScope": "nvidia/gliner-PII",
+        "useCase": "Automated detection and redaction of Personally Identifiable Information (PII) and Protected Health Information (PHI) in structured and unstructured UTF-8 text for enterprise/regulatory workflows",
+        "why": "NVIDIA model-card and NIM documentation state the model is intended to detect and classify PII/PHI and to emit span-level annotations with confidence scores across 55+ categories, making it suitable as a component in redaction workflows."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog",
+          "https://developer.nvidia.com/nemo-guardrails"
+        ],
+        "modelScope": "nvidia/gliner-PII",
+        "useCase": "Integration as a PII detection/masking guardrail in NeMo Guardrails-based pipelines for input/output monitoring and masking",
+        "why": "NeMo Guardrails documentation references the model identifier and documents request/response fields and default thresholding behavior, supporting integration as a Guardrails component."
+      }
+    ],
+    "researchSummary": "Primary-source findings identify a checkpoint named nvidia/gliner-PII. The checkpoint is described in NVIDIA model-card and NIM documentation and hosted on Hugging Face. Primary facts state the model is a non-generative Transformer-based GLiNER span-tagging network that detects and classifies PII/PHI in UTF-8 text and emits span-level entity annotations (text, label, start, end, score) across 55+ categories. The checkpoint parameter count is reported as 5.7 × 10^8. Primary sources report the model was developed based on an upstream GLiNER variant, but upstream-lineage statements conflict across sources (see evidenceGaps). Primary documentation and Guardrails integration docs recommend threshold calibration and human review for high-stakes redaction. The primary sources do not present an explicit, single immutable NVIDIA-hosted checkpoint filename/tag beyond Hugging Face commit references; tokenizer files exist in the Hugging Face repository but the sources do not unambiguously state that those tokenizer files are an immutable artifact of the NVIDIA-served checkpoint. No unambiguous numeric benchmark tables tied to this exact nvidia/gliner-PII checkpoint were found in the checked primary locators.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://build.nvidia.com/nvidia/gliner-pii/modelcard"
+        ],
+        "statement": "NVIDIA documentation recommends validation, confidence-threshold tuning, and human review for high-stakes or regulated PII/PHI redaction scenarios."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog",
+          "https://developer.nvidia.com/nemo-guardrails"
+        ],
+        "statement": "NeMo Guardrails provides configuration-level defaults (including a default threshold of 0.5) and flows for PII detection and masking when integrating nvidia/gliner-pii, indicating guardrail-level handling and integration points for logging/retention controls."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/gliner-PII",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii",
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-"
+        ],
+        "statement": "Use of GLiNER PII is reported in the findings to be governed by the NVIDIA Open Model License and additional NVIDIA trial/product license references; licensing differs by distribution (Hugging Face, NIM/NGC) and is documented in the corresponding primary locators."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "nvidia/gliner-PII (Build.NVIDIA model card)",
+        "primary": true,
+        "primaryReason": "Official NVIDIA model card page used to support checkpoint-scoped claims about intended purpose, architecture type, categories, and deployment guidance.",
+        "publisher": "not reported",
+        "sourceType": "model-card",
+        "supports": [
+          "The GLiNER PII model was released on Build.NVIDIA.com and is described on the model card.",
+          "The model architecture type is Transformer and network architecture is GLiNER.",
+          "The model detects PII/PHI and outputs span-level annotations across 55+ categories.",
+          "The model accepts UTF-8 text inputs and is intended for PII/PHI detection and redaction workflows.",
+          "Documentation recommends validation, threshold tuning, and human review for high-stakes deployments."
+        ],
+        "title": "GLiNER PII model card (Build.NVIDIA)",
+        "url": "https://build.nvidia.com/nvidia/gliner-pii/modelcard"
+      },
+      {
+        "modelScope": "nvidia/gliner-PII (Hugging Face repository entry)",
+        "primary": true,
+        "primaryReason": "Hugging Face model repository page for the NVIDIA-hosted checkpoint; contains release metadata and links to commit-level artifacts used to corroborate checkpoint-level metadata.",
+        "publisher": "not reported",
+        "sourceType": "repository",
+        "supports": [
+          "The model page documents the model name, purpose (PII/PHI detection), reported parameter count, license metadata, and release date.",
+          "Hugging Face repository metadata includes references to training dataset and model tags."
+        ],
+        "title": "Hugging Face model page: nvidia/gliner-PII",
+        "url": "https://huggingface.co/nvidia/gliner-PII"
+      },
+      {
+        "modelScope": "nvidia/gliner-PII (Hugging Face commit eb01413053b8...)",
+        "primary": true,
+        "primaryReason": "Commit-level repository snapshot containing model metadata and training/configuration facts referenced in the findings.",
+        "publisher": "not reported",
+        "sourceType": "repository",
+        "supports": [
+          "Commit-level metadata lists training dataset (nvidia/Nemotron-PII), output schema (entities list with keys text,label,start,end,score), backbone details, and other training configuration fields."
+        ],
+        "title": "Hugging Face commit snapshot (eb01413053b8084409708759193671f56b429cff)",
+        "url": "https://huggingface.co/nvidia/gliner-PII/commit/eb01413053b8084409708759193671f56b429cff"
+      },
+      {
+        "modelScope": "nvidia/gliner-PII (Hugging Face commit b0851dd8...)",
+        "primary": true,
+        "primaryReason": "Commit-level repository snapshot containing additional training/configuration metadata referenced in the findings.",
+        "publisher": "not reported",
+        "sourceType": "repository",
+        "supports": [
+          "Commit-level metadata reports training dataset details, sequence length, span mode, subtoken pooling strategy, backbone (Microsoft/deberta-v3-large) metadata, vocabulary size, hidden size, layer counts, and other training parameters."
+        ],
+        "title": "Hugging Face commit snapshot (b0851dd8139301516282d2c8c4bb326ef043f54b)",
+        "url": "https://huggingface.co/nvidia/gliner-PII/commit/b0851dd8139301516282d2c8c4bb326ef043f54b"
+      },
+      {
+        "modelScope": "nvidia/gliner-PII (NIM/wrapped checkpoint as described in NVIDIA docs)",
+        "primary": true,
+        "primaryReason": "Official NIM reference documenting API contract, output schema, licensing references, and deployment guidance for the NVIDIA-served checkpoint.",
+        "publisher": "not reported",
+        "sourceType": "official-documentation",
+        "supports": [
+          "The NIM reference documents output schema (entities array with keys text,label,start,end,score), that the model is a non-generative span-level entity annotator, parameter count, architecture type, lineage statements, and deployment/license notes."
+        ],
+        "title": "NVIDIA NIM Reference: nvidia-gliner-pii",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-gliner-pii"
+      },
+      {
+        "modelScope": "nvidia/gliner-PII (tokenizer_config.json in Hugging Face repo)",
+        "primary": true,
+        "primaryReason": "Tokenizer configuration file in the Hugging Face repository referenced in the findings and used to corroborate special tokens and token IDs.",
+        "publisher": "not reported",
+        "sourceType": "repository",
+        "supports": [
+          "The tokenizer_config.json file defines added token decoders and lists special token IDs and content such as [PAD], [CLS], [SEP], [UNK], [MASK], [FLERT], <<ENT>>, and <<SEP>>."
+        ],
+        "title": "Hugging Face: tokenizer_config.json for nvidia/gliner-PII",
+        "url": "https://huggingface.co/nvidia/gliner-PII/blob/main/tokenizer_config.json"
+      },
+      {
+        "modelScope": "nvidia/gliner-PII (Guardrails catalog entry)",
+        "primary": true,
+        "primaryReason": "NeMo Guardrails catalog entry referencing GLiNER integrations used to corroborate request/response fields, default threshold values, and Guardrails-specific configuration.",
+        "publisher": "not reported",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Guardrails catalog documents how to configure GLiNER integrations (request fields like model, labels, threshold, chunking parameters) and notes a default threshold of 0.5 for Guardrails GLiNER integrations."
+        ],
+        "title": "NeMo Guardrails catalog (Guardrails GLiNER entry)",
+        "url": "https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog"
+      },
+      {
+        "modelScope": "nvidia/gliner-PII (NeMo Guardrails developer docs referencing GLiNER)",
+        "primary": true,
+        "primaryReason": "Developer documentation for NeMo Guardrails referenced in the findings to support integration and runtime deployment details.",
+        "publisher": "not reported",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NeMo Guardrails developer docs describe configuration, integration, and runtime deployment patterns used with Guardrails catalog entries."
+        ],
+        "title": "NeMo Guardrails developer page",
+        "url": "https://developer.nvidia.com/nemo-guardrails"
+      },
+      {
+        "modelScope": "nvidia/gliner-pii NGC container",
+        "primary": true,
+        "primaryReason": "NGC catalog entry referenced in the findings providing packaging and deployment metadata for the containerized NIM package.",
+        "publisher": "not reported",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NGC catalog documents container packaging, licensing references for the container, deployment requirements and distribution details."
+        ],
+        "title": "NGC catalog entry for GLiNER-PII container",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-"
+      },
+      {
+        "modelScope": "nvidia-gliner-pii",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://build.nvidia.com/nvidia/gliner-pii"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "ba599a4203eff893554ccb6f5cbe0ae4f7363a2bca1f59e3375c974f42fcac62",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-nvidia-gliner-pii-59057755e4",
+  "researchedAt": "2026-07-23T21:24:23.441312+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/nvidia/gliner-pii",
+  "sourceUrls": [
+    "https://build.nvidia.com/nvidia/gliner-pii"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

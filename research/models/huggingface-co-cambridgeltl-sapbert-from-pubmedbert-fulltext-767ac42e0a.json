@@ -1,0 +1,386 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "path": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[1].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "path": "$.benchmarks[1].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 6 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "SapBERT PubMedBERT is an Apache-2.0 biomedical entity representation model trained with UMLS 2020AA entity names using PubMedBERT as the base model.",
+      "displayName": "Use SapBERT PubMedBERT Entity Embeddings",
+      "group": "biomedical-retrieval",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "cambridgeltl-sapbert-pubmedbert-fulltext",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "cambridgeltl-sapbert-pubmedbert-fulltext-wrapper-cuda12",
+      "sourceUrl": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "version": "hf-090663c-wrapper-cuda12-slow-tokenizer",
+      "versionKey": "hf-090663c-wrapper-cuda12-slow-tokenizer"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+        ],
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (revision d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0)",
+        "reason": "Evidence gap: The inspected primary repository artifacts and commit metadata do not report any clinical-use approvals, certifications, PHI/data-handling guidance, or deployment safety guarantees for clinical settings.",
+        "useCase": "Unreviewed clinical decision-making or direct clinical use without expert oversight"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "not reported",
+        "comparisonConditions": "Checked locators include the repository commit view, commit history, and README; the SapBERT paper (arXiv:2010.11784) provides method-level benchmarks but the repository does not tie those numbers to this exact checkpoint at the inspected locators.",
+        "criteria": "Evidence gap: No per-checkpoint benchmark or protocol-matching evaluation artifact was found in the inspected repository to support a task- and protocol-matched comparison for this exact revision.",
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main",
+          "https://arxiv.org/abs/2010.11784"
+        ],
+        "rationale": "The repository documents the model artifacts and cites the SapBERT paper but does not contain per-checkpoint benchmark tables or artifacts tying published numeric results to this specific revision; therefore a verified checkpoint-scoped comparison cannot be produced from the checked primary locators.",
+        "task": "model-level comparison (checkpoint-scoped)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Reproduction requires running the SapBERT evaluation procedures (from the canonical SapBERT paper) against this checkpoint because no per-checkpoint benchmark table or artifact tying published numeric results to this specific revision was found in the repository; users must ensure protocol parity with the SapBERT paper.",
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2010.11784",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+        ],
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (revision d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0)",
+        "useCase": "Reproducing SapBERT paper-level benchmark evaluations using this checkpoint"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: The inspected primary repository artifacts do not report an explicit model-weights license or a repository LICENSE file at the checked locators. Checked URLs: https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0 , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main",
+      "Evidence gap: The inspected primary repository artifacts do not provide a per-checkpoint benchmark table or artifact tying the SapBERT paper's numeric results to this exact revision. Checked URLs: https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0 , https://arxiv.org/abs/2010.11784 , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main",
+      "Evidence gap: The inspected primary repository artifacts do not explicitly state the tokenizer algorithm (WordPiece vs BPE vs SentencePiece) at the checked locators. Checked URLs: https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0 , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/vocab.txt",
+      "Evidence gap: The inspected primary repository artifacts do not disclose embedding dtype/precision (fp32/fp16) or whether embeddings are L2-normalized at the checked locators. Checked URLs: https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0 , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md",
+      "Evidence gap: The inspected primary repository artifacts do not document a canonical, ordered preprocessing pipeline (normalization, lowercasing, punctuation handling) or explicit input-validation rules at the checked locators. Checked URLs: https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+      "Evidence gap: The inspected primary repository artifacts do not provide runtime output data type/format (Python list, numpy array, tensor) or a truncation/chunking policy for inputs longer than model position capacity at the checked locators. Checked URLs: https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md , https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+    ],
+    "family": "huggingface-co-cambridgeltl-sapbert-from-pubmedbert-fulltext-767ac42e0a",
+    "identity": {
+      "architecture": "not reported",
+      "checkpoint": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "evidenceUrls": [
+        "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+        "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+        "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+      "upstreamName": "not reported"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+          ],
+          "statement": "The repository manifest at the referenced revision indicates the presence of tokenizer and model configuration artifacts (config.json, tokenizer_config.json, vocab.txt) for text input handling, as recorded in the commit history."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+          ],
+          "statement": "The README (repository) advises using the [CLS] token as the representation for inputs (i.e., sequence-level representation is provided via [CLS])."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+          ],
+          "statement": "Evidence gap: The inspected primary repository artifacts do not explicitly state the tokenizer algorithm name (WordPiece, BPE, SentencePiece) or a canonical, ordered preprocessing pipeline (normalization, lowercasing, punctuation handling) in the checked locators."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+          ],
+          "statement": "English biomedical text (repository metadata tags language as English and tags include 'biomedical' and 'lexical-semantics'; training dataset listed as UMLS in commit metadata)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+          ],
+          "statement": "Evidence gap: The inspected primary repository artifacts do not document canonical prompt templates, paired-input wrappers, or task-specific control fields in the checked locators."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+          ],
+          "statement": "Evidence gap: The inspected primary repository artifacts do not provide explicit input-validation rules (allowed character sets, minimum/maximum tokenized lengths beyond the presence of tokenizer/config files in the commit history, or disallowed content checks)."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+        ],
+        "statement": "The repository commit and README present the model as SapBERT-style and trained with UMLS (English only) and indicate the use of microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext as the base model in commit metadata, which constrains the checkpoint to biomedical English-domain entity representations."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+        ],
+        "statement": "Evidence gap: The inspected primary repository artifacts do not disclose an explicit model-weights license or a repository LICENSE file at the checked locators."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+          "https://arxiv.org/abs/2010.11784",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+        ],
+        "statement": "Evidence gap: The inspected primary repository artifacts do not provide per-checkpoint benchmark tables or artifacts tying the SapBERT paper's numeric results to this specific revision at the checked locators."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+          ],
+          "statement": "Embeddings produced by this checkpoint are presented in the repository as SapBERT-style biomedical entity representations trained with UMLS; interpretation as entity embeddings for downstream lexical-semantics or entity-linking research is consistent with the repository README and commit metadata."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+          ],
+          "statement": "Sequence-level representation is provided via the [CLS] token according to the repository README; the README presents [CLS] as the representation for SapBERT-style embeddings."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+          ],
+          "statement": "Evidence gap: The primary repository artifacts inspected do not state the embedding dtype/precision (fp32/fp16), whether embeddings are L2-normalized, or the runtime output data type/format (Python list, numpy array, tensor) at the checked locators."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+            "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+          ],
+          "statement": "Evidence gap: The inspected primary repository artifacts do not describe post-inference calibration, recommended normalization, or embedding dtype/precision at the checked locators; downstream validation is required before using embeddings in production or safety-sensitive contexts."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+        ],
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (revision d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0)",
+        "useCase": "Biomedical entity representation / entity-embedding research (embedding tokens/phrases for downstream entity linking or retrieval research)",
+        "why": "The repository README and commit metadata present the checkpoint as implementing SapBERT-style biomedical entity representations trained with UMLS and advise using the [CLS] token as the representation, supporting research use to produce entity embeddings consistent with the SapBERT method."
+      }
+    ],
+    "researchSummary": "Primary-source inspection (Hugging Face repository views and the SapBERT arXiv preprint) shows that the repository for cambridgeltl/SapBERT-from-PubMedBERT-fulltext exists at revision d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0 and that the model is presented as a SapBERT-style biomedical entity representation trained with UMLS (README/commit metadata). The repo metadata tags language as English and tags include \"biomedical\" and \"lexical-semantics\". The repository manifest (commit history) indicates the presence of config.json, tokenizer_config.json, vocab.txt and related files at the referenced revision, and the README contains a BibTeX citation to the canonical SapBERT paper (arXiv:2010.11784). The primary sources inspected do not report an explicit model-weights license, parameter count, the tokenizer algorithm name, embedding dtype/precision, L2-normalization status, or per-checkpoint benchmark tables tying published paper numbers to this specific revision; those missing items are recorded as evidence gaps with the exact primary URLs checked.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+        ],
+        "statement": "The repository metadata and commit message report the model was trained with UMLS (listed as the dataset) and that the model language tag is English; repository tags include 'biomedical' and 'lexical-semantics'."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md",
+          "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+        ],
+        "statement": "Evidence gap: The inspected primary repository artifacts do not report clinical-use approvals, certifications, PHI/data-handling guidance, or deployment safety guarantees for clinical settings at the checked locators."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (tree at commit d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0)",
+        "primary": true,
+        "primaryReason": "Repository tree view at the exact commit revision verifies the revision exists and files present at that commit.",
+        "publisher": "cambridgeltl / Hugging Face (repository view)",
+        "sourceType": "repository",
+        "supports": [
+          "Verifies the repository and file tree exist at the referenced revision."
+        ],
+        "title": "SapBERT repository tree view at commit d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0",
+        "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+      },
+      {
+        "modelScope": "SapBERT method (paper)",
+        "primary": true,
+        "primaryReason": "Canonical SapBERT paper preprint used to justify method-level claims cited by the repository.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "Method-level description and benchmarks for SapBERT (used for reproducing evaluations and method context)."
+        ],
+        "title": "SapBERT canonical preprint (arXiv:2010.11784)",
+        "url": "https://arxiv.org/abs/2010.11784"
+      },
+      {
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (commit d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0)",
+        "primary": true,
+        "primaryReason": "Exact commit/revision referenced by the dossier; contains checkpoint-scoped metadata and tags.",
+        "publisher": "cambridgeltl / Hugging Face (repository commit)",
+        "sourceType": "repository",
+        "supports": [
+          "Commit metadata indicates training with UMLS (2020AA) and base model microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext; repository tags for language and domain are present."
+        ],
+        "title": "SapBERT repository commit d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0 (checkpoint metadata)",
+        "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commit/d22b6fba9ffec8283c6cb9d8b9ff04b86eb02cc0"
+      },
+      {
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (commits/main view)",
+        "primary": true,
+        "primaryReason": "Commit history listing the files present at the referenced revision (config.json, tokenizer_config.json, vocab.txt, etc.).",
+        "publisher": "cambridgeltl / Hugging Face (repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Shows that config.json, tokenizer_config.json, vocab.txt and model weight files are present in the repository history at the referenced revision."
+        ],
+        "title": "SapBERT repository commit history (commits/main) indicating presence of config/tokenizer/vocab artifacts",
+        "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/commits/main"
+      },
+      {
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (README blob)",
+        "primary": true,
+        "primaryReason": "Repository README providing usage guidance and a BibTeX citation to the SapBERT paper.",
+        "publisher": "cambridgeltl / Hugging Face (repository file)",
+        "sourceType": "repository",
+        "supports": [
+          "README includes a BibTeX citation to the SapBERT paper and advises using the [CLS] token as the representation."
+        ],
+        "title": "SapBERT repository README.md (blame/main view)",
+        "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/README.md"
+      },
+      {
+        "modelScope": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext (vocab.txt blob)",
+        "primary": true,
+        "primaryReason": "Tokenizer vocabulary file present in the repository at the referenced revision.",
+        "publisher": "cambridgeltl / Hugging Face (repository file)",
+        "sourceType": "repository",
+        "supports": [
+          "Presence of vocab.txt (tokenizer vocabulary) at the referenced revision."
+        ],
+        "title": "SapBERT repository vocab.txt (blame/main view)",
+        "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/blame/main/vocab.txt"
+      },
+      {
+        "modelScope": "cambridgeltl-sapbert-pubmedbert-fulltext",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "1dec8640b9bb079485d3038e8ebac598571b14df794e25c36e7758cae78d84f9",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-cambridgeltl-sapbert-from-pubmedbert-fulltext-767ac42e0a",
+  "researchedAt": "2026-08-06T11:22:12.430012+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+  "sourceUrls": [
+    "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

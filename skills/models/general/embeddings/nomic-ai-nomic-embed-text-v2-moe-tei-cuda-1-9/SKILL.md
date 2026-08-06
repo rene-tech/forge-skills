@@ -63,6 +63,18 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-nomic-ai-nomic-embed-text-v2-moe-6010f512ca`
+- Recommended: Multilingual retrieval — The upstream model card and README describe the checkpoint as a multilingual embedding model and report multilingual retrieval benchmarks (BEIR and MIRACL) for this checkpoint.
+- Recommended: Embedding generation for RAG indexing (feature extraction for retrieval-augmented-generation pipelines) — The model card and README indicate the checkpoint is intended for sentence-similarity/feature-extraction and embedding-generation tasks suitable for RAG-style indexing.
+- Recommended: Semantic search and clustering using dense embeddings — The upstream model page and README report dense embedding outputs (default dim=768) and list sentence-similarity / feature-extraction usage suitable for semantic search and clustering.
+- Avoid: Using unprefixed retrieval inputs for search tasks (omitting documented task/document/query prefixes) — The checkpoint README documents retrieval-style formatting that includes a task-instruction prefix and explicit query/document prefixes; omitting those documented prefixes is not aligned with the documented usage.
+- Avoid: Inputs longer than the supported maximum without truncation awareness — A commit/blame view of the README and the checkpoint config indicate maximum sequence settings (max_trained_positions or README-specified) that require validation; exceeding the documented maximum can invalidate tokenization/embedding behavior.
+- Avoid: Assuming uniform per-language performance without per-language validation — Primary sources report aggregate multilingual benchmarks but do not provide per-language guarantees in the supplied evidence; do not assume uniform quality across all languages without downstream validation.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -81,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9/SKILL.md

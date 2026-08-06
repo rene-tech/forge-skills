@@ -74,6 +74,15 @@ Route: `POST /v1/inference/allenai-molmoact2-so100-101`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-allenai-molmoact2-so100-101-5e93e3bd97`
+- Recommended: SO-100/SO-101 policy inference producing continuous robot actions (robot-scale joint targets) for tasks similar to the provided sample prompts. — The Hugging Face model card and the AllenAI repository list MolmoAct2-SO100_101 as a checkpoint fine-tuned on the SO-100/101 mixture intended for SO-100/101 inference with absolute joint-pose control and annotated language instructions.
+- Recommended: Further fine-tuning of the MolmoAct2-SO100_101 checkpoint for target embodiments or task mixtures. — The Hugging Face model card and the AllenAI repository indicate the checkpoint is intended both for inference and as a starting point for further fine-tuning on target embodiments or mixtures.
+- Avoid: Evidence gap: No checkpoint-specific published avoid-use boundaries. — Evidence gap: The inspected primary sources do not publish explicit, checkpoint-scoped avoid-use guidance (for example, a published statement forbidding unsupervised hardware execution for this exact checkpoint was not found in the inspected sources).
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -91,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/allenai-molmoact2-so100-101/inference-routes`
 - Regional deployment: `/v1/models/allenai-molmoact2-so100-101/regional-deployment`
 - Serverless handoff: `/v1/models/allenai-molmoact2-so100-101/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/allenai-molmoact2-so100-101/SKILL.md

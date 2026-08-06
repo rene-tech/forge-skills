@@ -1,0 +1,556 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$: missing required property safety",
+        "path": "$",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3] uses forbidden secondary URL https://developer.nvidia.com/blog/develop-physical-ai-reasoning-world-and-action-models-with-nvidia-cosmos-3",
+        "path": "$.sources[3] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10] uses unapproved repository owner 'vllm-project' for this exact model scope",
+        "path": "$.sources[10] uses unapproved repository owner 'vllm-project' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12].primary must be true",
+        "path": "$.sources[12].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14] uses forbidden secondary URL https://wavespeed.ai/blog/posts/what-is-nvidia-cosmos3-nano",
+        "path": "$.sources[14] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14].primary must be true",
+        "path": "$.sources[14].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "path": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].value must contain a reported numeric result",
+        "path": "$.benchmarks[0].value must contain a reported numeric result",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[1].value must contain a reported numeric result",
+        "path": "$.benchmarks[1].value must contain a reported numeric result",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.safety must contain at least one scoped item",
+        "path": "$.safety must contain at least one scoped item",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 14 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "Early-access Cosmos 3 Omni Nano world-generation and action model served through a Forge CUDA 13 wrapper.",
+      "displayName": "Use NVIDIA Cosmos 3 Omni (Nano)",
+      "group": "world-video-generation",
+      "inputModalities": [
+        "text",
+        "image",
+        "video",
+        "action"
+      ],
+      "license": "nvidia-software-model-evaluation-license",
+      "modelFamily": "nvidia-cosmos3-omni",
+      "outputModalities": [
+        "image",
+        "video",
+        "json"
+      ],
+      "slug": "nvidia-cosmos3-omni-nano",
+      "sourceUrl": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano",
+      "version": "nano-bf16-ea",
+      "versionKey": "nano-bf16"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md"
+        ],
+        "modelScope": "nvidia/Cosmos3-Nano",
+        "reason": "The SAFETY.md states the model is not safety\u2011certified for life\u2011critical use and requires system\u2011level validation and safeguards; no clinical validation artifacts or approvals are present in the supplied findings.",
+        "useCase": "Turnkey clinical or medical decision\u2011making without independent clinical validation"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano",
+          "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/generation_config.json"
+        ],
+        "modelScope": "nvidia/Cosmos3-Nano",
+        "reason": "The supplied findings (model card and blobs) do not document calibrated per-sample confidence outputs or a calibration protocol for generated modalities.",
+        "useCase": "Assuming per\u2011sample calibrated confidence outputs are provided by the checkpoint for automated safety decisions"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano"
+        ],
+        "modelScope": "nvidia/Cosmos3-Nano",
+        "reason": "The Hugging Face model facts in the supplied findings state outputs should not be treated as physically accurate simulation or safety\u2011certified decision making and advise additional validation for robotics/control applications.",
+        "useCase": "High\u2011resolution, long\u2011horizon video generation assumed to be physically accurate without downstream verification"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "nvidia/Cosmos3-Super",
+        "comparisonConditions": "Family-level description only; no per-checkpoint numeric tables located in the supplied findings to support head-to-head numeric comparison.",
+        "criteria": "Family-level tier descriptions (Nano vs Super) and deployment targets inferred from the model page facts; no protocol-matched numeric benchmark cells for Nano vs Super are available in the supplied findings.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano",
+          "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+        ],
+        "rationale": "The supplied Hugging Face facts list family variants (Nano and Super) indicating different tiers; the supplied findings do not include protocol-matched numeric benchmark values for Nano vs Super to make numeric comparisons.",
+        "task": "Multimodal world modeling and generation (family-level tier tradeoff)",
+        "verdict": "tradeoff"
+      },
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "No Nano-scoped numeric benchmark cells or reproducible evaluation artifacts present in the supplied URLs.",
+        "criteria": "Protocol-matched numeric comparisons require both sides to publish numeric values on the same dataset/split/metric/protocol; supplied findings do not provide such comparable numeric results for Nano versus alternatives.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano",
+          "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+        ],
+        "rationale": "The supplied findings do not publish per-checkpoint numeric benchmark cells or reproducible evaluation scripts for Nano; therefore direct numeric comparisons are unsupported.",
+        "task": "Direct protocol-matched benchmark comparisons between Cosmos3-Nano and other candidate checkpoints",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires domain-specific validation, human\u2011in\u2011the\u2011loop safeguards, and additional testing because SAFETY.md explicitly disclaims certification for life\u2011critical use and the supplied findings do not publish calibrated per-sample confidence outputs or turnkey certification artifacts.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md",
+          "https://huggingface.co/nvidia/Cosmos3-Nano"
+        ],
+        "modelScope": "nvidia/Cosmos3-Nano",
+        "useCase": "Production deployment in safety\u2011critical physical systems after extensive domain validation and guardrails"
+      },
+      {
+        "conditions": "The supplied findings describe Nano as a named variant in the family but do not publish an explicit edge-targeted runtime artifact or configuration for Nano in the inspected URLs; verify edge-targeted artifacts before claiming identical behavior for edge deployments.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano"
+        ],
+        "modelScope": "Cosmos3 family / Cosmos3-Nano (family-level evidence only in supplied findings)",
+        "useCase": "Edge or real-time deployment only after verifying an explicitly edge-targeted variant or performing runtime adaptation"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Per-checkpoint numeric benchmark values for Cosmos3-Nano (per-dataset, per-split, per-metric cells) are not present in the supplied findings. Checked: https://huggingface.co/nvidia/Cosmos3-Nano (model card and asset blobs) and https://build.nvidia.com/nvidia/cosmos3-nano/modelcard \u2014 no Nano-scoped numeric benchmark table cells or reproducible evaluation scripts were present in these URLs in the supplied findings.",
+      "Evidence gap: Exact immutable model-weight filenames and artifact hashes for nvidia/Cosmos3-Nano are not published in the supplied findings. Checked: https://huggingface.co/nvidia/Cosmos3-Nano and associated asset blobs listed in the supplied findings (tokenizer.json, generation_config.json, transformer/config.json) \u2014 no immutable weight filename or cryptographic hash was found.",
+      "Evidence gap: Tokenizer configuration details beyond tokenizer.json (separate merges/vocab files, explicit tokenizer class name/version) are not published in the supplied findings. Checked: https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/tokenizer.json and https://huggingface.co/nvidia/Cosmos3-Nano (model page) \u2014 no merges/vocab/class-version metadata found in the supplied findings.",
+      "Evidence gap: Explicit input/output tensor shapes, channel ordering, and formal runtime resolution/aspect-ratio contracts for the Nano checkpoint are not present in the supplied findings. Checked: https://huggingface.co/nvidia/Cosmos3-Nano and https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/transformer/config.json \u2014 no explicit tensor-shape or resolution/aspect-ratio contract documented in the supplied findings.",
+      "Evidence gap: Calibrated per-sample confidence outputs and a documented calibration protocol for generated modalities are not present in the supplied findings. Checked: https://huggingface.co/nvidia/Cosmos3-Nano and https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/generation_config.json \u2014 no calibration semantics or per-sample confidence fields documented in the supplied findings.",
+      "Evidence gap: Reproducibility artifacts for reported benchmarks (evaluation scripts, exact dataset splits, seeds, run commands) for Cosmos3-Nano are not present in the supplied findings. Checked: https://huggingface.co/nvidia/Cosmos3-Nano and https://build.nvidia.com/nvidia/cosmos3-nano/modelcard \u2014 no reproducible evaluation scripts or exact split/seed disclosures found in the supplied findings.",
+      "Evidence gap: A canonical primary URL for https://github.com/nvidia-cosmos/cosmos-transfer2.5 is not present in the supplied research findings, therefore any draft claims depending on that URL cannot be verified from the supplied findings."
+    ],
+    "family": "huggingface-co-nvidia-cosmos-ea-cosmos3-nano-d55efb7b36",
+    "identity": {
+      "architecture": "Mixture-of-Transformers (MoT) \u2014 Transformer family with separate reasoning and generation towers per the model card and transformer config",
+      "checkpoint": "Cosmos3-Nano",
+      "evidenceUrls": [
+        "https://huggingface.co/nvidia/Cosmos3-Nano",
+        "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/transformer/config.json"
+      ],
+      "license": "Model materials / checkpoints: OpenMDW-1.1 (as stated in the Hugging Face model card facts in the provided findings)",
+      "parameterScale": "Nano: 16 B total parameters (dense 8 B transformer)",
+      "revision": "not reported",
+      "upstreamName": "nvidia/Cosmos3-Nano"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+          ],
+          "statement": "The NIM model card (as present in the supplied findings) states the generator API returns MP4 videos encoded as base64 for generator outputs and accepts text prompts and optional image conditioning."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano",
+            "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/transformer/config.json"
+          ],
+          "statement": "The supplied Hugging Face model page and repository blobs provide examples and JSON-style modality routing but do not enumerate a single exhaustive byte-level container specification beyond example usage."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/generation_config.json"
+          ],
+          "statement": "Generation defaults relevant to inference (do_sample, top_k, top_p, temperature, repetition_penalty, bos/eos/pad token IDs) are recorded in generation_config.json in the supplied findings and can serve as default sampling parameters."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/tokenizer.json"
+          ],
+          "statement": "A tokenizer.json artifact is published for Cosmos3-Nano on Hugging Face (tokenizer.json blob present in the supplied findings)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/tokenizer.json",
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "The supplied findings do not publish separate merges/vocab files or an explicit tokenizer class name/version beyond tokenizer.json (evidence gap for full tokenizer configuration)."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "Accepted input modalities described in the supplied findings include text, image, video, and action trajectories (multimodal heterogeneous inputs for world modeling)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "Modalities are combined via structured JSON input files within framework examples referenced on the model page (e.g., modality routing via numeric fields such as num_frames to select image vs video)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "The supplied Hugging Face model page contains example prompts (e.g., a task planning example) and references JSON-style modality routing; no single canonical cross-modal prompt template is published in the supplied findings."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md",
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "The SAFETY.md describes dataset filtering, automated and manual review pipelines, and application-level safeguards, but the supplied findings do not present a centralized, explicit input-validation ruleset (forbidden tokens, PHI filters, exact filter lists) for runtime input acceptance \u2014 evidence gap."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano"
+        ],
+        "statement": "Generation instability and failure modes (temporal inconsistency, unstable camera motion, imprecise physical interactions, action-state drift) are noted as limitations for use in long-horizon or high-resolution scenarios in the supplied findings."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano",
+          "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+        ],
+        "statement": "Evidence gap: exact per-checkpoint numeric benchmark values, dataset splits, seeds, and reproducible evaluation scripts for Cosmos3-Nano are not published in the supplied findings."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/tokenizer.json",
+          "https://huggingface.co/nvidia/Cosmos3-Nano"
+        ],
+        "statement": "Evidence gap: tokenizer configuration details beyond tokenizer.json (merges/vocab separate files, explicit tokenizer class/version) are not present in the supplied findings."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano"
+        ],
+        "statement": "Evidence gap: exact immutable model-weight filenames or artifact hashes for Cosmos3-Nano are not published in the supplied findings."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano"
+        ],
+        "statement": "Evidence gap: a single, unambiguous mapping between model-weights license and any distinct code license for all deployment artifacts is not present in the supplied findings."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "Treat generated multimodal outputs as synthetic world-model outputs requiring downstream domain validation and physical/temporal sanity checks; the model page cautions about treating outputs as physically accurate or safety\u2011certified."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+          ],
+          "statement": "Runtime preview guardrails and SynthID watermarking are described on the NIM model card in the supplied findings as runtime-serving protections rather than model-weight artifacts."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "Documented output modalities in the supplied findings include text, image, video, audio (sound), and action sequences (policy outputs)."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+          ],
+          "statement": "The supplied NIM model card states the preview/generator API returns MP4 videos encoded as base64 strings (output encoding documented in the provided NIM model card URL)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano",
+            "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/transformer/config.json"
+          ],
+          "statement": "The supplied findings do not publish explicit output tensor shapes, channel ordering, or standardized per-output numeric confidence fields for the Nano checkpoint (evidence gap)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano",
+            "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md"
+          ],
+          "statement": "Post-inference validation should include physical-law checks, semantic-alignment checks, geometric-consistency checks, and visual-integrity checks; the supplied findings describe verification concepts at a high level but do not provide a turnkey validation suite (evidence gap)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos3-Nano"
+          ],
+          "statement": "For policy/action outputs, repository-level examples referenced on the model page indicate simulator-in-the-loop verification and trajectory continuity checks are recommended, but a centralized, explicit simulator-validation spec is not published in the supplied findings (evidence gap)."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano",
+          "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+        ],
+        "modelScope": "nvidia/Cosmos3-Nano",
+        "useCase": "Physical\u2011AI world modeling and multimodal generation for research and synthetic-data creation (text->image, text->video, image->video)",
+        "why": "The Hugging Face Cosmos3-Nano model card and the NIM model card describe Cosmos3-Nano as an omnimodal world model intended for Physical AI applications and synthetic-data generation; the model page lists supported modalities and intended application domains."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano",
+          "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md"
+        ],
+        "modelScope": "nvidia/Cosmos3-Nano (and policy-tuned Nano variants referenced on Hugging Face)",
+        "useCase": "Research and experimentation with policy/action SFT variants (policy-tuned Nano research variants)",
+        "why": "The Hugging Face model card facts reference policy variants (e.g., Cosmos3-Nano-Policy-DROID) and the model assets include example prompts and tokenizer/config artifacts that support research workflows for action/policy modeling."
+      }
+    ],
+    "researchSummary": "Using only the supplied research findings (Hugging Face Cosmos3-Nano model page and asset blobs, and the NVIDIA NIM model card present in the findings), I verified Nano identity (nvidia/Cosmos3-Nano), MoT architecture claim, tokenizer.json artifact presence, generation defaults (generation_config.json), and SAFETY.md statements. The supplied findings do not include immutable model-weight filenames/hashes, tokenizer merges/vocab/class-version metadata beyond tokenizer.json, per-checkpoint numeric benchmark cells for Nano, explicit tensor-shape/runtime resolution/aspect-ratio contracts, or reproducible evaluation scripts for Nano-specific numeric results. Where the supplied findings are silent, I record explicit evidence gaps and cite the exact URLs inspected.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md"
+        ],
+        "statement": "The SAFETY.md for the Nano model variant states the model is not safety\u2011certified for life\u2011critical use and must not be used as the sole basis for life\u2011critical decisions; human review and safeguards are required."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md"
+        ],
+        "statement": "The SAFETY.md documents training-data acquisition safeguards including CSAM hash-matching, NCII classifier-based moderation, automated and manual filtering pipelines, and human review; full provenance manifests for training data are not published in the supplied findings (evidence gap)."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+        ],
+        "statement": "The NIM model card in the supplied findings documents runtime preview guardrails and output watermarking (SynthID) applied by the hosted endpoint; these are runtime-serving protections rather than intrinsic model-weight properties in the supplied findings."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "nvidia/Cosmos3-Nano",
+        "primary": true,
+        "primaryReason": "Canonical Hugging Face model hosting and README entries for the upstream Cosmos3-Nano checkpoint are included in the supplied findings and underpin identity, modalities, and high-level limitations.",
+        "publisher": "Hugging Face (model card by NVIDIA)",
+        "sourceType": "model-card",
+        "supports": [
+          "upstreamName",
+          "checkpoint",
+          "intended uses",
+          "input/output modalities",
+          "generation limitations",
+          "tokenizer artifact presence (tokenizer.json)"
+        ],
+        "title": "Hugging Face model card: nvidia/Cosmos3-Nano",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano"
+      },
+      {
+        "modelScope": "nvidia/Cosmos3-Nano",
+        "primary": true,
+        "primaryReason": "Provides canonical sampling and generation defaults recorded for the Cosmos3-Nano model in the supplied findings.",
+        "publisher": "Hugging Face (model assets by NVIDIA)",
+        "sourceType": "model-card",
+        "supports": [
+          "sampling defaults (do_sample, top_k, top_p, temperature, repetition_penalty)",
+          "token id defaults (bos/eos/pad ids)"
+        ],
+        "title": "Hugging Face generation_config.json for Cosmos3-Nano",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/generation_config.json"
+      },
+      {
+        "modelScope": "nvidia/Cosmos3-Nano (policy and safety guidance)",
+        "primary": true,
+        "primaryReason": "Contains canonical safety statements, data\u2011acquisition safeguards, and usage disclaimers included in the supplied findings.",
+        "publisher": "Hugging Face (model assets by NVIDIA)",
+        "sourceType": "model-card",
+        "supports": [
+          "safety statements",
+          "training data safeguards",
+          "disclaimer about non-certified use in life-critical systems"
+        ],
+        "title": "Hugging Face SAFETY.md for Cosmos3-Nano",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/SAFETY.md"
+      },
+      {
+        "modelScope": "nvidia/Cosmos3-Nano (tokenizer artifact)",
+        "primary": true,
+        "primaryReason": "Direct tokenizer artifact hosted alongside the Cosmos3-Nano model as present in the supplied findings.",
+        "publisher": "Hugging Face (model assets by NVIDIA)",
+        "sourceType": "model-card",
+        "supports": [
+          "tokenizer artifact presence"
+        ],
+        "title": "Hugging Face tokenizer blob for Cosmos3-Nano (tokenizer.json)",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/tokenizer.json"
+      },
+      {
+        "modelScope": "nvidia/Cosmos3-Nano (transformer config)",
+        "primary": true,
+        "primaryReason": "Transformer configuration blob present in the supplied findings describing model instance targets and pretrained_weights references.",
+        "publisher": "Hugging Face (model assets by NVIDIA)",
+        "sourceType": "model-card",
+        "supports": [
+          "architecture details referenced in the config",
+          "pretrained_weights/backbone_path references"
+        ],
+        "title": "Hugging Face transformer config for Cosmos3-Nano (transformer/config.json)",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano/blob/main/transformer/config.json"
+      },
+      {
+        "modelScope": "nvidia/cosmos3-nano (NIM preview/runtime statements)",
+        "primary": true,
+        "primaryReason": "NIM model card in the supplied findings documents API output encoding (MP4 base64) and notes on runtime preview guardrails.",
+        "publisher": "build.nvidia.com (NVIDIA NIM model card as included in the supplied findings)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "API output encoding (MP4 base64)",
+          "runtime preview guardrails and watermarking statements"
+        ],
+        "title": "NIM/NVIDIA model card: cosmos3-nano (modelcard)",
+        "url": "https://build.nvidia.com/nvidia/cosmos3-nano/modelcard"
+      },
+      {
+        "modelScope": "nvidia-cosmos3-omni",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "82482a8186ac80d15180b8f0d2a559cc9e10488d1160da5393a172eed39fcb1d",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-nvidia-cosmos-ea-cosmos3-nano-d55efb7b36",
+  "researchedAt": "2026-08-06T13:22:39.185253+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano",
+  "sourceUrls": [
+    "https://huggingface.co/nvidia-cosmos-ea/Cosmos3-Nano"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model rail-berkeley-octo-small-1-5 for this task: Vision-and-language-conditioned short-horizon continuous robot control for robot arms (predicting multi-step 7\u2011DoF continuous actions conditioned on RGB cameras, language instructions, and optional goal images).. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use rail-berkeley-octo-small-1-5 or another Forge model for Vision-and-language-conditioned short-horizon continuous robot control for robot arms (predicting multi-step 7\u2011DoF continuous actions conditioned on RGB cameras, language instructions, and optional goal images).?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use rail-berkeley-octo-small-1-5 for Unconstrained claims of verified robot compatibility or out-of-the-box deployment on specific robot platforms without per-platform validation., even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "rail-berkeley-octo-small-1-5",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-rail-berkeley-octo-small-1-5"
+}

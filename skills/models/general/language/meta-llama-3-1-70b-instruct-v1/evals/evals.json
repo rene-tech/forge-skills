@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model meta-llama-3.1-70b-instruct-v1 for this task: Multilingual chatbots and virtual assistants. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use meta-llama-3.1-70b-instruct-v1 or another Forge model for Multilingual chatbots and virtual assistants?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use meta-llama-3.1-70b-instruct-v1 for Deploying the model for prohibited or high-risk categories (e.g., weapons, illegal activity, processing sensitive personal data without consent), even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "meta-llama-3.1-70b-instruct-v1",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-meta-llama-3-1-70b-instruct-v1"
+}

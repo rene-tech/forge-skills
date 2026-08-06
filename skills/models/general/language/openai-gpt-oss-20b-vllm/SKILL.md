@@ -75,6 +75,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-openai-gpt-oss-20b-4fb7165743`
+- Recommended: Agentic instruction-following workflows with tool use (function calling, structured outputs, multi-step reasoning) — OpenAI official model card and repository materials describe the GPT-OSS family as designed for agentic workflows with structured outputs, chain-of-thought style reasoning, and tool-enabled capabilities; the upstream repository provides Harmony-format templates/adapters intended for such flows.
+- Recommended: Text-only coding, STEM, and general-knowledge reasoning tasks suitable for a text-only MoE model — OpenAI model card and vendor documentation characterize gpt-oss-20b as a text-only model with instruction-following and reasoning capabilities applicable to coding and STEM tasks.
+- Avoid: Deploying or querying the model in agentic/tool workflows without applying Harmony response-format templates or repository-provided adapters — Upstream repository and model-card materials indicate the models were trained on the Harmony response format and provide Harmony-format templates/adapters; agentic flows are documented as relying on Harmony-format templates/adapters for correct structured outputs and tool interactions.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -93,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/openai-gpt-oss-20b-vllm/inference-routes`
 - Regional deployment: `/v1/models/openai-gpt-oss-20b-vllm/regional-deployment`
 - Serverless handoff: `/v1/models/openai-gpt-oss-20b-vllm/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/openai-gpt-oss-20b-vllm/SKILL.md

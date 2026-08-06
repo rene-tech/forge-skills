@@ -66,6 +66,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-cosmos-reason2-8b-modelcard-ef0d7d8880`
+- Recommended: Physical-AI and robotics reasoning over text, image, and video inputs — Primary NVIDIA model-card and documentation sources describe Cosmos Reason 2 as an open reasoning VLM for physical AI and robotics that understands space, time, and fundamental physics and can support embodied-agent reasoning.
+- Recommended: Text-only or multimodal query answering for Cosmos-Reason2-8B — Official NVIDIA API documentation states that text-only queries are supported for nvidia/cosmos-reason2-8b, and the model card reports support for text, image, and video inputs.
+- Avoid: Clinical or other safety-critical decision-making without expert review and external guardrails — Primary NVIDIA sources say users are responsible for model inputs and outputs and must implement guardrails before deployment, while the audited findings do not provide clinical validation, calibration, or safety-critical deployment guarantees for this checkpoint.
+- Avoid: Tasks requiring an immutable published checkpoint revision for strict reproducibility — The audited primary findings do not report an immutable revision identifier for this exact checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -84,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-reason2-2b/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-reason2-2b/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-reason2-2b/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-reason2-2b/SKILL.md

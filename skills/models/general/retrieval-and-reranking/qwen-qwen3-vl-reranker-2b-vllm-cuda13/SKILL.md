@@ -65,6 +65,18 @@ Route: `POST /v1/inference/qwen-qwen3-vl-reranker-2b-vllm-cuda13`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-vl-reranker-2b-03d6241fb5`
+- Recommended: Multimodal reranking for query-document pairs where fine-grained relevance scoring is required — Upstream model card and repository describe the Qwen3-VL-Reranker model series as a reranker that refines retrieval results and operates on query-document pairs, intended for multimodal information retrieval and cross-modal understanding.
+- Recommended: Image–text retrieval reranking (multimodal candidate reranking) — The upstream model card and repository state the model suite accepts text and images and that the reranker refines retrieval results in a multimodal retrieval pipeline.
+- Recommended: Video–text matching reranking within a multimodal retrieval workflow — The upstream model card indicates the suite accepts video as an input modality and positions the reranker as the component to refine retrieval results.
+- Avoid: Using the reranker checkpoint as an embedding model that outputs vector embeddings for ANN retrieval — Upstream materials separate the embedding model and the reranker: the embedding model is described as generating high-dimensional vectors while the reranker is described as refining retrieval results with pairwise relevance scoring; this indicates the reranker is not the embedding-producing checkpoint.
+- Avoid: Relying on reranker outputs as calibrated probabilities or fixed thresholds for automated high-stakes decisions — Upstream files do not provide score-range semantics, calibration guidance, or thresholding instructions for this checkpoint; no calibration or probability semantics are documented in the checked primary files.
+- Avoid: Assuming undocumented preprocessing, truncation, batching, or multimodal packing contracts in production-critical pipelines — Upstream README and config.json do not specify exact tokenization, image/video preprocessing, cropping, resizing, padding, multimodal packing, or batching behavior for this checkpoint; these are gaps that require local validation.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -83,11 +95,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-vl-reranker-2b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-vl-reranker-2b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-vl-reranker-2b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/qwen-qwen3-vl-reranker-2b-vllm-cuda13/SKILL.md

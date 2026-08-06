@@ -1,0 +1,565 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4] uses forbidden secondary URL https://huggingface.co/papers/2601.04720",
+        "path": "$.sources[4] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "path": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.inputPreparation.acceptedFormats[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.inputPreparation.acceptedFormats[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.inputPreparation.preprocessing[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.inputPreparation.preprocessing[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.inputPreparation.validation[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.inputPreparation.validation[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.outputInterpretation.outputs[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.outputInterpretation.outputs[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.outputInterpretation.interpretation[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.outputInterpretation.interpretation[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.outputInterpretation.validation[0] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.outputInterpretation.validation[0] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.limitations[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.limitations[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.limitations[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.limitations[2] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/README.md"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/README.md",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 10 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Qwen3-VL Reranker 2B is an Apache-2.0 multimodal reranker for text, image, screenshot, and visual-document retrieval workflows.",
+      "displayName": "Use Qwen3-VL Reranker 2B",
+      "group": "retrieval-and-reranking",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "qwen-qwen3-vl-reranker-2b",
+      "outputModalities": [
+        "ranking"
+      ],
+      "slug": "qwen-qwen3-vl-reranker-2b-vllm-cuda13",
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+      "version": "vllm-0.21.0-cuda13-vision-rerank-onboarding",
+      "versionKey": "vllm-0-21-0-cuda13-vision-rerank-onboarding"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+          "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "reason": "Upstream materials separate the embedding model and the reranker: the embedding model is described as generating high-dimensional vectors while the reranker is described as refining retrieval results with pairwise relevance scoring; this indicates the reranker is not the embedding-producing checkpoint.",
+        "useCase": "Using the reranker checkpoint as an embedding model that outputs vector embeddings for ANN retrieval"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "reason": "Upstream files do not provide score-range semantics, calibration guidance, or thresholding instructions for this checkpoint; no calibration or probability semantics are documented in the checked primary files.",
+        "useCase": "Relying on reranker outputs as calibrated probabilities or fixed thresholds for automated high-stakes decisions"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "reason": "Upstream README and config.json do not specify exact tokenization, image/video preprocessing, cropping, resizing, padding, multimodal packing, or batching behavior for this checkpoint; these are gaps that require local validation.",
+        "useCase": "Assuming undocumented preprocessing, truncation, batching, or multimodal packing contracts in production-critical pipelines"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "Alibaba-NLP/gte-reranker-modernbert-base",
+        "comparisonConditions": "insufficient primary evidence for the alternative in the reviewed sources.",
+        "criteria": "No primary-source evidence for the alternative checkpoint present in the checked findings; unable to perform a protocol-matched comparison.",
+        "evidenceUrls": [],
+        "rationale": "The checked upstream files provide evidence for Qwen3-VL-Reranker-2B multimodal reranking capability; the findings do not include a primary model card or repository for the alternative, so a direct checkpoint-scoped comparison is not supportable.",
+        "task": "Reranking under multimodal retrieval settings",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "BAAI/bge-reranker-v2-m3",
+        "comparisonConditions": "insufficient primary evidence for the alternative in the reviewed sources.",
+        "criteria": "No primary-source evidence for the alternative checkpoint present in the checked findings; unable to perform a protocol-matched comparison.",
+        "evidenceUrls": [],
+        "rationale": "Primary evidence exists for Qwen3-VL-Reranker-2B but not for the alternative within the provided findings.",
+        "task": "Reranking under multimodal retrieval settings",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "NVIDIA Llama 3.2 NV-RerankQA 1B v2",
+        "comparisonConditions": "insufficient primary evidence for the alternative in the reviewed sources.",
+        "criteria": "No primary-source evidence for the alternative checkpoint present in the checked findings.",
+        "evidenceUrls": [],
+        "rationale": "The reviewed findings do not include a canonical primary source for the alternative checkpoint.",
+        "task": "Direct checkpoint-quality or contract comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "NVIDIA Llama Nemotron Rerank 1B v2",
+        "comparisonConditions": "insufficient primary evidence for the alternative in the reviewed sources.",
+        "criteria": "No primary-source evidence for the alternative checkpoint present in the checked findings.",
+        "evidenceUrls": [],
+        "rationale": "The reviewed findings do not include a canonical primary source for the alternative checkpoint.",
+        "task": "Direct checkpoint-quality or contract comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "NVIDIA Llama Nemotron Rerank VL 1B v2",
+        "comparisonConditions": "insufficient primary evidence for the alternative in the reviewed sources.",
+        "criteria": "No primary-source evidence for the alternative checkpoint present in the checked findings.",
+        "evidenceUrls": [],
+        "rationale": "The reviewed findings do not include a canonical primary source for the alternative checkpoint.",
+        "task": "Direct checkpoint-quality or contract comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "Qwen/Qwen3-Reranker-0.6B",
+        "comparisonConditions": "insufficient primary evidence for the alternative in the reviewed sources.",
+        "criteria": "No primary-source evidence for the peer checkpoint present in the checked findings.",
+        "evidenceUrls": [],
+        "rationale": "Although in the broader product line, the reviewed findings do not include the peer\u2019s primary model card or benchmark evidence.",
+        "task": "Direct checkpoint-quality comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "Qwen/Qwen3-Reranker-4B",
+        "comparisonConditions": "insufficient primary evidence for the alternative in the reviewed sources.",
+        "criteria": "No primary-source evidence for the peer checkpoint present in the checked findings.",
+        "evidenceUrls": [],
+        "rationale": "The reviewed findings do not include the peer\u2019s primary model card or benchmark evidence.",
+        "task": "Direct checkpoint-quality comparison",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Appropriate only when downstream validation confirms task fit because the upstream files document multimodal support but do not provide text-only specialized benchmarks or exact text-only contract for this specific checkpoint.",
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "useCase": "Text-only reranking (use conditionally with validation)"
+      },
+      {
+        "conditions": "Upstream model card lists screenshots as a supported modality but does not specify screenshot-specific preprocessing, formatting, or benchmark conditions for this checkpoint; validate preprocessing and scoring on intended screenshot data before production use.",
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "useCase": "Screenshot retrieval reranking (use conditionally with downstream preprocessing validation)"
+      },
+      {
+        "conditions": "Upstream materials indicate family-level multilingual support in documentation for the model series, but the exact checkpoint-level language coverage, per-language benchmarks, and formatting guidance for this specific 2B reranker checkpoint are not provided in the checked upstream files; perform per-language validation.",
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+          "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B (family-level multilingual claims exist)",
+        "useCase": "Multilingual reranking (conditional)"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No immutable checkpoint revision or explicit immutable revision field was found in https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (checked README.md) and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json.",
+      "Evidence gap: No checkpoint-matched public benchmark table or numeric row for Qwen/Qwen3-VL-Reranker-2B was found at the checked primary paths: https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (README.md root), https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/refs%2Fpr%2F3/README.md, or https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json; these paths were inspected for dataset/split/metric/value entries and none were present for the exact 2B reranker checkpoint.",
+      "Evidence gap: The upstream files checked (README.md root, PR README snapshot, and config.json) do not specify official file/container formats, serialization schema, or exact request object structure for the documented modalities; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/refs%2Fpr%2F3/README.md.",
+      "Evidence gap: The upstream files checked do not specify exact tokenization, image preprocessing, video frame sampling, resizing, cropping, padding, truncation strategies, or multimodal packing rules for the Qwen3-VL-Reranker-2B checkpoint; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/README.md and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json.",
+      "Evidence gap: The upstream files checked do not specify exact output tensor shape, dtype, score units, or whether returned scores are logits, normalized similarities, or probabilities for Qwen/Qwen3-VL-Reranker-2B; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (README.md) and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json."
+    ],
+    "family": "huggingface-co-qwen-qwen3-vl-reranker-2b-03d6241fb5",
+    "identity": {
+      "architecture": "Model type listed as \"Qwen3VLForConditionalGeneration\" in config.json; upstream model card and repository describe the Qwen3-VL-Reranker series as a multimodal reranker built on the Qwen3-VL family that refines retrieval results for query-document pairs.",
+      "checkpoint": "Qwen/Qwen3-VL-Reranker-2B",
+      "evidenceUrls": [
+        "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+        "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json",
+        "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+      ],
+      "license": "Evidence gap: model-weight and code license not reported in the provided upstream files checked; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (README.md) and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json",
+      "parameterScale": "2 billion parameters",
+      "revision": "Evidence gap: immutable checkpoint revision not reported in the upstream model card or repository; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (README.md) and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json",
+      "upstreamName": "Qwen3-VL-Reranker-2B"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+          ],
+          "statement": "Accepted semantic modalities documented upstream are text, image, screenshot, video, and mixed-modality inputs (model-card stated modalities)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the upstream files do not specify official file/container formats, serialization schema, or exact request object structure for these modalities; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (README.md) and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/refs%2Fpr%2F3/README.md"
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/README.md",
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/refs%2Fpr%2F3/README.md"
+          ],
+          "statement": "Official usage examples and dependency requirements for the checkpoint are present in the README snapshots (transformers version and qwen-vl-utils usage references appear in the checked README snapshots)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the upstream files do not specify exact tokenization, image preprocessing, video frame sampling, resizing, cropping, padding, truncation, or multimodal packing behavior for this checkpoint; checked README.md and config.json paths."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+          ],
+          "statement": "The upstream model card and repository state the suite accepts multimodal inputs including text, images, screenshots, videos, and mixtures of these modalities."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md",
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+          ],
+          "statement": "The reranker operates on query-document pair semantics to refine retrieval results in a two-stage pipeline (embedding + reranker) as described in the upstream repository materials."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+          ],
+          "statement": "The model is designed for multimodal information retrieval and cross-modal understanding per the upstream model card."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/README.md",
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/refs%2Fpr%2F3/README.md"
+          ],
+          "statement": "Official example initialization in the upstream README references model_path \"Qwen/Qwen3-VL-Reranker-2B\" and provides basic usage pointers in the repository examples."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the upstream artifacts do not provide an exact official prompt template, pair-order example, or control-field schema for reranker input formatting for this checkpoint; checked README.md and PR README snapshot."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+          ],
+          "statement": "Inputs should be validated to stay within the reported sequence length for family members (the embedding README reports a sequence length of 32K for family models)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the upstream files do not specify image-count limits, resolution constraints, video duration/frame limits, or explicit invalid-input edge-case rules for this exact checkpoint; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (README.md) and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json"
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json"
+        ],
+        "statement": "Evidence gap: immutable upstream model revision is not reported in the checked upstream model card or config.json; checked https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B (README.md) and https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json"
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the upstream files do not specify exact preprocessing behavior (tokenization, image resizing/cropping/padding, video frame sampling, truncation, batching, or multimodal packing rules) for this checkpoint; these details were not found in README.md or config.json."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the upstream files do not specify exact output tensor shape, score dtype, score range, or whether reranker scores are logits, similarities, or probabilities for this checkpoint; checked README.md and config.json."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+          "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+        ],
+        "statement": "Upstream checked materials do not contain a checkpoint-matched public benchmark table with dataset/split/metric/value for Qwen3-VL-Reranker-2B; family-level performance claims appear in model-card prose but without dataset/split/metric rows in the checked paths."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+          "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+        ],
+        "statement": "The reranker is described upstream as architecturally distinct from the embedding model and intended to refine retrieval results rather than to serve as a vector-embedding generator."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+            "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+          ],
+          "statement": "Scores emitted by the reranker should be interpreted as pairwise relevance estimates for relative ordering within a candidate set (the reranker is a pairwise/refinement component in the retrieval pipeline)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the upstream files do not establish that reranker scores are calibrated probabilities or that fixed universal thresholds apply across tasks or datasets; checked README.md and config.json."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+            "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+          ],
+          "statement": "The reranker model computes fine-grained relevance scores for each query-document pair and is described upstream as the component that refines retrieval results."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+          ],
+          "statement": "The documented capability of the checkpoint in upstream materials is reranking/refinement of retrieval results (i.e., the supported ability is rerank)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the upstream files do not specify the exact output tensor shape, dtype, score range, or whether returned scores are logits, normalized similarities, or probabilities; checked README.md and config.json."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: downstream validation is required before using absolute reranker scores or fixed thresholds for decision-making because no calibration or thresholding guidance is present in the checked upstream files."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+            "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+          ],
+          "statement": "Post-inference sanity checks should focus on ranking behavior and relative ordering for the intended candidate set because the upstream capability is documented as reranking via fine-grained relevance estimation."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+          "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "useCase": "Multimodal reranking for query-document pairs where fine-grained relevance scoring is required",
+        "why": "Upstream model card and repository describe the Qwen3-VL-Reranker model series as a reranker that refines retrieval results and operates on query-document pairs, intended for multimodal information retrieval and cross-modal understanding."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "useCase": "Image\u2013text retrieval reranking (multimodal candidate reranking)",
+        "why": "The upstream model card and repository state the model suite accepts text and images and that the reranker refines retrieval results in a multimodal retrieval pipeline."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+        ],
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B",
+        "useCase": "Video\u2013text matching reranking within a multimodal retrieval workflow",
+        "why": "The upstream model card indicates the suite accepts video as an input modality and positions the reranker as the component to refine retrieval results."
+      }
+    ],
+    "researchSummary": "Upstream primary files for the exact checkpoint Qwen/Qwen3-VL-Reranker-2B (model card README and config.json) show this checkpoint is a Qwen3-VL-family reranker variant with architecture type \"Qwen3VLForConditionalGeneration\" (per config.json) and that the model series is intended for multimodal retrieval and reranking across text, images, screenshots, videos, and mixed-modality inputs. The embedding README documents the embedding sibling and confirms the reranker role in a two-stage retrieval pipeline; the embedding README also reports the 2B parameter scale and a 32K sequence length for family members. The upstream artifacts checked do not contain an immutable revision identifier, explicit license metadata in the checked files, numeric checkpoint-matched public benchmark tables, nor exact low-level preprocessing, tokenization, output-shape, or score-calibration contracts; those are reported below as evidence gaps with exact checked paths.",
+    "safety": [
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: because the checked upstream files do not provide privacy, PHI, or proprietary-data handling guidance for this checkpoint, sensitive-data use should require downstream governance, review, and appropriate controls."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: because no calibration or thresholding guidance is reported in upstream materials, high-stakes automated decisions should not rely on absolute reranker scores without task-specific validation and calibration."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: the upstream materials document retrieval and matching uses but do not establish clinical validation or healthcare-specific safety claims for this checkpoint; do not deploy for clinical decision-making without separate validation and approvals."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B checkpoint identity and README content",
+        "primary": true,
+        "primaryReason": "Official upstream model card and repository page for the exact checkpoint Qwen/Qwen3-VL-Reranker-2B; used to verify checkpoint identity, documented modalities, and high-level capability statements.",
+        "publisher": "Qwen",
+        "sourceType": "model-card",
+        "supports": [
+          "identity.checkpoint",
+          "researchSummary",
+          "recommendedUseCases",
+          "conditionalUseCases",
+          "avoidUseCases",
+          "inputPreparation.semanticInputs",
+          "inputPreparation.taskSpecificFormatting",
+          "outputInterpretation.outputs",
+          "limitations"
+        ],
+        "title": "Qwen3-VL-Reranker-2B model card",
+        "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+      },
+      {
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B README PR snapshot",
+        "primary": true,
+        "primaryReason": "Upstream repository README snapshot used to confirm example usage, dependency/version mentions, and usage initialization patterns for the exact checkpoint.",
+        "publisher": "Qwen",
+        "sourceType": "repository",
+        "supports": [
+          "inputPreparation.preprocessing",
+          "inputPreparation.taskSpecificFormatting",
+          "researchSummary"
+        ],
+        "title": "Qwen3-VL-Reranker-2B README (PR snapshot)",
+        "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/refs%2Fpr%2F3/README.md"
+      },
+      {
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B README blame snapshot",
+        "primary": true,
+        "primaryReason": "Repository blame snapshot used to verify README content variants and confirm documented modality and capability text for the exact checkpoint.",
+        "publisher": "Qwen",
+        "sourceType": "repository",
+        "supports": [
+          "researchSummary",
+          "inputPreparation.semanticInputs",
+          "recommendedUseCases"
+        ],
+        "title": "Qwen3-VL-Reranker-2B README (blame/main snapshot)",
+        "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blame/main/README.md"
+      },
+      {
+        "modelScope": "Qwen3-VL-Embedding and family-level documentation (embedding + reranker framing)",
+        "primary": true,
+        "primaryReason": "Upstream embedding README for the Qwen3-VL family used to verify family-level parameter scales, sequence length, and the two-stage embedding + reranker framing referenced by the reranker model card.",
+        "publisher": "Qwen",
+        "sourceType": "repository",
+        "supports": [
+          "identity.parameterScale",
+          "researchSummary",
+          "avoidUseCases",
+          "inputPreparation.validation",
+          "limitations"
+        ],
+        "title": "Qwen3-VL-Embedding-2B README (family-level embedding/reranker framing and parameter-scale statements)",
+        "url": "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/main/README.md"
+      },
+      {
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B config.json (exact checkpoint configuration)",
+        "primary": true,
+        "primaryReason": "Upstream config.json for the exact checkpoint used to verify model type, architecture name in-code, dtype entries, token IDs, hidden sizes, and other low-level configuration fields available in the checked file.",
+        "publisher": "Qwen",
+        "sourceType": "repository",
+        "supports": [
+          "identity.architecture",
+          "inputPreparation.preprocessing",
+          "inputPreparation.validation",
+          "researchSummary"
+        ],
+        "title": "Qwen3-VL-Reranker-2B config.json",
+        "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/config.json"
+      },
+      {
+        "modelScope": "Qwen/Qwen3-VL-Reranker-2B checkpoint identity and README content",
+        "primary": true,
+        "primaryReason": "Exact revision/file URL beneath the independently verified first-party source indexed by this dossier.",
+        "publisher": "Qwen",
+        "sourceType": "model-card",
+        "supports": [
+          "Exact audited claim citation"
+        ],
+        "title": "Qwen3-VL-Reranker-2B model card \u2014 cited revision/file",
+        "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/blob/main/README.md"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "5dbaa0b1f75ecc8e5d6bc1ad8927fdf95da99842f57085a398d1ac2e23622c60",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-qwen-qwen3-vl-reranker-2b-03d6241fb5",
+  "researchedAt": "2026-08-06T09:47:35.818218+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B",
+  "sourceUrls": [
+    "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

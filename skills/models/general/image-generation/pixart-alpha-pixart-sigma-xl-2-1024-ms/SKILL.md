@@ -67,6 +67,15 @@ Route: `POST /v1/inference/pixart-alpha-pixart-sigma-xl-2-1024-ms`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-docs-diffusers-v0-38-0-en-api-pipelines-pixart-sigma-8e62fb7943`
+- Recommended: Text-to-image generation at advertised native resolutions (1024 px, 2K, 4K) from text prompts using the PixArt-Sigma-XL-2-1024-MS checkpoint. — The Hugging Face model page and README for PixArt-alpha/PixArt-Sigma-XL-2-1024-MS state that PixArt-Σ can directly generate 1024px, 2K and 4K images from text prompts and present the model as a diffusion-transformer text-to-image generator.
+- Avoid: Assuming the checkpoint provides primary-source numeric benchmark results (e.g., FID, IS, CLIP-similarity, human-eval) for image-generation quality. — No numeric benchmark scores for this exact checkpoint were reported in the checked primary locations.
+- Avoid: Assuming the checkpoint documents exact runtime API input/output shapes, tokenization limits, or explicit safety/mitigation controls. — The checked primary locations declare input modality and presence of config files but do not specify exact API input types, batching limits, max prompt token length, tokenizer behavior at API boundaries, exact output tensor shapes, or checkpoint-scoped safety mitigations.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -85,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/pixart-alpha-pixart-sigma-xl-2-1024-ms/inference-routes`
 - Regional deployment: `/v1/models/pixart-alpha-pixart-sigma-xl-2-1024-ms/regional-deployment`
 - Serverless handoff: `/v1/models/pixart-alpha-pixart-sigma-xl-2-1024-ms/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/pixart-alpha-pixart-sigma-xl-2-1024-ms/SKILL.md

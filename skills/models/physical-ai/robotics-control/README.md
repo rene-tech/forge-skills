@@ -2,6 +2,8 @@
 
 Category: `physical-ai` · exact model/version skills: 10
 
+[Audited model-selection dossier](research.md)
+
 - [Use AllenAI MolmoAct2 SO100/101](allenai-molmoact2-so100-101/SKILL.md) — `so100-101` · source-linked
 - [Use Hugging Face LeRobot SmolVLA Libero](huggingface-lerobot-smolvla-libero/SKILL.md) — `libero` · source-linked
 - [Use Hugging Face LeRobot SmolVLA Libero Plus](huggingface-lerobot-smolvla-libero-plus/SKILL.md) — `libero-plus` · source-linked

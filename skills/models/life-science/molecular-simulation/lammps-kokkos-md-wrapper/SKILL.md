@@ -87,6 +87,16 @@ Route: `POST /v1/inference/lammps-kokkos-md-wrapper`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-lammps-lammps-releases-tag-stable-22jul2025-update4-637524d4d1`
+- Recommended: Classical molecular dynamics simulations using the official LAMMPS stable release and its documented input-script workflow — Primary sources identify LAMMPS as classical molecular dynamics software and document the structure of a typical input script with initialization, system definition, simulation settings, and run steps.
+- Recommended: KOKKOS-accelerated MD runs using documented KOKKOS execution modes — Primary KOKKOS documentation states that Kokkos provides Serial, OpenMP, CUDA, and HIP execution modes per MPI task.
+- Avoid: Selecting this dossier as a checkpoint with verified checkpoint-specific throughput or accuracy benchmark numbers — The verified primary sources checked for this audit do not provide checkpoint-specific numeric benchmark tables for `stable_22Jul2025_update4`; therefore benchmark-backed selection for this exact release is not supported by the available primary evidence.
+- Avoid: Assuming an upstream JSON job-submission API or canonical JSON simulation-request schema — The verified findings document script structure, data-file format, and output/logging behavior, but do not report any canonical upstream JSON submission schema.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -104,11 +114,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/lammps-kokkos-md-wrapper/inference-routes`
 - Regional deployment: `/v1/models/lammps-kokkos-md-wrapper/regional-deployment`
 - Serverless handoff: `/v1/models/lammps-kokkos-md-wrapper/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/lammps-kokkos-md-wrapper/SKILL.md

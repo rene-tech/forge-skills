@@ -66,6 +66,14 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-cosmos-reason2-8b-8b6e315315`
+- Recommended: Multimodal physical-AI reasoning and explanatory text generation (image/video + text) for research, development, and non-safety-critical prototyping — The upstream Hugging Face model page and NVIDIA cookbook/repository materials describe the model as an ~8B multimodal reasoning vision-language model intended for Physical AI/robotics reasoning tasks and provide example prompts, recipes, and inference workflows supporting this use.
+- Avoid: Treating generated text as calibrated probabilities or using raw model text outputs as calibrated confidence scores for direct actuation without external validation — No publisher-provided checkpoint-scoped calibration semantics or canonical post-inference calibration procedures for textual outputs were found in the inspected upstream artifacts; do not assume generated text corresponds to calibrated probability scores without external calibration/validation.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -84,11 +92,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-reason2-8b/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-reason2-8b/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-reason2-8b/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-reason2-8b/SKILL.md

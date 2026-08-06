@@ -66,6 +66,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-qwen-qwen-2-5-7b-instruct-94e0f4a536`
+- Recommended: Assistant/chat and instruction-following text generation — The upstream Hugging Face model card identifies the checkpoint as instruction-tuned and appropriate for instruction-following / chat-style generation.
+- Avoid: High-stakes clinical or safety-critical decision making — Evidence gap: the inspected primary sources do not provide clinical validation, certification, or safety-critical readiness statements for this exact checkpoint; do not rely on the model as the sole basis for safety-critical decisions without domain validation.
+- Avoid: Substituting the Qwen2.5-7B base checkpoint for the Instruct checkpoint in conversation workloads — Base-model evidence is a separate upstream checkpoint and should not be substituted for the instruction-tuned checkpoint without explicit evidence; keep base-versus-instruct claims scoped to their respective checkpoints.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-2-5-7b-instruct-nim/inference-routes`
 - Regional deployment: `/v1/models/qwen-2-5-7b-instruct-nim/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-2-5-7b-instruct-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/qwen-2-5-7b-instruct-nim/SKILL.md

@@ -79,6 +79,14 @@ Route: `POST /molecular-docking/diffdock/generate`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-mit-diffdock-7ae8526856`
+- Recommended: Generate blind docking poses of small‑molecule ligands against a provided protein structure for downstream validation workflows (pose sampling and ranking). — NVIDIA's DiffDock model card documents the model's purpose as predicting 3D protein–ligand binding poses and states that the model outputs sampled poses ranked by a Confidence model; the NIM API and deployment examples expose a pose-generation endpoint and example response fields for ranked poses and confidence scores. Upstream DiffDock paper and canonical repository describe the score-and-confidence architecture that underlies pose sampling and ranking.
+- Avoid: Use as the sole evidence source for clinical decision-making or safety‑critical drug development without orthogonal experimental validation and expert review. — NVIDIA model card and NIM documentation describe pose generation and confidence ranking but do not provide clinical‑grade guarantees, numeric calibration of confidence scores to experimental success metrics, or immutable checkpoint checksums tying a published benchmark to the exact NIM-served artifact.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -96,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/mit-diffdock-nim/inference-routes`
 - Regional deployment: `/v1/models/mit-diffdock-nim/regional-deployment`
 - Serverless handoff: `/v1/models/mit-diffdock-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/docking-affinity/mit-diffdock-nim/SKILL.md

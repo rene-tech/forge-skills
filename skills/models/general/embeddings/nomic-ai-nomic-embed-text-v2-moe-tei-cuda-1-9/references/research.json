@@ -1,0 +1,543 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2] uses forbidden secondary host ollama.com",
+        "path": "$.sources[2] uses forbidden secondary host ollama.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4] uses forbidden secondary host hub.docker.com",
+        "path": "$.sources[4] uses forbidden secondary host hub.docker.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7] uses forbidden secondary URL https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe-GGUF/discussions/1",
+        "path": "$.sources[7] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8] uses unapproved repository owner 'anush008' for this exact model scope",
+        "path": "$.sources[8] uses unapproved repository owner 'anush008' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9] uses unapproved repository owner 'ajmcclary' for this exact model scope",
+        "path": "$.sources[9] uses unapproved repository owner 'ajmcclary' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 8 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Nomic Embed Text v2 MoE is a public Apache-2.0 multilingual text embedding model for retrieval, RAG indexing, semantic search, and clustering.",
+      "displayName": "Use Nomic Embed Text v2 MoE",
+      "group": "embeddings",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "nomic-ai-nomic-embed-text-v2-moe",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "nomic-ai-nomic-embed-text-v2-moe-tei-cuda-1-9",
+      "sourceUrl": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+      "version": "tei-cuda-1.9.3",
+      "versionKey": "tei-cuda-1-9-3"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "reason": "The checkpoint README documents retrieval-style formatting that includes a task-instruction prefix and explicit query/document prefixes; omitting those documented prefixes is not aligned with the documented usage.",
+        "useCase": "Using unprefixed retrieval inputs for search tasks (omitting documented task/document/query prefixes)"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "reason": "A commit/blame view of the README and the checkpoint config indicate maximum sequence settings (max_trained_positions or README-specified) that require validation; exceeding the documented maximum can invalidate tokenization/embedding behavior.",
+        "useCase": "Inputs longer than the supported maximum without truncation awareness"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "reason": "Primary sources report aggregate multilingual benchmarks but do not provide per-language guarantees in the supplied evidence; do not assume uniform quality across all languages without downstream validation.",
+        "useCase": "Assuming uniform per-language performance without per-language validation"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Primary findings list the numeric result but do not include the detailed evaluation protocol or per-split rows in the supplied artifacts; see benchmark-specific evidence gap."
+        ],
+        "conditions": "Detailed evaluation protocol (dataset splits, retrieval configuration, pooling/normalization, evaluation script) not specified in the supplied primary sources.",
+        "dataset": "BEIR",
+        "direction": "higher-is-better",
+        "metric": "aggregate BEIR score (as reported on model page)",
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe` (model card / README reported value)",
+        "sourceLocator": "model card / README benchmarks section",
+        "sourceUrl": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+        "split": "not reported",
+        "task": "retrieval (BEIR)",
+        "value": "52.86"
+      },
+      {
+        "caveats": [
+          "Primary findings list the numeric result but do not include detailed evaluation protocol text in the supplied artifacts; see benchmark-specific evidence gap."
+        ],
+        "conditions": "Detailed evaluation protocol (dataset split, retrieval setup, evaluation script) not specified in the supplied primary sources.",
+        "dataset": "MIRACL",
+        "direction": "higher-is-better",
+        "metric": "MIRACL score (as reported on model page)",
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe` (model card / README reported value)",
+        "sourceLocator": "model card / README benchmarks section",
+        "sourceUrl": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+        "split": "not reported",
+        "task": "retrieval (MIRACL)",
+        "value": "65.80"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Checked the model page, README (main and commit-level), and the canonical preprint; no side-by-side primary comparison with matched protocol details was available in those artifacts.",
+        "criteria": "No primary-source side-by-side table or figure with matched protocol details comparing this checkpoint to a named alternative was found in the supplied artifacts; protocol parity cannot be established from the available sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+          "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+        ],
+        "rationale": "The provided primary findings include aggregate numeric results for this checkpoint (BEIR, MIRACL) but do not include direct, primary-source controlled comparison tables against specific alternative checkpoints with matched protocols.",
+        "task": "general multilingual retrieval benchmarking",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Primary sources document Matryoshka embeddings and flexible embedding dimensions (768 down to 256) but do not provide a measured, primary-source numeric claim of a specific storage reduction or per-dimension task calibration; evaluate downstream task performance at each reduced dimension before production deployment.",
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe` (Matryoshka reduced-dimension outputs)",
+        "useCase": "Storage- or compute-constrained embedding deployment using Matryoshka (reduced-dimension) representations"
+      },
+      {
+        "conditions": "Primary sources report wide multilingual support and aggregate multilingual benchmarks but do not provide per-language quality guarantees in the supplied evidence; validate target-language performance in downstream contexts.",
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "useCase": "Multilingual deployment validation"
+      },
+      {
+        "conditions": "Primary sources provide prompt/formatting guidance primarily for retrieval-style inputs; broader task-formatting patterns and per-task calibration are not specified and should be validated downstream.",
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "useCase": "General text embedding beyond retrieval"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: I did not find an authoritative immutable upstream locator (commit SHA, artifact hash, or explicit model-card revision note) that binds the Forge TEI variant label tei-cuda-1-9-3 to a specific upstream artifact for nomic-ai/nomic-embed-text-v2-moe. URLs I inspected: https://github.com/huggingface/text-embeddings-inference/releases, https://github.com/huggingface/text-embeddings-inference/issues/502, https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe.",
+      "Evidence gap: The precise tokenizer identity (tokenizer class name), tokenizer vocabulary files, and an explicit tokenizer repo/file listing were not present in the supplied primary sources. I inspected: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe, https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md, https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json, and the commit-level README blob.",
+      "Evidence gap: Detailed benchmark evaluation protocols (per-dataset splits, exact retrieval configuration, pooling/normalization, evaluation scripts) underpinning the reported BEIR=52.86 and MIRACL=65.80 numbers were not present in the supplied primary artifacts; I inspected: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe, https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md, and https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf.",
+      "Evidence gap: The supplied primary sources do not document pooling, normalization, or the canonical similarity metric (cosine vs dot-product) to interpret embedding scores; I inspected: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe, https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md, and https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf.",
+      "Evidence gap: No canonical runtime contract (request/response JSON shapes or official API example) for serving this upstream checkpoint via a NIM/server wrapper was found in the supplied primary sources; I inspected the model page, README (main and commit-level), and the TEI repository releases/issues: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe, https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md, https://github.com/huggingface/text-embeddings-inference/releases, https://github.com/huggingface/text-embeddings-inference/issues/502.",
+      "Evidence gap: The supplied primary findings do not include prescriptive safety/privacy/PII-handling or clinical-use prohibitions for this checkpoint; I inspected: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe and https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf.",
+      "Evidence gap: The precise authoritative artifact reconciling parameter-count reports (305M vs 475M total / 305M active) was not found in the supplied primary sources; I inspected: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe and https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md."
+    ],
+    "family": "huggingface-co-nomic-ai-nomic-embed-text-v2-moe-6010f512ca",
+    "identity": {
+      "architecture": "Mixture-of-Experts (MoE); primary sources report MoE with num_experts=8 and moe_top_k=2 as specified in the checkpoint config/README.",
+      "checkpoint": "nomic-ai/nomic-embed-text-v2-moe",
+      "evidenceUrls": [
+        "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+        "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf",
+        "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+        "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+        "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json",
+        "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/commit/10c3f19872f1e5b090ea7ca44b33592bf34f08b3",
+        "https://github.com/huggingface/text-embeddings-inference/releases",
+        "https://github.com/huggingface/text-embeddings-inference/issues/502"
+      ],
+      "license": "Apache-2.0 (model card / README on the Hugging Face model page)",
+      "parameterScale": "Conflicting primary reports: Hugging Face model page reports 305M parameters; a model README commit/blame view reports total=475M with 305M active at inference (both are recorded below).",
+      "revision": "not reported",
+      "upstreamName": "nomic-embed-text-v2-moe"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+          ],
+          "statement": "Primary usage notes indicate the model is intended for sentence-similarity/feature-extraction tasks and is usable via the Hugging Face model card instructions."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+          ],
+          "statement": "Inputs are plain text strings; no non-text modalities are documented in the supplied primary sources."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json"
+          ],
+          "statement": "The model uses the checkpoint's tokenizer and follows tokenization conventions implied by the Hugging Face model files and README; users should follow the Hugging Face / model README guidance for tokenization when preparing text."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+          ],
+          "statement": "The checkpoint supports Matryoshka flexible embedding dimensions (768 down to 256) as described in the README/commit-level README evidence; choosing reduced dimensions affects output representation."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: The precise tokenizer identity (tokenizer class name), tokenizer vocabulary files, and any required trust_remote_code setting are not fully documented in the supplied primary-source artifacts; I checked the model page, README, commit-level README, and config.json but did not find an explicit tokenizer class/vocab file listing."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+          ],
+          "statement": "The checkpoint consumes text inputs (sentences/strings) as its semantic input."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+          ],
+          "statement": "For retrieval-style use, inputs are treated as distinct queries and documents with documented prefixes and a task-instruction prefix."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+          ],
+          "statement": "The README documents retrieval-format guidance: prompts should include a task-instruction prefix; queries and documents are indicated with documented prefixes."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: The supplied primary sources do not include additional official prompt templates, paired-input order conventions for batch embedding, or a canonical runtime API request/response JSON example; I inspected the model page, README (main and commit-level), and config.json and did not find such runtime contract examples."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md"
+          ],
+          "statement": "Validate that text inputs do not exceed the documented maximum sequence length (max_trained_positions or README-specified maximum) reported in the checkpoint config/README."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+          ],
+          "statement": "Validate that retrieval inputs follow the documented prompt formatting: include an explicit task-instruction prefix and prefix queries/documents with the documented strings when following the README guidance."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: No primary-source guidance was found in the supplied artifacts for input normalization steps (e.g., lowercasing, punctuation stripping), allowed character encodings, or exact handling of extremely long documents beyond noting a maximum token length; I checked the model page, README, commit-level README, and config.json."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md"
+        ],
+        "statement": "Primary-source reporting is inconsistent on total parameter count: the Hugging Face model page reports 305M parameters while a commit-level README/blame view reports total=475M with 305M active during inference; this ambiguity limits precise resource planning and must be resolved by inspecting the authoritative checkpoint artifact."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+        ],
+        "statement": "The supplied primary findings do not include detailed benchmark evaluation protocols (per-dataset split, retrieval configuration, pooling/normalization), limiting reproducibility of the reported BEIR and MIRACL numbers."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/huggingface/text-embeddings-inference/releases",
+          "https://github.com/huggingface/text-embeddings-inference/issues/502",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe"
+        ],
+        "statement": "Evidence gap: The canonical mapping from the Forge TEI variant label tei-cuda-1-9-3 to a specific immutable upstream commit or artifact for this checkpoint was not found in the supplied primary sources; I inspected the text-embeddings-inference releases and issue artifacts and the Hugging Face model page but did not find a binding locator."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+            "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+          ],
+          "statement": "Evidence gap: The supplied primary sources do not specify canonical similarity metrics, pooling, or normalization steps (e.g., L2 normalization vs raw dot product) to interpret embedding scores; do not assume a default metric without downstream verification."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json"
+          ],
+          "statement": "The upstream checkpoint emits dense embedding vectors; the default embedding dimension is reported as 768 and Matryoshka mechanisms support reduced embedding dimensions down to 256."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+            "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md",
+            "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+          ],
+          "statement": "Evidence gap: No primary-source post-inference validation checks (sanity checks, calibration steps, or recommended thresholding for similarity scores) were found in the supplied artifacts; I inspected the model page, README, commit-level README, and preprint."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "useCase": "Multilingual retrieval",
+        "why": "The upstream model card and README describe the checkpoint as a multilingual embedding model and report multilingual retrieval benchmarks (BEIR and MIRACL) for this checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "useCase": "Embedding generation for RAG indexing (feature extraction for retrieval-augmented-generation pipelines)",
+        "why": "The model card and README indicate the checkpoint is intended for sentence-similarity/feature-extraction and embedding-generation tasks suitable for RAG-style indexing."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+        ],
+        "modelScope": "Upstream checkpoint `nomic-ai/nomic-embed-text-v2-moe`",
+        "useCase": "Semantic search and clustering using dense embeddings",
+        "why": "The upstream model page and README report dense embedding outputs (default dim=768) and list sentence-similarity / feature-extraction usage suitable for semantic search and clustering."
+      }
+    ],
+    "researchSummary": "I verified the upstream Hugging Face checkpoint nomic-ai/nomic-embed-text-v2-moe and the canonical preprint in the provided primary sources. The checkpoint is presented as a Mixture-of-Experts (MoE) transformer\u2011based text embedding model; the checkpoint config and README commit-level view report MoE parameters (num_experts=8 and moe_top_k=2) and n_embd=768. Primary upstream artifacts report embedding dimension 768 and Matryoshka flexible-dimension outputs down to 256, and report BEIR=52.86 and MIRACL=65.80 on the model page / README. I found a conflict in reported parameter counts: the model page reports 305M while a commit/blame view of the README reports total=475M and active=305M; no immutable artifact in the provided sources resolves that discrepancy. I was unable to find an authoritative immutable locator tying the Forge TEI variant label tei-cuda-1-9-3 to a specific upstream artifact in the verified primary sources (evidence gap). Multiple operational/runtime details (exact tokenizer identity/vocabulary, canonical pooling/normalization and recommended similarity metric, detailed BEIR/MIRACL evaluation protocol and splits, and a canonical runtime JSON/API contract) are not specified in the supplied primary sources; I record exact evidence gaps below and cite the primary URLs I inspected.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+          "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md",
+          "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+        ],
+        "statement": "Evidence gap: The supplied primary sources do not include explicit safety, privacy, PII-handling, clinical, or biosecurity guidance for this checkpoint; no primary-source usage restrictions or mandatory human-review guidance were located in the model card, README, commit-level README, or canonical preprint."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "nomic-ai-nomic-embed-text-v2-moe",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model card and files for the exact upstream checkpoint; includes reported embedding dimension, benchmark numbers, parameter-count statement, and README files.",
+        "publisher": "huggingface.co",
+        "sourceType": "model-card",
+        "supports": [
+          "Reported embedding dimension = 768",
+          "Reported BEIR = 52.86 and MIRACL = 65.80",
+          "Model license = Apache-2.0",
+          "General model identity and intended retrieval/embedding use cases"
+        ],
+        "title": "nomic-ai/nomic-embed-text-v2-moe (model page)",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe"
+      },
+      {
+        "modelScope": "Nomic Embed v2 family / paper",
+        "primary": true,
+        "primaryReason": "Canonical preprint describing Nomic Embed v2 architecture and multilingual evaluation claims included in the provided findings.",
+        "publisher": "nomic.ai (static hosting)",
+        "sourceType": "paper",
+        "supports": [
+          "MoE characterization of Nomic Embed v2",
+          "Claims about multilingual retrieval performance",
+          "Discussion of research limitations and future work"
+        ],
+        "title": "Nomic Embed v2 preprint (canonical preprint PDF)",
+        "url": "https://static.nomic.ai/nomic_embed_multilingual_preprint.pdf"
+      },
+      {
+        "modelScope": "nomic-ai-nomic-embed-text-v2-moe (README main)",
+        "primary": true,
+        "primaryReason": "Primary README hosted on the Hugging Face model page describing usage, Matryoshka embeddings, and benchmarking statements.",
+        "publisher": "huggingface.co",
+        "sourceType": "model-card",
+        "supports": [
+          "Prompt-formatting guidance for retrieval (task/document/query prefixes)",
+          "Matryoshka flexible-dimension embedding claims",
+          "Reported benchmark aggregate numbers referenced on the model page"
+        ],
+        "title": "Model README (main branch)",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/README.md"
+      },
+      {
+        "modelScope": "nomic-ai-nomic-embed-text-v2-moe (README at commit ac3a5fe)",
+        "primary": true,
+        "primaryReason": "Commit-scoped README blob used to extract commit-level facts (parameter counts, reported benchmarks) provided in the findings.",
+        "publisher": "huggingface.co",
+        "sourceType": "model-card",
+        "supports": [
+          "Reported BEIR = 52.86 and MIRACL = 65.80 in the README blob",
+          "Reported parameter count = 305M in this README blob"
+        ],
+        "title": "Model README (commit-level view / specific README blob)",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/ac3a5fe40e73300ece22e3a5d25f40d597e9dc33/README.md"
+      },
+      {
+        "modelScope": "nomic-ai-nomic-embed-text-v2-moe (config.json)",
+        "primary": true,
+        "primaryReason": "Checkpoint configuration file in the model repository files containing exact architecture and MoE configuration parameters used by the checkpoint.",
+        "publisher": "huggingface.co",
+        "sourceType": "model-card",
+        "supports": [
+          "moe_top_k = 2",
+          "num_experts = 8",
+          "n_embd = 768",
+          "moe_every_n_layers = 2",
+          "max_trained_positions = 2048 (config field)"
+        ],
+        "title": "Model config (config.json) hosted in the model files",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/blob/main/config.json"
+      },
+      {
+        "modelScope": "nomic-ai-nomic-embed-text-v2-moe (commit 10c3f198)",
+        "primary": true,
+        "primaryReason": "Commit-level view included in the provided findings that documents loader/runtime notes and a trust_remote_code mention.",
+        "publisher": "huggingface.co",
+        "sourceType": "model-card",
+        "supports": [
+          "Loader guidance mentioning trust_remote_code requirement in commit notes (as reported in findings)",
+          "Commit-level limitations and usage notes"
+        ],
+        "title": "Model commit (commit view used in findings)",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe/commit/10c3f19872f1e5b090ea7ca44b33592bf34f08b3"
+      },
+      {
+        "modelScope": "text-embeddings-inference repository (releases)",
+        "primary": true,
+        "primaryReason": "Repository releases page referenced in the provided findings for TEI release metadata relevant to Forge runtime mapping checks.",
+        "publisher": "github.com/huggingface",
+        "sourceType": "repository",
+        "supports": [
+          "TEI release v1.9.3 metadata (release listing as reported in the findings)"
+        ],
+        "title": "Hugging Face text-embeddings-inference (TEI) releases",
+        "url": "https://github.com/huggingface/text-embeddings-inference/releases"
+      },
+      {
+        "modelScope": "text-embeddings-inference repository (issue #502)",
+        "primary": true,
+        "primaryReason": "Repository issue referenced in the provided findings documenting a TEI load attempt and associated logs used to evaluate Forge/TEI mapping evidence.",
+        "publisher": "github.com/huggingface",
+        "sourceType": "repository",
+        "supports": [
+          "Reported TEI load attempt and logs when attempting to load nomic-ai/nomic-embed-text-v2-moe into a TEI container (as recorded in the findings)"
+        ],
+        "title": "Hugging Face text-embeddings-inference issue referenced in findings",
+        "url": "https://github.com/huggingface/text-embeddings-inference/issues/502"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "9ba81532336ed0b6900914291c46ce8e5c86e4d12b53ee735837776ea27e1f31",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-nomic-ai-nomic-embed-text-v2-moe-6010f512ca",
+  "researchedAt": "2026-08-06T13:17:22.138263+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+  "sourceUrls": [
+    "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

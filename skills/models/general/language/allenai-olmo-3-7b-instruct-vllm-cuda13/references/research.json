@@ -1,0 +1,496 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3] uses unapproved repository owner 'unsloth' for this exact model scope",
+        "path": "$.sources[3] uses unapproved repository owner 'unsloth' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3].primary must be true",
+        "path": "$.sources[3].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses forbidden secondary URL https://huggingface.co/allenai/Olmo-3-7B-Instruct/discussions/14/files",
+        "path": "$.sources[6] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9] uses forbidden secondary host benchmarklist.com",
+        "path": "$.sources[9] uses forbidden secondary host benchmarklist.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12].primary must be true",
+        "path": "$.sources[12].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/allenai/Olmo-3-7B-Instruct",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 13 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "AllenAI OLMo 3 7B Instruct is a public, ungated Apache-2.0 English instruction-following model in the fully open OLMo 3 family, aimed at chat, tool-use style prompts, coding, math, general reasoning, and long-context workflows.",
+      "displayName": "Use OLMo 3 7B Instruct",
+      "group": "language",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "allenai-olmo-3-7b-instruct",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "allenai-olmo-3-7b-instruct-vllm-cuda13",
+      "sourceUrl": "https://huggingface.co/allenai/Olmo-3-7B-Instruct",
+      "version": "vllm-0.21.0-cuda13",
+      "versionKey": "vllm-0-21-0-cuda13"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json",
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blame/096bb5469fe34348bc88d851a69edb3bf6f40df4/generation_config.json",
+          "https://kyleclo.com/assets/pdf/olmo-3.pdf"
+        ],
+        "modelScope": "allenai/Olmo-3-7B-Instruct (checkpoint-level)",
+        "reason": "Evidence gap: the inspected checkpoint-scoped blobs and commits do not contain a checkpoint-scoped upstream risk/bias mitigation statement, calibrated-probability guidance, or documented post-deployment monitoring protocol tied to this exact checkpoint commit.",
+        "useCase": "Safety-critical or high-stakes decision making"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "No checkpoint commit ID, dataset split, prompting template, temperature/seed, or exact protocol fields were found in the inspected model blobs that tie these numeric rows to the specific allenai/Olmo-3-7B-Instruct checkpoint commit.",
+          "Reported numbers are family-level Instruct table entries in the Olmo 3 writeup/preprint and are not verified as checkpoint-scoped in the inspected repository blobs."
+        ],
+        "conditions": "Reported values appear in the Olmo 3 writeup/preprint benchmark table; the inspected model blobs and commits do not provide checkpoint-scoped protocol fields (exact checkpoint ID binding, dataset split, prompt template, temperature/seed) tying these numeric rows to a named immutable checkpoint in the checked repository blobs.",
+        "dataset": "Olmo 3 Instruct benchmark table (multiple datasets: BBH, GPQA, MATH, GSM8K, OMEGA, CHE, MBPP, LCB, AE, IFEval)",
+        "direction": "context-only",
+        "metric": "reported dataset-specific scores as listed in the Olmo 3 Instruct benchmark table",
+        "modelScope": "family-level Olmo 3 Instruct table in olmo-3.pdf / arXiv (no explicit binding to the inspected checkpoint commit was found in the checked blobs)",
+        "sourceLocator": "Olmo 3 Instruct benchmark table (table labelled in the Olmo 3 writeup / PDF); corresponding arXiv preprint section describing Instruct benchmark table",
+        "sourceUrl": "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+        "split": "not reported",
+        "task": "BBH / GPQA / MATH / GSM8K / OMEGA / CHE / MBPP / LCB / AE / IFEval (family-level Instruct benchmark table entries)",
+        "value": "Multiple numeric values reported at family-level (e.g., BBH 44.5 / 47.8 with thinking SFT; GPQA 46.5 / 46.6; MATH 29.7 / 34.4; GSM8K 60.3 / 65.9; OMEGA 87.6 / 91.1; CHE 8.6 / 12.2; MBPP 63.8 / 68.7; LCB 54.1 / 57.1; AE 13.0 / 17.1; IFEval 27.0 / 27.1; overall averages 81.0 / 84.7) as reported in the Olmo 3 writeup"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Missing explicit checkpoint identifier binding and missing protocol details in the inspected repository blobs; the writeup reports family-level results without commit-level artifact manifest in the checked blobs.",
+        "criteria": "No primary, protocol-matched checkpoint-level evidence for both sides (exact checkpoint IDs, dataset/split, prompting templates, temperature/seed, and metric values) was found in the inspected blobs and writeup binding to the specific checkpoint commit.",
+        "evidenceUrls": [
+          "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+          "https://arxiv.org/abs/2512.13961",
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+        ],
+        "rationale": "Family-level benchmark tables exist in the Olmo 3 writeup, but the inspected model blobs and commits do not include the required checkpoint-scoped protocol fields to support strict head-to-head comparisons tied to the exact checkpoint commit.",
+        "task": "7B instruct protocol-matched head-to-head comparisons",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Family-level benchmark tables and numeric results are reported in the Olmo 3 writeup/preprint, but the checked model blobs and commits do not include a binding of those numeric rows to an explicit immutable checkpoint identifier or commit-level protocol details; downstream adopters must perform protocol-matched validation tied to the specific checkpoint commit before operational adoption.",
+        "evidenceUrls": [
+          "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+          "https://arxiv.org/abs/2512.13961"
+        ],
+        "modelScope": "Olmo 3 Instruct family tables reported in olmo-3.pdf / arXiv (not bound to a named immutable checkpoint in the inspected blobs)",
+        "useCase": "Benchmarking for coding, math, or reasoning tasks"
+      },
+      {
+        "conditions": "No load_in_8bit usage examples or bitsandbytes runtime instructions were present in the inspected blobs; if quantized loading is attempted, perform downstream integration testing and memory/correctness validation using the specific runtime and quantization toolset.",
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+        ],
+        "modelScope": "allenai/Olmo-3-7B-Instruct (checkpoint-level)",
+        "useCase": "Developers experimenting with quantized inference (8-bit/bitsandbytes)"
+      }
+    ],
+    "evidenceGaps": [
+      "No checkpoint-scoped published immutable artifact manifest or named release mapping the inspected commit(s) to stable model-file shards was found in the checked repository blobs (checked URLs: https://huggingface.co/allenai/Olmo-3-7B-Instruct/commit/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20 ; https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json).",
+      "Canonical low-level tokenizer artifact files (vocab.json, merges.txt/merges, tokenizer_config.json) for allenai/Olmo-3-7B-Instruct were not present in the inspected commit listing (checked URL: https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json and the associated commit).",
+      "No authoritative reconciliation of positional/context-window semantics for the checkpoint was found in the inspected blobs: config.json contains max_position_embeddings=65536 plus rope_scaling.original_max_position_embeddings=8192 and sliding_window=4096 but no upstream blob in the checked commits reconciles these fields (checked URL: https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json).",
+      "No checkpoint-scoped training-data provenance (explicit dataset lists, versions, and training-token counts tied to this exact checkpoint commit) was present in the inspected blobs; family-level training descriptions exist in the writeup but not checkpoint-level provenance in the checked blobs (checked URLs: https://kyleclo.com/assets/pdf/olmo-3.pdf ; https://arxiv.org/abs/2512.13961 ; https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json).",
+      "No checkpoint-scoped numeric benchmark rows with explicit checkpoint identifier, dataset split, prompt template, temperature/seed, and protocol were found in the inspected model blobs; family-level numeric rows exist in the writeup but are not bound to the checked commit (checked URLs: https://kyleclo.com/assets/pdf/olmo-3.pdf ; https://arxiv.org/abs/2512.13961 ; https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json).",
+      "No checkpoint-scoped safety/bias mitigation statements or calibrated-probability guidance were found in the inspected blobs (checked URLs: https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json ; https://kyleclo.com/assets/pdf/olmo-3.pdf).",
+      "No inspected primary-source mapping was found that ties a Forge-serving vLLM/CUDA13 wrapper or other runtime packaging to an unchanged identical upstream checkpoint manifest in the checked blobs (checked URLs: https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json ; https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json)."
+    ],
+    "family": "huggingface-co-allenai-olmo-3-7b-instruct-c0cec6c2c6",
+    "identity": {
+      "architecture": "Olmo3ForCausalLM (model_type: olmo3; num_hidden_layers: 32; hidden_size: 4096; intermediate_size: 11008; num_attention_heads: 32; num_key_value_heads: 32; layer_types alternate between sliding_attention and full_attention; vocab_size: 100278; dtype: bfloat16; rope_type: \"yarn\"; rope_theta: 500000; rope_scaling.original_max_position_embeddings: 8192; sliding_window: 4096; max_position_embeddings: 65536)",
+      "checkpoint": "step_450",
+      "evidenceUrls": [
+        "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json",
+        "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blame/096bb5469fe34348bc88d851a69edb3bf6f40df4/generation_config.json",
+        "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json",
+        "https://huggingface.co/allenai/Olmo-3-7B-Instruct/commit/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20",
+        "https://github.com/allenai/OLMo/blob/main/LICENSE",
+        "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+        "https://arxiv.org/abs/2512.13961"
+      ],
+      "license": "Apache-2.0 (repository LICENSE: Apache License, Version 2.0). No separate model-weight license metadata reported in the checked LICENSE blob.",
+      "parameterScale": "7 billion parameters",
+      "revision": "commit d42dc9de51ee481e02b8a35d8222b86c6d7c5b20 (tokenizer commit) and related commit evidence; exact immutable artifact manifest: not reported",
+      "upstreamName": "allenai/Olmo-3-7B-Instruct"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json",
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blame/096bb5469fe34348bc88d851a69edb3bf6f40df4/generation_config.json",
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json"
+          ],
+          "statement": "Model checkpoint and tokenizer blobs present are in Hugging Face repository blob format compatible with Transformers-style loading; config.json and generation_config.json are present as HF blobs for this checkpoint."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json",
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+          ],
+          "statement": "The inspected repository blobs do not document a canonical string-unicode normalization or a checkpoint-scoped explicit input normalization pipeline; use standard Transformers tokenization behavior unless downstream guidance is provided."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+            "https://arxiv.org/abs/2512.13961",
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+          ],
+          "statement": "Causal-LM text inputs, including instruction-style prompts and chat-style system/user prompting described at family-level in the Olmo 3 writeup; the checkpoint blobs reflect a causal LM architecture appropriate for single-prompt or chat-style causal input."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json",
+            "https://kyleclo.com/assets/pdf/olmo-3.pdf"
+          ],
+          "statement": "Tokenizer JSON in the inspected commit defines token IDs and token properties; no separate canonical prompt-template file for Instruct/chat was found in the inspected blobs."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json",
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/commit/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20"
+          ],
+          "statement": "Evidence gap: low-level tokenizer artifact files such as vocab.json, merges.txt, or tokenizer_config.json were not present in the inspected commit listing; tokenizer.json exists but separate vocab/merge blobs were not found at the checked commit."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+          ],
+          "statement": "Evidence gap: no checkpoint-scoped input validation rules (allowed character sets, rejection criteria, per-token bounds) were found in the inspected blobs; implementers must add downstream input validation tied to their application."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+        ],
+        "statement": "Ambiguity in context-window/positional-spec reporting: config.json lists max_position_embeddings = 65536 while rope_scaling.original_max_position_embeddings = 8192 and sliding_window = 4096 are also present; the inspected blobs do not provide an authoritative reconciliation of these fields."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json",
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/commit/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20"
+        ],
+        "statement": "Evidence gap: low-level tokenizer artifact files (vocab.json, merges.txt/merges, tokenizer_config.json) were not present in the inspected commit listing; tokenizer metadata is present in tokenizer.json but separate vocab/merge blobs are not reported in the checked commit."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/commit/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20",
+          "https://github.com/allenai/OLMo/blob/main/LICENSE"
+        ],
+        "statement": "Evidence gap: no published immutable checkpoint manifest or named release mapping the inspected commit(s) to a stable sharded model-file manifest was found in the checked repository blobs; the commit labeled 'Upload checkpoint from step_450' is present but an explicit immutable artifact manifest is not reported in the inspected blobs."
+      },
+      {
+        "evidenceUrls": [
+          "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+          "https://arxiv.org/abs/2512.13961"
+        ],
+        "statement": "Evidence gap: training-data provenance at the checkpoint scope (explicit datasets, versions, and training-token counts tied to this exact checkpoint commit) is not present in the inspected blobs; family-level training-data descriptions exist in the writeup but the commit-level binding is not reported in the checked blobs."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json",
+            "https://kyleclo.com/assets/pdf/olmo-3.pdf"
+          ],
+          "statement": "Evidence gap: the inspected checkpoint-scoped blobs do not include a checkpoint-specific statement about probability calibration or recommended post-hoc calibration procedures; interpret raw model scores conservatively and apply downstream calibration as required."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+          ],
+          "statement": "Evidence gap: no inspected primary source in the provided findings defines a checkpoint-scoped model output contract file (e.g., an OLMoOutput definition) in the checked blobs; do not assume named output tuple shapes from unverified files."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blame/096bb5469fe34348bc88d851a69edb3bf6f40df4/generation_config.json"
+          ],
+          "statement": "The generation_config.json blob lists generation-related fields (eos_token_id entries and generation defaults) and therefore documents expected sampling outputs governed by those defaults."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blame/096bb5469fe34348bc88d851a69edb3bf6f40df4/generation_config.json",
+            "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+          ],
+          "statement": "Evidence gap: no checkpoint-scoped post-inference calibration checks, confidence thresholds, or token-level probability semantics were documented in the inspected blobs; downstream validation is required before using probabilities as calibrated confidences."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+          "https://arxiv.org/abs/2512.13961",
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blame/096bb5469fe34348bc88d851a69edb3bf6f40df4/generation_config.json",
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+        ],
+        "modelScope": "allenai/Olmo-3-7B-Instruct (checkpoint-level)",
+        "useCase": "Instruction-following / chat-style system+user prompts",
+        "why": "Family-level description of Olmo 3 Instruct behavior (instruction-following) appears in the Olmo 3 writeup/preprint and the checkpoint's generation defaults and config indicate instruction-tuned sampling defaults and a causal LM architecture consistent with instruction-following usage."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json",
+          "https://kyleclo.com/assets/pdf/olmo-3.pdf",
+          "https://arxiv.org/abs/2512.13961"
+        ],
+        "modelScope": "allenai/Olmo-3-7B-Instruct (checkpoint-level)",
+        "useCase": "Long-context workflows (family-level long-context support reported)",
+        "why": "The config.json reports extended positional-related fields (max_position_embeddings = 65536 and rope_scaling.original_max_position_embeddings = 8192 and sliding_window = 4096) and the Olmo 3 family writeup describes long-context modeling as a family target; these blobs support using the checkpoint for long-context experiments but the config fields are not authoritatively reconciled in the checked blobs."
+      }
+    ],
+    "researchSummary": "The available primary-source blobs and repository commits indicate the checkpoint named allenai/Olmo-3-7B-Instruct corresponds to an Olmo3ForCausalLM architecture (model_type \"olmo3\") with 32 layers, hidden_size 4096, intermediate_size 11008, 32 attention heads and 32 key/value heads, vocab_size 100278, and parameter dtype bfloat16 as reported in the checked config.json blob. The config.json contains multiple positional-related fields (max_position_embeddings = 65536; rope_scaling.original_max_position_embeddings = 8192; sliding_window = 4096) with no authoritative reconciliation provided in the checked blobs. A tokenizer.json blob exists in the repo commit inspected and defines several token IDs and token properties; other low-level tokenizer artifacts (tokenizer_config.json, vocab.json, merges) were not present in the inspected commit listing. The generation_config.json blob lists generation defaults (do_sample=true, temperature=0.6, top_p=0.95, max_new_tokens=32768 and eos_token_id entries) and a transformers_version. The repository LICENSE file states Apache License, Version 2.0; no separate model-weight license metadata was found in that LICENSE blob. The Olmo 3 family paper/preprint and associated release PDF in the findings report family-level evaluation numbers and describe family-level training/evaluation practices, but the checked model blobs and commits do not publish an immutable checkpoint manifest tying the cited commit(s) to a named release artifact; this locator immutability is not reported in the checked repository blobs. Several checkpoint-scoped items are not present in the inspected primary blobs and are recorded as evidence gaps in the dossier.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json",
+          "https://kyleclo.com/assets/pdf/olmo-3.pdf"
+        ],
+        "statement": "Evidence gap: the inspected checkpoint-scoped blobs and commits do not include a checkpoint-scoped upstream safety/bias mitigation statement or calibrated-probability guidance; downstream deployments should require human review and mitigation steps."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/allenai/OLMo/blob/main/LICENSE"
+        ],
+        "statement": "Model-weight and code license: the checked OLMo repository LICENSE file indicates Apache License, Version 2.0. The inspected LICENSE blob does not provide a separate model-weight licensing statement."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "allenai/Olmo-3-7B-Instruct (checkpoint config)",
+        "primary": true,
+        "primaryReason": "Repository config JSON contains architecture fields, positional/rope parameters, vocab_size, token ids, layer counts, and other checkpoint-level configuration parameters used to verify architecture and tokenizer metadata for this checkpoint.",
+        "publisher": "Hugging Face (allenai model repository blob)",
+        "sourceType": "model-card",
+        "supports": [
+          "Architecture: Olmo3ForCausalLM and model_type olmo3",
+          "num_hidden_layers, hidden_size, intermediate_size, num_attention_heads, num_key_value_heads",
+          "max_position_embeddings, rope_scaling object, rope_theta, sliding_window, vocab_size, eos_token_id, pad_token_id, dtype"
+        ],
+        "title": "allenai/Olmo-3-7B-Instruct config.json (blob)",
+        "url": "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/096bb5469fe34348bc88d851a69edb3bf6f40df4/config.json"
+      },
+      {
+        "modelScope": "allenai/Olmo-3-7B-Instruct (generation defaults)",
+        "primary": true,
+        "primaryReason": "Repository generation_config JSON lists checkpoint-scoped generation defaults used to verify sampling/decoding default claims.",
+        "publisher": "Hugging Face (allenai model repository blob)",
+        "sourceType": "model-card",
+        "supports": [
+          "do_sample = true; temperature = 0.6; top_p = 0.95; max_new_tokens = 32768; eos_token_id entries; transformers_version"
+        ],
+        "title": "allenai/Olmo-3-7B-Instruct generation_config.json (blob blame view)",
+        "url": "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blame/096bb5469fe34348bc88d851a69edb3bf6f40df4/generation_config.json"
+      },
+      {
+        "modelScope": "allenai/Olmo-3-7B-Instruct (tokenizer blob at checked commit)",
+        "primary": true,
+        "primaryReason": "Tokenizer JSON blob in the inspected commit defines token IDs and tokenizer properties for the checked checkpoint commit; used to verify presence of tokenizer.json and token id entries.",
+        "publisher": "Hugging Face (allenai model repository blob)",
+        "sourceType": "model-card",
+        "supports": [
+          "Presence of tokenizer.json; token definitions for token IDs including special tokens; add_prefix_space setting"
+        ],
+        "title": "allenai/Olmo-3-7B-Instruct tokenizer.json (blob)",
+        "url": "https://huggingface.co/allenai/Olmo-3-7B-Instruct/blob/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20/tokenizer.json"
+      },
+      {
+        "modelScope": "allenai/Olmo-3-7B-Instruct (checked commit)",
+        "primary": true,
+        "primaryReason": "Commit in the model repository used to locate the tokenizer.json blob and to record the presence of the commit-level upload event inspected.",
+        "publisher": "Hugging Face (allenai model repository commits)",
+        "sourceType": "model-card",
+        "supports": [
+          "Tokenizer.json definitions at that commit"
+        ],
+        "title": "allenai/Olmo-3-7B-Instruct commit: tokenizer commit (Upload checkpoint / tokenizer commit)",
+        "url": "https://huggingface.co/allenai/Olmo-3-7B-Instruct/commit/d42dc9de51ee481e02b8a35d8222b86c6d7c5b20"
+      },
+      {
+        "modelScope": "OLMo project repository (license)",
+        "primary": true,
+        "primaryReason": "Official repository LICENSE file indicating Apache License, Version 2.0 for the OLMo project in the inspected findings.",
+        "publisher": "Allen Institute for AI (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Apache-2.0 license statement for the repository"
+        ],
+        "title": "OLMo repository LICENSE (Apache-2.0)",
+        "url": "https://github.com/allenai/OLMo/blob/main/LICENSE"
+      },
+      {
+        "modelScope": "Olmo 3 family (writeup / release PDF)",
+        "primary": true,
+        "primaryReason": "Document in the provided findings that contains family-level descriptions of Olmo 3, training recipes, and the Instruct benchmark table used by this dossier to represent family-level benchmark claims.",
+        "publisher": "Olmo 3 writeup (distribution PDF as provided in findings)",
+        "sourceType": "technical-report",
+        "supports": [
+          "Family-level training-data composition, evaluation suite, and Instruct benchmark table numeric entries"
+        ],
+        "title": "Olmo 3 writeup / release PDF",
+        "url": "https://kyleclo.com/assets/pdf/olmo-3.pdf"
+      },
+      {
+        "modelScope": "Olmo 3 family (preprint)",
+        "primary": true,
+        "primaryReason": "Canonical arXiv preprint entry for the Olmo 3 writeup included in the provided findings; used to corroborate family-level claims and benchmark table presence.",
+        "publisher": "arXiv (preprint)",
+        "sourceType": "paper",
+        "supports": [
+          "Family-level description and benchmark table references"
+        ],
+        "title": "Olmo 3 arXiv preprint",
+        "url": "https://arxiv.org/abs/2512.13961"
+      },
+      {
+        "modelScope": "allenai-olmo-3-7b-instruct",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/allenai/Olmo-3-7B-Instruct"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "b5558d94d632119fa40ffbaffa7ba29ffe99460951410c58c06a562ecd0b5f21",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-allenai-olmo-3-7b-instruct-c0cec6c2c6",
+  "researchedAt": "2026-08-06T10:47:41.553410+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/allenai/Olmo-3-7B-Instruct",
+  "sourceUrls": [
+    "https://huggingface.co/allenai/Olmo-3-7B-Instruct"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

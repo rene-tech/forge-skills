@@ -63,6 +63,16 @@ Route: `POST /v1/inference/nvidia-cosmos-predict1-7b-text2world`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-cosmos-latest-quickstart-guide-html-nvidia-cosmos-predict1-7b-text2world-c88f94644e`
+- Recommended: Text-to-world video generation (short physics-aware simulation clips) using the 7B Text2World diffusion checkpoint — Official model pages, the Predict1 model matrix, NGC container listing, and repository examples describe the checkpoint as producing dynamic videos from text and optional visual conditioning and provide inference/deployment guidance for Text2World workflows.
+- Recommended: Multi-view/trajectory-conditioned generation for research workflows (requires downstream revalidation on target datasets) — Repository contains a multiview inference example demonstrating inference format and conditioning patterns; Hugging Face model pages and repo describe multiview/trajectory-conditioned sample variants.
+- Recommended: Deploying the NIM/container for GPU-accelerated inference of Text2World workflows — NGC container listing, Predict1 model matrix, and NIM release notes identify an NIM container image and provide deployment/runtime guidance for the 7B Text2World variant.
+- Avoid: Selecting this checkpoint as a general-purpose text-only LLM for natural-language tasks — Primary evidence describes the checkpoint and NIM as diffusion-based visual/world-generation models (video/image generation) with a visual/world output head rather than a general-purpose text LLM.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -80,11 +90,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-predict1-7b-text2world/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-predict1-7b-text2world/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-predict1-7b-text2world/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-predict1-7b-text2world/SKILL.md

@@ -87,6 +87,17 @@ Route: `POST /v1/inference/oxpig-antifold`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-oxpig-antifold-aef5c06bce`
+- Recommended: Antibody variable‑domain inverse folding (predict amino‑acid sequences conditioned on a provided variable‑domain backbone structure). — Repository materials and files indicate AntiFold is implemented to predict sequences that fit antibody variable‑domain backbone structures and are fine‑tuned on antibody structure data.
+- Recommended: Generate sampled candidate antibody sequences in FASTA format for downstream structural validation and design workflows. — The repository contains example sampled FASTA outputs demonstrating sampling functionality and per‑sample metadata fields.
+- Recommended: Produce per‑residue log‑likelihood CSV outputs for sequence‑to‑structure compatibility analysis and ranking candidate sequences. — The repository includes CSV residue log‑likelihood outputs as part of inference outputs according to repository files/README.
+- Avoid: Clinical diagnostic or therapeutic deployment without further validation or regulatory review. — The inspected repository does not include regulatory approvals, clinical‑use documentation, or materials establishing suitability for clinical deployment; additionally, the repository does not provide an immutable release tag or commit SHA uniquely identifying model.pt to support reproducible checkpoint identification.
+- Avoid: Assuming built‑in PHI handling, clinical data governance, or production clinical data pipelines. — Evidence gap: the inspected repository does not include explicit PHI/data‑handling instructions, governance procedures, or clinical data mitigation measures.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -104,11 +115,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/oxpig-antifold/inference-routes`
 - Regional deployment: `/v1/models/oxpig-antifold/regional-deployment`
 - Serverless handoff: `/v1/models/oxpig-antifold/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-design/oxpig-antifold/SKILL.md

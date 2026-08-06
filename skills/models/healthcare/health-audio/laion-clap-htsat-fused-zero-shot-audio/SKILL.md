@@ -70,6 +70,15 @@ Route: `POST /zero_shot_audio_classification`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-laion-clap-htsat-fused-5b45ac0127`
+- Recommended: Using the Hugging Face upload with Transformers pipelines for CLAP model experimentation and prototyping — The official Hugging Face repository explicitly provides instructions to use laion/clap-htsat-fused with Transformers pipelines, and the model card identifies the upload as "Model card for CLAP: Contrastive Language-Audio Pretraining."
+- Avoid: Clinical diagnosis or other healthcare decision-making without expert validation — The provided findings do not report clinical evaluation, clinical deployment guidance, or healthcare-specific validation for this exact upload.
+- Avoid: Treating repository popularity or file-history metadata as evidence of model quality — The findings report likes, followers, and commit/file-history facts, but they do not report checkpoint-scoped evaluation results establishing quality for this exact upload.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -88,11 +97,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/laion-clap-htsat-fused-zero-shot-audio/inference-routes`
 - Regional deployment: `/v1/models/laion-clap-htsat-fused-zero-shot-audio/regional-deployment`
 - Serverless handoff: `/v1/models/laion-clap-htsat-fused-zero-shot-audio/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/health-audio/laion-clap-htsat-fused-zero-shot-audio/SKILL.md

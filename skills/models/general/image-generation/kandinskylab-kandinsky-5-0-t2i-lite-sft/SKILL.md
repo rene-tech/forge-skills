@@ -71,6 +71,15 @@ Route: `POST /v1/inference/kandinskylab-kandinsky-5-0-t2i-lite-sft`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-docs-diffusers-api-pipelines-kandinsky5-image-e9e2461bb8`
+- Recommended: Text-to-image generation (single prompt or batched prompts → generated image artifacts) — The model repository README and model_index.json identify this checkpoint as a Kandinsky5 text-to-image checkpoint (Kandinsky5T2IPipeline) and the repository README describes the Kandinsky 5.0 Image Lite family and T2I usage.
+- Avoid: Assuming checkpoint-scoped numeric benchmarks for model selection — No checkpoint-scoped numeric benchmark tables (dataset, split, metric, numeric value, and experiment conditions) are present in the inspected primary sources for this exact Diffusers checkpoint.
+- Avoid: Relying on built-in content-filtering or assuming the checkpoint enforces content-safety — The canonical arXiv preprint (v1 and v2) documents that authors did not implement built-in content-filtering systems and places responsibility on users; the checkpoint blobs do not provide checkpoint-scoped content-filtering mechanisms.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -89,11 +98,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/kandinskylab-kandinsky-5-0-t2i-lite-sft/inference-routes`
 - Regional deployment: `/v1/models/kandinskylab-kandinsky-5-0-t2i-lite-sft/regional-deployment`
 - Serverless handoff: `/v1/models/kandinskylab-kandinsky-5-0-t2i-lite-sft/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/kandinskylab-kandinsky-5-0-t2i-lite-sft/SKILL.md

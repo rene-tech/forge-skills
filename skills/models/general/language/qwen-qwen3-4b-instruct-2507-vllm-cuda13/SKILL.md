@@ -71,6 +71,17 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-4b-instruct-2507-74d4771762`
+- Recommended: General instruction-following and general knowledge research/evaluation — The checkpoint README.md lists instruction-style benchmark scores (e.g., MMLU‑Pro and MMLU‑Redux) for this exact checkpoint, indicating it has been evaluated on such tasks at the checkpoint level; downstream validation is required because the README does not publish prompt templates or dataset splits.
+- Recommended: Coding-assistance and code-evaluation research — The checkpoint README.md reports coding-oriented benchmark scores (e.g., LiveCodeBench v6, MultiPL‑E, LiveBench) for this checkpoint, indicating the model has been evaluated on coding tasks; use for production requires downstream test-suite validation and safety filtering.
+- Recommended: Mathematical/problem-solving benchmark research — The checkpoint README.md lists math/reasoning benchmark scores (e.g., AIME25, HMMT25, ZebraLogic) for this exact checkpoint, supporting use in research or assisted workflows after careful validation.
+- Avoid: Clinical, medical-diagnostic, or other safety-critical decision-making without expert oversight — Inspected checkpoint primary sources (model card, config.json, LICENSE) do not provide checkpoint-scoped clinical validation, certification, PHI-handling guidance, or creator-stated clinical-use instructions for Qwen3-4B-Instruct-2507.
+- Avoid: Any safety-critical deployment that requires creator-provided operational/safety controls — Inspected checkpoint primary sources do not include explicit creator-provided operational safety checklists or runtime mitigation guidance for this exact checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -89,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-4b-instruct-2507-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-4b-instruct-2507-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-4b-instruct-2507-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/qwen-qwen3-4b-instruct-2507-vllm-cuda13/SKILL.md

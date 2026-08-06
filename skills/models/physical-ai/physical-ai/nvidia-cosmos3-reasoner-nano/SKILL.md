@@ -70,6 +70,16 @@ Route: `POST /v1/inference/nvidia-cosmos3-reasoner`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-nvidia-cosmos-ea-cosmos3-nano-reasoner-4225bbfc6d`
+- Recommended: Multimodal reasoning (question answering, spatial grounding, temporal reasoning, action understanding) from paired vision-language inputs — The NVIDIA Cosmos3 technical report describes the Reasoner pathway as trained on paired vision-language data to support question answering, spatial grounding, temporal reasoning, and action understanding.
+- Recommended: Autoregressive text generation conditioned on multimodal context (next-token decoding via the Reasoner pathway) — The technical report describes the Reasoner as an autoregressive tower that generates discrete structured/text outputs (next-token semantics) for downstream conditioning and interpretation.
+- Recommended: Physical-AI world understanding and simulation support (foundational building block for robotics, autonomous vehicles, and smart spaces) when integrated with appropriate domain validation — The Cosmos Lab landing and technical report describe Cosmos3 as targeted at Physical AI tasks (robotics, AV, smart spaces) and as a world-modeling foundation combining reasoning and generation.
+- Avoid: Treating Cosmos3-Nano outputs as physically accurate simulation or provably safe/safety-certified decision-making — Family-level documentation and the model entry note that outputs should not be treated as physically accurate simulation or safety-certified decision making; safety-critical applications require additional validation and guardrails.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -88,11 +98,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos3-reasoner-nano/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos3-reasoner-nano/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos3-reasoner-nano/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos3-reasoner-nano/SKILL.md

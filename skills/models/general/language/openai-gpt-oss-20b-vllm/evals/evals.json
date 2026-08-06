@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model openai-gpt-oss-20b-vllm for this task: Agentic instruction-following workflows with tool use (function calling, structured outputs, multi-step reasoning). Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use openai-gpt-oss-20b-vllm or another Forge model for Agentic instruction-following workflows with tool use (function calling, structured outputs, multi-step reasoning)?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use openai-gpt-oss-20b-vllm for Deploying or querying the model in agentic/tool workflows without applying Harmony response-format templates or repository-provided adapters, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "openai-gpt-oss-20b-vllm",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-openai-gpt-oss-20b-vllm"
+}

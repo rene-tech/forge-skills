@@ -67,6 +67,18 @@ Route: `POST /v1/inference/black-forest-labs-flux-1-kontext-dev`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-visual-genai-latest-getting-started-html-black-forest-labs-flux-1-kontex-9e23211569`
+- Recommended: Instruction-driven in-context image editing (local inpainting and masked/targeted modification) — The FLUX.1 Kontext technical report and the upstream Hugging Face model repository describe the model and demonstrate examples and usage patterns oriented to in-context image editing and masked/local edits.
+- Recommended: Iterative multi-turn edits preserving character and composition consistency (multi-step editing workflows) — The technical report documents character consistency and multi-turn editing as design goals and evaluation directions; the upstream README and examples describe multi-step editing use patterns.
+- Recommended: Text-to-image generation and global style transfer at example generation sizes (e.g., 1024×1024 as used in paper/examples) — The paper and repository examples demonstrate text-to-image and image-to-image operations at 1024×1024 in reported examples and timing statements.
+- Avoid: Using model outputs to train, fine‑tune, distill, or create a competitive model for commercial/production purposes — Model weights are distributed under the FLUX.1 [dev] Non‑Commercial License which restricts non‑commercial/non‑production use; redistribution or commercial use requires separate commercial terms from publisher.
+- Avoid: Assuming outputs can be used commercially without obtaining a vendor/publisher commercial license — Upstream license artifacts and the NVIDIA model card indicate weights are distributed under a Non‑Commercial license and commercial terms must be obtained from publisher for commercial deployment or redistribution.
+- Avoid: Expecting automatic preservation of input DPI or arbitrary input resolutions without preprocessing — Upstream documentation and packaging describe supported sizes and example usage but do not publish authoritative guarantees that arbitrary input DPI or arbitrary resolutions are preserved without explicit preprocessing; users should validate preprocessing/resolution behavior.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -84,11 +96,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/black-forest-labs-flux-1-kontext-dev/inference-routes`
 - Regional deployment: `/v1/models/black-forest-labs-flux-1-kontext-dev/regional-deployment`
 - Serverless handoff: `/v1/models/black-forest-labs-flux-1-kontext-dev/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-1-kontext-dev/SKILL.md

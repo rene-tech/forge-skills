@@ -78,6 +78,17 @@ Route: `POST /generate`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-bionemo-genmol-latest-908910ca42`
+- Recommended: De novo molecule generation — Primary NVIDIA model-card and container sources explicitly list de novo generation as a supported GenMol use.
+- Recommended: Linker design — Primary NVIDIA sources explicitly list linker design as a GenMol capability; repository benchmark findings also report a linker-design (1-step) result for GenMol V2.
+- Recommended: Motif extension and scaffold decoration or morphing — Primary NVIDIA sources list motif extension and scaffold decoration or morphing as intended GenMol uses, and NVIDIA benchmark pages report task-specific validity, uniqueness, diversity, novelty, quality, and wall-time figures for these tasks.
+- Avoid: Clinical decision making or regulated clinical diagnostics — Primary findings describe molecular-generation and discovery uses, but the findings do not report clinical validation, regulatory approval, or clinical-grade evaluation for this checkpoint or NIM service.
+- Avoid: Inputs highly divergent from the ZINC-15 dataset — The repository model card states a technical limitation that the model may not perform well on sequences highly divergent from the ZINC-15 dataset.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -96,11 +107,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-genmol-2-0-0-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-genmol-2-0-0-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-genmol-2-0-0-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecule-design/nvidia-genmol-2-0-0-nim/SKILL.md

@@ -67,6 +67,15 @@ Route: `POST /v1/inference/nvidia-cosmos-policy-libero-2b-nvfp4`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-nvlabs-cosmos-policy-32ec0570b0`
+- Recommended: Simulation research and development for robot manipulation and control on LIBERO task suites — The checkpoint model card describes the use case as Physical AI robot manipulation and control in simulation environments, the LIBERO repository documentation identifies this exact pretrained checkpoint for LIBERO tasks, and the checkpoint reports a 98.5% average success rate across four LIBERO task suites.
+- Avoid: Clinical or healthcare decision-making — Primary evidence describes the checkpoint for research and development and Physical AI robot manipulation/control, with no clinical validation, healthcare approval, or PHI-handling guidance in the provided findings.
+- Avoid: Assuming that all listed Forge runtime variants are benchmark-equivalent to the reported upstream checkpoint without separate provenance verification — The provided findings identify the upstream checkpoint and some repository references to it, but do not provide primary immutable provenance linking each Forge slug to a specific unchanged upstream checkpoint artifact or exact repository revision.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -84,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-policy-libero-predict2-fp8/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-libero-predict2-fp8/SKILL.md

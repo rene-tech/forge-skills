@@ -76,6 +76,14 @@ Route: `POST /v1/inference/huggingface-lerobot-smolvla-libero`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-lerobot-smolvla-libero-13a04e8a43`
+- Recommended: Research and development on compact vision-language-action policy modeling (SmolVLA-family) and LIBERO-style sensorimotor policy experiments — The model card/README characterizes the checkpoint as a compact, efficient SmolVLA-family vision-language-action model and the repository config.json documents normalization mappings, tokenizer_max_length, and dimensionality flags that match vision-language-action research payloads.
+- Avoid: Clinical, medical, or other regulated safety‑critical decision making — The examined primary artifacts (model card / config.json) do not present documentation of clinical validation, PHI handling, or domain-specific expert-review processes for this checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -93,11 +101,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/huggingface-lerobot-smolvla-libero/inference-routes`
 - Regional deployment: `/v1/models/huggingface-lerobot-smolvla-libero/regional-deployment`
 - Serverless handoff: `/v1/models/huggingface-lerobot-smolvla-libero/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-libero/SKILL.md

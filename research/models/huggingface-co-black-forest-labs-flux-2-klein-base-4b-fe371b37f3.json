@@ -1,0 +1,339 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://huggingface.co/black- Forest-labs/FLUX.2-klein-base-4B",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "path": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 2 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Higher-quality FLUX.2 Klein 4B Base variant running in a Forge-owned Diffusers container.",
+      "displayName": "Use FLUX.2 Klein 4B Base",
+      "group": "image-generation",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "black-forest-labs-flux-2-klein-4b",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-2-klein-base-4b-diffusers",
+      "sourceUrl": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+      "version": "base-4b-diffusers-cuda12.8-v1",
+      "versionKey": "base-4b-diffusers"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b",
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+        ],
+        "modelScope": "FLUX.2-klein-base-4B",
+        "reason": "Primary upstream documentation requires implementers to deploy guardrails and content-filtering; there is no checkpoint-scoped clinical validation documented in the checked primary sources to support autonomous clinical use.",
+        "useCase": "Clinical or PHI-sensitive medical image generation without expert clinical review and validation"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "black-forest-labs-flux-2-klein-4b-diffusers",
+        "comparisonConditions": "A fair comparison would require identical dataset, split, prompt templates, and metric definitions applied to the same exact checkpoint artifacts; these protocol elements and numeric results are absent from the checked primary sources.",
+        "criteria": "No published checkpoint-scoped, protocol-aligned numeric comparison data for the exact FLUX.2-klein-base-4B checkpoint and the Forge diffusers candidate were found in the checked primary sources; protocols (prompt templates, dataset splits, metric definitions) are not published for direct comparison.",
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+          "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b",
+          "https://github.com/black-forest-labs/flux2"
+        ],
+        "rationale": "Primary sources for the checkpoint (Hugging Face model page, upstream repository, NVIDIA NIM page) describe capabilities and runtime characteristics but do not publish side-by-side numeric evaluation data or shared evaluation protocol required for a fair comparison with the Forge diffusers candidate.",
+        "task": "image-generation / image-editing",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires identical evaluation protocol, dataset, split, metric, and explicit checkpoint variant; primary checkpoint-scoped numeric benchmark data and protocol alignment are not published in the checked upstream model card, repository README, or NVIDIA NIM page, so downstream validation and protocol harmonization are required before fair comparisons.",
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+          "https://github.com/black-forest-labs/flux2",
+          "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+        ],
+        "modelScope": "FLUX.2-klein-base-4B",
+        "useCase": "Cross-version or cross-wrapper benchmark reporting and side-by-side comparisons"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: checkpoint-scoped numeric benchmark results (dataset, split, metric, value) for FLUX.2-klein-base-4B not found in checked primary sources: https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B (model card/README), https://github.com/black-forest-labs/flux2 (repository README), and https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b (NIM page). Checked the model card README sections and repository README for benchmark tables or numeric evaluation rows; none were present.",
+      "Evidence gap: tokenizer specifics and detailed preprocessing pipeline (tokenizer name, vocabulary, normalization, exact resizing/normalization parameters) are not documented in the checked primary sources: https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B (model card/README), https://github.com/black-forest-labs/flux2 (repository README), https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b (NIM page).",
+      "Evidence gap: no canonical peer-reviewed paper or canonical publisher preprint for the FLUX.2 Klein family was found in the checked primary sources (repository README, Hugging Face model page, NVIDIA NIM page). Checked locations: https://github.com/black-forest-labs/flux2, https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B, https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b.",
+      "Evidence gap: precise prompt-formatting templates, paired-input ordering for editing tasks, and any official example prompt taxonomies are not documented in the checked primary sources: https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B, https://github.com/black-forest-labs/flux2, https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b."
+    ],
+    "family": "huggingface-co-black-forest-labs-flux-2-klein-base-4b-fe371b37f3",
+    "identity": {
+      "architecture": "rectified flow transformer",
+      "checkpoint": "FLUX.2-klein-base-4B",
+      "evidenceUrls": [
+        "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+        "https://github.com/black-forest-labs/flux2",
+        "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+      ],
+      "license": "Apache 2.0",
+      "parameterScale": "4B",
+      "revision": "not reported",
+      "upstreamName": "FLUX.2-klein-base-4B"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+          ],
+          "statement": "Image inputs and outputs are delivered as raster formats (examples in primary packaging: png, jpg, jpeg) and the model supports a range of discrete image resolutions documented by NVIDIA NIM."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+            "https://github.com/black-forest-labs/flux2"
+          ],
+          "statement": "Text prompts as plain text input (natural-language strings) are supported as described in the upstream model card and repository."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: tokenizer specifics (tokenizer name, vocabulary, max token length), precise tokenization steps, normalization, and exact image resizing/preprocessing pipelines are not documented in the checked primary sources (model card, repository README, NVIDIA NIM page)."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+            "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+          ],
+          "statement": "Text prompt (natural-language description) as a primary input modality for generation."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+            "https://github.com/black-forest-labs/flux2"
+          ],
+          "statement": "Optional reference image(s) for editing and multi-reference editing workflows."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: no official prompt templates, paired-input ordering, or formal task-formatting templates are documented in the checked upstream model card, repository README, or NVIDIA NIM page."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: exact input-validation rules (explicit maximum token counts, detailed invalid/ambiguous input handling, and strict bounds) are not specified in the checked primary sources."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+        ],
+        "statement": "Requires approximately 13 GB VRAM for inference on consumer GPUs as reported in upstream documentation; plan hardware accordingly."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+        ],
+        "statement": "Licensing: upstream sources indicate Apache 2.0 licensing for the model weights/code as published by the model author."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: checkpoint-scoped numeric evaluation results (datasets, splits, metrics, and numeric scores) are not published in the checked upstream model card, repository README, or NVIDIA NIM documentation."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+          ],
+          "statement": "The outputs are synthetic images that may contain visual artifacts; upstream documentation does not claim guaranteed photorealism for all prompts and indicates typical creative/interactive usage."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b",
+            "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+          ],
+          "statement": "Generated outputs are images in raster formats (e.g., PNG/JPEG) produced via a VAE decoding step according to the NVIDIA NIM packaging and upstream descriptions."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+            "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+          ],
+          "statement": "Evidence gap: no formal post-inference calibration scores, confidence outputs, or numeric uncertainty measures are documented in the checked primary sources; downstream validation, visual inspection, and safety filtering are recommended by upstream guidance."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+          "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+        ],
+        "modelScope": "FLUX.2-klein-base-4B",
+        "useCase": "Text-to-image (T2I) generation",
+        "why": "Upstream documentation for the checkpoint describes generation from text prompts and lists text input support and image output capability."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+          "https://github.com/black-forest-labs/flux2"
+        ],
+        "modelScope": "FLUX.2-klein-base-4B",
+        "useCase": "Image-to-image (I2I) editing (single-reference)",
+        "why": "Primary upstream sources describe image input support and single-reference editing capabilities for the FLUX.2 Klein family and checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+          "https://github.com/black-forest-labs/flux2"
+        ],
+        "modelScope": "FLUX.2-klein-base-4B",
+        "useCase": "Multi-reference image editing",
+        "why": "Primary upstream sources state that the FLUX.2 Klein 4B base supports multi-reference editing capabilities."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+          "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+        ],
+        "modelScope": "FLUX.2-klein-base-4B (upstream checkpoint; NVIDIA NIM packaging documents runtime performance on supported hardware)",
+        "useCase": "Low-latency interactive image generation on supported consumer GPUs",
+        "why": "Primary upstream documentation (model card and NVIDIA NIM packaging) report that the 4B Klein base fits within ~13 GB VRAM on consumer GPUs and that NVIDIA NIM documentation describes sub-second end-to-end inference on supported hardware."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b",
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+        ],
+        "modelScope": "FLUX.2-klein-base-4B",
+        "useCase": "Commercial deployment with required guardrails",
+        "why": "NVIDIA NIM documentation and the upstream repository/model-card indicate the model is provided for commercial and non-commercial use and require implementers to deploy content filtering, access controls, and abuse monitoring."
+      }
+    ],
+    "researchSummary": "FLUX.2-klein-base-4B is described in primary upstream sources as a 4B-parameter rectified flow transformer for image generation and editing that supports text-to-image, image-to-image, and multi-reference editing workflows. Primary sources report that the model fits within ~13 GB VRAM on consumer GPUs and that the NVIDIA NIM packaging documents end-to-end inference on supported hardware as sub-second; primary sources also require implementers to deploy guardrails and content-filtering when using the model.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+        ],
+        "statement": "Users are required to implement guardrails, content filtering, abuse monitoring, and access controls when deploying the model as specified by the NVIDIA NIM documentation for the packaged model."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+        ],
+        "statement": "Pre-release mitigations were applied by the upstream author to reduce generation of unlawful content; residual risks remain and post-deployment mitigations are recommended."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "FLUX.2-klein-base-4B checkpoint",
+        "primary": true,
+        "primaryReason": "Canonical Hugging Face model page for the exact checkpoint providing the model card/README content, capability claims, and licensing statements for FLUX.2-klein-base-4B.",
+        "publisher": "Black Forest Labs / Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "identity",
+          "recommendedUseCases",
+          "inputPreparation (modalities)",
+          "outputInterpretation (high-level outputs)",
+          "limitations (VRAM guidance)",
+          "safety (pre-release mitigations)"
+        ],
+        "title": "FLUX.2 Klein base 4B - Hugging Face",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+      },
+      {
+        "modelScope": "FLUX.2-klein-base-4B family / repository",
+        "primary": true,
+        "primaryReason": "Upstream code and repository maintained by the model author; provides implementation-level README and inference examples relevant to the checkpoint.",
+        "publisher": "Black Forest Labs (GitHub repository)",
+        "sourceType": "repository",
+        "supports": [
+          "recommendedUseCases",
+          "inputPreparation (usage examples)",
+          "identity (capability statements)"
+        ],
+        "title": "FLUX.2 (upstream repository) - GitHub",
+        "url": "https://github.com/black-forest-labs/flux2"
+      },
+      {
+        "modelScope": "NVIDIA NIM packaged FLUX.2-klein-base-4B (serving/runtime manifest)",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NIM packaging and serving manifest for the third-party checkpoint; documents supported modalities, output formats, supported resolutions, runtime characteristics, and deployment safety requirements for the packaged model.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "recommendedUseCases (runtime performance claims)",
+          "inputPreparation (supported resolutions/formats)",
+          "outputInterpretation (VAE decoding / raster outputs)",
+          "safety (deployment guardrails)",
+          "identity (serving manifest claims)"
+        ],
+        "title": "NVIDIA NIM: Black Forest Labs Flux 2 Klein 4B",
+        "url": "https://docs.api.nvidia.com/nim/reference/black-forest-labs-flux_2-klein-4b"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "a651ff97a4cc280657b9eea8608df9e84c2fd72725e5b5b14e092d4049b2005f",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-black-forest-labs-flux-2-klein-base-4b-fe371b37f3",
+  "researchedAt": "2026-08-06T10:57:05.095677+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+  "sourceUrls": [
+    "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

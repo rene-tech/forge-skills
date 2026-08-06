@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model nvidia-gliner-pii-nim for this task: Automated detection and redaction of Personally Identifiable Information (PII) and Protected Health Information (PHI) in structured and unstructured UTF-8 text for enterprise/regulatory workflows. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use nvidia-gliner-pii-nim or another Forge model for Automated detection and redaction of Personally Identifiable Information (PII) and Protected Health Information (PHI) in structured and unstructured UTF-8 text for enterprise/regulatory workflows?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use nvidia-gliner-pii-nim for Using the model as a generative language model for text synthesis or instruction-following, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "nvidia-gliner-pii-nim",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-nvidia-gliner-pii-nim"
+}

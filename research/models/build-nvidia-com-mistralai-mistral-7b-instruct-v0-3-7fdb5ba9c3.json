@@ -1,0 +1,467 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources must not contain duplicate URLs",
+        "path": "$.sources must not contain duplicate URLs",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9] uses forbidden secondary host ollama.com",
+        "path": "$.sources[9] uses forbidden secondary host ollama.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "path": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.avoidUseCases must contain at least one scoped item",
+        "path": "$.avoidUseCases must contain at least one scoped item",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.inputPreparation_evidenceGaps",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 6 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Mistral 7B Instruct v0.3 packaged as an NVIDIA NIM and mirrored into Forge regional registries.",
+      "displayName": "Use Mistral 7B Instruct v0.3",
+      "group": "language",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "mistralai-mistral-7b-instruct-v0-3",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "mistralai-mistral-7b-instruct-v0-3-nim",
+      "sourceUrl": "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+        ],
+        "modelScope": "Mistral-7B-Instruct-v0.3 upstream checkpoint",
+        "reason": "Upstream README and model-card explicitly state the model does not include built-in moderation mechanisms and recommend applying external guardrails before high-stakes use.",
+        "useCase": "Deploying as an autonomous safety- or clinical-decision-maker without human/expert oversight"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Inspected canonical upstream model card, repository blobs (config/README), and NVIDIA NGC catalog pages; no checkpoint-specific comparative benchmark tables or protocol statements were found.",
+        "criteria": "No primary, checkpoint-scoped comparative benchmark rows or protocol-matched evaluations were found naming Mistral-7B-Instruct-v0.3; comparisons in secondary sources were excluded.",
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/config.json",
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/models/mistral-7b-instruct-v0.3-onnx-int4-rtx"
+        ],
+        "rationale": "I inspected the upstream model card, README blobs, config blobs, and NVIDIA NGC/NGC listings for any task- and protocol-matched comparisons naming this exact checkpoint and found none in primary artifacts. Therefore there is insufficient primary evidence to prefer this checkpoint versus an alternative under a specific protocol.",
+        "task": "checkpoint-specific numeric or protocol-matched comparisons",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires external moderation/guardrails, domain-specific expert review, and validation because the upstream checkpoint README and model card indicate absence of built-in moderation mechanisms.",
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+        ],
+        "modelScope": "Mistral-7B-Instruct-v0.3 upstream checkpoint",
+        "useCase": "Safety-sensitive or high-stakes decision support (clinical, legal, safety-critical) only after additional downstream validation and human/expert oversight"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No primary-source mapping found between the Forge serving slug/tag '7fdb5ba9c3' and an exact upstream commit ID or release artifact. URLs inspected: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b8ef225287903940a8fcc1f6e1016b29c5cc01f3 , https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b0693ea4ce84f1a6a70ee5ac7c8efb0df82875f6 , https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03 .",
+      "Evidence gap: No primary-source numeric benchmark tables or leaderboard rows were found that explicitly name the exact checkpoint Mistral-7B-Instruct-v0.3 with dataset/split/metric/value in the inspected upstream artifacts and NVIDIA listings. URLs inspected: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3 , https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md , https://catalog.ngc.nvidia.com/orgs/nvidia/models/mistral-7b-instruct-v0.3-onnx-int4-rtx , https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03 .",
+      "Evidence gap: The inspected primary sources do not contain an explicit, consolidated statement labeled 'accepted input formats' (for example, a formal declaration 'inputs must be provided as a 1-D string tensor of token ids' was not found). URLs inspected: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3 , https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md , https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03 .",
+      "Evidence gap: No explicit primary-source documentation on calibrated confidence scores, per-token probability semantics, or recommended numeric score interpretation was found in the inspected model-card/config blobs. URLs inspected: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3 , https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/config.json .",
+      "Evidence gap: Chat-template JSON content for the canonical MistralTokenizer.v3 chat template was not found in upstream commit blobs or README fragments inspected; the repository contains commit messages referencing chat-template/tool-calling updates but the explicit template JSON artifact was observed only in discussion threads (excluded as secondary). Inspected URLs: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b0693ea4ce84f1a6a70ee5ac7c8efb0df82875f6 , https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md .",
+      "Evidence gap: No primary-source statement was found in the inspected NIM/NGC pages or the upstream model blobs that explicitly states whether NVIDIA NGC/ONNX-INT4/RTX builds are bit-for-bit identical to the upstream checkpoint; NGC documentation describes a conversion/quantization workflow implying a derivative, but an explicit checksum-level mapping was not provided in the inspected artifacts. Inspected URLs: https://catalog.ngc.nvidia.com/orgs/nvidia/models/mistral-7b-instruct-v0.3-onnx-int4-rtx , https://catalog.ngc.nvidia.com/orgs/nvidia/-/models/mistral-7b-instruct-v0.3-onnx-int4-rtx/-/file-browser , https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03 .",
+      "Evidence gap: No primary-source formal input-validation checklist (bounds, prohibited content filtering rules, exact tokenization failure modes) was found in the upstream repository or NVIDIA listings; repository README recommends external guardrails instead. Inspected URLs: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3 , https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md .",
+      "Evidence gap: No primary-source, checkpoint-scoped numeric benchmark comparisons were located for Mistral-7B-Instruct-v0.3 in the inspected upstream or NVIDIA artifacts; comparisons in third-party or secondary pages were not considered primary. Inspected URLs: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3 , https://catalog.ngc.nvidia.com/orgs/nvidia/models/mistral-7b-instruct-v0.3-onnx-int4-rtx , https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03 ."
+    ],
+    "family": "build-nvidia-com-mistralai-mistral-7b-instruct-v0-3-7fdb5ba9c3",
+    "identity": {
+      "architecture": "MistralForCausalLM (Transformer)",
+      "checkpoint": "Mistral-7B-Instruct-v0.3",
+      "evidenceUrls": [
+        "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+        "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/config.json",
+        "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/adadfb3fbae87ecc77cd5bf2c3318434d5da04cf/config.json",
+        "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/main/tokenizer.json",
+        "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b8ef225287903940a8fcc1f6e1016b29c5cc01f3"
+      ],
+      "license": "Apache-2.0",
+      "parameterScale": "7B",
+      "revision": "not reported",
+      "upstreamName": "Mistral-7B-Instruct-v0.3"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md",
+            "https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03"
+          ],
+          "statement": "Evidence gap: the inspected primary sources do not provide an explicit, single-line specification labeled 'accepted input formats' (for example, a formal statement such as 'inputs must be provided as a 1-D string tensor of token ids' was not found in the checked model-card blobs and NVIDIA pages)."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/main/tokenizer.json",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b8ef225287903940a8fcc1f6e1016b29c5cc01f3"
+          ],
+          "statement": "Tokenizer assets (tokenizer.json) are present in the upstream repository indicating the canonical tokenizer is published alongside model files; repository commits reference tokenizer uploads."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+          ],
+          "statement": "Primary input type is natural-language text prompts for instruction-following/chat usage."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b0693ea4ce84f1a6a70ee5ac7c8efb0df82875f6",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+          ],
+          "statement": "Evidence gap: I did not find an upstream commit blob or README fragment that contains the canonical chat-template JSON for this checkpoint; repository commits reference chat-template/tool-calling updates but the explicit template JSON content was only observed in discussion threads (which are treated as secondary and excluded)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+          ],
+          "statement": "Evidence gap: the inspected primary sources do not include a formal input-validation checklist (bounds, prohibited content filtering rules, or exact tokenization failure modes) for submission to the checkpoint; the model README and card instead note the absence of moderation and recommend external guardrails."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+        ],
+        "statement": "The upstream checkpoint does not include built-in moderation mechanisms; authors/repository recommend external guardrails."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/config.json",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/adadfb3fbae87ecc77cd5bf2c3318434d5da04cf/config.json"
+        ],
+        "statement": "Vocabulary size and maximum position embeddings as specified in upstream config blobs indicate a vocab_size of 32768 and max_position_embeddings of 32768 for this checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b8ef225287903940a8fcc1f6e1016b29c5cc01f3",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b0693ea4ce84f1a6a70ee5ac7c8efb0df82875f6",
+          "https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03"
+        ],
+        "statement": "Evidence gap: No primary-source mapping was found in the inspected NVIDIA or upstream repository blobs that ties the Forge serving slug/tag '7fdb5ba9c3' to an exact upstream commit ID or release artifact."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/config.json"
+          ],
+          "statement": "Evidence gap: the inspected primary sources do not provide explicit statements about calibrated confidence scores, per-token probability semantics, or recommended numeric score interpretation for generated tokens/outputs."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+          ],
+          "statement": "Model emits natural-language text strings as its primary output; the README and model card provide example generation and chat CLI usage."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md",
+            "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3"
+          ],
+          "statement": "Post-inference validation: repository README and model-card guidance recommend applying external QA and moderation given absence of built-in moderation mechanisms; users should apply domain-appropriate validation pipelines."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+        ],
+        "modelScope": "Mistral-7B-Instruct-v0.3 upstream checkpoint",
+        "useCase": "Instruction-following text tasks (general QA, summarization, instruction-following dialogue)",
+        "why": "Upstream model card and README describe Mistral-7B-Instruct-v0.3 as an instruct-fine-tuned variant and provide examples demonstrating instruction-following and chat usage."
+      }
+    ],
+    "researchSummary": "I verified the upstream checkpoint identity and repository artifacts for Mistral-7B-Instruct-v0.3 from the official Hugging Face model page and repository blobs (config.json, tokenizer.json, README) and inspected NVIDIA NGC/NGC catalog entries and the NVIDIA NIM reference page. Upstream-checkpoint evidence (Hugging Face model page and config blobs) lists architecture fields consistent with a MistralForCausalLM Transformer (hidden_size 4096, num_hidden_layers 32, num_attention_heads 32, vocab_size 32768, max_position_embeddings 32768) and the model card/README provide usage examples and note absence of built-in moderation. NVIDIA NGC catalog entries document quantized ONNX-INT4 and NeMo/TensorRT-LLM variants derived from the upstream checkpoint and describe a conversion workflow (download HF PyTorch bfloat16 model -> convert to ONNX FP16 -> quantize to INT4 via TensorRT Model Optimizer). I found no primary-source mapping (commit, checksum, or explicit locator) in the inspected NVIDIA or upstream blobs that ties the Forge serving slug/tag \"7fdb5ba9c3\" to an exact upstream commit or release artifact; this mapping is therefore an evidence gap. I also did not find primary-source numeric benchmark tables or explicit calibration/confidence semantics in the inspected upstream or NVIDIA blobs. Where repository discussions were observed in research notes, I did not use discussion threads as primary evidence; when a claim depended only on a discussion (for example, explicit chat-template JSON content), I recorded an evidence gap and cited the upstream repository blobs and commits that were inspected.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+        ],
+        "statement": "The upstream checkpoint does not include built-in moderation; external moderation/guardrails are advised for deployments."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+          "https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03"
+        ],
+        "statement": "Evidence gap: No primary-source statement was found in the inspected upstream blobs or NVIDIA pages that provides formal guidance on clinical/medical safety validation or specific data-handling procedures for regulated data when using this checkpoint; users should assume external procedures are required."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "NVIDIA NIM / serving listing for Mistral-7B-Instruct-v0.3",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NIM reference page listing the Mistral-7B-Instruct-v0.3 serving entry and describing the model as provided via NVIDIA NIM/serving.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge/NIM serving listing",
+          "high-level model description (instruction-following)"
+        ],
+        "title": "NVIDIA NIM reference: Mistralai Mistral-7B-Instruct-v0.3",
+        "url": "https://docs.api.nvidia.com/nim/reference/mistralai-mistral-7b-instruct-v03"
+      },
+      {
+        "modelScope": "Mistral-7B-Instruct-v0.3 upstream checkpoint",
+        "primary": true,
+        "primaryReason": "Official upstream model card / repository landing page for the checkpoint; contains README, license declaration, and usage examples.",
+        "publisher": "Mistral AI / Hugging Face model hub",
+        "sourceType": "model-card",
+        "supports": [
+          "model-card metadata",
+          "usage examples",
+          "license declaration"
+        ],
+        "title": "Hugging Face model page: mistralai/Mistral-7B-Instruct-v0.3",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3"
+      },
+      {
+        "modelScope": "Mistral-7B-Instruct-v0.3 upstream checkpoint (README blob)",
+        "primary": true,
+        "primaryReason": "Repository README blob at a named commit containing usage examples, mistral_inference guidance, and safety/guardrail commentary for this exact checkpoint.",
+        "publisher": "Mistral AI / Hugging Face model repository",
+        "sourceType": "repository",
+        "supports": [
+          "usage examples (mistral_inference, mistral-chat)",
+          "notes on moderation and guardrails",
+          "snapshot_download allow_patterns claims"
+        ],
+        "title": "README.md blob (commit b8ef2252...) for Mistral-7B-Instruct-v0.3",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/README.md"
+      },
+      {
+        "modelScope": "Mistral-7B-Instruct-v0.3 tokenizer assets",
+        "primary": true,
+        "primaryReason": "Concrete tokenizer asset in the upstream model repository; file-level metadata in the blob indicates licensing and presence of tokenizer artifacts.",
+        "publisher": "Mistral AI / Hugging Face model repository",
+        "sourceType": "repository",
+        "supports": [
+          "tokenizer asset presence",
+          "tokenizer licensing note"
+        ],
+        "title": "tokenizer.json blob (main) for Mistral-7B-Instruct-v0.3",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/main/tokenizer.json"
+      },
+      {
+        "modelScope": "Mistral-7B-Instruct-v0.3 upstream config",
+        "primary": true,
+        "primaryReason": "Upstream config blob at a named commit enumerating architecture fields (model_type, hidden_size, num_hidden_layers, num_attention_heads, vocab_size, max_position_embeddings) for this exact checkpoint.",
+        "publisher": "Mistral AI / Hugging Face model repository",
+        "sourceType": "repository",
+        "supports": [
+          "architecture parameters",
+          "vocabulary size",
+          "maximum position embeddings"
+        ],
+        "title": "config.json blob (commit b8ef2252...) for Mistral-7B-Instruct-v0.3",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/b8ef225287903940a8fcc1f6e1016b29c5cc01f3/config.json"
+      },
+      {
+        "modelScope": "Mistral-7B-Instruct-v0.3 upstream config (alternate blob)",
+        "primary": true,
+        "primaryReason": "Alternate upstream config blob in repository history confirming the same model parameterization values (hidden_size, num_hidden_layers, num_attention_heads, vocab_size, max_position_embeddings).",
+        "publisher": "Mistral AI / Hugging Face model repository",
+        "sourceType": "repository",
+        "supports": [
+          "architecture parameters confirmation",
+          "vocabulary size confirmation",
+          "max position embeddings confirmation"
+        ],
+        "title": "config.json blob (alternate commit adadfb3f...) for Mistral-7B-Instruct-v0.3",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/adadfb3fbae87ecc77cd5bf2c3318434d5da04cf/config.json"
+      },
+      {
+        "modelScope": "Mistral-7B-Instruct-v0.3 commit history",
+        "primary": true,
+        "primaryReason": "Repository commit listing page at the referenced commit showing file uploads (config, tokenizer) and history for the upstream checkpoint.",
+        "publisher": "Mistral AI / Hugging Face model repository",
+        "sourceType": "repository",
+        "supports": [
+          "tokenizer and config uploads",
+          "repository management evidence"
+        ],
+        "title": "Commit history locator (commit b8ef2252...) for Mistral-7B-Instruct-v0.3",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b8ef225287903940a8fcc1f6e1016b29c5cc01f3"
+      },
+      {
+        "modelScope": "Mistral-7B-Instruct-v0.3 commit history (tool-calling/chat template changes)",
+        "primary": true,
+        "primaryReason": "Repository commit listing page referencing a commit titled indicating chat-template/tool-calling support updates; used to inspect repository-level changes related to chat tooling.",
+        "publisher": "Mistral AI / Hugging Face model repository",
+        "sourceType": "repository",
+        "supports": [
+          "commit-level evidence of README/templating updates"
+        ],
+        "title": "Commit history locator (commit b0693ea4...) for Mistral-7B-Instruct-v0.3",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/commits/b0693ea4ce84f1a6a70ee5ac7c8efb0df82875f6"
+      },
+      {
+        "modelScope": "NVIDIA ONNX-INT4 quantized derivative listing for Mistral-7B-Instruct-v0.3",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC model listing for the ONNX-INT4 RTX quantized build derived from the upstream Mistral-7B-Instruct-v0.3 model; includes description of the quantization/conversion workflow.",
+        "publisher": "NVIDIA NGC (catalog.ngc.nvidia.com)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "quantized derivative description",
+          "conversion workflow steps (download from Hugging Face, convert to ONNX FP16, quantize to INT4 using TensorRT Model Optimizer)"
+        ],
+        "title": "NGC catalog: mistral-7b-instruct-v0.3-onnx-int4-rtx (model page)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/models/mistral-7b-instruct-v0.3-onnx-int4-rtx"
+      },
+      {
+        "modelScope": "NVIDIA ONNX-INT4 distribution file listing",
+        "primary": true,
+        "primaryReason": "Official artifact file listing for the NGC ONNX-INT4 model distribution (file manifest for the quantized derivative), used to verify included files and licensing artifacts shipped with the NGC package.",
+        "publisher": "NVIDIA NGC (catalog.ngc.nvidia.com)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "artifact listing (model.onnx, model.onnx_data, license files, special_tokens_map.json)"
+        ],
+        "title": "NGC file browser for mistral-7b-instruct-v0.3-onnx-int4-rtx (artifact listing)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/-/models/mistral-7b-instruct-v0.3-onnx-int4-rtx/-/file-browser"
+      },
+      {
+        "modelScope": "NVIDIA NeMo/NeMo-format model listing for Mistral-7B-Instruct-v0.3",
+        "primary": true,
+        "primaryReason": "Official NGC listing indicating a NeMo-format/NeMo-optimized checkpoint for the instruct variant and supported runtimes (NeMo/TensorRT-LLM) for NVIDIA distributions.",
+        "publisher": "NVIDIA NGC (catalog.ngc.nvidia.com)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NeMo checkpoint listing",
+          "runtime/optimization targets (TensorRT-LLM)"
+        ],
+        "title": "NGC / NeMo model page: Mistral-7B-v03-Instruct (NeMo/NeMo checkpoint listing)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/mistral-7b-v03-instruct"
+      },
+      {
+        "modelScope": "mistralai-mistral-7b-instruct-v0-3",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "3cea4bcf95a26e378ecec9eb97dd540c787b746ac2ad4324e9f8a2df3919e3ed",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-mistralai-mistral-7b-instruct-v0-3-7fdb5ba9c3",
+  "researchedAt": "2026-07-23T21:10:06.221491+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3",
+  "sourceUrls": [
+    "https://build.nvidia.com/mistralai/mistral-7b-instruct-v0.3"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model nvlabs-sana-sprint-1-6b for this task: High-throughput text-to-image generation at 1024\u00d71024 using the NVlabs-provided 1.6B Sana\u2011Sprint checkpoint packaged for Diffusers.. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use nvlabs-sana-sprint-1-6b or another Forge model for High-throughput text-to-image generation at 1024\u00d71024 using the NVlabs-provided 1.6B Sana\u2011Sprint checkpoint packaged for Diffusers.?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use nvlabs-sana-sprint-1-6b for Treating NVlabs-reported numeric benchmarks (FID/CLIP/GenEval) as protocol-matched equivalents to other models without verifying dataset split identifiers, RNG/seed, and full preprocessing/evaluation protocol., even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "nvlabs-sana-sprint-1-6b",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-nvlabs-sana-sprint-1-6b"
+}

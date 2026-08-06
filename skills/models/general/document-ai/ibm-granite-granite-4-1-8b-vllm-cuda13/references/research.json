@@ -1,0 +1,599 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4] uses unapproved repository owner 'blog' for this exact model scope",
+        "path": "$.sources[4] uses unapproved repository owner 'blog' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4] uses forbidden secondary URL https://huggingface.co/blog/ibm-granite/granite-4-1",
+        "path": "$.sources[4] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5] describes itself as secondary evidence",
+        "path": "$.sources[5] describes itself as secondary evidence",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses forbidden secondary host ollama.com",
+        "path": "$.sources[6] uses forbidden secondary host ollama.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11] uses forbidden secondary host ai.azure.com",
+        "path": "$.sources[11] uses forbidden secondary host ai.azure.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.sources[10]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.sources[10]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 10 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "IBM Granite 4.1 8B is a public Apache-2.0 dense decoder-only general instruction model released on 2026-04-29 for enterprise assistant, RAG, coding, multilingual dialog, structured JSON, and tool-use workflows.",
+      "displayName": "Use Granite 4.1 8B",
+      "group": "document-ai",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "ibm-granite-granite-4-1-8b",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "ibm-granite-granite-4-1-8b-vllm-cuda13",
+      "sourceUrl": "https://huggingface.co/ibm-granite/granite-4.1-8b",
+      "version": "vllm-0.21.0-cuda13",
+      "versionKey": "vllm-0-21-0-cuda13"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blame/main/config.json",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "modelScope": "ibm-granite/granite-4.1-8b (config.json / README blob)",
+        "reason": "Repository config.json sets max_position_embeddings = 131072; other non-repository announcements in the family commentary assert larger staged extension for the family. The inspected checkpoint blobs do not reconcile these differing claims at the exact checkpoint blob locator.",
+        "useCase": "Assuming a specific unstated long-context behavior or context window beyond inspected config claims without verification"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Inspected README table lists numeric value but omits protocol specifics (split/prompting/seeds) at the locator"
+        ],
+        "conditions": "Evaluation protocol details (prompting, split, seeds) not reported at inspected README blob",
+        "dataset": "DeepMind Math",
+        "direction": "higher-is-better",
+        "metric": "CoT score",
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant as reported in README)",
+        "sourceLocator": "README.md (benchmarks section)",
+        "sourceUrl": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md",
+        "split": "not reported",
+        "task": "Mathematics (chain-of-thought evaluation)",
+        "value": "80.07 (0-shot) reported for 8B Dense variant at inspected README blob"
+      },
+      {
+        "caveats": [
+          "README lists multiple variant scores; variant-protocol mapping not provided at locator"
+        ],
+        "conditions": "Prompting/protocol not reported at inspected README blob; README shows multiple variant numbers without disambiguating protocol differences at the locator",
+        "dataset": "HumanEval",
+        "direction": "higher-is-better",
+        "metric": "pass@1",
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant as reported in README)",
+        "sourceLocator": "README.md (benchmarks section)",
+        "sourceUrl": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md",
+        "split": "not reported",
+        "task": "Code generation / program synthesis",
+        "value": "85.37 (8B Dense variant) reported in README table"
+      },
+      {
+        "caveats": [
+          "README lists numeric value but omits split/prompting/seeds at locator"
+        ],
+        "conditions": "Evaluation protocol details not reported at inspected README blob",
+        "dataset": "MBPP",
+        "direction": "higher-is-better",
+        "metric": "pass@1",
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant as reported in README)",
+        "sourceLocator": "README.md (benchmarks section)",
+        "sourceUrl": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md",
+        "split": "not reported",
+        "task": "Code generation / program synthesis",
+        "value": "87.30 (8B Dense variant) reported in README table"
+      },
+      {
+        "caveats": [
+          "README reports multiple variant safety scores; protocol details not given at locator"
+        ],
+        "conditions": "Evaluation protocol details not reported at inspected README blob",
+        "dataset": "SALAD-Bench",
+        "direction": "higher-is-better",
+        "metric": "safety score",
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant as reported in README)",
+        "sourceLocator": "README.md (benchmarks section)",
+        "sourceUrl": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md",
+        "split": "not reported",
+        "task": "Safety evaluation",
+        "value": "95.80 (8B Dense variant) reported in README table"
+      },
+      {
+        "caveats": [
+          "README does not explicitly state whether BFCL v3 evaluation used a downstream service/adapter; the locator lacks those protocol details"
+        ],
+        "conditions": "Tool-calling evaluation harness / attached adapter/head details not specified at README locator",
+        "dataset": "BFCL v3",
+        "direction": "higher-is-better",
+        "metric": "BFCL v3 score",
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant as reported in README)",
+        "sourceLocator": "README.md (benchmarks section)",
+        "sourceUrl": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md",
+        "split": "not reported",
+        "task": "Tool-calling tasks",
+        "value": "68.27 (8B Dense variant) reported in README table"
+      },
+      {
+        "caveats": [
+          "README reports aggregate numbers but omits composition/split/protocol details at locator"
+        ],
+        "conditions": "Aggregate composition and split details not reported at README locator",
+        "dataset": "Eval+ Avg (MULTIPLE / assorted suites)",
+        "direction": "higher-is-better",
+        "metric": "Eval+ Avg pass@1",
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant as reported in README)",
+        "sourceLocator": "README.md (benchmarks section)",
+        "sourceUrl": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md",
+        "split": "not reported",
+        "task": "Multitask / aggregated eval",
+        "value": "80.21 (8B Dense variant) reported in README table"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Inspected README blob and commit history were checked; no protocol-matched direct comparisons to alternative named upstream checkpoints were found at those locators.",
+        "criteria": "No primary-source task-by-task head-to-head comparisons found in the inspected repository/README blobs for the exact checkpoint; README presents absolute numbers but not direct controlled comparisons with protocol parity to specific alternatives.",
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "rationale": "The README provides per-task scores for the 8B Dense variant but does not provide head-to-head, protocol-matched comparisons to named alternative checkpoints at the inspected locators.",
+        "task": "Task-specific performance comparisons to other candidate models (per-task head-to-head)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Repository facts state the model family was finetuned from base with open-source permissive datasets plus internal synthetic data; extending language or domain support requires downstream finetuning by practitioners and is not documented as out-of-the-box for unsupported languages in the inspected checkpoint metadata.",
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/commit/4b28eb0bc684385caa9fb62ecf7047170e3cc3a1"
+        ],
+        "modelScope": "ibm-granite/granite-4.1-8b (requires user downstream finetuning)",
+        "useCase": "Downstream finetuning to support additional languages or specialty domains"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Tokenizer vocabulary and tokenization parameters not published in the inspected repository README or config blobs for the exact checkpoint locator; repository preview listings reference tokenizer files but a definitive published tokenizer vocabulary and parameters for the exact checkpoint locator were not found (checked: README blob, preview listing, config.json).",
+      "Evidence gap: Detailed benchmark protocol (dataset splits, prompt templates, sampling seeds, harness) for README-reported scores is not present at the inspected README blob locator; README reports numeric results but omits per-benchmark protocol details.",
+      "Evidence gap: Default generation hyperparameters (recommended temperature, top-k, top-p) are not declared in the inspected generation_config.json or README blobs at the checked locators.",
+      "Evidence gap: Explicit upstream output contract exposing logits/per-token probability arrays or token-id output shape is not published at the inspected README/config/generation blobs.",
+      "Evidence gap: Detailed operational safety, privacy, PHI-handling, and deployment governance procedures are not published in the inspected repository README/config blobs.",
+      "Evidence gap: Ambiguity in long-context claims \u2014 repository config.json shows max_position_embeddings = 131072 while other family-level commentary in the inspected findings references staged long-context extension; inspected checkpoint blobs do not reconcile or document the staged-extension procedure at the checkpoint locator."
+    ],
+    "family": "huggingface-co-ibm-granite-granite-4-1-8b-d40c6baf50",
+    "identity": {
+      "architecture": "Decoder-only dense transformer (GQA / grouped-query attention, RoPE positional embeddings, SwiGLU MLP, RMSNorm, shared input/output embeddings) as stated in repository README and related blobs",
+      "checkpoint": "Granite-4.1-8B (ibm-granite/granite-4.1-8b); repository artifacts inspected include config.json and generation_config.json and referenced model signature/commit artifacts",
+      "evidenceUrls": [
+        "https://huggingface.co/ibm-granite/granite-4.1-8b",
+        "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md",
+        "https://huggingface.co/ibm-granite/granite-4.1-8b/commit/4b28eb0bc684385caa9fb62ecf7047170e3cc3a1",
+        "https://huggingface.co/ibm-granite/granite-4.1-8b/blame/main/config.json",
+        "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/main/generation_config.json"
+      ],
+      "license": "Apache-2.0",
+      "parameterScale": "8B",
+      "revision": "commit 4b28eb0bc684385caa9fb62ecf7047170e3cc3a1 (README update) and additional commit SHAs present in repository history (see sources)",
+      "upstreamName": "ibm-granite/granite-4.1-8b"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blame/main/config.json",
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/main/generation_config.json"
+          ],
+          "statement": "Repository distribution includes configuration and generation metadata files (config.json and generation_config.json) that represent the checkpoint artifacts inspected."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-switch-4.1-8b-preview"
+          ],
+          "statement": "Repository previews list tokenizer artifacts (tokenizer.json, tokenizer_config.json) among repository files for a related granite preview blob inspected in the findings; presence of tokenizer files was reported in repository previews."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b",
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "The inspected model-card and README describe the checkpoint as instruction-tuned but do not publish explicit tokenization parameters or a complete tokenization/vocabulary listing at the exact checkpoint README locator."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b",
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "Text-based instruction/chat messages (instruction-following inputs and chat-style prompts as the intended input modality)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b",
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "The checkpoint is presented as an instruction-tuned text model suitable for chat-style prompts and instruction-following formats as described in the model card and README; the README lists chat/instruction usage but does not provide a single mandatory upstream prompt template at the inspected locator."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blame/main/config.json",
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "The inspected artifacts do not declare explicit input-validation rules (bounds beyond the config.json max_position_embeddings value, structured JSON constraints, or required message schemas) at the README/config blobs inspected."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blame/main/config.json",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "statement": "Primary repository config.json sets max_position_embeddings = 131072, while family-level announcements in other blobs state staged long-context extension for the family; the inspected checkpoint README/config blobs do not reconcile this difference."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-switch-4.1-8b-preview",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "statement": "Evidence gap: tokenizer vocabulary and tokenization parameter artifacts are not published at the inspected checkpoint README/config blob locators (tokenizer.json/tokenizer_config.json presence was reported in a related preview listing but a definitive published tokenizer vocabulary and tokenization parameters for the exact checkpoint locator were not found)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/main/generation_config.json",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "statement": "Evidence gap: default generation hyperparameters (recommended temperature, top-k, top-p) and explicit logits/probability output contract are not declared in the inspected generation_config.json or README blobs at the checked locators."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "statement": "The README benchmark table reports multiple variant scores (e.g., several numeric variants per task) but does not explain variant differences or provide the full evaluation protocol at the inspected locator."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b",
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "Generated text should be interpreted as uncalibrated model text outputs; the inspected artifacts do not provide a documented calibrated confidence or numeric scoring output contract."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b",
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "Primary repository/README describe the checkpoint as producing text/chat completions (natural language generation outputs) for instruction-following and chat tasks."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "The inspected repository blobs do not declare an explicit upstream output contract exposing logits or per-token probability arrays at the README/config blob locations inspected."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+          ],
+          "statement": "Evidence gap: repository README and config blobs do not publish recommended post-inference validation, calibration datasets, or thresholding guidance at the inspected locators."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant as reported in README)",
+        "useCase": "Instruction-following chat and assistant workflows (text-only)",
+        "why": "Hugging Face model card and README describe the checkpoint as an instruction-following long-context text model finetuned to improve instruction following and chat capabilities."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "modelScope": "ibm-granite/granite-4.1-8b (8B Dense variant in README benchmark table)",
+        "useCase": "Coding and program-synthesis completions (incl. FIM-style completions) as reported in README benchmarks",
+        "why": "The README benchmark table reports HumanEval and MBPP pass@1 scores for the 8B Dense variant and lists code-related capabilities."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "modelScope": "ibm-granite/granite-4.1-8b (checkpoint-level tool-calling capability described in model card/README; actual integration depends on user tooling)",
+        "useCase": "Tool-calling / function-calling integrations (user-provided function schema) \u2014 requires downstream integration",
+        "why": "Primary model-card and README describe improved tool-calling capabilities as a family feature; tool integrations require downstream function/schema wiring by the integrator."
+      }
+    ],
+    "researchSummary": "Granite-4.1-8B (ibm-granite/granite-4.1-8b) is reported in the inspected repository and blobs as an 8-billion-parameter decoder-only dense instruction/tuned text checkpoint released under Apache-2.0. The repository README and model-card describe supervised fine-tuning and reinforcement-learning alignment applied to the Granite-4.1 family and list supported languages. Repository artifacts inspected include config.json (architecture and max_position_embeddings = 131072) and generation_config.json (bos/eos/pad token ids). The README blob publishes an extensive benchmark table with per-task numeric scores for an \"8B Dense\" variant; the README does not publish complete evaluation protocol details (dataset splits, prompting/harness details, seeds) at the inspected locator. There are multiple upstream artifacts that report different long-context claims (config.json max_position_embeddings = 131072 vs. family-announcement blobs claiming larger staged extension): this ambiguity is present in the inspected sources. Tokenizer vocabulary and complete tokenization parameter artifacts were not found in the inspected primary blobs for the exact checkpoint metadata locations checked (evidence gaps documented). Default generation hyperparameters, explicit logits/probability output contract, and detailed input truncation/batching rules are not declared in the inspected artifacts and are recorded as evidence gaps.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "statement": "SALAD-Bench safety score for the 8B Dense variant reported in the README is 95.80 (README table entry)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/ibm-granite/granite-4.1-8b",
+          "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+        ],
+        "statement": "Evidence gap: the inspected repository/README blobs do not publish detailed operational safety, privacy, PHI-handling, or deployment-level governance procedures at the checked locators."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Granite-4.1-8B (ibm-granite/granite-4.1-8b)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model card for the exact ibm-granite/granite-4.1-8b checkpoint used to assert identity and intended uses.",
+        "publisher": "Hugging Face (model card provided by Granite Team at IBM)",
+        "sourceType": "model-card",
+        "supports": [
+          "Identity fields (model name, 8B parameter scale, instruction-tuned intent)",
+          "Intended uses (instruction following, chat, tool-calling claims)",
+          "Pointers to repository README and benchmark summaries"
+        ],
+        "title": "Hugging Face model card: ibm-granite/granite-4.1-8b",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b"
+      },
+      {
+        "modelScope": "Granite-4.1-8B (benchmarks and variant scores for 8B Dense)",
+        "primary": true,
+        "primaryReason": "Repository README contains the benchmark tables and variant score listings for the 8B Dense variant and is the canonical locator for numeric benchmark claims.",
+        "publisher": "Hugging Face (model repository blob)",
+        "sourceType": "repository",
+        "supports": [
+          "Benchmark numbers (HumanEval, MBPP, DeepMind Math, SALAD-Bench, BFCL v3, Eval+ Avg, and others) for 8B Dense variant",
+          "Architecture description and intended capabilities"
+        ],
+        "title": "Hugging Face repository README (benchmarks): granite-4.1-8b README.md blob",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/8ef2991f6d22335c8584a890dbf02290e549f80a/README.md"
+      },
+      {
+        "modelScope": "Granite-4.1-8B (release/README metadata)",
+        "primary": true,
+        "primaryReason": "Repository commit that updates README metadata for the checkpoint; used to verify revision history and presence of README benchmark content.",
+        "publisher": "Hugging Face (model repository commit)",
+        "sourceType": "repository",
+        "supports": [
+          "Revision/commit-level evidence for README updates and release metadata"
+        ],
+        "title": "Hugging Face commit (README update) for granite-4.1-8b",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b/commit/4b28eb0bc684385caa9fb62ecf7047170e3cc3a1"
+      },
+      {
+        "modelScope": "Granite-4.1-8B (generation configuration blob)",
+        "primary": true,
+        "primaryReason": "Repository generation configuration blob inspected for token id and generation metadata.",
+        "publisher": "Hugging Face (repository blob)",
+        "sourceType": "repository",
+        "supports": [
+          "Declaration of bos_token_id, eos_token_id, pad_token_id, and reported transformers version in generation_config.json"
+        ],
+        "title": "Hugging Face blob: generation_config.json for granite-4.1-8b",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b/blob/main/generation_config.json"
+      },
+      {
+        "modelScope": "Granite-4.1-8B (config.json content)",
+        "primary": true,
+        "primaryReason": "Repository config.json inspected for architecture hyperparameters and max_position_embeddings for the exact checkpoint.",
+        "publisher": "Hugging Face (repository blob/blame view)",
+        "sourceType": "repository",
+        "supports": [
+          "Model configuration values (hidden_size, intermediate_size, max_position_embeddings = 131072, num_attention_heads, num_hidden_layers, vocab_size, rope_theta, torch_dtype, transformers_version, rms_norm_eps, hidden_act)"
+        ],
+        "title": "Hugging Face blob (blame view) for config.json: granite-4.1-8b",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b/blame/main/config.json"
+      },
+      {
+        "modelScope": "Granite-4.1-8B (commit history)",
+        "primary": true,
+        "primaryReason": "Repository commits history showing multiple release/maintenance commits for the checkpoint family.",
+        "publisher": "Hugging Face (repository commits view)",
+        "sourceType": "repository",
+        "supports": [
+          "Presence of multiple commit SHAs in repository history for the model family"
+        ],
+        "title": "Hugging Face commits index (refs/pr/4) for granite-4.1-8b",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b/commits/refs%2Fpr%2F4"
+      },
+      {
+        "modelScope": "Granite-4.1-8B (commit signatures/history)",
+        "primary": true,
+        "primaryReason": "Commit-level artifacts (model.sig) and commit SHAs verified in repository history for the family.",
+        "publisher": "Hugging Face (repository commit blob)",
+        "sourceType": "repository",
+        "supports": [
+          "Verification of several repository commit SHAs referenced in commit history"
+        ],
+        "title": "Hugging Face commits blob (model.sig paths) for granite-4.1-8b (refs/pr/6 and main)",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b/commits/refs%2Fpr%2F6/model.sig"
+      },
+      {
+        "modelScope": "Granite-4.1-8B (main commit signature)",
+        "primary": true,
+        "primaryReason": "Main-branch commit signature artifact used to corroborate repository revision evidence.",
+        "publisher": "Hugging Face (repository commit blob)",
+        "sourceType": "repository",
+        "supports": [
+          "Commit signature artifacts on main branch"
+        ],
+        "title": "Hugging Face commits blob (model.sig) main branch for granite-4.1-8b",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b/commits/main/model.sig"
+      },
+      {
+        "modelScope": "Granite-4.1 family preview (tokenizer/config listing and reported context length)",
+        "primary": true,
+        "primaryReason": "Repository preview listing referenced in findings that enumerates some repository files (config/tokenizer artifacts) and reports context length and file lists used to inform tokenizer/file presence claims.",
+        "publisher": "Hugging Face (repository preview listing)",
+        "sourceType": "repository",
+        "supports": [
+          "Reported repository files (model.safetensors, config.json, tokenizer.json, tokenizer_config.json, adapter_index.json, io_configs/, io.yaml, chat_template.jinja, BUILD.md) and reported context length of 131,072 tokens in preview listing"
+        ],
+        "title": "Hugging Face preview listing: granite-switch-4.1-8b-preview (repository preview facts)",
+        "url": "https://huggingface.co/ibm-granite/granite-switch-4.1-8b-preview"
+      },
+      {
+        "modelScope": "Granite-4.1-8B-base (architecture and context limit summary)",
+        "primary": true,
+        "primaryReason": "Model artifact viewer summarizing base-model architectural parameters (layer counts, hidden size, vocab size, context window) used in the research findings.",
+        "publisher": "HFViewer (model artifact viewer)",
+        "sourceType": "repository",
+        "supports": [
+          "Base-model architecture numbers (40 layers, hidden size 4096, vocab size 100,352) and reported context window up to 131,072 tokens in the viewer"
+        ],
+        "title": "HFViewer listing for granite-4.1-8b-base (model architecture summary)",
+        "url": "https://hfviewer.com/ibm-granite/granite-4.1-8b-base"
+      },
+      {
+        "modelScope": "Granite-4.1 family (third-party report)",
+        "primary": true,
+        "primaryReason": "Included in research findings as an inspected item reporting family composition and context window claims.",
+        "publisher": "LinkedIn (third-party post)",
+        "sourceType": "technical-report",
+        "supports": [
+          "Reported family sizes and reported context window claims as recorded in the findings"
+        ],
+        "title": "LinkedIn post referencing Granite 4.1 release",
+        "url": "https://linkedin.com/pulse/ibm-has-released-granite-41-its-next-generation-small-kwxye"
+      },
+      {
+        "modelScope": "Granite-4.1 family (third-party report)",
+        "primary": true,
+        "primaryReason": "Research findings included this third-party news item reporting family-level training scale and context claims.",
+        "publisher": "DataNorth (news/third-party)",
+        "sourceType": "technical-report",
+        "supports": [
+          "Reported family-level claims (training tokens, context window) as presented in the findings"
+        ],
+        "title": "DataNorth news item reporting Granite 4.1 claims",
+        "url": "https://datanorth.ai/news/ibm-releases-granite-4-1"
+      },
+      {
+        "modelScope": "Granite-4.1 family (third-party article)",
+        "primary": true,
+        "primaryReason": "Research findings included this article summarizing family training scale, capability claims, and staged-extension statements used by the researcher to document family-level claims.",
+        "publisher": "Daily.dev (third-party article)",
+        "sourceType": "technical-report",
+        "supports": [
+          "Family-level claims about training tokens, staged long-context extension, and performance summaries as captured in the findings"
+        ],
+        "title": "Daily.dev article referencing Granite 4.1 family capabilities",
+        "url": "https://daily.dev/posts/ibm-granite-4-1-how-the-8b-model-beats-a-32b-moe-6dkxujokc"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "d22857c52991227873bdeb521dff7c099c1af8245768f49225dd247b71b72ff1",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-ibm-granite-granite-4-1-8b-d40c6baf50",
+  "researchedAt": "2026-08-06T11:58:50.379452+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/ibm-granite/granite-4.1-8b",
+  "sourceUrls": [
+    "https://huggingface.co/ibm-granite/granite-4.1-8b"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -62,6 +62,17 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-alibaba-nlp-gte-modernbert-base-f26b0d9716`
+- Recommended: Text embeddings for semantic search and document retrieval — README usage examples, inference-provider display, and model metadata present embedding extraction examples and label the checkpoint as an embedding model; config.json supports embedding dimension and model architecture consistent with embedding outputs.
+- Recommended: Long-document retrieval up to model max positions — Config.json reports max_position_embeddings = 8192 and the README/inference-provider view reference 8192-length usage and long-context benchmark claims tied to the model series.
+- Recommended: Reranking as part of the GTE family workflow (family-level) — The model README and the canonical mGTE paper reference reranker variants within the GTE/mGTE family; repository and paper link the checkpoint to the family research describing reranking applications.
+- Avoid: Autoregressive text generation (generation / decoding tasks) — Upstream artifacts describe an encoder-only ModernBERT embedding model; no autoregressive decoder or generation head is described in the checked config/README files.
+- Avoid: Treating this base checkpoint as a task‑tuned sibling without explicit evidence — Model card and README distinguish embedding and rerank variants within the GTE series; the upstream checkpoint should not be assumed equivalent to task‑tuned siblings unless the repository documents that mapping.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -80,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/alibaba-nlp-gte-modernbert-base-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/alibaba-nlp-gte-modernbert-base-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/alibaba-nlp-gte-modernbert-base-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/alibaba-nlp-gte-modernbert-base-tei-cuda-1-9/SKILL.md

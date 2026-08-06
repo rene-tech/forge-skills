@@ -1,0 +1,705 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://docs.nvidia.com/nim/bionemo/openfold3/latest/",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12] uses forbidden secondary URL https://developer.nvidia.com/blog/how-to-predict-biomolecular-structures-using-the-openfold3-nim",
+        "path": "$.sources[12] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[16].primary must be true",
+        "path": "$.sources[16].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 4 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "OpenFold3 NIM is NVIDIA's packaged OpenFold3 biomolecular complex structure-prediction service.",
+      "displayName": "Use OpenFold3 NIM",
+      "group": "protein-structure",
+      "inputModalities": [
+        "protein_sequence",
+        "nucleotide_sequence",
+        "molecule",
+        "msa",
+        "template",
+        "json"
+      ],
+      "license": "NVIDIA Open Model License; Apache-2.0 additional information; NVIDIA NIM terms",
+      "modelFamily": "openfold3",
+      "outputModalities": [
+        "structure",
+        "confidence",
+        "pdb",
+        "cif",
+        "json"
+      ],
+      "slug": "openfold3-nim",
+      "sourceUrl": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/",
+      "version": "1.5.0-rc1",
+      "versionKey": "nim-1-5-0-rc1-security-upgrade"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://openfold-3.readthedocs.io/en/stable/inference.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html"
+        ],
+        "modelScope": "OpenFold3 NIM / OpenFold3 upstream inference",
+        "reason": "Primary sources indicate ligand inputs are accepted as SMILES or CCD and that covalent ligand support is planned but not currently available in upstream inference and NIM documentation.",
+        "useCase": "Modeling covalently bound ligands (covalent docking) relying on NIM or current OpenFold3 inference."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/release-notes.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+        ],
+        "modelScope": "OpenFold3 NIM API",
+        "reason": "NIM release notes and API docs indicate MSAs are accepted and required for protein/RNA, and that supported MSA types include paired/unpaired inputs; the docs do not claim the NIM will perform automatic online pairing for all use cases\u2014users must provide MSAs or follow the documented MSA modes.",
+        "useCase": "Relying on the NIM to perform automatic online MSA pairing (i.e., assuming the service will fetch and pair MSAs automatically without user-provided MSAs)."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+          "https://build.nvidia.com/openfold/openfold3/modelcard"
+        ],
+        "modelScope": "OpenFold3 NIM / upstream inference",
+        "reason": "Primary sources do not publish a numeric confidence-to-accuracy mapping for the exact NIM-served checkpoint.",
+        "useCase": "Assuming numeric calibration thresholds that map per-structure confidence scores to precise expected positional accuracy for the exact NIM-served checkpoint."
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "These are runtime/operational performance claims for the NIM container, not accuracy benchmarks for the served model weights.",
+          "Protocol details (hardware, dataset, exact inputs) are described in the performance page but are NIM test conditions and may not match independent academic benchmarks."
+        ],
+        "conditions": "Reported as NIM container performance tests versus open-source OF3 baseline; template processing overheads and sequence-length scaling described in performance pages.",
+        "dataset": "NIM internal performance tests (no public benchmark dataset listed)",
+        "direction": "higher-is-better",
+        "metric": "inference speedup (ratio)",
+        "modelScope": "OpenFold3 NIM container performance (runtime operational benchmark)",
+        "sourceLocator": "Performance page tables/figures and text describing speedups and template overhead",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/performance.html",
+        "split": "not reported",
+        "task": "NIM runtime inference speedup vs open-source OpenFold3 baseline",
+        "value": "1.15\u00d7\u20131.69\u00d7 (range reported by NIM performance pages)"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "AlphaFold3",
+        "comparisonConditions": "Would require identical checkpoint identities, datasets/splits, evaluation metrics, and matching inference protocols; these are not present in the checked primary sources.",
+        "criteria": "No primary-source, protocol-matched side-by-side accuracy benchmarks tying the exact NIM-served checkpoint to AlphaFold3 under the same dataset/splits and evaluation metrics were found.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+          "https://build.nvidia.com/openfold/openfold3/modelcard",
+          "https://openfold-3.readthedocs.io/en/stable/inference.html"
+        ],
+        "rationale": "NVIDIA docs and upstream OpenFold3 materials describe model lineage and capabilities but do not provide protocol-matched, checkpoint-identical numeric accuracy comparisons against AlphaFold3 for the NIM-served checkpoint.",
+        "task": "Task-level comparison (structure prediction quality and calibration) between OpenFold3 NIM-served checkpoint and AlphaFold3",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Template inputs are release-dependent; templates were introduced in the NIM lineage starting at release 1.1.0 and NIM example requests and release-notes describe CIF-format constraints. Confirm the exact NIM version in use supports templates before relying on them.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/1.1.0/release-notes.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html"
+        ],
+        "modelScope": "OpenFold3 NIM (template support introduced in 1.1.0 per NIM release notes)",
+        "useCase": "Using structural templates (CIF-format) to guide protein predictions when templates are available and supported by the NIM release."
+      },
+      {
+        "conditions": "NIM docs and upstream inference docs state ligands are accepted via SMILES or CCD codes and that covalent ligand modeling is planned/not currently supported; verify capabilities for the exact NIM release before attempting covalent modeling.",
+        "evidenceUrls": [
+          "https://openfold-3.readthedocs.io/en/stable/inference.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+        ],
+        "modelScope": "OpenFold3 inference (upstream) and OpenFold3 NIM (serving runtime)",
+        "useCase": "Accepting ligand inputs for non-covalent small-molecule modeling when using the NIM; avoid assuming covalent ligand modeling is supported."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: I did not find a primary-source statement in the NVIDIA NIM documentation or NGC/catalog pages that publishes an immutable, verifiable upstream checkpoint identifier (hash or immutable path) proving the exact weights served by the OpenFold3 NIM. I inspected: https://docs.nvidia.com/nim/bionemo/openfold3/latest/ (overview and release-notes sections), https://catalog.ngc.nvidia.com/orgs/nim/teams/openfold/containers/openfold3, and https://build.nvidia.com/openfold/openfold3/modelcard without finding an immutable checkpoint identifier.",
+      "Evidence gap: No primary-source numeric calibration (confidence \u2192 expected RMSD/TM-score) was published for the exact NIM-served checkpoint in the checked NVIDIA docs and modelcard. I inspected: https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html and https://build.nvidia.com/openfold/openfold3/modelcard and found descriptive statements about confidence scores but no numeric calibration mapping.",
+      "Evidence gap: Discrepancy between NIM documentation and upstream OpenFold3 inference docs for default diffusion_samples: NIM example-requests and NIM release-notes document diffusion_samples default = 1 (allowed range 1\u20135), while upstream OpenFold3 inference docs document an upstream default --num-diffusion-samples = 5. I inspected: https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html, https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html, and https://openfold-3.readthedocs.io/en/stable/inference.html and found conflicting defaults; the exact intended default for the NIM-served checkpoint requires explicit confirmation from NVIDIA.",
+      "Evidence gap: No primary-source accuracy benchmarks (e.g., RMSD, TM-score) tied explicitly to the exact NIM-served checkpoint were found. I inspected NVIDIA NIM docs and modelcard (https://docs.nvidia.com/nim/bionemo/openfold3/latest/, https://build.nvidia.com/openfold/openfold3/modelcard) and upstream repository/papers (https://github.com/aqlaboratory/openfold-3, https://openfold-3.readthedocs.io/en/stable/inference.html) and found no protocol-matched accuracy tables listing metrics for the NIM-served checkpoint.",
+      "Evidence gap: I did not find a primary-source statement in the NIM docs describing whether the NIM pulls a named upstream checkpoint file or uses a container-internal weight bundle or downloadable engine by immutable identifier. I inspected: https://docs.nvidia.com/nim/bionemo/openfold3/latest/, https://build.nvidia.com/openfold/openfold3/deploy, and https://catalog.ngc.nvidia.com/orgs/nim/teams/openfold/containers/openfold3 for an exact checkout/asset locator and found none.",
+      "Evidence gap: No primary-source, protocol-matched side-by-side comparison (accuracy) between the exact NIM-served checkpoint and alternatives (e.g., AlphaFold3) was located in the checked sources. I inspected: https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html, https://build.nvidia.com/openfold/openfold3/modelcard, and upstream docs but found no such comparison tables."
+    ],
+    "family": "docs-nvidia-com-nim-bionemo-openfold3-latest-fcfde9d30f",
+    "identity": {
+      "architecture": "AlphaFold3 (Protein Structure Prediction)",
+      "checkpoint": "not reported (NIM does not publish an immutable checkpoint identifier; upstream default checkpoint name observed as \"openfold3_p2_v1\" in upstream inference docs)",
+      "evidenceUrls": [
+        "https://docs.nvidia.com/nim/bionemo/openfold3/latest/",
+        "https://build.nvidia.com/openfold/openfold3/modelcard",
+        "https://github.com/aqlaboratory/openfold-3",
+        "https://openfold-3.readthedocs.io/en/stable/inference.html",
+        "https://nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license",
+        "https://catalog.ngc.nvidia.com/orgs/nim/teams/openfold/containers/openfold3"
+      ],
+      "license": "Upstream code/model repo: Apache-2.0; Packaged/serving: NVIDIA Open Model License and NVIDIA Software License / NIM product terms",
+      "parameterScale": "3.68\u00d710\u2078 parameters",
+      "revision": "not reported",
+      "upstreamName": "OpenFold3"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+          ],
+          "statement": "Accepted MSA file formats: a3m and csv (lowercase), provided inside AlignmentFileRecord objects with an 'alignment' string field."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/1.1.0/release-notes.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+          ],
+          "statement": "Structural templates (when supported) must be provided in CIF (mmCIF/CIF) format for protein templates (template support introduced in NIM release 1.1.0)."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+          ],
+          "statement": "Output file formats supported by the NIM: 'cif' (default) and 'pdb'."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://openfold-3.readthedocs.io/en/stable/inference.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/release-notes.html"
+          ],
+          "statement": "MSA modes described across upstream and NIM docs include precomputed MSAs and MSA-free inference; upstream inference docs also reference a ColabFold server mode. The NIM accepts user-provided MSAs and documents supported MSA formats and pairing types; NIM example-requests and release-notes document these modes."
+        },
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/openfold/containers/openfold3",
+            "https://build.nvidia.com/openfold/openfold3/deploy"
+          ],
+          "statement": "NIM packaging pulls model assets and prepares an optimized inference backend; the NIM container is documented as shipping an NVIDIA-optimized inference backend (TensorRT engines) for faster predictions."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/msa-search/latest/api-reference.html"
+          ],
+          "statement": "MSA database/count limits and global depth limits are documented in NVIDIA materials: up to three MSA databases per protein and a maximum global MSA depth of 500 sequences are described in NIM preprocessing/msa references."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+          ],
+          "statement": "Accepted top-level biomolecular entity types: protein, dna, rna, and ligand."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+          ],
+          "statement": "Ligand inputs are specified either as SMILES or CCD codes (mutually exclusive), representing non-covalent ligands per current docs."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/release-notes.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html"
+          ],
+          "statement": "MSA inputs are required for protein and RNA entity types in the NIM; protein MSAs may be paired or unpaired depending on the input."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+          ],
+          "statement": "Example request payloads use a top-level 'inputs' array containing objects with fields such as 'input_id', 'molecules' (each with 'type' and 'sequence'), optional 'diffusion_samples', and optional 'output_format'."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html",
+            "https://openfold-3.readthedocs.io/en/stable/inference.html"
+          ],
+          "statement": "The 'diffusion_samples' inference parameter is documented in NIM release-notes and example-requests as an integer with allowed range 1\u20135 and a default of 1 in NIM docs; upstream OpenFold3 inference docs state an upstream default of 5, producing an explicit discrepancy between NIM docs and upstream default."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+          ],
+          "statement": "Output format field 'output_format' defaults to 'cif' and may be set to 'cif' or 'pdb' per NIM example requests."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+          ],
+          "statement": "Request-level validation rules from NIM example-requests: 'inputs' is required and must contain exactly one input specification; 'molecules' is required and must be a list containing at least one molecule specification."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+          ],
+          "statement": "Field-specific validation in example requests: 'input_id' is optional, defaults to 'input_id_0', and may be up to 128 characters; 'id' (chain id) is a string or list of chain identifiers each 1\u20134 alphanumeric characters."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+          ],
+          "statement": "AlignmentFileRecord validation: 'alignment' (MSA content) is required, 'format' must be either 'a3m' or 'csv' (lowercase), and 'rank' is optional with default \u20131 indicating ordering rank for concatenation."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/release-notes.html"
+          ],
+          "statement": "MSA requirement: MSA is required for protein and RNA entity types per NIM release notes; users must supply MSAs per documented formats and pairing options."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/",
+          "https://openfold-3.readthedocs.io/en/stable/inference.html",
+          "https://build.nvidia.com/openfold/openfold3/modelcard"
+        ],
+        "statement": "No immutable NIM-served upstream checkpoint identifier published: the NIM documentation does not publish a verifiable, immutable checkpoint identifier proving bitwise-identical upstream weights; upstream OpenFold3 docs do report a default checkpoint name but do not confirm the NIM serves that exact named checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+          "https://build.nvidia.com/openfold/openfold3/modelcard"
+        ],
+        "statement": "No numeric confidence-to-accuracy calibration published for the exact NIM-served checkpoint: NIM and Nvidia modelcard do not provide a numeric mapping from confidence scores to expected positional accuracy for the served checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/1.1.0/release-notes.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/release-notes.html"
+        ],
+        "statement": "Release-dependent feature availability (MSA, template, telemetry, diffusion defaults): key capabilities (template support, telemetry defaults, diffusion_samples default) vary by NIM release; confirm the exact NIM version before relying on a feature."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+            "https://build.nvidia.com/openfold/openfold3/modelcard"
+          ],
+          "statement": "NIM documentation refers to 'confidence scores' for predicted structures but does not publish a numeric mapping from those scores to expected positional accuracy for the exact NIM-served checkpoint; therefore quantitative calibration is not provided in the NIM primary sources."
+        },
+        {
+          "evidenceUrls": [
+            "https://openfold-3.readthedocs.io/en/stable/inference.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+          ],
+          "statement": "Upstream OpenFold3 inference docs specify upstream defaults and sampling behavior (e.g., upstream default diffusion sample count), but the NIM may override defaults; interpret confidence scores cautiously and verify calibration for the exact runtime/checkpoint before using thresholds."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+          ],
+          "statement": "Supported structure output file types from the NIM: CIF (default) and PDB; examples and release-notes indicate CIF is the default output format."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html"
+          ],
+          "statement": "The service emits multiple structure predictions per request when diffusion_samples>1; each structure is returned as a separate file (CIF/PDB) and the service provides per-structure confidence scores."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/getting-started.html"
+          ],
+          "statement": "Post-inference checks recommended by the available docs: validate output file format correctness (CIF/PDB), and confirm that the number of returned structure files matches diffusion_samples. The NIM example responses and API health check behaviors provide structural output examples to validate service functioning."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+            "https://build.nvidia.com/openfold/openfold3/modelcard"
+          ],
+          "statement": "Evidence gap: The NIM documentation does not publish a numeric, per-checkpoint calibration mapping (confidence\u2192expected RMSD/TM-score) for the exact NIM-served weights; I could not find such calibration in the checked primary sources."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html",
+          "https://build.nvidia.com/openfold/openfold3/modelcard",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/openfold/containers/openfold3"
+        ],
+        "modelScope": "OpenFold3 NIM packaged container / OpenFold3 model (NIM runtime)",
+        "useCase": "Predicting all-atom 3D structures of biomolecular complexes composed of proteins, DNA, RNA, and non-covalent ligands for research and discovery workflows.",
+        "why": "NVIDIA NIM overview and modelcard state the OpenFold3 NIM predicts all-atom 3D structures of complexes including proteins, DNA, RNA, and ligands and provides confidence scores; NVIDIA NIM packaging provides an accelerated inference backend for these tasks."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+        ],
+        "modelScope": "OpenFold3 NIM request API (service-level sampling)",
+        "useCase": "Generating multiple independent structure predictions per request (ensemble-style sampling) via the diffusion_samples parameter.",
+        "why": "NIM documentation documents diffusion_samples as an inference parameter that controls the number of independent structures to generate and example requests use this parameter."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/performance.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/openfold/containers/openfold3"
+        ],
+        "modelScope": "OpenFold3 NIM container with TensorRT engines (runtime/operational evidence)",
+        "useCase": "Accelerated inference on NVIDIA GPUs using the TensorRT-optimized backend within the NIM container for lower latency vs the open-source baseline.",
+        "why": "NVIDIA NIM performance pages report speedups versus the open-source OpenFold3 baseline and catalog/model pages describe an NVIDIA-optimized inference backend."
+      }
+    ],
+    "researchSummary": "I verified official NVIDIA NIM documentation and upstream OpenFold3 references. The OpenFold3 NIM is an NVIDIA-packaged inference container exposing an OpenFold3-based protein/nucleic-acid/ligand co-folding service with CIF/PDB outputs, confidence scores, and an optimized TensorRT-backed inference backend. Primary NVIDIA docs define input JSON fields, allowed MSA formats, template support introduced in a named NIM release, a diffusion_samples parameter (NIM default 1, upstream default 5), and runtime performance speedups. The NIM documentation does not publish an immutable upstream checkpoint identifier proving bitwise identical weights to an upstream checkpoint; upstream OpenFold3 docs report a default checkpoint name (openfold3_p2_v1) but I cannot verify the NIM serves that identical named checkpoint from the available primary sources. There is no primary-source numeric calibration mapping confidence scores to expected accuracy for the exact NIM-served checkpoint. I list explicit evidence or evidence gaps for every required dossier field.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+        ],
+        "statement": "Telemetry and minimal anonymous metadata collection are documented for NIM release 1.3.0 and telemetry is disabled by default; telemetry collects hardware type and NIM version and does not collect user input sequences or prediction results per the release-notes."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/aqlaboratory/openfold-3",
+          "https://nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license",
+          "https://build.nvidia.com/openfold/openfold3"
+        ],
+        "statement": "Model and container licensing distinctions must be observed: upstream OpenFold3 code is Apache-2.0 licensed, while the packaged NIM container is governed by NVIDIA product and model license terms; users must comply with NVIDIA Open Model License and NIM product-specific terms when distributing or deploying the packaged model."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/release-notes.html",
+          "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html"
+        ],
+        "statement": "Evidence gap: The NIM documentation does not publish an explicit clinical/medical-use safety or regulated-deployment policy for the OpenFold3 NIM; I could not find primary-source instructions requiring human review, disclaimers for clinical use, or data-protection specifics beyond telemetry descriptions in the checked NVIDIA docs."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "OpenFold3 NIM serving documentation and examples",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NIM documentation root for the OpenFold3 serving variant covered by the dossier.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Serving runtime identity, API reference, example requests, and overview claims"
+        ],
+        "title": "OpenFold3 NIM documentation (latest)",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/"
+      },
+      {
+        "modelScope": "OpenFold3 NIM overview claims",
+        "primary": true,
+        "primaryReason": "NVIDIA overview page describing supported inputs, outputs, and high-level capabilities of the OpenFold3 NIM.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Supported biomolecular types, confidence scores, service capabilities"
+        ],
+        "title": "OpenFold3 NIM overview",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/overview.html"
+      },
+      {
+        "modelScope": "API request field semantics, defaults, and formats",
+        "primary": true,
+        "primaryReason": "Concrete API request/response examples and field-level validation rules for the NIM request schema.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "input field constraints, default values (diffusion_samples, output_format, input_id), AlignmentFileRecord format"
+        ],
+        "title": "OpenFold3 NIM example requests",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/example-requests.html"
+      },
+      {
+        "modelScope": "NIM versioned behaviors (MSA requirement, telemetry, defaults)",
+        "primary": true,
+        "primaryReason": "Release notes documenting feature introductions, telemetry, and behavioral changes across NIM releases.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "MSA requirement, template support notes, telemetry description"
+        ],
+        "title": "OpenFold3 NIM release notes (latest aggregated)",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/release-notes.html"
+      },
+      {
+        "modelScope": "NIM 1.1.0 feature set",
+        "primary": true,
+        "primaryReason": "Release notes for NIM 1.1.0 documenting the introduction of template support.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Template/CIF support introduction"
+        ],
+        "title": "OpenFold3 NIM release notes (1.1.0)",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/1.1.0/release-notes.html"
+      },
+      {
+        "modelScope": "NIM 1.3.0 feature/behavior details",
+        "primary": true,
+        "primaryReason": "Release notes for NIM 1.3.0 documenting telemetry defaults, MSA formats, diffusion_samples default and other behavior.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Telemetry description, MSA formats/types, diffusion_samples documentation"
+        ],
+        "title": "OpenFold3 NIM release notes (1.3.0)",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/release-notes.html"
+      },
+      {
+        "modelScope": "NIM runtime performance benchmarks",
+        "primary": true,
+        "primaryReason": "NIM performance test page reporting runtime speedups and template overhead details.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Reported runtime speedups (1.15\u00d7\u20131.69\u00d7) and template processing overheads"
+        ],
+        "title": "OpenFold3 NIM performance (1.3.0)",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/1.3.0/performance.html"
+      },
+      {
+        "modelScope": "NIM runtime performance context",
+        "primary": true,
+        "primaryReason": "Earlier NIM performance page with consistent statements about runtime speedups and template overheads.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Performance scaling and template overhead notes"
+        ],
+        "title": "OpenFold3 NIM performance (1.1.0)",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/1.1.0/performance.html"
+      },
+      {
+        "modelScope": "Modelcard identity and parameter scale",
+        "primary": true,
+        "primaryReason": "NVIDIA-hosted modelcard reporting model architecture and parameter count.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "model-card",
+        "supports": [
+          "Architecture listing and parameter count (3.68\u00d710\u2078 parameters)"
+        ],
+        "title": "OpenFold3 modelcard (NVIDIA build site)",
+        "url": "https://build.nvidia.com/openfold/openfold3/modelcard"
+      },
+      {
+        "modelScope": "Deployment, license governance, container usage",
+        "primary": true,
+        "primaryReason": "NVIDIA build site pages describing container governance and deployment instructions.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NIM container governance, licensing notes"
+        ],
+        "title": "OpenFold3 packaging/deploy guidance (NVIDIA build)",
+        "url": "https://build.nvidia.com/openfold/openfold3"
+      },
+      {
+        "modelScope": "NGC container identity and runtime claims",
+        "primary": true,
+        "primaryReason": "Official NGC catalog entry describing the packaged container and its claimed capabilities.",
+        "publisher": "catalog.ngc.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Container description, runtime/backend optimization claims"
+        ],
+        "title": "NGC catalog entry for OpenFold3 NIM container",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/openfold/containers/openfold3"
+      },
+      {
+        "modelScope": "Upstream codebase and upstream license (Apache-2.0)",
+        "primary": true,
+        "primaryReason": "Canonical upstream OpenFold3 repository and license declaration for upstream code.",
+        "publisher": "github.com",
+        "sourceType": "repository",
+        "supports": [
+          "Upstream repository license (Apache-2.0) and upstream project identity"
+        ],
+        "title": "Upstream OpenFold3 GitHub repository",
+        "url": "https://github.com/aqlaboratory/openfold-3"
+      },
+      {
+        "modelScope": "Upstream inference defaults and command-line flags",
+        "primary": true,
+        "primaryReason": "Upstream inference docs showing upstream defaults and inference flags (checkpoint name, upstream diffusion default).",
+        "publisher": "openfold-3.readthedocs.io",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Upstream default checkpoint name (openfold3_p2_v1) and upstream default --num-diffusion-samples = 5"
+        ],
+        "title": "Upstream OpenFold3 inference documentation (readthedocs) - inference",
+        "url": "https://openfold-3.readthedocs.io/en/stable/inference.html"
+      },
+      {
+        "modelScope": "Upstream configuration defaults (checkpoint name)",
+        "primary": true,
+        "primaryReason": "Upstream configuration reference documenting default checkpoint name and other config defaults.",
+        "publisher": "openfold-3.readthedocs.io",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Default checkpoint name: openfold3_p2_v1"
+        ],
+        "title": "Upstream OpenFold3 configuration reference (readthedocs)",
+        "url": "https://openfold-3.readthedocs.io/en/latest/configuration_reference.html"
+      },
+      {
+        "modelScope": "API reference and request/response schema",
+        "primary": true,
+        "primaryReason": "API reference for the NIM OpenFold3 service (reference-level documentation).",
+        "publisher": "docs.api.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "API reference presence and structured API documentation"
+        ],
+        "title": "NIM OpenFold3 API reference (OpenAPI spec page)",
+        "url": "https://docs.api.nvidia.com/nim/reference/openfold-openfold3"
+      },
+      {
+        "modelScope": "MSA formats, database usage and limits referenced by NIM docs",
+        "primary": true,
+        "primaryReason": "MSA search documentation referenced by NIM docs for MSA database/format behavior.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "MSA database count and depth limits as described in NIM materials"
+        ],
+        "title": "NIM MSA-search API reference",
+        "url": "https://docs.nvidia.com/nim/bionemo/msa-search/latest/api-reference.html"
+      },
+      {
+        "modelScope": "Packaged/serving license terms",
+        "primary": true,
+        "primaryReason": "Official NVIDIA license page describing the NVIDIA Open Model License terms that apply to packaged models.",
+        "publisher": "nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NVIDIA Open Model License obligations and distribution text"
+        ],
+        "title": "NVIDIA Open Model License (enterprise agreements page)",
+        "url": "https://nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license"
+      },
+      {
+        "modelScope": "Deployment prerequisites and service health checks",
+        "primary": true,
+        "primaryReason": "Getting-started page documenting prerequisites, health check, and basic deployment notes.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Prerequisite software, health check response example"
+        ],
+        "title": "OpenFold3 NIM getting started",
+        "url": "https://docs.nvidia.com/nim/bionemo/openfold3/latest/getting-started.html"
+      },
+      {
+        "modelScope": "Container deployment commands and runtime defaults",
+        "primary": true,
+        "primaryReason": "Deployment examples and container run guidance for the NIM container.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Container run command examples and GPU usage guidance"
+        ],
+        "title": "OpenFold3 NIM deploy guidance (build site)",
+        "url": "https://build.nvidia.com/openfold/openfold3/deploy"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "d46cdf5cab9c16f78a26f0616147fc38ee0f3b7271774adf799132fa3ab88341",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "docs-nvidia-com-nim-bionemo-openfold3-latest-fcfde9d30f",
+  "researchedAt": "2026-07-23T22:12:16.408591+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://docs.nvidia.com/nim/bionemo/openfold3/latest",
+  "sourceUrls": [
+    "https://docs.nvidia.com/nim/bionemo/openfold3/latest/"
+  ],
+  "upstreamAgentSkills": [
+    {
+      "forgeSlugs": [
+        "openfold3-nim"
+      ],
+      "notes": "NVIDIA BioNeMo's OpenFold3 skill documents multi-entity protein/nucleic-acid/ligand requests, MSA/template controls, output and confidence artifacts, scientific validation, and hosted/local operation. Use Forge's exact request route, source image, support matrix, and deployment contract.",
+      "relation": "exact-nim-operating-skill",
+      "skills": [
+        {
+          "name": "openfold3-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/openfold3-nim"
+        },
+        {
+          "name": "cuEquivariance",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/library-skills/cuEquivariance"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "colabfold-msa-search-nim",
+        "openfold3-nim"
+      ],
+      "notes": "The NVIDIA BioNeMo MSA-to-OpenFold3 meta-skill documents the A3M handoff between MSA Search and structure prediction. Treat its fixed examples as a workflow template; verify database choices, sequence/entity schema, MSA depth, exact Forge routes, and returned artifacts for the selected versions.",
+      "relation": "related-multi-model-pipeline",
+      "skills": [
+        {
+          "name": "msa-structure-prediction-pipeline",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/meta-skills/msa-structure-prediction-pipeline"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

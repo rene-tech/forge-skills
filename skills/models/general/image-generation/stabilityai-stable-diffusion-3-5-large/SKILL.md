@@ -67,6 +67,15 @@ Route: `POST /v1/inference/stabilityai-stable-diffusion-3-5-large`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-visual-genai-latest-getting-started-html-stabilityai-stable-diffusion-3-e2f0f75a5d`
+- Recommended: High-quality text-to-image generation for creative media, concept art, and prototyping (single-prompt synthesis). — The official Hugging Face model card describes the checkpoint as an MMDiT text-to-image model and provides example outputs and usage recommendations for local/self-hosted inference tools.
+- Recommended: Performance-oriented inference experiments using ONNX/TensorRT exports provided in the stable-diffusion-3.5-large-tensorrt repository (repository-level optimized inference artifacts). — The stable-diffusion-3.5-large-tensorrt repository publishes ONNX exports for T5, MMDiT, and VAE components and reports repository-level end-to-end timing profiles for BF16 and FP8 inference flows.
+- Avoid: Clinical or regulated medical decision-making (diagnosis, treatment recommendation). — Evidence gap: the checked primary sources do not publish checkpoint-scoped clinical validation or regulatory approval documentation for the upstream checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -84,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/stabilityai-stable-diffusion-3-5-large/inference-routes`
 - Regional deployment: `/v1/models/stabilityai-stable-diffusion-3-5-large/regional-deployment`
 - Serverless handoff: `/v1/models/stabilityai-stable-diffusion-3-5-large/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/stabilityai-stable-diffusion-3-5-large/SKILL.md

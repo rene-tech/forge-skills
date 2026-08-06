@@ -85,6 +85,16 @@ Route: `POST /v1/inference/gromacs-md-ngc-wrapper`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `catalog-ngc-nvidia-com-orgs-hpc-containers-gromacs-305a6b721f`
+- Recommended: Running bounded nonclinical molecular-dynamics simulations with the NVIDIA NGC hpc/gromacs:2023.2 container — The NGC container listing identifies hpc/gromacs:2023.2 and provides an example batch run command invoking gmx mdrun with explicit runtime flags for GPU-accelerated execution.
+- Recommended: Simulating biochemical molecules such as proteins, lipids, and nucleic acids with GROMACS workflows served through the container — The NGC container listing describes GROMACS as a molecular dynamics application used to simulate proteins and lipids and as designed for biochemical molecules like proteins, lipids, and nucleic acids; upstream GROMACS documentation provides the canonical gmx grompp to gmx mdrun workflow.
+- Avoid: Clinical decision-making or regulated clinical use — The checked primary NVIDIA NGC source presents GROMACS as a research molecular-dynamics application for simulating biochemical molecules and does not document clinical authorization, regulatory clearance, or clinical-use approval.
+- Avoid: Assuming multinode execution is supported by this container tag — The NGC container listing states that the container does not support multinode execution.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -102,11 +112,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/gromacs-md-ngc-wrapper/inference-routes`
 - Regional deployment: `/v1/models/gromacs-md-ngc-wrapper/regional-deployment`
 - Serverless handoff: `/v1/models/gromacs-md-ngc-wrapper/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/gromacs-md-ngc-wrapper/SKILL.md

@@ -2,6 +2,8 @@
 
 Category: `general` · exact model/version skills: 18
 
+[Audited model-selection dossier](research.md)
+
 - [Use DeepSeek R1 0528 Qwen3 8B](deepseek-ai-deepseek-r1-0528-qwen3-8b-vllm-cuda13/SKILL.md) — `vllm-0-21-0-cuda13` · source-linked
 - [Use DeepSeek R1 Distill Qwen 14B](deepseek-ai-deepseek-r1-distill-qwen-14b-vllm-cuda13/SKILL.md) — `vllm-0-21-0-cuda13` · source-linked
 - [Use Devstral Small 1.1 2507](mistralai-devstral-small-2507-vllm-cuda13/SKILL.md) — `vllm-0-22-0-cuda13-tp1` · source-linked

@@ -63,6 +63,17 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-embedding-0-6b-03b6bda49f`
+- Recommended: Text embedding for semantic search and retrieval (monolingual and multilingual). — Hugging Face model card and the repository README snapshots present the model as an embedding/ranking model and report MTEB-style aggregate scores indicating retrieval/embedding performance.
+- Recommended: Code retrieval and code-aware multilingual retrieval (use embedding vectors for code/document similarity). — The model card and repository describe the series' support for programming-language text and list code retrieval among intended tasks.
+- Recommended: Using embeddings as features for clustering and classification downstream tasks. — Repository README snapshots include reported subtask scores for classification and clustering, and the model card lists clustering/classification among intended uses.
+- Avoid: Treating provider-hosted runtime limits or provider-managed server settings as the canonical model input contract. — Upstream model configuration (config.json) states max_position_embeddings=32768; the model card and repository are the authoritative upstream contract for model architecture and limits. Provider-hosted runtime limits or server wrappers are operational/serving constraints and are not documented as the model's immutable contract in the primary upstream artifacts.
+- Avoid: Claiming cross-model superiority or protocol-matched superiority based solely on reported aggregate scores in the README/model card. — Primary README snapshots and the model card report aggregate scores but do not include complete per-experiment protocol details required for protocol-matched comparisons (dataset splits, batch size, exact tokenization steps).
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -81,11 +92,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-embedding-0-6b-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-embedding-0-6b-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-embedding-0-6b-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/qwen-qwen3-embedding-0-6b-tei-cuda-1-9/SKILL.md

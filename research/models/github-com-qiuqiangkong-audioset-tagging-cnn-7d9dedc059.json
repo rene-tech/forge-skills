@@ -1,0 +1,509 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources must not contain duplicate URLs",
+        "path": "$.sources must not contain duplicate URLs",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7] uses unapproved repository owner 'bakhtos' for this exact model scope",
+        "path": "$.sources[7] uses unapproved repository owner 'bakhtos' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9] uses unapproved repository owner 'litert-community' for this exact model scope",
+        "path": "$.sources[9] uses unapproved repository owner 'litert-community' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/LICENSE.MIT",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/LICENSE.MIT",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://github.com/qiuqiangkong/audioset_tagging_cnn",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 9 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "PANNs CNN14 is an MIT-licensed convolutional AudioSet audio-event tagger.",
+      "displayName": "Use PANNs CNN14 AudioSet Cough Baseline",
+      "group": "health-audio",
+      "inputModalities": [
+        "audio"
+      ],
+      "license": "mit",
+      "modelFamily": "panns-cnn14-audioset",
+      "outputModalities": [
+        "json",
+        "classification"
+      ],
+      "slug": "panns-cnn14-audioset-cough",
+      "sourceUrl": "https://github.com/qiuqiangkong/audioset_tagging_cnn",
+      "version": "cnn14-map0431-forge-wrapper-20260706",
+      "versionKey": "cnn14-map0431-forge-wrapper-20260706"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+          "https://arxiv.org/pdf/1912.10211"
+        ],
+        "modelScope": "Cnn14_mAP=0.431.pth (and other Cnn14 checkpoints)",
+        "reason": "Primary sources (paper and repository files checked) do not provide clinical validation statements, PHI handling guidance, or healthcare deployment approvals for the checkpoint; repository and paper describe audio tagging on AudioSet but do not include clinical-use validation.",
+        "useCase": "Clinical diagnosis, PHI-sensitive decisioning, or healthcare deployment without separate validation"
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+          "https://arxiv.org/pdf/1912.10211"
+        ],
+        "modelScope": "Cnn14_mAP=0.431.pth",
+        "reason": "Primary sources do not provide recommended per-class thresholds or calibration parameters; only aggregate metrics (mAP) and example raw/confidence outputs are present in the checked locations.",
+        "useCase": "Any task requiring author-provided per-class calibrated decision thresholds"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "The checked primary sources do not provide an explicit dataset split identifier or exact evaluation script path for reproducing the reported mAP in the provided findings.",
+          "Reported mAP is tied to a hop-size experimental configuration per the paper; exact runtime/evaluation script details were not present in the provided findings."
+        ],
+        "conditions": "Reported by authors in PANNs paper hop-size experiments; hop size 320 configuration reported to yield this mAP.",
+        "dataset": "AudioSet",
+        "direction": "higher-is-better",
+        "metric": "mean average precision (mAP)",
+        "modelScope": "CNN14 system as reported in the PANNs paper (CNN14 hop-size experiment)",
+        "sourceLocator": "PANNs paper, Table VI (hop-size experiments) and Table IV (proposed CNN14 yields mAP=0.431)",
+        "sourceUrl": "https://arxiv.org/pdf/1912.10211",
+        "split": "not reported",
+        "task": "Audio tagging (clip-level)",
+        "value": "0.431"
+      },
+      {
+        "caveats": [
+          "The numeric mAP is embedded in the checkpoint filename; the checked repository files did not include an exact evaluation table or script path in the provided findings to reproduce the reported value.",
+          "Split and exact evaluation protocol for the filename-referenced mAP value are not specified in the provided findings."
+        ],
+        "conditions": "Filename indicates a reported mAP value for a 16kHz-trained variant; the repository README states this checkpoint was trained by a later code version and achieves higher mAP than reported in the paper.",
+        "dataset": "AudioSet",
+        "direction": "higher-is-better",
+        "metric": "mean average precision (mAP) (as implied by checkpoint filename)",
+        "modelScope": "Cnn14_16k_mAP=0.438.pth (checkpoint filename exposed in audioset_tagging_cnn repository)",
+        "sourceLocator": "audioset_tagging_cnn/README.md paragraph stating 'The checkpoint file Cnn14_16k_mAP=0.438.pth is trained by a later code version and achieves higher mAP than reported in the paper.'",
+        "sourceUrl": "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+        "split": "not reported",
+        "task": "Audio tagging (clip-level) — repository-named checkpoint artifact",
+        "value": "0.438 (as named in checkpoint filename)"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "google/hear (candidate alternative supplied)",
+        "comparisonConditions": "Missing primary-source comparable numbers, dataset split, prompting, preprocessing, and checkpoint identifiers for the candidate alternative in the evidence set used.",
+        "criteria": "No primary-source, protocol-matched checkpoint-level evaluation artifacts for the alternative were present in the checked evidence; cannot perform like-for-like comparison.",
+        "evidenceUrls": [],
+        "rationale": "The provided primary findings did not include checkpoint-level evaluation numbers or exact protocol details for the alternative to permit a protocol-matched comparison against PANNs CNN14.",
+        "task": "Audio tagging / health-acoustic embeddings (candidate alternative)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "laion/clap-htsat-fused (candidate alternative supplied)",
+        "comparisonConditions": "Missing primary-source comparable numbers and protocol details for the alternative in the checked evidence.",
+        "criteria": "No primary-source checkpoint-level evaluation artifacts for the alternative were present in the checked evidence.",
+        "evidenceUrls": [],
+        "rationale": "The provided primary findings did not include comparable primary-source evaluation numbers or checkpoint artifacts for the alternative.",
+        "task": "Zero-shot / audio tagging (candidate alternative)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "MIT/ast-finetuned-audioset-10-10-0.4593 (candidate alternative supplied)",
+        "comparisonConditions": "Missing primary-source comparable numbers, dataset split, and checkpoint evidence for the alternative in the checked evidence.",
+        "criteria": "No primary-source checkpoint-level evaluation artifacts for the alternative were present in the checked evidence.",
+        "evidenceUrls": [],
+        "rationale": "The provided primary findings did not include checkpoint-level evidence or protocol-matched numbers for the alternative.",
+        "task": "Audio tagging fine-tuned on AudioSet (candidate alternative)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Require explicit confirmation of using a DecisionLevel-trained checkpoint (e.g., Cnn14_DecisionLevelMax_mAP=0.385.pth) from the repository before use; validate frame-wise behavior via the author's provided SED examples or scripts if available.",
+        "evidenceUrls": [
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md"
+        ],
+        "modelScope": "Cnn14_DecisionLevelMax_mAP=0.385.pth (repository-named DecisionLevel checkpoint)",
+        "useCase": "Frame-wise sound event detection using a DecisionLevel-trained checkpoint"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: The provided research findings do not include the exact spectrogram/log-mel instantiation lines or function names from pytorch/models.py; models.py facts were not present in the findings, so spectrogram parameters from code-level implementation cannot be verified from the supplied sources.",
+      "Evidence gap: The provided findings do not include an explicit repository file or paper locator that states the exact numeric embedding tensor shape for the Cnn14_mAP=0.431.pth checkpoint; embedding shape is not reported in the supplied findings.",
+      "Evidence gap: No author-provided per-class decision thresholds, per-class calibration parameters, or deployment threshold recommendations were found in the checked primary sources (README, issues, or paper) in the provided findings.",
+      "Evidence gap: The provided findings do not include an exact dataset split identifier or path used to compute the reported mAP=0.431; the paper reports mAP in tables and the repository references AudioSet but the precise split provenance was not present in the supplied findings.",
+      "Evidence gap: The provided findings do not contain an explicit commit hash, release tag, or exact repository revision mapping to the Cnn14_mAP=0.431.pth checkpoint; no such mapping was present in the supplied findings.",
+      "Evidence gap: The provided findings did not include author-provided privacy mitigation, dual-use discussion, or health-specific risk-mitigation guidance in repository README, issues, or paper.",
+      "Evidence gap: The provided findings did not include any explicit mapping file (class index → class name) within the audioset_tagging_cnn repository files checked in the findings.",
+      "Evidence gap: The provided findings do not include numeric parameter counts or multiply-add operation counts for CNN14; these were not present in the supplied findings."
+    ],
+    "family": "github-com-qiuqiangkong-audioset-tagging-cnn-7d9dedc059",
+    "identity": {
+      "architecture": "CNN14 (14-layer convolutional CNN as reported for PANNs CNN14)",
+      "checkpoint": "Cnn14_mAP=0.431.pth",
+      "evidenceUrls": [
+        "https://arxiv.org/pdf/1912.10211",
+        "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md",
+        "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+        "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/LICENSE.MIT"
+      ],
+      "license": "MIT (repository LICENSE.MIT)",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "Cnn14 (PANNs CNN14)"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+            "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md"
+          ],
+          "statement": "Inference examples and repository example commands use audio sampled at 16000 Hz for the 16 kHz model variant (sample_rate=16000)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md"
+          ],
+          "statement": "Primary sources do not specify container/codec/bit-depth constraints in the checked files."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md"
+          ],
+          "statement": "Repository README example inference parameter values: sample_rate=16000, window_size=512, hop_size=160, mel_bins=64, fmin=50, fmax=8000."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md"
+          ],
+          "statement": "Panns_inference README references the CNN14 checkpoint path used for inference examples (implying the example preprocessing pipeline used by the example)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: The exact spectrogram/log-mel instantiation parameters (n_fft/window_size relationship, win_length, window type, center, pad_mode, ref/amin/top_db) as implemented in models.py were not present in the provided findings; no models.py file facts were available in the research findings to verify code-level instantiation."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/pdf/1912.10211",
+            "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md"
+          ],
+          "statement": "Monophonic audio waveform intended for clip-level multi-label tagging (examples and paper discuss ~10-second inputs in evaluation context)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+            "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md"
+          ],
+          "statement": "Multi-label outputs correspond to AudioSet ontology classes; repository README and panns_inference examples reference AudioSet labels and show example class-confidence outputs."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: An explicit mapping file (class index → class name) within the checked repository files was not identified in the provided findings."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+            "https://arxiv.org/pdf/1912.10211"
+          ],
+          "statement": "Primary sources do not provide explicit min/max input-duration validation bounds, cropping/truncation rules, or batching guidance in the checked README and paper."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/audioset_tagging_cnn/issues/18"
+          ],
+          "statement": "Repository issue evidence indicates checkpoint-to-code compatibility must be validated before loading some checkpoints (see reported pretrained Cnn14 16kHz wrong shape errors)."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/issues/18"
+        ],
+        "statement": "Checkpoint-to-code compatibility issues: a repository issue documents size-mismatch errors when loading Cnn14_16k_mAP=0.438.pth with a different code version, indicating compatibility/version sensitivity for checkpoints."
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/1912.10211",
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md"
+        ],
+        "statement": "Training / evaluation data provenance: the PANNs paper evaluates models on AudioSet and the repository references AudioSet labels; the checked findings do not specify the exact dataset split identifier used to compute the reported mAP in the provided materials."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: The provided findings did not include the exact numeric parameter count or multiply-add operations for CNN14; these quantities are not present in the research findings supplied."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/pdf/1912.10211"
+          ],
+          "statement": "The PANNs paper uses mean average precision (mAP) as the aggregate evaluation metric for clipwise tagging and reports per-model mAP values (e.g., CNN14 mAP=0.431 under a hop-size configuration)."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md"
+          ],
+          "statement": "Inference examples in the author's panns_inference README present per-class confidence values (example confidences shown) produced by the referenced Cnn14 checkpoint path."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: The checked findings did not include the exact model implementation file lines or function names that label outputs (e.g., explicit 'clipwise_output' identifier) or a documented numeric embedding tensor shape tied to the Cnn14_mAP=0.431.pth checkpoint."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+            "https://arxiv.org/pdf/1912.10211"
+          ],
+          "statement": "Primary sources do not provide author-recommended decision thresholds or per-class calibration guidance; use-case deployment requires downstream validation and calibration."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: No author-provided per-class decision thresholds or calibration scripts were found in the checked repository README, issues, or paper."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/1912.10211",
+          "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md",
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md"
+        ],
+        "modelScope": "Cnn14_mAP=0.431.pth (CNN14 as reported in the PANNs paper and referenced by panns_inference examples)",
+        "useCase": "Clip-level multi-label audio tagging with AudioSet ontology labels (AudioSet-like classes)",
+        "why": "The PANNs paper evaluates CNN14 on AudioSet and reports clipwise mAP; the author's panns_inference README demonstrates inference examples that output per-class confidences for a Cnn14 checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/1912.10211",
+          "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md"
+        ],
+        "modelScope": "Cnn14 variants (checkpoints referenced in author's repositories)",
+        "useCase": "Using CNN14 variants as pretrained feature extractors / embedding providers for downstream audio tasks",
+        "why": "The PANNs paper positions PANNs as pretrained models for audio pattern recognition tasks, and the author's inference examples demonstrate extracting per-class confidences from the model checkpoint artifact."
+      }
+    ],
+    "researchSummary": "Using only the provided primary-source findings, the canonical PANNs paper (arXiv:1912.10211) reports the CNN14 audio-tagging system achieving mAP=0.431 under a hop-size experimental configuration (see Table VI / Table IV). The author's panns_inference repository README references a local checkpoint path /root/panns_data/Cnn14_mAP=0.431.pth and shows example class-confidence outputs. The audioset_tagging_cnn repository README lists additional checkpoint filenames (e.g., Cnn14_16k_mAP=0.438.pth and Cnn14_DecisionLevelMax_mAP=0.385.pth) and inference parameter example values (sample_rate=16000, window_size=512, hop_size=160, mel_bins=64, fmin=50, fmax=8000). The repository contains an MIT license file at the documented path. Primary-source materials checked do not provide author-specified per-class decision thresholds, an exact dataset split identifier for the reported mAP, explicit numeric embedding tensor shape tied to the named checkpoint, nor the precise model implementation file locators for spectrogram/log-mel instantiation in the findings; these are recorded as evidence gaps where required.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/LICENSE.MIT"
+        ],
+        "statement": "License: The audioset_tagging_cnn repository contains an MIT license at the documented path governing the repository (LICENSE.MIT)."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md",
+          "https://arxiv.org/pdf/1912.10211"
+        ],
+        "statement": "Clinical/PHI guidance not provided: primary sources checked (paper and repository files) do not include clinical validation statements, PHI-handling guidance, or healthcare-specific usage approvals; clinical deployment would require separate validation and expert review."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: The provided findings do not contain author-provided privacy mitigation, dual-use discussion, or health-specific risk-mitigation guidance; none was located in the checked repository README, issues, or paper."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "PANNs paper coverage of CNN14 evaluation and hop-size experiments",
+        "primary": true,
+        "primaryReason": "Canonical paper describing PANNs architectures and reporting CNN14 evaluation numbers (mAP) and hop-size experiments used to support benchmark claims.",
+        "publisher": "Qiuqiang Kong et al.",
+        "sourceType": "paper",
+        "supports": [
+          "Table VI and Table IV reporting CNN14 mAP=0.431 under hop-size experimental configurations",
+          "use of AudioSet for evaluation and metrics (mAP, mAUC, d-prime) for audio tagging"
+        ],
+        "title": "PANNs paper (arXiv preprint)",
+        "url": "https://arxiv.org/pdf/1912.10211"
+      },
+      {
+        "modelScope": "panns_inference examples referencing Cnn14_mAP=0.431.pth and showing sample outputs",
+        "primary": true,
+        "primaryReason": "Author-maintained inference examples that reference the Cnn14_mAP=0.431.pth checkpoint path and show example outputs/confidences used as upstream-checkpoint evidence.",
+        "publisher": "Qiuqiang Kong (repository)",
+        "sourceType": "repository",
+        "supports": [
+          "the checkpoint path /root/panns_data/Cnn14_mAP=0.431.pth used in examples",
+          "example class-confidence outputs in inference examples",
+          "citation of the PANNs paper"
+        ],
+        "title": "panns_inference README (author's inference examples referencing Cnn14_mAP=0.431.pth)",
+        "url": "https://github.com/qiuqiangkong/panns_inference/blob/master/README.md"
+      },
+      {
+        "modelScope": "Repository README statements about checkpoint filenames (e.g., Cnn14_16k_mAP=0.438.pth, Cnn14_DecisionLevelMax_mAP=0.385.pth) and example inference parameters",
+        "primary": true,
+        "primaryReason": "Author's repository README listing checkpoint filenames and example inference parameter values; used to verify presence of repository-named checkpoints and example preprocessing parameters.",
+        "publisher": "Qiuqiang Kong (repository)",
+        "sourceType": "repository",
+        "supports": [
+          "presence and naming of checkpoint Cnn14_16k_mAP=0.438.pth and Cnn14_DecisionLevelMax_mAP=0.385.pth",
+          "example inference parameters: sample_rate=16000, window_size=512, hop_size=160, mel_bins=64, fmin=50, fmax=8000",
+          "notation that Cnn14_16k_mAP=0.438.pth was trained by a later code version"
+        ],
+        "title": "audioset_tagging_cnn README (author's repository root README)",
+        "url": "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/README.md"
+      },
+      {
+        "modelScope": "Repository license governing audioset_tagging_cnn",
+        "primary": true,
+        "primaryReason": "Author-provided license file governing repository code; used to verify code-license terms.",
+        "publisher": "Qiuqiang Kong (repository)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "MIT license text and copyright statement for the repository"
+        ],
+        "title": "audioset_tagging_cnn LICENSE.MIT",
+        "url": "https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/LICENSE.MIT"
+      },
+      {
+        "modelScope": "Repository issue tracking for audioset_tagging_cnn",
+        "primary": true,
+        "primaryReason": "Repository issues index used to corroborate presence of checkpoint/compatibility and other operational issues reported by users and the maintainer.",
+        "publisher": "Qiuqiang Kong (repository)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "existence of multiple issues referencing checkpoints, SED, dataset sharing, and access to pretrained model links"
+        ],
+        "title": "audioset_tagging_cnn issues index",
+        "url": "https://github.com/qiuqiangkong/audioset_tagging_cnn/issues"
+      },
+      {
+        "modelScope": "Repository issue tracking for panns_inference",
+        "primary": true,
+        "primaryReason": "Repository issues index for panns_inference used to corroborate reported loading/state_dict and inference behavior remarks relevant to checkpoint usage.",
+        "publisher": "Qiuqiang Kong (repository)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "issues reporting errors loading Cnn14 state_dict and other inference-related observations"
+        ],
+        "title": "panns_inference issues index",
+        "url": "https://github.com/qiuqiangkong/panns_inference/issues"
+      },
+      {
+        "modelScope": "Issue describing pretrained Cnn14 16kHz wrong shape errors",
+        "primary": true,
+        "primaryReason": "Specific repository issue documenting checkpoint vs. code size-mismatch errors when loading a named checkpoint into a different code version.",
+        "publisher": "Qiuqiang Kong (repository issue)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "report of size-mismatch errors for spectrogram_extractor and logmel_extractor weights when loading Cnn14_16k_mAP=0.438.pth into a different code version"
+        ],
+        "title": "audioset_tagging_cnn issue #18 (Pretrained Cnn14 16kHz wrong shape errors)",
+        "url": "https://github.com/qiuqiangkong/audioset_tagging_cnn/issues/18"
+      },
+      {
+        "modelScope": "panns-cnn14-audioset",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "github.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://github.com/qiuqiangkong/audioset_tagging_cnn"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "f84e3dd7e19b50ce8a6492eb4a67b79079fad3d33eb08aa5bd08ed210d5a74bc",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "github-com-qiuqiangkong-audioset-tagging-cnn-7d9dedc059",
+  "researchedAt": "2026-07-23T23:30:20.275811+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://github.com/qiuqiangkong/audioset_tagging_cnn",
+  "sourceUrls": [
+    "https://github.com/qiuqiangkong/audioset_tagging_cnn"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

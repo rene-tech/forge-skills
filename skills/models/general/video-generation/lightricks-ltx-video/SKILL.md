@@ -79,6 +79,18 @@ Route: `POST /v1/inference/lightricks-ltx-video`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-lightricks-ltx-video-b0012664eb`
+- Recommended: Text-to-video generation of short videos (creative content) using the upstream checkpoint — Upstream model card and README identify the pipeline and examples as text-to-video and provide prompts and example generation parameters for short video synthesis using the named checkpoint variants.
+- Recommended: Image+text-conditioned video generation (image-to-video / multi-keyframe conditioning) using the upstream trainer/configured pipelines — Trainer configuration and repository README document an 'images' parameter and image-conditioned generation examples; these are provided as upstream trainer/repo configuration evidence for image+text conditioning with named checkpoints.
+- Recommended: Video extension (forward/backward extension) and video-to-video transformations within documented endpoint limits (upstream API docs describe extend behavior) — Upstream API documentation for the video-extend endpoint describes using input context frames to generate additional frames and preserving input resolution; it documents parameters and limits for the extend operation.
+- Avoid: Generating harmful or disallowed content (defamation, impersonation, PII misuse, sexual content, child sexual abuse material, trafficking, biometric ID, etc.) — Upstream RAIL‑M / Open Weights license and acceptable-use policy explicitly prohibit many harmful and disallowed uses and impose distribution/use restrictions.
+- Avoid: Clinical/medical decision-making or other regulated professional applications without expert review — Upstream acceptable-use guidance and license require disclosure and caution; the model and license do not assert clinical-grade validation.
+- Avoid: Domain-specific tasks (e.g., multi-view synthesis, fine-grained editing) without downstream validation — Upstream paper and documentation note limited testing/validation for domain-specialized adaptation; such uses require downstream task-specific validation.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -96,11 +108,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/lightricks-ltx-video/inference-routes`
 - Regional deployment: `/v1/models/lightricks-ltx-video/regional-deployment`
 - Serverless handoff: `/v1/models/lightricks-ltx-video/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/lightricks-ltx-video/SKILL.md

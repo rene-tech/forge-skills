@@ -78,6 +78,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-large-language-models-1-15-0-text-to-sql-model-html-86b0cae1d6`
+- Recommended: Translate natural-language healthcare analytics questions plus database schema DDL into executable SQL queries (Text‑to‑SQL). — NIM Text-to-SQL documentation describes the Text-to-SQL workflow semantics requiring table definitions (DDL) plus a natural-language question and specifies the model's role to generate executable SQL over the provided schema; the NGC container metadata for the packaged checkpoint names it as a healthcare Text-to-SQL reasoning model.
+- Recommended: Build developer or research tooling for clinical analytics where generated SQL is validated before execution (research, prototyping, and analyst-assist use cases). — NGC container metadata describes the packaged checkpoint as enabling developers and researchers to build self-service analytics and research tools for clinical users; NIM Text-to-SQL documentation provides the workflow semantics to produce SQL from DDL + question which matches developer/research tool prototypes.
+- Avoid: Use as a clinically validated diagnostic or decision‑making system without further validation. — Primary NVIDIA sources describe the package as intended for developers and researchers and do not state that the checkpoint is clinically validated or certified for direct clinical decision‑making; no checkpoint-scoped regulatory certification or clinical validation statements are published on the checked NVIDIA pages.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -95,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-text/nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim/SKILL.md

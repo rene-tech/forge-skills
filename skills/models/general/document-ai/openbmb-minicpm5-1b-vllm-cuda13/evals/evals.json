@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model openbmb-minicpm5-1b-vllm-cuda13 for this task: Local / on-device assistant and resource-constrained deployments using the upstream MiniCPM5-1B checkpoint. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use openbmb-minicpm5-1b-vllm-cuda13 or another Forge model for Local / on-device assistant and resource-constrained deployments using the upstream MiniCPM5-1B checkpoint?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use openbmb-minicpm5-1b-vllm-cuda13 for Clinical decision-making, PHI-sensitive automated processing, or other regulated clinical deployments, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "openbmb-minicpm5-1b-vllm-cuda13",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-openbmb-minicpm5-1b-vllm-cuda13"
+}

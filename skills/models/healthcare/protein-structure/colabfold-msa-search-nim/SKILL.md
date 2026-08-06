@@ -68,6 +68,14 @@ Route: `POST /biology/colabfold/msa-search/predict`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-colabfold-msa-search-d8cbe43c2f`
+- Recommended: Generate multiple-sequence alignments (MSAs) to feed downstream protein-structure prediction workflows (AlphaFold2/ColabFold/OpenFold-style pipelines). — NVIDIA documents the MSA Search NIM as a GPU-accelerated provider of MSAs and structural-template search outputs intended to inform downstream structural-prediction models and describes supported search styles ('alphafold2' and 'colabfold') and output formats suitable for downstream predictors.
+- Avoid: Clinical diagnostics or medical decision support (PHI/clinical data processing) where validated clinical workflows and explicit PHI-handling policies are required. — Evidence gap: The inspected NVIDIA primary sources for this NIM do not publish explicit clinical-use endorsements, validated clinical workflows, or PHI-specific handling guidance for this exact Forge variant; checkpoint-scoped clinical validation is not provided in the inspected pages.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -85,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/colabfold-msa-search-nim/inference-routes`
 - Regional deployment: `/v1/models/colabfold-msa-search-nim/regional-deployment`
 - Serverless handoff: `/v1/models/colabfold-msa-search-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/protein-structure/colabfold-msa-search-nim/SKILL.md

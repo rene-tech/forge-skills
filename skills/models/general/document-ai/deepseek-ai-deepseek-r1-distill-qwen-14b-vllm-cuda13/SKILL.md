@@ -73,6 +73,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-deepseek-ai-deepseek-r1-distill-qwen-14b-2691341a52`
+- Recommended: Text-only conversational generation and reasoning-oriented chat — Primary Hugging Face model page documents the checkpoint as a distilled model derived from Qwen2.5-14B and highlights reasoning-oriented capabilities and chain-of-thought/self-verification behaviors for the DeepSeek-R1 family that motivate use in text-generation/chat reasoning settings.
+- Avoid: Applications requiring documented checkpoint-specific safety policies, bias-mitigation guidance, or content-filtering guarantees — Primary sources for this exact checkpoint do not provide explicit safety warnings, bias mitigation statements, or content-filtering guidelines.
+- Avoid: Workflows that require formally specified confidence scores or a documented calibrated output contract — Primary documentation for this exact checkpoint lacks a formal output contract or confidence-score specification; outputs are documented only as generated text/token continuations.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/deepseek-ai-deepseek-r1-distill-qwen-14b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/deepseek-ai-deepseek-r1-distill-qwen-14b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/deepseek-ai-deepseek-r1-distill-qwen-14b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/deepseek-ai-deepseek-r1-distill-qwen-14b-vllm-cuda13/SKILL.md

@@ -62,6 +62,16 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-snowflake-snowflake-arctic-embed-m-v2-0-0afc1336c2`
+- Recommended: Multilingual semantic search and retrieval over text queries and documents — The Hugging Face model card and README position the checkpoint for retrieval and embedding workloads and include retrieval-oriented guidance (CLS pooling recommendation and normalized-embeddings usage in example code).
+- Recommended: Embedding text for nearest-neighbor ranking or semantic-similarity workflows using dot-product scoring between normalized embeddings — The model card/README provide example code computing dot-product similarity between query and document embeddings and set normalize=true in usage examples, and the README reports 768-dimensional embeddings intended for dot-product similarity of normalized vectors.
+- Avoid: Use for high-stakes clinical or life-critical decision making without separate domain validation and human oversight — Evidence gap: The checked upstream Hugging Face model card and README do not provide clinical validation, healthcare deployment guidance, or life‑critical decision‑support evidence for this exact checkpoint.
+- Avoid: Rely on this dossier for exact tokenizer internals, token limits, truncation/padding policies, or immutable upstream-to-Forge revision mapping when strict reproducibility is required — Evidence gap: The checked upstream sources do not document special-token definitions, an immutable upstream artifact-to-serving mapping, or a safetensors checksum locator for this exact checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -80,11 +90,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/snowflake-arctic-embed-m-v2-0-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/snowflake-arctic-embed-m-v2-0-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/snowflake-arctic-embed-m-v2-0-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/snowflake-arctic-embed-m-v2-0-tei-cuda-1-9/SKILL.md

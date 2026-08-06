@@ -1,0 +1,575 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5] uses unapproved repository owner 'audioset' for this exact model scope",
+        "path": "$.sources[5] uses unapproved repository owner 'audioset' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10] uses unapproved repository owner 'syamaner' for this exact model scope",
+        "path": "$.sources[10] uses unapproved repository owner 'syamaner' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11] uses unapproved repository owner 'vladimirlv' for this exact model scope",
+        "path": "$.sources[11] uses unapproved repository owner 'vladimirlv' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://rocm.blogs.amd.com/artificial-intelligence/speech_models/README.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://rocm.blogs.amd.com/artificial-intelligence/speech_models/README.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://ai.azure.com/catalog/models/mit-ast-finetuned-audioset-10-10-0.448-v2",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "path": "$.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[2].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[2].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 13 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "MIT AST AudioSet Classifier serves MIT/ast-finetuned-audioset-10-10-0.4593 through a Forge-owned FastAPI wrapper for short WAV, FLAC, MP3, or OGG clips.",
+      "displayName": "Use MIT AST AudioSet Classifier",
+      "group": "health-audio",
+      "inputModalities": [
+        "audio"
+      ],
+      "license": "bsd-3-clause",
+      "modelFamily": "mit-ast-audioset-classifier",
+      "outputModalities": [
+        "json",
+        "scores"
+      ],
+      "slug": "mit-ast-finetuned-audioset-10-10-0-4593-wrapper-cuda12",
+      "sourceUrl": "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593",
+      "version": "hf-f826b80-wrapper-cuda12-safetensors",
+      "versionKey": "hf-f826b80-wrapper-cuda12-safetensors"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast",
+          "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+        ],
+        "modelScope": "MIT/ast-finetuned-audioset-10-10-0.4593 (checkpoint as named; no primary clinical\u2011validation provenance found in the supplied sources)",
+        "reason": "Primary canonical sources document training and evaluation on AudioSet and do not provide primary\u2011source clinical validation or regulatory clearance for AST checkpoints; the supplied primary sources do not present clinical\u2011validation evidence tying AST checkpoints to diagnostic use.",
+        "useCase": "Clinical\u2011grade diagnostic decision making based solely on model outputs"
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast"
+        ],
+        "modelScope": "MIT/ast-finetuned-audioset-10-10-0.4593",
+        "reason": "Upstream AST artifacts and repository document supervised finetuning on AudioSet and do not provide primary\u2011source evidence of CLAP\u2011style zero\u2011shot capability for these AST checkpoints in the supplied findings.",
+        "useCase": "Zero\u2011shot text\u2011conditioned / CLAP\u2011style cross\u2011modal zero\u2011shot classification using this checkpoint without additional components"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "The supplied primary findings do not include an exact table/figure number or page locator for the reported 0.485 value; the paper result is treated as a family/variant\u2011level reported ensemble result in the absence of an explicit mapping to the HF checkpoint name."
+        ],
+        "conditions": "Paper experimental protocol as reported in the AST paper (ensemble/aggregate evaluation reported by authors); attribution is to the paper's reported Ensemble\u2011M result, not to a specific Hugging Face checkpoint identifier.",
+        "dataset": "AudioSet (full evaluation set)",
+        "direction": "higher-is-better",
+        "metric": "mean average precision (mAP)",
+        "modelScope": "AST (paper\u2011reported Ensemble\u2011M aggregate/ensemble variant as reported in the AST paper)",
+        "sourceLocator": "AST paper \u2014 arXiv PDF experimental results reporting Ensemble\u2011M (multiple\u2011model ensemble) achieves mAP = 0.485 on AudioSet (as reported in the paper's experimental results section; exact table/figure number not provided in the supplied findings).",
+        "sourceUrl": "https://arxiv.org/pdf/2104.01778",
+        "split": "evaluation set",
+        "task": "AudioSet multi\u2011label classification",
+        "value": "0.485"
+      },
+      {
+        "caveats": [
+          "The supplied findings show the repository reports a weight\u2011averaged single model mAP = 0.459 and identify a checkpoint filename audioset_10_10_0.4593.pth, but they do not provide a canonical single\u2011source statement that maps the exact Hugging Face hosted checkpoint name to a unique repository commit/revision; therefore the numeric value is treated as repository\u2011reported family/variant evidence."
+        ],
+        "conditions": "Repository experiment summaries and model artifact naming indicate a weight\u2011averaging procedure producing a single model reported with mAP \u2248 0.459; attribution is to the upstream repository's reported single\u2011model variant.",
+        "dataset": "AudioSet (full evaluation set)",
+        "direction": "higher-is-better",
+        "metric": "mean average precision (mAP)",
+        "modelScope": "Upstream AST repository weight\u2011averaged single model variant (repository\u2011reported single model mAP / pre\u2011trained checkpoint audioset_10_10_0.4593.pth)",
+        "sourceLocator": "GitHub \u2014 src/models/ast_models.py and README/experiment outputs: pre\u2011trained checkpoint file named audioset_10_10_0.4593.pth is documented as achieving 0.4593 mAP; repository README and repo experiment output file paths (e.g., ast/egs/audioset/exp/yourexpname/result.csv and wa_result.csv) are used to record experiment metrics.",
+        "sourceUrl": "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+        "split": "evaluation set",
+        "task": "AudioSet multi\u2011label classification",
+        "value": "0.459"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "google-hear-health-acoustic-embeddings",
+        "comparisonConditions": "Protocol\u2011matched comparison would require identical preprocessing, identical dataset/split definitions, explicit checkpoint identifiers for both models, and the same metric definitions; these are not present in the supplied findings.",
+        "criteria": "No primary\u2011source, protocol\u2011matched head\u2011to\u2011head evaluation (same dataset/split, preprocessing, explicit checkpoint identifiers, and metric) between the exact named checkpoint MIT/ast-finetuned-audioset-10-10-0.4593 and the alternative is present in the supplied findings.",
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast"
+        ],
+        "rationale": "AST artifacts document supervised AudioSet training and reported mAPs; the supplied findings do not include a protocol\u2011matched comparison using explicit checkpoint identifiers for both sides.",
+        "task": "Health\u2011audio embeddings / downstream health\u2011audio tasks",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "laion-clap-htsat-fused-zero-shot-audio",
+        "comparisonConditions": "Matching would require explicit checkpoint identifiers and zero\u2011shot protocol details with identical preprocessing and metric; these are not available in the supplied findings.",
+        "criteria": "No protocol\u2011matched, checkpoint\u2011specific head\u2011to\u2011head comparison between MIT/ast-finetuned-audioset-10-10-0.4593 and CLAP/zero\u2011shot methods on the same dataset/split/metric is present in the supplied findings.",
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast"
+        ],
+        "rationale": "AST artifacts describe supervised task tuning on AudioSet; the supplied findings do not include CLAP\u2011style zero\u2011shot evaluations for the AST checkpoint.",
+        "task": "Zero\u2011shot audio classification (CLAP\u2011style) vs supervised AST",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "panns-cnn14-audioset-cough",
+        "comparisonConditions": "Comparability would require identical preprocessing, dataset/split and explicit checkpoint identifiers for both models; these are not present in the supplied findings.",
+        "criteria": "No protocol\u2011matched, checkpoint\u2011specific head\u2011to\u2011head comparison between MIT/ast-finetuned-audioset-10-10-0.4593 and PANNs CNN14 on the same dataset/split/metric is present in the supplied findings.",
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast"
+        ],
+        "rationale": "Baselines may be referenced in literature, but the supplied primary findings do not provide a protocol\u2011matched comparison tying the exact HF checkpoint to the named alternatives.",
+        "task": "Cough / health\u2011audio detection vs AST\u2011based classifier",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires held\u2011out labeled domain data, standard fine\u2011tuning validation, and downstream evaluation; validate performance on domain test sets before deployment and follow repository fine\u2011tuning procedures.",
+        "evidenceUrls": [
+          "https://github.com/YuanGongND/ast",
+          "https://arxiv.org/pdf/2104.01778"
+        ],
+        "modelScope": "Upstream AST implementation and variants documented in the YuanGongND/ast repository (family/variant\u2011level evidence; no single canonical locator in the supplied findings proving the named HF checkpoint equals a specific repository variant).",
+        "useCase": "Domain\u2011specific supervised fine\u2011tuning / transfer learning for downstream audio classification"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: A single canonical mapping in the supplied findings that ties the AST paper's reported ensemble mAP = 0.485 or any specific paper table row directly to the Hugging Face checkpoint name MIT/ast-finetuned-audioset-10-10-0.4593 is not provided in the supplied primary findings.",
+      "Evidence gap: Exact parameter count (number of model parameters) for the specific Hugging Face checkpoint MIT/ast-finetuned-audioset-10-10-0.4593 is not reported in the supplied primary findings.",
+      "Evidence gap: Canonical statement of accepted audio container/file types and recommended bit\u2011depth (WAV/FLAC/MP3/OGG and bit depth) for the named checkpoint is not provided in the supplied primary findings.",
+      "Evidence gap: Explicit inference\u2011time segmentation/cropping policy for inputs longer than the evaluation length (e.g., >10 s) tied to the named Hugging Face checkpoint is not provided in the supplied primary findings.",
+      "Evidence gap: Canonical upstream\u2011specified calibrated probability thresholds or checkpoint\u2011specific decision rules for binary classification are not provided in the supplied primary findings.",
+      "Evidence gap: Exact canonical repository commit hash or revision identifier tying the pre\u2011trained checkpoint filename audioset_10_10_0.4593.pth to the Hugging Face hosted checkpoint name is not provided in the supplied primary findings."
+    ],
+    "family": "huggingface-co-mit-ast-finetuned-audioset-10-10-0-4593-33830cdbc6",
+    "identity": {
+      "architecture": "Audio Spectrogram Transformer (AST): a ViT\u2011style transformer applied to spectrogram patches with a class token, positional embedding, transformer blocks, and a final MLP/classification head (pure attention, convolution\u2011free).",
+      "checkpoint": "MIT/ast-finetuned-audioset-10-10-0.4593",
+      "evidenceUrls": [
+        "https://arxiv.org/pdf/2104.01778",
+        "https://ar5iv.labs.arxiv.org/html/2104.01778",
+        "https://github.com/YuanGongND/ast",
+        "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+        "https://github.com/YuanGongND/ast/blob/master/README.md",
+        "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+      ],
+      "license": "BSD-3-Clause",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "MIT/ast-finetuned-audioset-10-10-0.4593"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast",
+            "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+            "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+          ],
+          "statement": "Primary sources express the input contract at the spectrogram/feature\u2011tensor level (input_fdim=128, input_tdim examples) rather than enumerating a canonical set of audio container file types and bit depths; explicit accepted container types and bit\u2011depths are not specified in the supplied findings."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast",
+            "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+          ],
+          "statement": "Evidence gap: The supplied primary findings do not provide an explicit, canonical list of accepted audio container/file types (WAV, FLAC, MP3, OGG) or recommended bit\u2011depth for the named HF checkpoint."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+            "https://github.com/YuanGongND/ssast"
+          ],
+          "statement": "Repository and related upstream code examples document input feature dimensions and patching defaults: input_fdim = 128 and input_tdim = 1024 are used as feature/tensor examples in the implementation; SSAST related repository configuration also lists input_fdim = 128, input_tdim = 1024, fstride = 10, tstride = 10, fshape = 16, tshape = 16 for default configurations."
+        },
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/pdf/2104.01778",
+            "https://github.com/YuanGongND/ast"
+          ],
+          "statement": "Upstream repository and AST paper describe patching/transformer input processing consistent with converting spectrogram patches into embeddings for the ViT\u2011style transformer pipeline; the repository constructor arguments and defaults implement these conventions."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast"
+          ],
+          "statement": "Training\u2011time augmentations referenced in the upstream repository include mixup and spectrogram masking as documented in the repository's experiment descriptions."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast",
+            "https://arxiv.org/pdf/2104.01778"
+          ],
+          "statement": "Evidence gap: The supplied primary findings do not specify window length and hop in milliseconds (e.g., explicit STFT window/hop ms values) for spectrogram computation; this sampling\u2011to\u2011frame conversion detail is not verifiable from the supplied findings."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+            "https://github.com/YuanGongND/ast"
+          ],
+          "statement": "Upstream implementation and model experiments operate from spectrogram/feature tensors derived from raw audio; repository examples show input tensors of shape (batch_size, time_frames, frequency_bins), e.g., (12, 1024, 128)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast",
+            "https://github.com/YuanGongND/ast/blob/master/README.md"
+          ],
+          "statement": "Upstream experiments use 16 kHz audio sampling for training and evaluation as documented in the upstream repository."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+          ],
+          "statement": "The Hugging Face model card identifies the hosted checkpoint MIT/ast-finetuned-audioset-10-10-0.4593 as an AST variant fine\u2011tuned on AudioSet (model hosting identity)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/pdf/2104.01778",
+            "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+            "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+          ],
+          "statement": "AST checkpoints are applied for multi\u2011label audio classification: spectrogram tensors are split into patches and fed through the transformer; a final classification head (linear/MLP head) consumes the transformer's pooled / class token output to produce per\u2011class logits. No prompt or paired\u2011input templates are defined in the supplied findings."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+            "https://github.com/YuanGongND/ast"
+          ],
+          "statement": "Validate that input audio is converted to the repository/implementation feature format (input_fdim=128 and expected input_tdim examples) and sampled at 16 kHz to match upstream experiments; ensure spectrogram tensor shape matches model constructor examples before inference."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast"
+          ],
+          "statement": "The upstream repository documents experiment result storage and weight\u2011averaging outputs: per\u2011epoch results are saved under ast/egs/audioset/exp/yourexpname/result.csv and a weighted\u2011averaged model's results are saved in wa_result.csv; use these artifacts to verify reproduced experiment metrics."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast"
+          ],
+          "statement": "The upstream repository documents spectrogram normalization guidance (the supplied findings reference a repository normalization formula and guidance)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast",
+            "https://arxiv.org/pdf/2104.01778"
+          ],
+          "statement": "Evidence gap: An explicit canonical inference\u2011time segmentation/cropping policy for inputs longer than the evaluation length (e.g., >10 s) tied to the named Hugging Face checkpoint is not provided in the supplied primary findings."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast"
+        ],
+        "statement": "The AST model and upstream experiments are trained and evaluated on AudioSet; generalization to out\u2011of\u2011distribution audio (including clinical audio) is not established by the supplied primary artifacts."
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast",
+          "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py"
+        ],
+        "statement": "Primary sources document differing numeric aggregates across AST variants (paper ensembles vs upstream repository single/weight\u2011averaged models); the supplied findings do not provide a single canonical locator that unambiguously ties a paper table row or repository variant to the exact Hugging Face checkpoint name, creating ambiguity for checkpoint\u2011specific benchmark attribution."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/YuanGongND/ast",
+          "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593",
+          "https://arxiv.org/pdf/2104.01778"
+        ],
+        "statement": "Evidence gap: The exact parameter count for the named Hugging Face checkpoint MIT/ast-finetuned-audioset-10-10-0.4593 is not reported in the supplied primary findings."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/pdf/2104.01778",
+            "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py"
+          ],
+          "statement": "Upstream artifacts document training with binary cross\u2011entropy loss for multi\u2011label classification; this supports interpreting raw logits with a per\u2011class sigmoid for multi\u2011label outputs. The supplied primary findings do not provide checkpoint\u2011specific calibrated probability thresholds; downstream calibration is required for decision thresholds."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast",
+            "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+          ],
+          "statement": "Evidence gap: The supplied primary findings do not report recommended calibrated decision thresholds or a checkpoint\u2011specific post\u2011processing calibration procedure for the named Hugging Face checkpoint."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py",
+            "https://arxiv.org/pdf/2104.01778"
+          ],
+          "statement": "The model's final classification layer is a linear/MLP head producing per\u2011class raw logits (implementation and paper documentation indicate a classification head on pooled/class token outputs)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast",
+            "https://arxiv.org/pdf/2104.01778"
+          ],
+          "statement": "Post\u2011inference validation should include downstream calibration and threshold selection on held\u2011out labeled data; upstream primary sources in the supplied findings do not prescribe specific numeric thresholds tied to the checkpoint."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/YuanGongND/ast"
+          ],
+          "statement": "Evidence gap: Exact numeric mean/std values for any additional inference normalization beyond the repository's spectrogram normalization guidance are not separately enumerated for the named Hugging Face checkpoint in the supplied findings."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast",
+          "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+        ],
+        "modelScope": "AST family models fine\u2011tuned on AudioSet (family/variant\u2011level evidence; direct one\u2011to\u2011one provenance to the exact HF checkpoint name is not established in the supplied primary sources).",
+        "useCase": "Multi-label audio classification / sound\u2011event tagging on AudioSet\u2011style tasks",
+        "why": "AST architecture and multi\u2011label AudioSet experiments are documented in the AST paper and the upstream repository; the upstream repository provides pretrained/weight\u2011averaged variants reported on AudioSet and the Hugging Face model card hosts a checkpoint labeled as AST fine\u2011tuned on AudioSet."
+      }
+    ],
+    "researchSummary": "Primary canonical sources examined: the AST arXiv preprint and HTML (reports of AudioSet experimental results including ensemble and weight\u2011averaged variants), the upstream YuanGongND/ast GitHub repository (implementation, experiment outputs, and checkpoint filenames), the AST model file that documents a pre-trained checkpoint named audioset_10_10_0.4593.pth, the repository README (experiment summaries and sampling rate), and the Hugging Face model card for MIT/ast-finetuned-audioset-10-10-0.4593 (hosting metadata and license). The AST paper reports ensemble/aggregate AudioSet results up to mAP = 0.485 (reported as Ensemble\u2011M) and reports other benchmarks (ESC\u201150, Speech Commands). The upstream repository reports a weight\u2011averaged single model mAP = 0.459 (and records a pre-trained checkpoint file audioset_10_10_0.4593.pth described as achieving 0.4593 mAP in src/models/ast_models.py). The repository and code document implementation defaults including 16 kHz sampling for experiments and implementation-level input shapes/examples; explicit checkpoint parameter counts, revision hashes for the hosted HF checkpoint, canonical accepted container formats/bit depths, and inference segmentation policies for inputs longer than the evaluation length are not reported in the supplied primary sources and are recorded as evidence gaps where indicated.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2104.01778",
+          "https://github.com/YuanGongND/ast"
+        ],
+        "statement": "Primary canonical sources document training and evaluation on AudioSet and do not present primary\u2011source clinical validation or regulatory clearance for AST checkpoints; health/clinical uses require expert review and formal clinical validation before diagnostic use."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: The supplied primary findings do not provide checkpoint\u2011specific guidance on handling sensitive clinical data (PHI) or institution\u2011specific data governance for the named Hugging Face checkpoint; apply institutional and regulatory data\u2011handling controls when using the model with clinical audio."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "AST paper (architectural and experimental claims; reported AudioSet mAP values including Ensemble\u2011M = 0.485 and weight\u2011averaged single\u2011model statements at paper level)",
+        "primary": true,
+        "primaryReason": "Canonical preprint describing the AST architecture and reporting AudioSet experimental results (ensemble and single\u2011model reported mAPs) used in this dossier.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "Reported AudioSet mAP = 0.485 (Ensemble\u2011M reported in experimental results)",
+          "Architecture description of AST as a transformer over spectrogram patches (pure attention)",
+          "Paper\u2011level description of AST experimental evaluations on AudioSet, ESC\u201150, and Speech Commands"
+        ],
+        "title": "AST: Audio Spectrogram Transformer \u2014 arXiv PDF",
+        "url": "https://arxiv.org/pdf/2104.01778"
+      },
+      {
+        "modelScope": "AST paper HTML mirror (alternate representation of the same preprint content used in supplied findings)",
+        "primary": true,
+        "primaryReason": "HTML representation of the AST preprint included in the supplied findings set; supports the same paper claims as the arXiv PDF.",
+        "publisher": "ar5iv (arXiv HTML mirror)",
+        "sourceType": "paper",
+        "supports": [
+          "Reported AudioSet mAP = 0.485 (Ensemble\u2011M reported in experimental results)",
+          "Other experimental metrics reported in the AST paper"
+        ],
+        "title": "AST: Audio Spectrogram Transformer \u2014 ar5iv HTML",
+        "url": "https://ar5iv.labs.arxiv.org/html/2104.01778"
+      },
+      {
+        "modelScope": "AST upstream repository (implementation, defaults, pretrained model filenames, and experiment reporting including weight\u2011averaged single model mAP \u2248 0.459 and experiment result file locations)",
+        "primary": true,
+        "primaryReason": "Upstream implementation repository documenting pretrained model variants, default constructor parameters, experiment result storage paths, and reported weight\u2011averaged single model mAP used in this dossier.",
+        "publisher": "YuanGongND (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "Repository reports weight\u2011averaged single model mAP \u2248 0.459 (experiment/README and code comments)",
+          "Implementation examples and defaults; experiment result file locations (ast/egs/audioset/exp/yourexpname/result.csv and wa_result.csv)",
+          "All experiments use 16 kHz sampling as stated in the repository"
+        ],
+        "title": "AST upstream repository \u2014 YuanGongND (GitHub)",
+        "url": "https://github.com/YuanGongND/ast"
+      },
+      {
+        "modelScope": "AST upstream repository README (experiment summary and sampling/experiment notes)",
+        "primary": true,
+        "primaryReason": "Repository README included in the supplied findings documenting experiment summaries and stated sampling rate and ensemble/single\u2011model experiment notes.",
+        "publisher": "YuanGongND (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "All experiments in the repository use a 16 kHz audio sampling rate",
+          "Repository README documents ensemble results and weight\u2011averaged single model summaries"
+        ],
+        "title": "AST repository README \u2014 YuanGongND (GitHub)",
+        "url": "https://github.com/YuanGongND/ast/blob/master/README.md"
+      },
+      {
+        "modelScope": "AST implementation file documenting model input shape examples and pre\u2011trained checkpoint filename audioset_10_10_0.4593.pth",
+        "primary": true,
+        "primaryReason": "Implementation source file in the upstream repository that documents input tensor shapes, architecture components, and references a pre\u2011trained checkpoint filename and its reported mAP used in the supplied findings.",
+        "publisher": "YuanGongND (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "ASTModel expects input tensors of shape (batch_size, time_frames, frequency_bins) e.g., (12, 1024, 128)",
+          "The pre\u2011trained checkpoint file audioset_10_10_0.4593.pth is documented as achieving 0.4593 mAP on the AudioSet evaluation set",
+          "Model architecture components (patch embedding, class token, transformer blocks, MLP head) are documented"
+        ],
+        "title": "AST implementation \u2014 src/models/ast_models.py",
+        "url": "https://github.com/YuanGongND/ast/blob/master/src/models/ast_models.py"
+      },
+      {
+        "modelScope": "SSAST repository configuration examples (default config values referenced in supplied findings)",
+        "primary": true,
+        "primaryReason": "SSAST repository supplies configuration defaults (input_fdim, input_tdim, fstride, tstride, fshape, tshape) referenced in the supplied findings and used to corroborate implementation defaults.",
+        "publisher": "YuanGongND (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "SSAST defines input_fdim = 128, input_tdim = 1024, fstride = 10, tstride = 10, fshape = 16, tshape = 16 for default configuration"
+        ],
+        "title": "SSAST repository \u2014 YuanGongND (GitHub)",
+        "url": "https://github.com/YuanGongND/ssast"
+      },
+      {
+        "modelScope": "Hugging Face model card for the exact checkpoint MIT/ast-finetuned-audioset-10-10-0.4593 (hosting and model identity and license)",
+        "primary": true,
+        "primaryReason": "Canonical hosting page for the exact checkpoint MIT/ast-finetuned-audioset-10-10-0.4593 included in the supplied findings; documents model identity and license metadata.",
+        "publisher": "Hugging Face",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Presence and hosting of the named checkpoint MIT/ast-finetuned-audioset-10-10-0.4593",
+          "Model card metadata including license listed as BSD\u20113\u2011Clause and statement that the model is fine\u2011tuned on AudioSet"
+        ],
+        "title": "Hugging Face model card \u2014 MIT/ast-finetuned-audioset-10-10-0.4593",
+        "url": "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+      },
+      {
+        "modelScope": "arXiv distribution/license help page (used only to indicate possible arXiv distribution/licensing formats in the supplied findings)",
+        "primary": true,
+        "primaryReason": "arXiv help/license page included in the supplied findings set and used as a canonical reference for arXiv distribution/licensing context.",
+        "publisher": "arXiv",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Reference information about possible distribution licenses for arXiv preprints (contextual/legal guidance)"
+        ],
+        "title": "arXiv help \u2014 license information",
+        "url": "https://info.arxiv.org/help/license/index.html"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "89a76f097d442bb0149e239df369407003239b519e4f017fda09367e8ddab7c0",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-mit-ast-finetuned-audioset-10-10-0-4593-33830cdbc6",
+  "researchedAt": "2026-08-06T08:56:30.661691+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593",
+  "sourceUrls": [
+    "https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

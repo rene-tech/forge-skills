@@ -64,6 +64,17 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-abhinand-medembed-large-v0-1-e3fed155f5`
+- Recommended: Medical and clinical information retrieval — The Hugging Face model page documents that MedEmbed is fine-tuned for medical and clinical data and is intended to enhance information retrieval in healthcare contexts.
+- Recommended: Semantic search over medical text — The Hugging Face model page states intended use for semantic search in medical and clinical contexts.
+- Recommended: Integration into healthcare research tools and literature search systems — The Hugging Face model page indicates that the model can be integrated into healthcare systems and research tools to improve medical literature search.
+- Avoid: Selecting this checkpoint for tasks that require verified checkpoint-specific license terms — An explicit model-weight or checkpoint SPDX license text is not reported on the inspected Hugging Face model page or commit page; license is therefore not verifiable from primary sources checked.
+- Avoid: Assuming this checkpoint is a standalone calibrated clinical/pathogenicity classifier — Primary upstream evidence documents this checkpoint as an embedding model fine-tuned for medical data; no primary-source evidence shows the checkpoint itself emits calibrated clinical probabilities or a downstream classifier head.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -82,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/abhinand-medembed-large-v0-1-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/abhinand-medembed-large-v0-1-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/abhinand-medembed-large-v0-1-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/abhinand-medembed-large-v0-1-vllm-cuda13/SKILL.md

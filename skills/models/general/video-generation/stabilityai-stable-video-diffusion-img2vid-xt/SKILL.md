@@ -75,6 +75,15 @@ Route: `POST /v1/inference/stabilityai-stable-video-diffusion-img2vid-xt`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-stabilityai-stable-video-diffusion-img2vid-xt-d9acf75eb0`
+- Recommended: Image-to-video generation (short clips conditioned on a single input image) — The official Hugging Face model page and the repository README describe the released SVD and SVD‑XT checkpoints as image-conditioned img2vid latent diffusion models and explicitly document SVD‑XT as fine‑tuned to produce 25 frames at 576×1024.
+- Avoid: Long-duration video generation substantially beyond the checkpoint's fine-tuned frame count (e.g., >>25 frames) — Repository/model-card statements document SVD trained for 14 frames and SVD‑XT fine‑tuned to 25 frames; there is no checkpoint-scoped canonical evidence in the checked primary sources that svd_xt.safetensors supports coherent generation of substantially longer sequences without further fine‑tuning or architectural extension.
+- Avoid: Relying on emitted per-frame calibrated confidence/probability scores from the checkpoint or demo pipeline — The checked primary sources (model page and README) do not document emission of calibrated per-frame confidence/probability scores or explicit per-frame metadata fields emitted by the checkpoint or demo code.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -92,11 +101,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/inference-routes`
 - Regional deployment: `/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/regional-deployment`
 - Serverless handoff: `/v1/models/stabilityai-stable-video-diffusion-img2vid-xt/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/stabilityai-stable-video-diffusion-img2vid-xt/SKILL.md

@@ -78,6 +78,17 @@ Route: `POST /v1/inference/openmoss-team-mova`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-openmoss-team-mova-720p-4d8898cb1d`
+- Recommended: Text-to-Video-Audio (T2VA) generation producing synchronized video and audio — The Hugging Face model card and README describe MOVA as designed for T2VA and emphasize native bimodal generation (simultaneous video+audio synthesis) and synchronized outputs; the technical report frames MOVA as a foundation model for synchronized video-audio generation.
+- Recommended: Image-to-Video-Audio (IT2VA) generation using a starting image plus text direction — The model card and README list IT2VA as a supported task mode and document variant-specific examples and downloads; these upstream artifacts present IT2VA as an intended use for MOVA-720p.
+- Recommended: Lip-sync focused generation and evaluation (single- and multi-speaker scenarios) — The README and the technical report present lip-sync evaluation as a primary benchmark axis for MOVA and describe evaluation protocols and metrics for lip-sync quality in the MOVA study.
+- Avoid: Assuming a different checkpoint or base-model variant is identical (e.g., substituting MOVA-360p or another variant for MOVA-720p without verification) — Upstream documentation treats MOVA-360p and MOVA-720p as distinct variants with separate artifacts; checkpoint-scoped claims must be limited to the exact MOVA-720p checkpoint unless the other checkpoint's primary artifacts explicitly claim equivalence.
+- Avoid: Treating third-party wrappers, integrations, or community runtime tips as authoritative for upstream checkpoint internals or input/output contracts — Third-party integration notes are not canonical upstream documentation; the canonical model card, README, repository, and technical report are the primary sources for checkpoint-scoped facts and should be used instead.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -95,11 +106,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/openmoss-team-mova-720p-sglang/inference-routes`
 - Regional deployment: `/v1/models/openmoss-team-mova-720p-sglang/regional-deployment`
 - Serverless handoff: `/v1/models/openmoss-team-mova-720p-sglang/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/openmoss-team-mova-720p-sglang/SKILL.md

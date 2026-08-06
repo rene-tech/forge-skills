@@ -1,0 +1,414 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$: missing required property safety",
+        "path": "$",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3] uses forbidden secondary URL https://huggingface.co/papers/2506.01844",
+        "path": "$.sources[3] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7] uses unapproved repository owner 'blog' for this exact model scope",
+        "path": "$.sources[7] uses unapproved repository owner 'blog' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7] uses forbidden secondary URL https://huggingface.co/blog/smolvla",
+        "path": "$.sources[7] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11] uses unapproved repository owner 'katsukiono' for this exact model scope",
+        "path": "$.sources[11] uses unapproved repository owner 'katsukiono' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14].primary must be true",
+        "path": "$.sources[14].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.safety must contain at least one scoped item",
+        "path": "$.safety must contain at least one scoped item",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 10 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "Hidden onboarding candidate for lerobot/smolvla_vlabench, a SmolVLA-family vision-language-action policy fine-tuned on the VLABench unified robotics dataset.",
+      "displayName": "Use Hugging Face LeRobot SmolVLA VLABench",
+      "group": "robotics-control",
+      "inputModalities": [
+        "text",
+        "image",
+        "robot_state"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "huggingface-lerobot-smolvla",
+      "outputModalities": [
+        "robot_action",
+        "json"
+      ],
+      "slug": "huggingface-lerobot-smolvla-vlabench",
+      "sourceUrl": "https://huggingface.co/lerobot/smolvla_vlabench",
+      "version": "vlabench-4fd586e-wrapper-20260602t21z",
+      "versionKey": "vlabench"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [],
+        "modelScope": "lerobot/smolvla_vlabench upstream checkpoint",
+        "reason": "Forge policy: do not use this robotics-control checkpoint for clinical or regulated decision support without dedicated validation and certification; the inspected primary checkpoint-scoped sources do not report such validations for lerobot/smolvla_vlabench.",
+        "useCase": "Using the checkpoint for clinical, medical, or regulated decision-making"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "SmolVLA family-level comparisons (paper)",
+        "comparisonConditions": "Family-level evaluation reported in the arXiv preprint; no exact-checkpoint (lerobot/smolvla_vlabench) protocol-matched comparison located in the checked primary sources.",
+        "criteria": "family-level experimental comparisons reported by the authors; no checkpoint-scoped, protocol-matched comparison was found for lerobot/smolvla_vlabench in the inspected primary sources.",
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2506.01844",
+          "https://huggingface.co/lerobot/smolvla_vlabench"
+        ],
+        "rationale": "The SmolVLA arXiv preprint provides family-level experimental comparisons, but the inspected checkpoint-scoped artifacts (model card and LeRobot docs) do not present protocol-matched, numeric comparisons that explicitly tie those family-level results to the exact Hub checkpoint lerobot/smolvla_vlabench.",
+        "task": "family-level robotics evaluation (reported in the SmolVLA paper)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Only after explicit task-level evaluation and validation within LeRobot/VLABench; the checkpoint is presented as a pretrained policy pushed to the Hub but the inspected checkpoint-scoped materials do not provide numeric, checkpoint-matched benchmarks for specific VLABench tasks.",
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_vlabench",
+          "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx"
+        ],
+        "modelScope": "lerobot/smolvla_vlabench",
+        "useCase": "Applying the checkpoint to specific VLABench tasks (primitive or composite) after explicit downstream validation"
+      }
+    ],
+    "evidenceGaps": [
+      "Exact checkpoint revision identifier (e.g., git commit SHA or weights-file fingerprint) for lerobot/smolvla_vlabench is not reported in the inspected primary sources (checked https://huggingface.co/lerobot/smolvla_vlabench).",
+      "Model-weights license (distinct from code license) for lerobot/smolvla_vlabench is not disclosed in the inspected primary sources (checked https://huggingface.co/lerobot/smolvla_vlabench).",
+      "Parameter scale for the exact checkpoint lerobot/smolvla_vlabench is not reported in the inspected primary sources (checked https://huggingface.co/docs/lerobot/en/smolvla and https://huggingface.co/lerobot/smolvla_vlabench).",
+      "A serialized input schema (exact JSON/protobuf schema, field names, types, ordering, and units) for combined text+image+robot_state inputs for lerobot/smolvla_vlabench is not provided in the inspected primary sources (checked https://huggingface.co/lerobot/smolvla_vlabench and https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx).",
+      "Checkpoint-specific preprocessing details (exact image normalization mean/std, tokenizer parameters, robot-state normalization/scaling) for lerobot/smolvla_vlabench are not reported in the inspected primary sources (checked https://huggingface.co/lerobot/smolvla_vlabench and https://huggingface.co/docs/lerobot/en/smolvla).",
+      "A formal output contract (JSON schema, per-component units, clipping rules) for lerobot/smolvla_vlabench outputs is not provided in the inspected primary sources (checked https://huggingface.co/lerobot/smolvla_vlabench and https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx).",
+      "No numeric benchmark rows/tables/figures explicitly matched to the exact checkpoint name lerobot/smolvla_vlabench with dataset/split/metric/value/conditions were found in the inspected primary sources (checked https://huggingface.co/lerobot/smolvla_vlabench and https://arxiv.org/abs/2506.01844).",
+      "No protocol-matched comparisons that explicitly evaluate lerobot/smolvla_vlabench against named alternatives under identical dataset/split/metric/eval-mode were found in the inspected primary sources (checked https://arxiv.org/abs/2506.01844 and https://huggingface.co/lerobot/smolvla_vlabench).",
+      "Post-inference sanity checks, action-clipping rules, or safety filters specific to lerobot/smolvla_vlabench are not documented in the inspected primary sources (checked https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx and https://huggingface.co/lerobot/smolvla_vlabench).",
+      "Privacy, retention, or proprietary-data handling guarantees tied to lerobot/smolvla_vlabench are not described in the inspected primary sources (checked https://huggingface.co/lerobot/smolvla_vlabench)."
+    ],
+    "family": "huggingface-co-lerobot-smolvla-vlabench-d6edd20a8d",
+    "identity": {
+      "architecture": "SmolVLA is described as a compact, efficient vision-language-action (VLA) family; the upstream documentation states the architecture accepts multiple camera views, the robot's current sensorimotor state, and a natural-language instruction and encodes these inputs into contextual features used to condition an action expert that generates an action chunk.",
+      "checkpoint": "lerobot/smolvla_vlabench",
+      "evidenceUrls": [
+        "https://huggingface.co/lerobot/smolvla_vlabench",
+        "https://huggingface.co/docs/lerobot/en/smolvla",
+        "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx",
+        "https://arxiv.org/abs/2506.01844"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "SmolVLA"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_vlabench",
+            "https://huggingface.co/docs/lerobot/en/smolvla",
+            "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx"
+          ],
+          "statement": "The checkpoint is described as a SmolVLA-family pretrained policy pushed to the Hugging Face Hub and intended to be used with LeRobot/VLABench tooling; primary sources describe the multimodal input types but do not publish a single, exact serialized upstream input format (JSON/protobuf/binary) for the checkpoint."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the audited primary sources do not define a formal serialized upstream input schema (exact field names, types, ordering, or units) for combined text+image+robot_state inputs for lerobot/smolvla_vlabench."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/smolvla",
+            "https://huggingface.co/lerobot/smolvla_vlabench"
+          ],
+          "statement": "SmolVLA documentation and the model card describe the family/checkpoint design intent but do not specify checkpoint-specific preprocessing parameters (image normalization mean/std, tokenizer identity and parameters, robot-state normalization/scaling)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: exact preprocessing details required by lerobot/smolvla_vlabench (precise image normalization values, tokenization parameters, and robot-state scaling) are not reported in the inspected primary sources."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/smolvla",
+            "https://huggingface.co/lerobot/smolvla_vlabench"
+          ],
+          "statement": "SmolVLA/lerobot/smolvla_vlabench accepts multimodal inputs comprising multiple camera views, the robot\u2019s current sensorimotor state, and a natural-language instruction."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx"
+          ],
+          "statement": "LeRobot VLABench documentation describes the VLABench task surfaces and how LeRobot exposes tasks; LeRobot exposes VLABench tasks for selection via its interfaces."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: a serialized robot_state schema (exact field names, types, units, and ordering) for lerobot/smolvla_vlabench is not provided in the inspected primary sources."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx",
+            "https://huggingface.co/lerobot/smolvla_vlabench"
+          ],
+          "statement": "LeRobot VLABench documentation describes how VLABench tasks and evaluation surfaces are organized and exposed via LeRobot tooling; the model card references the full documentation for running and evaluating the checkpoint with LeRobot."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx",
+            "https://huggingface.co/lerobot/smolvla_vlabench"
+          ],
+          "statement": "Before using the checkpoint on a task, verify that the target task is included in the VLABench scope exposed by LeRobot; LeRobot documentation organizes tasks and exposes them for selection."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the inspected primary checkpoint-scoped sources do not provide formal input bounds, schema validation rules, or explicit handling for invalid or out-of-range input cases for lerobot/smolvla_vlabench."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: an exact checkpoint revision identifier (e.g., git commit SHA or weights-file fingerprint) for lerobot/smolvla_vlabench is not reported in the inspected primary sources."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: a distinct model-weights license statement separate from code licensing is not present in the inspected primary sources for lerobot/smolvla_vlabench."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: a detailed architecture specification (layer counts, encoder/backbone, tokenizer identity and parameters) for the SmolVLA instance corresponding to lerobot/smolvla_vlabench is not reported in the inspected primary sources."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: no checkpoint-matched numeric benchmark rows (dataset/split/metric/value with evaluation conditions) explicitly naming lerobot/smolvla_vlabench were found in the inspected primary sources."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the inspected primary sources do not publish a formal serialized input or output schema (exact JSON/protobuf schema, field order, types, or units) bound to the lerobot/smolvla_vlabench checkpoint."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_vlabench",
+            "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx"
+          ],
+          "statement": "Interpret model outputs as policy actions that must be validated and safety-checked within the LeRobot/VLABench environment before any real-robot actuation; do not assume units, bounds enforcement, or safety clipping without downstream verification."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/smolvla",
+            "https://huggingface.co/lerobot/smolvla_vlabench"
+          ],
+          "statement": "SmolVLA encodes multimodal inputs into contextual features that are used to condition an action expert which generates action chunks (family-level design described in the SmolVLA documentation)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the inspected primary sources do not provide a formal, checkpoint-scoped output schema (JSON/protobuf), per-component units, explicit dimensionality, or clipping rules for lerobot/smolvla_vlabench outputs."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/smolvla_vlabench",
+            "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx"
+          ],
+          "statement": "Require task-level success testing and safety validation within the LeRobot/VLABench environment prior to real-robot deployment since checkpoint-scoped output guarantees are not provided in the inspected sources."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: no checkpoint-specific post-inference sanity checks, action-clipping rules, or safety filters for lerobot/smolvla_vlabench are documented in the inspected primary sources."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/smolvla_vlabench",
+          "https://huggingface.co/docs/lerobot/en/smolvla"
+        ],
+        "modelScope": "lerobot/smolvla_vlabench",
+        "useCase": "Research evaluation and prototyping of language-conditioned robotic manipulation policies using LeRobot/VLABench surfaces",
+        "why": "The Hugging Face model card for lerobot/smolvla_vlabench provides instructions to use the checkpoint with libraries, inference providers, notebooks, and local applications; SmolVLA documentation states the family is designed for easy fine-tuning on LeRobot datasets and to accelerate development."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/lerobot/en/smolvla",
+          "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx",
+          "https://huggingface.co/lerobot/smolvla_vlabench"
+        ],
+        "modelScope": "lerobot/smolvla_vlabench (family-level design applied to this checkpoint)",
+        "useCase": "Exploratory local prototyping of compact SmolVLA-family policies with LeRobot tooling",
+        "why": "SmolVLA is described as compact and deployable for efficient robotics experimentation; LeRobot/VLABench documentation provides the evaluation surfaces and tooling to run policies."
+      }
+    ],
+    "researchSummary": "SmolVLA is presented in the inspected primary sources as a compact, efficient vision-language-action family intended for robotics. The Hugging Face model card for lerobot/smolvla_vlabench and the official SmolVLA documentation state the family-level design: multimodal inputs (multiple camera views, the robot's sensorimotor state, and a natural-language instruction) are encoded into contextual features that condition an action expert producing action chunks. LeRobot VLABench documentation describes the benchmark/task surfaces and how LeRobot exposes tasks. The inspected primary checkpoint-scoped materials do not report an exact checkpoint revision identifier, a distinct model-weights license, parameter-scale metadata tied to this checkpoint, a serialized input/output schema for the checkpoint, or checkpoint-matched numeric benchmark rows explicitly naming lerobot/smolvla_vlabench.",
+    "safety": [
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: require human supervision, physical safety interlocks, and task-level constraints before any real-robot actuation when using lerobot/smolvla_vlabench because the inspected primary checkpoint-scoped documentation does not provide deployment safety certifications or fail-safe guarantees."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the inspected primary sources do not describe privacy, data-retention, or proprietary-data handling guarantees specific to lerobot/smolvla_vlabench."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Exact upstream checkpoint lerobot/smolvla_vlabench",
+        "primary": true,
+        "primaryReason": "First-party Hugging Face model card for the exact upstream checkpoint named in the audit scope; contains checkpoint identity and usage description tied to the Hub artifact.",
+        "publisher": "Hugging Face / LeRobot",
+        "sourceType": "model-card",
+        "supports": [
+          "identity.checkpoint",
+          "recommendedUseCases",
+          "researchSummary",
+          "inputPreparation.acceptedFormats",
+          "outputInterpretation.interpretation"
+        ],
+        "title": "lerobot/smolvla_vlabench model card",
+        "url": "https://huggingface.co/lerobot/smolvla_vlabench"
+      },
+      {
+        "modelScope": "LeRobot VLABench evaluation surfaces and observation/action schemas (repository docs)",
+        "primary": true,
+        "primaryReason": "First-party repository documentation describing VLABench benchmark structure, task surfaces, and LeRobot tooling used to run and evaluate policies.",
+        "publisher": "Hugging Face / LeRobot (repository)",
+        "sourceType": "repository",
+        "supports": [
+          "inputPreparation.semanticInputs",
+          "inputPreparation.validation",
+          "recommendedUseCases",
+          "researchSummary"
+        ],
+        "title": "LeRobot VLABench documentation (repo source)",
+        "url": "https://github.com/huggingface/lerobot/blob/main/docs/source/vlabench.mdx"
+      },
+      {
+        "modelScope": "SmolVLA family documentation (official docs build)",
+        "primary": true,
+        "primaryReason": "First-party Hugging Face documentation describing SmolVLA family usage patterns and high-level input semantics used for interpretation of the family/checkpoint.",
+        "publisher": "Hugging Face / LeRobot (official docs)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.upstreamName",
+          "architecture",
+          "recommendedUseCases",
+          "inputPreparation.semanticInputs",
+          "outputInterpretation.outputs"
+        ],
+        "title": "LeRobot documentation: SmolVLA docs (Hugging Face docs build)",
+        "url": "https://huggingface.co/docs/lerobot/en/smolvla"
+      },
+      {
+        "modelScope": "SmolVLA family-level evaluation and experiments (paper)",
+        "primary": true,
+        "primaryReason": "Author-published preprint containing family-level experimental comparisons and results reported by the model authors.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "researchSummary",
+          "comparisons"
+        ],
+        "title": "SmolVLA family-level evaluation (arXiv preprint)",
+        "url": "https://arxiv.org/abs/2506.01844"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "02aae96f8a7271498f9b8b78db9016e344a89ba49c9ae6b82fccbdacc59042ec",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-lerobot-smolvla-vlabench-d6edd20a8d",
+  "researchedAt": "2026-08-06T12:56:58.688011+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/lerobot/smolvla_vlabench",
+  "sourceUrls": [
+    "https://huggingface.co/lerobot/smolvla_vlabench"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

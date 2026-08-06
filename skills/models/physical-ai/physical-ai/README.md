@@ -2,6 +2,8 @@
 
 Category: `physical-ai` · exact model/version skills: 14
 
+[Audited model-selection dossier](research.md)
+
 - [Use NVIDIA Cosmos 3 Reasoner (Nano)](nvidia-cosmos3-reasoner-nano/SKILL.md) — `nano-bf16` · source-linked
 - [Use NVIDIA Cosmos 3 Reasoner (Super)](nvidia-cosmos3-reasoner-super/SKILL.md) — `super-bf16` · source-linked
 - [Use NVIDIA Cosmos Embed1](nvidia-cosmos-embed1/SKILL.md) — `1-1-0` · source-linked

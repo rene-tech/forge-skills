@@ -1,0 +1,368 @@
+# Audited model research
+
+## Contents
+
+- [Identity](#identity)
+- [Selection](#selection)
+- [Input preparation](#input-preparation)
+- [Output interpretation](#output-interpretation)
+- [Public benchmarks](#public-benchmarks)
+- [Comparisons](#comparisons)
+- [Limitations and safety](#limitations-and-safety)
+- [Related upstream agent skills](#related-upstream-agent-skills)
+- [Primary sources](#primary-sources)
+- [Evidence gaps](#evidence-gaps)
+
+- Research key: `docs-nvidia-com-nim-medical-maisi-latest-2a51c97c80`
+- Independent audit: `revised`
+- Researched: `2026-07-23T22:34:19.405035+00:00`
+
+MAISI Release 1.0.1 (NIM-packaged) is a research-oriented 3D latent-diffusion medical image generative system that uses a Volume Compression Network (VAE) plus a 3D UNet-based latent denoiser with attention blocks. NIM documentation reports the Release 1.0.1 package replaces a DDPM scheduler with a Rectified Flow scheduler (MAISI-v2 variants described upstream) and reports substantial inference speedups in the NIM release notes and overview pages. The NIM package exposes structured generation inputs (num_output_samples, body_region, anatomy_list, output_size, spacing, controllable_anatomy_size) and produces volumetric outputs (NIfTI/DICOM/NRRD) and paired segmentation masks when anatomy conditioning is used. The inspected primary sources do not report immutable checkpoint file identifiers, revision hashes, or parameter counts for the NIM-served weights; model-fine-tuning notes indicate NIM 1.0.1 only supports model version 1.0.0. Primary sources show some conflicting upper-bound voxel-spacing statements across pages (NGC catalog vs NIM model-details); this conflict is recorded as an evidence gap. Numeric performance claims (e.g., 10x overall speedup and 33x Rectified Flow acceleration) are reported on official NIM pages and are included below with source locators referencing the cited NIM pages; however, the detailed benchmark protocols (exact hardware/seeds/step counts) required to reproduce those speedups are not fully enumerated in the inspected primary pages and are recorded as evidence gaps.
+
+## Identity
+
+- Upstream name: MAISI
+- Checkpoint/version: MAISI Release 1.0.1 (NIM packaging; note: NIM 1.0.1 supports model version 1.0.0 per model-fine-tuning docs)
+- Immutable revision: not reported
+- Parameter scale: not reported
+- Architecture/head: Volume Compression Network (VAE) + 3D latent diffusion denoiser (3D UNet with attention blocks); MAISI-v2 / Rectified Flow variant described in upstream materials
+- License: Evidence gap: Exact model-weight license text and explicit code-vs-weights license separation not fully reported in inspected primary pages; NGC model bundle file browser shows a LICENSE file for the bundle (see NGC file-browser source).
+- Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://docs.nvidia.com/nim/medical/maisi/latest/release-notes.html, https://catalog.ngc.nvidia.com/orgs/nvidia/monaitoolkit/models/monai_maisi_ct_generative/-/file-browser, https://arxiv.org/abs/2409.11169, https://arxiv.org/html/2508.05772v1, https://github.com/NVIDIA-Medtech/NV-Generate-CTMR, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+
+## Selection
+
+### Recommended
+
+- **Research-grade generation of synthetic 3D CT volumes for data augmentation (paired image + segmentation)** — NVIDIA NIM documentation and the NGC model bundle listing describe MAISI as a 3D latent-diffusion generative model that produces CT volumes with paired segmentation masks and exposes parameters for sample count, body region, anatomy conditioning, output_size, spacing, and controllable anatomy size; MONAI tutorials also integrate MAISI examples.
+  Scope: MAISI Release 1.0.1 (NIM packaging) — uses the NIM-served model bundle (monai_maisi_ct_generative) and upstream MAISI architecture variants as described in the upstream paper and repository (upstream-checkpoint evidence: arXiv and NV-Generate-CTMR).
+  Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative, https://github.com/Project-MONAI/tutorials/blob/main/generation/maisi/README.md
+- **Generation of paired segmentation masks alongside synthetic CT volumes for training/augmenting segmentation models (research/benchmarking)** — NIM model details and the NGC model bundle listing report that MAISI produces paired segmentation label maps when anatomy conditioning is used.
+  Scope: MAISI Release 1.0.1 (NIM packaging); paired-output behavior documented in NIM model-details and NGC bundle listing.
+  Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+
+### Conditional
+
+- **Use synthetic MAISI data for downstream segmentation experiments or augmentation subject to held-out validation** — Requires downstream validation on held-out real datasets using established metrics (e.g., DSC); ensure voxel spacing and output_size chosen for synthetic data match downstream model expectations. Report experiment protocol (splits, seeds, hardware) because NIM primary pages do not fully enumerate reproduction protocols.
+  Scope: MAISI Release 1.0.1 (NIM packaging) with upstream experimental variants described in arXiv and NV-Generate-CTMR (upstream-checkpoint evidence separated).
+  Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/performance.html, https://arxiv.org/abs/2409.11169
+- **Generation of smaller head-region or small-volume outputs for controlled research experiments** — Validate image fidelity empirically for smaller volumes; confirm chosen output_size and spacing are among API-supported discrete options and within supported spacing bounds documented in model-details and NGC catalog.
+  Scope: MAISI Release 1.0.1 (NIM packaging)
+  Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+
+### Avoid
+
+- **Clinical diagnostic use or deployment for clinical decision-making** — NVIDIA NIM documentation explicitly states MAISI is intended for research purposes only and not for clinical usage.
+  Scope: MAISI Release 1.0.1 (NIM packaging)
+  Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html
+- **Treating generated images or segmentation outputs as per-voxel calibrated likelihoods for clinical interpretation** — Inspected primary sources do not provide evidence that MAISI returns per-voxel or per-structure calibrated confidence scores; segmentation outputs are reported as paired label maps but no calibration outputs are documented.
+  Scope: MAISI Release 1.0.1 (NIM packaging)
+  Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://docs.nvidia.com/nim/medical/maisi/latest/performance.html
+
+## Input preparation
+
+### Semantic inputs
+
+- num_output_samples is a required integer parameter specifying how many synthetic images to generate. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+- body_region is a required list of allowed strings selecting the target body region (examples listed: head, chest, thorax, abdomen, pelvis, lower). Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+- anatomy_list is an optional list-of-strings for anatomical conditioning; when provided, MAISI produces paired segmentation label maps. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- output_size is a three-integer parameter describing image dimensions; documented allowed x,y options include {128, 256, 384, 512} and z options include {128, 256, 384, 512, 640, 768}. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+- spacing is a three-float parameter specifying voxel spacing in millimetres; NIM model-details document spacing values in the range 0.5 to 5.0 mm (note: NGC listing reports 0.5–3.0 mm — conflict recorded as an evidence gap). Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/nim/containers/maisi/-
+- controllable_anatomy_size accepts up to 10 tuples of (organ_name, size_value) for controlling organ/tumor size; documented example organ names and allowed size_value range (0.0–1.0 or -1 for deletion) are listed in model-details. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+
+### Accepted formats
+
+- MAISI outputs volumetric files in NIfTI, DICOM, and NRRD formats as reported in NIM model-details and NGC bundle listing. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+
+### Preprocessing
+
+- MAISI inference operates in a compressed latent space produced by a Volume Compression Network (VAE): inference generates latent features via denoising steps and then decodes them into images using the trained autoencoder. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- Repository inference guidance (NV-Generate-CTMR) documents that output_size (dim) must be divisible by 16 and that spacing defines voxel size in millimetres; output_size × spacing equals field of view. Sources: https://github.com/NVIDIA-Medtech/NV-Generate-CTMR/blob/main/docs/inference.md
+
+### Pre-submit validation
+
+- Documented input validation rules include: num_output_samples must be a positive integer; body_region must be one of documented allowed strings; output_size entries must be among documented discrete sizes; spacing floats are documented to lie within [0.5, 5.0] in model-details. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+- Evidence gap: A formal per-field machine-readable validation schema (e.g., JSON Schema) or canonical example JSON payload and exact HTTP endpoint path for requests was not found in the inspected primary pages. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://docs.nvidia.com/nim/medical/maisi/latest/release-notes.html
+
+### Task-specific formatting
+
+- The NIM-served model accepts structured generation parameters (num_output_samples, body_region, anatomy_list, output_size, spacing, controllable_anatomy_size) as documented in model-details and NGC bundle descriptions; exact example request/response payloads were not located. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- Evidence gap: The inspected primary sources do not provide a concrete canonical example JSON payload or the precise HTTP endpoint path and example request/response pairs for submission; this exact request-payload-format was not verifiable from the available facts. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://docs.nvidia.com/nim/medical/maisi/latest/release-notes.html
+
+## Output interpretation
+
+### Outputs
+
+- Volumetric 3D CT image output: MAISI can produce high-resolution CT volumes; NIM documentation reports support up to 512×512×768 voxels. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- Paired segmentation masks: when anatomy conditioning (anatomy_list or controllable_anatomy_size) is used, MAISI returns per-voxel segmentation label maps alongside generated images. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- Returned file formats include NIfTI, DICOM, and NRRD as reported by the NIM model-details and NGC listing. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+
+### Interpretation
+
+- Interpret MAISI outputs as synthetic images intended for research and augmentation; do not assume clinical-grade imaging or calibrated per-voxel likelihoods unless explicit calibration outputs are documented. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+- Voxel spacing units are millimetres; output_size units are voxels. Confirm chosen spacing and output_size match downstream training/validation data prior to augmentation experiments. Sources: https://github.com/NVIDIA-Medtech/NV-Generate-CTMR/blob/main/docs/inference.md, https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+
+### Post-inference validation
+
+- Primary performance reporting references Dice Similarity Coefficient (DSC) as an evaluation metric and example evaluation with VISTA-3D at 1 mm voxel spacing is mentioned on the NIM performance page. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/performance.html
+- Evidence gap: No primary-source documentation in the inspected pages provides MAISI-returned per-voxel or per-structure confidence/calibration scores or automated post-inference calibration procedures; external validation pipelines were used in reported experiments. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/performance.html, https://arxiv.org/abs/2409.11169
+
+## Public benchmarks
+
+### Inference throughput / generation speed for 512×512×512 voxel images
+
+- Dataset/split: not applicable (runtime/throughput measurement for synthetic generation) / not reported
+- Metric/value: Relative generation speed (multiplicative speedup vs previous NIM release) / 10× (`higher-is-better`)
+- Model scope: MAISI Release 1.0.1 (NIM packaging) measured against MAISI Release 1.0.0 as reported by NIM release notes
+- Conditions: Reported as comparison between NIM release versions; primary page does not enumerate full benchmark protocol (hardware details partially given elsewhere, seeds/step-counts not enumerated).
+- Source: https://docs.nvidia.com/nim/medical/maisi/latest/release-notes.html
+- Locator: release-notes page text (main release-notes entry)
+- Caveat: Primary source (release-notes) reports 10× speed improvement but does not provide a full reproducibility protocol (exact hardware configuration, seeds, measurement code, or step-counts) in the cited page.
+
+### Latent-diffusion inference scheduler acceleration (Rectified Flow vs DDPM)
+
+- Dataset/split: not applicable (algorithmic scheduler/inference step count comparison) / not reported
+- Metric/value: Relative inference speed (scheduler acceleration reported by NIM overview) / 33× (`higher-is-better`)
+- Model scope: MAISI Release 1.0.1 (NIM packaging) with MAISI-v2 / Rectified Flow described in upstream materials and NIM overview
+- Conditions: Reported scheduler-level acceleration; detailed benchmark protocol and reproduction details not enumerated on the overview page.
+- Source: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html
+- Locator: overview page text (main body)
+- Caveat: The overview page reports a 33× Rectified Flow acceleration; the precise benchmarking protocol to reproduce this multiplier (hardware, steps, seeds) is not provided on that page.
+
+## Comparisons
+
+### insufficient-evidence — `insufficient-evidence`
+
+- Task: Task-level quality and modality comparison for medical image generation or augmentation
+- Criteria: Protocol-matched head-to-head comparison requires same dataset split, same checkpoint, identical evaluation code and seeds; inspected primary sources do not contain such matched head-to-head comparisons to other Forge candidates.
+- Rationale: Inspected primary sources (NIM docs, arXiv paper, NV-Generate-CTMR repository, and NGC model bundle) do not include matched-protocol comparative tables referencing other Forge candidates; therefore direct preference claims cannot be supported from primary evidence.
+- Comparison conditions: Requires protocol alignment (dataset, split, checkpoint version, evaluation code).
+- Evidence: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://arxiv.org/abs/2409.11169, https://github.com/NVIDIA-Medtech/NV-Generate-CTMR, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+
+## Limitations and safety
+
+### Limitations
+
+- MAISI is intended for research purposes only and explicitly not for clinical usage. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html
+- The API constrains output_size to discrete allowed values and spacing to a documented numeric range; this limits arbitrary volume shapes or voxel-spacing choices. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- Exact immutable upstream checkpoint file identifiers, revision hashes, and parameter counts are not reported in the inspected primary NIM documentation, NGC file browser, or upstream repository pages. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://catalog.ngc.nvidia.com/orgs/nvidia/monaitoolkit/models/monai_maisi_ct_generative/-/file-browser, https://github.com/NVIDIA-Medtech/NV-Generate-CTMR
+- Conflicting upper-bound voxel-spacing statements exist between primary sources (NGC catalog lists 0.5–3.0 mm while NIM model-details lists 0.5–5.0 mm); inspected primary sources do not provide an explicit reconciliation. Sources: https://catalog.ngc.nvidia.com/orgs/nvidia/nim/containers/maisi/-, https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+- Performance claims (10× overall speedup and 33× Rectified Flow acceleration) are reported on NIM pages but the exact benchmark reproduction protocol (hardware details, seeds, step-counts) required to reproduce the reported speedups is not fully enumerated in the inspected primary pages. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/release-notes.html, https://docs.nvidia.com/nim/medical/maisi/latest/overview.html
+
+### Safety
+
+- MAISI is labeled research-only; do not use for clinical decision-making. Treat generated images as synthetic and subject to validation before any downstream research use affecting patient care. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- MAISI can help address privacy concerns via synthetic data augmentation, but no formal PHI-handling procedures or regulatory clearance claims are provided in inspected primary sources. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html, https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- Evidence gap: Inspected primary sources do not provide prescriptive clinical expert-review requirements or a mandated regulatory pathway; documentation states research-only usage but does not enumerate required expert review steps for downstream deployment. Sources: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html
+
+## Related upstream agent skills
+
+### `related-model-workflow`
+
+These NVIDIA-authored skills document related NV-Generate/MAISI medical-image generation workflows. Confirm the exact NIM mode and payload before applying any instruction to nvidia-maisi-nim.
+- [nv-generate-ct-rflow](https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nv-generate-ct-rflow)
+- [nv-generate-mr](https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nv-generate-mr)
+- [nv-generate-mr-brain](https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nv-generate-mr-brain)
+
+## Primary sources
+
+### MAISI overview (NVIDIA NIM docs)
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/overview.html
+- Publisher: NVIDIA
+- Type: `official-documentation`
+- Primary because: Official NVIDIA NIM product documentation describing MAISI Release 1.0.1 features and high-level capabilities.
+- Scope: MAISI Release 1.0.1 (NIM documentation)
+- Supports: MAISI replaces DDPM scheduler with Rectified Flow in Release 1.0.1 and reports Rectified Flow acceleration (33×) and overall 10× speed improvement claims.
+- Supports: MAISI can generate high-resolution 3D CT images up to 512×512×768 voxels.
+- Supports: MAISI produces paired segmentation masks and is intended for research-only use.
+
+### MAISI model details (NVIDIA NIM docs)
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html
+- Publisher: NVIDIA
+- Type: `official-documentation`
+- Primary because: Official NIM documentation listing model input parameters, allowed values, supported outputs, and architecture notes.
+- Scope: MAISI model architecture and input/output contract (NIM packaging)
+- Supports: Input parameters and allowed values (num_output_samples, body_region, anatomy_list, output_size discrete options, spacing range documented as 0.5–5.0 mm, controllable_anatomy_size semantics).
+- Supports: Architecture description: 3D UNet with attention blocks and VAE+latent diffusion workflow.
+- Supports: Supported output formats (NIfTI, DICOM, NRRD) and paired segmentation behavior.
+
+### MAISI release notes (NVIDIA NIM docs)
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/release-notes.html
+- Publisher: NVIDIA
+- Type: `official-documentation`
+- Primary because: Official NIM release notes describing changes and performance claims for Release 1.0.1.
+- Scope: MAISI Release 1.0.1 (NIM release notes)
+- Supports: Release 1.0.1 reports inference speed improvements (10× for certain volumes) compared to the previous release.
+- Supports: Release notes identify Release 1.0.0 as the prior general release.
+
+### MAISI performance page (NVIDIA NIM docs)
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/performance.html
+- Publisher: NVIDIA
+- Type: `official-documentation`
+- Primary because: Official NIM documentation describing evaluation approach and example metrics.
+- Scope: MAISI performance evaluation notes
+- Supports: Performance reporting references Dice Similarity Coefficient (DSC) and example evaluation with VISTA-3D at 1 mm voxel spacing.
+- Supports: Performance notes and environment-specific remarks (e.g., WSL slowdowns) and hardware references.
+
+### MAISI getting-started (NVIDIA NIM docs)
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/getting-started.html
+- Publisher: NVIDIA
+- Type: `official-documentation`
+- Primary because: Official NIM getting-started and system/hardware requirements documentation for MAISI.
+- Scope: MAISI NIM system requirements and deployment notes
+- Supports: System and hardware prerequisites and deployment notes for running the MAISI NIM container.
+
+### MAISI advanced usage (NVIDIA NIM docs)
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/advanced-usage.html
+- Publisher: NVIDIA
+- Type: `official-documentation`
+- Primary because: Official NIM advanced usage notes describing multi-GPU behavior and model bundle handling.
+- Scope: MAISI NIM advanced usage
+- Supports: Multi-GPU processing behavior for num_output_samples and automatic model bundle download behavior.
+
+### MAISI model-fine-tuning notes (NVIDIA NIM docs)
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/model-fine-tuning.html
+- Publisher: NVIDIA
+- Type: `official-documentation`
+- Primary because: Official NIM documentation noting model-version compatibility and file/folder naming constraints for fine-tuned models.
+- Scope: MAISI model-fine-tuning / version compatibility
+- Supports: NIM container version 1.0.1 only supports model version 1.0.0; file and folder names must match model version 1.0.0 for fine-tuned models.
+
+### NGC container listing for MAISI
+
+- URL: https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/maisi/-
+- Publisher: NVIDIA NGC
+- Type: `repository`
+- Primary because: Official NGC container listing for MAISI runtime artifacts associated with NIM packaging.
+- Scope: NGC container listing for MAISI
+- Supports: Claims about high-resolution generation capability up to 512×512×768 voxels as presented in the NGC container entry.
+- Supports: NGC container page lists supported voxel spacing range in its listing (reported 0.5–3.0 mm in NGC catalog).
+
+### MAISI model bundle on NGC (MONAI toolkit listing)
+
+- URL: https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative
+- Publisher: NVIDIA NGC / MONAI toolkit
+- Type: `repository`
+- Primary because: Official NGC model bundle listing describing the MAISI/monai_maisi_ct_generative bundle.
+- Scope: MAISI NGC model bundle (monai_maisi_ct_generative)
+- Supports: Bundle described as a 3D Latent Diffusion Model with paired segmentation outputs, variable volume/voxel size support, and controllable organ/tumor size.
+
+### NGC model bundle file browser (LICENSE file)
+
+- URL: https://catalog.ngc.nvidia.com/orgs/nvidia/monaitoolkit/models/monai_maisi_ct_generative/-/file-browser
+- Publisher: NVIDIA NGC
+- Type: `repository`
+- Primary because: Official NGC file browser showing files shipped with the MAISI model bundle, including a LICENSE file.
+- Scope: MAISI NGC model bundle file browser
+- Supports: Presence of a LICENSE file in the NGC model bundle (evidence for license statements).
+
+### MAISI paper (arXiv preprint)
+
+- URL: https://arxiv.org/abs/2409.11169
+- Publisher: arXiv / MAISI authors
+- Type: `paper`
+- Primary because: Original upstream research preprint describing MAISI architecture, datasets, and experimental results.
+- Scope: Upstream MAISI paper and experiments
+- Supports: Description of VAE + latent diffusion foundation and experimental augmentation results (paper-level experiments).
+
+### MAISI-v2 (Rectified Flow) paper HTML
+
+- URL: https://arxiv.org/html/2508.05772v1
+- Publisher: arXiv / MAISI authors
+- Type: `paper`
+- Primary because: Upstream preprint describing MAISI-v2 (Rectified Flow) variant and its reported acceleration and architectural notes.
+- Scope: MAISI-v2 (Rectified Flow) upstream paper
+- Supports: MAISI-v2 replaces DDPM with Rectified Flow and reports substantial acceleration (~33×) and reuse of pretrained MAISI VAE.
+
+### NV-Generate-CTMR repository (NVIDIA-Medtech GitHub)
+
+- URL: https://github.com/NVIDIA-Medtech/NV-Generate-CTMR
+- Publisher: NVIDIA-Medtech (GitHub)
+- Type: `repository`
+- Primary because: Official upstream repository documenting MAISI family code, variants, and inference guidance.
+- Scope: NV-Generate-CTMR / MAISI family code and variant descriptions
+- Supports: Repository documents MAISI variants, inference workflow, and guidance (spacing definition, output_size divisibility, controllable_anatomy_size behavior).
+
+### NV-Generate-CTMR inference guidance (repo doc)
+
+- URL: https://github.com/NVIDIA-Medtech/NV-Generate-CTMR/blob/main/docs/inference.md
+- Publisher: NVIDIA-Medtech (GitHub)
+- Type: `repository`
+- Primary because: Repository documentation providing inference guidance and parameter semantics.
+- Scope: Inference guidance and recommended FOV/spacing rules
+- Supports: output_size must be divisible by 16; spacing defines voxel size in millimetres; output_size × spacing equals field of view; recommended output_size/spacing examples for chest/abdomen are provided.
+
+### MAISI tutorial README (Project MONAI tutorials)
+
+- URL: https://github.com/Project-MONAI/tutorials/blob/main/generation/maisi/README.md
+- Publisher: Project MONAI
+- Type: `repository`
+- Primary because: Official MONAI tutorial materials including MAISI usage examples and measured inference timings.
+- Scope: MONAI tutorial integration and measured inference facts
+- Supports: MONAI tutorial materials demonstrate MAISI usage and report empirical timings/usage notes for MAISI variants.
+
+### MONAI whatsnew (Project MONAI docs)
+
+- URL: https://monai.readthedocs.io/en/stable/whatsnew_1_4.html
+- Publisher: Project MONAI
+- Type: `official-documentation`
+- Primary because: MONAI project documentation referencing MAISI integration and tutorials.
+- Scope: MONAI documentation references to MAISI
+- Supports: MONAI documentation references MAISI as a 3D latent diffusion model and links to tutorials.
+
+### Project MONAI website
+
+- URL: https://project-monai.github.io
+- Publisher: Project MONAI
+- Type: `official-documentation`
+- Primary because: Project site providing ecosystem context and linking to MAISI-related resources and tutorials.
+- Scope: MONAI ecosystem context for MAISI
+- Supports: Project-level context and links to MAISI resources and tutorials.
+
+### Cited official first-party source
+
+- URL: https://catalog.ngc.nvidia.com/orgs/nvidia/nim/containers/maisi/-
+- Publisher: catalog.ngc.nvidia.com
+- Type: `official-documentation`
+- Primary because: The independent audit cited this exact URL and its host is narrowly allowlisted as a first-party model or vendor documentation source.
+- Scope: nvidia-maisi
+- Supports: Exact independently audited claim citation
+
+### Exact official starting source declared by Forge
+
+- URL: https://docs.nvidia.com/nim/medical/maisi/latest/
+- Publisher: docs.nvidia.com
+- Type: `official-documentation`
+- Primary because: The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.
+- Scope: nvidia-maisi
+- Supports: Forge-to-upstream exact-version identity
+
+## Evidence gaps
+
+- Evidence gap: Exact immutable checkpoint file identifiers or revision hashes for the MAISI Release 1.0.1 model weights were not found in the inspected primary sources (checked NIM model-details, NGC file browser, and NV-Generate-CTMR repository).
+- Evidence gap: Exact model parameter count / model scale (number of parameters) is not reported in the inspected primary sources (checked arXiv preprint, NIM model-details, and NV-Generate-CTMR repository).
+- Evidence gap: The inspected primary pages do not provide a full, formal per-field machine-readable validation schema (e.g., JSON Schema) nor canonical example JSON payloads or the precise HTTP endpoint path for generation requests (checked NIM model-details, release-notes, and NGC file browser).
+- Evidence gap: Conflicting statements about maximum supported voxel spacing were found across primary sources (NGC catalog vs NIM model-details); inspected locators: https://catalog.ngc.nvidia.com/orgs/nvidia/nim/containers/maisi/- and https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html — no explicit reconciliation page was located.
+- Evidence gap: Exact benchmark reproduction protocols (detailed hardware, seeds, step-counts, measurement code) required to reproduce reported speedups (10× and 33×) are not fully enumerated on the cited NIM pages (checked https://docs.nvidia.com/nim/medical/maisi/latest/release-notes.html and https://docs.nvidia.com/nim/medical/maisi/latest/overview.html).
+- Evidence gap: No explicit primary-source evidence was found that MAISI returns per-voxel or per-structure calibrated confidence scores; inspected pages include model-details and performance pages (https://docs.nvidia.com/nim/medical/maisi/latest/model-details.html, https://docs.nvidia.com/nim/medical/maisi/latest/performance.html) and upstream paper (https://arxiv.org/abs/2409.11169).
+
+## Independent audit
+
+Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 8 deterministic draft defect(s) were supplied to the audit.
+
+- `medium` official starting source is absent from $.sources: official starting source is absent from $.sources: https://docs.nvidia.com/nim/medical/maisi/latest/ Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.sources[8] uses forbidden secondary URL https: $.sources[8] uses forbidden secondary URL https://huggingface.co/nvidia/NV-Generate-CT/discussions/1/files Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.sources[8].primary must be true: $.sources[8].primary must be true Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.sources[9] uses forbidden secondary URL https: $.sources[9] uses forbidden secondary URL https://developer.nvidia.com/blog/synthesize-realistic-3d-medical-images-at-scale-to-ship-pre-trained-models Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.sources[11].primary must be true: $.sources[11].primary must be true Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://catalog.ngc.nvidia.com/orgs/nvidia/teams/monaitoolkit/models/monai_maisi_ct_generative Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path: $.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading: $.benchmarks[0].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `low` https://catalog.ngc.nvidia.com/orgs/nvidia/nim/containers/maisi/-: Audited claim cited a first-party child URL omitted from the source index. Resolution: The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.
+- `low` https://docs.nvidia.com/nim/medical/maisi/latest/: Audited claim cited a first-party child URL omitted from the source index. Resolution: The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.

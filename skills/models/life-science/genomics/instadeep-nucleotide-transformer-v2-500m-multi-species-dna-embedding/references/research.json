@@ -1,0 +1,549 @@
+{
+  "audit": {
+    "issues": [],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 0 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "InstaDeep Nucleotide Transformer v2 500M multi-species is a DNA foundation model for sequence representation and regulatory/genomics tasks.",
+      "displayName": "Use Nucleotide Transformer v2 500M Multi-Species DNA Embeddings",
+      "group": "genomics",
+      "inputModalities": [
+        "dna_sequence"
+      ],
+      "license": "cc-by-nc-sa-4.0",
+      "modelFamily": "instadeep-nucleotide-transformer-v2-500m-multi-species",
+      "outputModalities": [
+        "embedding",
+        "json"
+      ],
+      "slug": "instadeep-nucleotide-transformer-v2-500m-multi-species-dna-embedding",
+      "sourceUrl": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+      "version": "hf-main-clawbio-dna-mlm-20260605",
+      "versionKey": "hf-main-clawbio-dna-mlm-20260605"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf"
+        ],
+        "modelScope": "nucleotide-transformer-v2-500m-multi-species",
+        "reason": "Primary upstream sources (model card, README, and canonical paper) do not state the model is validated or approved for clinical use and provide no clinical certification, PHI handling instructions, or clinical deployment guidance for the checkpoint.",
+        "useCase": "Clinical diagnostic or direct clinical\u2011decision use without expert review"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "The examined upstream materials show multiple reported aggregate/mean numbers across document versions (bioRxiv v3/v4) and family pages; exact per\u2011task rows are in Supplementary Table 6 and mapping to the exact Forge checkpoint id d6a0a7b1d7 is not provided by upstream sources.",
+          "Reported mean MCC values depend on downstream fine\u2011tuning protocol and are not produced by a callable base embedding output alone; authors fine\u2011tuned models prior to evaluation."
+        ],
+        "conditions": "Pre\u2011trained then fine\u2011tuned on 18 curated genomic prediction tasks; downstream results require fine\u2011tuning and the downstream head used by authors (see paper/supplements).",
+        "dataset": "18 curated genomic prediction tasks (as reported in paper; exact per\u2011task dataset names are in the paper/supplementary tables)",
+        "direction": "higher-is-better",
+        "metric": "Mean Matthews Correlation Coefficient (MCC)",
+        "modelScope": "NT\u2011Multispecies\u2011v2 (500M) as reported in the paper (mapped to nucleotide-transformer-v2-500m-multi-species family)",
+        "sourceLocator": "Main text and supplementary tables (Supplementary Table 6 referenced for per\u2011task MCCs)",
+        "sourceUrl": "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+        "split": "not reported",
+        "task": "Downstream genomic prediction (aggregated categories)",
+        "value": "0.778 \u00b1 0.012 (reported for NT\u2011Multispecies\u2011v2 500M in paper summary / supplementary references)"
+      },
+      {
+        "caveats": [
+          "The Research Findings include per\u2011task MCC rows in Supplementary Table 6 but mapping from each numerical row to a specific checkpoint revision or to the Forge id d6a0a7b1d7 is not provided in the examined upstream files.",
+          "An updated figure in a later upstream document (bioRxiv v4, Figure 5) reports a different reported mean MCC (0.762) for NT\u2011Multispecies\u2011v2 (500M), indicating versioned document differences that create ambiguity in aggregate reporting."
+        ],
+        "conditions": "Fine\u2011tuning on curated downstream tasks as described in the paper; exact seed/split/hardware details are described in supplementary materials but not reproduced here.",
+        "dataset": "Supplementary Table 6 (paper/supplementary materials)",
+        "direction": "higher-is-better",
+        "metric": "Matthews Correlation Coefficient (MCC) per downstream task",
+        "modelScope": "NT\u2011Multispecies\u2011v2 (500M) per the paper supplement",
+        "sourceLocator": "Supplementary Table 6",
+        "sourceUrl": "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+        "split": "not reported",
+        "task": "Downstream genomic prediction (per\u2011task entries reported in Supplementary Table 6)",
+        "value": "Per\u2011task MCC values reported in Supplementary Table 6 for NT\u2011Multispecies\u2011v2 (500M) (example entries reported in the upstream supplement)."
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "HuggingFaceBio/Carbon-3B",
+        "comparisonConditions": "Direct comparisons would require identical datasets/splits, fine\u2011tuning protocols, seeds and hardware; these were not jointly reported for the alternatives in the examined upstream sources.",
+        "criteria": "No direct primary\u2011source, protocol\u2011matched benchmark comparisons between the exact NT\u2011Multispecies\u2011v2 500M checkpoint and the listed alternative under identical evaluation conditions were found in the examined upstream materials.",
+        "evidenceUrls": [
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+        ],
+        "rationale": "The canonical paper and model card report NT family benchmarks but do not present direct task\u2011and\u2011protocol matched comparisons to the listed Forge alternatives within the same primary sources.",
+        "task": "Downstream genomic prediction (family\u2011reported tasks)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "LongSafari/hyenadna-medium-450k",
+        "comparisonConditions": "Missing joint, primary\u2011source benchmarks under identical protocols.",
+        "criteria": "No primary\u2011source evidence of protocol\u2011matched comparisons.",
+        "evidenceUrls": [
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+        ],
+        "rationale": "Examined primary sources for NT\u2011v2 do not include direct, protocol\u2011matched benchmarking against this alternative.",
+        "task": "Downstream genomic prediction (family\u2011reported tasks)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "zhihan1996/DNABERT-2-117M",
+        "comparisonConditions": "Direct comparison requires identical dataset/split and fine\u2011tuning protocols which are not jointly reported.",
+        "criteria": "No primary\u2011source evidence of protocol\u2011matched comparisons.",
+        "evidenceUrls": [
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+        ],
+        "rationale": "The NT paper and model card do not present direct comparisons with the listed alternative under identical evaluation conditions in the examined sources.",
+        "task": "Downstream genomic prediction (family\u2011reported tasks)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires downstream labeled data and application of the paper's fine\u2011tuning protocol (authors report fine\u2011tuning on 18 curated tasks); results depend on downstream head architecture and fine\u2011tuning details.",
+        "evidenceUrls": [
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+        ],
+        "modelScope": "nucleotide-transformer-v2-500m-multi-species (pre\u2011trained checkpoint; downstream performance requires fine\u2011tuning as in the paper)",
+        "useCase": "Task\u2011specific fine\u2011tuning for supervised genomics prediction"
+      },
+      {
+        "conditions": "Repository-level claims and examples in the family repository indicate controllable generation is possible for the family, but explicit generation protocols, conditioning formats, and checkpoint\u2011scoped generation examples for the 500M multispecies checkpoint are not documented in the examined checkpoint files; downstream experimental validation is required.",
+        "evidenceUrls": [
+          "https://github.com/instadeepai/nucleotide-transformer"
+        ],
+        "modelScope": "nucleotide-transformer family (generation capability described at repository level; not documented for the exact 500M checkpoint files examined)",
+        "useCase": "Controllable sequence generation or sequence design (experimental)"
+      }
+    ],
+    "evidenceGaps": [
+      "Exact upstream checkpoint identifier mapping: No examined upstream file or model card provides a concrete mapping from the Forge checkpoint id d6a0a7b1d7 to an immutable upstream weights file name or file\u2011hash; checkpoint/revision is not reported in the examined sources.",
+      "Exact model\u2011weight license: The repository LICENSE.md lists Apache\u20112.0 for code and CC BY\u2011NC\u2011SA 4.0 for repository material, but the examined Hugging Face model card and checkpoint files do not explicitly declare a model\u2011weights license; an explicit model\u2011weight license statement is not reported.",
+      "I/O serialization contract: The examined upstream files do not specify exact API/JSON field names, embedding array key names, or numeric precision for embedding serialization; this is not reported in the model card, config, tokenizer, or paper.",
+      "Pooling/default embedding extraction: No upstream documentation specifies a default pooling strategy (CLS pooling, mean pooling, specified layer) for producing sequence\u2011level embeddings from per\u2011token hidden states for this checkpoint.",
+      "Tokenizer max\u2011length inconsistency: tokenizer_config.json for the 500M checkpoint lists model_max_length=2048, while some family pages and examples reference other maximum token lengths for family variants; no authoritative file reconciles this inconsistency for the exact 500M checkpoint.",
+      "Truncation / stride behavior for sequences longer than max length: Upstream tokenizer config and README do not document explicit truncation, cropping, or stride behavior for inputs exceeding model_max_length for this checkpoint.",
+      "Reverse\u2011complement handling and paired\u2011input support: No explicit rules for reverse\u2011complement handling, paired\u2011input formats, or IUPAC ambiguity code handling are documented for the checkpoint files examined.",
+      "Exact numerical benchmark provenance for every reported aggregated metric: While per\u2011task rows appear in Supplementary Table 6 and aggregated numbers appear in paper figures, mapping of every numeric entry to a specific checkpoint revision or the Forge id d6a0a7b1d7 is not provided; updated preprint versions contain differing reported aggregates, creating an ambiguity.",
+      "Protocol\u2011matched comparisons to listed Forge alternatives: No primary\u2011source, protocol\u2011matched direct comparisons between this exact checkpoint and the listed Forge alternatives were found in the examined upstream materials.",
+      "Runtime / serving contract: Upstream sources do not document a Forge/NIM/runtime API contract (JSON field names, default batching, numeric precision, latency/memory footprints) for this checkpoint; these are not present in the examined model card, config, tokenizer, or paper."
+    ],
+    "family": "huggingface-co-instadeepai-nucleotide-transformer-v2-500m-multi-species-d6a0a7b1d7",
+    "identity": {
+      "architecture": "EsmForMaskedLM; config.json fields: hidden_size=1024, intermediate_size=4096, num_hidden_layers=29, num_attention_heads=16, position_embedding_type=rotary",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/config.json",
+        "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/f1fd7a1df5b19d31b88f11db1ce87caeb1ea4d2a/tokenizer_config.json",
+        "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/vocab.txt",
+        "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+        "https://github.com/instadeepai/nucleotide-transformer",
+        "https://github.com/instadeepai/nucleotide-transformer/blob/main/LICENSE.md"
+      ],
+      "license": "not reported",
+      "parameterScale": "500 million parameters",
+      "revision": "not reported",
+      "upstreamName": "nucleotide-transformer-v2-500m-multi-species"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/vocab.txt"
+          ],
+          "statement": "Tokenization vocabulary contains 6\u2011mer tokens (vocab.txt file lists k\u2011mer token strings)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/f1fd7a1df5b19d31b88f11db1ce87caeb1ea4d2a/tokenizer_config.json"
+          ],
+          "statement": "Tokenizer class declared for the checkpoint is EsmTokenizer (tokenizer_config.json)."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-250m-multi-species",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-100m-multi-species"
+          ],
+          "statement": "Upstream tokenizer and family documentation describe non\u2011overlapping 6\u2011mer tokenization where possible with fallback to single\u2011nucleotide tokens."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/f1fd7a1df5b19d31b88f11db1ce87caeb1ea4d2a/tokenizer_config.json"
+          ],
+          "statement": "The tokenizer configuration for the 500M checkpoint sets model_max_length / max_model_input_size = 2048 (tokenizer_config.json)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-250m-multi-species"
+          ],
+          "statement": "Pretraining used BERT\u2011style masking with a [MASK] token as described in the model README/family documentation."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+            "https://github.com/instadeepai/nucleotide-transformer"
+          ],
+          "statement": "The model consumes DNA sequence strings (whole\u2011genome derived sequences) as semantic input."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+            "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf"
+          ],
+          "statement": "Pretraining corpora described upstream include sequences from over 3,200 human genomes and 850 multispecies genomes (multi\u2011species)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-250m-multi-species",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+          ],
+          "statement": "Family examples document input formatting using a leading <CLS> token followed by tokenized k\u2011mer tokens; explicit, checkpoint\u2011scoped task prompt templates or paired\u2011input formats are not specified for the 500M checkpoint."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+            "https://github.com/instadeepai/nucleotide-transformer"
+          ],
+          "statement": "The examined checkpoint files do not document explicit paired\u2011input ordering, control fields, or special prompt templates for downstream tasks."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/f1fd7a1df5b19d31b88f11db1ce87caeb1ea4d2a/tokenizer_config.json",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/vocab.txt"
+          ],
+          "statement": "Upstream sources do not provide an explicit pre\u2011submission validation checklist, input character\u2011set enforcement rules (IUPAC), reverse\u2011complement handling rules, or documented paired\u2011input behavior in the examined checkpoint files."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/config.json"
+        ],
+        "statement": "Upstream files do not provide an explicit mapping from the Forge checkpoint id d6a0a7b1d7 to a concrete upstream weights file name, immutable revision hash, or exact revision metadata."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/instadeepai/nucleotide-transformer/blob/main/LICENSE.md",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+        ],
+        "statement": "An explicit model\u2011weight license declaration covering the checkpoint weights is not present in the examined upstream model card or checkpoint files; repository-level LICENSE.md lists Apache\u20112.0 for code and CC BY\u2011NC\u2011SA 4.0 for repository material but does not explicitly state a model\u2011weights license binding for the published Hugging Face checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/config.json",
+          "https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/nucleotide_transformer_dna_sequence_modelling_with_peft.ipynb"
+        ],
+        "statement": "There is an architectural/metadata inconsistency across upstream materials: the checkpoint config.json for the 500M model lists num_hidden_layers=29 while some family pages and examples reference different layer counts for certain 500M variants; upstream documents do not reconcile this discrepancy."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/main/README.md"
+        ],
+        "statement": "Upstream sources do not document a default pooling or embedding\u2011extraction method (CLS pooling, mean pooling, or specific layer selection) for producing sequence\u2011level embeddings from per\u2011token hidden states."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/config.json",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/f1fd7a1df5b19d31b88f11db1ce87caeb1ea4d2a/tokenizer_config.json"
+        ],
+        "statement": "Upstream checkpoint files do not specify an I/O serialization contract (JSON field names, embedding array key names, or numeric precision for returned embeddings) usable as a Forge API contract."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/nucleotide_transformer_dna_sequence_modelling_with_peft.ipynb",
+            "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf"
+          ],
+          "statement": "Authors state that extracted representations can be probed or used after fine\u2011tuning for downstream evaluation; no official confidence calibration guidance or numeric embedding\u2011score semantics are provided in the examined upstream checkpoint documentation."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/config.json",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+          ],
+          "statement": "Upstream model implementation is EsmForMaskedLM, indicating the model produces per\u2011token masked\u2011LM logits and exposes transformer hidden representations (hidden states) per token."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/config.json"
+          ],
+          "statement": "Hidden representation dimensionality is given by hidden_size=1024 (config.json), corresponding to a 1024\u2011dimensional hidden vector per token layer."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+            "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/main/README.md"
+          ],
+          "statement": "Upstream sources recommend task\u2011specific fine\u2011tuning for downstream evaluation but do not provide universal post\u2011inference sanity checks, embedding normalization rules, default pooling, or an embedding serialization (JSON field name/shape/precision) contract in the examined files."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/nucleotide_transformer_dna_sequence_modelling_with_peft.ipynb",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf"
+        ],
+        "modelScope": "nucleotide-transformer-v2-500m-multi-species (EsmForMaskedLM checkpoint as published on Hugging Face)",
+        "useCase": "Sequence representation extraction for downstream genomics tasks (embedding extraction / probing)",
+        "why": "Upstream README, the example notebook, and the paper describe extracting transformer representations for probing and downstream evaluation; the model is published as EsmForMaskedLM which exposes hidden states suitable for representation extraction."
+      },
+      {
+        "evidenceUrls": [
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf",
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+          "https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/nucleotide_transformer_dna_sequence_modelling_with_peft.ipynb"
+        ],
+        "modelScope": "NT\u2011Multispecies\u2011v2 500M as reported in the paper (downstream results require a downstream fine\u2011tuning head and protocol)",
+        "useCase": "Fine\u2011tuning for regulatory and functional genomics prediction tasks (e.g., chromatin accessibility, promoter/enhancer prediction) using supervised heads",
+        "why": "The canonical paper reports fine\u2011tuning downstream evaluations across curated genomic prediction tasks and lists these categories as intended downstream applications for the family; authors fine\u2011tuned pre\u2011trained NT\u2011v2 models on task suites and reported MCCs."
+      }
+    ],
+    "researchSummary": "Primary upstream sources (Hugging Face model card and files, GitHub repository, and the canonical bioRxiv preprint versions) describe the NT\u2011v2 multispecies 500M model as an EsmForMaskedLM masked\u2011language transformer trained on multi\u2011species and human whole\u2011genome corpora, using 6\u2011mer tokenization where available, rotary positional embeddings, and a hidden size of 1024. The Hugging Face config.json for the published checkpoint records num_hidden_layers=29, num_attention_heads=16, intermediate_size=4096, position_embedding_type=\"rotary\", and torch_dtype=\"float32\". The tokenizer_config.json for the checkpoint lists tokenizer_class=EsmTokenizer and model_max_length (model_max_length / max_model_input_size) = 2048, and the vocab.txt contains 6\u2011mer tokens. The canonical paper and supplements report downstream evaluation results for NT\u2011Multispecies\u2011v2 500M (per-task MCCs in Supplementary Table 6 and mean MCC reported in figures), but multiple upstream documents differ in some reported aggregate numbers (see benchmarks) and the examined upstream files do not provide an explicit mapping from the Forge checkpoint id d6a0a7b1d7 to a concrete upstream weights file or immutable revision hash. Important operational details required for deployment or for a Forge I/O contract are not present in the examined upstream sources: an explicit model-weight license declaration (distinct from code/material licenses in the repository), an exact checkpoint-to\u2011Forge id mapping, explicit pooling/default embedding extraction procedure, formal I/O serialization names/JSON contract and numeric precision for embeddings, documented truncation/stride behavior for inputs exceeding model_max_length, and explicit reverse\u2011complement / paired\u2011input / IUPAC handling rules. Where family pages or sibling model cards report differing layer counts or max-length statements, the config.json for the 500M checkpoint is recorded but the discrepancy is documented as an evidence gap.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+          "https://github.com/instadeepai/nucleotide-transformer",
+          "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf"
+        ],
+        "statement": "Evidence gap: The examined upstream sources do not include an explicit safety policy, clinical\u2011use disclaimers, PHI\u2011handling instructions, or dual\u2011use/biosecurity mitigation guidance for this checkpoint."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "nucleotide-transformer-v2-500m-multi-species (model card and README)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model card for the checkpoint family; contains README and links to config/tokenizer/vocab files and high\u2011level statements about pretraining corpora and intended tasks.",
+        "publisher": "InstaDeep / Hugging Face model card",
+        "sourceType": "model-card",
+        "supports": [
+          "Model family description",
+          "Training\u2011corpus statements (multi\u2011species, number of genomes)",
+          "High\u2011level intended uses",
+          "Links to checkpoint files"
+        ],
+        "title": "Hugging Face model card: InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+      },
+      {
+        "modelScope": "Exact config of the published checkpoint (config.json)",
+        "primary": true,
+        "primaryReason": "Canonical model configuration file for the checkpoint; contains concrete architecture fields observed for the published checkpoint.",
+        "publisher": "Hugging Face (host of upstream config file)",
+        "sourceType": "model-card",
+        "supports": [
+          "Architecture name (EsmForMaskedLM)",
+          "hidden_size=1024, intermediate_size=4096, num_hidden_layers=29, num_attention_heads=16",
+          "position_embedding_type=rotary",
+          "torch_dtype=float32"
+        ],
+        "title": "Model config (config.json) for nucleotide-transformer-v2-500m-multi-species",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/config.json"
+      },
+      {
+        "modelScope": "Tokenizer config for the 500M checkpoint",
+        "primary": true,
+        "primaryReason": "Canonical tokenizer configuration for the checkpoint; reports tokenizer class and model_max_length.",
+        "publisher": "Hugging Face (host of tokenizer config)",
+        "sourceType": "model-card",
+        "supports": [
+          "tokenizer_class=EsmTokenizer",
+          "model_max_length=2048",
+          "clean_up_tokenization_spaces=true"
+        ],
+        "title": "Tokenizer configuration (tokenizer_config.json) for nucleotide-transformer-v2-500m-multi-species",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/f1fd7a1df5b19d31b88f11db1ce87caeb1ea4d2a/tokenizer_config.json"
+      },
+      {
+        "modelScope": "Vocab for the 500M checkpoint",
+        "primary": true,
+        "primaryReason": "Vocabulary file listing token strings used by the tokenizer; provides direct evidence of k\u2011mer tokens.",
+        "publisher": "Hugging Face (host of vocab file)",
+        "sourceType": "model-card",
+        "supports": [
+          "Presence of 6\u2011mer tokens in vocabulary"
+        ],
+        "title": "Vocab file (vocab.txt) for nucleotide-transformer-v2-500m-multi-species",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/ac4ca3ca409bec56db5664401f9a7ca701ee7ae7/vocab.txt"
+      },
+      {
+        "modelScope": "README for nucleotide-transformer-v2-500m-multi-species",
+        "primary": true,
+        "primaryReason": "Model README contains training setup details and high\u2011level architecture/training claims (training tokens, sequence length used during training, hardware statements).",
+        "publisher": "InstaDeep / Hugging Face (model README)",
+        "sourceType": "model-card",
+        "supports": [
+          "Training corpus descriptions and training tokens",
+          "High\u2011level training/hardware details",
+          "Intended use descriptions"
+        ],
+        "title": "Model README (README.md) hosted on Hugging Face model page",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/main/README.md"
+      },
+      {
+        "modelScope": "Nucleotide Transformer family repository",
+        "primary": true,
+        "primaryReason": "Official code and repository maintained by the model authors; contains implementation notes, examples, and LICENSE file.",
+        "publisher": "InstaDeep (repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Repository examples and capability claims",
+          "LICENSE file for repository material and code"
+        ],
+        "title": "GitHub repository: instadeepai/nucleotide-transformer",
+        "url": "https://github.com/instadeepai/nucleotide-transformer"
+      },
+      {
+        "modelScope": "Repository license declarations",
+        "primary": true,
+        "primaryReason": "Repository license file listing code and material licenses present in the repository; used to assess but not to assume an explicit model\u2011weights license.",
+        "publisher": "InstaDeep (repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Apache License 2.0 declared for code",
+          "Creative Commons Attribution\u2011NonCommercial\u2011ShareAlike 4.0 declared for repository material"
+        ],
+        "title": "Repository license file (LICENSE.md) for the nucleotide-transformer repository",
+        "url": "https://github.com/instadeepai/nucleotide-transformer/blob/main/LICENSE.md"
+      },
+      {
+        "modelScope": "NT family experiments and reported metrics (paper text and supplementary materials, v3)",
+        "primary": true,
+        "primaryReason": "Original research preprint describing Nucleotide Transformer family experiments, datasets, and reported downstream metrics and supplementary tables.",
+        "publisher": "bioRxiv (preprint)",
+        "sourceType": "paper",
+        "supports": [
+          "Reported downstream evaluation (per\u2011task MCCs in Supplementary Table 6)",
+          "Descriptions of pretraining corpora and model variants"
+        ],
+        "title": "bioRxiv / paper PDF: The Nucleotide Transformer (preprint, v3)",
+        "url": "https://biorxiv.org/content/10.1101/2023.01.11.523679v3.full.pdf"
+      },
+      {
+        "modelScope": "NT family experiments and reported metrics (paper text and figures, v4)",
+        "primary": true,
+        "primaryReason": "Alternate/updated preprint PDF containing figures and reported aggregate metrics; used to document versioned differences in reported mean MCCs.",
+        "publisher": "bioRxiv (preprint)",
+        "sourceType": "paper",
+        "supports": [
+          "Figure 5 reported mean MCC values for NT\u2011Multispecies\u2011v2 (500M) and other variants"
+        ],
+        "title": "bioRxiv / paper PDF: The Nucleotide Transformer (preprint, v4 / alternate figure reporting)",
+        "url": "https://biorxiv.org/content/10.1101/2023.01.11.523679v4.full.pdf"
+      },
+      {
+        "modelScope": "Example usage for Nucleotide Transformer family",
+        "primary": true,
+        "primaryReason": "Official example notebook that demonstrates representation extraction and fine\u2011tuning usage patterns for the family.",
+        "publisher": "Hugging Face / example notebook",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Representation extraction / fine\u2011tuning examples",
+          "Usage patterns consistent with model card and paper"
+        ],
+        "title": "Hugging Face example Colab notebook referencing Nucleotide Transformer family",
+        "url": "https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/nucleotide_transformer_dna_sequence_modelling_with_peft.ipynb"
+      },
+      {
+        "modelScope": "nucleotide-transformer-v2 family (250M variant reference)",
+        "primary": true,
+        "primaryReason": "Sibling model card used in the examined materials to corroborate family tokenizer and input formatting claims.",
+        "publisher": "InstaDeep / Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "6\u2011mer tokenization descriptions and input formatting examples used across v2 family"
+        ],
+        "title": "Hugging Face model card: InstaDeepAI/nucleotide-transformer-v2-250m-multi-species (family reference)",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-250m-multi-species"
+      },
+      {
+        "modelScope": "nucleotide-transformer-v2 family (100M variant reference)",
+        "primary": true,
+        "primaryReason": "Sibling model card documenting family tokenization and training procedure claims.",
+        "publisher": "InstaDeep / Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "Family tokenization and training procedure claims"
+        ],
+        "title": "Hugging Face model card: InstaDeepAI/nucleotide-transformer-v2-100m-multi-species (family reference)",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-100m-multi-species"
+      },
+      {
+        "modelScope": "nucleotide-transformer-v2 family (50M variant reference)",
+        "primary": true,
+        "primaryReason": "Additional family model card documenting tokenization examples and family practices.",
+        "publisher": "InstaDeep / Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "Family tokenization and training procedure claims"
+        ],
+        "title": "Hugging Face model card: InstaDeepAI/nucleotide-transformer-v2-50m-3mer-multi-species (family reference)",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-50m-3mer-multi-species"
+      },
+      {
+        "modelScope": "esm_config.py contents for the checkpoint family",
+        "primary": true,
+        "primaryReason": "Model configuration helper file bundled with checkpoint files that documents default ESM configuration parameters used by the family.",
+        "publisher": "Hugging Face (host)",
+        "sourceType": "model-card",
+        "supports": [
+          "ESM configuration parameters and default vocab tokens in the checkpoint bundle"
+        ],
+        "title": "Model file: esm_config.py (model file hosted with the checkpoint)",
+        "url": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species/blob/main/esm_config.py"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "1f473d984cea93b88a4816cff85cd00b07d834f1ec543df31f043d62d1b4d347",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-instadeepai-nucleotide-transformer-v2-500m-multi-species-d6a0a7b1d7",
+  "researchedAt": "2026-07-24T00:02:18.968844+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species",
+  "sourceUrls": [
+    "https://huggingface.co/InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

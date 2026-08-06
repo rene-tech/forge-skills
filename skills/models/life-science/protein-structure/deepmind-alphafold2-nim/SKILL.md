@@ -75,6 +75,15 @@ Route: `POST /protein-structure/alphafold2/predict-structure-from-sequence`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-deepmind-alphafold2-312dcaf74a`
+- Recommended: Predicting 3D protein structure from an amino acid sequence — The Forge source page states AlphaFold2 predicts the 3D structure of a protein from its amino acid sequence, the NVIDIA model card states the model predicts the 3D structure of a protein from its amino acid sequence, and NVIDIA endpoint documentation exposes a predict-structure-from-sequence endpoint.
+- Recommended: Generating multiple sequence alignment and templates for downstream inference within the NVIDIA AlphaFold2 NIM workflow — NVIDIA endpoint documentation states AlphaFold2 provides an endpoint protein-structure/alphafold2/predict-MSA-from-sequence to generate a multiple sequence alignment and templates for inference.
+- Avoid: Clinical diagnostic decision-making or clinical use as a validated/approved authority — Upstream repository states AlphaFold 2 and its output are intended for theoretical modeling only and are not validated or approved for clinical use. The retained NVIDIA primary sources do not provide contrary clinical validation or approval language for the packaged NIM.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -93,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/deepmind-alphafold2-nim/inference-routes`
 - Regional deployment: `/v1/models/deepmind-alphafold2-nim/regional-deployment`
 - Serverless handoff: `/v1/models/deepmind-alphafold2-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/deepmind-alphafold2-nim/SKILL.md

@@ -63,6 +63,16 @@ Route: `POST /v1/embeddings`
 Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.
 Read `references/evidence.md` for 1 reviewed public claim(s) and their exact scope.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-ncbi-medcpt-query-encoder-5de2774603`
+- Recommended: Biomedical semantic search and dense retrieval for short biomedical texts (queries, questions, sentences) — Hugging Face model card and README identify the checkpoint as the MedCPT Query Encoder producing embeddings for semantic search; the paper/arXiv frame MedCPT as contrastively pre-trained for retrieval and report zero-shot embedding-based retrieval and sentence-similarity evaluations that support this use.
+- Recommended: Biomedical sentence-similarity representation (zero-shot evaluation contexts) — The authors report BIOSSES and MedSTS Pearson correlation scores for the MedCPT query encoder in their primary paper/preprint, indicating the checkpoint produces embeddings applicable to sentence-similarity evaluation, subject to the protocol caveats below.
+- Avoid: Using the model as a standalone clinical decision-maker or diagnostic system — Primary sources do not report clinical validation, regulatory approval, or decision-making clinical evaluation for the checkpoint; the model is presented for semantic search / retrieval tasks and evaluated in zero-shot retrieval and sentence-similarity benchmarks, not as a diagnostic system.
+- Avoid: Treating retrieval or similarity outputs as calibrated probabilities or confidence scores — Primary sources do not report per-output confidence, calibration, or uncertainty outputs for the checkpoint; benchmark scores are aggregated Pearson correlations and do not supply per-output calibration.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -81,11 +91,15 @@ Read `references/evidence.md` for 1 reviewed public claim(s) and their exact sco
 - Routes: `/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/ncbi-medcpt-query-encoder-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-query-encoder-tei-cuda-1-9/SKILL.md

@@ -68,6 +68,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-microsoft-phi-4-mini-instruct-deploy-81bff52c7d`
+- Recommended: Instruction-following and general multilingual chat/dialog — NVIDIA NGC catalog describes the Phi‑4‑Mini‑Instruct container as an instruction-tuned model suitable for dialogue and instruction-following use; the NVIDIA Build deploy page identifies the corresponding NIM deploy artifact.
+- Recommended: Reasoning, mathematics, and code-generation research / developer experimentation — NVIDIA NGC catalog and the Phi‑4 technical report (arXiv / Microsoft Research PDF) present Phi‑4 family strengths and intended capability areas emphasizing reasoning, math, and code-generation; these are described at family level in the technical report and are represented in the NGC container description for the mini-instruct packaging.
+- Avoid: High-stakes clinical decision making or handling protected health information without expert governance — The Phi‑4 technical report documents safety/RAI concerns and recommends governance and post-training safety alignment; the inspected primary sources do not provide clinical-use endorsement or PHI‑handling operational guidance for the specific NIM-wrapped checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -86,11 +95,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/microsoft-phi-4-mini-instruct-nim/inference-routes`
 - Regional deployment: `/v1/models/microsoft-phi-4-mini-instruct-nim/regional-deployment`
 - Serverless handoff: `/v1/models/microsoft-phi-4-mini-instruct-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/microsoft-phi-4-mini-instruct-nim/SKILL.md

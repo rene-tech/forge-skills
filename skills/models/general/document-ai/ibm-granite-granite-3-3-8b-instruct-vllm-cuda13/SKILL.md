@@ -73,6 +73,17 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-ibm-granite-granite-3-3-8b-instruct-d64a1ab489`
+- Recommended: Instruction following and conversational instruction-tuned text generation — The Hugging Face model card for ibm-granite/granite-3.3-8b-instruct describes this checkpoint as an instruct-tuned variant intended for instruction following and improved instruction-tuned generation.
+- Recommended: Multi-step structured reasoning using prompt-delimited intermediate reasoning and final-answer tags — The Hugging Face model card and repository examples for the instruct checkpoint document use of structured reasoning tags and instruct-tuning improvements for reasoning tasks.
+- Recommended: Code generation and fill-in-the-middle (FIM) style code completion (subject to downstream validation) — Family-level repository documentation for Granite 3.3 describes FIM support and code-oriented training improvements; the instruct checkpoint is part of that family and the checkpoint repository contains tokenizer entries related to FIM tokens.
+- Avoid: Non-text modalities (image, audio, video) processing or native multimodal tasks — Checkpoint-scoped primary artifacts for the instruct checkpoint document text-oriented instruction-following capabilities; no checkpoint-scoped primary artifact documents native multimodal input processing for this checkpoint.
+- Avoid: Clinical decision-making or PHI-handling regulated deployments without external certification — Inspected checkpoint-scoped and family-level primary artifacts do not document checkpoint-scoped clinical certifications or PHI-handling approvals; external certification and domain-specific validation are required before regulated clinical use.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/ibm-granite-granite-3-3-8b-instruct-vllm-cuda13/SKILL.md

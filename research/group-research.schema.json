@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forge model-group comparison dossier",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "category",
+    "group",
+    "taskDefinition",
+    "selectionQuestions",
+    "comparabilityRules",
+    "decisionRules",
+    "benchmarkTaxonomy",
+    "sources",
+    "evidenceGaps"
+  ],
+  "properties": {
+    "category": {
+      "type": "string",
+      "description": "The Forge catalog category containing the comparison group."
+    },
+    "group": {
+      "type": "string",
+      "description": "The exact Forge comparison-group identifier."
+    },
+    "taskDefinition": {
+      "type": "string",
+      "description": "A precise definition of the task family, including what is outside its scope."
+    },
+    "selectionQuestions": {
+      "type": "array",
+      "description": "Questions an agent must answer before selecting a model in this group.",
+      "items": {"type": "string"}
+    },
+    "comparabilityRules": {
+      "type": "array",
+      "description": "Protocol conditions that must match before benchmark values may be compared.",
+      "items": {"type": "string"}
+    },
+    "decisionRules": {
+      "type": "array",
+      "description": "Evidence-backed conditional routing rules among exact models in this group.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "when",
+          "prefer",
+          "because",
+          "alternatives",
+          "evidenceUrls"
+        ],
+        "properties": {
+          "when": {
+            "type": "string",
+            "description": "The use case, constraint set, or decision condition."
+          },
+          "prefer": {
+            "type": "string",
+            "description": "One exact candidate Forge model slug to prefer under this condition, or the literal insufficient-evidence when primary evidence cannot support a winner. Never use an upstream repository ID, display name, family, or prose."
+          },
+          "because": {
+            "type": "string",
+            "description": "The criterion-specific evidence supporting the preference."
+          },
+          "alternatives": {
+            "type": "array",
+            "description": "Other distinct exact candidate Forge slugs. Never repeat the preferred slug or duplicate an alternative. Put the condition for preferring an alternative in its own decision rule; do not put prose or upstream repository IDs here.",
+            "items": {
+              "type": "string",
+              "description": "One exact slug from the supplied Forge candidate list."
+            }
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs supporting the decision rule.",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "benchmarkTaxonomy": {
+      "type": "array",
+      "description": "The accepted tasks, datasets, metrics, and comparison controls for this group.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "task",
+          "datasets",
+          "metrics",
+          "comparisonConditions"
+        ],
+        "properties": {
+          "task": {
+            "type": "string",
+            "description": "A benchmarkable task within this group."
+          },
+          "datasets": {
+            "type": "array",
+            "description": "Canonical or relevant dataset names as plain strings. Do not return objects, URLs, or name/source pairs here; cite sources only through the dossier's top-level sources list.",
+            "items": {
+              "type": "string",
+              "description": "One dataset name, optionally including a version or split, encoded as a single string."
+            }
+          },
+          "metrics": {
+            "type": "array",
+            "description": "Metrics that are meaningful for the task, including their direction and aggregation where relevant.",
+            "items": {"type": "string"}
+          },
+          "comparisonConditions": {
+            "type": "array",
+            "description": "Conditions that must match for results on this task to be compared.",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "Primary publications, official model cards, repositories, or documentation supporting the group taxonomy and decisions.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "url", "publisher", "primary", "supports"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The source title."
+          },
+          "url": {
+            "type": "string",
+            "description": "The canonical source URL."
+          },
+          "publisher": {
+            "type": "string",
+            "description": "The model creator, repository owner, standards body, or paper venue."
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "True only for first-party documentation, official repositories/model cards, or original research publications."
+          },
+          "supports": {
+            "type": "array",
+            "description": "The specific taxonomy or decision claims supported by this source.",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "evidenceGaps": {
+      "type": "array",
+      "description": "Missing head-to-head evaluations, incomparable protocols, absent operational data, or other limits preventing a definitive routing rule.",
+      "items": {"type": "string"}
+    }
+  }
+}

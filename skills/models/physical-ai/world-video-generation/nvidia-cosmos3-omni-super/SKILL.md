@@ -81,6 +81,17 @@ Route: `POST /v1/inference/nvidia-cosmos3-omni`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-nvidia-cosmos-ea-cosmos3-super-b558901695`
+- Recommended: Omnimodal world generation for synthetic data and environment generation (text+image→video, text→image, text→video, audio, and action trajectory generation) — Hugging Face model pages for Cosmos3‑Super state the checkpoint can generate dynamic video, image, audio, and action commands from multimodal inputs; the NVIDIA technical report describes Cosmos3 family capabilities for multimodal/world generation.
+- Recommended: Physical AI research and synthetic environment generation for robotics policy training and agent pre‑training (research/experimental use with validation) — Primary NVIDIA materials describe Cosmos3 and the family as intended for Physical AI use cases and world generation to support agent/robotics research.
+- Avoid: Safety‑critical closed‑loop autonomous control (e.g., direct robot control or safety‑critical vehicle control) — Model pages and variant cards explicitly warn that generated outputs can be imperfect (temporal inconsistency, inaccurate physical interactions, action/state drift) and that users must implement guardrails; primary sources do not claim safety certification for closed‑loop control.
+- Avoid: Substituting Cosmos3‑Super outputs as a certified physics simulator or guaranteed high‑fidelity physical engine — Primary sources state the model lacks an explicit physics simulator and does not provide guaranteed correct 3D geometry, contact dynamics, or full physical laws — physical reasoning is approximated.
+- Avoid: Treating generated outputs as calibrated probabilistic confidence scores or ground‑truth labels for certification — Primary sources do not document calibration semantics or per‑output probabilistic confidence scores; model cards caution against treating outputs as reliable ground truth without downstream validation.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -98,11 +109,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos3-omni-super/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos3-omni-super/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos3-omni-super/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos3-omni-super/SKILL.md

@@ -1,0 +1,352 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2].primary must be true",
+        "path": "$.sources[2].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/medical/maisi/latest"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://docs.nvidia.com/nim/medical/maisi/latest",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 2 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "description": "BIOMEDICA BMC-CLIP CF is a biomedical CLIP-style vision-language model released with the CVPR 2025 BIOMEDICA work.",
+      "displayName": "Use BIOMEDICA BMC-CLIP CF",
+      "inputModalities": [
+        "image",
+        "text"
+      ],
+      "license": "mit",
+      "modelFamily": "biomedica-bmc-clip",
+      "outputModalities": [
+        "embedding",
+        "classification",
+        "similarity",
+        "json"
+      ],
+      "slug": "biomedica-bmc-clip-cf",
+      "sourceUrl": "https://huggingface.co/BIOMEDICA/BMC_CLIP_CF",
+      "versionKey": "wrapper-20260529t18z-ack"
+    },
+    {
+      "description": "NVIDIA MAISI is a medical-imaging NIM for generating synthetic 3D CT volumes and paired segmentation labels from requested body regions, anatomies, voxel spacing, and output-size controls.",
+      "displayName": "Use NVIDIA MAISI",
+      "inputModalities": [
+        "structured"
+      ],
+      "license": "NVIDIA software and model evaluation license agreement; NVIDIA NIM terms",
+      "modelFamily": "nvidia-maisi",
+      "outputModalities": [
+        "image",
+        "segmentation",
+        "file"
+      ],
+      "slug": "nvidia-maisi-nim",
+      "sourceUrl": "https://docs.nvidia.com/nim/medical/maisi/latest/",
+      "versionKey": "nim-1-0-1-latest-digest"
+    }
+  ],
+  "dossier": {
+    "benchmarkTaxonomy": [
+      {
+        "comparisonConditions": [
+          "Use only upstream BMC-CLIPCF evidence unless the exact Forge wrapper protocol is directly verified.",
+          "Match the exact task subset named in the source when comparing percentages.",
+          "Do not compare values if prompt templates, embedding extraction, pooling, normalization, preprocessing, or metric implementations differ or are unspecified.",
+          "Do not transfer a family-level claim to the exact runtime as a runtime benchmark without direct identity verification."
+        ],
+        "datasets": [
+          "Biomedical imaging tasks across 40 biomedical imaging domains",
+          "General biomedical imaging classification subsets",
+          "Dermatology classification subset",
+          "Ophthalmology classification subset",
+          "Breast ultrasound subset",
+          "Non-neo histopathology subset",
+          "Ultrasound (radiology) classification subset",
+          "Microscopy composition tasks"
+        ],
+        "metrics": [
+          "Zero-shot classification improvement relative to prior models; higher is better",
+          "Image-text retrieval performance as reported by the source; higher is better",
+          "Subset-specific relative improvement percentages; higher is better"
+        ],
+        "task": "Biomedical image-text zero-shot classification and retrieval for the upstream BMC-CLIPCF checkpoint"
+      },
+      {
+        "comparisonConditions": [
+          "Separate MAISI VAE paper/report metrics from NIM runtime evidence; they are not automatically the same benchmark.",
+          "Match release/runtime version when using NIM documentation claims.",
+          "Match output size, voxel spacing, anatomy controls, and whether annotations are requested.",
+          "Do not compare timing numbers across different storage or infrastructure setups as if they were intrinsic model-quality benchmarks.",
+          "Where findings mention dataset-level superiority without exact values, keep the comparison qualitative only."
+        ],
+        "datasets": [
+          "MSD Task07",
+          "MSD Task08",
+          "Brats18",
+          "MSD Lung Tumor",
+          "LIDC-IDRI",
+          "TCIA COVID-19"
+        ],
+        "metrics": [
+          "LPIPS; lower is better",
+          "SSIM; higher is better",
+          "PSNR; higher is better",
+          "Fréchet Inception Distance (FID); lower is better",
+          "Segmentation support present or absent, under matched output settings",
+          "Operational generation time under matched infrastructure; lower is better"
+        ],
+        "task": "Synthetic 3D CT generation with paired segmentation masks for MAISI NIM"
+      },
+      {
+        "comparisonConditions": [
+          "BMC-CLIPCF and MAISI NIM are not directly numerically comparable because the findings support different modalities and task families.",
+          "A valid comparison would require a newly defined downstream protocol with matched objective, inputs, outputs, and metrics, which is not provided in the findings."
+        ],
+        "datasets": [
+          "No shared cross-modality benchmark dataset is verified in the findings"
+        ],
+        "metrics": [
+          "Use insufficient-evidence instead of unsupported cross-modality numeric metrics"
+        ],
+        "task": "Cross-candidate comparison policy for this group"
+      }
+    ],
+    "category": "healthcare",
+    "comparabilityRules": [
+      "Do not make direct numeric comparisons between biomedica-bmc-clip-cf and nvidia-maisi-nim because the candidates serve different modalities and task families.",
+      "For BMC-CLIPCF comparisons, match the exact checkpoint identity, dataset or subset, task type, and evaluation setup; if prompt templates, pooling, normalization, preprocessing, or metric code are not specified for both sides, treat the comparison as insufficient evidence.",
+      "Treat BMC-CLIPCF paper results as upstream-checkpoint evidence, not verified serving-runtime benchmarks for the exact Forge wrapper, unless the runtime identity and unchanged evaluation protocol are directly established.",
+      "For MAISI comparisons, match NIM release/runtime version, output volume size, voxel spacing, anatomy controls, and whether paired segmentation masks are requested.",
+      "When comparing MAISI operational performance, match hardware and system conditions such as GPU memory and deployment stack; do not compare timing figures from different storage or infrastructure contexts as model-quality evidence.",
+      "If source statements conflict, preserve the conflict rather than resolving it; for example, MAISI voxel-size range evidence differs between NVIDIA docs and NGC catalog evidence.",
+      "If exact dataset names, splits, preprocessing, label maps, or metric implementations are not specified in the findings, do not assert benchmark comparability."
+    ],
+    "decisionRules": [
+      {
+        "alternatives": [
+          "biomedica-bmc-clip-cf"
+        ],
+        "because": "NVIDIA documentation states that MAISI is a three-dimensional latent diffusion model that generates high-resolution synthetic CT images with or without anatomical annotations, produces paired segmentation masks, supports outputs up to 512×512×768 voxels, supports variable voxel sizes, can annotate up to 127 anatomical classes, and allows controllable anatomy size for ten specific classes.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/medical/maisi/latest/overview.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/maisi/-"
+        ],
+        "prefer": "nvidia-maisi-nim",
+        "when": "Need synthetic 3D CT volume generation with paired segmentation masks and controllable anatomy or voxel settings."
+      },
+      {
+        "alternatives": [
+          "nvidia-maisi-nim"
+        ],
+        "because": "The arXiv technical report states that BMC-CLIPCF outperforms PMC-CLIP on all evaluated tasks, outperforms BioMed-CLIP in 8 out of 10 general biomedical imaging classification subsets, improves zero-shot classification by an average of 6.56%, and attains stronger image-text retrieval while using less compute. These are upstream BMC-CLIPCF claims, not directly verified Forge-wrapper runtime benchmarks.",
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2501.07171",
+          "https://huggingface.co/BIOMEDICA/BMC_CLIP_CF"
+        ],
+        "prefer": "biomedica-bmc-clip-cf",
+        "when": "Need biomedical image-text representation learning use cases such as similarity, retrieval, or zero-shot classification, and upstream checkpoint evidence is sufficient."
+      },
+      {
+        "alternatives": [
+          "biomedica-bmc-clip-cf",
+          "nvidia-maisi-nim"
+        ],
+        "because": "The findings support different task families and modalities for the two candidates: BMC-CLIPCF is evidenced as a biomedical vision-language model, while MAISI is evidenced as a 3D CT generation NIM. The findings do not provide a shared benchmark protocol that would justify direct numeric comparison.",
+        "evidenceUrls": [
+          "https://arxiv.org/pdf/2501.07171",
+          "https://docs.nvidia.com/nim/medical/maisi/latest/overview.html"
+        ],
+        "prefer": "insufficient-evidence",
+        "when": "Need a fair head-to-head numeric comparison between the two scoped Forge candidates."
+      },
+      {
+        "alternatives": [
+          "biomedica-bmc-clip-cf",
+          "nvidia-maisi-nim"
+        ],
+        "because": "The findings do not specify the exact Forge-wrapper evaluation protocol for biomedica-bmc-clip-cf, and they also do not specify MAISI segmentation label mappings or returned mask encoding. That prevents a fully protocol-grounded routing decision for these detail-sensitive cases.",
+        "evidenceUrls": [
+          "https://huggingface.co/BIOMEDICA/BMC_CLIP_CF",
+          "https://docs.nvidia.com/nim/medical/maisi/latest/overview.html"
+        ],
+        "prefer": "insufficient-evidence",
+        "when": "Need a deployment choice driven by exact wrapper/runtime protocol details, such as BMC-CLIPCF prompt templates, pooling, normalization, or MAISI label-map and mask-encoding details."
+      },
+      {
+        "alternatives": [
+          "biomedica-bmc-clip-cf",
+          "nvidia-maisi-nim"
+        ],
+        "because": "The NGC MAISI entry states that MAISI is intended for research purposes only and is not approved for clinical use. The findings do not provide corresponding clinical-use evidence for biomedica-bmc-clip-cf either, so no candidate can be preferred for clinical deployment from the supplied evidence.",
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/maisi/-",
+          "https://huggingface.co/BIOMEDICA/BMC_CLIP_CF"
+        ],
+        "prefer": "insufficient-evidence",
+        "when": "Need a synthetic-imaging option intended for clinical deployment or clinical approval."
+      }
+    ],
+    "evidenceGaps": [
+      "The findings provide identity evidence for the exact Forge sourceUrl https://huggingface.co/BIOMEDICA/BMC_CLIP_CF, but they do not specify exact wrapper-level protocol details such as prompt templates, embedding extraction layer, pooling, normalization, output dimensionality, or score interpretation for biomedica-bmc-clip-cf.",
+      "The findings provide upstream BMC-CLIPCF benchmark claims, but they do not directly verify that the exact Forge callable variant exposes the same evaluation head or protocol used for those reported results.",
+      "The findings do not list the exact 40 dataset names or their train/validation/test splits for the BMC-CLIP benchmarks.",
+      "The findings do not specify preprocessing details for BMC-CLIPCF evaluation, such as resampling, intensity normalization, cropping, or augmentation.",
+      "The findings do not specify the exact retrieval metric names, averaging rules, or metric computation code for BMC-CLIPCF retrieval claims.",
+      "The findings do not provide exact segmentation label mappings, returned file format, or mask encoding details for MAISI NIM outputs.",
+      "The findings do not provide exact MAISI NIM API parameter schemas or validation rules beyond the high-level controllability claims in the overview.",
+      "The findings contain a source conflict on MAISI voxel-size range: the NVIDIA overview states 0.5 mm to 5.0 mm, while the NGC catalog states 0.5 mm to 3.0 mm.",
+      "The findings report MAISI VAE reconstruction and FID evidence in the technical report, but they do not prove that those exact numbers are runtime benchmarks of the nvidia-maisi-nim service.",
+      "The findings do not provide shared benchmark protocols that would support a direct numeric comparison between biomedica-bmc-clip-cf and nvidia-maisi-nim.",
+      "The findings do not provide license-text verification for the exact candidates beyond the Forge scope metadata, so weight-license versus code-license distinctions cannot be fully audited from the supplied evidence.",
+      "The findings do not provide clinical validation evidence for either candidate; for MAISI, the NGC entry explicitly states research-only and not approved for clinical use."
+    ],
+    "group": "medical-imaging",
+    "selectionQuestions": [
+      "Is the required task biomedical image-text embedding, similarity, retrieval, or zero-shot classification rather than synthetic 3D CT generation?",
+      "Is the required task generation of synthetic 3D CT volumes with paired segmentation masks rather than vision-language embedding?",
+      "Do you need controllable volumetric outputs such as output size, voxel spacing, anatomy list, or controllable anatomy size?",
+      "Do you need published upstream evidence for BMC-CLIPCF on biomedical imaging tasks, while accepting that the exact Forge wrapper protocol details are not specified in the findings?",
+      "Can your deployment satisfy MAISI infrastructure requirements such as NVIDIA driver 535 or newer, Docker, NVIDIA Container Toolkit, substantial storage, and high GPU memory for large outputs?",
+      "Is research-only, non-clinical-use positioning acceptable for the synthetic-imaging option?",
+      "Do you require an exact benchmark comparison under identical modality, dataset, split, preprocessing, task head, and metric conditions?",
+      "Do you need evidence about exact prompt templates, embedding extraction, pooling, normalization, or score interpretation for biomedica-bmc-clip-cf?",
+      "Do you need exact segmentation label mappings, returned mask encoding, or detailed evaluation code for nvidia-maisi-nim before adoption?"
+    ],
+    "sources": [
+      {
+        "primary": true,
+        "publisher": "Hugging Face (organization: BIOMEDICA)",
+        "supports": [
+          "Identity evidence for the exact Forge candidate sourceUrl biomedica-bmc-clip-cf."
+        ],
+        "title": "BIOMEDICA BMC_CLIP_CF repository",
+        "url": "https://huggingface.co/BIOMEDICA/BMC_CLIP_CF"
+      },
+      {
+        "primary": true,
+        "publisher": "arXiv",
+        "supports": [
+          "BMC-CLIP is a suite of CLIP-style models continuously pre-trained on the BIOMEDICA dataset via streaming.",
+          "BMC-CLIP models achieve state-of-the-art performance across 40 biomedical imaging tasks.",
+          "BMC-CLIP improves zero-shot classification by an average of 6.56%, with named subset improvements.",
+          "BMC-CLIP attains stronger image-text retrieval while using less compute than prior models.",
+          "Concept filtering yields better average performance than concept balancing and full-dataset pretraining for zero-shot classification and retrieval.",
+          "BMC-CLIPCF outperforms PMC-CLIP on all evaluated tasks and outperforms BioMed-CLIP in 8 out of 10 general biomedical imaging classification subsets.",
+          "The combined BIOMEDICA dataset used for BMC-CLIP contains 10,277 volumes across 40 biomedical imaging domains."
+        ],
+        "title": "BMC-CLIP technical report",
+        "url": "https://arxiv.org/pdf/2501.07171"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA",
+        "supports": [
+          "Identity evidence for the exact Forge candidate sourceUrl nvidia-maisi-nim."
+        ],
+        "title": "NVIDIA MAISI NIM documentation landing page",
+        "url": "https://docs.nvidia.com/nim/medical/maisi/latest/"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA",
+        "supports": [
+          "MAISI is a three-dimensional latent diffusion model that generates high-resolution synthetic CT images with or without anatomical annotations.",
+          "MAISI is intended for data augmentation and creating realistic medical imaging data to mitigate privacy concerns or rare-condition scarcity.",
+          "MAISI release 1.0.1 replaces the DDPM noise scheduler with Rectified Flow and is described as faster than version 1.0.0.",
+          "MAISI generates 3D CT volumes up to 512×512×768 voxels.",
+          "MAISI supports variable voxel sizes from 0.5 mm to 5.0 mm.",
+          "MAISI can annotate up to 127 anatomical classes.",
+          "MAISI allows controllable anatomy size for ten specific classes.",
+          "MAISI produces paired segmentation masks alongside generated CT images.",
+          "Release 1.0.1 adds better support for head region and small output volumes compared with version 1.0.0."
+        ],
+        "title": "NVIDIA MAISI NIM overview",
+        "url": "https://docs.nvidia.com/nim/medical/maisi/latest/overview.html"
+      },
+      {
+        "primary": true,
+        "publisher": "NGC / NVIDIA",
+        "supports": [
+          "MAISI generates 3D CT volumes up to 512×512×768 voxels.",
+          "MAISI supports variable voxel sizes, but this source lists 0.5 mm to 3.0 mm, creating a conflict with the docs overview.",
+          "MAISI can annotate up to 127 anatomical classes.",
+          "MAISI allows controllable anatomy size for ten specific classes.",
+          "MAISI produces paired segmentation masks alongside generated CT images.",
+          "MAISI is intended for research purposes only and is not approved for clinical use."
+        ],
+        "title": "MAISI NGC catalog entry",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/maisi/-"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA",
+        "supports": [
+          "Minimum GPU memory required for MAISI is 60 GB to generate images of size 512^3 or larger.",
+          "Recommended CPU is at least 8 cores with at least 32 GB RAM.",
+          "MAISI container size is 28 GB; minimum storage requirement is 50 GB.",
+          "MAISI requires NVIDIA driver version 535 or newer, Docker, and the NVIDIA Container Toolkit."
+        ],
+        "title": "MAISI getting started",
+        "url": "https://docs.nvidia.com/nim/medical/maisi/latest/getting-started.html"
+      },
+      {
+        "primary": true,
+        "publisher": "arXiv",
+        "supports": [
+          "MAISI VAE achieves LPIPS, SSIM, and PSNR values on MSD Task07, MSD Task08, and Brats18.",
+          "Dedicated VAE baselines and GPU-hour comparisons are reported for those datasets.",
+          "MAISI synthetic CT images were evaluated with FID and significantly outperformed HA-GAN on chest CT datasets such as MSD Lung Tumor, LIDC-IDRI, and TCIA COVID-19."
+        ],
+        "title": "MAISI technical report",
+        "url": "https://arxiv.org/html/2409.11169v1"
+      },
+      {
+        "primary": true,
+        "publisher": "docs.nvidia.com",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://docs.nvidia.com/nim/medical/maisi/latest"
+      }
+    ],
+    "taskDefinition": "This group covers selection between exactly two Forge candidates with different medical-imaging task families: (1) biomedica-bmc-clip-cf for biomedical image-text embedding, similarity, retrieval, and zero-shot classification claims supported only as upstream BMC-CLIPCF checkpoint evidence; and (2) nvidia-maisi-nim for controllable generation of synthetic 3D CT volumes with paired segmentation masks through the NVIDIA MAISI NIM runtime. Out of scope are direct cross-modality numeric comparisons between these candidates, clinical diagnosis or treatment use, non-CT generative imaging, and any claim that depends on an unverified downstream head, prompt template, pooling rule, preprocessing pipeline, adapter, or service behavior not directly specified in the cited primary sources."
+  },
+  "kind": "group",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "d410306451ec75f388a877d43f3a5eb7367ef7431890348cbe24eb9a50dc4e20",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "healthcare--medical-imaging",
+  "researchedAt": "2026-07-23T20:14:47.750608+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": null,
+  "sourceUrls": [],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

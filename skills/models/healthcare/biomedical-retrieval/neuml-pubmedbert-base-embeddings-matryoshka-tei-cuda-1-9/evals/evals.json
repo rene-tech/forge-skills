@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9 for this task: Sentence / paragraph embedding extraction for biomedical text (PubMed-style titles/abstracts). Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9 or another Forge model for Sentence / paragraph embedding extraction for biomedical text (PubMed-style titles/abstracts)?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9 for Clinical decision-making or any clinical deployment that will directly influence patient care, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "neuml-pubmedbert-base-embeddings-matryoshka-tei-cuda-1-9",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-neuml-pubmedbert-base-embeddings-matryoshka-5cb5fc55"
+}

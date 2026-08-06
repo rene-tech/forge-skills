@@ -11,18 +11,23 @@ description: Route any inference or deployment task to one exact Nebius Forge mo
    latency/cost constraints, and whether experimental models are acceptable.
 2. Read `catalog/hierarchy.json` to select a category and group. Do not load
    every skill.
-3. Search `catalog/models.json` within that group. Compare exact model slug,
+3. Load only that group's entry from `catalog/groups.json`, then its
+   `researchMarkdownPath`. Use the audited questions, comparability gates, and
+   conditional routing rules; do not declare a winner when the dossier records
+   an evidence gap.
+4. Search `catalog/models.json` within that group. Compare exact model slug,
    version, modalities, stability, default eligibility, license, evidence
    status, and live availability.
-4. Load exactly one candidate's `SKILL.md`. Load a second only for an explicit
+5. Load exactly one candidate's `SKILL.md`. Load a second only for an explicit
    comparison.
-5. Follow the chosen skill's exact input fields, request template, route,
+6. Follow the chosen skill's exact input fields, request template, route,
    output validation, evidence scope, limitations, and safety rules.
-6. Re-fetch the live Forge model and inference-route endpoints immediately
+7. Re-fetch the live Forge model and inference-route endpoints immediately
    before inference. Repository skills are reviewed knowledge; live APIs are
    authoritative for current routes, regions, images, pricing, readiness, and
    runtime metrics.
-7. For deployment, load `$use-nebius`, then the Serverless endpoint/job leaf
+8. For deployment, load `$use-nebius` and
+   `$nebius-forge-model-deployment`, then the Serverless endpoint/job leaf
    skill required by the selected model.
 
 ## Selection rules

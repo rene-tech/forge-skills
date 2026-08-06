@@ -1,0 +1,373 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7]: missing required property modelScope",
+        "path": "$.sources[7]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7]: missing required property supports",
+        "path": "$.sources[7]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[1].primary must be true",
+        "path": "$.sources[1].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2].primary must be true",
+        "path": "$.sources[2].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3].primary must be true",
+        "path": "$.sources[3].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://arxiv.org/pdf/2312.15503",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://arxiv.org/pdf/2312.15503",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://arxiv.org/pdf/2312.15503",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "path": "$.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 10 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "BAAI bge-reranker-v2-m3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual retrieval reranking.",
+      "displayName": "Use BGE Reranker v2 M3",
+      "group": "retrieval-and-reranking",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "baai-bge-reranker-v2-m3",
+      "outputModalities": [
+        "ranking"
+      ],
+      "slug": "baai-bge-reranker-v2-m3-tei-cuda-1-9",
+      "sourceUrl": "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+      "version": "tei-cuda-1.9.3",
+      "versionKey": "tei-cuda-1-9-3"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+        ],
+        "modelScope": "BAAI/bge-reranker-v2-m3",
+        "reason": "Upstream README and config identify the artifact as a cross-encoder reranker with a sequence-classification head that directly outputs a single scalar relevance score per query–document pair rather than producing fixed vector embeddings for each input.",
+        "useCase": "Using this reranker checkpoint as an embedding model (embedding-model substitute)"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Checked primary-locator materials do not contain evaluation tables or rows that report dataset, split, metric, value, and explicit checkpoint identifier together; therefore like-for-like comparisons against peers cannot be established from these sources alone.",
+        "criteria": "No verifiable numeric, like-for-like benchmark rows for this exact checkpoint were found in the inspected primary repository files; no checkpoint-specific numeric rows are present in the checked README or config files.",
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+        ],
+        "rationale": "The repository README and config identify the model and head but do not publish explicit numeric benchmark rows (dataset split, metric, numeric value) for BioASQ or comparable reranking evaluations for this exact checkpoint at the checked locators.",
+        "task": "Reranking on BioASQ / QA reranking tasks",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Validate that the tokenized combined length of query+passage fits within tokenizer model_max_length (8192) and model positional limits (config.json max_position_embeddings = 8194); perform end-to-end latency and memory testing in target runtime to ensure the combined length is supported in practice.",
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+        ],
+        "modelScope": "BAAI/bge-reranker-v2-m3",
+        "useCase": "Reranking with long combined query+passage inputs subject to tokenizer/model max-length bounds"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No verifiable numeric benchmark row (dataset, split, metric, numeric value) for BioASQ 12b Phase A Batch 1 for this exact checkpoint was found in the inspected primary repository files (checked README at https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md).",
+      "Evidence gap: License text for the upstream checkpoint was not found in the inspected repository files (checked README, config.json, tokenizer_config.json at the listed locators).",
+      "Evidence gap: The inspected repository files do not state an explicit training-time maximum sequence length (training truncation length) or full training data composition for this checkpoint (checked README, config.json, tokenizer_config.json).",
+      "Evidence gap: Explicit runtime wrapper behavior, truncation policy, canonical pair concatenation separators, and per-field token limits are not documented in the inspected repository files (checked README, config.json, tokenizer_config.json).",
+      "Evidence gap: No explicit post-inference calibration guidance, recommended numeric thresholds, or operating points are provided in the inspected repository files (checked README, config.json)."
+    ],
+    "family": "huggingface-co-baai-bge-reranker-v2-m3-3891d3dadf",
+    "identity": {
+      "architecture": "XLMRobertaForSequenceClassification",
+      "checkpoint": "baai-bge-reranker-v2-m3",
+      "evidenceUrls": [
+        "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+        "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json",
+        "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "BAAI/bge-reranker-v2-m3"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md"
+          ],
+          "statement": "Accepted modality: plain text pairs (query, passage) as documented in the repository README."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+          ],
+          "statement": "Tokenizer class declared as XLMRobertaTokenizer in tokenizer_config.json."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+          ],
+          "statement": "Tokenizer special tokens declared (bos_token '<s>', cls_token '<s>', eos_token '</s>', pad_token '<pad>', sep_token '</s>', mask_token '<mask>', unk_token '<unk>')."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json",
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+          ],
+          "statement": "Declared tokenizer model_max_length is 8192 (tokenizer_config.json); config.json lists max_position_embeddings = 8194."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md"
+          ],
+          "statement": "The model consumes plain-text pairs consisting of a query (question) and a passage/document."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+          ],
+          "statement": "Input ordering expected by the reranker is a query followed by a candidate passage (pair [query, passage]); no upstream prompt template or separator convention beyond tokenizer special tokens is prescribed in the README or config."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json",
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+          ],
+          "statement": "Evidence gap: explicit runtime wrapper truncation/concatenation rules, per-field token limits, and canonical input validation checks are not documented in the inspected repository files (no runtime truncation policy or per-field limits present in README, config.json, or tokenizer_config.json)."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+        ],
+        "statement": "Model architecture and declared hyperparameters (from config.json): architectures = [\"XLMRobertaForSequenceClassification\"]; model_type = \"xlm-roberta\"; hidden_size = 1024; num_hidden_layers = 24; num_attention_heads = 16; intermediate_size = 4096; max_position_embeddings = 8194."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+        ],
+        "statement": "Declared tokenizer bounds (from tokenizer_config.json): tokenizer_class = \"XLMRobertaTokenizer\" and model_max_length = 8192; special tokens defined in tokenizer_config.json represent upstream tokenization bounds but do not specify runtime truncation behavior."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+        ],
+        "statement": "Evidence gap: the inspected repository files do not state an explicit training-time maximum sequence length (training truncation length) or provide a full training data composition for this checkpoint at the checked locators."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md"
+          ],
+          "statement": "Higher scores indicate greater predicted relevance; the README states the produced score can be mapped to [0,1] using a sigmoid function."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+          ],
+          "statement": "The upstream model produces a single scalar similarity/relevance score for each query–passage pair (sequence-classification output)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+            "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+          ],
+          "statement": "Evidence gap: upstream repository files do not provide explicit post-inference calibration procedures, recommended numeric thresholds, or operating points; downstream users must validate calibration for their tasks."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+        ],
+        "modelScope": "BAAI/bge-reranker-v2-m3",
+        "useCase": "Reranking top-k retrieval candidates (query, passage pairs) in multilingual retrieval and open-domain QA pipelines",
+        "why": "Upstream README documents that the model accepts a query (question) and a document (passage) and directly outputs a similarity/relevance score; config.json shows a sequence-classification head appropriate for cross-encoder reranking."
+      }
+    ],
+    "researchSummary": "Verified primary repository files show that the checkpoint BAAI/bge-reranker-v2-m3 is configured as a sequence-classification cross-encoder reranker (config.json lists architectures = [\"XLMRobertaForSequenceClassification\"] and model_type = \"xlm-roberta\"). The tokenizer_config.json declares tokenizer_class = \"XLMRobertaTokenizer\" and model_max_length = 8192. config.json declares max_position_embeddings = 8194 and other model hyperparameters (hidden_size=1024, num_hidden_layers=24, num_attention_heads=16, intermediate_size=4096). The repository README documents that the model accepts a question + document pair and outputs a single scalar relevance score that can be mapped to [0,1] via a sigmoid. Primary-source evidence for parameter count, an explicit license text in the upstream repo, training-time maximum sequence length, numeric benchmarks for BioASQ for this exact checkpoint, runtime wrapper/truncation policies, and post-inference calibration procedures were not found in the inspected primary repository files (config.json, tokenizer_config.json, README at the checked locator).",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json",
+          "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+        ],
+        "statement": "Evidence gap: no explicit upstream privacy, clinical, or dual-use safety disclaimers or operational data-handling rules were present in the inspected primary repository files; apply standard data governance and expert review when using outputs in sensitive domains."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "BAAI/bge-reranker-v2-m3",
+        "primary": true,
+        "primaryReason": "Upstream repository README for the exact checkpoint at the checked locator; contains model usage and description statements.",
+        "publisher": "HuggingFace",
+        "sourceType": "repository",
+        "supports": [
+          "Describes reranker input as question + document pair",
+          "States the model outputs a similarity score and that the score can be mapped to [0,1] with a sigmoid",
+          "Identifies the repository and provides usage instructions"
+        ],
+        "title": "README.md (BAAI/bge-reranker-v2-m3) [specific commit blob]",
+        "url": "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/c0abf900d43de6a2652b9acd221bb1b45ab65d6e/README.md"
+      },
+      {
+        "modelScope": "BAAI/bge-reranker-v2-m3",
+        "primary": true,
+        "primaryReason": "Model configuration file declaring architecture, model_type, and model hyperparameters for this exact checkpoint.",
+        "publisher": "HuggingFace (repository file)",
+        "sourceType": "repository",
+        "supports": [
+          "architecture: XLMRobertaForSequenceClassification",
+          "model_type: xlm-roberta",
+          "hidden_size=1024, num_hidden_layers=24, num_attention_heads=16, intermediate_size=4096",
+          "max_position_embeddings=8194",
+          "_name_or_path field value"
+        ],
+        "title": "config.json (BAAI/bge-reranker-v2-m3)",
+        "url": "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/config.json"
+      },
+      {
+        "modelScope": "BAAI/bge-reranker-v2-m3",
+        "primary": true,
+        "primaryReason": "Tokenizer configuration file declaring tokenizer class, special tokens, and model_max_length for this exact checkpoint.",
+        "publisher": "HuggingFace (repository file)",
+        "sourceType": "repository",
+        "supports": [
+          "tokenizer_class: XLMRobertaTokenizer",
+          "model_max_length=8192",
+          "special tokens declarations (bos_token, eos_token, pad_token, unk_token, mask_token, sep_token, cls_token)"
+        ],
+        "title": "tokenizer_config.json (BAAI/bge-reranker-v2-m3)",
+        "url": "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/tokenizer_config.json"
+      },
+      {
+        "modelScope": "baai-bge-reranker-v2-m3",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/BAAI/bge-reranker-v2-m3"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "cbe99b36b4a346b7fdaf397149c6b43a815a4e9ca60b788ba10a11e196e77a71",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-baai-bge-reranker-v2-m3-3891d3dadf",
+  "researchedAt": "2026-07-23T23:57:27.860071+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+  "sourceUrls": [
+    "https://huggingface.co/BAAI/bge-reranker-v2-m3"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

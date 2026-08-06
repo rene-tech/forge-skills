@@ -1,0 +1,659 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-embedqa-1b-v1",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 3 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Multilingual, cross-lingual text embedding NVIDIA NIM for long-document QA retrieval; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave4.",
+      "displayName": "Use NVIDIA Llama 3.2 NeMo Retriever 300M Embed v2",
+      "group": "embeddings",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "nvidia-community-model-license; llama-3.2-community-license",
+      "modelFamily": "nvidia-llama-3-2-nemoretriever-300m-embed-v2",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "nvidia-llama-3-2-nemoretriever-300m-embed-v2-nim",
+      "sourceUrl": "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2"
+        ],
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+        "reason": "The inference API reference documents that input_type must be set (query|passage) and that using the wrong type reduces retrieval accuracy (mode-sensitive bi-encoder semantics).",
+        "useCase": "Submitting inputs with the wrong input_type (mismatched 'query' vs 'passage') for retrieval"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+        ],
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+        "reason": "NeMo getting-started and support documentation state that GPU clusters with GPUs in MIG mode are not supported for this NIM (MIG unsupported guidance).",
+        "useCase": "Running the 300M embedding NIM on GPU clusters configured with Multi-instance GPU (MIG) mode"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "nvidia-llama-3_2-nemoretriever-300m-embed-v1",
+        "comparisonConditions": "Requires identical dataset/split/metric/protocol numeric rows in primary docs for both checkpoints to prefer one over the other.",
+        "criteria": "Direct numeric preference requires matched primary-source benchmark rows (dataset, split, metric, numeric values, and protocol) for both v1 and v2; such matched v2 numeric rows were not found in the inspected v2 pages.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+        ],
+        "rationale": "Support matrices and references describe families and capabilities, but primary-source matched-protocol numeric benchmark rows for exact v2 vs v1 were not located for v2 in the inspected facts.",
+        "task": "embeddings / retrieval",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-llama-3_2-nv-embedqa-1b-v1",
+        "comparisonConditions": "Requires identical dataset/split/metric/protocol primary tables/figures for both sides.",
+        "criteria": "Direct numeric comparison requires primary-source benchmark data for both exact v2 and the alternative on the same dataset/protocol; such matched primary rows were not found for exact v2 in the inspected facts.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-embedqa-1b-v1"
+        ],
+        "rationale": "The nv-embedqa-1b-v1 upstream and combination results are reported in NVIDIA model cards, but direct matched numeric rows for the v2 single-call embedding NIM were not located in the inspected v2 primary pages.",
+        "task": "embeddings / retrieval",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Requires identical dataset/split/metric/protocol primary tables/figures for both sides.",
+        "criteria": "For any other candidate comparison a matched primary-source benchmark for both sides on the same protocol is required and was not present for exact v2 in the inspected facts.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2"
+        ],
+        "rationale": "No matched primary-source numeric benchmark data for exact v2 and arbitrary alternatives on identical protocols was found in the inspected facts.",
+        "task": "embeddings / retrieval",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires NGC catalog license/subscription acceptance and following the NeMo getting-started Docker/run guidance; validate environment variables and model-download-provider settings prior to deployment.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-",
+          "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy"
+        ],
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2 (NGC container referenced in deploy docs)",
+        "useCase": "Commercial production deployment of the NIM container"
+      },
+      {
+        "conditions": "Downstream consumers must expect and correctly decode the chosen embedding_type and encoding_format; validate similarity metric and storage/decoding pipeline for non-float encodings.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+        ],
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+        "useCase": "Using non-float embedding encodings (int8/uint8/binary/ubinary) for storage/performance"
+      }
+    ],
+    "evidenceGaps": [
+      "No immutable revision identifier, commit hash, or direct downloadable upstream checkpoint path for the exact nvidia/llama-3.2-nemoretriever-300m-embed-v2 checkpoint was found in the inspected primary NVIDIA pages: https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2, https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy, https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-.",
+      "Tokenizer implementation details (tokenizer name/version; vocabulary files; merges or SentencePiece model; normalization/tokenization rules) for the exact nvidia/llama-3.2-nemoretriever-300m-embed-v2 checkpoint were not present in the inspected primary pages: https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2, https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html, https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy.",
+      "No explicit primary-source table/figure/row locator for an Average Recall@5 numeric value on the MLDR benchmark for this exact v2 checkpoint was found in the inspected primary pages; related MLDR numeric rows exist for other combinations/pipelines but not for the single-call v2 embedding NIM: checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2 and related modelcards (e.g., https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard).",
+      "The inspected primary NVIDIA pages do not specify whether embeddings are normalized by default (L2 or otherwise) for this exact v2 checkpoint; callers should perform caller-side normalization if required for downstream metrics: checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2 and https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html.",
+      "The inspected primary NVIDIA pages do not provide explicit PHI/healthcare/clinical authorization or prohibition statements for this checkpoint: checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2, https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html, https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-."
+    ],
+    "family": "build-nvidia-com-nvidia-llama-3-2-nemoretriever-300m-embed-v2-f53275e56f",
+    "identity": {
+      "architecture": "Transformer encoder (9 layers); bi-encoder retrieval embedding head; embedding dimensionality 2048",
+      "checkpoint": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+      "evidenceUrls": [
+        "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+        "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/2.2.0/support-matrix.html",
+        "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html",
+        "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-"
+      ],
+      "license": "NVIDIA Community Model License; Llama 3.2 Community License",
+      "parameterScale": "307M non-embedding parameters; 569M total parameters (including embeddings)",
+      "revision": "not reported",
+      "upstreamName": "nvidia/llama-3.2-nemoretriever-300m-embed-v2"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer",
+            "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy"
+          ],
+          "statement": "Official REST request schema fields documented include model, input (string or array), input_type (query|passage), encoding_format (float or base64), embedding_type (float, int8, uint8, binary, ubinary), truncate (START, END, NONE), and optional user/dimensions fields."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html"
+          ],
+          "statement": "The REST inference API and NeMo reference expose a 'truncate' request field with allowed values START, END, and NONE to control truncation behavior."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/2.2.0/support-matrix.html"
+          ],
+          "statement": "Documented divergence in token limits: the inference API reference includes a request-level maximum input length statement (32,000 tokens) while the NeMo Retriever support matrix and model pages document model support up to 8192 tokens for the 300M model; both statements are present in primary sources and constitute a documented scope divergence."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/release-notes.html"
+          ],
+          "statement": "Docker deployment and getting-started guidance reference required environment variables/credentials for model download and runtime configuration (examples include HF_TOKEN, NGC_API_KEY, and NIM_MODEL_DOWNLOAD_PROVIDER) and Docker/shared-memory guidance."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html"
+          ],
+          "statement": "The model accepts textual inputs intended for embedding extraction; accepted request-level input types include 'query' and 'passage'."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy"
+          ],
+          "statement": "Input is provided as a string or array of strings in the embeddings POST request."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy"
+          ],
+          "statement": "Sample REST requests in the deploy docs use fields and values such as {\"model\": \"nvidia/llama-3.2-nemoretriever-300m-embed-v2\", \"input\": \"...\", \"input_type\": \"query\", \"encoding_format\": \"float\", \"truncate\": \"NONE\"}."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer"
+          ],
+          "statement": "The NeMo Retriever reference documents the response schema semantics: top-level 'object' as 'list', 'data' as an array with one embedding object per input, and each embedding object containing 'object' ('embedding'), 'index', and 'embedding' (array of values)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html"
+          ],
+          "statement": "Callers should validate non-empty input strings and allowed enum values before submission; the REST reference documents required fields and response error behavior for invalid inputs."
+        },
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html"
+          ],
+          "statement": "Validate NGC license/subscription acceptance prior to pulling the container image as part of deployment validation."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer"
+          ],
+          "statement": "Ensure input_type aligns with intended query/passage semantics because incorrect mode reduces retrieval accuracy (recommended pre-check)."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/2.2.0/support-matrix.html"
+        ],
+        "statement": "Maximum context length for the 300M model is reported as 8192 tokens in the NeMo Retriever support matrix; callers must chunk or truncate longer texts."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+        ],
+        "statement": "Documented scope divergence: the inference API documents a request-level maximum input length statement (32,000 tokens) while the NeMo support matrix and model pages report a model-enforced maximum of 8192 tokens for the 300M model; callers must treat the smaller model-supported limit as the effective per-request model context limit unless the deployment documentation states otherwise."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+        ],
+        "statement": "GPU clusters with GPUs in MIG mode are not supported for the NeMo Retriever embedding NIM per getting-started/support docs; multi-GPU deployment is not included in the noted release guidance for some versions."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+          "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy",
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-"
+        ],
+        "statement": "Evidence gap: The inspected primary sources do not report an immutable revision identifier, commit hash, or downloadable upstream checkpoint path for the exact nvidia/llama-3.2-nemoretriever-300m-embed-v2 checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+          "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy"
+        ],
+        "statement": "Evidence gap: Tokenizer implementation files (vocab, merges or SentencePiece model), tokenizer name/version, and exact tokenization/normalization rules for the exact nvidia/llama-3.2-nemoretriever-300m-embed-v2 checkpoint were not found in the inspected primary pages."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html"
+          ],
+          "statement": "The documentation does not specify whether embeddings are normalized by default for this exact v2 checkpoint; callers should perform downstream validation and consider caller-side normalization (e.g., L2) when normalization semantics are required."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+          ],
+          "statement": "Callers must align similarity metric choice with the chosen embedding_type/encoding_format and encoding (e.g., integer encodings require appropriate decoding/metric handling)."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer"
+          ],
+          "statement": "NeMo Retriever REST response contains top-level 'object' (\"list\"), 'data' (array of embedding objects), 'model' (served model ID), and a 'usage' object; each embedding object includes 'object' (\"embedding\"), 'index', and 'embedding' (array of numeric values)."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/2.2.0/support-matrix.html",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2"
+          ],
+          "statement": "Embedding dimensionality reported for the 300M model is 2048 in the NeMo support matrices and model reference; output embeddings should match this dimensionality when the model is configured accordingly."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+          ],
+          "statement": "Embedding outputs are returned as numeric arrays by default (float default) and supported embedding_type values include float, int8, uint8, binary, and ubinary; encoding_format options include float and base64, as documented in the NeMo reference and support matrices."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+          ],
+          "statement": "Post-inference checks should verify returned embedding dimensionality matches the configured/model-supported dimension and that encoding_format/embedding_type align with downstream consumers."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer"
+          ],
+          "statement": "The response includes a 'usage' object with token usage information that callers can inspect to validate token counts and truncation effects."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-"
+        ],
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+        "useCase": "Multilingual / cross-lingual dense retrieval for question-answering over large text corpora",
+        "why": "The official NIM model reference and NGC catalog describe the v2 NeMo Retriever embedding model as optimized for multilingual and cross-lingual QA retrieval and list evaluation on 26 languages; the model is published as a retrieval embedding NIM suitable for extracting per-input embeddings."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2"
+        ],
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+        "useCase": "Long-document retrieval via chunking/truncation up to the model-supported context length",
+        "why": "NeMo support matrices and the model reference document model support for inputs up to 8192 tokens for the 300M model and the NIM inference API exposes truncate controls enabling chunking/truncation workflows."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/2.2.0/support-matrix.html"
+        ],
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+        "useCase": "Extracting per-input embedding vectors (float or supported encodings) for downstream retrieval pipelines",
+        "why": "NeMo Retriever REST reference documents an embeddings endpoint returning an array of embedding objects with embedding_type and encoding_format options; support matrices list embedding dimension 2048 and supported embedding types."
+      }
+    ],
+    "researchSummary": "This dossier is scoped to the NIM-served checkpoint nvidia/llama-3.2-nemoretriever-300m-embed-v2 as documented by NVIDIA primary pages. Primary NVIDIA documentation identifies this serving variant as a 9-layer transformer encoder distilled/pruned from a larger Llama 3.2 retriever checkpoint, exposing a bi-encoder embedding head with embedding dimensionality 2048 and model-reported parameter counts of 307M (excluding embeddings) and 569M (including embeddings) (support matrices). The NIM exposes a REST embeddings endpoint with request fields including model, input, input_type (query|passage), encoding_format, embedding_type, and truncate controls (inference reference and NeMo REST reference). The NeMo support matrices and model pages document a model-supported maximum context length of 8192 tokens for the 300M model while the inference API reference includes a request-level maximum input-length statement (documented divergence noted). Primary evidence gaps remain for an immutable upstream checkpoint revision identifier or direct downloadable upstream checkpoint path for this exact v2 checkpoint, explicit tokenizer implementation artifacts for this exact v2 checkpoint (vocab/SP/merges and tokenizer name/version), and explicit PHI/clinical usage guidance.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-",
+          "https://developer.nvidia.com/downloads/assets/ace/model_card/llama-3.2-3b_for_Nv_IGI_SDK.pdf"
+        ],
+        "statement": "Use and distribution are governed by NVIDIA license terms and NGC catalog license/subscription acceptance; model use is noted as governed by the NVIDIA Community Model License and Llama 3.2 Community License where applicable."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-"
+        ],
+        "statement": "Evidence gap: The inspected primary NVIDIA pages do not provide explicit healthcare/clinical or PHI-specific authorization or prohibition statements for this checkpoint; no PHI-specific guidance was located in the checked canonical pages."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+          "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-"
+        ],
+        "statement": "The model is described as production-ready in NVIDIA documentation, but commercial use remains subject to the license terms and NGC acceptance flow."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NIM model reference for the llama-3.2-nemoretriever-300m-embed-v2 serving variant; contains model identity, embedding dimension, multilingual evaluation claim, training/architecture notes, and readiness statements used in this dossier.",
+        "publisher": "NVIDIA NeMo / NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Checkpoint name and high-level description",
+          "Transformer encoder architecture (9 layers) and embedding size 2048",
+          "Multilingual evaluation claim and supported languages listing",
+          "Model readiness and deployment statements",
+          "Embedding output format description"
+        ],
+        "title": "NIM reference: nvidia-llama-3_2-nemoretriever-300m-embed-v2",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2"
+      },
+      {
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2 (infer schema)",
+        "primary": true,
+        "primaryReason": "Inference API reference describing request fields (input_type, truncate), request-level token length statements, and mode-sensitivity used in this dossier.",
+        "publisher": "NVIDIA NeMo / NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Request fields including input_type and truncate",
+          "Request-level maximum input length statement",
+          "Warning that wrong input_type reduces retrieval accuracy",
+          "Sample response schema fields"
+        ],
+        "title": "NIM inference API reference: nvidia-llama-3_2-nemoretriever-300m-embed-v2 (infer)",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nemoretriever-300m-embed-v2-infer"
+      },
+      {
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2 (deploy/sample)",
+        "primary": true,
+        "primaryReason": "Official deployment page providing sample REST request, Docker run guidance, and example container image string used in this dossier.",
+        "publisher": "NVIDIA Build (NIM deploy docs)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Sample REST request fields and example values",
+          "Docker run guidance and sample docker run flags",
+          "Example container image and runtime guidance"
+        ],
+        "title": "Deployment docs / sample API request for the v2 NIM (Build)",
+        "url": "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2/deploy"
+      },
+      {
+        "modelScope": "nvidia/llama-3.2-nemoretriever-300m-embed-v2 (NGC container)",
+        "primary": true,
+        "primaryReason": "Official NGC catalog listing for the v2 container; confirms availability, subscription/license flow, and production-readiness metadata.",
+        "publisher": "NVIDIA NGC catalog",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Production-readiness and subscription/licensing metadata",
+          "High-level model description and suggested use-cases",
+          "NGC license/subscription metadata and license governance statements"
+        ],
+        "title": "NGC catalog container entry: llama-3.2-nemoretriever-300m-embed-v2",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nemoretriever-300m-embed-v2/-"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding (latest reference)",
+        "primary": true,
+        "primaryReason": "Official NeMo Retriever REST reference documenting endpoints, request/response schemas, embedding_type and encoding_format enumerations used in this dossier.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "POST /v1/embeddings request fields and optional parameters",
+          "Response schema: object, data[], model, usage, and embedding object fields",
+          "Supported embedding_type and encoding_format enumerations",
+          "Modality and input_type enumerations"
+        ],
+        "title": "NeMo Retriever text-embedding latest reference (REST response schema)",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/reference.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding (getting-started)",
+        "primary": true,
+        "primaryReason": "Getting-started guide documenting Docker run examples, environment variables for model download, and NGC license acceptance requirements used in this dossier.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Environment variables HF_TOKEN and NGC_API_KEY and NIM_MODEL_DOWNLOAD_PROVIDER guidance",
+          "MIG unsupported statement and Docker/shared memory guidance",
+          "License acceptance requirement prior to pulling container"
+        ],
+        "title": "NeMo Retriever text-embedding getting-started",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding (environment variables)",
+        "primary": true,
+        "primaryReason": "Environment-variable reference used to verify download-provider and runtime environment variables and defaults.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Environment variable NIM_PIPELINE_MAX_BATCH_TOKENS and other NIM env var semantics",
+          "NIM_MAX_SEQ_LEN override behavior",
+          "NIM_MODEL_DOWNLOAD_PROVIDER selection (hf/ngc) and other runtime flags"
+        ],
+        "title": "NeMo Retriever text-embedding latest environment variables",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/environment-variables.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding (release notes)",
+        "primary": true,
+        "primaryReason": "Release notes documenting environment-variable behaviors and model download-provider guidance referenced in this dossier.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Model artifact download-provider options and environment variable guidance",
+          "Environment variable renames and runtime notes"
+        ],
+        "title": "NeMo Retriever text-embedding latest release notes",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/release-notes.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding 1.10.0 support matrix",
+        "primary": true,
+        "primaryReason": "Support matrix version 1.10.0 lists the model and per-model metadata used in this dossier.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Model ID listing for nvidia/llama-3.2-nemoretriever-300m-embed-v2",
+          "Maximum tokens supported listed as 8192 for the 300M model",
+          "Parameter counts and embedding dimension entries for the 300M model",
+          "Supported embedding types enumerated"
+        ],
+        "title": "NeMo Retriever text-embedding 1.10.0 support matrix",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/1.10.0/support-matrix.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding 2.2.0 support matrix",
+        "primary": true,
+        "primaryReason": "Support matrix version 2.2.0 lists parameter counts and embedding dimension metadata referenced in this dossier.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "307M parameters (excluding embeddings) and 569M total parameters for 300M model",
+          "Embedding dimension 2048 for 300M model",
+          "Supported embedding type enumerations"
+        ],
+        "title": "NeMo Retriever text-embedding 2.2.0 support matrix",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/2.2.0/support-matrix.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding (support matrix latest)",
+        "primary": true,
+        "primaryReason": "Support matrix listing supported hardware and precisions for the embedding NIM referenced in this dossier.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Supported hardware SKUs and precision guidance for the embedding NIM"
+        ],
+        "title": "NeMo Retriever text-embedding latest support matrix",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/support-matrix.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-embedding (performance)",
+        "primary": true,
+        "primaryReason": "Performance page providing latency benchmark rows on NVIDIA hardware used as operational test data in the facts.",
+        "publisher": "NVIDIA NeMo documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Performance benchmark latency rows for passage lengths, batch sizes, and token counts on NVIDIA hardware"
+        ],
+        "title": "NeMo Retriever text-embedding performance (latest)",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/performance.html"
+      },
+      {
+        "modelScope": "nvidia/llama-3.2-nv-embedqa-1b-v1 (upstream)",
+        "primary": true,
+        "primaryReason": "Official NIM model reference for the upstream nv-embedqa-1b-v1 checkpoint referenced as the larger checkpoint distilled/pruned into the 300M model.",
+        "publisher": "NVIDIA NeMo / NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Identification of the upstream model used for distillation",
+          "Architecture and embedding size of the upstream model"
+        ],
+        "title": "NIM reference: nvidia-llama-3_2-nv-embedqa-1b-v1",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-embedqa-1b-v1"
+      },
+      {
+        "modelScope": "nvidia/llama-3.2-nv-embedqa-1b-v1 (infer)",
+        "primary": true,
+        "primaryReason": "Inference API reference for the upstream nv-embedqa-1b-v1 model used to support mode-sensitivity claims (input_type consequences).",
+        "publisher": "NVIDIA NeMo / NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Warning that wrong input_type (query vs passage) reduces retrieval accuracy for the related upstream retriever model"
+        ],
+        "title": "NIM inference API reference: nvidia-llama-3_2-nv-embedqa-1b-v1 (infer)",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-embedqa-1b-v1-infer"
+      },
+      {
+        "modelScope": "llama-nemotron-rerank-1b-v2 modelcard",
+        "primary": true,
+        "primaryReason": "Modelcard for related reranker/embedding combinations reporting MLDR and other benchmark numbers used to identify where numeric results exist for related pipelines.",
+        "publisher": "NVIDIA Build (modelcard)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "MLDR benchmark entries for reranker+embedder combinations and reported Average Recall@5 values for those pipelines"
+        ],
+        "title": "Modelcard: llama-nemotron-rerank-1b-v2 (Build)",
+        "url": "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard"
+      },
+      {
+        "modelScope": "Llama 3.2 licensing reference",
+        "primary": true,
+        "primaryReason": "Publisher document indicating the Llama 3.2 Community License referenced in NVIDIA materials.",
+        "publisher": "NVIDIA developer resources",
+        "sourceType": "official-documentation",
+        "supports": [
+          "License name and association with Llama 3.2 releases"
+        ],
+        "title": "Llama 3.2 Community License (NVIDIA developer asset)",
+        "url": "https://developer.nvidia.com/downloads/assets/ace/model_card/llama-3.2-3b_for_Nv_IGI_SDK.pdf"
+      },
+      {
+        "modelScope": "nvidia-llama-3-2-nemoretriever-300m-embed-v2",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "05a808ae04adfa0ca651d1faed24310d48339159adebc082bd3b4eea1d26a0e3",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-nvidia-llama-3-2-nemoretriever-300m-embed-v2-f53275e56f",
+  "researchedAt": "2026-07-23T22:19:09.850664+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2",
+  "sourceUrls": [
+    "https://build.nvidia.com/nvidia/llama-3_2-nemoretriever-300m-embed-v2"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

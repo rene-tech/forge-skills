@@ -84,6 +84,14 @@ Route: `POST /v1/inference/openmm-md-8-5-1-wrapper`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-openmm-openmm-bf9d80932d`
+- Recommended: Inspect and build the OpenMM 8.5.1 source snapshot for code-level inspection, compilation, and testing. — The project provides an official release page for 8.5.1 documenting the release contents and a tags index mapping the release to commit f7fa0c2; these primary artifacts support treating the release as a canonical source snapshot to inspect and build from.
+- Avoid: Clinical decision-making or clinical-readiness deployment — The provided primary findings do not document clinical validation, PHI-specific processing guarantees, or regulatory compliance statements tied to OpenMM 8.5.1; therefore the checkpoint cannot be relied upon as clinically validated from the inspected upstream artifacts.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -101,11 +109,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/openmm-md-8-5-1-wrapper/inference-routes`
 - Regional deployment: `/v1/models/openmm-md-8-5-1-wrapper/regional-deployment`
 - Serverless handoff: `/v1/models/openmm-md-8-5-1-wrapper/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/openmm-md-8-5-1-wrapper/SKILL.md

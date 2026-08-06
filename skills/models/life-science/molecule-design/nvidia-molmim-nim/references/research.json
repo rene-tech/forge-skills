@@ -1,0 +1,638 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources must not contain duplicate URLs",
+        "path": "$.sources must not contain duplicate URLs",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14].primary must be true",
+        "path": "$.sources[14].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[15].primary must be true",
+        "path": "$.sources[15].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[18].primary must be true",
+        "path": "$.sources[18].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/bionemo-framework/1.10.1/models/molmim.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.outputInterpretation_evidenceOnly",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 13 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "NVIDIA MolMIM NIM is a life-science small-molecule generation service over SMILES input.",
+      "displayName": "Use MolMIM NIM",
+      "group": "molecule-design",
+      "inputModalities": [
+        "molecule"
+      ],
+      "license": "NVIDIA NIM terms; production use requires NVIDIA AI Enterprise licensing",
+      "modelFamily": "nvidia-molmim",
+      "outputModalities": [
+        "molecule",
+        "json"
+      ],
+      "slug": "nvidia-molmim-nim",
+      "sourceUrl": "https://build.nvidia.com/nvidia/molmim-generate",
+      "version": "1.0.0",
+      "versionKey": "nim-1-0-0-regional-mirror-20260605"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-"
+        ],
+        "modelScope": "MolMIM as documented on NVIDIA build model card and NGC explainability page.",
+        "reason": "Primary NVIDIA model-card and NGC explainability pages present MolMIM for molecular design and research and do not document clinical validation, authorization, or regulatory approval for clinical use.",
+        "useCase": "Clinical diagnostic use or direct medical decision making"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "nvidia-genmol-2-0-0-nim",
+        "comparisonConditions": "No protocol details (dataset/split/metric/protocol) documented for both models in the checked primary sources.",
+        "criteria": "No protocol-matched, head-to-head benchmark evidence (dataset/split/metric/protocol) tying MolMIM to the named alternative was found in the checked primary pages.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html"
+        ],
+        "rationale": "Checked NVIDIA model card and NIM overview document MolMIM behavior and endpoints but do not publish matched comparative benchmarks against the named alternative; absence of protocol-matched evidence prevents a comparative verdict.",
+        "task": "various molecule generation tasks",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-genmol-nim",
+        "comparisonConditions": "No protocol details (dataset/split/metric/protocol) documented for both models in the checked primary sources.",
+        "criteria": "No protocol-matched, head-to-head benchmark evidence (dataset/split/metric/protocol) tying MolMIM to the named alternative was found in the checked primary pages.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html"
+        ],
+        "rationale": "Checked NVIDIA model card and NIM overview document MolMIM behavior and endpoints but do not publish matched comparative benchmarks against the named alternative; absence of protocol-matched evidence prevents a comparative verdict.",
+        "task": "various molecule generation tasks",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Generated molecules must undergo domain-expert review, cheminformatics validation, synthesis-feasibility checks, and laboratory safety review before experimental use; primary sources present MolMIM as a research tool and do not document clinical validation or regulatory approval.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html",
+          "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html"
+        ],
+        "modelScope": "MolMIM as documented on NVIDIA model card, NIM overview, and BioNeMo framework pages (upstream model behavior; NIM-serving examples).",
+        "useCase": "Using generated molecules as candidates for downstream experimental prioritization"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Immutable upstream checkpoint revision identifier (artifact checksum, git SHA, or immutable release id) for the exact checkpoint served by the MolMIM NIM/container is not reported on the deployment guide or model card (checked https://docs.nvidia.com/nim/bionemo/molmim/latest/deployment-guide.html and https://build.nvidia.com/nvidia/molmim-generate/modelcard).",
+      "Evidence gap: Low-level tokenizer/tokenization vocabulary size, token-indexing scheme, SMILES canonicalization rules, and stereochemistry-normalization specifics are not specified on the checked primary documentation (checked https://build.nvidia.com/nvidia/molmim-generate/modelcard, https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html, and https://docs.api.nvidia.com/nim/reference/nvidia-molmim).",
+      "Evidence gap: Official exhaustive per-field JSON request/response schemas, default values, and numeric bounds for all MolMIM NIM endpoints are not provided in the checked primary pages (checked https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html and https://docs.nvidia.com/nim/bionemo/molmim/latest/deployment-guide.html).",
+      "Evidence gap: Per-molecule calibrated confidence scores or likelihood outputs are not documented for MolMIM in the checked primary documentation (checked https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html and https://build.nvidia.com/nvidia/molmim-generate/modelcard).",
+      "Evidence gap: Detailed adversarial/failure-mode analyses, hallucination characterizations, and formal dual-use mitigation procedures are not present on the checked primary pages (checked https://build.nvidia.com/nvidia/molmim-generate/modelcard and https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html).",
+      "Evidence gap: Protocol-matched, head-to-head benchmark comparisons between MolMIM (served or upstream variants) and named Forge peers (e.g., nvidia-genmol-2-0-0-nim, nvidia-genmol-nim) are not present in the checked primary pages; checked sources do not publish matched dataset/split/metric/protocol pairs for both sides (checked https://build.nvidia.com/nvidia/molmim-generate/modelcard and https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html).",
+      "Evidence gap: Exact numeric benchmark values and the precise evaluation protocol (dataset name and split, sampling radius, seeds, and reproduction steps) for sampling/quality metrics reported on the BioNeMo model page are not tied to an immutable checkpoint identifier or table/figure with a verifiable locator; checked https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html for the sampling metrics section but the page does not provide an explicit immutable artifact locator (table/figure id) to verify checkpoint-scoped benchmark provenance."
+    ],
+    "family": "build-nvidia-com-nvidia-molmim-generate-212f025c33",
+    "identity": {
+      "architecture": "Perceiver encoder + Transformer decoder (both encoder and decoder contain 6 layers; hidden size 512; 8 attention heads; feed\u2011forward dim 2048)",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+        "https://docs.api.nvidia.com/nim/reference/nvidia-molmim",
+        "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-",
+        "https://arxiv.org/pdf/2208.09016"
+      ],
+      "license": "Primary sources present conflicting license statements: catalog.ngc.nvidia.com lists the NVIDIA AI Foundations Model Community License while the BioNeMo framework page lists Apache License (see evidenceUrls).",
+      "parameterScale": "65.2 million parameters",
+      "revision": "not reported",
+      "upstreamName": "MolMIM (NVIDIA)"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-molmim"
+          ],
+          "statement": "Accepted input formats documented as Comma-Separated Values (CSV) and SMILES strings (text)."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/pdf/2208.09016",
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html",
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+          ],
+          "statement": "MolMIM represents molecules as text sequences (SMILES) and maps variable-length sequences to a fixed-length latent representation via a Perceiver encoder."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-molmim",
+            "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html"
+          ],
+          "statement": "Primary sources present conflicting token-length claims: the NVIDIA build model card and docs.api.nvidia.com report a maximum input length of 512 tokens, while the BioNeMo framework model page reports a maximum input length of 128 tokens (including BOS/EOS)."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+            "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-molmim"
+          ],
+          "statement": "Low-level tokenization details (tokenizer vocabulary size, token-indexing scheme), SMILES canonicalization and stereochemistry-normalization rules, and featurizer implementation details are not specified in the checked primary documentation."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-molmim"
+          ],
+          "statement": "Molecular sequences expressed as SMILES strings (text) are accepted as model input."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html",
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/deployment-guide.html"
+          ],
+          "statement": "NIM endpoints documented for MolMIM include generation and sampling endpoints (generate), as well as endpoints that return embeddings and hidden/latent states (/embedding, /hidden, /decode); endpoint documentation provides high-level parameter names but does not publish a complete exhaustive per-field JSON schema in the checked pages."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html",
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+          ],
+          "statement": "Primary NIM and model-card documentation do not provide exhaustive per-field input-validation bounds (e.g., exact token-index ranges, allowed character sets, tokenizer error codes); callers should validate SMILES format prior to submission."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-",
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+        ],
+        "statement": "Model intended for molecular drug discovery and design research; not documented as clinically validated or authorized for clinical use."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-"
+        ],
+        "statement": "MolMIM may not perform well on sequences highly divergent from the ZINC-15 training distribution (documented technical limitation)."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/molmim/1.0.0/support-matrix.html",
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/deployment-guide.html",
+          "https://build.nvidia.com/nvidia/molmim-generate/deploy"
+        ],
+        "statement": "Operational constraints: minimum/tested system hardware and recommended GPU configurations are documented for the NIM, but an immutable container digest or upstream checkpoint identity mapping to those runtime artifacts is not reported in the checked primary pages."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-",
+          "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html"
+        ],
+        "statement": "Licensing ambiguity between primary pages: catalog.ngc.nvidia.com lists the NVIDIA AI Foundations Model Community License while the BioNeMo framework page lists Apache License; this conflict is present in primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/deployment-guide.html",
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+        ],
+        "statement": "Evidence gap: Immutable upstream checkpoint revision identifier (artifact checksum, git SHA, or immutable release id) for the exact checkpoint served by the MolMIM NIM/container is not reported in the checked primary sources (deployment guide, model card)."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+            "https://arxiv.org/pdf/2208.09016"
+          ],
+          "statement": "Generated outputs are SMILES strings representing proposed molecular structures; documentation describes sampling by perturbing clustered latent codes from a seed molecule."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html",
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+          ],
+          "statement": "Embedding vectors are fixed-length numerical representations intended for downstream machine-learning tasks; primary documentation does not report per-molecule calibrated confidence or likelihood scores."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html"
+          ],
+          "statement": "The /embedding endpoint returns fixed-length numerical embeddings (vector representations) for a given input SMILES string."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html"
+          ],
+          "statement": "The /hidden endpoint returns the model's hidden/latent state representation for a given input SMILES string."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html",
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/advanced-usage.html"
+          ],
+          "statement": "The /decode endpoint decodes a hidden state representation back into a SMILES string (text molecular sequence)."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+            "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html"
+          ],
+          "statement": "The generation/sampling endpoint produces generated SMILES strings as its principal textual output (documentation describes sampling by perturbing latent codes)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html",
+            "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+          ],
+          "statement": "Primary sources do not supply published numeric benchmark tables tied unequivocally to an immutable served NIM/container artifact; BioNeMo reports sampling metrics for named variants but the checked pages do not tie those metrics to an immutable checkpoint identifier or specify dataset/split/protocol at the required granularity."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html",
+          "https://arxiv.org/pdf/2208.09016"
+        ],
+        "modelScope": "MolMIM upstream model behavior and NIM-serving behavior as described on the NVIDIA model card and NIM overview (upstream-checkpoint evidence for model behavior; NIM-serving evidence for exposed endpoints).",
+        "useCase": "Sampling novel small-molecule SMILES by perturbing latent representations from a seed molecule",
+        "why": "Primary NVIDIA model card, NIM overview, and the MolMIM preprint describe MolMIM as a probabilistic latent-variable auto-encoder that samples valid SMILES by perturbing clustered latent codes derived from a seed molecule."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html"
+        ],
+        "modelScope": "MolMIM /embedding endpoint (NIM runtime as documented).",
+        "useCase": "Compute fixed-length molecular embeddings from SMILES for downstream machine-learning tasks",
+        "why": "The official NIM endpoints documentation documents an /embedding endpoint that returns fixed-length numerical embeddings for a given input SMILES string."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-",
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+          "https://docs.nvidia.com/bionemo-framework/1.10/notebooks/MolMIM_GenerativeAI_local_inference_with_examples.html"
+        ],
+        "modelScope": "MolMIM upstream behavior (as described in BioNeMo and model card) and NIM-served examples (notebook and NIM overview).",
+        "useCase": "Use MolMIM latent-space representations in optimization workflows (example: CMA-ES guided optimization) for early-stage candidate generation under expert review",
+        "why": "NVIDIA primary documentation and the NGC model page describe latent-space optimization capability and document CMA-ES usage for optimization in examples and notebooks."
+      }
+    ],
+    "researchSummary": "MolMIM is a latent-variable probabilistic auto-encoder for small-molecule SMILES developed by NVIDIA. The model uses a Perceiver encoder to map variable-length SMILES text to a fixed-length latent code and a Transformer decoder to autoregressively decode SMILES. Primary NVIDIA documentation (build model card, NIM API reference, BioNeMo model page) and the canonical MolMIM preprint (arXiv) report a 65.2M-parameter encoder-decoder architecture with the numeric layer/hidden/head/FF dimensions listed in identity. NVIDIA NIM documentation exposes endpoints for generation/sampling, /embedding, /hidden, and /decode and documents using latent-space perturbation (including CMA-ES examples) to sample candidate molecules. Primary sources do not report an immutable upstream checkpoint SHA or container digest that unequivocally ties published sampling metrics or numeric benchmarks to a specific immutable artifact. Primary documentation contains conflicting token-length claims (see inputPreparation.preprocesssing) and does not publish exhaustive low-level tokenization/token-indexing, SMILES canonicalization, or complete per-field JSON request/response schemas for all NIM endpoints. Primary sources also present conflicting license statements (see identity.license).",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-",
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+        ],
+        "statement": "MolMIM is presented in primary sources for research use in molecular design; primary findings do not report authorization for clinical use or clinical validation."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/molmim-generate/modelcard",
+          "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html",
+          "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html"
+        ],
+        "statement": "Evidence gap: The checked primary pages do not include documented adversarial/failure-mode analyses, hallucination characterizations, dual-use mitigation procedures, or per-molecule calibrated confidence outputs; users should apply domain expert review and responsible-use controls."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "MolMIM model card (build site)",
+        "primary": true,
+        "primaryReason": "Official MolMIM model card on NVIDIA build site describing architecture, parameter count, input formats, and general usage.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "MolMIM is a latent variable model trained over SMILES and can sample novel molecules from latent space.",
+          "Perceiver encoder + Transformer decoder architecture description and layer/hidden/head/FF dimensions.",
+          "Parameter count: 65.2 million parameters.",
+          "Accepted input formats: CSV and SMILES.",
+          "Maximum input length reported as 512 tokens (per model card).",
+          "MolMIM performs controlled generation to find molecules with desired properties."
+        ],
+        "title": "MolMIM model card (build.nvidia.com)",
+        "url": "https://build.nvidia.com/nvidia/molmim-generate/modelcard"
+      },
+      {
+        "modelScope": "Forge-to-upstream starting source",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://build.nvidia.com/nvidia/molmim-generate"
+      },
+      {
+        "modelScope": "BioNeMo MolMIM model page (1.10)",
+        "primary": true,
+        "primaryReason": "BioNeMo framework model page reporting model behavior, intended use, and sampling/quality metrics for named variants.",
+        "publisher": "NVIDIA BioNeMo framework documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Reports that MolMIM uses a Perceiver encoder and Transformer decoder and provides fixed-length latent representations.",
+          "Reports numeric sampling/quality metrics for named variants (page reports metrics for named service/variant versions).",
+          "States MolMIM is listed with an Apache License (per BioNeMo page).",
+          "Documents a differing token-length claim (maximum input length 128 tokens; maximum output length 512 tokens) relative to other primary sources."
+        ],
+        "title": "MolMIM model page in BioNeMo framework (1.10)",
+        "url": "https://docs.nvidia.com/bionemo-framework/1.10/models/molmim.html"
+      },
+      {
+        "modelScope": "MolMIM NIM overview",
+        "primary": true,
+        "primaryReason": "NIM overview describing MolMIM purpose, probabilistic auto-encoder behavior, and latent-space sampling.",
+        "publisher": "NVIDIA NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "MolMIM is a probabilistic auto-encoder providing a fixed-length representation of variable-length SMILES strings.",
+          "MolMIM can sample valid SMILES strings by perturbing its clustered latent space."
+        ],
+        "title": "MolMIM NIM overview",
+        "url": "https://docs.nvidia.com/nim/bionemo/molmim/latest/overview.html"
+      },
+      {
+        "modelScope": "MolMIM NIM endpoints",
+        "primary": true,
+        "primaryReason": "Official NIM endpoints documentation listing available HTTP endpoints and documented output fields.",
+        "publisher": "NVIDIA NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Available NIM endpoints include generation and sampling endpoints as well as /embedding, /hidden, /decode.",
+          "The /embedding endpoint returns numerical embeddings; /hidden returns hidden/latent state; /decode decodes hidden state to SMILES."
+        ],
+        "title": "MolMIM NIM endpoints",
+        "url": "https://docs.nvidia.com/nim/bionemo/molmim/latest/endpoints.html"
+      },
+      {
+        "modelScope": "MolMIM NIM deployment guide",
+        "primary": true,
+        "primaryReason": "Deployment guide indicating Docker commands to obtain and run the MolMIM NIM container image and runtime behavior.",
+        "publisher": "NVIDIA NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "The NVIDIA NIM container for MolMIM uses Docker image tag nvcr.io/nim/nvidia/molmim:1.0.0 (deployment guide).",
+          "On first startup, the MolMIM NIM container downloads the MolMIM checkpoint from NGC; checkpoint weights can be cached locally.",
+          "Runtime flags and environment variables for GPU acceleration and authentication are documented."
+        ],
+        "title": "MolMIM NIM deployment guide (container info)",
+        "url": "https://docs.nvidia.com/nim/bionemo/molmim/latest/deployment-guide.html"
+      },
+      {
+        "modelScope": "NIM API reference for MolMIM",
+        "primary": true,
+        "primaryReason": "API reference summarizing model architecture, token limits, and input/output formats for MolMIM.",
+        "publisher": "NVIDIA NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "MolMIM is a latent variable encoder-decoder trained over SMILES.",
+          "Model architecture and high-level numeric fields are summarized in the API reference.",
+          "Accepted input formats include SMILES/CSV (as indicated in API reference).",
+          "Maximum input length reported as 512 tokens in the API reference (conflicts with BioNeMo page for input length).",
+          "Maximum output length reported differently on API reference (conflicts with BioNeMo page).",
+          "Model version listed as MolMIM-24.03; training dataset listed as ZINC-15."
+        ],
+        "title": "NIM API reference: nvidia-molmim",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-molmim"
+      },
+      {
+        "modelScope": "MolMIM NIM support matrix (1.0.0)",
+        "primary": true,
+        "primaryReason": "Versioned NIM support matrix page documenting hardware and runtime requirements for the 1.0.0 NIM.",
+        "publisher": "NVIDIA NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Minimum and tested GPU/hardware configurations for NIM runtime are documented (minimum GPU memory requirement, single-GPU configuration, and tested GPU models)."
+        ],
+        "title": "MolMIM NIM support matrix (1.0.0)",
+        "url": "https://docs.nvidia.com/nim/bionemo/molmim/1.0.0/support-matrix.html"
+      },
+      {
+        "modelScope": "MolMIM NIM advanced usage",
+        "primary": true,
+        "primaryReason": "Advanced usage notes for MolMIM NIM (endpoints, logging, and decode/reconstruction behavior).",
+        "publisher": "NVIDIA NIM documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Provides /decode endpoint behavior and /hidden endpoint behavior and engineering notes on logging and validation.",
+          "Describes reconstruction accuracy measurement and decoding considerations."
+        ],
+        "title": "MolMIM NIM advanced usage",
+        "url": "https://docs.nvidia.com/nim/bionemo/molmim/latest/advanced-usage.html"
+      },
+      {
+        "modelScope": "NGC MolMIM explainability/safety",
+        "primary": true,
+        "primaryReason": "NGC explainability/safety section documents intended domain and noted technical limitations.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "model-card",
+        "supports": [
+          "Intended domain: molecular drug discovery and design; output modality: SMILES text.",
+          "Technical limitation noted: may not perform well on sequences divergent from ZINC-15.",
+          "Model presented for research and development use only.",
+          "MolMIM is provided under the NVIDIA AI Foundations Model Community License (per NGC page)."
+        ],
+        "title": "MolMIM explainability (NGC model card safety-and-security)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/clara/models/molmim/-"
+      },
+      {
+        "modelScope": "BioNeMo MolMIM example notebook",
+        "primary": true,
+        "primaryReason": "Canonical BioNeMo notebook demonstrating downloading pre-trained MolMIM model checkpoints for local inference and example workflows.",
+        "publisher": "NVIDIA BioNeMo framework documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Demonstrates downloading pre-trained MolMIM checkpoints for local inference and example optimization workflows (CMA-ES)."
+        ],
+        "title": "MolMIM BioNeMo notebook examples (local inference)",
+        "url": "https://docs.nvidia.com/bionemo-framework/1.10/notebooks/MolMIM_GenerativeAI_local_inference_with_examples.html"
+      },
+      {
+        "modelScope": "MolMIM NIM deployment notes (build site)",
+        "primary": true,
+        "primaryReason": "Build site deployment notes documenting runtime requirements to deploy the MolMIM NIM container.",
+        "publisher": "NVIDIA (build site)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "MolMIM NIM container requires Docker runtime with NVIDIA GPU support and specific runtime settings (deployment guidance)."
+        ],
+        "title": "MolMIM deployment notes (build site)",
+        "url": "https://build.nvidia.com/nvidia/molmim-generate/deploy"
+      },
+      {
+        "modelScope": "MolMIM original preprint",
+        "primary": true,
+        "primaryReason": "Canonical preprint introducing MolMIM methodology and reporting architecture and evaluation claims.",
+        "publisher": "arXiv (preprint)",
+        "sourceType": "paper",
+        "supports": [
+          "Describes MolMIM as a probabilistic auto-encoder with a Perceiver encoder and Transformer decoder.",
+          "Reports that MolMIM clusters chemically similar molecules and can sample unique and novel molecules via latent perturbations.",
+          "Provides architectural details used by NVIDIA documentation (encoder/decoder layer counts, sizes) and evaluation claims in the original study."
+        ],
+        "title": "MolMIM canonical preprint (arXiv:2208.09016)",
+        "url": "https://arxiv.org/pdf/2208.09016"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "36f2465f8ea378d25d4541cef8f022d869e67d162eeeb586ecea6651e7b5a44f",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-nvidia-molmim-generate-212f025c33",
+  "researchedAt": "2026-07-23T23:12:52.061565+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/nvidia/molmim-generate",
+  "sourceUrls": [
+    "https://build.nvidia.com/nvidia/molmim-generate"
+  ],
+  "upstreamAgentSkills": [
+    {
+      "forgeSlugs": [
+        "nvidia-molmim-nim"
+      ],
+      "notes": "NVIDIA BioNeMo's MolMIM skill documents generation, embedding, hidden-state, decoding, sampling, CMA-ES optimization, SMILES/property validation, and the hosted-versus-local endpoint boundary. Use only the routes Forge declares for its deployed NIM and do not invent hosted latent endpoints.",
+      "relation": "exact-nim-operating-skill",
+      "skills": [
+        {
+          "name": "molmim-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/molmim-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "boltz2-nim",
+        "mit-diffdock-nim",
+        "nvidia-genmol-nim",
+        "nvidia-genmol-2-0-0-nim",
+        "nvidia-molmim-nim"
+      ],
+      "notes": "NVIDIA BioNeMo's nvMolKit skill is related GPU-batched cheminformatics guidance for fingerprints, similarity, conformers, force-field optimization, clustering, and substructure checks. Use it for large-batch ligand or generated-molecule validation when installed; it does not establish any model's request schema, quality, or Forge runtime behavior, and plain RDKit is generally more appropriate for one-off molecules.",
+      "relation": "related-cheminformatics-validation",
+      "skills": [
+        {
+          "name": "nvmolkit-usage",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/library-skills/nvMolKit"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

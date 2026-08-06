@@ -71,6 +71,16 @@ Route: `POST /v1/inference/qwen-qwen-image-edit`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-visual-genai-latest-getting-started-html-qwen-qwen-image-edit-8b48716485`
+- Recommended: Prompt-driven image editing (semantic edits and appearance/style adjustments) via the NIM OpenAI-compatible image-editing endpoint — NVIDIA NIM API and NVIDIA Build model page describe Qwen-Image-Edit as an image editing model where a natural-language 'prompt' instructs the edit and input image(s) are processed by the pipeline (Qwen2.5-VL for semantic control and a VAE encoder for appearance control).
+- Recommended: Use tag-specific variants for workflows where per-tag release notes indicate variant behavior; validate empirically on target data before production use — NVIDIA Build and NGC list supported variant tags selectable via NIM_MODEL_VERSION and the nvpcb artifact documents a targeted fine-tuning for PCB-style transfer; tag-specific variants can be selected and validated.
+- Avoid: Assuming auditable, checkpoint-scoped numeric benchmark performance for NIM tags without additional provenance — No primary-source, checkpoint-scoped numeric benchmark rows (dataset, split, metric, numeric value) explicitly tied to the exact Qwen-Image-Edit NIM tags were found in the reviewed primary sources; family-level results in the technical report do not substitute for checkpoint-scoped evidence.
+- Avoid: Relying on NIM offloading policies (disk/system_ram/none) for Qwen-Image-Edit — NVIDIA documentation explicitly states that offloading policies are not supported by Qwen-Image and Qwen-Image-Edit NIMs.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -88,11 +98,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen-image-edit/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen-image-edit/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen-image-edit/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/qwen-qwen-image-edit/SKILL.md

@@ -1,0 +1,488 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/qwen/qwen-image-edit",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/nim/visual-genai/1.6.0/overview.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/qwen/qwen-image-edit",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/nim/visual-genai/1.6.0/getting-started.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/qwen/qwen-image-edit",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/qwen/qwen-image-edit",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/qwen/qwen-image-edit",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/nim/visual-genai/1.6.0/getting-started.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/qwen/qwen-image-edit",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/nim/visual-genai/1.6.0/overview.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/qwen/qwen-image-edit",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 13 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Qwen-Image Visual GenAI NIM for high-quality multilingual text-to-image generation, with the container default pinned to the qwen-image-2512 model version.",
+      "displayName": "Use Qwen-Image",
+      "group": "image-generation",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "qwen-qwen-image",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "qwen-qwen-image",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "version": "1.0.0",
+      "versionKey": "1-0-0"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+          "https://docs.nvidia.com/nim/visual-genai/1.6.0/models.html"
+        ],
+        "modelScope": "Base Qwen-Image versus Qwen-Image-Edit family boundary",
+        "reason": "NVIDIA documents Qwen-Image as a text-to-image foundation-model family, while Qwen-Image-Edit is separately documented as the image-editing family built on Qwen-Image.",
+        "useCase": "Using base Qwen-Image for image-editing workflows that require image inputs"
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/qwen/containers/qwen-image/-"
+        ],
+        "modelScope": "NVIDIA NIM Qwen-Image container/runtime",
+        "reason": "The NGC Qwen-Image container page states that users are responsible for model inputs and outputs and must implement guardrails and safety mechanisms before deployment.",
+        "useCase": "Deploying the NVIDIA NIM container without guardrails and safety mechanisms"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "qwen-qwen-image-edit",
+        "comparisonConditions": "Not a matched benchmark protocol; this is a scope and capability comparison derived from NVIDIA family descriptions.",
+        "criteria": "Task specialization and input modality differ: Qwen-Image is documented as text-to-image, while Qwen-Image-Edit is documented as image editing built on Qwen-Image.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+          "https://docs.nvidia.com/nim/visual-genai/1.6.0/models.html"
+        ],
+        "rationale": "Primary NVIDIA sources support a task-boundary comparison, not a numeric head-to-head benchmark. The evidence supports choosing the edit family when image-editing capability is required, and the base family when text-to-image generation is the target task.",
+        "task": "Base text-to-image generation versus image-editing workflows",
+        "verdict": "tradeoff"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Only use bf16, fp8, or nvfp4 after validating quality and hardware compatibility in the target deployment, because NVIDIA documents these as supported visual GenAI precisions but does not provide checkpoint-scoped quality tradeoff data here.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+        ],
+        "modelScope": "NVIDIA NIM runtime for Qwen-Image",
+        "useCase": "Using alternate precision modes in production deployment"
+      },
+      {
+        "conditions": "Validate generated-image pixel limits in deployment because NVIDIA documents a configurable maximum number of pixels to generate, but the checked findings do not provide Qwen-Image-specific default values or recommended quality settings for this exact model.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/1.6.0/configuration.html"
+        ],
+        "modelScope": "NVIDIA NIM Visual GenAI configuration as applied to Qwen-Image runtime",
+        "useCase": "Generating higher-resolution images within deployment policy controls"
+      }
+    ],
+    "evidenceGaps": [
+      "Benchmark evidence gap: after checking https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html (Qwen-Image section), https://huggingface.co/Qwen/Qwen-Image (model card), https://arxiv.org/abs/2508.02324 (technical report abstract page), and https://docs.nvidia.com/nim/visual-genai/latest/overview.html (Qwen-Image overview text), no usable checkpoint-scoped benchmark table, figure, dataset/split, metric, and value for qwen-image-2512 was found.",
+      "Comparison evidence gap: beyond the task-scope comparison against Qwen-Image-Edit, the checked primary sources do not provide matched-protocol head-to-head comparisons between qwen-image-2512 and other Forge peer models in https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html, https://docs.nvidia.com/nim/visual-genai/latest/overview.html, https://huggingface.co/Qwen/Qwen-Image, or https://arxiv.org/abs/2508.02324.",
+      "Input contract evidence gap: the checked primary sources do not specify exact NVIDIA NIM request payload fields, official prompt templates, tokenizer identity, accepted text length limits, or batching limits for this exact Qwen-Image serving scope.",
+      "Output contract evidence gap: the checked primary sources do not specify exact NVIDIA NIM response object schema, image file encoding details, or per-request image-count defaults for this exact Qwen-Image serving scope.",
+      "Revision evidence gap: the checked primary sources do not report an immutable upstream revision identifier for qwen-image-2512 in this NVIDIA-served scope."
+    ],
+    "family": "docs-nvidia-com-nim-visual-genai-latest-getting-started-html-qwen-qwen-image-d3119f508b",
+    "identity": {
+      "architecture": "NVIDIA-served Qwen-Image is documented as a text-to-image foundation model. Upstream-checkpoint evidence also states that Qwen-Image integrates vision-language encoding with diffusion-based generation.",
+      "checkpoint": "qwen-image-2512",
+      "evidenceUrls": [
+        "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+        "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+        "https://huggingface.co/Qwen/Qwen-Image",
+        "https://catalog.ngc.nvidia.com/orgs/nim/qwen/containers/qwen-image/-",
+        "https://build.nvidia.com/qwen/qwen-image/modelcard"
+      ],
+      "license": "Upstream checkpoint license: Apache 2.0 is reported for Qwen-Image. NVIDIA container/runtime licensing: NVIDIA NIM containers are governed by the NVIDIA Software License Agreement, Product-Specific Terms for NVIDIA AI Products, and the NVIDIA Open Model License Agreement; the NGC container page also notes commercial and non-commercial readiness. The verified sources do not provide a single reconciled statement mapping model-weight versus container-runtime rights beyond those separate notices.",
+      "parameterScale": "Qwen-Image is described by NVIDIA as a family of 20\u2011billion\u2011parameter text\u2011to\u2011image foundation models; checkpoint-specific parameter count for qwen-image-2512 is not separately reported in the verified sources.",
+      "revision": "not reported",
+      "upstreamName": "Qwen-Image"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+            "https://docs.nvidia.com/nim/visual-genai/1.6.0/models.html"
+          ],
+          "statement": "Accepted semantic input format for this base model scope is text input; no verified NVIDIA primary source in the checked scope establishes image input for base Qwen-Image."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+          ],
+          "statement": "Before serving, select the model version through NIM_MODEL_VERSION if a non-default version is desired; otherwise the Qwen-Image NIM defaults to qwen-image-2512 when unset."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+          ],
+          "statement": "If deploying with precision controls, set precision only among the documented supported visual GenAI precisions bf16, fp8, and nvfp4."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+            "https://docs.nvidia.com/nim/visual-genai/1.6.0/models.html"
+          ],
+          "statement": "The base Qwen-Image NVIDIA NIM scope is a text-to-image model family, so the supported semantic input is text prompting for image generation."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+            "https://docs.nvidia.com/nim/visual-genai/1.6.0/models.html"
+          ],
+          "statement": "Use the base Qwen-Image runtime for text-to-image generation tasks; do not transfer the image-input editing contract from Qwen-Image-Edit to base Qwen-Image."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+          ],
+          "statement": "Validate whether deployment settings attempt unsupported offloading policies, because disk, system_ram, and none offloading policies are documented as not supported by Qwen-Image NIMs."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/1.6.0/configuration.html"
+          ],
+          "statement": "For deployment configurations that govern generated image size, validate against the configured maximum number of pixels allowed for generated output images."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+          "https://huggingface.co/Qwen/Qwen-Image"
+        ],
+        "statement": "The verified primary sources do not report a checkpoint-specific immutable revision for qwen-image-2512 in this NVIDIA-served scope."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+          "https://build.nvidia.com/qwen/qwen-image/modelcard",
+          "https://huggingface.co/Qwen/Qwen-Image"
+        ],
+        "statement": "The verified primary sources do not provide exact request payload schema details, prompt templates, tokenizer identity, prompt-length limits, or batching limits for this exact NVIDIA-served Qwen-Image scope."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+          "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+          "https://huggingface.co/Qwen/Qwen-Image",
+          "https://arxiv.org/abs/2508.02324"
+        ],
+        "statement": "No checkpoint-scoped public benchmark table with exact dataset, split, metric, and value for qwen-image-2512 was verified in the checked NVIDIA getting-started page, NVIDIA overview/models pages, upstream model card, or arXiv technical report entry."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Qwen/Qwen-Image",
+          "https://catalog.ngc.nvidia.com/orgs/nim/qwen/containers/qwen-image/-"
+        ],
+        "statement": "The verified sources separate upstream Apache 2.0 model licensing from NVIDIA container/runtime license terms, but do not provide a single authoritative reconciliation of those layers for this packaged deployment scope."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+            "https://build.nvidia.com/qwen/qwen-image/modelcard"
+          ],
+          "statement": "Interpret outputs as generated images conditioned on text prompts; the verified primary sources do not provide calibrated confidence scores, logits, or uncertainty values for generated images."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+            "https://build.nvidia.com/qwen/qwen-image/modelcard"
+          ],
+          "statement": "The model output modality for this Forge model scope is image output from a text-to-image model."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/nim/qwen/containers/qwen-image/-"
+          ],
+          "statement": "Perform human and application-level review of generated outputs before deployment use, because NVIDIA states that users are responsible for model inputs and outputs and must implement guardrails and safety mechanisms."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+          "https://docs.nvidia.com/nim/visual-genai/latest/overview.html",
+          "https://huggingface.co/Qwen/Qwen-Image"
+        ],
+        "modelScope": "NVIDIA-served Qwen-Image default runtime when NIM_MODEL_VERSION is unset (qwen-image-2512), with upstream-checkpoint capability evidence from Qwen-Image.",
+        "useCase": "Multilingual text-to-image generation with strong text rendering emphasis",
+        "why": "NVIDIA overview documentation describes Qwen-Image as a text-to-image foundation model with strong capabilities in complex text rendering for English and Chinese, high-resolution output, and versatile styles. The upstream Qwen-Image model card also states strong capabilities in complex text rendering for alphabetic and logographic scripts."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+        ],
+        "modelScope": "NVIDIA NIM Visual GenAI runtime for Qwen-Image",
+        "useCase": "Self-hosted NVIDIA NIM deployment for Qwen-Image text-to-image inference",
+        "why": "NVIDIA getting-started documentation explicitly documents the Qwen-Image NIM runtime, the NIM_MODEL_VERSION selector, and that the container defaults to qwen-image-2512 when unset."
+      }
+    ],
+    "researchSummary": "This dossier is scoped to the NVIDIA NIM Visual GenAI model entry for Forge slug qwen-qwen-image and the NVIDIA-served Qwen-Image runtime. NVIDIA documentation verifies that the Qwen-Image NIM uses the NIM_MODEL_VERSION selector and defaults to qwen-image-2512 when that variable is unset in the latest getting-started documentation. NVIDIA describes Qwen-Image as a 20B-parameter text-to-image foundation-model family, while upstream-checkpoint evidence supports multilingual complex text rendering and general text-to-image generation, with Apache 2.0 reported for the upstream model. Verified runtime evidence supports deployment via NVIDIA NIM, precision selection, and text-to-image usage boundaries, but the checked primary sources do not provide checkpoint-scoped benchmark tables, exact request/response payload schemas, prompt-length limits, tokenizer details, or post-training calibration metrics for this exact NVIDIA-served scope.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/qwen/containers/qwen-image/-"
+        ],
+        "statement": "Users are responsible for model inputs and outputs and must implement guardrails and safety mechanisms before deployment."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/qwen/containers/qwen-image/-",
+          "https://huggingface.co/Qwen/Qwen-Image"
+        ],
+        "statement": "Deployment should preserve NVIDIA container license and access-control requirements because NVIDIA NIM containers are governed by NVIDIA license terms distinct from the upstream Apache 2.0 model license."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "NVIDIA NIM Visual GenAI runtime for Qwen-Image and Qwen-Image-Edit",
+        "primary": true,
+        "primaryReason": "Official NVIDIA documentation for the exact NIM runtime scope, including Qwen-Image model-version selection and default behavior.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.checkpoint default behavior when NIM_MODEL_VERSION is unset",
+          "recommended self-hosted NIM deployment use case",
+          "input preprocessing and validation for model-version and precision selection",
+          "runtime limitations and evidence gaps for undocumented request details"
+        ],
+        "title": "NVIDIA NIM Visual GenAI getting-started (latest)",
+        "url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+      },
+      {
+        "modelScope": "NVIDIA NIM Visual GenAI configuration surface applicable to Qwen-Image runtime",
+        "primary": true,
+        "primaryReason": "Official NVIDIA configuration reference documenting generated-pixel limits and image-count controls relevant to NIM runtime behavior.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "conditional use case for deployment with generated-pixel controls",
+          "input validation for generated pixel limits"
+        ],
+        "title": "NVIDIA NIM Visual GenAI configuration (1.6.0)",
+        "url": "https://docs.nvidia.com/nim/visual-genai/1.6.0/configuration.html"
+      },
+      {
+        "modelScope": "NVIDIA-supported Visual GenAI model families including Qwen-Image and Qwen-Image-Edit",
+        "primary": true,
+        "primaryReason": "Official NVIDIA model catalog page describing Qwen-Image and Qwen-Image-Edit family task scope and parameter scale.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.parameterScale family statement",
+          "recommended text-to-image use case",
+          "avoid-use boundary for editing tasks",
+          "comparison to Qwen-Image-Edit",
+          "input semantic scope for base model"
+        ],
+        "title": "NVIDIA NIM Visual GenAI models page (1.6.0)",
+        "url": "https://docs.nvidia.com/nim/visual-genai/1.6.0/models.html"
+      },
+      {
+        "modelScope": "NVIDIA Visual GenAI product/model overview for Qwen-Image family",
+        "primary": true,
+        "primaryReason": "Official NVIDIA overview page describing Qwen-Image capabilities and Qwen-Image-Edit specialization.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.parameterScale family statement",
+          "recommended multilingual text-to-image use case",
+          "avoid-use boundary for editing tasks",
+          "comparison to Qwen-Image-Edit",
+          "output modality and interpretation scope",
+          "input semantic scope for base model"
+        ],
+        "title": "NVIDIA NIM Visual GenAI overview (latest)",
+        "url": "https://docs.nvidia.com/nim/visual-genai/latest/overview.html"
+      },
+      {
+        "modelScope": "Upstream Qwen-Image checkpoint family",
+        "primary": true,
+        "primaryReason": "Canonical upstream model card for the Qwen-Image checkpoint family used to preserve upstream-checkpoint capability and license evidence.",
+        "publisher": "Qwen",
+        "sourceType": "model-card",
+        "supports": [
+          "identity.upstreamName",
+          "identity.license upstream Apache 2.0 layer",
+          "recommended multilingual text-to-image use case as upstream evidence",
+          "limitations about missing revision and undocumented tokenizer/prompt details"
+        ],
+        "title": "Hugging Face model card: Qwen-Image",
+        "url": "https://huggingface.co/Qwen/Qwen-Image"
+      },
+      {
+        "modelScope": "Original upstream Qwen-Image technical report scope",
+        "primary": true,
+        "primaryReason": "Canonical preprint entry for the original Qwen-Image technical report within the allowed primary-source set.",
+        "publisher": "arXiv / original study authors",
+        "sourceType": "technical-report",
+        "supports": [
+          "limitations documenting absence of checkpoint-scoped usable benchmarks in checked primary sources",
+          "research summary on upstream technical-report inspection"
+        ],
+        "title": "Qwen-Image technical report (arXiv abstract)",
+        "url": "https://arxiv.org/abs/2508.02324"
+      },
+      {
+        "modelScope": "NVIDIA-packaged Qwen-Image NIM container/runtime",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC container page for the exact packaged Qwen-Image runtime scope.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "repository",
+        "supports": [
+          "identity.license NVIDIA container/runtime layer",
+          "avoid-use boundary requiring guardrails",
+          "output validation and safety responsibilities",
+          "commercial/non-commercial readiness note"
+        ],
+        "title": "NGC catalog entry for Qwen-Image container",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/qwen/containers/qwen-image/-"
+      },
+      {
+        "modelScope": "NVIDIA Build model card for Qwen-Image",
+        "primary": true,
+        "primaryReason": "Official NVIDIA model card page for the Qwen-Image service scope, used here only for directly supported architecture and output-modality statements.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "identity.architecture upstream-served description",
+          "output modality and interpretation scope",
+          "limitations on undocumented request details"
+        ],
+        "title": "Build NVIDIA Qwen-Image model card",
+        "url": "https://build.nvidia.com/qwen/qwen-image/modelcard"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "7a7e507d58069ba649a743f882ce74c3e1f6c4862009527014f5614c6b596d43",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "docs-nvidia-com-nim-visual-genai-latest-getting-started-html-qwen-qwen-image-d3119f508b",
+  "researchedAt": "2026-07-23T22:33:47.174526+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html#qwen-qwen-image",
+  "sourceUrls": [
+    "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

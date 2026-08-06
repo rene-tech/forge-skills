@@ -73,6 +73,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-30b-a3b-instruct-2507-fp8-6399ab64f2`
+- Recommended: Benchmark evaluation and empirical performance measurement on the tasks listed on the FP8 model card (e.g., MultiPL-E, IFEval, Arena-Hard v2, Creative Writing v3, WritingBench, BFCL-v3, TAU variants, MMLU variants, GPQA, SuperGPQA, AIME25, HMMT25, ZebraLogic, LiveBench, LiveCodeBench, MultiIF, MMLU-ProX, INCLUDE, PolyMATH). — The Hugging Face model card for the FP8 checkpoint explicitly lists per-checkpoint numeric scores for these benchmarks in its Benchmarks table.
+- Recommended: Use in text-generation / instruction-following workflows to produce textual outputs for downstream evaluation. — The checkpoint is presented on the model card under a name that includes the token 'Instruct' and the Benchmarks table contains many text-task benchmark results, indicating checkpoint-scoped use for textual generation/evaluation.
+- Avoid: Assuming checkpoint-scoped parameter counts, architecture details, immutable weights revision identifiers, or an explicit weights license for this FP8 artifact. — The inspected Hugging Face model card presents the checkpoint name and benchmark table values but does not report checkpoint-scoped parameter-count strings, architecture text, an immutable revision identifier, or an explicit weights-license declaration.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/qwen-qwen3-30b-a3b-instruct-2507-fp8-vllm-cuda13/SKILL.md

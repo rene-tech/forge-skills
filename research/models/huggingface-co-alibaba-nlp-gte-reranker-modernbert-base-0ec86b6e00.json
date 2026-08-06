@@ -1,0 +1,424 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses forbidden secondary URL https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/discussions/15/files",
+        "path": "$.sources[6] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 1 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Alibaba-NLP gte-reranker-modernbert-base served by Hugging Face Text Embeddings Inference CUDA 1.9 for English retrieval reranking.",
+      "displayName": "Use GTE Reranker ModernBERT Base",
+      "group": "retrieval-and-reranking",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "alibaba-nlp-gte-reranker-modernbert-base",
+      "outputModalities": [
+        "ranking"
+      ],
+      "slug": "alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9",
+      "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base",
+      "version": "tei-cuda-1.9.3",
+      "versionKey": "tei-cuda-1-9-3"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json",
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+        ],
+        "modelScope": "Alibaba-NLP/gte-reranker-modernbert-base (config.json and README blobs)",
+        "reason": "Config.json records a sequence-classification architecture (ModernBertForSequenceClassification) indicating a cross-encoder reranker head rather than an embedding-only encoder; primary blobs do not provide evidence that this checkpoint is intended or configured as an embeddings-only encoder.",
+        "useCase": "Using gte-reranker-modernbert-base as a drop-in embedding generator for vector search without verification"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json"
+        ],
+        "modelScope": "Alibaba-NLP/gte-reranker-modernbert-base (located repository blobs)",
+        "reason": "Located primary repository blobs (README/config/commits/tokenizer blobs) do not define whether returned relevance fields are logits, probabilities, or calibrated scores; numeric semantics and calibration are not documented in the located blobs.",
+        "useCase": "Assuming numeric calibration or cross-query comparability of any returned \"raw_scores\" without validation"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Primary README blob reports an aggregate numeric value but does not include the detailed per-dataset protocol, splits, or evaluation scripts in the located blob."
+        ],
+        "conditions": "Aggregate score reported in repository README model list table; the located README blob does not publish per-dataset protocol, splits, or evaluation script details for the reported aggregate.",
+        "dataset": "MTEB-en",
+        "direction": "higher-is-better",
+        "metric": "MTEB-en (aggregate)",
+        "modelScope": "gte-reranker-modernbert-base (README model list entry)",
+        "sourceLocator": "README.md model list table showing gte-reranker-modernbert-base performance row",
+        "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+        "split": "not reported",
+        "task": "Text reranking / retrieval",
+        "value": "56.19"
+      },
+      {
+        "caveats": [
+          "Primary README blob reports an aggregate numeric value but does not include the detailed per-dataset protocol, splits, or evaluation scripts in the located blob."
+        ],
+        "conditions": "Aggregate score reported in repository README model list table; the located README blob does not publish per-dataset protocol, splits, or evaluation script details for the reported aggregate.",
+        "dataset": "BEIR",
+        "direction": "higher-is-better",
+        "metric": "BEIR (aggregate)",
+        "modelScope": "gte-reranker-modernbert-base (README model list entry)",
+        "sourceLocator": "README.md model list table showing gte-reranker-modernbert-base performance row",
+        "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+        "split": "not reported",
+        "task": "Text reranking / retrieval",
+        "value": "90.68"
+      },
+      {
+        "caveats": [
+          "Primary README blob reports an aggregate numeric value but does not include the detailed per-dataset protocol, splits, or evaluation scripts in the located blob."
+        ],
+        "conditions": "Aggregate score reported in repository README model list table; the located README blob does not publish per-dataset protocol, splits, or evaluation script details for the reported aggregate.",
+        "dataset": "LoCo",
+        "direction": "higher-is-better",
+        "metric": "LoCo (aggregate)",
+        "modelScope": "gte-reranker-modernbert-base (README model list entry)",
+        "sourceLocator": "README.md model list table showing gte-reranker-modernbert-base performance row",
+        "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+        "split": "not reported",
+        "task": "Long-document retrieval / reranking",
+        "value": "79.99"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "BAAI/bge-reranker-v2-m3",
+        "comparisonConditions": "Peer-side primary evidence for BAAI/bge-reranker-v2-m3 with matching protocol not provided in the located blobs; no protocol-aligned side-by-side found.",
+        "criteria": "No checkpoint-scoped primary-source side-by-side comparison (same dataset/metric/split/protocol) was found in the located Alibaba-NLP repository blobs for gte-reranker-modernbert-base.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json"
+        ],
+        "rationale": "Checked the repository README and config/commit blobs for gte-reranker-modernbert-base and did not find a primary-blob side-by-side numeric comparison that names BAAI/bge-reranker-v2-m3 with matching protocol details.",
+        "task": "retrieval-and-reranking",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "NVIDIA Llama rerank variants (NVIDIA Llama 3.2 NV-RerankQA 1B v2; NVIDIA Llama Nemotron Rerank 1B v2; NVIDIA Llama Nemotron Rerank VL 1B v2)",
+        "comparisonConditions": "Peer-side primary comparison entries not found in the located Alibaba-NLP blobs; no direct protocol-aligned comparison evidence present in the research findings.",
+        "criteria": "No checkpoint-scoped primary-source side-by-side comparison found in the located Alibaba-NLP repository blobs for gte-reranker-modernbert-base.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+        ],
+        "rationale": "Repository README/config/commit blobs for gte-reranker-modernbert-base contain no direct numeric comparisons to the listed NVIDIA reranker variants in the located primary blobs.",
+        "task": "retrieval-and-reranking",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "Qwen reranker variants (Qwen3-Reranker-0.6B, Qwen3-Reranker-4B, Qwen3-VL-Reranker-2B)",
+        "comparisonConditions": "Peer-side primary comparison entries not present in the located Alibaba-NLP blobs; no direct protocol-aligned comparison evidence present in the research findings.",
+        "criteria": "No checkpoint-scoped primary-source side-by-side comparison found in the located Alibaba-NLP repository blobs for gte-reranker-modernbert-base.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+        ],
+        "rationale": "The located Alibaba-NLP blobs do not include direct numeric comparisons or references to the listed Qwen reranker variants in the repository README or config/commit blobs reviewed in the research findings.",
+        "task": "retrieval-and-reranking",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Config and commit blobs report max_position_embeddings = 8192, but repository blobs do not specify truncation side, per-field token budgets, batching/truncation enforcement, or runtime truncation semantics. Users must validate truncation behavior, batching limits, and confirm that any downstream serving wrapper preserves full 8192-length behavior before production use.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commit/c40156962ee2a34679b0c8399e0d1bb9d68d54ab",
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+        ],
+        "modelScope": "Alibaba-NLP/gte-reranker-modernbert-base (config.json and commit c40156962ee2a34679b0c8399e0d1bb9d68d54ab)",
+        "useCase": "Long-context reranking up to 8192 tokens (query + document pairs where combined token length may approach 8192)"
+      }
+    ],
+    "evidenceGaps": [
+      "No primary-blob documentation found for tokenizer algorithmic internals (BPE vs SentencePiece), normalization rules, or lowercasing semantics for the checkpoint; the tokenizer_config.json records configured fields but not algorithmic internals.",
+      "No primary-blob documentation located for per-field token budgets (e.g., explicit query vs document token limits), truncation enforcement at runtime beyond tokenizer default settings, or explicit truncation-side policy tied to inference code in the located repository blobs.",
+      "No primary-blob documentation located for numeric semantics or calibration of any returned relevance score fields (for example, whether returned values are logits, probabilities, or calibrated scores) in the reviewed repository blobs.",
+      "No checkpoint-scoped primary-side-by-side comparisons to the named Forge peers (BAAI/bge-reranker-v2-m3; NVIDIA Llama rerank variants; Qwen reranker variants) were located in the reviewed Alibaba-NLP repository blobs.",
+      "No primary-blob runtime performance measurements (latency, GPU memory footprint, throughput) for this specific checkpoint were found in the located README/config/commit blobs.",
+      "No primary-blob documentation of training data sources, data provenance, or bias/mitigation statements for this exact checkpoint was located in the reviewed repository blobs."
+    ],
+    "family": "huggingface-co-alibaba-nlp-gte-reranker-modernbert-base-0ec86b6e00",
+    "identity": {
+      "architecture": "ModernBertForSequenceClassification (ModernBERT encoder foundation with sequence-classification / reranker head as recorded in the repo config)",
+      "checkpoint": "Hugging Face repository blobs and uploaded weight artifacts for Alibaba-NLP/gte-reranker-modernbert-base",
+      "evidenceUrls": [
+        "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base",
+        "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json",
+        "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commit/c40156962ee2a34679b0c8399e0d1bb9d68d54ab",
+        "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commits/c2c3466f6bb32f168f3df9d76b2aa27023de1336",
+        "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+      ],
+      "license": "Apache-2.0",
+      "parameterScale": "149 million parameters",
+      "revision": "commit c40156962ee2a34679b0c8399e0d1bb9d68d54ab (config/README association); commit c2c3466f6bb32f168f3df9d76b2aa27023de1336 (artifact uploads)",
+      "upstreamName": "Alibaba-NLP/gte-reranker-modernbert-base"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base"
+          ],
+          "statement": "Repository README and model listing present the model as a reranker for retrieval/reranking tasks and are the authoritative upstream usage examples located in the repository blobs."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json"
+          ],
+          "statement": "Config blobs document vocab_size and special token IDs (e.g., bos_token_id 50281, eos_token_id 50282, pad_token_id 50283, cls_token_id 50281) and other tokenizer-related metadata for the checkpoint."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F5/tokenizer_config.json"
+          ],
+          "statement": "Tokenizer configuration blob records model_max_length = 8192, tokenizer max length = 512, padding on the right, truncation side = right, and truncation strategy = \"longest_first\" for the distributed tokenizer configuration."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json"
+          ],
+          "statement": "The model is a text reranker intended to accept query + candidate document pairs for pairwise relevance scoring (cross-encoder input semantics)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base"
+          ],
+          "statement": "Repository README model-list entries present high-level examples and label the model as a reranker for retrieval/reranking tasks; follow the README examples for query+candidate formatting as authoritative upstream examples."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commit/c40156962ee2a34679b0c8399e0d1bb9d68d54ab",
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+          ],
+          "statement": "Model config and commit blobs report maximum position embeddings = 8192; repository blobs do not specify per-field token budgets or runtime truncation enforcement — implementers must validate combined token lengths (query+document) and truncation behavior before production deployment."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/2b1862f777a28ed2f938a99b368aa67a8bccd796/README.md"
+        ],
+        "statement": "Apache-2.0 license is declared in repository README blame view."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: The located primary blobs do not document training data sources, data provenance, or bias/mitigation statements for this exact checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commits/c2c3466f6bb32f168f3df9d76b2aa27023de1336"
+        ],
+        "statement": "The repository records weight artifact uploads (safetensors, ONNX) in commits, but the repository blobs do not include runtime performance (latency, GPU memory, throughput) measurements for this specific checkpoint."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+          ],
+          "statement": "Because the located primary blobs do not define numeric semantics or calibration for returned relevance scores, implementers must validate score calibration and cross-query comparability before treating scores as probabilities or calibrated measures."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json"
+          ],
+          "statement": "Repository README/config/commits do not provide a definitive primary-blob description of returned field numeric semantics (for example, no authoritative blob defines whether a returned relevance field is logits, probabilities, or calibrated scores)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+          ],
+          "statement": "Primary blobs do not document post-inference calibration or validation procedures; implementers should perform downstream calibration and sanity checks for thresholds, cross-query comparisons, and any probabilistic interpretations."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json",
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+        ],
+        "modelScope": "Alibaba-NLP/gte-reranker-modernbert-base (config.json and README blobs)",
+        "useCase": "English retrieval reranking (cross-encoder reranker for query + candidate document pairs)",
+        "why": "Repository config.json specifies ModernBertForSequenceClassification (sequence-classification head) and README model-list entries describe gte-reranker-modernbert-base as a text reranker; these checkpoint-scoped artifacts support using the checkpoint as a cross-encoder reranker for query/document pair relevance scoring."
+      }
+    ],
+    "researchSummary": "Primary upstream evidence is available in the Alibaba-NLP Hugging Face repository blobs and commit history for Alibaba-NLP/gte-reranker-modernbert-base. The repository config.json identifies the architecture class as ModernBertForSequenceClassification (a sequence-classification / reranker head) and records hidden_size and max_position_embeddings = 8192. The repository README blobs present the model as an English text reranker and report checkpoint-scoped aggregate evaluation numbers (MTEB-en 56.19, BEIR 90.68, LoCo 79.99) in a model-list benchmark table. Tokenizer operational metadata (token IDs, model_max_length) and tokenizer truncation/padding/right-side behavior are recorded in the repository tokenizer_config.json blob; however, the located primary blobs do not document tokenizer algorithmic internals beyond configured fields, do not document numeric semantics/calibration of returned relevance scores, do not publish per-dataset evaluation protocol details or evaluation scripts for the reported aggregates, and do not document training-data provenance or explicit safety/mitigation statements. These absent items are recorded as explicit evidence gaps.",
+    "safety": [
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: The located primary repository blobs do not contain creator-provided statements about safety mitigations, privacy/PHI handling, clinical/regulatory warnings, or explicit dual-use mitigations for this checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commits/c2c3466f6bb32f168f3df9d76b2aa27023de1336",
+          "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+        ],
+        "statement": "Operational artifacts in the repository commits (weights uploads) and README blobs are implementation/deployment evidence rather than documented safety mitigations; users should apply standard data-handling and review controls when deploying rerankers."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Alibaba-NLP/gte-reranker-modernbert-base (model page)",
+        "primary": true,
+        "primaryReason": "Model page is the repository-level canonical locator for the checkpoint and provides top-level metadata for Alibaba-NLP/gte-reranker-modernbert-base used by this dossier.",
+        "publisher": "huggingface.co",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Model identifier and top-level repository metadata",
+          "High-level model listing and task tags"
+        ],
+        "title": "Exact official starting source declared by Forge (model page)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base"
+      },
+      {
+        "modelScope": "README model list entries and benchmark table rows for gte-reranker-modernbert-base",
+        "primary": true,
+        "primaryReason": "README blob contains the model-list table rows and reported aggregate benchmark numbers for gte-reranker-modernbert-base used as checkpoint-scoped evidence in this dossier.",
+        "publisher": "Alibaba-NLP (Hugging Face repository blob)",
+        "sourceType": "repository",
+        "supports": [
+          "Reported aggregate performance numbers (MTEB-en 56.19, BEIR 90.68, LoCo 79.99) for gte-reranker-modernbert-base",
+          "Model listing showing distinction between embedding and reranker variants",
+          "Model size and max input length statements"
+        ],
+        "title": "Repository README (refs/pr/4) showing model list and performance rows (README.md)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F4/README.md"
+      },
+      {
+        "modelScope": "README model-list entries and license statements for gte-reranker-modernbert-base",
+        "primary": true,
+        "primaryReason": "Blame view of the repository README records model-list entries and metadata used by this dossier including license statements and top-level model facts.",
+        "publisher": "Alibaba-NLP (Hugging Face repository blob blame)",
+        "sourceType": "repository",
+        "supports": [
+          "Model listing and task/type (Text reranker)",
+          "Apache-2.0 license declaration in README blame view",
+          "Model size and max input length statements"
+        ],
+        "title": "Repository README blame (alternate view) showing model family statements and license (README.md blame)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/2b1862f777a28ed2f938a99b368aa67a8bccd796/README.md"
+      },
+      {
+        "modelScope": "config.json for gte-reranker-modernbert-base (refs/pr/4)",
+        "primary": true,
+        "primaryReason": "Model config blob documents architecture class, hidden_size, special token IDs, max_position_embeddings and other hyperparameters for the checkpoint.",
+        "publisher": "Alibaba-NLP (Hugging Face repository blob blame)",
+        "sourceType": "repository",
+        "supports": [
+          "Architecture: ModernBertForSequenceClassification",
+          "Hidden size 768 and other hyperparameters",
+          "max_position_embeddings = 8192 and tokenizer-related token ID fields"
+        ],
+        "title": "Model configuration (config.json) blame for refs/pr/4 showing architecture and hyperparameters",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blame/refs%2Fpr%2F4/config.json"
+      },
+      {
+        "modelScope": "Commit c40156962ee2a... (config/README association)",
+        "primary": true,
+        "primaryReason": "Commit metadata records config.json upload and associated model metadata at a specific revision used to tie hyperparameter values to a concrete revision.",
+        "publisher": "Alibaba-NLP (Hugging Face repository commit view)",
+        "sourceType": "repository",
+        "supports": [
+          "Recorded max_position_embeddings = 8192 at this commit",
+          "Association of config and README blobs at a named revision"
+        ],
+        "title": "Commit recording config and README association (commit c40156962ee2a34679b0c8399e0d1bb9d68d54ab)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commit/c40156962ee2a34679b0c8399e0d1bb9d68d54ab"
+      },
+      {
+        "modelScope": "Weights/artifact upload commits for gte-reranker-modernbert-base",
+        "primary": true,
+        "primaryReason": "Commits page records ONNX and safetensors uploads in the repository history and is used to verify presence of weight artifacts in the repository history.",
+        "publisher": "Alibaba-NLP (Hugging Face repository commits view)",
+        "sourceType": "repository",
+        "supports": [
+          "ONNX and model.safetensors uploads recorded in commits",
+          "General commit history for artifact uploads and pipeline tag changes"
+        ],
+        "title": "Repository commits view showing weight artifact uploads (commits/c2c3466f6bb32f168f3df9d76b2aa27023de1336)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/commits/c2c3466f6bb32f168f3df9d76b2aa27023de1336"
+      },
+      {
+        "modelScope": "tokenizer_config.json for gte-reranker-modernbert-base",
+        "primary": true,
+        "primaryReason": "Tokenizer configuration blob records tokenizer settings distributed with the checkpoint (max lengths, pad/truncation behavior, special tokens) used as upstream tokenizer metadata.",
+        "publisher": "Alibaba-NLP (Hugging Face repository blob)",
+        "sourceType": "repository",
+        "supports": [
+          "model_max_length = 8192 and tokenizer max_length = 512",
+          "pad on the right, truncation on the right, truncation strategy = longest_first",
+          "Special tokens ([CLS], [PAD], [SEP], [MASK], [UNK]) and PreTrainedTokenizerFast class indicator"
+        ],
+        "title": "Tokenizer configuration blob (tokenizer_config.json) for gte-reranker-modernbert-base",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base/blob/refs%2Fpr%2F5/tokenizer_config.json"
+      },
+      {
+        "modelScope": "ModernBERT family documentation (family-level corroboration)",
+        "primary": true,
+        "primaryReason": "Canonical ModernBERT preprint provides family-level architecture description and long-context encoder claims referenced by the gte-modernbert series; used only for family-level corroboration.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "Family-level ModernBERT claims such as native sequence length 8192, family architectural descriptions, and long-context performance claims"
+        ],
+        "title": "ModernBERT canonical arXiv preprint",
+        "url": "https://arxiv.org/pdf/2412.13663"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "aa0e29663d21ae5e0de5e06325ecb817b843faac6b4172fd981df9277975d3fd",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-alibaba-nlp-gte-reranker-modernbert-base-0ec86b6e00",
+  "researchedAt": "2026-07-23T23:41:27.396677+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base",
+  "sourceUrls": [
+    "https://huggingface.co/Alibaba-NLP/gte-reranker-modernbert-base"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

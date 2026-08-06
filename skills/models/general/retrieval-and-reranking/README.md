@@ -2,6 +2,8 @@
 
 Category: `general` · exact model/version skills: 8
 
+[Audited model-selection dossier](research.md)
+
 - [Use BGE Reranker v2 M3](baai-bge-reranker-v2-m3-tei-cuda-1-9/SKILL.md) — `tei-cuda-1-9-3` · source-linked
 - [Use GTE Reranker ModernBERT Base](alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/SKILL.md) — `tei-cuda-1-9-3` · source-linked
 - [Use NVIDIA Llama 3.2 NV-RerankQA 1B v2](nvidia-llama-3-2-nv-rerankqa-1b-v2-nim/SKILL.md) — `v1` · source-linked

@@ -1,0 +1,739 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses forbidden secondary URL https://developer.nvidia.com/blog/new-nvidia-llama-nemotron-nano-vision-language-model-tops-ocr-benchmark-for-accuracy",
+        "path": "$.sources[6] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9] uses forbidden secondary URL https://developer.nvidia.com/blog/turn-complex-documents-into-usable-data-with-vlm-nvidia-nemotron-parse-1-1",
+        "path": "$.sources[9] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14].primary must be true",
+        "path": "$.sources[14].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[15].primary must be true",
+        "path": "$.sources[15].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[16].primary must be true",
+        "path": "$.sources[16].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/nvidia/nemotron-parse",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].value must contain a reported numeric result",
+        "path": "$.benchmarks[0].value must contain a reported numeric result",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 9 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Nvidia Llama 3 1 Nemotron Nano VL 8b V1 NIM for vision-language chat; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave7.",
+      "displayName": "Use Nvidia Llama 3 1 Nemotron Nano VL 8b V1",
+      "group": "vision-language",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "nvidia-nim; third-party model license",
+      "modelFamily": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim",
+      "sourceUrl": "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1"
+        ],
+        "modelScope": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim / upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "reason": "Primary sources inspected for this checkpoint do not report clinical validation, regulatory approval, or medical‑use evaluation for the exact Forge-served artifact.",
+        "useCase": "Clinical diagnostic or regulated medical use"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+        ],
+        "modelScope": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim / upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "reason": "Primary sources describe text-string outputs but do not report calibrated confidence semantics or probability-calibration procedures for this checkpoint.",
+        "useCase": "Any task requiring documented calibrated confidence scores or probability-calibrated outputs"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Benchmark values in the arXiv table are for Nemotron Nano V2 VL (12B), not the Llama-3.1‑Nemotron‑Nano‑VL‑8B checkpoint; therefore AI2D numeric claims cannot be attributed to the 8B checkpoint from inspected primary sources."
+        ],
+        "conditions": "ArXiv table rows correspond to Nemotron Nano V2 VL (12B) and report multiple processing modes (tiling/native/tiling-size matching); the inspected primary sources do not provide a matching table row for the Llama-3.1 8B checkpoint.",
+        "dataset": "AI2D test",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "Not attributable to Llama-3.1-Nemotron-Nano-VL-8B-V1 in the inspected primary sources; the arXiv benchmark table reports AI2D scores for Nemotron Nano V2 VL (12B) only.",
+        "sourceLocator": "arXiv benchmark table (Nemotron Nano V2 VL rows)",
+        "sourceUrl": "https://arxiv.org/html/2511.03929v1",
+        "split": "test",
+        "task": "AI2D",
+        "value": "not verifiable for Llama-3.1-Nemotron-Nano-VL-8B-V1 in inspected primary sources"
+      },
+      {
+        "caveats": [
+          "Not attributable to the Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint in the inspected primary sources."
+        ],
+        "conditions": "ArXiv reports multiple processing modes for Nemotron Nano V2 VL; inspected primary sources do not provide checkpoint-scoped ChartQA numbers for Llama-3.1 8B.",
+        "dataset": "ChartQA test",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "ArXiv benchmark table provides ChartQA numbers for Nemotron Nano V2 VL (12B) only; no matching ChartQA numeric row was found for the Llama-3.1 8B checkpoint in inspected primary sources.",
+        "sourceLocator": "arXiv benchmark table (Nemotron Nano V2 VL rows)",
+        "sourceUrl": "https://arxiv.org/html/2511.03929v1",
+        "split": "test",
+        "task": "Chart question answering",
+        "value": "not verifiable for Llama-3.1-Nemotron-Nano-VL-8B-V1 in inspected primary sources"
+      },
+      {
+        "caveats": [
+          "Not attributable to the Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint in the inspected primary sources."
+        ],
+        "conditions": "ArXiv rows correspond to Nemotron Nano V2 VL and multiple processing modes; inspected primary sources do not attribute a DocVQA validation score to the Llama-3.1 8B checkpoint.",
+        "dataset": "DocVQA validation",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "ArXiv benchmark table reports DocVQA validation numbers for Nemotron Nano V2 VL (12B); no DocVQA validation numeric row for Llama-3.1 8B was located in the inspected primary sources.",
+        "sourceLocator": "arXiv benchmark table (Nemotron Nano V2 VL rows)",
+        "sourceUrl": "https://arxiv.org/html/2511.03929v1",
+        "split": "validation",
+        "task": "Document visual question answering",
+        "value": "not verifiable for Llama-3.1-Nemotron-Nano-VL-8B-V1 in inspected primary sources"
+      },
+      {
+        "caveats": [
+          "ArXiv OCRBench numbers are for Nemotron Nano V2 VL (12B) and cannot be attributed to Llama-3.1 8B based on inspected sources; FP4‑QAD README reports OCRBench=836 for the FP4‑QAD quantized variant (variant-scoped evidence)."
+        ],
+        "conditions": "FP4-QAD OCRBench numeric evidence pertains to the separate FP4‑QAD quantized checkpoint and simulated/variant evaluation; arXiv numbers are for Nemotron Nano V2 VL (12B).",
+        "dataset": "OCRBench test",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "ArXiv table reports OCRBench numbers for Nemotron Nano V2 VL (12B); FP4-QAD quantized variant publishes an OCRBench numeric value for the FP4-QAD checkpoint (variant-scoped evidence).",
+        "sourceLocator": "arXiv benchmark table (Nemotron Nano V2 VL rows); see FP4‑QAD README for variant-scoped OCRBench numeric evidence",
+        "sourceUrl": "https://arxiv.org/html/2511.03929v1",
+        "split": "test",
+        "task": "OCR/document understanding",
+        "value": "not verifiable for Llama-3.1-Nemotron-Nano-VL-8B-V1 in inspected primary sources (see caveats)"
+      },
+      {
+        "caveats": [
+          "Not attributable to the Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint in inspected primary sources."
+        ],
+        "conditions": "ArXiv benchmark table corresponds to Nemotron Nano V2 VL; no Llama-3.1 8B row found in inspected sources.",
+        "dataset": "OCRBench-V2 (EN) test",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "ArXiv reports OCRBench‑V2 (English) numbers for Nemotron Nano V2 VL (12B) only; inspected primary sources do not provide a matching numeric row for Llama-3.1 8B.",
+        "sourceLocator": "arXiv benchmark table (Nemotron Nano V2 VL rows)",
+        "sourceUrl": "https://arxiv.org/html/2511.03929v1",
+        "split": "test",
+        "task": "OCR/document understanding",
+        "value": "not verifiable for Llama-3.1-Nemotron-Nano-VL-8B-V1 in inspected primary sources"
+      },
+      {
+        "caveats": [
+          "Not attributable to the Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint in inspected primary sources."
+        ],
+        "conditions": "ArXiv benchmark table corresponds to Nemotron Nano V2 VL; no Llama-3.1 8B row found in inspected sources.",
+        "dataset": "OCRBench-V2 (CN) test",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "ArXiv reports OCRBench‑V2 (Chinese) numbers for Nemotron Nano V2 VL (12B) only; no Llama-3.1 8B numeric row was located in inspected primary sources.",
+        "sourceLocator": "arXiv benchmark table (Nemotron Nano V2 VL rows)",
+        "sourceUrl": "https://arxiv.org/html/2511.03929v1",
+        "split": "test",
+        "task": "OCR/document understanding",
+        "value": "not verifiable for Llama-3.1-Nemotron-Nano-VL-8B-V1 in inspected primary sources"
+      },
+      {
+        "caveats": [
+          "Not attributable to the Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint in inspected primary sources."
+        ],
+        "conditions": "ArXiv benchmark table corresponds to Nemotron Nano V2 VL; inspected primary sources do not attribute Video-MME numeric values to the Llama-3.1 8B checkpoint.",
+        "dataset": "Video-MME test",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "ArXiv reports a Video‑MME score for Nemotron Nano V2 VL (12B); no matching Video‑MME numeric row for Llama-3.1 8B was located in the inspected primary sources.",
+        "sourceLocator": "arXiv benchmark table (Nemotron Nano V2 VL rows)",
+        "sourceUrl": "https://arxiv.org/html/2511.03929v1",
+        "split": "test",
+        "task": "Video understanding",
+        "value": "not verifiable for Llama-3.1-Nemotron-Nano-VL-8B-V1 in inspected primary sources"
+      },
+      {
+        "caveats": [
+          "This numeric value is for the separately published FP4‑QAD quantized variant and is variant-scoped; it cannot be attributed to the exact Forge-served base checkpoint without additional primary evidence."
+        ],
+        "conditions": "Reported for the FP4‑QAD quantized checkpoint; evaluation performed with FP4 simulated quantization on an H100 GPU and inference engine vLLM as documented in the FP4‑QAD pages (variant- and hardware-scoped).",
+        "dataset": "OCRBench test",
+        "direction": "higher-is-better",
+        "metric": "score",
+        "modelScope": "Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD (FP4 quantized variant) — variant-scoped upstream-checkpoint evidence",
+        "sourceLocator": "FP4‑QAD README and evaluation notes",
+        "sourceUrl": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD",
+        "split": "test",
+        "task": "OCR/document understanding (quantized variant)",
+        "value": "836"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "nvidia-llama-3-1-nemotron-nano-8b-v1-nim",
+        "comparisonConditions": "Comparison is protocol- and capability-scoped: modality support (VL vs text-only) and reported context-length differences; not a benchmark head-to-head.",
+        "criteria": "Choose the VL model when image or video understanding is required; the text-only sibling documents a larger context length in its model card but does not provide visual-input modalities in the cited source.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-8B-v1"
+        ],
+        "rationale": "NIM API reference and the VL model card document multimodal image/video/text acceptance for the VL checkpoint; the text-only Hugging Face model card documents a 128K context length but lacks VL input modalities in the inspected primary sources.",
+        "task": "Context-length and modality fit",
+        "verdict": "prefer-this"
+      },
+      {
+        "alternative": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-fp4-qad",
+        "comparisonConditions": "The FP4‑QAD evidence is for a separate quantized checkpoint evaluated under simulated FP4 quantization on specific GPUs with vLLM; not protocol-matched to the base 8B upstream checkpoint serving mode.",
+        "criteria": "FP4‑QAD quantized variant may reduce inference cost but is a separately published quantized checkpoint with variant-scoped evaluation and hardware-scoped testing conditions.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD"
+        ],
+        "rationale": "The FP4‑QAD README reports near-matching or variant-scoped benchmark values for several tasks under FP4 simulated quantization and documents deployment/runtime engine and hardware; these are not runtime-matched to the exact Forge-served base checkpoint and so represent a precision-versus-cost tradeoff.",
+        "task": "Base precision versus quantized variant selection",
+        "verdict": "tradeoff"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Primary sources state the model supports single-image and video inference but do not provide task-specific validated video latency, length, or resolution limits for the exact Forge-served runtime; downstream validation of video sampling, frame limits, and latency is required before production use.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+          "https://docs.nvidia.com/nemo-framework/user-guide/25.11/vlms/llama_nemotron_vl.html"
+        ],
+        "modelScope": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim serving scope (upstream-checkpoint evidence for video support)",
+        "useCase": "Video query and summarization"
+      },
+      {
+        "conditions": "Primary documentation describes AWQ 4-bit quantization and TinyChat/edge deployment for quantized or deployment-specific variants; validate accuracy, memory, and latency for the chosen quantized runtime because these are variant- and hardware-scoped claims and not documented as measured for the exact Forge-served base checkpoint.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+          "https://docs.nvidia.com/nemo-framework/user-guide/25.11/vlms/llama_nemotron_vl.html"
+        ],
+        "modelScope": "Deployment note for the VL family; applies to separate quantized/edge variants (variant-scoped evidence) rather than the exact Forge-served base model",
+        "useCase": "Edge deployment on Jetson Orin or laptops (quantized AWQ/TinyChat)"
+      },
+      {
+        "conditions": "Applies only to the separately published FP4-QAD checkpoint; validate quality and runtime behavior before adoption because provided benchmarks and runtime notes are variant-scoped and hardware-scoped (FP4 quantization, vLLM, simulated evaluation on specific GPUs).",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD"
+        ],
+        "modelScope": "Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD (upstream quantized variant) not the exact Forge-served base model",
+        "useCase": "Use of FP4-QAD quantized variant for lower-cost inference"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Immutable revision identifiers (commit ID, checksum, container/image digest) for the exact Forge-served artifact were not found in the inspected primary sources.",
+      "Evidence gap: Official detailed preprocessing parameters (image resizing dimensions, per-channel normalization constants, tiling algorithm parameters, frame-sampling/fps defaults) for the exact Forge-served Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint were not specified in the inspected primary sources.",
+      "Evidence gap: An official checkpoint-specific OCR/document-extraction structured prompt template or canonical paired-input ordering beyond the NIM image-before-text recommendation was not found in the inspected primary sources.",
+      "Evidence gap: Verified numeric benchmark rows for AI2D, ChartQA, DocVQA, OCRBench, OCRBench‑V2 (EN/CN), and Video‑MME attributable to the exact Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint were not found in the inspected primary sources; arXiv benchmark tables correspond to Nemotron Nano V2 VL (12B) and FP4‑QAD numbers correspond to a separate quantized variant."
+    ],
+    "family": "build-nvidia-com-nvidia-llama-3-1-nemotron-nano-vl-8b-v1-8525423fc4",
+    "identity": {
+      "architecture": "Vision-language model; vision encoder CRadioV2-H (listed in NVIDIA-authored FP4/QAD and mcore pages) and language encoder Llama-3.1-8B-Instruct (listed in NVIDIA-authored FP4/QAD and mcore pages); decoder-only LLM head for text output (as described in NVIDIA-authored model pages).",
+      "checkpoint": "Llama-3.1-Nemotron-Nano-VL-8B-V1",
+      "evidenceUrls": [
+        "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+        "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+        "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-vl-8b-v1",
+        "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true",
+        "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-mcore"
+      ],
+      "license": "Model weights and model-card/license metadata: NVIDIA Community Model License with additional Llama 3.1 Community Model License information for the upstream checkpoint; Container and serving packaging: governed by the NVIDIA Software License Agreement and Product‑Specific Terms for NVIDIA AI Products (NGC container listing) — preserve this model-weight versus container/code-license distinction.",
+      "parameterScale": "8B",
+      "revision": "not reported",
+      "upstreamName": "Llama-3.1-Nemotron-Nano-VL-8B-V1"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true",
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD"
+          ],
+          "statement": "Image input format must be RGB (explicitly stated in the FP4-QAD README and FP4-QAD model pages)."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/llama-nemotron-nano/api.html"
+          ],
+          "statement": "Supported image file formats include JPG, JPEG, and PNG (NIM VLM API example page documents supported upload formats)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1",
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true"
+          ],
+          "statement": "Text input format is a string."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true",
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD"
+          ],
+          "statement": "Provide images as RGB inputs (primary FP4-QAD README and model pages specify RGB requirement)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: The inspected primary sources do not specify official image resizing dimensions, per-channel normalization constants, explicit video frame-sampling procedure (frame rates, fps defaults) or tiling algorithm parameters for the exact Forge-served Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1"
+          ],
+          "statement": "The model accepts Image, Video, and Text inputs (NIM API reference documents image, video, and text support)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1"
+          ],
+          "statement": "The NVIDIA-authored Hugging Face model card describes the checkpoint as a document-intelligence vision-language model that can query and summarize images."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/llama-nemotron-nano/api.html",
+            "https://docs.nvidia.com/nim/vision-language-models/1.3.0/examples/llama-nemotron-nano/api.html"
+          ],
+          "statement": "NIM API examples show OpenAI-compatible chat-completions access for the VL model family and recommend placing an image before any text in the request body for better results; the API supports passing image URLs or base64-encoded images."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: The inspected primary sources do not specify an official OCR/document-extraction structured prompt template or a canonical paired-input ordering schema beyond the image-before-text recommendation in the NIM example pages."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true"
+          ],
+          "statement": "Validate that image inputs are RGB and text inputs are strings before submission (stated in NIM API reference and model-card pages)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md",
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true"
+          ],
+          "statement": "Validate prompts against the documented 16,000 combined input+output token limit for this VL checkpoint (upstream explainability document states total context length is 16,000 and truncation behavior)."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: The research findings did not report an immutable upstream or container revision identifier (commit ID, checksum, or image digest) for the exact Forge-served artifact."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-vl-8b-v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true"
+        ],
+        "statement": "Primary sources report distinct license scopes for model weights versus container/service packaging; a single undifferentiated license label would be misleading."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: Detailed official preprocessing rules such as image resizing dimensions, per-channel normalization constants, tiling algorithm parameters, and explicit video frame-sampling procedures for the exact Forge-served Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint were not specified in the inspected primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+        ],
+        "statement": "The upstream explainability document documents a 16,000 token total context limit and states overlength input is truncated from the start, constraining long-context uses for this VL checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/html/2511.03929v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD"
+        ],
+        "statement": "Benchmark numeric evidence available in the inspected primary sources is either for a different model (Nemotron Nano V2 VL 12B in the arXiv paper) or for separately published quantized variants (FP4‑QAD); therefore verified runtime-serving benchmarks for the exact Forge-served endpoint are not present in the inspected primary sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1"
+          ],
+          "statement": "Interpret outputs as generated natural-language responses from a vision-language model conditioned on supplied image/video/text inputs; primary sources do not document calibrated confidence or probability scores for outputs."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+          ],
+          "statement": "The upstream explainability document states total context length is 16,000 tokens and that overlength input is truncated from the start; confirm truncation did not affect critical results when using long contexts."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1"
+          ],
+          "statement": "Output type is generated natural-language text (string) emitted by the model as the textual response to image/text/video-conditioned queries."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+          ],
+          "statement": "Post-inference, verify that outputs are grounded in the provided image or video because the explainability document warns the model may generate inaccurate, omitted, irrelevant, redundant, biased, toxic, political, or misleading text."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+          ],
+          "statement": "Post-inference, confirm that truncation did not remove essential context when long contexts are used because the upstream explainability document states overlength input is truncated from the start."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+          "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-vl-8b-v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1"
+        ],
+        "modelScope": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim / upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "useCase": "Interactive visual question answering and multimodal chat over images",
+        "why": "Primary NVIDIA NIM API reference, Build model card, NGC container listing, and NVIDIA-authored Hugging Face model card describe the model as a vision-language model accepting image and text inputs and list interactive image Q&A and multimodal chat among supported use cases."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+          "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1"
+        ],
+        "modelScope": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim / upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "useCase": "Document and image summarization",
+        "why": "NVIDIA primary sources for the checkpoint list image summarization and document-image summarization among intended uses."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-vl-8b-v1",
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1",
+          "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1"
+        ],
+        "modelScope": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim / upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "useCase": "OCR and document understanding from image inputs",
+        "why": "Primary NVIDIA sources explicitly list optical character recognition and document‑intelligence use cases for this VL checkpoint."
+      }
+    ],
+    "researchSummary": "This dossier covers the Forge family build-nvidia-com-nvidia-llama-3-1-nemotron-nano-vl-8b-v1-8525423fc4 mapped to the NVIDIA NIM-served identifier nvidia/llama-3.1-nemotron-nano-vl-8b-v1 and the upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1. Primary NVIDIA sources (NIM API reference, Build model card, NGC container, and NVIDIA-authored Hugging Face repository and explainability docs) consistently describe the artifact as an 8B-parameter vision-language model that accepts image, video, and text inputs and emits natural-language text. The checkpoint is documented with a 16,000 token combined input+output limit and explicit truncation behavior in the upstream explainability document; the NIM API examples document OpenAI-compatible chat-style access and image-before-text request ordering and supported image file formats (JPG/JPEG/PNG). Benchmark numeric values for the requested datasets (AI2D, ChartQA, DocVQA, OCRBench, OCRBench‑V2 EN/CN, Video‑MME) are not attributable in the primary findings to the exact upstream Llama-3.1-Nemotron-Nano-VL-8B-V1 checkpoint; available numeric benchmark tables in the arXiv paper correspond to Nemotron Nano V2 VL (a different 12B model) and therefore are not verifiable as Llama-3.1 upstream-checkpoint results. Quantized-variant benchmarks (FP4-QAD) are present for a separate FP4-QAD checkpoint and are explicitly variant-scoped. Immutable revision identifiers and container/image digests for the exact Forge-served artifact were not found in the inspected primary sources.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+        ],
+        "statement": "The upstream explainability document states the model may produce biased, toxic, incorrect, political, misleading, irrelevant, redundant, or omitted text and recommends human review for consequential outputs."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+        ],
+        "statement": "The explainability document warns the vLLM host should not be exposed to untrusted network connections (network-exposure warning)."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: Do not use this checkpoint for sensitive personal, clinical, or regulated decisions without domain-specific review and deployment controls, because the inspected primary sources do not provide such validation."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim serving scope",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NIM API reference for the exact served model scope, supporting identity, modalities, token limit mention in NIM docs and API usage examples.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity",
+          "inputPreparation",
+          "taskSpecificFormatting",
+          "recommendedUseCases",
+          "avoidUseCases"
+        ],
+        "title": "NVIDIA NIM API reference: nvidia-llama-3_1-nemotron-nano-vl-8b-v1",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_1-nemotron-nano-vl-8b-v1"
+      },
+      {
+        "modelScope": "Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "primary": true,
+        "primaryReason": "Official Build NVIDIA model card for the exact model family, supporting intended-use phrasing and checkpoint description.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "researchSummary",
+          "recommendedUseCases",
+          "identity"
+        ],
+        "title": "Build NVIDIA model card: llama-3.1-nemotron-nano-vl-8b-v1",
+        "url": "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1"
+      },
+      {
+        "modelScope": "NIM container for Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "primary": true,
+        "primaryReason": "NGC container listing for the exact VL NIM container, supporting packaging/license scope and intended use descriptions.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity",
+          "license",
+          "recommendedUseCases"
+        ],
+        "title": "NGC container listing: llama-3.1-nemotron-nano-vl-8b-v1",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-vl-8b-v1"
+      },
+      {
+        "modelScope": "Upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "primary": true,
+        "primaryReason": "NVIDIA-authored upstream checkpoint page for the VL model, supporting identity, modalities, and intended uses.",
+        "publisher": "NVIDIA on Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "identity",
+          "recommendedUseCases",
+          "inputPreparation",
+          "outputInterpretation"
+        ],
+        "title": "Hugging Face model card: Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1"
+      },
+      {
+        "modelScope": "Upstream checkpoint Llama-3.1-Nemotron-Nano-VL-8B-V1 explainability/safety",
+        "primary": true,
+        "primaryReason": "Upstream checkpoint explainability and safety document for the exact checkpoint, supporting token-limit behavior and safety caveats.",
+        "publisher": "NVIDIA on Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "inputPreparation.validation",
+          "outputInterpretation",
+          "limitations",
+          "safety"
+        ],
+        "title": "Hugging Face explainability/safety: Llama-3.1-Nemotron-Nano-VL-8B-V1 explainability.md",
+        "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/explainability.md"
+      },
+      {
+        "modelScope": "Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD (quantized variant)",
+        "primary": true,
+        "primaryReason": "Upstream checkpoint README for the FP4‑QAD quantized variant demonstrating variant-scoped licensing, inputs, RGB requirement, token limit, and variant benchmark notes.",
+        "publisher": "NVIDIA on Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "conditionalUseCases",
+          "comparisons",
+          "inputPreparation",
+          "benchmarks",
+          "license"
+        ],
+        "title": "Hugging Face FP4-QAD README (download) for Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD",
+        "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD/resolve/main/README.md?download=true"
+      },
+      {
+        "modelScope": "Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD",
+        "primary": true,
+        "primaryReason": "FP4‑QAD quantized variant page with evaluation benchmarks and model metadata.",
+        "publisher": "NVIDIA on Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "benchmarks",
+          "inputPreparation",
+          "comparisons"
+        ],
+        "title": "Hugging Face FP4-QAD model page: Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD",
+        "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-FP4-QAD"
+      },
+      {
+        "modelScope": "Nemotron Nano V2 VL (12B) benchmark table",
+        "primary": true,
+        "primaryReason": "Canonical authored benchmark table source in the inspected primary findings; however, reported numeric rows in this paper correspond to Nemotron Nano V2 VL (12B) rather than the Llama-3.1 8B checkpoint.",
+        "publisher": "NVIDIA Research authors / arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "benchmarks",
+          "researchSummary",
+          "limitations"
+        ],
+        "title": "ArXiv HTML: Nemotron Nano V2 VL (benchmark table)",
+        "url": "https://arxiv.org/html/2511.03929v1"
+      },
+      {
+        "modelScope": "nvidia/llama-3.1-nemotron-nano-vl-8b-v1 NIM example",
+        "primary": true,
+        "primaryReason": "Official NIM API example showing request format, image-before-text ordering recommendation, supported image formats, and OpenAI-compatible chat-style access.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "inputPreparation.acceptedFormats",
+          "taskSpecificFormatting"
+        ],
+        "title": "NIM VLM API example page 1.3.1: llama-nemotron-nano API example",
+        "url": "https://docs.nvidia.com/nim/vision-language-models/1.3.1/examples/llama-nemotron-nano/api.html"
+      },
+      {
+        "modelScope": "nvidia/llama-3.1-nemotron-nano-vl-8b-v1 NIM example",
+        "primary": true,
+        "primaryReason": "Additional NIM example page referenced in the inspected findings documenting API usage and example requests for the VL family.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "taskSpecificFormatting",
+          "inputPreparation"
+        ],
+        "title": "NIM VLM API example page 1.3.0: llama-nemotron-nano API example",
+        "url": "https://docs.nvidia.com/nim/vision-language-models/1.3.0/examples/llama-nemotron-nano/api.html"
+      },
+      {
+        "modelScope": "NeMo Nemotron Nano VL family documentation",
+        "primary": true,
+        "primaryReason": "NeMo documentation describing training and deployment notes for the Nemotron Nano VL family, supporting deployment and training-stage notes.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "conditionalUseCases",
+          "inputPreparation",
+          "researchSummary"
+        ],
+        "title": "NeMo framework VLM documentation: llama_nemotron_vl",
+        "url": "https://docs.nvidia.com/nemo-framework/user-guide/25.11/vlms/llama_nemotron_vl.html"
+      },
+      {
+        "modelScope": "Upstream checkpoint metadata for Llama-3.1-Nemotron-Nano-VL-8B-V1",
+        "primary": true,
+        "primaryReason": "Repository metadata listing vision-encoder and language-encoder names and other checkpoint metadata referenced in the inspected findings.",
+        "publisher": "NVIDIA on Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "identity.architecture",
+          "recommendedUseCases"
+        ],
+        "title": "Hugging Face mcore/metadata page for Llama-3.1-Nemotron-Nano-VL-8B-V1-mcore",
+        "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1-mcore"
+      },
+      {
+        "modelScope": "Llama-3.1-Nemotron-Nano-8B-v1 (text-only sibling)",
+        "primary": true,
+        "primaryReason": "Upstream checkpoint page for the text-only sibling model used in scoped comparison (context-length claim present in inspected findings).",
+        "publisher": "NVIDIA on Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "comparisons",
+          "identity"
+        ],
+        "title": "Hugging Face model card: Llama-3.1-Nemotron-Nano-8B-v1 (text-only sibling)",
+        "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-8B-v1"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "d50a18ca09584246189470dfdf53ea0caee41ea22603f091761446eceb1321f3",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-nvidia-llama-3-1-nemotron-nano-vl-8b-v1-8525423fc4",
+  "researchedAt": "2026-07-23T21:48:29.078753+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+  "sourceUrls": [
+    "https://build.nvidia.com/nvidia/llama-3.1-nemotron-nano-vl-8b-v1"
+  ],
+  "upstreamAgentSkills": [
+    {
+      "forgeSlugs": [
+        "nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+        "nvidia-llama-3-1-nemotron-nano-8b-v1-nim",
+        "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim",
+        "nvidia-nemotron-nano-12b-v2-vl-nim",
+        "nvidia-nemotron-nano-9b-v2-nim"
+      ],
+      "notes": "NVIDIA's Nemotron customization skill is first-party guidance for curating, training, evaluating, converting, and optimizing Nemotron-family checkpoints in the Nemotron repository. It is not an inference payload or Nebius deployment contract; verify the exact listed checkpoint and use the Forge/Serverless instructions for serving.",
+      "relation": "related-model-workflow",
+      "skills": [
+        {
+          "name": "nemotron-customize",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nemotron-customize"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

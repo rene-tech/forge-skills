@@ -1,0 +1,308 @@
+{
+  "models": {
+    "catalog-ngc-nvidia-com-orgs-hpc-containers-gromacs-305a6b721f": [
+      {
+        "instruction": "Do not use support-forum or community benchmark results for the NVIDIA hpc/gromacs:2023.2 container. If no container-tied primary benchmark is available, keep benchmarks empty and add an evidence gap that names https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2 and the checked \"2023.2 container tag metadata and example-command sections\". Independently verify the page and wording.",
+        "requireBenchmark": false,
+        "requireSource": true,
+        "sourceUrl": "https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2",
+        "sourceLocator": "2023.2 container tag metadata and example-command sections",
+        "scopeHint": "This source establishes the exact NVIDIA container tag and its documented invocation, not a model-quality or performance benchmark. Community-posted STMV results must not be transferred to the container.",
+        "sourceTitle": "NVIDIA NGC GROMACS container tag page (2023.2)",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "official-documentation",
+        "benchmarkRows": []
+      }
+    ],
+    "build-nvidia-com-bigcode-starcoder2-7b-b4e247a817": [
+      {
+        "instruction": "Independently verify exact StarCoder2-7B results rather than publishing an empty benchmark gap.",
+        "requireBenchmark": true,
+      "requireSource": true,
+      "sourceUrl": "https://arxiv.org/html/2402.19173",
+      "sourceLocator": "Table 9",
+      "scopeHint": "The StarCoder2-7B row reports greedy-decoding pass@1 of HumanEval 35.4, HumanEval+ 29.9, MBPP 54.4, and MBPP+ 45.6. Independently verify the row before using the values.",
+      "sourceTitle": "StarCoder 2 and The Stack v2",
+      "publisher": "BigCode",
+      "sourceType": "paper",
+      "benchmarkRows": [
+        {
+          "task": "Code generation",
+          "dataset": "HumanEval",
+          "split": "test",
+          "metric": "pass@1",
+          "value": "35.4",
+          "direction": "higher-is-better",
+          "modelScope": "StarCoder2-7B upstream checkpoint",
+          "conditions": "Greedy decoding as reported for the StarCoder2-7B row.",
+          "sourceUrl": "https://arxiv.org/html/2402.19173",
+          "sourceLocator": "Table 9",
+          "caveats": ["Upstream-checkpoint result; not a Forge runtime benchmark."]
+        },
+        {
+          "task": "Code generation",
+          "dataset": "HumanEval+",
+          "split": "test",
+          "metric": "pass@1",
+          "value": "29.9",
+          "direction": "higher-is-better",
+          "modelScope": "StarCoder2-7B upstream checkpoint",
+          "conditions": "Greedy decoding as reported for the StarCoder2-7B row.",
+          "sourceUrl": "https://arxiv.org/html/2402.19173",
+          "sourceLocator": "Table 9",
+          "caveats": ["Upstream-checkpoint result; not a Forge runtime benchmark."]
+        },
+        {
+          "task": "Code generation",
+          "dataset": "MBPP",
+          "split": "test",
+          "metric": "pass@1",
+          "value": "54.4",
+          "direction": "higher-is-better",
+          "modelScope": "StarCoder2-7B upstream checkpoint",
+          "conditions": "Greedy decoding as reported for the StarCoder2-7B row.",
+          "sourceUrl": "https://arxiv.org/html/2402.19173",
+          "sourceLocator": "Table 9",
+          "caveats": ["Upstream-checkpoint result; not a Forge runtime benchmark."]
+        },
+        {
+          "task": "Code generation",
+          "dataset": "MBPP+",
+          "split": "test",
+          "metric": "pass@1",
+          "value": "45.6",
+          "direction": "higher-is-better",
+          "modelScope": "StarCoder2-7B upstream checkpoint",
+          "conditions": "Greedy decoding as reported for the StarCoder2-7B row.",
+          "sourceUrl": "https://arxiv.org/html/2402.19173",
+          "sourceLocator": "Table 9",
+          "caveats": ["Upstream-checkpoint result; not a Forge runtime benchmark."]
+        }
+      ]
+      }
+    ],
+    "build-nvidia-com-meta-llama-3-1-70b-instruct-1a2c4f9e26": [
+      {
+        "instruction": "Use Meta's exact Llama 3.1 Instruct creator source in addition to NVIDIA serving documentation.",
+        "requireBenchmark": true,
+      "requireSource": true,
+      "sourceUrl": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md",
+      "sourceLocator": "Instruction tuned models benchmark table",
+      "scopeHint": "For Llama 3.1 70B Instruct the table reports MMLU 5-shot 83.6, MMLU CoT 0-shot 86.0, MMLU-Pro CoT 5-shot 66.4, HumanEval pass@1 80.5, GSM-8K CoT 8-shot 95.1, and MATH CoT 68.0. Do not substitute the base checkpoint or another parameter scale; independently verify every retained row.",
+      "sourceTitle": "Llama 3.1 model card",
+      "publisher": "Meta",
+      "sourceType": "model-card",
+      "benchmarkRows": [
+        {
+          "task": "Knowledge and reasoning",
+          "dataset": "MMLU",
+          "split": "test",
+          "metric": "accuracy",
+          "value": "83.6",
+          "direction": "higher-is-better",
+          "modelScope": "Llama 3.1 70B Instruct",
+          "conditions": "5-shot evaluation.",
+          "sourceUrl": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md",
+          "sourceLocator": "Instruction tuned models benchmark table",
+          "caveats": ["Use only for the 70B Instruct checkpoint and reported protocol."]
+        },
+        {
+          "task": "Knowledge and reasoning",
+          "dataset": "MMLU",
+          "split": "test",
+          "metric": "accuracy",
+          "value": "86.0",
+          "direction": "higher-is-better",
+          "modelScope": "Llama 3.1 70B Instruct",
+          "conditions": "0-shot chain-of-thought evaluation.",
+          "sourceUrl": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md",
+          "sourceLocator": "Instruction tuned models benchmark table",
+          "caveats": ["Prompting protocol differs from the 5-shot non-CoT row."]
+        },
+        {
+          "task": "Knowledge and reasoning",
+          "dataset": "MMLU-Pro",
+          "split": "test",
+          "metric": "accuracy",
+          "value": "66.4",
+          "direction": "higher-is-better",
+          "modelScope": "Llama 3.1 70B Instruct",
+          "conditions": "5-shot chain-of-thought evaluation.",
+          "sourceUrl": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md",
+          "sourceLocator": "Instruction tuned models benchmark table",
+          "caveats": ["Do not compare directly with MMLU under another protocol."]
+        },
+        {
+          "task": "Code generation",
+          "dataset": "HumanEval",
+          "split": "test",
+          "metric": "pass@1",
+          "value": "80.5",
+          "direction": "higher-is-better",
+          "modelScope": "Llama 3.1 70B Instruct",
+          "conditions": "Protocol reported in the Meta model card.",
+          "sourceUrl": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md",
+          "sourceLocator": "Instruction tuned models benchmark table",
+          "caveats": ["Upstream-checkpoint result; not a Forge runtime benchmark."]
+        },
+        {
+          "task": "Mathematical reasoning",
+          "dataset": "GSM8K",
+          "split": "test",
+          "metric": "accuracy",
+          "value": "95.1",
+          "direction": "higher-is-better",
+          "modelScope": "Llama 3.1 70B Instruct",
+          "conditions": "8-shot chain-of-thought evaluation.",
+          "sourceUrl": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md",
+          "sourceLocator": "Instruction tuned models benchmark table",
+          "caveats": ["Prompting and scoring must match before comparison."]
+        },
+        {
+          "task": "Mathematical reasoning",
+          "dataset": "MATH",
+          "split": "test",
+          "metric": "accuracy",
+          "value": "68.0",
+          "direction": "higher-is-better",
+          "modelScope": "Llama 3.1 70B Instruct",
+          "conditions": "Chain-of-thought evaluation reported by Meta.",
+          "sourceUrl": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md",
+          "sourceLocator": "Instruction tuned models benchmark table",
+          "caveats": ["Prompting and scoring must match before comparison."]
+        }
+      ]
+      }
+    ],
+    "build-nvidia-com-nvidia-nv-embedqa-e5-01c8141b3b": [
+      {
+        "instruction": "Include the paper's exact NV-EmbedQA-E5-v5 retrieval-quality results and keep them separate from runtime microbenchmarks.",
+        "requireBenchmark": true,
+      "requireSource": true,
+      "sourceUrl": "https://arxiv.org/html/2409.07691",
+      "sourceLocator": "Table 1",
+      "scopeHint": "The no-reranker NV-EmbedQA-E5-v5 row reports NDCG@10 average 0.6083, NQ 0.6380, HotpotQA 0.7160, and FiQA 0.4710. The paper uses BEIR QA datasets, passages truncated to 512 tokens, and top-k 100. Independently verify before using the values.",
+      "sourceTitle": "NV-Retriever: Improving text embedding models with effective hard-negative mining",
+      "publisher": "NVIDIA",
+      "sourceType": "paper",
+      "benchmarkRows": [
+        {
+          "task": "Dense retrieval",
+          "dataset": "BEIR QA average",
+          "split": "BEIR QA evaluation datasets",
+          "metric": "NDCG@10",
+          "value": "0.6083",
+          "direction": "higher-is-better",
+          "modelScope": "NV-EmbedQA-E5-v5 without reranker",
+          "conditions": "Passages truncated to 512 tokens; top-k 100 retrieval.",
+          "sourceUrl": "https://arxiv.org/html/2409.07691",
+          "sourceLocator": "Table 1",
+          "caveats": ["Quality result, not an NVIDIA NIM runtime microbenchmark."]
+        },
+        {
+          "task": "Dense retrieval",
+          "dataset": "Natural Questions (NQ)",
+          "split": "BEIR evaluation split",
+          "metric": "NDCG@10",
+          "value": "0.6380",
+          "direction": "higher-is-better",
+          "modelScope": "NV-EmbedQA-E5-v5 without reranker",
+          "conditions": "Passages truncated to 512 tokens; top-k 100 retrieval.",
+          "sourceUrl": "https://arxiv.org/html/2409.07691",
+          "sourceLocator": "Table 1",
+          "caveats": ["Protocol must match before comparison."]
+        },
+        {
+          "task": "Dense retrieval",
+          "dataset": "HotpotQA",
+          "split": "BEIR evaluation split",
+          "metric": "NDCG@10",
+          "value": "0.7160",
+          "direction": "higher-is-better",
+          "modelScope": "NV-EmbedQA-E5-v5 without reranker",
+          "conditions": "Passages truncated to 512 tokens; top-k 100 retrieval.",
+          "sourceUrl": "https://arxiv.org/html/2409.07691",
+          "sourceLocator": "Table 1",
+          "caveats": ["Protocol must match before comparison."]
+        },
+        {
+          "task": "Dense retrieval",
+          "dataset": "FiQA",
+          "split": "BEIR evaluation split",
+          "metric": "NDCG@10",
+          "value": "0.4710",
+          "direction": "higher-is-better",
+          "modelScope": "NV-EmbedQA-E5-v5 without reranker",
+          "conditions": "Passages truncated to 512 tokens; top-k 100 retrieval.",
+          "sourceUrl": "https://arxiv.org/html/2409.07691",
+          "sourceLocator": "Table 1",
+          "caveats": ["Protocol must match before comparison."]
+        }
+      ]
+      }
+    ],
+    "build-nvidia-com-hive-deepfake-image-detection-8b102328c6": [
+      {
+        "instruction": "The exact served Hive artifact has no numeric public benchmark in the inspected primary documentation. If benchmarks remain empty, record this as an evidence gap with the exact official URL and the headings checked.",
+        "requireBenchmark": false,
+        "requireSource": true,
+        "sourceUrl": "https://docs.api.nvidia.com/nim/reference/hive-deepfake-image-detection",
+        "sourceLocator": "Model Overview; Model Architecture; Input; Output; Model Version(s); Training Dataset; Inference",
+        "scopeHint": "The official API reference identifies model version v1.0, EfficientNet-B4 and YOLOv8, unknown collection and labeling methods, a training corpus described only as millions of web-sourced generated and human images, TensorRT, and L40 test hardware. None of the checked headings reports an evaluation dataset, split, metric, numeric quality result, threshold calibration, or comparison. Do not fabricate a benchmark."
+      },
+      {
+        "instruction": "Cite Hive's own Deepfake Detection API reference as the original creator source in addition to NVIDIA's packaged-service documentation.",
+        "requireBenchmark": false,
+        "requireSource": true,
+        "sourceUrl": "https://docs.thehive.ai/reference/deepfake-detection-1",
+        "sourceLocator": "Deepfake Detection; output object; Sample of task.status.output",
+        "scopeHint": "Hive's creator-controlled reference defines per-face bounding boxes, yes_deepfake/no_deepfake classes, and confidence scores from 0 to 1. It does not establish that Hive's current cloud API and NVIDIA's served v1.0 artifact are byte-identical, so use it for creator provenance and output semantics, not benchmark transfer.",
+        "sourceTitle": "Deepfake Detection",
+        "publisher": "Hive",
+        "sourceType": "official-documentation"
+      }
+    ],
+    "huggingface-co-facebook-esm2-t33-650m-ur50d-e087b68cac": [
+      {
+        "instruction": "Keep base embedding outputs distinct from downstream structure-prediction heads.",
+        "requireBenchmark": true,
+        "requireSource": true,
+        "sourceUrl": "https://biorxiv.org/content/10.1101/2022.07.20.500902v1.full.pdf",
+        "sourceLocator": "Table S1",
+        "scopeHint": "Any structure result must explicitly name the required downstream head or pipeline."
+      }
+    ],
+    "huggingface-co-zhihan1996-dnabert-2-117m-223e616881": [
+      {
+        "instruction": "Use the exact base DNABERT-2 117M row from the canonical paper and do not mislabel the GUE result as GUE+.",
+        "requireBenchmark": true,
+        "requireSource": true,
+        "sourceUrl": "https://arxiv.org/html/2306.15006v2",
+        "sourceLocator": "Table 3",
+        "scopeHint": "Table 3 reports 66.80 as the average evaluation score across the 28 GUE datasets for the 117M DNABERT-2 row without additional GUE masked-language-model pretraining. The separate starred DNABERT-2 row is 67.77 after further pretraining; Table 5, not Table 3, contains GUE+ results. Preserve these protocol distinctions.",
+        "sourceTitle": "DNABERT-2: Efficient Foundation Model and Benchmark For Multi-Species Genomes",
+        "publisher": "DNABERT-2 authors",
+        "sourceType": "paper",
+        "benchmarkRows": [
+          {
+            "task": "Genome sequence classification benchmark suite",
+            "dataset": "Genome Understanding Evaluation (GUE), 28 datasets",
+            "split": "Per-dataset test splits; three random seeds",
+            "metric": "Paper-defined average evaluation score",
+            "value": "66.80",
+            "direction": "higher-is-better",
+            "modelScope": "DNABERT-2 117M base upstream checkpoint without additional GUE masked-language-model pretraining",
+            "conditions": "Table 3 aggregate across the 28 GUE datasets; evaluation uses F1 or MCC by task, the lowest-validation-loss checkpoint, test-set reporting, and an average across three random seeds.",
+            "sourceUrl": "https://arxiv.org/html/2306.15006v2",
+            "sourceLocator": "Table 3",
+            "caveats": [
+              "Upstream fine-tuned downstream-task result; it is not a benchmark of raw Forge embeddings or Forge runtime performance.",
+              "Do not compare this aggregate directly with GUE+ Table 5 or with the 67.77 row that adds further masked-language-model pretraining on GUE training data."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "schemaVersion": "1.0.0"
+}

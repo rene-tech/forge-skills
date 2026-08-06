@@ -66,6 +66,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-nvidia-nemotron-nano-9b-v2-0a7b913edb`
+- Recommended: Unified reasoning and chat (general-purpose reasoning + instruction following) — Official NVIDIA model page and downloadable model card describe Nemotron Nano 9B v2 as a unified model intended for reasoning and non-reasoning tasks and document a reasoning-trace-first response mode that can be enabled or controlled.
+- Recommended: High-throughput long-context inference (single-GPU long-context serving up to 128k tokens in bf16 on supported NVIDIA GPUs) — The technical report and Megatron‑Bridge docs state the compressed 9B checkpoint supports inference up to 128k tokens and report throughput/efficiency gains versus a comparator (Qwen3‑8B) and configuration notes for running long contexts in bfloat16 on NVIDIA GPUs.
+- Recommended: Commercial deployment via NVIDIA NIM / NGC packaging (server/containerized deployments) — The NGC catalog listing and NIM API reference document official NIM/container packaging and runtime APIs for the named checkpoint and list developer scenarios including agent and RAG-style deployment.
+- Avoid: Clinical decision-making or regulated medical advice — Evidence gap: primary sources do not document domain-specific safety validations, clinical approvals, or regulatory compliance for Nemotron Nano 9B v2; do not use for clinical decision-making without expert review and regulatory evidence.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-nemotron-nano-9b-v2-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-nemotron-nano-9b-v2-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-nemotron-nano-9b-v2-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/nvidia-nemotron-nano-9b-v2-nim/SKILL.md

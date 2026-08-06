@@ -68,6 +68,14 @@ Route: `POST /rerank`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-baai-bge-reranker-v2-m3-3891d3dadf`
+- Recommended: Reranking top-k retrieval candidates (query, passage pairs) in multilingual retrieval and open-domain QA pipelines — Upstream README documents that the model accepts a query (question) and a document (passage) and directly outputs a similarity/relevance score; config.json shows a sequence-classification head appropriate for cross-encoder reranking.
+- Avoid: Using this reranker checkpoint as an embedding model (embedding-model substitute) — Upstream README and config identify the artifact as a cross-encoder reranker with a sequence-classification head that directly outputs a single scalar relevance score per query–document pair rather than producing fixed vector embeddings for each input.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -86,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/baai-bge-reranker-v2-m3-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/baai-bge-reranker-v2-m3-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/baai-bge-reranker-v2-m3-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/baai-bge-reranker-v2-m3-tei-cuda-1-9/SKILL.md

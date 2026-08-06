@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Independent audit of a Forge model research dossier",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "verdict",
+    "auditSummary",
+    "issues",
+    "correctedDossier"
+  ],
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "description": "The independent audit outcome; revised means corrections were required and applied.",
+      "enum": [
+        "accepted",
+        "revised",
+        "rejected"
+      ]
+    },
+    "auditSummary": {
+      "type": "string",
+      "description": "A concise account of source, checkpoint-scope, benchmark, input/output, comparison, and safety checks performed."
+    },
+    "issues": {
+      "type": "array",
+      "description": "Every material issue found in the draft, including corrections made.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+        "severity",
+        "path",
+        "issue",
+        "resolution"
+        ],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "description": "The issue severity.",
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "description": "The JSON path or dossier section containing the issue."
+          },
+          "issue": {
+            "type": "string",
+            "description": "The unsupported, incorrectly scoped, incomplete, secondary-source, or malformed claim."
+          },
+          "resolution": {
+            "type": "string",
+            "description": "How the corrected dossier removed, narrowed, sourced, or otherwise resolved the issue."
+          },
+          "evidenceUrls": {
+            "type": "array",
+            "description": "Primary-source URLs used to verify the issue and resolution.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "correctedDossier": {
+      "type": "object",
+      "description": "A complete corrected dossier conforming to model-research.schema.json; never return the uncorrected draft here."
+    }
+  }
+}

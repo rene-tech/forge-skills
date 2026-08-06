@@ -73,6 +73,17 @@ Route: `POST /generate`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-genmol-generate-c1a2135e2c`
+- Recommended: Fragment‑conditioned molecule generation: motif extension and scaffold decoration — NVIDIA GenMol NIM benchmarks page and the GenMol model card identify motif-extension and scaffold-decoration as supported fragment-completion tasks and provide v2 numeric metrics and hyperparameters for these tasks.
+- Recommended: De novo molecule generation (empty template) — NIM endpoints documentation and getting-started examples state that passing a null/empty 'smiles' template to the /generate endpoint triggers de novo generation and that outputs are SAFE/SMILES strings.
+- Recommended: Component in hit-generation and lead-optimization pipelines with downstream scoring and filtering — NVIDIA model card and NIM benchmarks present an integrated workflow expectation (generate then compute properties and apply filters); using GenMol as a generative component combined with downstream property scoring is supported by the provided primary artifacts.
+- Avoid: One‑step linker design without downstream validation — Primary sources do not provide a verified immutable-checkpoint-mapped numeric table tying the arXiv paper's one-step linker numbers to NV-GenMol-89M-v2; the paper reports upstream experimental metrics and NIM release notes claim v2 improves linker success but no immutable-checkpoint mapping is published in the provided findings (provenance/evidence gap).
+- Avoid: Assuming FP32 output property scores are calibrated posterior probabilities for clinical decision-making — NIM benchmarks and model card present FP32 property scores but do not publish a calibration protocol or threshold semantics in the available primary sources (evidence gap).
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -91,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-genmol-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-genmol-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-genmol-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecule-design/nvidia-genmol-nim/SKILL.md

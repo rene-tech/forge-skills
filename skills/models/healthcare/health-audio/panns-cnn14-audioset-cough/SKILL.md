@@ -71,6 +71,16 @@ Route: `POST /v1/inference/panns-cnn14-audioset-cough`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-qiuqiangkong-audioset-tagging-cnn-7d9dedc059`
+- Recommended: Clip-level multi-label audio tagging with AudioSet ontology labels (AudioSet-like classes) — The PANNs paper evaluates CNN14 on AudioSet and reports clipwise mAP; the author's panns_inference README demonstrates inference examples that output per-class confidences for a Cnn14 checkpoint.
+- Recommended: Using CNN14 variants as pretrained feature extractors / embedding providers for downstream audio tasks — The PANNs paper positions PANNs as pretrained models for audio pattern recognition tasks, and the author's inference examples demonstrate extracting per-class confidences from the model checkpoint artifact.
+- Avoid: Clinical diagnosis, PHI-sensitive decisioning, or healthcare deployment without separate validation — Primary sources (paper and repository files checked) do not provide clinical validation statements, PHI handling guidance, or healthcare deployment approvals for the checkpoint; repository and paper describe audio tagging on AudioSet but do not include clinical-use validation.
+- Avoid: Any task requiring author-provided per-class calibrated decision thresholds — Primary sources do not provide recommended per-class thresholds or calibration parameters; only aggregate metrics (mAP) and example raw/confidence outputs are present in the checked locations.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -88,11 +98,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/panns-cnn14-audioset-cough/inference-routes`
 - Regional deployment: `/v1/models/panns-cnn14-audioset-cough/regional-deployment`
 - Serverless handoff: `/v1/models/panns-cnn14-audioset-cough/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/health-audio/panns-cnn14-audioset-cough/SKILL.md

@@ -66,6 +66,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-llama-3-1-nemoguard-8b-topic-control-6ea6a06a4f`
+- Recommended: Topical moderation of user prompts in human-assistant task-oriented dialogue — The NVIDIA NIM reference states the model can be used for topical and dialogue moderation of user prompts in human-assistant interactions for task-oriented dialogue agents, and returns a binary response indicating whether the user message respects the topical instruction.
+- Recommended: Topical guardrail integration in NeMo Guardrails — The Hugging Face model card states intended users include developers building task-oriented dialogue assistants and using the model as a topical guardrail in NeMo Guardrails. NeMo Guardrails documentation shows the model configured with type topic_control, engine nim, and model_name llama-3.1-nemoguard-8b-topic-control.
+- Avoid: General-purpose instruction following, summarization, or open-ended text generation — Primary sources describe the artifact as a specialized topic-control/dialog moderation model whose output is a binary text label, not a general-purpose generative assistant.
+- Avoid: Using the output as calibrated probabilities or fine-grained moderation scores — Primary sources only document text output as the binary label "on-topic" or "off-topic" and do not document probabilities, scores, or calibration.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-llama-3-1-nemoguard-8b-topic-control-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-llama-3-1-nemoguard-8b-topic-control-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-llama-3-1-nemoguard-8b-topic-control-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/nvidia-llama-3-1-nemoguard-8b-topic-control-nim/SKILL.md

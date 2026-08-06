@@ -76,6 +76,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-nemotron-parse-7466ab787f`
+- Recommended: Document transcription from PDFs and document images into structured text with spatial annotations (formatted/extracted text + bounding boxes + semantic class labels). — NGC container listing and build.nvidia model card describe Nemotron Parse producing structured annotations (formatted text, bounding boxes, semantic classes) from document inputs; NeMo Curator PDF pipeline documents how Nemotron Parse integrates into PDF ingestion and emits interleaved Parquet outputs for downstream workflows.
+- Avoid: Pure text-only processing workflows that accept only raw text (no image/PDF input). — NIM API documentation states text input is not supported and examples show image/PDF-focused inputs; Nemotron Parse is documented as image/PDF-focused.
+- Avoid: Assuming model confidences are calibrated for direct acceptance without application-specific validation. — Primary sources do not provide prescriptive confidence calibration mappings or acceptance thresholds for Nemotron Parse outputs.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -93,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-nemotron-parse-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-nemotron-parse-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-nemotron-parse-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/nvidia-nemotron-parse-nim/SKILL.md

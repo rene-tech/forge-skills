@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model openfold3-nim for this task: Predicting all-atom 3D structures of biomolecular complexes composed of proteins, DNA, RNA, and non-covalent ligands for research and discovery workflows.. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use openfold3-nim or another Forge model for Predicting all-atom 3D structures of biomolecular complexes composed of proteins, DNA, RNA, and non-covalent ligands for research and discovery workflows.?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use openfold3-nim for Modeling covalently bound ligands (covalent docking) relying on NIM or current OpenFold3 inference., even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "openfold3-nim",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-openfold3-nim"
+}

@@ -69,6 +69,14 @@ Route: `POST /rerank`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-ncbi-medcpt-cross-encoder-d1e8297dde`
+- Recommended: Biomedical query + candidate-article reranking (second-stage re-ranker) — The repository README demonstrates loading the tokenizer and AutoModelForSequenceClassification and shows example usage for ranking articles for a given query; the config.json identifies a sequence-classification (cross-encoder) head consistent with reranking use.
+- Avoid: Direct diagnostic decision-making without clinical oversight — Evidence gap: the upstream repository artifacts do not provide checkpoint-scoped clinical-use guidance, validation, or PHI/data-handling instructions; no upstream primary-source clinical disclaimer was located in the checked blobs, so clinical diagnostic use should be avoided unless separate validated clinical guidance and evaluation are provided.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -87,11 +95,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/ncbi-medcpt-cross-encoder-wrapper-cuda12/inference-routes`
 - Regional deployment: `/v1/models/ncbi-medcpt-cross-encoder-wrapper-cuda12/regional-deployment`
 - Serverless handoff: `/v1/models/ncbi-medcpt-cross-encoder-wrapper-cuda12/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-cross-encoder-wrapper-cuda12/SKILL.md

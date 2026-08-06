@@ -2,6 +2,8 @@
 
 Category: `general` · exact model/version skills: 17
 
+[Audited model-selection dossier](research.md)
+
 - [Use FLUX.1 Dev](black-forest-labs-flux-1-dev/SKILL.md) — `1-2-2` · source-linked
 - [Use FLUX.1 Kontext Dev](black-forest-labs-flux-1-kontext-dev/SKILL.md) — `1-1-3` · source-linked
 - [Use FLUX.1 Schnell](black-forest-labs-flux-1-schnell/SKILL.md) — `1-1-3` · source-linked

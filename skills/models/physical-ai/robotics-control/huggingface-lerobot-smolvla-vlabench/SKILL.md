@@ -76,6 +76,15 @@ Route: `POST /v1/inference/huggingface-lerobot-smolvla-vlabench`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-lerobot-smolvla-vlabench-d6edd20a8d`
+- Recommended: Research evaluation and prototyping of language-conditioned robotic manipulation policies using LeRobot/VLABench surfaces — The Hugging Face model card for lerobot/smolvla_vlabench provides instructions to use the checkpoint with libraries, inference providers, notebooks, and local applications; SmolVLA documentation states the family is designed for easy fine-tuning on LeRobot datasets and to accelerate development.
+- Recommended: Exploratory local prototyping of compact SmolVLA-family policies with LeRobot tooling — SmolVLA is described as compact and deployable for efficient robotics experimentation; LeRobot/VLABench documentation provides the evaluation surfaces and tooling to run policies.
+- Avoid: Using the checkpoint for clinical, medical, or regulated decision-making — Forge policy: do not use this robotics-control checkpoint for clinical or regulated decision support without dedicated validation and certification; the inspected primary checkpoint-scoped sources do not report such validations for lerobot/smolvla_vlabench.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -93,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/huggingface-lerobot-smolvla-vlabench/inference-routes`
 - Regional deployment: `/v1/models/huggingface-lerobot-smolvla-vlabench/regional-deployment`
 - Serverless handoff: `/v1/models/huggingface-lerobot-smolvla-vlabench/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-vlabench/SKILL.md

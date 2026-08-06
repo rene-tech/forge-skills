@@ -1,0 +1,525 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2].primary must be true",
+        "path": "$.sources[2].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 4 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "1B NVIDIA retrieval reranking NIM for question-answer ranking; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave5.",
+      "displayName": "Use NVIDIA Llama 3.2 NV-RerankQA 1B v2",
+      "group": "retrieval-and-reranking",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "nvidia-open-model-license; llama-3.2-community-license",
+      "modelFamily": "nvidia-llama-3-2-nv-rerankqa-1b-v2",
+      "outputModalities": [
+        "ranking"
+      ],
+      "slug": "nvidia-llama-3-2-nv-rerankqa-1b-v2-nim",
+      "sourceUrl": "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "modelScope": "llama-3.2-nv-rerankqa-1b-v2 reranking checkpoint and NVIDIA NIM service",
+        "reason": "Primary NVIDIA documentation for the exact reranker/runtime describes a reranking model that accepts query-passage pairs and outputs relevance logits; the Build and NIM reference pages do not document generative text outputs for this checkpoint/runtime",
+        "useCase": "Using this checkpoint as a generative chat or free-form text generation model"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "modelScope": "llama-3.2-nv-rerankqa-1b-v2 checkpoint",
+        "reason": "The NIM reference documents evaluation on 26 listed languages; there is no checkpoint-scoped primary-source evidence that validates broader language coverage for this exact NIM-served reranker",
+        "useCase": "Using the model beyond its documented evaluated language set without validation"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [],
+    "conditionalUseCases": [
+      {
+        "conditions": "Confirm deployed NIM runtime configuration (optimized vs non-optimized) because official NIM support-matrix documentation documents an optimized configuration supporting 8192 tokens and a non-optimized configuration supporting 4096 tokens; callers must validate which runtime configuration is active for their NIM instance",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/support-matrix.html",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/support-matrix.html",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "modelScope": "llama-3.2-nv-rerankqa-1b-v2 in NVIDIA NIM optimized vs non-optimized configurations",
+        "useCase": "Long-document reranking workloads (large context)"
+      },
+      {
+        "conditions": "Validate applicable license terms, NIM EULA terms, and enterprise/runtime packaging before deployment; confirm entitlement and runtime governance as described in the NIM EULA and NIM reference",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.12.0/eula.html",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "modelScope": "NIM packaging/runtime for llama-3.2-nv-rerankqa-1b-v2",
+        "useCase": "Enterprise or compliance-sensitive deployments"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No checkpoint-scoped numeric benchmark rows or tables found for llama-3.2-nv-rerankqa-1b-v2 at the NIM reference page (checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2).",
+      "Evidence gap: No checkpoint-scoped numeric benchmark rows or tables found for llama-3.2-nv-rerankqa-1b-v2 on the Build product page (checked https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2 and https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard).",
+      "Evidence gap: No checkpoint-scoped numeric benchmark rows or tables found in the upstream Llama 3.2 model card for metrics tied to the NVIDIA-served reranker (checked https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md).",
+      "Evidence gap: No immutable checkpoint revision identifier, artifact digest, or published hash for the exact served artifact found in the NIM reference or Build pages (checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2 and https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2).",
+      "Evidence gap: Tokenizer identity/version, vocabulary, and special-token definitions for this exact checkpoint/runtime are not specified in the NIM reference or Build pages (checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2 and https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2).",
+      "Evidence gap: Precise per-side truncation rules, token counting behavior, and tokenizer truncation strategy are not published for this exact NIM-served checkpoint/runtime (checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2, https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2, and https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/reference-grpc.html).",
+      "Evidence gap: No calibration guidance, score-normalization procedures, or recommended operational thresholds for the relevance logit are published in the primary sources checked (https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2 and https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2).",
+      "Evidence gap: No checkpoint-specific privacy, PHI, clinical-use, or regulated-deployment controls published for this exact NIM-served checkpoint/runtime in primary sources (checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2 and https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.12.0/eula.html).",
+      "Evidence gap: No task- and protocol-matched primary-source comparisons verified for this exact checkpoint/runtime at the checked canonical NVIDIA and upstream URLs (checked https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2, https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2, and https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md).",
+      "Evidence gap: Benchmarks section is empty because no checkpoint-scoped numeric benchmark rows were found in the canonical NVIDIA or upstream sources (checked URLs: https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2, https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2, https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md).",
+      "Evidence gap: Comparisons section is empty because no protocol-matched primary-source comparisons for this exact NIM-served reranker were found at the canonical NVIDIA or upstream locations (checked URLs: https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2, https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2)."
+    ],
+    "family": "build-nvidia-com-nvidia-llama-3-2-nv-rerankqa-1b-v2-3e8a5720eb",
+    "identity": {
+      "architecture": "Transformer encoder fine-tuned as a cross-encoder reranker using bi-directional attention, mean-pooling of final embeddings, and a binary-classification head producing a relevance logit",
+      "checkpoint": "llama-3.2-nv-rerankqa-1b-v2",
+      "evidenceUrls": [
+        "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+        "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+        "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard",
+        "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+        "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.12.0/eula.html"
+      ],
+      "license": "NVIDIA Community Model License and Llama 3.2 community license (model weights/upstream); NIM container/runtime governed by NVIDIA Software License Agreement / Product Specific Terms as published in the NIM EULA",
+      "parameterScale": "1B",
+      "revision": "not reported",
+      "upstreamName": "meta-llama/Llama-3.2-1B"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+          ],
+          "statement": "Accepted modality is text; the reranker expects query-passage textual inputs rather than free-form generation prompts"
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2/deploy"
+          ],
+          "statement": "An example API request JSON on the Build deploy page includes fields: \"model\", \"query\" with subfield \"text\", and \"passages\" array of objects each with a \"text\" field"
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard"
+          ],
+          "statement": "The reranker is described as a cross-encoder using bi-directional attention over concatenated query-passage tokens with mean-pooling of the final embedding before a binary classification head"
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard"
+          ],
+          "statement": "Fine-tuning/training uses cross-entropy loss for sentence-classification-style relevance prediction (positive vs negative passages)"
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2/deploy"
+          ],
+          "statement": "The model consumes a text query and one or more candidate passage/document text inputs as paired inputs for reranking (query-passage pairs)"
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+          ],
+          "statement": "Real-world input semantics are a user question/query plus candidate passages/documents to be scored for relevance"
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+          ],
+          "statement": "Official task format for this checkpoint is a query-passage pair for reranking as documented in the NIM reference"
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2/deploy"
+          ],
+          "statement": "A canonical example request JSON with fields \"model\", \"query.text\", and \"passages[].text\" is provided on the Build deploy page"
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/reference-grpc.html"
+          ],
+          "statement": "gRPC reference documents the gRPC input field names and shapes for reranking requests (query and passage fields encoded as BYTES)"
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/support-matrix.html",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/support-matrix.html"
+          ],
+          "statement": "Validate total input length against the supported token limit for the deployed NIM configuration (optimized vs non-optimized) using the NIM support-matrix guidance"
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+            "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/reference-grpc.html"
+          ],
+          "statement": "Evidence gap: the primary sources checked do not publish tokenizer identity/version, vocabulary, special-token definitions, or precise per-side truncation rules for this exact checkpoint/runtime; callers must validate tokenization, token counting, and truncation behavior externally before submission"
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+          "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "statement": "Evidence gap: primary sources checked do not report an immutable checkpoint revision identifier, artifact digest, or hash for the exact served checkpoint/runtime"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+          "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "statement": "The provided primary evidence does not specify tokenizer identity/version, vocabulary, or special-token definitions for this exact checkpoint/runtime"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/support-matrix.html",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/support-matrix.html",
+          "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "statement": "Sequence length and token limits depend on runtime configuration: official NIM support-matrix documentation documents 8192 tokens for optimized configuration and 4096 tokens for non-optimized configuration; callers must confirm which runtime is active"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "statement": "The model's documented evaluation is limited to the 26 languages listed in the NIM reference; broader language coverage for this checkpoint is not established in the cited primary sources"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.12.0/eula.html"
+        ],
+        "statement": "License and runtime governance are layered: model weights/upstream base are subject to Llama 3.2 community licensing and NVIDIA Community Model License terms as cited in the NIM reference, and the NIM container/runtime is governed by NVIDIA Software License/Product Terms (NIM EULA)"
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+          ],
+          "statement": "Higher numeric logit values indicate greater relevance according to the NVIDIA NIM reference and Build page; the output is a ranking score and not a generated answer text"
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+          ],
+          "statement": "The model emits a numeric relevance logit score indicating document relevance to the provided query (ranking score) \u2014 this is the documented output contract for the reranker"
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard"
+          ],
+          "statement": "The ranking signal is produced by a binary-classification head over the mean-pooled final embedding (a relevance logit)"
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+            "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+          ],
+          "statement": "Evidence gap: the primary sources do not publish calibration guidance, score normalization guidance, or recommended operational thresholds for the relevance logit; downstream systems should calibrate thresholds and validate ranking behavior on held-out task data"
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+          ],
+          "statement": "Validate that reranking behavior meets retrieval pipeline requirements and domain/language expectations because the NIM reference documents evaluation on 26 languages but does not provide checkpoint-scoped deployment thresholds"
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+          "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+        ],
+        "modelScope": "llama-3.2-nv-rerankqa-1b-v2 served via the NeMo Retriever Llama 3.2 reranking NIM",
+        "useCase": "Reranking candidate passages/documents for a given query in a two-stage retrieval pipeline",
+        "why": "NVIDIA NIM reference and the NVIDIA Build product page describe the checkpoint as intended to improve multilingual retrieval tasks by reranking candidate passages and emitting a relevance logit for each candidate"
+      }
+    ],
+    "researchSummary": "Verified primary NVIDIA documentation identifies the artifact named \"llama-3.2-nv-rerankqa-1b-v2\" as a 1B-parameter NeMo Retriever reranking checkpoint (transformer encoder cross-encoder reranker) packaged and served as a NIM. NVIDIA NIM reference and Build pages document: query-passage pair input semantics, a numeric relevance logit output produced by a binary-classification head after mean-pooling of the final embedding, multilingual evaluation on 26 languages, and long-context support. Official NIM support matrices (latest and 1.9.0) document a runtime distinction: an optimized configuration supporting up to 8192 tokens and a non-optimized configuration supporting up to 4096 tokens. Primary sources do not publish a stable immutable artifact revision/digest for the served checkpoint, do not expose tokenizer identity/version or detailed truncation strategy for per-side truncation, and do not include checkpoint-scoped numeric benchmark tables or protocol-matched comparisons for this exact reranker runtime; those items are listed as explicit evidence gaps below with the exact canonical URLs checked.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.12.0/eula.html"
+        ],
+        "statement": "Users must ensure compliance with applicable laws and the NVIDIA Community Model License terms and the NIM EULA when using this model"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2",
+          "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.12.0/eula.html"
+        ],
+        "statement": "Evidence gap: the provided primary evidence does not list checkpoint-specific privacy, PHI, clinical-use, or regulated-deployment controls for this exact NIM-served checkpoint/runtime; callers should not assume special-case PHI protections from the cited materials"
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "llama-3.2-nv-rerankqa-1b-v2 checkpoint and NeMo Retriever reranking NIM runtime",
+        "primary": true,
+        "primaryReason": "Official NIM reference page for the exact reranking NIM model/checkpoint documenting architecture, inputs, outputs, evaluation languages, and license statements",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "checkpoint identity",
+          "architecture description",
+          "intended reranking use",
+          "query-passage pair input semantics",
+          "logit output semantics",
+          "documented evaluation languages",
+          "license statements in the NIM reference",
+          "stated long-context support"
+        ],
+        "title": "NVIDIA NIM reference: nvidia-llama-3_2-nv-rerankqa-1b-v2",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2"
+      },
+      {
+        "modelScope": "Build entry for llama-3.2-nv-rerankqa-1b-v2 and Forge variant",
+        "primary": true,
+        "primaryReason": "Official Build product page for the named Forge model family and product entry",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "brief product description",
+          "intended reranking use",
+          "long-context support claim",
+          "canonical Build deploy example reference"
+        ],
+        "title": "NVIDIA Build page: Llama 3.2 NV-RerankQA 1B v2 (product entry)",
+        "url": "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+      },
+      {
+        "modelScope": "Build deploy example for llama-3.2-nv-rerankqa-1b-v2",
+        "primary": true,
+        "primaryReason": "Build deploy page contains the example API request JSON for the product and explicit field names for query/passage inputs",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "example API request JSON fields (model, query.text, passages[].text)",
+          "deployment/deploy field examples"
+        ],
+        "title": "NVIDIA Build deploy example for llama-3.2-nv-rerankqa-1b-v2",
+        "url": "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2/deploy"
+      },
+      {
+        "modelScope": "NIM runtime support matrix entries for llama-3.2-nv-rerankqa-1b-v2",
+        "primary": true,
+        "primaryReason": "Canonical/latest support matrix documenting optimized vs non-optimized token limits and hardware compatibility for NeMo Retriever reranking models",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "optimized configuration token limit = 8192 (for supported SKUs/configs)",
+          "non-optimized configuration token limit = 4096",
+          "hardware/precision compatibility notes"
+        ],
+        "title": "NVIDIA NIM support matrix for NeMo Retriever text-reranking (latest)",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/support-matrix.html"
+      },
+      {
+        "modelScope": "NIM runtime support matrix entries for NeMo Retriever text-reranking 1.9.0",
+        "primary": true,
+        "primaryReason": "Historical support matrix documenting model ID mappings and token limits for specific NIM releases (used to verify optimized/non-optimized limits and model IDs)",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "model ID mapping for Llama-3.2-NV-RerankQA-1B-v2",
+          "optimized configuration token limit guidance (8192 documented)",
+          "non-optimized configuration token limit guidance (4096 documented)",
+          "compute capability and precision compatibility"
+        ],
+        "title": "NVIDIA NIM support matrix for NeMo Retriever text-reranking 1.9.0",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/support-matrix.html"
+      },
+      {
+        "modelScope": "gRPC reference for NeMo Retriever text-reranking 1.9.0",
+        "primary": true,
+        "primaryReason": "gRPC reference documents the input field names and shapes for reranking requests (query and passage fields encoded as BYTES)",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "gRPC input field names and shapes for query and passage",
+          "model ID mapping to gRPC model name"
+        ],
+        "title": "NIM reference gRPC: NeMo Retriever text-reranking (1.9.0) - gRPC field shapes",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.9.0/reference-grpc.html"
+      },
+      {
+        "modelScope": "NeMo Retriever reranking API usage documentation (latest)",
+        "primary": true,
+        "primaryReason": "Documentation describing request parameters (query, passages, truncate) and API semantics for reranking",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "request includes query, list of passages, optional truncate parameter",
+          "truncate parameter semantics (NONE or END)",
+          "ranking based only on query and passages text"
+        ],
+        "title": "NIM using-reranking documentation (using-reranking / API behavior)",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/using-reranking.html"
+      },
+      {
+        "modelScope": "NeMo Retriever text-reranking release notes (latest)",
+        "primary": true,
+        "primaryReason": "Release notes document supported SKUs, default precision behavior, and model artifact download providers",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "supported optimized SKUs and precision guidance",
+          "default precision is FP16 when supported",
+          "model artifact download providers (HF/NGC) guidance"
+        ],
+        "title": "NVIDIA NIM release notes: NeMo Retriever text-reranking (latest release notes)",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/release-notes.html"
+      },
+      {
+        "modelScope": "NIM runtime license and EULA terms applicable to packaged reranking NIMs",
+        "primary": true,
+        "primaryReason": "Official NIM EULA and product-specific licensing/governance documentation for the NIM container/runtime packaging",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "runtime/container license governance",
+          "statement that model use is governed by NVIDIA Community Model License and Llama 3.2 community license in NIM packaging"
+        ],
+        "title": "NVIDIA NIM EULA for NeMo Retriever text-reranking 1.12.0",
+        "url": "https://docs.nvidia.com/nim/nemo-retriever/text-reranking/1.12.0/eula.html"
+      },
+      {
+        "modelScope": "NIM EULA / license locator",
+        "primary": true,
+        "primaryReason": "Official NVIDIA agreements and license locator confirming NIM container governance by NVIDIA Software License Agreement and community model license references",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NIM container governed by NVIDIA Software License Agreement and Product Specific Terms",
+          "ai-foundation-models community license referenced"
+        ],
+        "title": "NIM speech resources EULA (enterprise software license locator)",
+        "url": "https://docs.nvidia.com/nim/speech/latest/resources/eula.html"
+      },
+      {
+        "modelScope": "NIM production branch metadata for llama-3.2-nv-rerankqa-1b-v2",
+        "primary": true,
+        "primaryReason": "NGC catalog entry for the NIM production branch, documenting availability and supported branch lifecycle",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "production branch availability description",
+          "confirmation that the NIM provides a relevance logit for reranking"
+        ],
+        "title": "NVIDIA NGC catalog: Llama-3.2-nv-rerankqa-1b-v2 production branch",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/llama-3.2-nv-rerankqa-1b-v2-pb6/-"
+      },
+      {
+        "modelScope": "Build model card for the reranking checkpoint",
+        "primary": true,
+        "primaryReason": "Model card entry associated with the reranking model describing architecture lineage and parameter count",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "statement that network architecture is fine-tuned meta-llama/Llama-3.2-1B",
+          "parameter count = 1.0 \u00d7 10^9 (1B)",
+          "maximum sequence length claim (8192 tokens)"
+        ],
+        "title": "Build model card: llama-nemotron-rerank-1b-v2 model card",
+        "url": "https://build.nvidia.com/nvidia/llama-nemotron-rerank-1b-v2/modelcard"
+      },
+      {
+        "modelScope": "meta-llama/Llama-3.2-1B upstream model-family card",
+        "primary": true,
+        "primaryReason": "Upstream model-family card documenting Llama 3.2 base-family properties referenced by NVIDIA",
+        "publisher": "Meta",
+        "sourceType": "repository",
+        "supports": [
+          "upstream architecture lineage to meta-llama/Llama-3.2",
+          "description of upstream Llama 3.2 family and available sizes (1B mentioned in upstream family)"
+        ],
+        "title": "Meta Llama 3.2 model card (upstream-checkpoint evidence)",
+        "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "e644e50f618a95fc53b1de9c9bded236abf4034c31db9bee8da629f972b47a5f",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-nvidia-llama-3-2-nv-rerankqa-1b-v2-3e8a5720eb",
+  "researchedAt": "2026-07-23T21:48:28.478654+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2",
+  "sourceUrls": [
+    "https://build.nvidia.com/nvidia/llama-3_2-nv-rerankqa-1b-v2"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

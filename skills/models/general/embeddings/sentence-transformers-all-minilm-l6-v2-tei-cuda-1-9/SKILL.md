@@ -62,6 +62,17 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-sentence-transformers-all-minilm-l6-v2-32e2db27ec`
+- Recommended: Semantic textual similarity for sentences and short paragraphs — The upstream model card and README document the checkpoint as a sentence/short-paragraph encoder mapping inputs to 384-d vectors and list sentence-similarity as an intended use.
+- Recommended: Semantic search / information retrieval over short text — The upstream model card and README cite information retrieval and semantic search as intended uses for the produced sentence embeddings.
+- Recommended: Clustering of short-text embeddings — The upstream model card and README list clustering as an intended use for the model's sentence embeddings.
+- Avoid: Token-level prediction tasks (e.g., token classification, token-level tagging) relying on a token-head output — Upstream README and model card document this checkpoint as a sentence/short-paragraph encoder using mean-pooling to produce sentence embeddings rather than exposing a token-level prediction head.
+- Avoid: Encoding long or unsegmented documents with the expectation that the entire document content is always preserved without segmentation — Tokenizer configuration reports model_max_length = 512 but the README examples call truncation=True without stating an explicit default truncation length in the provided findings; effective runtime truncation behavior for long inputs is not specified in the checked primary blobs.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -80,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9/SKILL.md

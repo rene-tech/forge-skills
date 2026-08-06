@@ -71,6 +71,16 @@ Route: `POST /v1/inference/hunyuanvideo-community-hunyuanvideo-1-5-480p-t2v`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-docs-diffusers-v0-38-0-en-api-pipelines-hunyuan-video15-0154145706`
+- Recommended: Short-form text-to-video generation for rapid prototyping and social/web content — Primary upstream artifacts document text-to-video capability and lightweight video generation with consumer-GPU efficiency, supporting short-form video generation workflows.
+- Recommended: Image-to-video (I2V) generation using the HunyuanVideo-1.5 I2V pipeline variant — Primary sources describe both text-to-video and image-to-video capabilities for the family and document an I2V workflow in the Diffusers pipeline documentation and upstream repository.
+- Recommended: Consumer-GPU inference using published HunyuanVideo-1.5 variants (e.g., 720p example shown upstream) — Upstream documentation and the model page indicate the family is designed to run efficiently on consumer-grade GPUs and provide example generation settings (including an example using 50 inference steps).
+- Avoid: Clinical, PHI-bearing, or safety-critical decision-making workflows — Evidence gap: The audited primary sources do not provide domain-specific validation, clinical disclaimers, or governance documentation for use in medical or other safety-critical contexts; no primary-source statements were found that establish clinical validation for HunyuanVideo-1.5 for such uses.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -88,11 +98,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/hunyuanvideo-community-hunyuanvideo-1-5-480p-t2v/inference-routes`
 - Regional deployment: `/v1/models/hunyuanvideo-community-hunyuanvideo-1-5-480p-t2v/regional-deployment`
 - Serverless handoff: `/v1/models/hunyuanvideo-community-hunyuanvideo-1-5-480p-t2v/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/hunyuanvideo-community-hunyuanvideo-1-5-480p-t2v/SKILL.md

@@ -63,6 +63,14 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-potsu-potsu-medembed-small-biomedical-matryoshka-v2-8730ebfc38`
+- Recommended: Extract dense text embeddings for cosine-based semantic similarity or retrieval — The checked checkpoint configuration file sets similarity_fn_name = "cosine", indicating embeddings are intended for cosine-similarity comparisons as recorded in the model config file.
+- Avoid: Direct use for clinical decision-making, diagnosis, or other high-stakes clinical automation without expert review — The checked primary-source configuration file contains only model configuration metadata (library-version requirements, similarity function, empty prompts) and does not provide checkpoint-scoped certification, clinical-use claims, PHI-handling guidance, or clinical benchmarks in the inspected file.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -81,11 +89,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/potsu-potsu-medembed-small-biomedical-matryoshka-v2-tei-cuda-1-9/SKILL.md

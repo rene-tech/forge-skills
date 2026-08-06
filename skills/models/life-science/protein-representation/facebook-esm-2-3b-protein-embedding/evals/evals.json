@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model facebook-esm-2-3b-protein-embedding for this task: Protein sequence representation learning and embedding-based downstream analysis. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use facebook-esm-2-3b-protein-embedding or another Forge model for Protein sequence representation learning and embedding-based downstream analysis?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use facebook-esm-2-3b-protein-embedding for Use as a validated clinical decision-support system or as a standalone basis for regulated medical decisions, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "facebook-esm-2-3b-protein-embedding",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-facebook-esm-2-3b-protein-embedding"
+}

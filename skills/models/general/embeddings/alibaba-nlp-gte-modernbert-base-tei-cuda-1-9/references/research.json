@@ -1,0 +1,628 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2].primary must be true",
+        "path": "$.sources[2].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3].primary must be true",
+        "path": "$.sources[3].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5] uses unapproved repository owner 'miyako' for this exact model scope",
+        "path": "$.sources[5] uses unapproved repository owner 'miyako' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7] uses unapproved repository owner 'unsloth' for this exact model scope",
+        "path": "$.sources[7] uses unapproved repository owner 'unsloth' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 8 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Alibaba-NLP gte-modernbert-base is a public Apache-2.0 English text embedding model for semantic search, RAG retrieval, long-document retrieval, and code retrieval.",
+      "displayName": "Use GTE ModernBERT Base",
+      "group": "embeddings",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "alibaba-nlp-gte-modernbert-base",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "alibaba-nlp-gte-modernbert-base-tei-cuda-1-9",
+      "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base",
+      "version": "tei-cuda-1.9.3",
+      "versionKey": "tei-cuda-1-9-3"
+    },
+    {
+      "category": "general",
+      "description": "Alibaba-NLP gte-modernbert-base is a public Apache-2.0 English text embedding model for semantic search, RAG retrieval, long-document retrieval, and code retrieval.",
+      "displayName": "Use GTE ModernBERT Base",
+      "group": "embeddings",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "alibaba-nlp-gte-modernbert-base",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "alibaba-nlp-gte-modernbert-base-vllm-cuda13",
+      "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base",
+      "version": "hf-e7f32e3-vllm-0.22.0-cuda13-pooling",
+      "versionKey": "hf-e7f32e3-vllm-0-22-0-cuda13-pooling"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "modelScope": "gte-modernbert-base",
+        "reason": "Upstream artifacts describe an encoder-only ModernBERT embedding model; no autoregressive decoder or generation head is described in the checked config/README files.",
+        "useCase": "Autoregressive text generation (generation / decoding tasks)"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "modelScope": "gte-modernbert-base and series",
+        "reason": "Model card and README distinguish embedding and rerank variants within the GTE series; the upstream checkpoint should not be assumed equivalent to task\u2011tuned siblings unless the repository documents that mapping.",
+        "useCase": "Treating this base checkpoint as a task\u2011tuned sibling without explicit evidence"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Protocol, dataset split, and evaluation commands not provided in the checked README file"
+        ],
+        "conditions": "Value listed on README/inference-provider view but README does not provide explicit protocol, dataset split, or run script in the checked files.",
+        "dataset": "MTEB (English)",
+        "direction": "context-only",
+        "metric": "MTEB score",
+        "modelScope": "gte-modernbert-base",
+        "sourceLocator": "README benchmarks section",
+        "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+        "split": "not reported",
+        "task": "Embedding evaluation (aggregate)",
+        "value": "64.38"
+      },
+      {
+        "caveats": [
+          "Protocol, dataset split, and evaluation commands not provided in the checked README file"
+        ],
+        "conditions": "BEIR NDCG@10 value listed on README/inference-provider view without protocol, split, or run commands in the checked repository files.",
+        "dataset": "BEIR",
+        "direction": "context-only",
+        "metric": "NDCG@10",
+        "modelScope": "gte-modernbert-base",
+        "sourceLocator": "README benchmarks section",
+        "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+        "split": "not reported",
+        "task": "Information retrieval",
+        "value": "55.33"
+      },
+      {
+        "caveats": [
+          "Protocol, dataset split, and evaluation commands not provided in the checked README file"
+        ],
+        "conditions": "LoCo score reported on README/inference-provider view; README lacks protocol/split specification in the checked files.",
+        "dataset": "LoCo",
+        "direction": "context-only",
+        "metric": "NDCG@10",
+        "modelScope": "gte-modernbert-base",
+        "sourceLocator": "README benchmarks section",
+        "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+        "split": "not reported",
+        "task": "Long-document retrieval",
+        "value": "87.57"
+      },
+      {
+        "caveats": [
+          "Protocol, dataset split, and evaluation commands not provided in the checked README file"
+        ],
+        "conditions": "CoIR score reported on README/inference-provider view; README lacks protocol/split specification in the checked files.",
+        "dataset": "CoIR",
+        "direction": "context-only",
+        "metric": "NDCG@10",
+        "modelScope": "gte-modernbert-base",
+        "sourceLocator": "README benchmarks section",
+        "sourceUrl": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+        "split": "not reported",
+        "task": "Code retrieval",
+        "value": "79.31"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "BAAI/bge-base-en-v1.5",
+        "comparisonConditions": "No shared evaluation protocol or direct comparison table present in the repository README or config.",
+        "criteria": "No primary-source, protocol-matched checkpoint-to-checkpoint comparison was found in the checked artifacts for gte-modernbert-base versus this alternative.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+        ],
+        "rationale": "Checked upstream README/config/inference view do not contain direct head-to-head comparisons to the listed alternative checkpoint.",
+        "task": "Embedding for semantic search / retrieval",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "BAAI/bge-large-en-v1.5",
+        "comparisonConditions": "No shared evaluation protocol or direct comparison table present in the repository README or config.",
+        "criteria": "No primary-source, protocol-matched comparison found in the checked upstream artifacts.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base"
+        ],
+        "rationale": "Checked upstream README/config/inference view do not contain direct head-to-head comparisons to the listed alternative checkpoint.",
+        "task": "Embedding for semantic search / retrieval",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "ibm-granite/granite-embedding-small-english-r2",
+        "comparisonConditions": "No shared evaluation protocol or direct comparison table present in the repository README or config.",
+        "criteria": "No primary-source, protocol-matched comparison located in the checked artifacts.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "rationale": "No direct primary-source comparisons present in the gte-modernbert-base repository files.",
+        "task": "Embedding for semantic search / retrieval",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "intfloat/multilingual-e5-large-instruct",
+        "comparisonConditions": "No shared evaluation protocol or direct comparison table present in the repository README or config.",
+        "criteria": "No primary-source comparison located in the checked artifacts.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "rationale": "Checked gte-modernbert-base primary sources do not include direct comparisons to this alternative checkpoint.",
+        "task": "Multilingual embedding / semantic search",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "sentence-transformers/all-MiniLM-L6-v2",
+        "comparisonConditions": "No shared evaluation protocol or direct comparison table present in the repository README or config.",
+        "criteria": "No primary-source comparison located in the checked artifacts.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "rationale": "No direct checkpoint-to-checkpoint comparisons found in the gte-modernbert-base README or config.",
+        "task": "Embedding for semantic search / retrieval",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "snowflake/snowflake-arctic-embed-l-v2.0 (and M)",
+        "comparisonConditions": "No shared evaluation protocol or direct comparison table present in the repository README or config.",
+        "criteria": "No primary-source comparison located in the checked artifacts.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "rationale": "No direct checkpoint-to-checkpoint comparisons found in the gte-modernbert-base README or config.",
+        "task": "Embedding for semantic search / retrieval",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Repository README/inference-provider list CoIR/code retrieval benchmark scores for the checkpoint but do not provide tokenization details for code, dataset splits, or run scripts in the checked files; downstream validation of code-specific tokenization and retrieval ranking is required before production deployment.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "modelScope": "gte-modernbert-base",
+        "useCase": "Code search / code retrieval"
+      },
+      {
+        "conditions": "README shows an example of optional L2-normalize but does not mandate it; validate downstream retrieval ranking impact before production use.",
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "modelScope": "gte-modernbert-base (README example)",
+        "useCase": "Applying L2 normalization prior to similarity computation"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Tokenizer implementation class/name and explicit tokenization algorithm (e.g., WordPiece/BPE/Unigram) are not declared in the checked repository files; checked files: https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/7ca8b4ca700621b67618669f5378fe5f5820b8e4/tokenizer.json , https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/e7f32e3c00f91d699e8c43b53106206bcc72bb22/tokenizer_config.json \u2014 these blobs exist but do not state an implementation class name.",
+      "Evidence gap: README and inference-provider view list numeric benchmark scores but do not include explicit evaluation protocol, dataset split identifiers, or run scripts necessary to reproduce reported MTEB/BEIR/LoCo/CoIR values in the checked README or repository files (checked: https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md , https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference).",
+      "Evidence gap: Pooling policy authoritative statement is absent: README extraction example uses CLS (`outputs.last_hidden_state[:, 0]`) while config.json lists classifier_pooling = \"mean\"; the repository does not provide an authoritative internal statement resolving which pooling is canonical (checked: https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md , https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json).",
+      "Evidence gap: No explicit mapping in the checked repository files links specific serving-wrapper variants (TEI or vllm pooling-labelled builds) to an immutable upstream binary/revision with documented I/O-contract differences; checked commit artifact and README do not provide that mapping (checked: https://huggingface.co/Alibaba-NLP/gte-modernbert-base/commits/e7f32e3c00f91d699e8c43b53106206bcc72bb22/model.safetensors , https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md).",
+      "Evidence gap: The checked repository files do not publish explicit dataset splits or run commands for the reported benchmark rows; the README/inference view reports values but lacks reproducibility details (checked: https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md , https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference)."
+    ],
+    "family": "huggingface-co-alibaba-nlp-gte-modernbert-base-f26b0d9716",
+    "identity": {
+      "architecture": "ModernBertModel (model_type='modernbert'; encoder-only)",
+      "checkpoint": "gte-modernbert-base",
+      "evidenceUrls": [
+        "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json",
+        "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+        "https://huggingface.co/Alibaba-NLP/gte-modernbert-base",
+        "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/commits/e7f32e3c00f91d699e8c43b53106206bcc72bb22/model.safetensors"
+      ],
+      "license": "Apache-2.0",
+      "parameterScale": "149 million parameters",
+      "revision": "e7f32e3c00f91d699e8c43b53106206bcc72bb22",
+      "upstreamName": "Alibaba-NLP/gte-modernbert-base"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference"
+          ],
+          "statement": "OpenAI-compatible embeddings JSON example using an `input` array of strings and `encoding_format` set to \"float\" is shown in the repository/inference-provider examples."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+          ],
+          "statement": "README shows Python example using AutoTokenizer.from_pretrained and AutoModel.from_pretrained with example options referencing max_length=8192, padding=True, and truncation=True."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+          ],
+          "statement": "Config.json reports `max_position_embeddings = 8192`, indicating positional embedding support to 8192 tokens."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/7ca8b4ca700621b67618669f5378fe5f5820b8e4/tokenizer.json",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/e7f32e3c00f91d699e8c43b53106206bcc72bb22/tokenizer_config.json"
+          ],
+          "statement": "Tokenization artifact files (tokenizer.json and tokenizer_config.json) are present in the repository blobs."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference"
+          ],
+          "statement": "Plain text sequences (English/general text) intended for embedding or reranking."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference"
+          ],
+          "statement": "README example extracts embeddings via `outputs.last_hidden_state[:, 0]` (CLS token) and shows optional L2 normalization; inference-provider examples show OpenAI-compatible `v1/embeddings` JSON with `input` list."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/7ca8b4ca700621b67618669f5378fe5f5820b8e4/tokenizer.json",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/e7f32e3c00f91d699e8c43b53106206bcc72bb22/tokenizer_config.json",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+          ],
+          "statement": "The repository files checked do not declare a tokenizer implementation class/name (only tokenizer artifact files are present); confirm tokenizer identity and vocabulary mapping before deploying."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/7ca8b4ca700621b67618669f5378fe5f5820b8e4/tokenizer.json",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/e7f32e3c00f91d699e8c43b53106206bcc72bb22/tokenizer_config.json",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+        ],
+        "statement": "Tokenizer implementation class/name and explicit tokenization algorithm are not declared in the checked repository code/config; only tokenizer artifact files (tokenizer.json, tokenizer_config.json) are present."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference"
+        ],
+        "statement": "Benchmark protocol, dataset split, and exact reproduction commands for reported numeric scores (MTEB/BEIR/LoCo/CoIR) are not provided in the checked README or repository files."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+        ],
+        "statement": "Pooling policy ambiguity: README extraction example uses CLS token (outputs.last_hidden_state[:, 0]) while config.json lists classifier_pooling = \"mean\"; the repository does not authoritatively resolve which pooling policy is canonical for embeddings."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/commits/e7f32e3c00f91d699e8c43b53106206bcc72bb22/model.safetensors",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "statement": "No explicit mapping in the checked repository files links specific serving-wrapper variants (TEI or vllm pooling-labelled builds) to an immutable upstream binary/revision with documented I/O-contract differences."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference"
+          ],
+          "statement": "Embeddings are intended for nearest-neighbor similarity, retrieval, and reranking; README shows optional L2 normalization which affects downstream similarity computations."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+          ],
+          "statement": "There is an upstream ambiguity between README-extracted CLS pooling and a config-listed classifier_pooling = \"mean\"; downstream systems must validate pooling semantics in the artifact they deploy."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+          ],
+          "statement": "Model emits a single embedding vector per input text (README demonstrates shape (N, 768) for N inputs when using the example embeddings endpoint)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+          ],
+          "statement": "Post-inference checks should confirm the embedding vector dimensionality (README/inference view assert 768) and pooling behavior (README shows CLS extraction while config.json indicates classifier_pooling='mean'), and whether the deployed artifact applies L2 normalization by default."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+            "https://huggingface.co/Alibaba-NLP/gte-modernbert-base"
+          ],
+          "statement": "No calibration, confidence, or probabilistic score semantics for embeddings are provided in the checked upstream sources; do not infer probabilistic meaning for embedding magnitudes from upstream artifacts."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+        ],
+        "modelScope": "gte-modernbert-base",
+        "useCase": "Text embeddings for semantic search and document retrieval",
+        "why": "README usage examples, inference-provider display, and model metadata present embedding extraction examples and label the checkpoint as an embedding model; config.json supports embedding dimension and model architecture consistent with embedding outputs."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "modelScope": "gte-modernbert-base",
+        "useCase": "Long-document retrieval up to model max positions",
+        "why": "Config.json reports max_position_embeddings = 8192 and the README/inference-provider view reference 8192-length usage and long-context benchmark claims tied to the model series."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+          "https://arxiv.org/pdf/2407.19669"
+        ],
+        "modelScope": "gte-modernbert-base (family-level linkage to mGTE)",
+        "useCase": "Reranking as part of the GTE family workflow (family-level)",
+        "why": "The model README and the canonical mGTE paper reference reranker variants within the GTE/mGTE family; repository and paper link the checkpoint to the family research describing reranking applications."
+      }
+    ],
+    "researchSummary": "Checkpoint-scoped findings (exact checkpoint: Alibaba-NLP/gte-modernbert-base): Supported by the model repo/config/README and inference-provider view, this checkpoint is an encoder-only ModernBERT family embedding model (config.json model_type=\"modernbert\", architecture \"ModernBertModel\") with hidden_size=768, num_hidden_layers=22, num_attention_heads=12, vocab_size=50368, and max_position_embeddings=8192. The model page and README report an embedding dimension of 768 and a parameter count of 149 million. The repository publishes tokenizer artifacts (tokenizer.json and tokenizer_config.json blob URLs) and a commit-linked safetensors artifact. The README and inference-provider view list numeric benchmark scores (MTEB 64.38; BEIR NDCG@10 55.33; LoCo NDCG@10 87.57; CoIR NDCG@10 79.31) and provide embedding extraction examples (README shows outputs.last_hidden_state[:, 0] / optional L2 normalization and an OpenAI-compatible embeddings JSON curl example). Important evidence gaps (items not explicitly declared in the checked primary files): the repository does not explicitly name a tokenizer implementation class (only tokenizer artifact files are present), the README lacks explicit benchmark protocol, dataset split identifiers, and reproduction/run scripts for reported numeric scores, and the repository does not authoritatively resolve the pooling policy conflict between the README CLS extraction example and config.json classifier_pooling=\"mean\". Also, there is no explicit upstream mapping in the checked files from immutable upstream binary/revision to external serving-wrapper labelled variants (e.g., TEI or vllm pooling builds).",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+        ],
+        "statement": "No model-specific safety guidance, PHI/clinical handling advice, or dual-use mitigation measures are described in the checked upstream model card or README."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md",
+          "https://huggingface.co/Alibaba-NLP/gte-modernbert-base"
+        ],
+        "statement": "Model repository indicates Apache-2.0 licensing for the checkpoint; adhere to Apache-2.0 obligations for model-weight and code use as indicated by the README/license declaration."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Alibaba-NLP/gte-modernbert-base (model page)",
+        "primary": true,
+        "primaryReason": "Official model page providing top-level metadata, parameter count and model card information for the checkpoint.",
+        "publisher": "Alibaba-NLP / Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "The model page shows param size 149\u202fM, dimension 768, and sequence length 8192 for gte-modernbert-base.",
+          "The model page links to the repository README and model artifacts."
+        ],
+        "title": "Hugging Face model page for gte-modernbert-base",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base"
+      },
+      {
+        "modelScope": "Alibaba-NLP/gte-modernbert-base (README)",
+        "primary": true,
+        "primaryReason": "Official README with usage examples, reported benchmarks, and metadata.",
+        "publisher": "Alibaba-NLP (Hugging Face repository README)",
+        "sourceType": "repository",
+        "supports": [
+          "The README lists gte-modernbert-base with dimension 768, sequence length 8192, and MTEB\u2011en score 64.38.",
+          "The README lists BEIR score 55.33 for gte-modernbert-base.",
+          "The README lists LoCo NDCG@10 score 87.57 for gte-modernbert-base.",
+          "The README lists CoIR NDCG@10 score 79.31 for gte-modernbert-base.",
+          "The README provides a curl command example that sends JSON with \"model\": \"Alibaba-NLP/gte-modernbert-base\" and \"encoding_format\": \"float\".",
+          "The README shows Python code using AutoTokenizer.from_pretrained and AutoModel.from_pretrained with max_length=8192, padding=True, truncation=True.",
+          "The README extracts embeddings via outputs.last_hidden_state[:, 0] and optionally normalizes them with F.normalize.",
+          "The README states the gte-modernbert series replaces the pre\u2011training language model base from GTE\u2011MLM to ModernBert."
+        ],
+        "title": "README.md in the gte-modernbert-base repository",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/README.md"
+      },
+      {
+        "modelScope": "Alibaba-NLP/gte-modernbert-base (config.json)",
+        "primary": true,
+        "primaryReason": "Official config.json file containing architecture and hyperparameter fields for the checkpoint.",
+        "publisher": "Alibaba-NLP (Hugging Face repository files)",
+        "sourceType": "repository",
+        "supports": [
+          "The model type of gte-modernbert-base is \"modernbert\".",
+          "The architecture listed is \"ModernBertModel\".",
+          "The hidden size of gte-modernbert-base is 768.",
+          "The number of hidden layers is 22.",
+          "The number of attention heads is 12.",
+          "The vocabulary size of gte-modernbert-base is 50368.",
+          "The maximum position embeddings of gte-modernbert-base is 8192.",
+          "The position embedding type is \"absolute\".",
+          "The pad token id is 50283.",
+          "The CLS/BOS token id is 50281.",
+          "The SEP/EOS token id is 50282.",
+          "The classifier_pooling method is \"mean\".",
+          "Additional hyperparameters (initializer_range, intermediate_size, local_attention_window_size, rope theta values, etc.) are present in the config."
+        ],
+        "title": "Model config (config.json) for gte-modernbert-base",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/main/config.json"
+      },
+      {
+        "modelScope": "Alibaba-NLP/gte-modernbert-base (inference-provider view)",
+        "primary": true,
+        "primaryReason": "The inference-provider display of the official model-hosted documentation included in the model page.",
+        "publisher": "Hugging Face (inference provider view)",
+        "sourceType": "model-card",
+        "supports": [
+          "The model demonstrates reported benchmark values and metadata in the inference-provider display.",
+          "The model supports OpenAI-compatible embeddings JSON input example with `input` array and `encoding_format` set to \"float\".",
+          "The output embedding dimension is shown as 768 in the inference view."
+        ],
+        "title": "Inference-provider view of the model page (hf-inference)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base?inference_provider=hf-inference"
+      },
+      {
+        "modelScope": "Alibaba-NLP/gte-modernbert-base (commit e7f32e3c... / model.safetensors)",
+        "primary": true,
+        "primaryReason": "Commit-specific artifact path showing the safetensors file associated with an identified repository commit.",
+        "publisher": "Alibaba-NLP (Hugging Face commits)",
+        "sourceType": "repository",
+        "supports": [
+          "A safetensors variant was added (artifact referenced at the commit-specific path)."
+        ],
+        "title": "Commit-specific safetensors artifact for gte-modernbert-base (commit e7f32e3c...)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/commits/e7f32e3c00f91d699e8c43b53106206bcc72bb22/model.safetensors"
+      },
+      {
+        "modelScope": "Alibaba-NLP/gte-modernbert-base (tokenizer.json)",
+        "primary": true,
+        "primaryReason": "Tokenizer artifact file present in the official repository.",
+        "publisher": "Alibaba-NLP (Hugging Face repository blobs)",
+        "sourceType": "repository",
+        "supports": [
+          "The repository includes a tokenizer.json file for gte-modernbert-base."
+        ],
+        "title": "tokenizer.json blob in gte-modernbert-base repository",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/7ca8b4ca700621b67618669f5378fe5f5820b8e4/tokenizer.json"
+      },
+      {
+        "modelScope": "Alibaba-NLP/gte-modernbert-base (tokenizer_config.json)",
+        "primary": true,
+        "primaryReason": "Tokenizer configuration artifact file present in the official repository at the cited commit.",
+        "publisher": "Alibaba-NLP (Hugging Face repository blobs)",
+        "sourceType": "repository",
+        "supports": [
+          "The tokenizer_config.json defines added tokens such as \"||IP_ADDRESS||\" (id 0) and \"<|padding|>\" (id 1).",
+          "The tokenizer_config.json lists special tokens like \"<|endoftext|>\" (id 50279) and \"[UNK]\" (id 50280)."
+        ],
+        "title": "tokenizer_config.json blob in gte-modernbert-base repository (commit e7f32e3c...)",
+        "url": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base/blob/e7f32e3c00f91d699e8c43b53106206bcc72bb22/tokenizer_config.json"
+      },
+      {
+        "modelScope": "mGTE family (paper)",
+        "primary": true,
+        "primaryReason": "Canonical preprint linked by the model repository and model card describing the mGTE family research.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "The paper introduces a text encoder pre-trained by MLM with an 8,192 token context and describes architecture choices (RoPE, GELU, LayerNorm) relevant to the mGTE family."
+        ],
+        "title": "mGTE canonical paper (arXiv PDF)",
+        "url": "https://arxiv.org/pdf/2407.19669"
+      },
+      {
+        "modelScope": "mGTE paper (conference proceedings)",
+        "primary": true,
+        "primaryReason": "Published conference paper PDF containing evaluation details for mGTE family models referenced by the repository.",
+        "publisher": "ACL Anthology",
+        "sourceType": "paper",
+        "supports": [
+          "The mGTE paper provides benchmark rows and training/evaluation details relevant to the mGTE family and documents the family-level research."
+        ],
+        "title": "mGTE conference paper PDF (ACL Anthology)",
+        "url": "https://aclanthology.org/2025.emnlp-main.316.pdf"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "6e1fe66d66e9bd7ed616d4e6541d81aa8b7566b2f46cca026db08d48a5545a83",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-alibaba-nlp-gte-modernbert-base-f26b0d9716",
+  "researchedAt": "2026-07-23T23:39:51.186797+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/Alibaba-NLP/gte-modernbert-base",
+  "sourceUrls": [
+    "https://huggingface.co/Alibaba-NLP/gte-modernbert-base"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

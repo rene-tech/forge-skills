@@ -65,6 +65,15 @@ Route: `POST /v1/inference/black-forest-labs-flux-1-schnell`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-visual-genai-latest-getting-started-html-black-forest-labs-flux-1-schnel-145d8ced5b`
+- Recommended: Text-to-image generation from plain-text prompts — Primary NVIDIA-hosted Black Forest Labs model card and the Hugging Face repository describe FLUX.1-schnell as a text-to-image model that generates images from text descriptions and provide sampling/reference implementations.
+- Recommended: Fast, low-step exploratory image generation (few diffusion steps for prompt exploration) — The NVIDIA-hosted model card and NVIDIA product overview indicate the checkpoint is a distilled model optimized to produce high-quality images in 1–4 diffusion steps suitable for fast local experimentation.
+- Avoid: Treating NVIDIA NIM/NGC packaging or NIM container metadata as checkpoint-quality benchmark evidence — The NVIDIA NIM/NGC pages and the NVIDIA-hosted model card provide container identity, packaging, and qualitative capability descriptions but do not provide checkpoint-scoped benchmark tables with dataset/split/metric/value entries or protocol-matched quantitative quality metrics for this exact checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -82,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/black-forest-labs-flux-1-schnell/inference-routes`
 - Regional deployment: `/v1/models/black-forest-labs-flux-1-schnell/regional-deployment`
 - Serverless handoff: `/v1/models/black-forest-labs-flux-1-schnell/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-1-schnell/SKILL.md

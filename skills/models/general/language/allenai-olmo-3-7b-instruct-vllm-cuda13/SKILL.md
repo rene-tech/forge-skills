@@ -73,6 +73,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-allenai-olmo-3-7b-instruct-c0cec6c2c6`
+- Recommended: Instruction-following / chat-style system+user prompts — Family-level description of Olmo 3 Instruct behavior (instruction-following) appears in the Olmo 3 writeup/preprint and the checkpoint's generation defaults and config indicate instruction-tuned sampling defaults and a causal LM architecture consistent with instruction-following usage.
+- Recommended: Long-context workflows (family-level long-context support reported) — The config.json reports extended positional-related fields (max_position_embeddings = 65536 and rope_scaling.original_max_position_embeddings = 8192 and sliding_window = 4096) and the Olmo 3 family writeup describes long-context modeling as a family target; these blobs support using the checkpoint for long-context experiments but the config fields are not authoritatively reconciled in the checked blobs.
+- Avoid: Safety-critical or high-stakes decision making — Evidence gap: the inspected checkpoint-scoped blobs and commits do not contain a checkpoint-scoped upstream risk/bias mitigation statement, calibrated-probability guidance, or documented post-deployment monitoring protocol tied to this exact checkpoint commit.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/allenai-olmo-3-7b-instruct-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/allenai-olmo-3-7b-instruct-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/allenai-olmo-3-7b-instruct-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/allenai-olmo-3-7b-instruct-vllm-cuda13/SKILL.md

@@ -1,0 +1,399 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.decisionRules[0]: unexpected property evidenceGaps",
+        "path": "$.decisionRules[0]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.decisionRules[1]: unexpected property evidenceGaps",
+        "path": "$.decisionRules[1]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.decisionRules[2]: unexpected property evidenceGaps",
+        "path": "$.decisionRules[2]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.decisionRules[3]: unexpected property evidenceGaps",
+        "path": "$.decisionRules[3]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.decisionRules[4]: unexpected property evidenceGaps",
+        "path": "$.decisionRules[4]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.decisionRules[5]: unexpected property evidenceGaps",
+        "path": "$.decisionRules[5]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarkTaxonomy[0]: unexpected property datasetSources",
+        "path": "$.benchmarkTaxonomy[0]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarkTaxonomy[0]: unexpected property metricSources",
+        "path": "$.benchmarkTaxonomy[0]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarkTaxonomy[1]: unexpected property datasetSources",
+        "path": "$.benchmarkTaxonomy[1]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarkTaxonomy[1]: unexpected property metricSources",
+        "path": "$.benchmarkTaxonomy[1]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarkTaxonomy[2]: unexpected property datasetSources",
+        "path": "$.benchmarkTaxonomy[2]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarkTaxonomy[2]: unexpected property metricSources",
+        "path": "$.benchmarkTaxonomy[2]",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[1].primary must be true",
+        "path": "$.sources[1].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2] uses a community discussion URL",
+        "path": "$.sources[2] uses a community discussion URL",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12].primary must be true",
+        "path": "$.sources[12].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 16 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "description": "d4data/biomedical-ner-all is an Apache-2.0 Hugging Face Transformers token-classification model for broad biomedical named entity recognition over case-report and biomedical text.",
+      "displayName": "Use d4data Biomedical NER All",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "d4data-biomedical-ner-all",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "d4data-biomedical-ner-all-wrapper-cuda12",
+      "sourceUrl": "https://huggingface.co/d4data/biomedical-ner-all",
+      "versionKey": "hf-015a405-wrapper-cuda12-mirrored-20260605t04z"
+    },
+    {
+      "description": "OpenMed-NER-DiseaseDetect-BioMed-335M is an Apache-2.0 Hugging Face Transformers token-classification model for disease entity recognition in biomedical text.",
+      "displayName": "Use OpenMed DiseaseDetect BioMed 335M",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "openmed-ner-diseasedetect-biomed-335m",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+      "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+      "versionKey": "hf-a62e2a2-cuda12-cvefix-20260604t05z-r2"
+    },
+    {
+      "description": "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.",
+      "displayName": "Use OpenMed ZeroShot NER Pathology Tiny 60M",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "openmed-zeroshot-ner-pathology-tiny-60m",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "openmed-pathology-ner-tiny-wrapper-cuda12",
+      "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "versionKey": "hf751c87f-gliner026-cvefix-20260605"
+    },
+    {
+      "description": "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.",
+      "displayName": "Use OpenMed ZeroShot NER Pathology Tiny 60M",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "openmed-zeroshot-ner-pathology-tiny-60m",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+      "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "versionKey": "hf751c87f-gliner026-cvefix-20260604t01z"
+    }
+  ],
+  "dossier": {
+    "benchmarkTaxonomy": [
+      {
+        "comparisonConditions": [
+          "Use identical BC5CDR-Disease official test split (exact split file/version as published on the dataset's authoritative page cited in sources).",
+          "Map each model's output to a single DISEASE label prior to scoring (if model emits multiple disease-related types, collapse to DISEASE).",
+          "Use the same tokenization and maximum sequence length at inference (document clearly if chunking is applied).",
+          "Use span-level strict exact-span matching for positive identification unless a documented alternative partial-match protocol is chosen and applied identically to all models.",
+          "Use micro-averaging across all spans for aggregated precision/recall/F1."
+        ],
+        "datasets": [
+          "BC5CDR-Disease (test split)"
+        ],
+        "metrics": [
+          "Precision (span-level, strict exact-span match, micro-averaged)",
+          "Recall (span-level, strict exact-span match, micro-averaged)",
+          "F1 (span-level, strict exact-span match, micro-averaged)"
+        ],
+        "task": "Disease/pathology named-entity recognition (single DISEASE label)"
+      },
+      {
+        "comparisonConditions": [
+          "Use identical dataset and exact split files.",
+          "Apply explicit mapping from model-declared entity types to the dataset's entity taxonomy; if no mapping is provided by primary sources, the evaluator must publish the mapping.",
+          "Use identical tokenization and maximum sequence length at inference.",
+          "Use the same span-matching code and averaging (micro vs macro) for final metrics."
+        ],
+        "datasets": [
+          "Evidence gap: no canonical dataset cited in primary sources for d4data/biomedical-ner-all"
+        ],
+        "metrics": [
+          "Token-level BIO accuracy (where relevant, for debugging)",
+          "Span-level per-entity-type precision/recall/F1 (strict exact-span match), micro- and macro-averaged as reported",
+          "Aggregated micro F1 across all entity types"
+        ],
+        "task": "Broad multi-entity biomedical NER (multi-type token-classification)"
+      },
+      {
+        "comparisonConditions": [
+          "Document and publish the zero-shot-to-span conversion algorithm and apply identically across all zero-shot experiments and when comparing to supervised token-classification outputs.",
+          "Use identical evaluation script and exact dataset split for comparison.",
+          "If conversion algorithm is not documented in primary sources, include conversion code in the experiment artifact repository."
+        ],
+        "datasets": [
+          "Evidence gap: no canonical GLiNER-to-span conversion algorithm found in primary sources"
+        ],
+        "metrics": [
+          "Span-level precision/recall/F1 (strict exact-span match) after conversion of zero-shot outputs to spans"
+        ],
+        "task": "Zero-shot pathology/disease extraction (GLiNER outputs converted to spans)"
+      }
+    ],
+    "category": "healthcare",
+    "comparabilityRules": [
+      "Results are comparable only when the following conditions all match: identical dataset name and exact split strings; identical label-space mapping from model labels to dataset canonical labels; identical tokenization and maximum sequence length used at inference; identical evaluation script and span-matching convention (strict exact-span match vs. partial overlap); identical averaging method (micro vs. macro) for aggregated metrics; identical fine-tuning regime and random-seed handling.",
+      "Dataset-level comparability requires that the dataset used is one named in the Benchmark Taxonomy (e.g., \"BC5CDR-Disease\") and that the dataset version/split referenced in evaluation is the exact same authoritative split referenced by the dataset's official page cited in sources.",
+      "When comparing disease-focused models, if a model outputs multiple entity types, map all disease/pathology-related types to a single DISEASE label prior to scoring if the evaluation dataset expects a single DISEASE label.",
+      "When comparing zero-shot GLiNER outputs to supervised token-classification models, zero-shot outputs must be converted to span-level entities using a documented conversion algorithm; if no canonical conversion algorithm is present in primary sources, the evaluator must publish the conversion code and include it in the experiment artifact to allow comparability.",
+      "If any of the above conditions do not match across experiments, numerical results are not directly comparable and must be reported separately with explicit notes of the mismatched condition(s)."
+    ],
+    "decisionRules": [
+      {
+        "alternatives": [
+          "d4data-biomedical-ner-all-wrapper-cuda12",
+          "openmed-pathology-ner-tiny-wrapper-cuda12",
+          "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft"
+        ],
+        "because": "Primary-source model card for OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M indicates the model was fine-tuned on the BC5CDR dataset and reports evaluation results on the BC5CDR‑Disease test set (precision, recall, F1, and accuracy). This provides direct upstream-checkpoint benchmark evidence for disease/pathology extraction on BC5CDR-Disease.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+        ],
+        "prefer": "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+        "when": "Use-case: disease/pathology-centered extraction; risk tolerance: research/prototyping; zero-shot not required; fine-tuning or direct evaluation on BC5CDR-Disease intended."
+      },
+      {
+        "alternatives": [
+          "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+          "openmed-pathology-ner-tiny-wrapper-cuda12"
+        ],
+        "because": "The d4data/biomedical-ner-all primary model page documents usage as a Transformers token-classification model and provides token-classification inference examples, indicating suitability for multi-entity biomedical NER tasks at the model-card level.",
+        "evidenceUrls": [
+          "https://huggingface.co/d4data/biomedical-ner-all"
+        ],
+        "prefer": "d4data-biomedical-ner-all-wrapper-cuda12",
+        "when": "Use-case: broad multi-entity biomedical NER (multi-type token-classification) where a model that supports token-classification usage is preferred."
+      },
+      {
+        "alternatives": [
+          "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+          "d4data-biomedical-ner-all-wrapper-cuda12"
+        ],
+        "because": "Primary-source commit for the OpenMed ZeroShot NER Pathology Tiny model documents the GLiNER attribution and shows the model-level commit; the model family is described in primary sources as providing zero-shot entity recognition capabilities (GLiNER-style).",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+        ],
+        "prefer": "openmed-pathology-ner-tiny-wrapper-cuda12",
+        "when": "Use-case: zero-shot extraction of arbitrary entity types with priority on small model footprint and low-latency prototyping (zero-shot GLiNER capability required)."
+      },
+      {
+        "alternatives": [
+          "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+          "d4data-biomedical-ner-all-wrapper-cuda12"
+        ],
+        "because": "Primary-source commit for the OpenMed ZeroShot NER Pathology Tiny model indicates the model is licensed under the Apache License 2.0; the OpenMed DiseaseDetect BioMed 335M model page also indicates Apache-2.0 at the model page level.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+        ],
+        "prefer": "openmed-pathology-ner-tiny-wrapper-cuda12",
+        "when": "Operational constraint: license must be explicitly Apache-2.0 in primary source for deployment approval."
+      },
+      {
+        "alternatives": [
+          "d4data-biomedical-ner-all-wrapper-cuda12",
+          "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+          "openmed-pathology-ner-tiny-wrapper-cuda12",
+          "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft"
+        ],
+        "because": "Primary sources reviewed do not provide primary-source evidence that the exact Forge wrapper variants in scope accept sequences >512 tokens without chunking. The OpenMed disease model page provides dataset and evaluation information but does not in the provided findings specify a wrapper-level maximum input length for the exact Forge-served checkpoints; d4data primary page does not specify a maximum input length in the provided findings.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://huggingface.co/d4data/biomedical-ner-all"
+        ],
+        "prefer": "insufficient-evidence",
+        "when": "Constraint: input sequences longer than 512 tokens must be processed by the candidate model at inference without chunking."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No primary-source documentation in the provided findings explicitly ties reported evaluation metrics to the exact Forge wrapper versionKeys for all listed wrapper slugs; upstream-checkpoint metrics are present for OpenMed-NER-DiseaseDetect-BioMed-335M but evidence linking exact Forge wrapper versionKeys (as named in scope) to those exact evaluated checkpoints is not present in the findings.",
+      "Evidence gap: No primary-source canonical GLiNER-to-span conversion algorithm or canonical evaluation script was found in the provided primary sources; evaluators must publish the conversion code to allow reproducibility and comparability.",
+      "Evidence gap: No primary-source canonical mapping from d4data/biomedical-ner-all declared entity types to standard dataset taxonomies (e.g., BC5CDR) was found in the provided findings; evaluators must produce and publish mapping files to allow fair comparison.",
+      "Evidence gap: Exact maximum input length (max sequence length) for the d4data/biomedical-ner-all primary model page is not specified in the provided findings; primary sources do not provide a wrapper-level max input length for the d4data variant in scope.",
+      "Evidence gap: No head-to-head evaluations under matched protocols between the exact Forge wrapper versionKeys listed in scope were present in the provided findings; controlled head-to-head comparisons require running experiments per the Benchmark Taxonomy."
+    ],
+    "group": "biomedical-extraction",
+    "selectionQuestions": [
+      "Is the target entity set disease/pathology-only (yes/no)?",
+      "Is the task high-risk clinical decision support requiring auditability/regulatory suitability (yes/no/research-prototyping)?",
+      "Do you require zero-shot extraction of arbitrary entity types without fine-tuning (yes/no)?",
+      "Will you fine-tune on an in-domain annotated dataset (yes/no)?",
+      "Is there an upper-bound on input sequence length > 512 tokens (yes/no)?",
+      "Is model license Apache-2.0 acceptable for your operational environment (yes/no/unknown)?",
+      "Are compact/low-latency models preferred over larger models (yes/no)?",
+      "Do you require normalization/mapping of extracted disease mentions to MeSH/OMIM (yes/no)?"
+    ],
+    "sources": [
+      {
+        "primary": true,
+        "publisher": "Hugging Face (OpenMed repository commit)",
+        "supports": [
+          "The OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M model commit 751c87f2dfa77800e1bead7f9fb40f5734078e47 is available at this commit URL",
+          "The OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M model is licensed under the Apache License 2.0",
+          "The OpenMed ZeroShot family is attributed to GLiNER-style zero-shot named-entity recognition (zero-shot output modality)"
+        ],
+        "title": "OpenMed ZeroShot NER Pathology Tiny - commit showing license and GLiNER attribution",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+      },
+      {
+        "primary": true,
+        "publisher": "Hugging Face (d4data repository)",
+        "supports": [
+          "The Hugging Face model ID d4data/biomedical-ner-all is hosted at this URL",
+          "The d4data/biomedical-ner-all model can be used with the transformers pipeline \"ner\" and aggregation_strategy=\"simple\"",
+          "The model card includes an example inference demonstrating token-classification usage"
+        ],
+        "title": "d4data/biomedical-ner-all model card",
+        "url": "https://huggingface.co/d4data/biomedical-ner-all"
+      },
+      {
+        "primary": true,
+        "publisher": "Hugging Face (OpenMed repository)",
+        "supports": [
+          "The OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M model is hosted at this URL",
+          "The model page indicates the model was fine-tuned on the BC5CDR dataset (upstream-checkpoint evidence)",
+          "The OpenMed-NER-DiseaseDetect-BioMed-335M model page reports evaluation results on the BC5CDR‑Disease test set (precision 0.8887, recall 0.9126, F1 0.9005, accuracy 0.9838 as reported on the model page)",
+          "The BC5CDR‑Disease corpus description (1,500 PubMed abstracts, 5,818 annotated disease entities) is referenced on the model page in this primary source"
+        ],
+        "title": "OpenMed NER DiseaseDetect BioMed 335M model card",
+        "url": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+      },
+      {
+        "primary": true,
+        "publisher": "huggingface.co",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+      }
+    ],
+    "taskDefinition": "Token- and span-level biomedical named-entity recognition (NER) over English biomedical/clinical text. Scoped sub-tasks: (A) disease/pathology-centered extraction (e.g., evaluation on BC5CDR‑Disease-style labels when a single DISEASE-type label is used), and (B) broad multi-entity biomedical NER (multi-type token-classification). Input: plain English biomedical text. Output: for token-classification models, per-token BIO-style label sequences or aggregated entity spans with entity type labels; for GLiNER zero-shot models, the model returns zero-shot/label-score outputs that require a documented conversion step to span-level entities prior to span-level scoring. When a model card documents a native entity set, evaluators may use that native set; when no canonical mapping to an evaluation dataset taxonomy is provided by primary sources, an explicit label-mapping step must be applied and published before metric computation."
+  },
+  "kind": "group",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "0ada7ca2d8bc7063b15167120c3b80e156583e046939087702cddd08b0af297b",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "healthcare--biomedical-extraction",
+  "researchedAt": "2026-07-23T20:02:58.627897+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": null,
+  "sourceUrls": [],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

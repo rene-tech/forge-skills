@@ -2,6 +2,8 @@
 
 Category: `general` · exact model/version skills: 26
 
+[Audited model-selection dossier](research.md)
+
 - [Use All-MiniLM-L6-v2](sentence-transformers-all-minilm-l6-v2-tei-cuda-1-9/SKILL.md) — `tei-cuda-1-9-3` · source-linked
 - [Use BGE Base EN v1.5](baai-bge-base-en-v1-5-tei-cuda-1-9/SKILL.md) — `tei-cuda-1-9-3` · source-linked
 - [Use BGE Base EN v1.5](baai-bge-base-en-v1-5-vllm-cuda13/SKILL.md) — `hf-a5beb1e-vllm-0-22-0-cuda13-pooling` · source-linked

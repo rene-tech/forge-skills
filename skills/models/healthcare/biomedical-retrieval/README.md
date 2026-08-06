@@ -2,6 +2,8 @@
 
 Category: `healthcare` · exact model/version skills: 15
 
+[Audited model-selection dossier](research.md)
+
 - [Use Llama3 OpenBioLLM 8B](aaditya-llama3-openbiollm-8b-vllm/SKILL.md) — `hf-70d6bb5-vllm-0-21-0` · source-linked
 - [Use MedCPT Article Encoder](ncbi-medcpt-article-encoder-wrapper-cuda12/SKILL.md) — `hf-d05a736-wrapper-cuda12-pair-tokenizer-ack` · source-linked
 - [Use MedCPT Cross Encoder](ncbi-medcpt-cross-encoder-wrapper-cuda12/SKILL.md) — `hf-71caf65-wrapper-cuda12-safe-state-dict` · source-linked

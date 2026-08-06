@@ -77,6 +77,14 @@ Route: `POST /v1/inference/skywork-skyreels-v2-df-1-3b-540p`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-docs-diffusers-v0-37-1-en-api-pipelines-skyreels-v2-6dca1051c1`
+- Recommended: Text-to-video generation with the SkyReels-V2 DF 1.3B 540P checkpoint — Upstream checkpoint materials and README examples document text prompt usage and recommend settings (544×960 resolution, 97 frames) for the 1.3B‑540P variant.
+- Avoid: Treating this dossier as verified evidence that the exact served Forge variant is validated for image-to-video production in Forge runtime — Upstream materials document image-to-video support at the model/repository level but do not establish a separate checkpoint-scoped runtime contract or Forge runtime validation for image-to-video for the exact served candidate.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -95,11 +103,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/skywork-skyreels-v2-df-1-3b-540p/inference-routes`
 - Regional deployment: `/v1/models/skywork-skyreels-v2-df-1-3b-540p/regional-deployment`
 - Serverless handoff: `/v1/models/skywork-skyreels-v2-df-1-3b-540p/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/skywork-skyreels-v2-df-1-3b-540p/SKILL.md

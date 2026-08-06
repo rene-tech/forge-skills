@@ -62,6 +62,15 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-baai-bge-base-en-v1-5-57a31c3243`
+- Recommended: General text embeddings for semantic tasks (retrieval, semantic textual similarity, pair classification, clustering, reranking) — The model README/performance table reports aggregated embedding-task evaluation (average and per-category aggregated scores) for BAAI/bge-base-en-v1.5, indicating the checkpoint is evaluated and positioned for embedding tasks.
+- Avoid: Sequences longer than 512 tokens without pre-splitting or truncation — The checkpoint configuration sets max_position_embeddings to 512 (absolute positional embeddings); the upstream configuration therefore does not natively support longer sequences.
+- Avoid: Clinical/PHI processing and clinical decision-making without expert validation — No upstream model card or README guidance, tests, or validations for clinical or PHI-sensitive workflows were found in the inspected repository files and README; upstream documentation does not provide clinical validation or PHI-handling guidance.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -80,11 +89,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/baai-bge-base-en-v1-5-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/baai-bge-base-en-v1-5-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/baai-bge-base-en-v1-5-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/baai-bge-base-en-v1-5-tei-cuda-1-9/SKILL.md

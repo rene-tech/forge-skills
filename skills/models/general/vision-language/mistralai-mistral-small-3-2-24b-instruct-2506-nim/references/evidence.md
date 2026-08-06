@@ -3,6 +3,12 @@
 - Research status: `source-linked`
 - Policy: Forge runtime latency/throughput evidence is operational placement data, not model-quality evidence.
 
+## Deep research
+
+- Research key: `docs-nvidia-com-nim-vision-language-models-1-3-1-examples-mistral-small-3-2-api-html-97f486063a`
+- Independent audit: `revised`
+- Full checkpoint-scoped selection, input/output, benchmark, comparison, limitation, and safety evidence: `research.md`.
+
 ## Public quality evidence
 
 No independently reviewed public benchmark claim is attached to this exact Forge model/version. Do not invent a result, transfer a family result, or imply that operational Forge probes establish model quality.

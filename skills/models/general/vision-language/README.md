@@ -2,6 +2,8 @@
 
 Category: `general` · exact model/version skills: 8
 
+[Audited model-selection dossier](research.md)
+
 - [Use Fara-7B](microsoft-fara-7b-vllm-cuda13/SKILL.md) — `vllm-0-21-0-cuda13-vision-chat-probe` · source-linked
 - [Use Mistral Small 3.2 24B Instruct 2506](mistralai-mistral-small-3-2-24b-instruct-2506-nim/SKILL.md) — `nim-1-3-1` · source-linked
 - [Use NVIDIA NeMo Retriever Parse](nvidia-nemoretriever-parse-nim/SKILL.md) — `v1` · source-linked

@@ -1,0 +1,479 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[21].primary must be true",
+        "path": "$.sources[21].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 1 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "B300 warm-optimized Cosmos Policy ALOHA serving build.",
+      "displayName": "Use NVIDIA Cosmos Policy ALOHA Predict2 2B (B300 Optimized)",
+      "group": "physical-ai",
+      "inputModalities": [
+        "text",
+        "image",
+        "proprio"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "nvidia-cosmos-policy-aloha-predict2",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "nvidia-cosmos-policy-aloha-predict2-b300-optimized",
+      "sourceUrl": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+      "version": "b300-optimized",
+      "versionKey": "b300-optimized"
+    },
+    {
+      "category": "physical-ai",
+      "description": "Cosmos Policy ALOHA checkpoint for real-world bimanual robot tasks.",
+      "displayName": "Use NVIDIA Cosmos Policy ALOHA Predict2 2B",
+      "group": "physical-ai",
+      "inputModalities": [
+        "text",
+        "image",
+        "proprio"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "nvidia-cosmos-policy-aloha-predict2",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "nvidia-cosmos-policy-aloha-predict2-cuda12",
+      "sourceUrl": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+      "version": "cuda12",
+      "versionKey": "cuda12"
+    },
+    {
+      "category": "physical-ai",
+      "description": "B300-oriented Cosmos Policy ALOHA serving build.",
+      "displayName": "Use NVIDIA Cosmos Policy ALOHA Predict2 2B (CUDA 13, B300)",
+      "group": "physical-ai",
+      "inputModalities": [
+        "text",
+        "image",
+        "proprio"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "nvidia-cosmos-policy-aloha-predict2",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "nvidia-cosmos-policy-aloha-predict2-cuda13",
+      "sourceUrl": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+      "version": "cuda13",
+      "versionKey": "cuda13"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B",
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B"
+        ],
+        "modelScope": "nvidia/Cosmos-Policy-ALOHA-Predict2-2B and nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B",
+        "reason": "Primary checkpoint artifacts declare the NVIDIA One\u2011Way Noncommercial License (NSCLv1) for the base and planning checkpoints, which restricts commercial use per the model README/config artifacts.",
+        "useCase": "Commercial deployment without obtaining an appropriate commercial license."
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Evidence gap: Dataset split identifiers, number of trials, and random seeds for this reported ALOHA-suite average are not published in the checked commit README or base config.json."
+        ],
+        "conditions": "Reported as a suite average in the base-checkpoint commit-level README and the base checkpoint config.json; the primary artifacts do not publish dataset split identifiers, per-task trial counts, or random seeds at the same locator.",
+        "dataset": "ALOHA-Cosmos-Policy",
+        "direction": "higher-is-better",
+        "metric": "average completion rate",
+        "modelScope": "nvidia/Cosmos-Policy-ALOHA-Predict2-2B (commit f04a4f98abb32f4dc935087f5d09fb256493c69a)",
+        "sourceLocator": "commit/f04a4f98abb32f4dc935087f5d09fb256493c69a: README.md \u2014 heading reporting \"93.6% average completion rate\"",
+        "sourceUrl": "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/commit/f04a4f98abb32f4dc935087f5d09fb256493c69a",
+        "split": "not reported",
+        "task": "ALOHA bimanual manipulation (suite average)",
+        "value": "93.6%"
+      },
+      {
+        "caveats": [
+          "Evidence gap: The planning-model commit-level artifact reports average improvement_over_base but does not publish the base-policy per-task rows at the same JSON pointer or the full evaluation protocol necessary to reconcile numeric differences."
+        ],
+        "conditions": "Benchmarks reported in the planning-model commit-level artifact depend on using the companion planning checkpoint and the documented planning-mode procedure; per-task base-policy rows and full evaluation protocol details (splits/trials/seeds) are not published at the same locator in the inspected artifacts.",
+        "dataset": "ALOHA-Cosmos-Policy (planning rollouts)",
+        "direction": "higher-is-better",
+        "metric": "average completion rate improvement_over_base",
+        "modelScope": "nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B (commit d97a4c9a6e9861154e230a8b4650289fb067c5da) used with the base checkpoint",
+        "sourceLocator": "commit/d97a4c9a6e9861154e230a8b4650289fb067c5da: README.md \u2014 reported planning-model benchmark summary and improvement_over_base",
+        "sourceUrl": "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da",
+        "split": "not reported",
+        "task": "ALOHA bimanual manipulation (planning-model average improvement)",
+        "value": "improvement_over_base: 0.125 (12.5 percentage points average increase)"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B",
+        "comparisonConditions": "Requires the planning checkpoint and planning-mode procedure documented in the planning-model commit; reported improvements are conditional on using the companion checkpoint and planning procedure rather than the base policy alone.",
+        "criteria": "Reported average task score improvement when using the companion planning model with the base policy under the documented planning-mode.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da",
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/commit/f04a4f98abb32f4dc935087f5d09fb256493c69a"
+        ],
+        "rationale": "Primary planning-model commit reports a 12.5 percentage-point average increase over the base policy when planning rollouts use the planning checkpoint alongside the base policy; both the planning-model commit and the base-checkpoint commit are the primary sources for these claims.",
+        "task": "ALOHA bimanual manipulation under planning-mode rollout evaluation",
+        "verdict": "prefer-alternative"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires deploying Cosmos-Policy-ALOHA-Predict2-2B together with Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B and using the planning-mode procedure described in the planning-model commit-level artifact; reported planning improvements apply only when the companion planning checkpoint and planning configuration are used.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B",
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da"
+        ],
+        "modelScope": "Cosmos-Policy-ALOHA-Predict2-2B used together with Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B (planning-model commit d97a4c9a6e9861154e230a8b4650289fb067c5da)",
+        "useCase": "Model-based planning via rollouts (best-of-N search) using the base policy together with the companion planning/value checkpoint."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Tokenizer identity, vocabulary, and tokenization scripts used by Cosmos-Policy-ALOHA-Predict2-2B are not published in the inspected primary artifacts (checked: base config.json, base commit README, model page, ALOHA.md).",
+      "Evidence gap: Machine-readable low-level output JSON/tensor schema (explicit field names, units, and timing semantics) is not provided in the inspected primary artifacts (checked: base config.json and planning-model commit-level README).",
+      "Evidence gap: Dataset split identifiers, number of trials per task, and random seeds used to produce the reported ALOHA benchmark numbers are not published in the inspected primary artifacts (checked: base commit README and planning-model commit README).",
+      "Evidence gap: A manifest or mapping that ties Forge/container variant names (for example: b300-optimized, cuda12, cuda13) to an exact upstream checkpoint revision or configuration is not documented in the inspected primary artifacts.",
+      "Evidence gap: The planning-model commit reports improvement_over_base but the inspected artifacts do not publish the base-policy per-task rows at the same pointer nor the full evaluation protocol necessary to reconcile numeric differences between base README and planning commit-level summaries."
+    ],
+    "family": "github-com-nvlabs-cosmos-policy-blob-main-aloha-md-93a4d0fefa",
+    "identity": {
+      "architecture": "diffusion-transformer (research artifacts additionally describe latent video diffusion; see evidenceUrls for both descriptions)",
+      "checkpoint": "Cosmos-Policy-ALOHA-Predict2-2B",
+      "evidenceUrls": [
+        "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B",
+        "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/commit/f04a4f98abb32f4dc935087f5d09fb256493c69a",
+        "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json"
+      ],
+      "license": "NVIDIA One\u2011Way Noncommercial License (NSCLv1)",
+      "parameterScale": "2B",
+      "revision": "f04a4f98abb32f4dc935087f5d09fb256493c69a",
+      "upstreamName": "nvidia/Cosmos-Policy-ALOHA-Predict2-2B"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json",
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B"
+          ],
+          "statement": "Accepted input modalities documented in checkpoint artifacts: text (string task description), RGB images (224\u00d7224 three-view frames), and proprioception (dimension 14)."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json"
+          ],
+          "statement": "Project guidance and checkpoint config note that training/evaluation uses precomputed T5 embeddings for task descriptions."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: Tokenizer identity, vocabulary, and tokenization scripts for Cosmos-Policy-ALOHA-Predict2-2B are not published in the inspected primary artifacts."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json",
+            "https://arxiv.org/html/2601.16163v1"
+          ],
+          "statement": "Text: natural-language task description (string)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json",
+            "https://arxiv.org/html/2601.16163v1"
+          ],
+          "statement": "Images: multi-view RGB frames with named views top_down, left_wrist, right_wrist at resolution 224\u00d7224."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json",
+            "https://arxiv.org/html/2601.16163v1"
+          ],
+          "statement": "Proprioception: numeric state vector with dimension 14 (7 joints per arm)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+            "https://huggingface.co/datasets/nvidia/ALOHA-Cosmos-Policy"
+          ],
+          "statement": "ALOHA experiment guidance and example evaluation scripts are provided in the NVlabs cosmos-policy ALOHA.md file; the guidance references preprocessed dataset nvidia/ALOHA-Cosmos-Policy and mentions using precomputed embeddings for task descriptions."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json",
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da"
+          ],
+          "statement": "Users should validate hardware/precision compatibility and available VRAM as stated in checkpoint artifacts; base config.json lists bf16 inference precision and approximate VRAM requirement, and planning-model commit lists recommended GPU counts and planning-mode latency observations."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: Dataset split identifiers, number of trials per task, and random seeds used to produce the reported ALOHA benchmark numbers are not published in the inspected primary artifacts."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B",
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B"
+        ],
+        "statement": "License restricts commercial use: primary checkpoint artifacts declare NSCLv1 for the base and planning checkpoints and therefore restrict commercial deployment unless a separate commercial license is obtained."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: Tokenizer identity, vocabulary, and tokenization scripts for Cosmos-Policy-ALOHA-Predict2-2B are not published in the inspected primary artifacts."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: Exact low-level output JSON/tensor schema (field names, units, and timing semantics) is not provided in the inspected primary artifacts."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/commit/f04a4f98abb32f4dc935087f5d09fb256493c69a",
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da"
+        ],
+        "statement": "Evidence gap: Dataset split identifiers, number of trials per task, and random seeds for the reported ALOHA benchmark results are not published in the inspected primary artifacts."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: Mapping between Forge/container variant names (for example: b300-optimized, cuda12, cuda13) and upstream checkpoint identity or configuration is not documented in the inspected primary artifacts."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/commit/f04a4f98abb32f4dc935087f5d09fb256493c69a",
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da"
+          ],
+          "statement": "Reported benchmark metrics in primary artifacts are per-task completion/success rates or averages over the ALOHA suite; they are descriptive summary performance metrics and are not low-level guarantees."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json",
+            "https://arxiv.org/html/2601.16163v1"
+          ],
+          "statement": "Action outputs: candidate action sequence with action dimension 14 and horizon 50 timesteps; components correspond to left/right arm joints and grippers and control frequency 25 Hz (descriptive keys present in base config.json)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json"
+          ],
+          "statement": "Future proprioception output: predicted future_proprioception with dimension 14 as described in base and planning config-level artifacts."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json"
+          ],
+          "statement": "Future images output: multi-view future_images at resolution 224\u00d7224 for the three named views as described in base config.json."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json",
+            "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da"
+          ],
+          "statement": "Value output: scalar (dim 1) representing expected cumulative reward for an action sequence as described in base and planning artifacts."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: Primary artifacts do not publish a machine-readable low-level output JSON/tensor schema with explicit field units or timing semantics beyond descriptive config.json keys; downstream validation procedures for low-level action outputs are not provided in the inspected primary artifacts."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B",
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/commit/f04a4f98abb32f4dc935087f5d09fb256493c69a",
+          "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md"
+        ],
+        "modelScope": "nvidia/Cosmos-Policy-ALOHA-Predict2-2B (revision f04a4f98abb32f4dc935087f5d09fb256493c69a)",
+        "useCase": "Research and development of bimanual robot manipulation policies and evaluation on the ALOHA platform (contact-rich manipulation, imitation from human teleoperation demonstrations).",
+        "why": "Primary model artifacts and repository guidance document the checkpoint as a 2B-parameter policy fine-tuned from a Predict2-2B video foundation model on ALOHA teleoperation data and provide ALOHA experiment guidance and example evaluation scripts suitable for R&D evaluation."
+      }
+    ],
+    "researchSummary": "Checked primary upstream artifacts (Hugging Face model page, commit-level README, and base config.json) identify a base checkpoint named nvidia/Cosmos-Policy-ALOHA-Predict2-2B with a 2B-parameter diffusion-transformer architecture; some artifacts also describe latent video diffusion when characterizing the fine-tuned video-to-world head (see identity.evidenceUrls). The base-checkpoint commit README reports a 93.6% average completion rate across the ALOHA suite (commit f04a4f98...), and the base config.json lists per-task completion rates (put_x_on_plate: 1.0; fold_shirt: 0.995; put_candies_in_bowl: 0.896; put_candy_in_ziploc_bag: 0.854; average: 0.936). A separate planning-value checkpoint (nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B) is published and primary artifacts report a 12.5 percentage-point average improvement_over_base when planning-mode rollouts use the planning checkpoint alongside the base policy (see planning-model commit). Official config blobs enumerate descriptive input/output keys and dimensions (text task description string; three 224\u00d7224 RGB views top_down/left_wrist/right_wrist; proprioception dim 14; action dim 14; horizon 50; value dim 1). The models are released under NSCLv1. Primary artifacts do not publish machine-readable tokenizer identity/vocabulary/tokenization scripts, a machine-readable low-level output JSON/tensor schema with explicit units/timing, dataset split identifiers/number of trials/random seeds for reported ALOHA benchmarks, nor any Forge-container-to-upstream-checkpoint mapping; these are recorded explicitly as evidence gaps in evidenceGaps.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B",
+          "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B"
+        ],
+        "statement": "The model card and checkpoint README label the base and planning models for research-and-development use and indicate release under NSCLv1; commercial restrictions apply per the checkpoint documentation."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: Detailed downstream safety checks, calibration guidance, and explicit operational safety validation procedures for low-level action outputs are not provided in the inspected primary artifacts."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Cosmos-Policy-ALOHA-Predict2-2B (root model-card)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model page for the base checkpoint listing checkpoint identity, high-level README, and license.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "Architecture description and 2B parameter scale",
+          "License declaration (NSCLv1)",
+          "High-level training/evaluation and intended-use statements"
+        ],
+        "title": "Cosmos-Policy ALOHA checkpoint model page (root)",
+        "url": "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B"
+      },
+      {
+        "modelScope": "Cosmos-Policy-ALOHA-Predict2-2B (commit f04a4f98...)",
+        "primary": true,
+        "primaryReason": "Commit-level README containing the base-checkpoint ALOHA-suite average claim and checkpoint-specific statements.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "Reported ALOHA benchmark summary (93.6% average completion rate)",
+          "Statement that checkpoint was fine-tuned on ALOHA teleoperation data",
+          "Checkpoint-specific metadata referenced by identity"
+        ],
+        "title": "Cosmos-Policy ALOHA checkpoint commit README (base) (commit f04a4f98...)",
+        "url": "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/commit/f04a4f98abb32f4dc935087f5d09fb256493c69a"
+      },
+      {
+        "modelScope": "Cosmos-Policy-ALOHA-Predict2-2B config.json (refs/pr/2)",
+        "primary": true,
+        "primaryReason": "Base checkpoint config.json containing input/output keys, dimensions, diffusion hyperparameters, and training metadata.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "Input specification (text field, image resolution and views, proprioception dim 14)",
+          "Action output dim/horizon and control frequency (descriptive keys)",
+          "Per-task benchmark rows and average reported in config",
+          "Training metadata (50,000 steps, 185 demonstrations, hardware)"
+        ],
+        "title": "Cosmos-Policy base config.json (refs/pr/2)",
+        "url": "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Predict2-2B/blob/refs%2Fpr%2F2/config.json"
+      },
+      {
+        "modelScope": "Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B (root model-card)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model page for the planning/value checkpoint.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "Planning-model identity and intended use",
+          "License declaration (NSCLv1)",
+          "Reference to planning-mode usage with base policy"
+        ],
+        "title": "Cosmos-Policy ALOHA Planning model page (root)",
+        "url": "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B"
+      },
+      {
+        "modelScope": "Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B (commit d97a4c9a...)",
+        "primary": true,
+        "primaryReason": "Commit-level planning-model README containing reported planning improvement_over_base, recommended GPU guidance, and latency observations.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "Reported 12.5 percentage-point average improvement_over_base when used for planning",
+          "Recommended hardware and planning-mode latency observations",
+          "Statement that planning model is intended to be used together with the base policy"
+        ],
+        "title": "Cosmos-Policy ALOHA Planning model commit README (commit d97a4c9a...)",
+        "url": "https://huggingface.co/nvidia/Cosmos-Policy-ALOHA-Planning-Model-Predict2-2B/commit/d97a4c9a6e9861154e230a8b4650289fb067c5da"
+      },
+      {
+        "modelScope": "Cosmos Policy paper (preprint HTML v1)",
+        "primary": true,
+        "primaryReason": "Canonical project preprint referenced by the project and model documentation for platform and benchmark protocol details.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "Method summary and training/evaluation context (action chunk size 50 timesteps, control frequency 25 Hz, input modalities)",
+          "Training recipe metadata referenced by checkpoint artifacts"
+        ],
+        "title": "Cosmos Policy paper (arXiv HTML v1)",
+        "url": "https://arxiv.org/html/2601.16163v1"
+      },
+      {
+        "modelScope": "ALOHA-Cosmos-Policy dataset",
+        "primary": true,
+        "primaryReason": "Official dataset page documenting the training dataset used for the ALOHA checkpoints.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "Dataset identity used to train Cosmos-Policy-ALOHA-Predict2-2B",
+          "Dataset modality and provenance metadata"
+        ],
+        "title": "ALOHA-Cosmos-Policy dataset (Hugging Face datasets page)",
+        "url": "https://huggingface.co/datasets/nvidia/ALOHA-Cosmos-Policy"
+      },
+      {
+        "modelScope": "ALOHA experiment guidance and preprocessing notes",
+        "primary": true,
+        "primaryReason": "Project repository file providing experiment guidance and notes about preprocessing (T5 embeddings) used with ALOHA data; referenced by checkpoint authors.",
+        "publisher": "NVlabs",
+        "sourceType": "repository",
+        "supports": [
+          "Training/evaluation guidance and note about precomputing T5 embeddings for task descriptions",
+          "Pointers to example evaluation scripts and experiment guidance",
+          "Reference to deployment/evaluation workflow"
+        ],
+        "title": "NVlabs cosmos-policy repository ALOHA experiment guidance (ALOHA.md)",
+        "url": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md"
+      },
+      {
+        "modelScope": "ROBOCASA evaluation guidance",
+        "primary": true,
+        "primaryReason": "Repository evaluation notes referenced by the project; contains evaluation script defaults and seed examples relevant to related evaluations.",
+        "publisher": "NVlabs",
+        "sourceType": "repository",
+        "supports": [
+          "Example evaluation defaults (50 trials per task, example seeds) referenced by project evaluation scripts"
+        ],
+        "title": "NVlabs cosmos-policy repository RoboCasa evaluation notes (ROBOCASA.md)",
+        "url": "https://github.com/NVlabs/cosmos-policy/blob/main/ROBOCASA.md"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "fda7bf221d65a6940b467af9f1eed34052420541812df0f3228f62a04f160aa8",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "github-com-nvlabs-cosmos-policy-blob-main-aloha-md-93a4d0fefa",
+  "researchedAt": "2026-08-06T08:56:30.682902+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md",
+  "sourceUrls": [
+    "https://github.com/NVlabs/cosmos-policy/blob/main/ALOHA.md"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

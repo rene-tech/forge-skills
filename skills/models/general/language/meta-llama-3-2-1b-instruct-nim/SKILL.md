@@ -66,6 +66,17 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-meta-llama-3-2-1b-instruct-27b0875952`
+- Recommended: Instruction-following assistant / chat (question answering, dialogue) — Checkpoint is described as instruction-tuned and intended for assistant-like chat and instruction-following in the upstream model card and Hugging Face model page.
+- Recommended: Summarization and prompt/query rewriting — Upstream model card and Hugging Face documentation list summarization and prompt rewriting among intended use cases for Llama‑3.2 instruction-tuned models.
+- Avoid: Tasks requiring built-in tool calling when served via the NVIDIA NIM — NVIDIA Build systemcard explicitly states tool calling is not supported for the 1B NIM packaging.
+- Avoid: High-stakes applications requiring highest-accuracy or large-model capabilities without downstream validation — Meta developer docs indicate lightweight 1B/3B models are not intended to replace larger models for all use cases; use caution and validate for high-stakes tasks.
+- Avoid: Applications that violate the Llama 3.2 Community License / Acceptable Use Policy — License and Acceptable Use constraints govern prohibited or restricted applications; deployments must comply with the license/AUP.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +95,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/meta-llama-3-2-1b-instruct-nim/inference-routes`
 - Regional deployment: `/v1/models/meta-llama-3-2-1b-instruct-nim/regional-deployment`
 - Serverless handoff: `/v1/models/meta-llama-3-2-1b-instruct-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/meta-llama-3-2-1b-instruct-nim/SKILL.md

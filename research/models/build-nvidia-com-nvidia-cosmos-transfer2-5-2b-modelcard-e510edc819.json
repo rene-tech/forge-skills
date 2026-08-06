@@ -1,0 +1,675 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11] uses forbidden secondary URL https://spheron.network/blog/deploy-nvidia-cosmos-gpu-cloud-synthetic-data",
+        "path": "$.sources[11] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12].primary must be true",
+        "path": "$.sources[12].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14].primary must be true",
+        "path": "$.sources[14].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.benchmarks_evidenceGaps",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/nvidia-cosmos/cosmos-transfer2.5/blob/main/docs/inference.md"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://github.com/nvidia-cosmos/cosmos-transfer2.5/blob/main/docs/inference.md",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 6 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "Hidden onboarding manifest for Cosmos Transfer2.5 NIM, a controllable physical-AI world-generation model with edge, segmentation, visual, and depth controls.",
+      "displayName": "Use NVIDIA Cosmos Transfer2.5 2B",
+      "group": "world-video-generation",
+      "inputModalities": [
+        "text",
+        "video"
+      ],
+      "license": "nvidia-open-model-license",
+      "modelFamily": "nvidia-cosmos-transfer2-5-2b",
+      "outputModalities": [
+        "video"
+      ],
+      "slug": "nvidia-cosmos-transfer2-5-2b",
+      "sourceUrl": "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+      "version": "1.0.0",
+      "versionKey": "1-0-0"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (upstream checkpoint and published materials)",
+        "reason": "Evidence gap: primary NVIDIA model card, product docs, and research lab page describe physics-aware world-state generation but do not provide proofs, formal guarantees, or evaluation protocols certifying provable physics-grounding or multi-agent dynamics correctness for the named checkpoint.",
+        "useCase": "Applications requiring provable, formal physical‑law guarantees or certified multi-agent-dynamics correctness without downstream validation"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-transfer2.5-2b"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (NIM/container)",
+        "reason": "Evidence gap: available primary documentation includes Docker/NIM container usage and runtime flags but does not publish explicit cross-platform (non-Linux) support claims or validated runtime matrices for non-Linux OSes.",
+        "useCase": "Production deployment on non-Linux operating systems without vendor validation"
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-transfer2.5-2b",
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (distinguish upstream checkpoint vs NIM/container)",
+        "reason": "Evidence gap / NIM-only: NGC container listing documents container-level optimizations (TensorRT, FP8) but primary model pages do not publish the exact precisions tested/supported for the upstream checkpoint itself; treat container optimizations as NIM-level evidence.",
+        "useCase": "Assuming upstream-checkpoint parity with NIM/container TensorRT/FP8 quantized performance/precision without explicit validation"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "These timings are provided in the repository inference documentation and refer to distilled vs base variants; they are repository-measured values and not an independent benchmark report.",
+          "The repository timings are for a specific GPU (RTX PRO 6000 Blackwell SE) and variant; they should not be generalized to other hardware or NIM/container-optimized configurations without validation."
+        ],
+        "conditions": "Repository inference.md variant/measurement notes for RTX PRO 6000 Blackwell SE (see exact repo path and statements).",
+        "dataset": "not applicable",
+        "direction": "lower-is-better",
+        "metric": "Average diffusion time (seconds) for distilled and base models on RTX PRO 6000 Blackwell SE; distilled speedup factor",
+        "modelScope": "Cosmos-Transfer2.5-2B (repository inference notes — distilled vs base variants)",
+        "sourceLocator": "GitHub repository — docs/inference.md — lines stating: 'Average distilled model diffusion time on an RTX PRO 6000 Blackwell SE GPU is 1 second.' and 'Average base diffusion time on an RTX PRO 6000 Blackwell SE GPU is 605.7 seconds.'",
+        "sourceUrl": "https://github.com/nvidia-cosmos/cosmos-transfer2.5/blob/main/docs/inference.md",
+        "split": "not applicable",
+        "task": "Repository-reported average diffusion times (distilled vs base) on RTX PRO 6000 Blackwell SE (inference timing snippet)",
+        "value": "Average distilled model diffusion time = 1 second; Average base diffusion time = 605.7 seconds; Distilled improvement = 7.7× (values reported in repository docs/inference.md)"
+      },
+      {
+        "caveats": [
+          "These requirements are reported on the product model_matrix page and reflect NVIDIA's documented minimums for the named Transfer2.5-2B model; NIM/container runtime profiles may provide additional optimized or alternative profiles."
+        ],
+        "conditions": "Model matrix hardware/requirements section on the product documentation",
+        "dataset": "not applicable",
+        "direction": "context-only",
+        "metric": "Minimum GPU count and single-GPU VRAM required for inference",
+        "modelScope": "Cosmos-Transfer2.5-2B (model_matrix page)",
+        "sourceLocator": "Transfer2.5 model matrix — 'Minimum GPU/VRAM requirements' row/section on model_matrix.html",
+        "sourceUrl": "https://docs.nvidia.com/cosmos/latest/transfer2.5/model_matrix.html",
+        "split": "not applicable",
+        "task": "Minimum GPU and GPU VRAM requirement",
+        "value": "Minimum 1 GPU; single-GPU GPU VRAM requirement 65.4 GB; 'Auto' specialized checkpoint requires minimum 8 GPUs (values reported on the Transfer2.5 model_matrix page)"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "nvidia-cosmos-predict1-7b-text2world",
+        "comparisonConditions": "Comparison would require identical evaluation protocol, datasets/splits, control modalities, and measurement definitions on both checkpoints; those matching protocol elements were not found for the alternative in the provided sources.",
+        "criteria": "No checkpoint-scoped primary-source evaluation using an identical task protocol (same resolution, FPS, control type, dataset/split, and measurement definition) for the alternative was found in the provided primary findings.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html",
+          "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+        ],
+        "rationale": "Provided primary findings include checkpoint-scoped metrics for Transfer2.5-2B but do not include a matching Predict1-7B checkpoint evaluation under the same protocol needed for direct comparison.",
+        "task": "World/video generation (text-conditioned)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-cosmos-predict1-7b-video2world",
+        "comparisonConditions": "Identical task protocol and dataset required; missing for the alternative in provided sources.",
+        "criteria": "No checkpoint-scoped primary-source metrics for Predict1-7B under an identical evaluation protocol were available in the provided findings.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html"
+        ],
+        "rationale": "No matched evaluation protocol and checkpoint-scoped metrics for the alternative were found in the provided primary sources; thus direct evidence-backed comparisons are unsupported.",
+        "task": "World/video generation (video-conditioned)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-cosmos3-omni-nano",
+        "comparisonConditions": "Identical dataset/split, resolution, FPS, control types, and measurement definitions required but not present.",
+        "criteria": "No checkpoint-scoped primary-source evaluation for Cosmos3 Omni (Nano) matching the Transfer2.5-2B control-type protocols was found in the provided findings.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+        ],
+        "rationale": "Provided findings did not include matched evaluation protocol and checkpoint-scoped metrics for the alternative.",
+        "task": "World/video generation (omni family, Nano)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-cosmos3-omni-super",
+        "comparisonConditions": "Identical task protocol and dataset required; missing for the alternative in provided sources.",
+        "criteria": "No checkpoint-scoped primary-source evaluation for Cosmos3 Omni (Super) matching Transfer2.5-2B control-type protocols was found in the provided findings.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+        ],
+        "rationale": "Without matched primary-source evaluation protocol and checkpoint-scoped metrics for the alternative, direct evidence-backed comparisons are not possible from the provided findings.",
+        "task": "World/video generation (omni family, Super)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Validate temporal consistency, artifact occurrence, and container-optimized precision/quantization behavior on target workloads; verify NIM/container-optimized precisions (TensorRT/FP8) do not change safety/guardrails or downstream accuracy.",
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-transfer2.5-2b",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/model_matrix.html",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (NIM/containerized deployment and published model pages)",
+        "useCase": "Longer-duration or higher-resolution video generation in production when verifying temporal-consistency and artifact rates (validate before production use)"
+      },
+      {
+        "conditions": "Validate reference-frame conditioning behavior on target workloads and follow example JSON controlnet_specs and repository inference examples for reference-frame usage.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+          "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (model card and repository examples)",
+        "useCase": "Reference-frame conditioned generation for improved view/temporal consistency (use repository/model-card examples to validate on target inputs)"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Immutable upstream checkpoint identifier (commit hash, S3/NGC artifact ID, or canonical model artifact URL) for Cosmos-Transfer2.5-2B is not published in the examined primary sources.",
+      "Evidence gap: Exact numeric values, dataset names, and splits used to compute the control-type quality metrics (SSIM, Edge F1, Depth si-RMSE, Mask mIoU, Overall Quality) are not present in the research lab page or model card in the provided findings.",
+      "Evidence gap: Tokenizer/tokenization details (tokenizer type, vocabulary, tokenization rules, and embedding/head details) for the named Cosmos-Transfer2.5-2B checkpoint are not documented in the provided primary sources.",
+      "Evidence gap: Training data provenance and composition (exact dataset names, licenses, curation procedures) for this exact checkpoint are not documented in the provided primary sources.",
+      "Evidence gap: Output codec/container/bitrate/frame-encoding parameters for generated videos are not published in the examined primary sources.",
+      "Evidence gap: Per-frame calibrated confidence or uncertainty outputs are not documented in the examined primary sources.",
+      "Evidence gap: Exact multi-GPU scaling protocol, batch-sizing guidance, and measured latency-vs-GPU-count scaling curves are not published in the provided primary sources.",
+      "Evidence gap: The exact input artifact or dataset used to derive any performance timing examples in the quickstart/model_matrix or repository docs is not specified in the provided primary findings."
+    ],
+    "family": "build-nvidia-com-nvidia-cosmos-transfer2-5-2b-modelcard-e510edc819",
+    "identity": {
+      "architecture": "Diffusion-transformer latent-space video denoiser conditioned by multiple control branches (edges, depth, segmentation, blur) with adaptive layer normalization and temporal/multi-view attention mechanisms",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+        "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B",
+        "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5",
+        "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+      ],
+      "license": "NVIDIA Open Model License (model weights); Apache License 2.0 (source code)",
+      "parameterScale": "2 billion parameters",
+      "revision": "not reported",
+      "upstreamName": "Cosmos-Transfer2.5-2B"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+            "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+          ],
+          "statement": "Generation and control configuration is provided via JSON-based controlnet_specs (repository and product docs describe JSON configuration/spec patterns)."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+          ],
+          "statement": "Input video modalities are provided as standard video assets; documented examples use 1280×720 (720P) inputs in examples."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+          ],
+          "statement": "Inputs are featurized and processed in a compressed latent space as part of the latent-space denoising pipeline."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+            "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+          ],
+          "statement": "Adaptive Layer Normalization is applied to embed temporal information into denoising layers as described in product/repository materials."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-transfer2.5-2b"
+          ],
+          "statement": "The NIM/container quickstart documents Docker runtime and environment flags required to run the NIM, indicating containerized preprocessing and runtime expectations."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+          ],
+          "statement": "Text prompts (free-text) are accepted as conditioning inputs together with structured video control inputs."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+          ],
+          "statement": "Structured video control modalities accepted include RGB video, depth maps, segmentation maps, edge maps, and blur control modalities."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+          ],
+          "statement": "Multi-view/multi-camera world-scenario inputs (examples document seven camera streams used as control inputs) are supported in examples."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+            "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+          ],
+          "statement": "Typical generation invocation pairs a free-text prompt with structured JSON controlnet_specs plus one or more control input videos; repository and product docs illustrate example JSON specifications."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html"
+          ],
+          "statement": "The NIM/container quickstart documents CLI/container invocation patterns and environment flags to run the NIM and retrieve encoded output from the server response."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+          ],
+          "statement": "The repository documents example inference modes (single-video inference, auto/multiview examples, and autoregressive sliding-window mode for longer videos) that affect input formatting and chunking behavior."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html"
+          ],
+          "statement": "Validate that JSON controlnet_specs conform to the documented schema and required fields per the Transfer2.5 docs before invocation."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html",
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+          ],
+          "statement": "Check that input videos match expected resolution and frame-rate conventions for reported examples (documented examples use 1280×720 at 16 FPS in product materials)."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html",
+            "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+          ],
+          "statement": "When using multi-chunk inputs, validate chunk boundaries and reference-frame alignment as discussed in repository/quickstart examples."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+          "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B",
+          "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+        ],
+        "statement": "Checkpoint immutable identifier (commit hash, S3/NGC artifact ID, or canonical model artifact URL) for Cosmos-Transfer2.5-2B is not published in the examined primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5",
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+        ],
+        "statement": "Dataset names and exact evaluation splits used to compute the published control-type quality metrics (SSIM, Edge F1, Depth si-RMSE, Mask mIoU, Overall Quality) are not reported in the available primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/nvidia-cosmos/cosmos-transfer2.5",
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+        ],
+        "statement": "Tokenizer/tokenization specifics (tokenizer type, vocabulary, tokenization rules, embedding/head details) for the named Cosmos-Transfer2.5-2B checkpoint are not documented in the examined primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+        ],
+        "statement": "Training data provenance and composition (exact dataset names, licenses, and curation procedures for this exact checkpoint) are not provided in the available primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/model_matrix.html"
+        ],
+        "statement": "Exact multi-GPU scaling protocol, batch-sizing guidance, and measured latency-vs-GPU-count scaling curves are not published in the provided primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+        ],
+        "statement": "Output codec/container/bitrate/frame-encoding parameters for generated videos are not published in the examined primary sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5",
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+          ],
+          "statement": "Model outputs are stochastic conditional generative video frames; NVIDIA publishes control-type quality metrics at an aggregated level in research materials, but primary sources do not provide per-instance calibrated confidences."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: Per-frame calibrated confidence or uncertainty outputs are not documented in the examined primary sources."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+            "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B",
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html"
+          ],
+          "statement": "Generated outputs are video sequences typically reported in examples at 1280×720 (720P) and example documentation shows 16 FPS usage; example generation lengths include 5-second examples illustrated in materials."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+          ],
+          "statement": "Multi-view examples report generation of view-consistent frames per camera (seven-camera examples at 1280×720 are shown in published examples)."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: Exact output codec/container/bitrate/frame-encoding parameters for generated videos are not published in the examined primary sources."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5",
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+          ],
+          "statement": "Perform post-inference checks for temporal consistency (no object disappearance/morphing across frames), view-consistency across camera outputs, and alignment between segmentation/depth outputs and input control maps as recommended in documentation/repository examples."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+          ],
+          "statement": "Apply documented post-processing safety steps (e.g., face blurring) when outputs contain sensitive personal data per model card and product documentation."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+            "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+          ],
+          "statement": "When using generated data as synthetic training data, validate distributional shift, artifact rates, and downstream model robustness per documentation guidance."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (named checkpoint as published on NVIDIA model card, Hugging Face model page, and research lab pages)",
+        "useCase": "Physics-aware video/world-state generation conditioned on text plus multiple structured video control modalities for Physical AI research and synthetic-data generation (robotics, autonomous-vehicle perception)",
+        "why": "Model card, product docs, and the research lab page describe the model as purpose-built for Physical AI and accepting multiple structured video control modalities for generating world-state video/images."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (product/documentation and research lab scope)",
+        "useCase": "Controlled video-to-video transfer and sim-to-real synthetic-data generation using simulator-derived control maps (depth, segmentation, edges, blur) for data augmentation and training downstream perception models",
+        "why": "Product documentation and research lab examples describe workflows for simulation-to-photorealism and scaling world-state diversity using structured control inputs accepted by Transfer2.5."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+          "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+        ],
+        "modelScope": "Cosmos-Transfer2.5-2B (model card examples and research lab examples)",
+        "useCase": "Multi-view/multi-camera conditional generation producing view-consistent frames per camera in multi-camera world scenarios",
+        "why": "Model card and research examples document multi-view/multi-camera example inputs (seven-camera examples) and show view-consistent generation examples at 1280×720 resolution."
+      }
+    ],
+    "researchSummary": "Cosmos-Transfer2.5-2B is an NVIDIA latent-space diffusion-transformer for video/world-state generation conditioned by text plus structured video control modalities (edges, depth, segmentation, blur). Primary NVIDIA sources (model card, product docs, research lab, and repository) describe the model family, intended Physical AI use cases (robotics, autonomous vehicles), support for JSON controlnet_specs and multi-video/multi-view conditioning (examples include seven-camera multi-view scenarios), and NIM/container packaging with TensorRT and FP8 optimizations. The examined primary sources do not publish an immutable upstream checkpoint artifact identifier or revision for the named Cosmos-Transfer2.5-2B checkpoint. Measured hardware requirements (minimum GPU and GPU VRAM) and repository-level inference timing snippets are present in primary docs/repository; however, numeric end-to-end generation times for the exact named checkpoint on the NIM/container quickstart tables were not found in the provided findings. Multiple provenance, dataset-split, tokenizer, and output-encoding details are not specified in the available primary sources and are reported below as evidence gaps where appropriate.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B",
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+        ],
+        "statement": "Model weights are published under the NVIDIA Open Model License and source code under Apache License 2.0; the Hugging Face model page and NVIDIA model card state that bypassing or disabling technical limitations or safety guardrails terminates rights under the NVIDIA Open Model License."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+          "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+        ],
+        "statement": "Documentation and model card indicate inference pipeline includes input safety checks and post-processing safety steps (including face blurring) and recommend applying documented post-processing for sensitive personal data."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-transfer2.5-2b"
+        ],
+        "statement": "Container/NIM packaging includes inference optimizations (TensorRT, FP8 quantization profiles) that are distinct from upstream-checkpoint semantics; treat container-optimized behavior as NIM-level evidence and validate guardrail behavior after container-level optimizations are applied."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Cosmos-Transfer2.5-2B (model card / published examples)",
+        "primary": true,
+        "primaryReason": "Official NVIDIA model card for the named Cosmos-Transfer2.5-2B checkpoint and published examples.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "Model purpose and recommended uses",
+          "Multi-view example claims",
+          "Reference to accepted inputs and control modalities",
+          "License/guardrail summary statements (as published on the model card)"
+        ],
+        "title": "Cosmos-Transfer2.5-2B model card (NVIDIA Build)",
+        "url": "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+      },
+      {
+        "modelScope": "Cosmos-Transfer2.5-2B (Hugging Face checkpoint page)",
+        "primary": true,
+        "primaryReason": "Canonical published model card for the named checkpoint hosted by NVIDIA on Hugging Face.",
+        "publisher": "NVIDIA (Hugging Face model card)",
+        "sourceType": "model-card",
+        "supports": [
+          "Release metadata and license statement",
+          "Reported example output resolution/FPS metadata"
+        ],
+        "title": "Cosmos-Transfer2.5-2B Hugging Face model page",
+        "url": "https://huggingface.co/nvidia/Cosmos-Transfer2.5-2B"
+      },
+      {
+        "modelScope": "Cosmos-Transfer2.5 family documentation",
+        "primary": true,
+        "primaryReason": "Product-family documentation describing accepted modalities, JSON controlnet_specs, and usage workflows.",
+        "publisher": "NVIDIA Documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Accepted control modalities and JSON-based controlnet_specs",
+          "Product-level architecture notes and usage workflows"
+        ],
+        "title": "Cosmos Transfer2.5 index (product documentation)",
+        "url": "https://docs.nvidia.com/cosmos/latest/transfer2.5/index.html"
+      },
+      {
+        "modelScope": "Transfer2.5 quickstart and measurement examples (NIM/container usage notes)",
+        "primary": true,
+        "primaryReason": "Quickstart guide containing example invocation guidance and runtime notes.",
+        "publisher": "NVIDIA Documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Example invocation patterns, runtime/container flags and usage notes",
+          "Example resolution/FPS conventions referenced in examples"
+        ],
+        "title": "Transfer2.5 Quickstart Guide (NVIDIA docs)",
+        "url": "https://docs.nvidia.com/cosmos/latest/transfer2.5/quickstart_guide.html"
+      },
+      {
+        "modelScope": "Transfer2.5 model performance and hardware requirements",
+        "primary": true,
+        "primaryReason": "Model matrix listing measured inference performance and hardware requirements.",
+        "publisher": "NVIDIA Documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Minimum GPU/VRAM requirements and notes on specialized 'Auto' checkpoint variants"
+        ],
+        "title": "Transfer2.5 model matrix (inference performance and requirements)",
+        "url": "https://docs.nvidia.com/cosmos/latest/transfer2.5/model_matrix.html"
+      },
+      {
+        "modelScope": "Research lab description and control-type-quality metrics",
+        "primary": true,
+        "primaryReason": "Research lab page reporting control-type quality metrics and research examples for Transfer2.5.",
+        "publisher": "NVIDIA Research / Cosmos Lab",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Control-type quality metrics (SSIM, Edge F1, Depth si-RMSE, Mask mIoU, Overall Quality) described at control-type granularity",
+          "Research examples and conditioning modality descriptions"
+        ],
+        "title": "Cosmos Transfer2.5 research lab page",
+        "url": "https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer2.5"
+      },
+      {
+        "modelScope": "Transfer2.5 implementation and example recipes",
+        "primary": true,
+        "primaryReason": "Canonical repository for Transfer2.5 family with implementation notes, example inference modes, and docs.",
+        "publisher": "NVIDIA (GitHub org)",
+        "sourceType": "repository",
+        "supports": [
+          "Repository-level implementation notes, inference example modes, and variant parameter files",
+          "Implementation/inference documentation (docs/inference.md) with measured timings for specific hardware/variants"
+        ],
+        "title": "Cosmos-Transfer2.5 GitHub repository",
+        "url": "https://github.com/nvidia-cosmos/cosmos-transfer2.5"
+      },
+      {
+        "modelScope": "Cosmos-Transfer2.5-2B NIM/container",
+        "primary": true,
+        "primaryReason": "Official NGC container entry describing NIM/container packaging, image tags, and container-level optimizations.",
+        "publisher": "NVIDIA NGC Catalog",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Container packaging details, TensorRT and FP8 quantization/optimization notes",
+          "Container image tags and NIM packaging terms"
+        ],
+        "title": "NGC container listing for cosmos-transfer2.5-2b",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-transfer2.5-2b"
+      },
+      {
+        "modelScope": "NIM/container invocation and runtime flags",
+        "primary": true,
+        "primaryReason": "NIM quickstart documents container invocation flags, environment variables, and runtime expectations for running NIM containers.",
+        "publisher": "NVIDIA NIM Documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Docker runtime flags and recommended invocation patterns for the NIM container"
+        ],
+        "title": "NIM/Cosmos quickstart (NGC/NIM documentation)",
+        "url": "https://docs.nvidia.com/nim/cosmos/latest/quickstart-guide.html"
+      },
+      {
+        "modelScope": "Repository release history and commit identifiers (codebase)",
+        "primary": true,
+        "primaryReason": "Repository releases page providing release tags and commit identifiers for the codebase.",
+        "publisher": "NVIDIA (GitHub org)",
+        "sourceType": "repository",
+        "supports": [
+          "Release entries and commit hashes for repository code releases (release metadata)"
+        ],
+        "title": "Cosmos-Transfer2.5 repository releases",
+        "url": "https://github.com/nvidia-cosmos/cosmos-transfer2.5/releases"
+      },
+      {
+        "modelScope": "Transfer2.5 implementation and example recipes",
+        "primary": true,
+        "primaryReason": "Exact revision/file URL beneath the independently verified first-party source indexed by this dossier.",
+        "publisher": "NVIDIA (GitHub org)",
+        "sourceType": "repository",
+        "supports": [
+          "Exact audited claim citation"
+        ],
+        "title": "Cosmos-Transfer2.5 GitHub repository — cited revision/file",
+        "url": "https://github.com/nvidia-cosmos/cosmos-transfer2.5/blob/main/docs/inference.md"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "9b3fe97e41748972d2ba4ac11221a95385297b130d197601654bcd6b1c6dc4ab",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-nvidia-cosmos-transfer2-5-2b-modelcard-e510edc819",
+  "researchedAt": "2026-07-23T21:29:56.002951+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard",
+  "sourceUrls": [
+    "https://build.nvidia.com/nvidia/cosmos-transfer2_5-2b/modelcard"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

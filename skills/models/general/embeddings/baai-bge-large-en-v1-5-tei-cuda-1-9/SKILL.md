@@ -62,6 +62,16 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-baai-bge-large-en-v1-5-cb6f76e0da`
+- Recommended: Generate fixed-size (1024-dimensional) embeddings from English text for downstream semantic tasks (semantic search, document retrieval, similarity comparison, clustering). — README and config.json report the model produces 1024-dimensional embeddings and the model identifier indicates an English embedding variant.
+- Recommended: Use as an English sentence embedding backbone for retrieval and reranking workflows after downstream validation on target data. — README reports retrieval and reranking subset scores; ACL and arXiv papers report retrieval/ranking metrics for the checkpoint (task-level reporting present in papers).
+- Avoid: Summarization tasks — The README reports a low summarization subset score (31.61) for bge-large-en-v1.5 in the documented benchmark table, indicating weak performance on summarization in the reported benchmarks.
+- Avoid: Any task requiring documented tokenizer/vocabulary guarantees or per-dimension semantic interpretation of embeddings. — While tokenizer artifacts exist (tokenizer_config.json, tokenizer.json) and provide class and parameters, the findings do not document a per-dimension semantic meaning for embeddings nor a broader formalized vocabulary guarantee beyond tokenizer files; therefore tasks needing explicit per-dimension semantics should avoid relying on undocumented guarantees.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -80,11 +90,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/baai-bge-large-en-v1-5-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/baai-bge-large-en-v1-5-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/baai-bge-large-en-v1-5-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/baai-bge-large-en-v1-5-tei-cuda-1-9/SKILL.md

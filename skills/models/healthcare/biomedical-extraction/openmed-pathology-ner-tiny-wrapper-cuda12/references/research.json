@@ -1,0 +1,410 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses unapproved repository owner 'models' for this exact model scope",
+        "path": "$.sources[6] uses unapproved repository owner 'models' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses forbidden secondary URL https://huggingface.co/models?other=zero-shot-ner&p=2&sort=trending",
+        "path": "$.sources[6] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8] uses forbidden secondary URL https://huggingface.co/papers/2508.01630",
+        "path": "$.sources[8] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/.gitattributes",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.inputPreparation_summary",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.outputInterpretation_summary",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 8 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.",
+      "displayName": "Use OpenMed ZeroShot NER Pathology Tiny 60M",
+      "group": "biomedical-extraction",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "openmed-zeroshot-ner-pathology-tiny-60m",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "openmed-pathology-ner-tiny-wrapper-cuda12",
+      "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "version": "hf751c87f-gliner026-cvefix-20260605",
+      "versionKey": "hf751c87f-gliner026-cvefix-20260605"
+    },
+    {
+      "category": "healthcare",
+      "description": "OpenMed ZeroShot NER Pathology Tiny 60M is a public Apache-2.0 GLiNER token-classification model for disease and pathology-oriented biomedical entity extraction.",
+      "displayName": "Use OpenMed ZeroShot NER Pathology Tiny 60M",
+      "group": "biomedical-extraction",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "openmed-zeroshot-ner-pathology-tiny-60m",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "openmed-zeroshot-ner-pathology-tiny-60m-wrapper-cuda12-draft",
+      "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+      "version": "hf751c87f-gliner026-cvefix-20260604t01z",
+      "versionKey": "hf751c87f-gliner026-cvefix-20260604t01z"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be"
+        ],
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+        "reason": "Evidence gap: The inspected primary sources do not provide explicit creator-authorized clinical-use validation, deployment guidance, or statements authorizing the model for clinical decision-making.",
+        "useCase": "Unvalidated use for clinical decision-making or diagnostics without local validation"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Checked the model card benchmark table and commit blobs for dataset/split/metric/value rows specific to the Tiny-60M checkpoint; found benchmark rows for larger family members in the model card but no verifiable numeric row for the Tiny-60M checkpoint in the inspected locators.",
+        "criteria": "No checkpoint-scoped numeric benchmark entries tied to the Tiny-60M checkpoint were present in the inspected primary-source locators to enable protocol-matched comparison.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+        ],
+        "rationale": "The inspected primary-source facts do not contain numeric benchmark rows explicitly tied to this exact Tiny-60M checkpoint; therefore protocol-matched numeric comparisons cannot be supported from the checked locators.",
+        "task": "Protocol-matched numeric comparison for Tiny-60M",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Use as demonstrated in repository example invocation which sets threshold=0.5; no additional creator-provided calibration guidance or recommended threshold-tuning workflow is present in the inspected sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+        ],
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (repository commit example showing threshold usage)",
+        "useCase": "Adjusting extraction sensitivity by setting a detection threshold when predicting entities"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No numeric public benchmark results tied specifically to the exact checkpoint OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M were present in the inspected primary-source locators. Checked locators: https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (model card main page, benchmark table and performance fields) and commit blobs (https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47 and https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be).",
+      "Evidence gap: The inspected primary-source locators do not include a formal inference output JSON schema (field names, span object structure, token-level arrays, or exact score field names). Checked locators: https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M and the cited commit blobs.",
+      "Evidence gap: Tokenizer artifact file-level contents (explicit filenames such as tokenizer.json, vocab.txt, merges.txt) were not listed in the inspected research findings; checked locators: https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M and https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47. Note: gliner_config.json documents tokenizer class and vocabulary size but not explicit artifact filenames in the inspected locators.",
+      "Evidence gap: The inspected primary-source locators do not include creator-provided statements about PHI handling, data-retention policy, or explicit clinical-use authorization. Checked locators: https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M, https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47, and https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be.",
+      "Evidence gap: No authoritative mapping from the supplied Forge wrapper slugs to an unchanged upstream checkpoint was verifiable from the inspected primary-source locators. Checked locators: https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M and the cited commit blobs."
+    ],
+    "family": "huggingface-co-openmed-openmed-zeroshot-ner-pathology-tiny-60m-39d50bbdf4",
+    "identity": {
+      "architecture": "GLiNER (zero-shot token-classification)",
+      "checkpoint": "commit 751c87f2dfa77800e1bead7f9fb40f5734078e47",
+      "evidenceUrls": [
+        "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+        "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47",
+        "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be",
+        "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blob/main/gliner_config.json",
+        "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blame/main/gliner_config.json"
+      ],
+      "license": "Apache-2.0",
+      "parameterScale": "Tiny-60M",
+      "revision": "not reported",
+      "upstreamName": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+          ],
+          "statement": "Example usage demonstrates passing free-form text strings to GLiNER APIs (loaded via GLiNER.from_pretrained with the upstream model name)."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blob/main/gliner_config.json",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blame/main/gliner_config.json"
+          ],
+          "statement": "gliner_config.json documents tokenizer class as T5Tokenizer, vocabulary size as 250102, maximum input length (max_len) = 1024 tokens, and encoder base model 'google/mt5-small', which inform preprocessing/tokenization and input-length semantics."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+          ],
+          "statement": "Evidence gap: The inspected primary-source facts do not include a file-level listing of tokenizer artifact filenames (e.g., tokenizer.json, vocab.txt, merges.txt) in the provided research findings."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be"
+          ],
+          "statement": "The model accepts plain biomedical English text as input for zero-shot named-entity prediction."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be"
+          ],
+          "statement": "Example usage in the repository commit demonstrates supplying a label list (e.g., ['DISEASE']) when calling the prediction API, consistent with GLiNER zero-shot label-list usage."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blob/main/gliner_config.json",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+          ],
+          "statement": "Evidence gap: The inspected primary sources do not provide explicit input-validation rules such as production input-length bounds beyond max_len in gliner_config.json, sanitization requirements, or explicit checks to perform before inference."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be"
+        ],
+        "statement": "The model is presented as specialized for disease entity recognition and is described as a GLiNER-based zero-shot token-classification model; training/fine-tuning and specialization are claimed in the model card and commits."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blob/main/gliner_config.json"
+        ],
+        "statement": "Evidence gap: The inspected primary-source facts do not provide checkpoint-scoped numeric benchmark results tied to Tiny-60M (no table/figure/section/commit row with dataset, split, metric, and value was present in the checked primary-source locators)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+        ],
+        "statement": "Evidence gap: Tokenizer artifact file-level contents and explicit tokenizer vocabulary or merges files were not present in the inspected primary-source locators within the provided research findings."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+          ],
+          "statement": "Repository example shows entity prediction invoked with a detection threshold parameter (example uses threshold=0.5); no calibrated mapping from model scores to calibrated probabilities is present in the inspected sources."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+          ],
+          "statement": "The model produces named-entity predictions (zero-shot NER) from input biomedical text."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+            "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+          ],
+          "statement": "Evidence gap: The inspected primary-source locators do not include a formal inference output JSON schema (field names, span object structure, token-level arrays, or exact score field names)."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be"
+        ],
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (repository and commit-level examples)",
+        "useCase": "Zero-shot disease/entity extraction from biomedical English text using GLiNER label lists",
+        "why": "The model card and repository commit-level examples present the checkpoint as a GLiNER zero-shot token-classification model specialized for disease/entity recognition and include example usage loading the model via GLiNER.from_pretrained and passing a label list (['DISEASE'])."
+      }
+    ],
+    "researchSummary": "Checkpoint-scoped inspection of the Hugging Face model repository and commit blobs for OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M shows the upstream checkpoint is presented as a GLiNER-based zero-shot token-classification model specialized for disease/entity recognition. Official example usage in commit blobs demonstrates loading via GLiNER.from_pretrained with model identifier \"OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M\", example input text \"Early detection of breast cancer improves survival rates.\", passing a label list ['DISEASE'], and calling a prediction API with threshold=0.5. The repository contains a gliner_config.json (blob and blame) that documents tokenizer class (T5Tokenizer), vocabulary size (250102), encoder base model (google/mt5-small), maximum input length (max_len = 1024), and other architecture and training hyperparameters. The model card and commit metadata state the license as Apache License 2.0. The checked primary sources do not contain checkpoint-scoped numeric benchmark rows explicitly tied to the Tiny-60M checkpoint (no dataset/split/metric/value row verifiable for this exact checkpoint in the inspected locators), do not expose a formal inference output JSON schema, and do not present explicit creator-authorized PHI handling or clinical-use authorization statements in the inspected locations.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be"
+        ],
+        "statement": "Evidence gap: The inspected primary-source facts do not include creator-provided statements about PHI handling, data-retention policy, or explicit clinical-use authorization."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+        ],
+        "statement": "The model card and repository characterize the model as useful for clinical and biomedical NLP and disease entity extraction, which is safety-relevant context for healthcare deployments."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (Tiny-60M checkpoint as presented on Hugging Face)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model repository page and model card for this checkpoint; contains descriptive claims, benchmark table (family-level), and usage guidance used as primary evidence for checkpoint-scoped claims where explicit.",
+        "publisher": "OpenMed (hosted on Hugging Face)",
+        "sourceType": "model-card",
+        "supports": [
+          "The model identifier is \"OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M\".",
+          "The model is presented as GLiNER-based zero-shot NER specialized for disease/entity recognition.",
+          "The model is described as useful for clinical and biomedical NLP tasks.",
+          "The model card contains a benchmark table showing numeric results for larger family members (e.g., XLarge and Large) and lists performance values (the card lists values including 0.63 and 23.4% without clear checkpoint-scoped attribution in the inspected locators)."
+        ],
+        "title": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (model card)",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+      },
+      {
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (commit-level metadata and example usage)",
+        "primary": true,
+        "primaryReason": "Commit blob contains installation instructions, example loading of the model via GLiNER.from_pretrained, example input text, and repository metadata including license statements used to verify checkpoint-level identity and usage.",
+        "publisher": "OpenMed (hosted on Hugging Face repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Installation command for the model's dependencies is documented (pip install -q \"gliner[tokenizers]\").",
+          "The model can be loaded with GLiNER.from_pretrained(model_name).",
+          "The model identifier is 'OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M'.",
+          "The repository states the license in the repository content (Apache License 2.0).",
+          "Example input text used in the README is 'Early detection of breast cancer improves survival rates.' (present in commit-level content)."
+        ],
+        "title": "Repository commit (example usage and upload) - commit 751c87f2dfa77800e1bead7f9fb40f5734078e47",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/751c87f2dfa77800e1bead7f9fb40f5734078e47"
+      },
+      {
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (commit-level example usage and metadata)",
+        "primary": true,
+        "primaryReason": "Commit blob contains example usage demonstrating GLiNER.from_pretrained usage, example input text, label-list usage, prediction API call with threshold=0.5, and language/license tags used as primary evidence for example invocation semantics.",
+        "publisher": "OpenMed (hosted on Hugging Face repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Example usage code sets model_name to 'OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M'.",
+          "Example input text used in the README is 'Early detection of breast cancer improves survival rates.'",
+          "The code example shows predicting entities with model.predict_entities(..., threshold=0.5).",
+          "The example specifies the label list ['DISEASE'] for prediction.",
+          "The repository tags the model language as English and lists license file as apache-2.0."
+        ],
+        "title": "Repository commit (tags and metadata) - commit 80b8848d04f30c35daacb06f89bc59b8ae0362be",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/commit/80b8848d04f30c35daacb06f89bc59b8ae0362be"
+      },
+      {
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (gliner_config.json documented configuration)",
+        "primary": true,
+        "primaryReason": "Configuration file blob documents tokenizer class, vocabulary size, encoder base model, max input length, model_type 'gliner', and many architectural and training hyperparameters used as primary evidence for input preprocessing and architecture-level details.",
+        "publisher": "OpenMed (hosted on Hugging Face repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Tokenization/tokenizer class is 'T5Tokenizer'.",
+          "Vocabulary size is 250102.",
+          "Model type is 'gliner' and encoder base model is 'google/mt5-small'.",
+          "Maximum input length (max_len) = 1024.",
+          "Various encoder/decoder and training hyperparameters (encoder/decoder layers, attention heads, dropout, num_steps, etc.) are documented in the config."
+        ],
+        "title": "gliner_config.json (blob) - model configuration",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blob/main/gliner_config.json"
+      },
+      {
+        "modelScope": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M (gliner_config.json blame/provenance)",
+        "primary": true,
+        "primaryReason": "Blame view of gliner_config.json provides provenance and corroborates the configuration fields (tokenizer class, vocab size, model_type, max_len, learning rates, training scheduling) used to verify preprocessing and architecture claims.",
+        "publisher": "OpenMed (hosted on Hugging Face repository)",
+        "sourceType": "repository",
+        "supports": [
+          "Tokenizer class is 'T5Tokenizer'.",
+          "Vocab and encoder configuration details (including google/mt5-small as encoder base).",
+          "Training hyperparameters and model_type = 'gliner' are recorded in the file."
+        ],
+        "title": "gliner_config.json (blame view) - configuration provenance",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M/blame/main/gliner_config.json"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "8c1606fd791e926d228d7d745774785d5889308619d385f283afbd1cb8483a21",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-openmed-openmed-zeroshot-ner-pathology-tiny-60m-39d50bbdf4",
+  "researchedAt": "2026-08-06T09:17:54.668981+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+  "sourceUrls": [
+    "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -1,0 +1,125 @@
+# Biomedical Text model selection
+
+- Category: `healthcare`
+- Group: `biomedical-text`
+- Independent audit: `revised`
+- Researched: `2026-07-23T23:08:25.845160+00:00`
+
+Select among three exact Forge candidate slugs for biomedical-text tasks: (A) free-text biomedical question answering and generation (text -> text); (B) biomedical multiple-choice QA (MedQA / MedMCQA style); (C) clinical/biomedical natural-language generation (summarization, instruction-following, research-writing assistance); and (D) schema-aware healthcare Text2SQL (translate natural-language analytics questions plus DDL/schema into executable SQL). Out of scope: any claim that depends on a checkpoint, head, NIM/NGC container, versionKey, dataset split, prompt template, decoding setting, or other runtime wrapper that is not explicitly documented in the primary sources listed in this dossier. All verified numeric claims and configuration values are restricted to those printed in the cited primary sources from the research findings; upstream-checkpoint evidence is flagged as such when it is not demonstrably the Forge-served artifact.
+
+## Questions to answer before selecting
+
+- Required output modality: Do you require structured SQL output or free-text output?
+- If SQL is required: Do you require schema-aware SQL generation (model must accept table DDL/columns and produce executable SQL)?
+- Do you require deterministic/exact reproducible outputs (e.g., temperature=0 / deterministic decoding)?
+- Context-window requirement: What maximum input+output context length (tokens) do you require (e.g., <=1024, <=2048, >=32k)?
+- License constraint: Which licenses are permitted for downstream use (e.g., Apache-2.0, bigscience-bloom-rail-1.0, NVIDIA Open Model/NIM)?
+- Clinical/diagnostic deployment allowed? (Yes — you will perform regulatory compliance; No — model must be explicitly intended for clinical use.)
+- Evaluation goal: Are you optimizing for MedQA/MedMCQA/PubMedQA-style benchmark accuracy, for harmlessness/safety metrics, or for schema-driven SQL execution accuracy?
+- Fine-tuning regime allowed? (No fine-tuning; Supervised fine-tune allowed; adapter/LoRA allowed; must use exact NIM Text2SQL head/version when evaluating NVIDIA candidate?)
+- Prompting style required: zero-shot, few-shot, instruction-tuned / system+user message framing?
+- Operational constraints: Are there explicit hardware/latency constraints or required inference stacks (vLLM, NIM) that force a specific exact versionKey or wrapper?
+
+## Comparability rules
+
+- Only compare numerical benchmark results when dataset name and the identical official evaluation split are documented in primary sources for both runs.
+- Fine-tuning regime parity required: zero-shot vs few-shot vs supervised fine-tune vs instruction-tuned vs LoRA/adapter must match and be documented in primary sources.
+- Decoding/sampling settings parity required: temperature, top-p, deterministic/beam settings used in reported runs must match and be documented in primary sources.
+- If a reported result depends on a downstream head/service (e.g., an NVIDIA NIM Text2SQL head or a safety/DARE head), require the exact head name and exact versionKey/container mapping to be documented in primary sources; otherwise declare incomparability.
+- Context-window/input-shape parity required: compared runs must use matching maximum sequence lengths and identical schema-injection/prompting methods; if primary sources list multiple context lengths or do not tie a context length to a documented versionKey/commit, record an evidence gap and treat runs as incomparable.
+- SQL evaluation parity: for Text2SQL comparisons require identical canonicalization rules and the same database instance for execution/denotation accuracy; if execution-based evaluation or canonicalization scripts are not provided in primary sources, record an evidence gap and do not compare execution/denotation numbers.
+- Quantization/wrapper parity: do not compare runs using different checkpoints, adapters, quantizations, NIM/model-head versions, or wrappers unless those ablations and mappings are explicitly reported in primary sources for the exact checkpoint/versionKey.
+
+## Conditional routing
+
+### Prefer `nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim` when Requirement = schema-aware SQL generation (structured SQL output) AND caller requires an explicit documented serving/head and versionKey
+
+- Why: NVIDIA primary documentation and the NGC catalog list an explicit Text-to-SQL model/container named Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql (catalog/container pages and NIM documentation). These sources document a named NVIDIA Text-to-SQL artifact intended for healthcare Text2SQL use and include example request shapes for DDL + SQL generation, supporting selection when a documented NVIDIA Text2SQL serving artifact is required.
+- Alternative: biomistral-biomistral-7b-vllm
+- Alternative: stanfordcrfm-biomedlm-2-7b-safety-review
+- Evidence: https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0, https://docs.nvidia.com/nim/large-language-models/1.15.0/text-to-sql-model.html, https://docs.nvidia.com/nim/large-language-models/1.15.0/supported-models.html
+
+### Prefer `biomistral-biomistral-7b-vllm` when Requirement = highest documented harmlessness / safety-sensitive behavior on curated medical-safety subsets (harmlessness score on safety-sensitive medical question subsets)
+
+- Why: Primary BioMistral safety-evaluation documents in the research findings (arXiv safety-evaluation preprint and BioMistral model-card variant pages) report harmlessness/honesty numeric scores for BioMistral-7B-DARE and related variants; these primary-source numbers support preferring BioMistral variants when an explicitly reported harmlessness numeric score for a BioMistral variant is the selection criterion.
+- Alternative: stanfordcrfm-biomedlm-2-7b-safety-review
+- Alternative: nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim
+- Evidence: https://arxiv.org/html/2507.02983v3, https://huggingface.co/BioMistral/BioMistral-7B-DARE
+
+### Prefer `biomistral-biomistral-7b-vllm` when Requirement = free-text biomedical QA accuracy on MedQA / MedMCQA / PubMedQA where the documented checkpoint-level numeric tables are the selection criterion
+
+- Why: BioMistral primary sources in the research findings (the BioMistral model card and the BioMistral arXiv evaluation paper) publish tabulated numeric accuracies on MedQA, MedMCQA, PubMedQA and related biomedical benchmarks for BioMistral-7B and its variants; these primary printed numeric tables support preferring BioMistral when measured upstream-checkpoint biomedical QA accuracy is the selection criterion.
+- Alternative: stanfordcrfm-biomedlm-2-7b-safety-review
+- Alternative: nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim
+- Evidence: https://huggingface.co/BioMistral/BioMistral-7B, https://arxiv.org/html/2402.10373v1
+
+### Prefer `insufficient-evidence` when Requirement = strict maximum sequence length <=1024 tied to a documented checkpoint and a documented MedQA metric at that checkpoint
+
+- Why: The research findings do not include a primary-source document that ties an explicit <=1024 token context-window statement to any of the three exact Forge slugs. BioMistral model-card entries report a 2048-token context window in the findings and a config.json entry shows max_position_embeddings=32768, producing ambiguity about context-window claims tied to a versionKey; the BioMedLM primary source for the Forge-specified stanford slug is not present in the provided findings. Therefore the dossier cannot verify a strict <=1024 token guarantee for any exact Forge slug.
+- Alternative: stanfordcrfm-biomedlm-2-7b-safety-review
+- Alternative: biomistral-biomistral-7b-vllm
+- Alternative: nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim
+- Evidence: https://huggingface.co/BioMistral/BioMistral-7B, https://huggingface.co/BioMistral/BioMistral-7B/blob/main/config.json
+
+### Prefer `insufficient-evidence` when Requirement = license must be exactly bigscience-bloom-rail-1.0 for the chosen Forge candidate
+
+- Why: The research findings do not include a primary-source license statement that definitively ties any of the three exact Forge candidate slugs to the bigscience-bloom-rail-1.0 license. The dossier cannot verify a bigscience-bloom-rail-1.0 license mapping in the provided primary sources.
+- Alternative: stanfordcrfm-biomedlm-2-7b-safety-review
+- Alternative: biomistral-biomistral-7b-vllm
+- Alternative: nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim
+- Evidence:
+
+## Benchmark taxonomy
+
+### Biomedical multiple-choice QA (MedQA / MedMCQA style)
+
+- Datasets: MedQA, MedMCQA
+- Metrics: Accuracy (percentage correct on the official evaluation split) — direction: higher is better
+- Compare only when: Must match dataset name and the same official evaluation split (the research findings do not specify split identifiers for MedQA/MedMCQA; splits must be fixed before comparison).
+- Compare only when: Must match fine-tuning regime: zero-shot vs few-shot vs supervised fine-tune must be identical between compared runs.
+- Compare only when: Must match decoding/sampling settings (temperature, top-p, deterministic decoding) used in reported runs as documented in primary sources.
+
+### Open-ended biomedical question answering / generation (free-text) (PubMedQA-style)
+
+- Datasets: PubMedQA
+- Metrics: Dataset-specific accuracy or F1 where applicable; harmlessness score on curated safety-sensitive medical question subsets — direction: higher is better
+- Compare only when: Exact prompt templates and priming examples must match (zero-shot vs few-shot vs instruction-tuned), including system/user message framing if used by the authors as documented in primary sources.
+- Compare only when: Fine-tuning regime parity required (further pre-trained vs supervised fine-tune vs instruction-tuned vs LoRA/adapter).
+- Compare only when: When harmlessness is reported, the identical curated question subset and the same scoring code must be used for comparability; the research findings show BioMistral harmlessness runs but not matching runs for the other candidates.
+
+### Healthcare Text2SQL (schema-aware translation + executable SQL)
+
+- Datasets: Evidence gap: no canonical public healthcare Text2SQL benchmark and canonical evaluation split identified in the research findings for the NVIDIA Forge candidate
+- Metrics: Execution accuracy / denotation accuracy (percentage of generated SQL that produces the same result as reference when executed on the same DB instance) — direction: higher is better, Exact Match (SQL string) and normalized-syntax EM (after canonicalization) as supplementary metrics
+- Compare only when: Must include identical database instance and contents for execution-based evaluation.
+- Compare only when: Must use identical canonicalization rules for SQL before EM comparison.
+- Compare only when: Must use the exact NIM model head and exact NIM versionKey when evaluating an NVIDIA candidate; if the exact NIM/NGC container mapping to the Forge slug is not documented in primary sources, record an evidence gap.
+
+## Primary sources
+
+- [BioMistral/BioMistral-7B (Hugging Face model card)](https://huggingface.co/BioMistral/BioMistral-7B) — BioMistral / Hugging Face (model card); supports BioMistral-7B model card prints benchmark table rows including MedQA, MedMCQA, PubMedQA and reports BioMistral-7B variant numeric results and states a 2048-token context window.
+- [BioMistral/BioMistral-7B-DARE (Hugging Face model card)](https://huggingface.co/BioMistral/BioMistral-7B-DARE) — BioMistral / Hugging Face (model card); supports BioMistral-7B-DARE model card page is cited in the research findings as a primary-source variant page associated with reported harmlessness/honesty numeric scores and variant benchmark rows.
+- [BioMistral preprint and evaluation (arXiv 2402.10373v1)](https://arxiv.org/html/2402.10373v1) — BioMistral authors / arXiv; supports BioMistral arXiv evaluation paper prints numeric biomedical QA accuracies and comparative tables for BioMistral-7B and variants on MedQA/MedMCQA/PubMedQA and reports relative improvements versus baseline models.
+- [Safety-critical evaluation including BioMistral-7B-DARE (arXiv 2507.02983v3)](https://arxiv.org/html/2507.02983v3) — arXiv (safety-evaluation preprint); supports ArXiv safety-evaluation preprint prints harmlessness and honesty numeric scores for BioMistral-7B-DARE and comparative harmlessness numbers among evaluated models (harmlessness 0.90 for BioMistral-7B-DARE in the findings).
+- [BioMistral/BioMistral-7B config.json (Hugging Face repository file)](https://huggingface.co/BioMistral/BioMistral-7B/blob/main/config.json) — BioMistral / Hugging Face (repository file); supports The config.json in the BioMistral-7B repository (as listed in the findings) shows model architecture details and lists max_position_embeddings=32768 in the research findings, producing a context-window value that conflicts with the model-card stated 2048 token context in the findings.
+- [BioMistral repository (GitHub / README and commits as presented in findings)](https://github.com/BioMistral/BioMistral) — BioMistral / GitHub (repository); supports BioMistral project repository README and repository materials in the findings contain benchmark tables and code folders; the findings cite repository commit history and README benchmark tables as primary-source artifacts.
+- [NGC catalog: Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql-v1.0 (NGC container entry)](https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/llama-3.1-nemotron-nano-8b-healthcare-text2sql-v1.0) — NVIDIA / NGC catalog; supports NGC container entry for Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql-v1.0 documents presence of a named NVIDIA container and lists container release metadata (container version 1.15.1 in the findings).
+- [NVIDIA NIM Text-to-SQL model documentation (docs.nvidia.com, 1.15.0 Text-to-SQL page)](https://docs.nvidia.com/nim/large-language-models/1.15.0/text-to-sql-model.html) — NVIDIA (NIM documentation); supports NIM Text-to-SQL documentation lists Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql-v1.0 as a supported Text-to-SQL model, provides example request shapes including DDL + SQL generation and suggests deterministic settings (e.g., temperature=0) in examples.
+- [NVIDIA NIM supported-models / support matrix (docs.nvidia.com)](https://docs.nvidia.com/nim/large-language-models/1.15.0/supported-models.html) — NVIDIA (NIM documentation); supports The NIM supported-models page lists Llama-3.1-Nemotron-Nano-8B-Healthcare-Text2sql-v1.0 and provides environment/support notes used in the research findings.
+- [Exact official starting source declared by Forge](https://huggingface.co/stanford-crfm/BioMedLM) — huggingface.co; supports Forge-to-upstream exact-version identity
+
+## Evidence gaps
+
+- Evidence gap: The research findings do not include any primary-source Hugging Face model card, CRFM announcement, or other canonical primary document for the exact Forge slug stanfordcrfm-biomedlm-2-7b-safety-review. Therefore claims about BioMedLM (architecture, sequence length, numeric benchmarks, or license for that exact Forge slug) cannot be verified from the provided findings.
+- Evidence gap: The research findings do not include a primary-source mapping that ties the Forge-specified NVIDIA versionKey 'nim-1-15-1-candidate' exactly to an NGC container or NIM container tag; the NGC container entry in the findings lists a container version 1.15.1 but the exact Forge versionKey mapping used in the draft is not explicitly documented in the provided primary sources.
+- Evidence gap: The research findings present conflicting context-window values for BioMistral-7B (the BioMistral model card in the findings states a 2048-token context window while the BioMistral config.json in the findings shows max_position_embeddings=32768); the provided findings do not contain a primary-source versionKey or commit mapping that resolves this ambiguity, so context-window claims tied to a specific Forge versionKey are unverified.
+- Evidence gap: The research findings do not provide canonical official evaluation split identifiers (train/validation/test or named canonical eval splits) for MedQA / MedMCQA / PubMedQA runs cited in the BioMistral primary sources; the findings present numeric accuracies but do not document the explicit split names in the provided primary-source artifacts, preventing strict split-matched comparisons.
+- Evidence gap: The research findings do not include the exact prompt templates, few-shot exemplars, instruction/system framing, or decoding/sampling settings (temperature/top-p/beams) for many of the reported runs; where runs are reported in primary sources without these protocol artifacts in the provided findings, cross-model comparability is an evidence gap.
+- Evidence gap: For Text2SQL execution/denotation accuracy parity, the research findings do not provide an identical public healthcare Text2SQL benchmark dataset name, canonical evaluation DB instance, or canonicalization scripts tied to the NVIDIA candidate in the provided findings; execution/denotation comparisons therefore cannot be validated from the supplied primary sources.
+- Evidence gap: Where numeric results depend on downstream heads, wrappers, or service containers (e.g., NIM Text-to-SQL head or DARE safety head), the research findings do not always include explicit primary-source documentation that the reported numeric run used the exact Forge-served artifact rather than an upstream checkpoint; such dependent claims are evidence gaps unless the exact head/container mapping is present in the cited primary sources.
+
+## Independent audit
+
+Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 0 deterministic draft defect(s) were supplied to the audit.
+
+- `low` https://huggingface.co/stanford-crfm/BioMedLM: Audited claim cited a first-party child URL omitted from the source index. Resolution: The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.

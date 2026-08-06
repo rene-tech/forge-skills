@@ -65,6 +65,15 @@ Route: `POST /v1/infer`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-hive-deepfake-image-detection-8b102328c6`
+- Recommended: Per-face deepfake detection in images (binary classification per detected face) — The NIM API reference describes the model as identifying whether an image is a deepfake and states that the model locates faces and outputs, for each detected face, a bounding box, a classification, and an accompanying confidence score.
+- Recommended: Deploying the NIM-distributed Hive Deepfake Image Detection model on NVIDIA GPUs (validate integration and performance on target hardware) — The NIM support matrix documents GPU and engine support (TensorRT on specific GPUs and ONNX for GPUs with sufficient memory) and requires a Docker environment that supports NVIDIA GPUs and the NVIDIA Container Toolkit; implementers must validate throughput/latency on their hardware.
+- Avoid: Using the Hive Deepfake Image Detection model for non-image modalities (e.g., text, audio, or embeddings) — The NIM API reference describes the model specifically as identifying whether an image is a deepfake, and the documented behavior is face detection and per-face classification in images; the inspected sources do not document non-image modality support.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -82,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/hive-deepfake-image-detection-nim/inference-routes`
 - Regional deployment: `/v1/models/hive-deepfake-image-detection-nim/regional-deployment`
 - Serverless handoff: `/v1/models/hive-deepfake-image-detection-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/classification-and-detection/hive-deepfake-image-detection-nim/SKILL.md

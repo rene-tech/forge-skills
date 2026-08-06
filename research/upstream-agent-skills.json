@@ -1,0 +1,324 @@
+{
+  "schemaVersion": "1.0.0",
+  "sources": [
+    {
+      "name": "NVIDIA Agent Skills",
+      "repository": "https://github.com/NVIDIA/skills",
+      "revision": "1ab4676c2ee33326ab11042db2a8e98b4d78a1b8",
+      "authority": "NVIDIA",
+      "policy": "Treat signed NVIDIA skills as first-party operating guidance only for the exact upstream model or workflow they name. Do not transfer their benchmark or runtime claims to a different Forge checkpoint, wrapper, quantization, or NIM."
+    },
+    {
+      "name": "NVIDIA BioNeMo Agent Toolkit",
+      "repository": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit",
+      "revision": "a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b",
+      "authority": "NVIDIA BioNeMo",
+      "policy": "Reuse the named NIM skill's scientific purpose, payload preparation, expected artifacts, validation, failure modes, and hosted-versus-local guidance only when its model and NIM version match. Forge routes, source images, GPU support, authentication, and Nebius deployment remain authoritative for the Forge runtime. BioNeMo skill-evaluation results measure agent behavior, not model quality."
+    },
+    {
+      "name": "Nebius BioNeMo Agent cookbook",
+      "repository": "https://github.com/nebius/serverless-ai-cookbook",
+      "revision": "e5f72b6dee788f7f802a8aed6ab73d0dc4346f90",
+      "authority": "Nebius cookbook integration",
+      "policy": "Use its capability routing, named tool contracts, safety boundary, and Serverless Endpoint-versus-Job guidance. Its deterministic service is an integration harness, not scientific or model-quality evidence."
+    }
+  ],
+  "modelMappings": [
+    {
+      "forgeSlugs": [
+        "boltz2-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's Boltz2 NIM skill documents entity preparation, structure and affinity modes, confidence and mmCIF interpretation, exact NIM artifacts, validation, failure modes, and hosted/local operation. Use the Forge skill's live route, source image, support matrix, authentication, and Nebius deployment contract; do not transfer a different NIM tag or the BioNeMo agent-skill benchmark into model-quality claims.",
+      "skills": [
+        {
+          "name": "boltz2-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/boltz2-nim"
+        },
+        {
+          "name": "cuEquivariance",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/library-skills/cuEquivariance"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "mit-diffdock-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's DiffDock NIM skill documents receptor ATOM-record preparation, SMILES/SDF ligand handling, hosted/local path differences, ranked pose artifacts, confidence interpretation, validation, and failure modes. The exact Forge route and deployed NIM version still come from Forge.",
+      "skills": [
+        {
+          "name": "diffdock-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/diffdock-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-genmol-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's GenMol NIM skill is first-party operating guidance for SAFE—not ordinary SMILES—input, generation modes, QED/LogP ranking, artifacts, validation, and hosted/local operation. Verify the exact Forge image/version and use Forge's live request contract before invocation.",
+      "skills": [
+        {
+          "name": "genmol-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/genmol-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-genmol-2-0-0-nim"
+      ],
+      "relation": "related-version-workflow",
+      "notes": "The BioNeMo GenMol skill currently demonstrates a different named NIM tag than Forge's GenMol 2.0.0 entry. Use it for scientific workflow concepts and SAFE preparation only after reconciling every field, response, and deployment flag against the Forge 2.0.0 route; do not transfer version-specific behavior or benchmark claims.",
+      "skills": [
+        {
+          "name": "genmol-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/genmol-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-molmim-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's MolMIM skill documents generation, embedding, hidden-state, decoding, sampling, CMA-ES optimization, SMILES/property validation, and the hosted-versus-local endpoint boundary. Use only the routes Forge declares for its deployed NIM and do not invent hosted latent endpoints.",
+      "skills": [
+        {
+          "name": "molmim-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/molmim-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "colabfold-msa-search-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's MSA Search skill documents standard and paired searches, databases, A3M/FASTA artifacts, template behavior, validation, large local database requirements, and hosted/local path differences. Forge's exact route, storage design, image, and GPU matrix remain authoritative.",
+      "skills": [
+        {
+          "name": "msa-search-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/msa-search-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "openfold-openfold2-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's OpenFold2 skill documents sequence/MSA/template preparation, selected-model and relaxation controls, mmCIF/confidence validation, and hosted/local operation for the named NIM. Use Forge's declared route and deployed source image for execution.",
+      "skills": [
+        {
+          "name": "openfold2-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/openfold2-nim"
+        },
+        {
+          "name": "cuEquivariance",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/library-skills/cuEquivariance"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "openfold3-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's OpenFold3 skill documents multi-entity protein/nucleic-acid/ligand requests, MSA/template controls, output and confidence artifacts, scientific validation, and hosted/local operation. Use Forge's exact request route, source image, support matrix, and deployment contract.",
+      "skills": [
+        {
+          "name": "openfold3-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/openfold3-nim"
+        },
+        {
+          "name": "cuEquivariance",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/library-skills/cuEquivariance"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "dauparas-proteinmpnn-suite"
+      ],
+      "relation": "related-runtime-workflow",
+      "notes": "Forge packages an upstream ProteinMPNN suite rather than the exact BioNeMo NIM contract. NVIDIA's skill remains useful for inverse-folding intent, PDB input preparation, fixed-chain/residue controls, multi-FASTA outputs, and validation, but every payload field, image, and route must be taken from the Forge wrapper.",
+      "skills": [
+        {
+          "name": "proteinmpnn-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/proteinmpnn-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "rfdiffusion-nim"
+      ],
+      "relation": "exact-nim-operating-skill",
+      "notes": "NVIDIA BioNeMo's RFdiffusion skill documents de novo, motif-scaffolding, and binder-design modes; contigs and hotspots; PDB artifacts; ProteinMPNN handoff; validation; and hosted/local operation. Use Forge's live route and deployed NIM version for the actual call.",
+      "skills": [
+        {
+          "name": "rfdiffusion-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/rfdiffusion-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "boltz2-nim",
+        "mit-diffdock-nim",
+        "nvidia-genmol-nim",
+        "nvidia-genmol-2-0-0-nim"
+      ],
+      "relation": "related-multi-model-pipeline",
+      "notes": "The NVIDIA BioNeMo drug-discovery meta-skill composes GenMol, DiffDock, and Boltz2. Use it as a workflow template only after independently selecting exact Forge versions, reconciling SAFE/SMILES and structure artifacts at every boundary, and validating each intermediate result; it is not a head-to-head quality benchmark.",
+      "skills": [
+        {
+          "name": "drug-discovery-pipeline",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/meta-skills/drug-discovery-pipeline"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "colabfold-msa-search-nim",
+        "openfold3-nim"
+      ],
+      "relation": "related-multi-model-pipeline",
+      "notes": "The NVIDIA BioNeMo MSA-to-OpenFold3 meta-skill documents the A3M handoff between MSA Search and structure prediction. Treat its fixed examples as a workflow template; verify database choices, sequence/entity schema, MSA depth, exact Forge routes, and returned artifacts for the selected versions.",
+      "skills": [
+        {
+          "name": "msa-structure-prediction-pipeline",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/meta-skills/msa-structure-prediction-pipeline"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "boltz2-nim",
+        "mit-diffdock-nim",
+        "nvidia-genmol-nim",
+        "nvidia-genmol-2-0-0-nim",
+        "nvidia-molmim-nim"
+      ],
+      "relation": "related-cheminformatics-validation",
+      "notes": "NVIDIA BioNeMo's nvMolKit skill is related GPU-batched cheminformatics guidance for fingerprints, similarity, conformers, force-field optimization, clustering, and substructure checks. Use it for large-batch ligand or generated-molecule validation when installed; it does not establish any model's request schema, quality, or Forge runtime behavior, and plain RDKit is generally more appropriate for one-off molecules.",
+      "skills": [
+        {
+          "name": "nvmolkit-usage",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/library-skills/nvMolKit"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-maisi-nim"
+      ],
+      "relation": "related-model-workflow",
+      "notes": "These NVIDIA-authored skills document related NV-Generate/MAISI medical-image generation workflows. Confirm the exact NIM mode and payload before applying any instruction to nvidia-maisi-nim.",
+      "skills": [
+        {
+          "name": "nv-generate-ct-rflow",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nv-generate-ct-rflow"
+        },
+        {
+          "name": "nv-generate-mr",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nv-generate-mr"
+        },
+        {
+          "name": "nv-generate-mr-brain",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nv-generate-mr-brain"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-cosmos-embed1"
+      ],
+      "relation": "exact-model",
+      "notes": "NVIDIA's Cosmos-Embed skill covers the named Cosmos-Embed1 checkpoint's video/text input preparation, embedding inference, retrieval use cases, evaluation, export, and fine-tuning. Use its TAO container commands only when that environment is selected; use the Forge skill's own request schema for the deployed Forge runtime.",
+      "skills": [
+        {
+          "name": "tao-finetune-cosmos-embed",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/tao-finetune-cosmos-embed"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-cosmos3-reasoner-nano",
+        "nvidia-cosmos3-reasoner-super"
+      ],
+      "relation": "related-model-workflow",
+      "notes": "NVIDIA's Cosmos Reason skill gives first-party video-QA data, checkpoint-conversion, evaluation, and SFT guidance. Its packaged default is Cosmos3-Nano; treat the Forge Nano/Super aliases as separate exact checkpoints and verify the selected weight, format, and overrides before applying the workflow, especially for Super.",
+      "skills": [
+        {
+          "name": "tao-finetune-cosmos-reason",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/tao-finetune-cosmos-reason"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-llama-nemotron-embed-1b-v2-nim",
+        "nvidia-llama-nemotron-rerank-1b-v2-nim",
+        "nvidia-llama-nemotron-rerank-vl-1b-v2-nim"
+      ],
+      "relation": "exact-model",
+      "notes": "NVIDIA's public Nemotron retrieval recipe skill distinguishes first-stage embedding from second-stage reranking and documents data preparation, evaluation, export, and deployment for the named Llama Nemotron retrieval families. Keep its recipe artifacts separate from the exact Forge NIM request and runtime contract.",
+      "skills": [
+        {
+          "name": "nemotron-retrieval-recipes",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nemotron-retrieval-recipes"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-llama-3-1-nemotron-nano-8b-healthcare-text2sql-nim",
+        "nvidia-llama-3-1-nemotron-nano-8b-v1-nim",
+        "nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim",
+        "nvidia-nemotron-nano-12b-v2-vl-nim",
+        "nvidia-nemotron-nano-9b-v2-nim"
+      ],
+      "relation": "related-model-workflow",
+      "notes": "NVIDIA's Nemotron customization skill is first-party guidance for curating, training, evaluating, converting, and optimizing Nemotron-family checkpoints in the Nemotron repository. It is not an inference payload or Nebius deployment contract; verify the exact listed checkpoint and use the Forge/Serverless instructions for serving.",
+      "skills": [
+        {
+          "name": "nemotron-customize",
+          "url": "https://github.com/NVIDIA/skills/tree/1ab4676c2ee33326ab11042db2a8e98b4d78a1b8/skills/nemotron-customize"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "nvidia-nv-embedqa-e5-v5",
+        "stanfordcrfm-biomedlm-2-7b",
+        "stanfordcrfm-biomedlm-2-7b-safety-review",
+        "boltz2-nim",
+        "facebook-esm-2-650m-protein-embedding",
+        "openmm-md-8-5-1-wrapper",
+        "huggingfacebio-carbon-3b-vllm-cuda13"
+      ],
+      "relation": "agent-integration",
+      "notes": "The cookbook maps these exact Forge slugs to BioNeMo-style capability names and Serverless shapes. Use it for routing and tool integration, never as model-quality evidence.",
+      "skills": [
+        {
+          "name": "BioNeMo capability catalog",
+          "url": "https://github.com/nebius/serverless-ai-cookbook/blob/e5f72b6dee788f7f802a8aed6ab73d0dc4346f90/life-science/bionemo-agent/bionemo_agent/catalog.py"
+        },
+        {
+          "name": "BioNeMo named tool contracts",
+          "url": "https://github.com/nebius/serverless-ai-cookbook/blob/e5f72b6dee788f7f802a8aed6ab73d0dc4346f90/life-science/bionemo-agent/bionemo_agent/tools.py"
+        },
+        {
+          "name": "BioNeMo agent routing and safety instructions",
+          "url": "https://github.com/nebius/serverless-ai-cookbook/blob/e5f72b6dee788f7f802a8aed6ab73d0dc4346f90/life-science/bionemo-agent/configs/config.yml"
+        }
+      ]
+    }
+  ]
+}

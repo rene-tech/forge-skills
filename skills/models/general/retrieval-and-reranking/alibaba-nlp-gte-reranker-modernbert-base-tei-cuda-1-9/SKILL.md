@@ -68,6 +68,15 @@ Route: `POST /rerank`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-alibaba-nlp-gte-reranker-modernbert-base-0ec86b6e00`
+- Recommended: English retrieval reranking (cross-encoder reranker for query + candidate document pairs) — Repository config.json specifies ModernBertForSequenceClassification (sequence-classification head) and README model-list entries describe gte-reranker-modernbert-base as a text reranker; these checkpoint-scoped artifacts support using the checkpoint as a cross-encoder reranker for query/document pair relevance scoring.
+- Avoid: Using gte-reranker-modernbert-base as a drop-in embedding generator for vector search without verification — Config.json records a sequence-classification architecture (ModernBertForSequenceClassification) indicating a cross-encoder reranker head rather than an embedding-only encoder; primary blobs do not provide evidence that this checkpoint is intended or configured as an embeddings-only encoder.
+- Avoid: Assuming numeric calibration or cross-query comparability of any returned "raw_scores" without validation — Located primary repository blobs (README/config/commits/tokenizer blobs) do not define whether returned relevance fields are logits, probabilities, or calibrated scores; numeric semantics and calibration are not documented in the located blobs.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -86,11 +95,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/inference-routes`
 - Regional deployment: `/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/regional-deployment`
 - Serverless handoff: `/v1/models/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/alibaba-nlp-gte-reranker-modernbert-base-tei-cuda-1-9/SKILL.md

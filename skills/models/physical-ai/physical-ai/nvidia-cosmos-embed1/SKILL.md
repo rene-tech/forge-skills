@@ -64,6 +64,16 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-cosmos-embed1-latest-quickstart-guide-html-9090228f0f`
+- Recommended: Text-to-video retrieval (semantic search) using embeddings — NIM introduction, VSS model doc, NGC/TAO listings and the NIM API reference describe Cosmos‑Embed1 as producing aligned embeddings for text and short‑form videos enabling text‑to‑video retrieval and semantic search. The NIM serves embeddings via POST /v1/embeddings.
+- Recommended: Video-to-video retrieval and similarity matching — NGC TAO model listing and VSS documentation list inverse video search and video‑to‑video search as intended applications, describing a unified embedding space for videos and text.
+- Recommended: Semantic deduplication, content clustering, and k‑NN downstream tasks — NGC catalog, NIM introduction and TAO documentation list semantic deduplication, clustering, and k‑NN style downstream usage as supported downstream applications for embeddings.
+- Avoid: Use as a generative language model for token‑level text generation — Primary NIM docs and API describe Cosmos‑Embed1 as a joint video‑text embedder returning embedding vectors via POST /v1/embeddings; there is no primary‑source evidence in the inspected NIM docs that the model exposes token‑level generation/completion capability.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -81,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-embed1/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-embed1/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-embed1/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-embed1/SKILL.md

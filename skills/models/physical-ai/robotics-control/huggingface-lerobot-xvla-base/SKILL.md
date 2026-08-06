@@ -78,6 +78,16 @@ Route: `POST /v1/inference/huggingface-lerobot-xvla-base`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-lerobot-xvla-base-b834a228b7`
+- Recommended: Foundation policy pretraining and backbone for cross-embodiment research (Phase I pretrained backbone for downstream Phase II adaptation). — Hugging Face docs and the model card present the checkpoint as the X-VLA base model intended for Phase I pretraining and as a pretrained backbone for Phase II adaptation; the paper and docs describe soft prompts and cross-embodiment methodology supporting this use.
+- Recommended: Research and development of soft-prompted cross-embodiment policies and Phase II domain-adaptation experiments (simulation and multi-platform pretraining research). — The canonical paper and Hugging Face docs describe soft prompts as the mechanism to represent hardware/domain variation and document Phase II domain adaptation practices, indicating the base checkpoint is suitable as a research backbone for soft-prompt and cross-embodiment method development.
+- Avoid: Direct deployment of the raw base checkpoint as a final real-robot controller without Phase II adaptation or appropriate action postprocessing. — Primary documentation describes the base checkpoint as offering a 20-dimensional output for pretrained compatibility and documents padding/trimming behavior (20↔real_dim) and an `auto` action mode; the base checkpoint is presented as a pretrained backbone that requires Phase II adaptation and appropriate postprocessing for deployment.
+- Avoid: Assuming numeric benchmarked performance (checkpoint-scoped success rates) for lerobot/xvla-base without Phase II evaluation. — Hugging Face documentation reports numeric results for other named checkpoints (e.g., lerobot/xvla-libero, lerobot/xvla-widowx, lerobot/xvla-folding) but does not attribute checkpoint-scoped numeric evaluation tables to lerobot/xvla-base in the inspected canonical sources.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -95,11 +105,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/huggingface-lerobot-xvla-base/inference-routes`
 - Regional deployment: `/v1/models/huggingface-lerobot-xvla-base/regional-deployment`
 - Serverless handoff: `/v1/models/huggingface-lerobot-xvla-base/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-xvla-base/SKILL.md

@@ -1,0 +1,690 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5] uses forbidden secondary URL https://developer.nvidia.com/blog/llama-3-2-full-stack-optimizations-unlock-high-performance-on-nvidia-gpus",
+        "path": "$.sources[5] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8] uses forbidden secondary URL https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/discussions/20",
+        "path": "$.sources[8] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[15].primary must be true",
+        "path": "$.sources[15].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[17].primary must be true",
+        "path": "$.sources[17].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[18].primary must be true",
+        "path": "$.sources[18].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[21].primary must be true",
+        "path": "$.sources[21].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://developer.meta.com/ai/docs/model-cards-and-prompt-formats/llama3_2",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://developer.meta.com/ai/docs/model-cards-and-prompt-formats/llama3_2",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.benchmarks_evidenceGaps",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.comparisons_evidenceGaps",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/meta/llama-3.2-1b-instruct"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://build.nvidia.com/meta/llama-3.2-1b-instruct",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/meta/llama-3.2-1b-instruct/systemcard"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://build.nvidia.com/meta/llama-3.2-1b-instruct/systemcard",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 10 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Small, low-latency Llama 3.2 chat model packaged as an NVIDIA NIM for fast instruction-following examples.",
+      "displayName": "Use Meta Llama 3.2 1B Instruct",
+      "group": "language",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "llama-3.2-community",
+      "modelFamily": "meta-llama-3-2-1b-instruct",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "meta-llama-3-2-1b-instruct-nim",
+      "sourceUrl": "https://build.nvidia.com/meta/llama-3.2-1b-instruct",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/meta/llama-3.2-1b-instruct/systemcard"
+        ],
+        "modelScope": "NVIDIA NIM packaging of meta-llama/Llama-3.2-1B-Instruct",
+        "reason": "NVIDIA Build systemcard explicitly states tool calling is not supported for the 1B NIM packaging.",
+        "useCase": "Tasks requiring built-in tool calling when served via the NVIDIA NIM"
+      },
+      {
+        "evidenceUrls": [
+          "https://developer.meta.com/ai/docs/model-cards-and-prompt-formats/llama3_2",
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+        ],
+        "modelScope": "Family-level guidance applied conservatively to meta-llama/Llama-3.2-1B-Instruct",
+        "reason": "Meta developer docs indicate lightweight 1B/3B models are not intended to replace larger models for all use cases; use caution and validate for high-stakes tasks.",
+        "useCase": "High-stakes applications requiring highest-accuracy or large-model capabilities without downstream validation"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/blob/main/LICENSE.txt",
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+        ],
+        "modelScope": "meta-llama/Llama-3.2-1B-Instruct (license/AUP applies)",
+        "reason": "License and Acceptable Use constraints govern prohibited or restricted applications; deployments must comply with the license/AUP.",
+        "useCase": "Applications that violate the Llama 3.2 Community License / Acceptable Use Policy"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Hugging Face performance table lists the aggregate 5-shot bf16 number but does not include full evaluation-harness templates, seeds, or scripts in the same table."
+        ],
+        "conditions": "Reported as bf16 evaluation and 5-shot prompting on the Hugging Face model page performance table; prompt templates/seeds/harness are not enumerated in that table.",
+        "dataset": "MMLU",
+        "direction": "higher-is-better",
+        "metric": "macro-average accuracy",
+        "modelScope": "Llama-3.2-1B-Instruct (bf16, 5-shot) as reported on the Hugging Face model page",
+        "sourceLocator": "Model page performance table (MMLU bf16 5-shot row)",
+        "sourceUrl": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+        "split": "5-shot",
+        "task": "MMLU (macro-average accuracy, 5-shot)",
+        "value": "49.3%"
+      },
+      {
+        "caveats": [
+          "Hugging Face performance table provides an aggregate IFEval number but does not provide full reproducibility artifacts (templates, seeds, harness) in that same table."
+        ],
+        "conditions": "Reported on the Hugging Face model page as an IFEval result for the 1B bf16 checkpoint; the exact split/harness location is not enumerated in the performance table.",
+        "dataset": "IFEval",
+        "direction": "higher-is-better",
+        "metric": "average accuracy (prompt/instruction, loose/strict aggregated)",
+        "modelScope": "Llama-3.2-1B-Instruct (bf16) as reported on the Hugging Face model page",
+        "sourceLocator": "Model page performance table (IFEval entry)",
+        "sourceUrl": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+        "split": "not reported",
+        "task": "IFEval (instruction-following average accuracy)",
+        "value": "59.5%"
+      },
+      {
+        "caveats": [
+          "The performance table documents CoT and 8-shot conditions but does not include full prompt templates or harness code in the same table."
+        ],
+        "conditions": "Reported as GSM8K CoT 8-shot em_maj1@1 for the 1B bf16 checkpoint on the Hugging Face model page; prompt templates/seeds/harness not enumerated in that table.",
+        "dataset": "GSM8K",
+        "direction": "higher-is-better",
+        "metric": "exact match (em_maj1@1)",
+        "modelScope": "Llama-3.2-1B-Instruct (bf16, CoT, 8-shot) as reported on the Hugging Face model page",
+        "sourceLocator": "Model page performance table (GSM8K CoT 8-shot row)",
+        "sourceUrl": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+        "split": "8-shot",
+        "task": "GSM8K (Chain-of-Thought, exact match)",
+        "value": "44.4%"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "allenai-olmo-2-0425-1b-instruct",
+        "comparisonConditions": "Searched the Hugging Face model page and Meta model-card and the NVIDIA NIM reference for protocol-matched head-to-head numbers; no matched-protocol table found for both exact checkpoints.",
+        "criteria": "No protocol-matched, primary-source numeric comparison (dataset/split/precision/prompting/harness) between meta-llama/Llama-3.2-1B-Instruct and this alternative was found in the checked primary sources.",
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+        ],
+        "rationale": "Checked primary sources report per-checkpoint numbers for Llama 3.2 but do not present head-to-head matched-protocol comparisons against this alternative.",
+        "task": "general instruction-following/chat",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "allenai-olmo-3-7b-instruct",
+        "comparisonConditions": "Searched the Meta model-card and NVIDIA NIM reference; no matched-protocol comparisons found.",
+        "criteria": "Different parameter scales and no direct protocol-matched comparison in checked primary sources.",
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+        ],
+        "rationale": "Primary sources for Llama 3.2 do not contain matched-protocol head-to-head comparisons versus this alternative.",
+        "task": "general instruction-following/chat",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "bigcode-starcoder2-7b",
+        "comparisonConditions": "Searched primary model-card and NIM docs for protocol-matched comparisons; none located.",
+        "criteria": "No protocol-matched, primary-source numeric comparisons for both exact checkpoints were found in the checked primary sources.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct",
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+        ],
+        "rationale": "Checked primary sources (Meta model-card, NVIDIA NIM reference) lack protocol-matched head-to-head tables comparing the exact checkpoints.",
+        "task": "code generation / general language tasks",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "huggingfacetb-smollm3-3b",
+        "comparisonConditions": "Checked Meta model-card and NVIDIA NIM docs; no matched-protocol comparisons present.",
+        "criteria": "No protocol-matched, primary-source numeric comparison for the exact checkpoints in the checked sources.",
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+        ],
+        "rationale": "Primary sources for Llama 3.2 do not provide matched-protocol head-to-head numbers against this alternative.",
+        "task": "general instruction-following/chat",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "meta-llama-3-1-8b-instruct",
+        "comparisonConditions": "Searched family model-card and NIM references for head-to-head matched protocols; none located.",
+        "criteria": "Scale differences and missing matched-protocol benchmark rows for both exact checkpoints in checked primary sources.",
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+        ],
+        "rationale": "Llama 3.2 family materials report per-checkpoint numbers but no direct matched-protocol head-to-head comparisons between the exact 1B and 8B instruct checkpoints were found in checked sources.",
+        "task": "general instruction-following/chat",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "meta-llama-3-2-3b-instruct",
+        "comparisonConditions": "Checked Meta model-card and NVIDIA family catalog entries; no matched-protocol head-to-head tables found.",
+        "criteria": "Different parameter scales and missing direct protocol-matched comparisons in the checked primary sources.",
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.2-1b-instruct",
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+        ],
+        "rationale": "Family-level entries exist for 3B instruct but no protocol-matched head-to-head comparisons against the exact 1B instruct checkpoint were found in checked sources.",
+        "task": "general instruction-following/chat",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "Other Forge-listed alternatives (aggregated)",
+        "comparisonConditions": "Searched Meta model-card and NVIDIA NIM references for matched-protocol comparisons; none located.",
+        "criteria": "No protocol-matched, primary-source numeric comparisons for the exact Llama-3.2-1B-Instruct checkpoint versus the other listed alternatives were found in the checked primary sources.",
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+        ],
+        "rationale": "NVIDIA and Meta primary sources assert per-checkpoint performance but do not provide protocol-matched, per-checkpoint head-to-head tables against each Forge alternative in the checked primary sources.",
+        "task": "general",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Only when using explicitly documented quantized variants (SpinQuant, QLoRA) and after validating accuracy on target tasks because accuracy differs across quantization schemes.",
+        "evidenceUrls": [
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+          "https://huggingface.co/datasets/meta-llama/Llama-3.2-1B-Instruct-evals"
+        ],
+        "modelScope": "Quantized variants of meta-llama/Llama-3.2-1B-Instruct (SpinQuant, QLoRA) as listed in the Hugging Face materials",
+        "useCase": "On-device or constrained-memory deployment using quantized variants (validate accuracy on target tasks)"
+      },
+      {
+        "conditions": "Only when using the NIM packaging that documents LoRA support; validate outputs after any LoRA adaptation because fine-tuning is not supported in the packaged NIM.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/meta/llama-3.2-1b-instruct/systemcard",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.2-1b-instruct"
+        ],
+        "modelScope": "NVIDIA NIM packaging of meta-llama/Llama-3.2-1B-Instruct",
+        "useCase": "LoRA-based customization via the NVIDIA NIM container (validate outputs after adaptation)"
+      }
+    ],
+    "evidenceGaps": [
+      "Immutable upstream checkpoint SHA/checksum or exact release-tag for meta-llama/Llama-3.2-1B-Instruct is not published in the checked primary sources (no SHA/checksum located on the Hugging Face model page, GitHub model-card, or NIM references).",
+      "Exact canonical tokenizer implementation path and full tokenization rules (merges/vocab ordering and explicit canonical tokenizer release tied to the 1B instruct checkpoint) are not specified in the upstream model-card or model page; Hugging Face dataset listing provides tokenizer files but a canonical tokenizer artifact path and merges/vocab ordering tied explicitly to the checkpoint are not documented.",
+      "Full evaluation-harness artifacts (exact prompt templates, seeds, harness scripts) required to exactly reproduce the Hugging Face performance-table benchmark rows (MMLU, IFEval, GSM8K) are not included in the checked primary-source performance tables.",
+      "Explicit documentation that the NIM serving interface returns per-token log probabilities or token-level logits is not present in the checked primary sources; absence of documentation constitutes an evidence gap for token-level logprob exposure.",
+      "Exact truncation/cropping policy (head vs tail truncation) for inputs longer than the documented maximum sequence length is not specified in the checked primary sources."
+    ],
+    "family": "build-nvidia-com-meta-llama-3-2-1b-instruct-27b0875952",
+    "identity": {
+      "architecture": "Auto-regressive transformer (family-level materials describe an optimized transformer architecture / auto-regressive language model)",
+      "checkpoint": "meta-llama/Llama-3.2-1B-Instruct",
+      "evidenceUrls": [
+        "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+        "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+        "https://huggingface.co/datasets/meta-llama/Llama-3.2-1B-Instruct-evals",
+        "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/blob/main/LICENSE.txt"
+      ],
+      "license": "Llama 3.2 Community License",
+      "parameterScale": "approximately 1 billion parameters",
+      "revision": "not reported",
+      "upstreamName": "meta-llama/Llama-3.2-1B-Instruct"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/meta/llama-3.2-1b-instruct"
+          ],
+          "statement": "NVIDIA Build examples expose an OpenAI-compatible API name 'meta/llama-3.2-1b-instruct' and example sampling parameters in NIM/Forge documentation."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+            "https://huggingface.co/datasets/meta-llama/Llama-3.2-1B-Instruct-evals"
+          ],
+          "statement": "Upstream Hugging Face README examples and provided pipelines show use of a list-of-messages format (roles) for instruction/chat and recommend inference with torch.bfloat16 and device_map='auto'."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+          ],
+          "statement": "Hugging Face README examples demonstrate inference examples using torch_dtype=torch.bfloat16 (bf16) and device_map='auto'."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/datasets/meta-llama/Llama-3.2-1B-Instruct-evals"
+          ],
+          "statement": "Tokenizer artifact files (tokenizer.json, tokenizer.model, tokenizer_config.json, special_tokens_map.json) are included in the Hugging Face dataset/evals listing for the 1B instruct checkpoint."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+            "https://developer.meta.com/ai/docs/model-cards-and-prompt-formats/llama3_2"
+          ],
+          "statement": "Primary documented input type is a single text string or an interactive list-of-messages (roles) format for instruction/chat examples."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+            "https://developer.meta.com/ai/docs/model-cards-and-prompt-formats/llama3_2"
+          ],
+          "statement": "Upstream README and Meta developer docs show passing a list of messages with roles such as 'system' and 'user' for instruction/chat generation."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/meta-llama-3.2-1b-instruct",
+            "https://build.nvidia.com/meta/llama-3.2-1b-instruct"
+          ],
+          "statement": "NVIDIA NIM example configuration documents sampling defaults used in examples (temperature, top_p, max_tokens) for the OpenAI-compatible example name."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+            "https://build.nvidia.com/meta/llama-3.2-1b-instruct"
+          ],
+          "statement": "Validate inputs conform to the expected text or messages format and that device/dtype settings match recommended inference settings (e.g., bf16) before submission."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/meta/llama-3.2-1b-instruct/systemcard"
+          ],
+          "statement": "When deploying via the NVIDIA NIM, check GPU memory against documented minima and recommended values in the NIM systemcard."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+        ],
+        "statement": "The checked primary sources do not publish an immutable upstream revision identifier (checkpoint SHA or exact checksum) for meta-llama/Llama-3.2-1B-Instruct."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/datasets/meta-llama/Llama-3.2-1B-Instruct-evals",
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+        ],
+        "statement": "Canonical tokenizer artifact path and explicit tokenization rules (merges/vocabulary ordering) for the exact 1B instruct checkpoint are not specified in the checked upstream model card or Hugging Face model page; the Hugging Face dataset/evals listing does include tokenizer files but an explicit canonical checkpoint tokenizer implementation path and merges/vocab ordering are not documented in the model card."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+          "https://huggingface.co/datasets/meta-llama/Llama-3.2-1B-Instruct-evals"
+        ],
+        "statement": "Some reported benchmark rows (MMLU, IFEval, GSM8K) are published as aggregate numbers in the Hugging Face performance table but the checked primary-source fragments do not include full evaluation-harness artifacts (exact prompt templates, seeds, harness scripts) required for exact reproducibility."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.2-1b-instruct",
+          "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+        ],
+        "statement": "Explicit documentation that the NIM serving interface returns per-token log probabilities or token-level logits was not found in the checked primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+        ],
+        "statement": "Exact truncation/cropping policy (head vs tail truncation) for inputs exceeding the maximum sequence length is not documented in the checked primary sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.2-1b-instruct",
+            "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+          ],
+          "statement": "Do not interpret returned text as conveying calibrated confidence or token-level probabilities unless explicit per-token logprob/logit exposure is later documented by the serving runtime."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.2-1b-instruct",
+            "https://build.nvidia.com/meta-llama-3.2-1b-instruct"
+          ],
+          "statement": "Served outputs are auto-regressive generated text (token sequence returned as text)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+            "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+          ],
+          "statement": "Users must perform downstream validation for task-specific acceptance thresholds and calibration because no vendor-prescribed downstream validation/certification procedures were found in the checked primary sources."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+        ],
+        "modelScope": "meta-llama/Llama-3.2-1B-Instruct (instruction-tuned 1B)",
+        "useCase": "Instruction-following assistant / chat (question answering, dialogue)",
+        "why": "Checkpoint is described as instruction-tuned and intended for assistant-like chat and instruction-following in the upstream model card and Hugging Face model page."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+        ],
+        "modelScope": "meta-llama/Llama-3.2-1B-Instruct",
+        "useCase": "Summarization and prompt/query rewriting",
+        "why": "Upstream model card and Hugging Face documentation list summarization and prompt rewriting among intended use cases for Llama\u20113.2 instruction-tuned models."
+      }
+    ],
+    "researchSummary": "Primary upstream and NVIDIA packaging sources identify meta-llama/Llama-3.2-1B-Instruct as an instruction\u2011tuned, auto\u2011regressive Transformer family checkpoint in the Llama 3.2 family at ~1B parameters, released under the Llama 3.2 Community License. Hugging Face model page and Meta model-card report benchmark rows for MMLU (bf16, 5-shot), IFEval (bf16), and GSM8K (CoT, 8-shot) tied to the 1B instruct checkpoint; tokenizer artifact files are listed in the Hugging Face dataset/evals listing. NVIDIA Build systemcard and NGC/NIM entries document the NIM packaging, OpenAI-compatible example name and sampling defaults, LoRA support in the NIM packaging, unsupported features (fine-tuning, tool calling) for the packaged NIM, and GPU memory minima/recommendations. Primary sources do not publish an immutable checkpoint SHA/revision for the upstream checkpoint; explicit per-token logprob/logit exposure and an explicit input-truncation (head vs tail) policy are not documented in the checked primary sources (see evidenceGaps).",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+        ],
+        "statement": "The Llama-3.2-1B-Instruct checkpoint was safety-fine-tuned using the same mitigations reported for the Llama 3 family (family-level safety fine-tuning statements)."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/blob/main/LICENSE.txt",
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+        ],
+        "statement": "License and Acceptable Use Policy prohibit certain uses (deployments must comply with the Llama 3.2 Community License and any stated AUP restrictions)."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+        ],
+        "statement": "Evidence gap: No upstream-prescribed, model-specific privacy/PHI handling procedure was found in the checked primary sources; organizational privacy/PHI procedures remain required."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "meta-llama/Llama-3.2-1B-Instruct",
+        "primary": true,
+        "primaryReason": "Canonical upstream model page and performance table for the meta-llama/Llama-3.2-1B-Instruct checkpoint; contains benchmark rows, README guidance, and links to model artifacts.",
+        "publisher": "Hugging Face (meta-llama organization)",
+        "sourceType": "repository",
+        "supports": [
+          "Checkpoint identity and parameter scale",
+          "Benchmark rows: MMLU (bf16 5-shot 49.3%), IFEval (bf16 59.5%), GSM8K (CoT 8-shot 44.4%)",
+          "Recommended inference dtype examples (bf16) and pipeline snippets"
+        ],
+        "title": "Hugging Face model page: meta-llama/Llama-3.2-1B-Instruct",
+        "url": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+      },
+      {
+        "modelScope": "Llama 3.2 family and checkpoint-level entries",
+        "primary": true,
+        "primaryReason": "Official Llama 3.2 family model card containing family- and checkpoint-level descriptions, architecture statement, and intended uses.",
+        "publisher": "meta-llama (GitHub repository)",
+        "sourceType": "model-card",
+        "supports": [
+          "Architecture: optimized auto-regressive transformer (family-level)",
+          "Instruction-tuning and alignment approach (SFT and RLHF family-level statements)",
+          "Intended use cases and release metadata"
+        ],
+        "title": "Meta Llama-3.2 model card (GitHub): MODEL_CARD.md",
+        "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      },
+      {
+        "modelScope": "Llama-3.2-1B-Instruct evals/artifacts",
+        "primary": true,
+        "primaryReason": "Dataset/evals listing associated with the checkpoint; contains tokenizer artifact file names and some evaluation metadata.",
+        "publisher": "Hugging Face (meta-llama datasets)",
+        "sourceType": "repository",
+        "supports": [
+          "Tokenizer artifact filenames (tokenizer.json, tokenizer.model, tokenizer_config.json, special_tokens_map.json)",
+          "Evaluation dataset references tied to the checkpoint"
+        ],
+        "title": "Hugging Face dataset / evals page: Llama-3.2-1B-Instruct-evals",
+        "url": "https://huggingface.co/datasets/meta-llama/Llama-3.2-1B-Instruct-evals"
+      },
+      {
+        "modelScope": "NIM packaging for meta-llama-3_2-1b-instruct",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NIM API reference documenting the packaged NIM for the meta-llama Llama-3.2-1B-Instruct offering and related packaging/benchmark notes.",
+        "publisher": "NVIDIA API documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Identification of the NIM packaging and readiness statements",
+          "Operational/packaging notes referenced for the NIM"
+        ],
+        "title": "NVIDIA NIM reference: meta-llama-3_2-1b-instruct",
+        "url": "https://docs.api.nvidia.com/nim/reference/meta-llama-3_2-1b-instruct"
+      },
+      {
+        "modelScope": "NIM container for Llama-3.2-1B-Instruct",
+        "primary": true,
+        "primaryReason": "Official NGC/NIM container listing describing the NIM container packaging for Llama-3.2-1B-Instruct.",
+        "publisher": "NVIDIA NGC (nim/meta container listing)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Identification of the NIM container packaging",
+          "Statements about readiness for commercial use and packaged model identity"
+        ],
+        "title": "NVIDIA NGC container listing: llama-3.2-1b-instruct (nim/meta container)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.2-1b-instruct"
+      },
+      {
+        "modelScope": "NIM example/entry for meta/llama-3.2-1b-instruct",
+        "primary": true,
+        "primaryReason": "Forge/NIM example page demonstrating the OpenAI-compatible API name and sampling defaults for the NIM.",
+        "publisher": "NVIDIA Build (Forge)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "OpenAI-compatible example API name 'meta/llama-3.2-1b-instruct'",
+          "Example sampling defaults (temperature, top_p, max_tokens) used in NIM examples"
+        ],
+        "title": "Build.nvidia.com model page for meta/llama-3.2-1b-instruct (NIM example/entry)",
+        "url": "https://build.nvidia.com/meta-llama-3.2-1b-instruct"
+      },
+      {
+        "modelScope": "NIM systemcard for meta/llama-3.2-1b-instruct",
+        "primary": true,
+        "primaryReason": "NVIDIA Build systemcard documenting serving constraints, LoRA support, unsupported features, and GPU memory minima/recommended values for the NIM packaging.",
+        "publisher": "NVIDIA Build (Forge)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "LoRA customization support and note that fine-tuning and tool calling are not supported in the packaged NIM",
+          "Minimum and recommended GPU memory values for bf16 and operational guidance"
+        ],
+        "title": "Build.nvidia.com systemcard for meta/llama-3.2-1b-instruct",
+        "url": "https://build.nvidia.com/meta-llama-3.2-1b-instruct/systemcard"
+      },
+      {
+        "modelScope": "Llama 3.2 family guidance",
+        "primary": true,
+        "primaryReason": "Official Meta developer documentation describing Llama 3.2 family prompt formats, role tokens, quantized-model guidance, and family-level responsible-use notes.",
+        "publisher": "Meta (developer documentation)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Prompt format tokens and role conventions (system/user/assistant/ipython)",
+          "Family-level notes that lightweight 1B/3B models do not support built-in tools and guidance on quantized-model usage"
+        ],
+        "title": "Meta developer docs: Llama3_2 model-cards and prompt formats",
+        "url": "https://developer.meta.com/ai/docs/model-cards-and-prompt-formats/llama3_2"
+      },
+      {
+        "modelScope": "Llama 3.2 Community License for the 1B instruct checkpoint",
+        "primary": true,
+        "primaryReason": "Canonical license text distributed alongside the checkpoint on the upstream model page.",
+        "publisher": "Hugging Face / Meta distribution",
+        "sourceType": "official-documentation",
+        "supports": [
+          "License name and key license provisions (Llama 3.2 Community License text and attribution/compliance notes)"
+        ],
+        "title": "Hugging Face LICENSE file for meta-llama/Llama-3.2-1B-Instruct",
+        "url": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/blob/main/LICENSE.txt"
+      },
+      {
+        "modelScope": "NIM hardware support and related requirements",
+        "primary": true,
+        "primaryReason": "NVIDIA NIM support matrix documenting supported hardware microarchitectures relevant to NIM-packaged models.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Supported hardware microarchitectures relevant to running NIM-packaged Llama 3.2 models"
+        ],
+        "title": "NVIDIA NIM support matrix (hardware/requirements)",
+        "url": "https://docs.nvidia.com/nim/large-language-models/1.1.0/support-matrix.html"
+      },
+      {
+        "modelScope": "meta-llama-3-2-1b-instruct",
+        "primary": true,
+        "primaryReason": "The independent audit cited this exact URL and its host is narrowly allowlisted as a first-party model or vendor documentation source.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Exact independently audited claim citation"
+        ],
+        "title": "Cited official first-party source",
+        "url": "https://build.nvidia.com/meta/llama-3.2-1b-instruct"
+      },
+      {
+        "modelScope": "meta-llama-3-2-1b-instruct",
+        "primary": true,
+        "primaryReason": "The independent audit cited this exact URL and its host is narrowly allowlisted as a first-party model or vendor documentation source.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Exact independently audited claim citation"
+        ],
+        "title": "Cited official first-party source",
+        "url": "https://build.nvidia.com/meta/llama-3.2-1b-instruct/systemcard"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "908040861da3d985a1570940edd92a93599a66bccbb06732be4502bf2cb846b6",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-meta-llama-3-2-1b-instruct-27b0875952",
+  "researchedAt": "2026-07-23T23:09:19.866591+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/meta/llama-3.2-1b-instruct",
+  "sourceUrls": [
+    "https://build.nvidia.com/meta/llama-3.2-1b-instruct"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

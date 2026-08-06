@@ -67,6 +67,14 @@ Route: `POST /v1/inference/hidream-ai-hidream-i1-fast`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-hidream-ai-hidream-i1-e16c7971da`
+- Recommended: Text-to-image generation (general-purpose image synthesis from text prompts). — Primary repository and model-card materials present HiDream-I1 as a text-to-image generative foundation model family and expose an inference entrypoint and Fast variant intended for lower-step generation.
+- Avoid: Clinical diagnostic, medical decision-making, or other clinical-ready deployments. — Primary sources (repository README, Hugging Face model card, and technical report) do not provide clinical validation, PHI-handling guidance, or statements clearing the model for clinical or diagnostic use.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -85,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/hidream-ai-hidream-i1-fast/inference-routes`
 - Regional deployment: `/v1/models/hidream-ai-hidream-i1-fast/regional-deployment`
 - Serverless handoff: `/v1/models/hidream-ai-hidream-i1-fast/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/hidream-ai-hidream-i1-fast/SKILL.md

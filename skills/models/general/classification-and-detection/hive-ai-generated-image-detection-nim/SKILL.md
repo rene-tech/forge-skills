@@ -65,6 +65,16 @@ Route: `POST /v1/infer`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-hive-ai-generated-image-detection-36e2b7f1b1`
+- Recommended: Binary classification to detect whether an image is AI-generated or modified (surface likely AI-generated content for downstream workflows). — Primary Hive documentation and the NIM catalog/reference describe a binary classification head that indicates whether an image is AI-generated accompanied by a confidence score.
+- Recommended: Source attribution: return the likely generative engine that produced an image when identifiable (use as a signal for triage or investigative workflows). — Creator documentation and NIM references describe a source-attribution head that returns the likely AI synthesis model or "none" if unidentified.
+- Avoid: Any vision task outside AI-generated image detection or source attribution (for example: fine-grained species identification, OCR, general object detection). — Primary sources describe the model specifically as an AI-generated image detector with a binary head and a source-attribution head; there is no primary-source evidence the checkpoint supports other vision tasks.
+- Avoid: Deploying the model without reviewing or complying with Hive's terms-of-use and NIM/NGC access/governance requirements. — Creator terms of use and NGC catalog documentation include usage restrictions and access requirements; users must review contractual/terms requirements prior to deployment.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -82,11 +92,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/hive-ai-generated-image-detection-nim/inference-routes`
 - Regional deployment: `/v1/models/hive-ai-generated-image-detection-nim/regional-deployment`
 - Serverless handoff: `/v1/models/hive-ai-generated-image-detection-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/classification-and-detection/hive-ai-generated-image-detection-nim/SKILL.md

@@ -64,6 +64,15 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-abhinand-medembed-small-v0-1-d1bc68419f`
+- Recommended: Medical and clinical information retrieval (semantic search over medical text) — The Hugging Face model card and the project README describe MedEmbed as embedding models fine-tuned for medical/clinical data and present usage guidance for embedding extraction, supporting retrieval-oriented use.
+- Recommended: Embedding extraction for retrieval-augmented pipelines (retrieval encoder only, requiring downstream validation) — Project materials and the model card present MedEmbed as embedding models intended for retrieval/semantic-search workflows; they show family-level training and usage orientation toward embedding extraction.
+- Avoid: Using MedEmbed-small-v0.1 as a standalone clinical diagnostic or decision-making tool without expert oversight — The model-family materials and the Hugging Face model card frame MedEmbed as embedding/retrieval aids and explicitly present the model as a tool to assist rather than replace human expertise in medical decision-making.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -82,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/abhinand-medembed-small-v0-1-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/abhinand-medembed-small-v0-1-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/abhinand-medembed-small-v0-1-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/abhinand-medembed-small-v0-1-vllm-cuda13/SKILL.md

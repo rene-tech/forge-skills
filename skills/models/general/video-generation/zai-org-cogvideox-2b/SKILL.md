@@ -66,6 +66,16 @@ Route: `POST /v1/inference/zai-org-cogvideox-2b`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-zai-org-cogvideox-2b-ca9a371b9b`
+- Recommended: Text-to-video generation (short clips) — Upstream model repository and Hugging Face model card describe CogVideoX-2B as a text-to-video generative diffusion model and list T2V as a supported inference task; upstream artifacts report common generation outputs at 720×480 and 8 fps and example duration 6 seconds.
+- Recommended: Image-to-video generation and video continuation (where supported by the pipeline) — The Diffusers CogVideoX pipeline documentation and the THUDM project README describe image-to-video and video-to-video (continuation) pipeline variants within the CogVideoX family; these task heads are part of the CogVideoX pipelines and repos.
+- Avoid: Assuming CogVideoX-2B is equivalent to CogVideoX-5B for generation quality or supported resolutions/durations — Upstream documentation and the canonical paper distinguish 2B and 5B variants; the paper and repository report different supported resolutions, durations, and numeric benchmark results across the two scales.
+- Avoid: Deploying 2B checkpoint for arbitrary resolutions or frame rates without upstream-validated configuration — The Hugging Face model card and repository commit state specific resolution and frame-rate (720×480, 8 fps) for the 2B variant; using unsupported configurations risks incorrect or unsupported behavior.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -84,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/zai-org-cogvideox-2b/inference-routes`
 - Regional deployment: `/v1/models/zai-org-cogvideox-2b/regional-deployment`
 - Serverless handoff: `/v1/models/zai-org-cogvideox-2b/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/zai-org-cogvideox-2b/SKILL.md

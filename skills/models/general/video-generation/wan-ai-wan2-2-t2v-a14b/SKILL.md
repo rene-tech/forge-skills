@@ -73,6 +73,15 @@ Route: `POST /v1/inference/wan-ai-wan2-2-t2v-a14b`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-wan-video-wan2-2-4460f5dc2a`
+- Recommended: Prepare inputs for Wan2.2 animate workflows using the repository's animate preprocessing scripts and guidance (animation and replacement modes). — The repository provides an animate preprocessing user guide documenting generation modes, required files, parameters, and example invocations, and ships preprocessing scripts and an example tree showing flags and sample paths.
+- Avoid: Assuming the repository code license (Apache-2.0) also licenses checkpoint model weights or using model weights without confirming an explicit model-weights license. — Evidence gap: the research did not find an explicit model-weights license statement for a14b-diffusers in the inspected primary repository files; repository LICENSE.txt documents the code license but does not itself establish a separate model-weights license for a named checkpoint.
+- Avoid: Deploying a14b-diffusers at scale or assuming specific single-GPU VRAM requirements without checkpoint-scoped verification. — Evidence gap: the inspected primary repository files provide preprocessing examples and model metadata but do not include authoritative per-checkpoint numeric VRAM or runtime requirements for a14b-diffusers.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -90,11 +99,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/wan-ai-wan2-2-t2v-a14b/inference-routes`
 - Regional deployment: `/v1/models/wan-ai-wan2-2-t2v-a14b/regional-deployment`
 - Serverless handoff: `/v1/models/wan-ai-wan2-2-t2v-a14b/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/wan-ai-wan2-2-t2v-a14b/SKILL.md

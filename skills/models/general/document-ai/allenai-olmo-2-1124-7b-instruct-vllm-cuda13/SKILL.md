@@ -73,6 +73,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-allenai-olmo-2-1124-7b-instruct-aa6456fc5a`
+- Recommended: English instruction-following and chat-style text generation — The Hugging Face model card for the exact checkpoint names this model among the family final instruction-tuned (RLVR) checkpoints and the model page provides usage instructions; the family-level preprint and repository provide contextual evidence that the family includes instruction-finetuned checkpoints.
+- Avoid: Any workflow that requires inputs longer than the documented context window without truncation or chunking — The official checkpoint config.json documents max_position_embeddings = 4096, which constrains single-sequence input length for this exact checkpoint.
+- Avoid: High-stakes decisions made from the model output without downstream validation — Evidence gap: The checked primary sources do not report calibrated confidence semantics, a certified decision-use policy, or a documented post-output validation pipeline for this exact checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/allenai-olmo-2-1124-7b-instruct-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/allenai-olmo-2-1124-7b-instruct-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/allenai-olmo-2-1124-7b-instruct-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/allenai-olmo-2-1124-7b-instruct-vllm-cuda13/SKILL.md

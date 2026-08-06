@@ -70,6 +70,15 @@ Route: `POST /audio_classification`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-mit-ast-finetuned-audioset-10-10-0-4593-33830cdbc6`
+- Recommended: Multi-label audio classification / sound‑event tagging on AudioSet‑style tasks — AST architecture and multi‑label AudioSet experiments are documented in the AST paper and the upstream repository; the upstream repository provides pretrained/weight‑averaged variants reported on AudioSet and the Hugging Face model card hosts a checkpoint labeled as AST fine‑tuned on AudioSet.
+- Avoid: Clinical‑grade diagnostic decision making based solely on model outputs — Primary canonical sources document training and evaluation on AudioSet and do not provide primary‑source clinical validation or regulatory clearance for AST checkpoints; the supplied primary sources do not present clinical‑validation evidence tying AST checkpoints to diagnostic use.
+- Avoid: Zero‑shot text‑conditioned / CLAP‑style cross‑modal zero‑shot classification using this checkpoint without additional components — Upstream AST artifacts and repository document supervised finetuning on AudioSet and do not provide primary‑source evidence of CLAP‑style zero‑shot capability for these AST checkpoints in the supplied findings.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -88,11 +97,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/mit-ast-finetuned-audioset-10-10-0-4593-wrapper-cuda12/inference-routes`
 - Regional deployment: `/v1/models/mit-ast-finetuned-audioset-10-10-0-4593-wrapper-cuda12/regional-deployment`
 - Serverless handoff: `/v1/models/mit-ast-finetuned-audioset-10-10-0-4593-wrapper-cuda12/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/health-audio/mit-ast-finetuned-audioset-10-10-0-4593-wrapper-cuda12/SKILL.md

@@ -1,0 +1,416 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3] uses forbidden secondary URL https://huggingface.co/papers/2510.10274",
+        "path": "$.sources[3] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6] uses unapproved repository owner 'arclab-mit' for this exact model scope",
+        "path": "$.sources[6] uses unapproved repository owner 'arclab-mit' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 2 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "X-VLA Base is an Apache-2.0 LeRobot vision-language-action policy checkpoint with 0.9B parameters, soft-prompted flow matching, three visual observations, an 8D robot state, and 20D ee6d robot actions.",
+      "displayName": "Use Hugging Face LeRobot X-VLA Base",
+      "group": "robotics-control",
+      "inputModalities": [
+        "text",
+        "image",
+        "robot_state"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "huggingface-lerobot-xvla",
+      "outputModalities": [
+        "robot_action",
+        "json"
+      ],
+      "slug": "huggingface-lerobot-xvla-base",
+      "sourceUrl": "https://huggingface.co/lerobot/xvla-base",
+      "version": "base-cdb7964e-wrapper-artifactkeys-20260529t07z",
+      "versionKey": "base"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://github.com/huggingface/lerobot"
+        ],
+        "modelScope": "lerobot/xvla-base",
+        "reason": "Primary documentation describes the base checkpoint as offering a 20-dimensional output for pretrained compatibility and documents padding/trimming behavior (20\u2194real_dim) and an `auto` action mode; the base checkpoint is presented as a pretrained backbone that requires Phase II adaptation and appropriate postprocessing for deployment.",
+        "useCase": "Direct deployment of the raw base checkpoint as a final real-robot controller without Phase II adaptation or appropriate action postprocessing."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://huggingface.co/lerobot/xvla-base"
+        ],
+        "modelScope": "lerobot/xvla-base",
+        "reason": "Hugging Face documentation reports numeric results for other named checkpoints (e.g., lerobot/xvla-libero, lerobot/xvla-widowx, lerobot/xvla-folding) but does not attribute checkpoint-scoped numeric evaluation tables to lerobot/xvla-base in the inspected canonical sources.",
+        "useCase": "Assuming numeric benchmarked performance (checkpoint-scoped success rates) for lerobot/xvla-base without Phase II evaluation."
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires Phase II domain-adaptation per the docs: introduce and optimize soft prompts for the target embodiment and apply postprocessing to trim the model's 20-dimensional outputs to the robot's real action dimension. Follow Phase II best-practice guidance in the docs (soft prompts encode hardware configuration while the backbone is adapted/frozen as documented).",
+        "evidenceUrls": [
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://github.com/huggingface/lerobot"
+        ],
+        "modelScope": "lerobot/xvla-base as Phase I pretrained backbone, followed by Phase II adaptation",
+        "useCase": "Adaptation to a specific real robot platform for safe deployment (Phase II domain adaptation and postprocessing to match robot action space)."
+      },
+      {
+        "conditions": "Create and train soft-prompt embeddings during Phase II adaptation to encode embodiment/domain differences; follow the documentation's Phase II recommendations.",
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2510.10274",
+          "https://huggingface.co/docs/lerobot/en/xvla"
+        ],
+        "modelScope": "lerobot/xvla-base backbone with new soft prompts trained during Phase II",
+        "useCase": "Using learned soft prompts to represent a new hardware embodiment or domain for policy fine-tuning."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No immutable checkpoint artifact name, file-level model snapshot name, or commit hash for lerobot/xvla-base was found in the inspected canonical primary locations: https://huggingface.co/lerobot/xvla-base, https://github.com/huggingface/lerobot, https://huggingface.co/docs/lerobot/en/xvla, https://arxiv.org/abs/2510.10274.",
+      "Evidence gap: No checkpoint-scoped numeric benchmark tables or figures for lerobot/xvla-base were found in the inspected canonical primary locations (the docs report numeric results for other named checkpoints but not for lerobot/xvla-base): https://huggingface.co/docs/lerobot/en/xvla, https://huggingface.co/lerobot/xvla-base, https://arxiv.org/abs/2510.10274.",
+      "Evidence gap: Tokenizer configuration, tokenizer files, or explicit text tokenization details for lerobot/xvla-base are not present in the inspected canonical primary locations: https://huggingface.co/lerobot/xvla-base, https://github.com/huggingface/lerobot, https://huggingface.co/docs/lerobot/en/xvla.",
+      "Evidence gap: Image normalization parameters (means/stds), explicit color-space conventions, and accepted image file formats for the base checkpoint are not specified in the inspected canonical primary locations: https://huggingface.co/lerobot/xvla-base, https://huggingface.co/docs/lerobot/en/xvla, https://github.com/huggingface/lerobot.",
+      "Evidence gap: Full robot_state schema with explicit field names, ordering, units, and numeric ranges (units for positions/orientations/joints) are not fully specified in the inspected canonical primary locations despite processor-level extraction being described: https://github.com/huggingface/lerobot, https://huggingface.co/docs/lerobot/en/xvla, https://huggingface.co/lerobot/xvla-base.",
+      "Evidence gap: No explicit, checkpoint-scoped API implementation citation (e.g., a published select_action function code example tied to lerobot/xvla-base) was found in the inspected canonical primary locations: https://github.com/huggingface/lerobot, https://huggingface.co/lerobot/xvla-base, https://huggingface.co/docs/lerobot/en/xvla.",
+      "Evidence gap: No primary-source statements specifying deterministic vs. stochastic inference modes, sampling/decoding settings, or runtime flags for action-dimension auto-detection beyond the documented pad/trim/auto behavior were found in the inspected canonical primary locations: https://github.com/huggingface/lerobot, https://huggingface.co/docs/lerobot/en/xvla, https://huggingface.co/lerobot/xvla-base.",
+      "Evidence gap: License metadata ambiguity/conflict: the repository LICENSE file referenced in the project's canonical repository indicates MIT but other repo-adjacent metadata in the findings claimed Apache-2.0; the canonical primary locations inspected for license evidence were: https://github.com/huggingface/lerobot, https://huggingface.co/lerobot/xvla-base.",
+      "Evidence gap: Documentation does not provide per-action safety thresholds, post-inference calibration procedures, or explicit low-level controller safety checks for direct deployment of lerobot/xvla-base; inspected locations: https://huggingface.co/docs/lerobot/en/xvla, https://github.com/huggingface/lerobot, https://huggingface.co/lerobot/xvla-base.",
+      "Evidence gap: No checkpoint-scoped head-to-head comparisons between lerobot/xvla-base and named external peer models (Forge peers) are present in the inspected canonical primary locations; comparisons in docs are for other internal checkpoints or are family-level descriptions, not checkpoint-scoped comparisons: https://huggingface.co/docs/lerobot/en/xvla, https://huggingface.co/lerobot/xvla-base, https://arxiv.org/abs/2510.10274."
+    ],
+    "family": "huggingface-co-lerobot-xvla-base-b834a228b7",
+    "identity": {
+      "architecture": "Soft-prompted, flow-matching Vision\u2011Language\u2011Action transformer (X-VLA)",
+      "checkpoint": "lerobot/xvla-base",
+      "evidenceUrls": [
+        "https://huggingface.co/lerobot/xvla-base",
+        "https://github.com/huggingface/lerobot",
+        "https://huggingface.co/docs/lerobot/en/xvla",
+        "https://arxiv.org/abs/2510.10274"
+      ],
+      "license": "Repository LICENSE file states MIT; other repo-adjacent metadata referenced in findings claimed Apache-2.0 (evidence conflict \u2014 see evidenceUrls)",
+      "parameterScale": "0.9 billion parameters",
+      "revision": "not reported",
+      "upstreamName": "lerobot/xvla-base"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-base",
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "Primary sources document the conceptual modalities (text, images, robot_state) but do not specify file-level image formats or tokenizer file names for the base checkpoint in the inspected canonical sources."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "The project supports multiple camera views and defaults to three visual inputs; the docs reference configuration (e.g., num_image_views) to control number of views."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "During training, dataset actions with smaller dimensionality are padded up to the pretrained compatibility dimension (max_action_dim = 20); at deployment predicted 20-dimensional outputs are trimmed to the dataset/robot real action dimension; an `auto` action mode for dimension detection and pad/trim behavior is described in the docs."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot",
+            "https://huggingface.co/docs/lerobot/en/xvla"
+          ],
+          "statement": "Processor-level implementation extracts end-effector position (3D), converts orientation into axis-angle (3D), and extracts gripper joint positions (2D) from robot_state and maps them into observation.state; image pipeline multiplies image values by 255 as part of scaling (the processor pipeline also includes image flipping/rotation behavior)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot",
+            "https://huggingface.co/docs/lerobot/en/xvla"
+          ],
+          "statement": "Default expectation is for three visual inputs (image, image2, image3) and a mechanism exists to add empty/masked camera slots when fewer cameras are present; rename-map support maps source image keys to the policy's expected keys."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-base",
+            "https://huggingface.co/docs/lerobot/en/xvla"
+          ],
+          "statement": "Inputs accepted by X-VLA include text, multi-view images, and robot_state/proprioceptive data."
+        },
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2510.10274",
+            "https://huggingface.co/docs/lerobot/en/xvla"
+          ],
+          "statement": "X-VLA treats each hardware setup as a 'task' and represents embodiment/domain differences via learnable soft-prompt embeddings during Phase II adaptation."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://huggingface.co/lerobot/xvla-base",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "Canonical docs describe X-VLA configuration and training phases; project documentation references model installation (e.g., pip install) and configuration knobs to control image-view count and action-dimension handling, but the inspected canonical sources do not expose an explicit example prompt template or tokenizer spec for text inputs tied to the base checkpoint."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "The canonical documentation describes Phase I/Phase II workflow and mapping of dataset/domain IDs (domain ID list and enumerations are published in the docs)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot",
+            "https://huggingface.co/docs/lerobot/en/xvla"
+          ],
+          "statement": "Primary sources do not provide explicit numeric ranges, units, or schema-level ordering for robot_state fields (units for end-effector positions, axis-angle units, or joint position units are not specified in the inspected canonical sources)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-base",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "Primary sources do not supply a tokenizer configuration or tokenizer files for text inputs for the lerobot/xvla-base checkpoint in the inspected canonical locations."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/lerobot/xvla-base",
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "Image normalization parameters (means, standard deviations, and color-space conventions) are not specified for the base checkpoint in the inspected canonical sources."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-base",
+          "https://github.com/huggingface/lerobot",
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://arxiv.org/abs/2510.10274"
+        ],
+        "statement": "No immutable checkpoint artifact name, file-level model snapshot, or commit hash for lerobot/xvla-base was reported in the inspected canonical sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-base",
+          "https://github.com/huggingface/lerobot"
+        ],
+        "statement": "Tokenizer configuration and tokenizer files for text inputs are not present in the inspected canonical sources for the base checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-base",
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://github.com/huggingface/lerobot"
+        ],
+        "statement": "Image preprocessing normalization parameters (means/stds), explicit color-space conventions, and explicit accepted image file formats are not specified for the base checkpoint in the inspected canonical sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/huggingface/lerobot",
+          "https://huggingface.co/docs/lerobot/en/xvla"
+        ],
+        "statement": "Robot_state units and full schema ordering (units for positions, orientation conventions, joint units) are not fully specified in the inspected canonical sources despite processor-level extraction being described."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://huggingface.co/lerobot/xvla-base",
+          "https://arxiv.org/abs/2510.10274"
+        ],
+        "statement": "No checkpoint-scoped numeric benchmark tables or figures for lerobot/xvla-base were found; numeric evaluation tables in docs/paper are attributed to other named checkpoints (e.g., libero, widowx, folding) rather than to the base checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/huggingface/lerobot",
+          "https://huggingface.co/lerobot/xvla-base"
+        ],
+        "statement": "Evidence conflict regarding license: the repository LICENSE file referenced in canonical sources indicates an MIT license, while some repo-adjacent metadata referenced in findings claimed Apache-2.0 (this conflict is recorded; see evidenceUrls)."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "Primary sources do not provide calibrated probabilistic semantics, confidence scores, or per-action uncertainty metrics for lerobot/xvla-base outputs; outputs are described as continuous action vectors with MSE training loss on real dims."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "The pretrained compatibility output dimension is described as 20 (max_action_dim = 20); model training pads/produces 20-dimensional action vectors and loss is computed only on the real action dimensions; postprocessing trims predictions to the target robot's real action dimension."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/huggingface/lerobot",
+            "https://huggingface.co/docs/lerobot/en/xvla"
+          ],
+          "statement": "Processor-level mappings place extracted robot_state features into observation.state suitable for downstream policy consumption (end-effector position 3D, orientation axis-angle 3D, gripper joints 2D), forming input to the action head."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/docs/lerobot/en/xvla",
+            "https://github.com/huggingface/lerobot"
+          ],
+          "statement": "Primary sources do not specify per-action safety thresholds, post-inference calibration procedures, or formal safety checks to convert raw model outputs into low-level robot motor commands for the base checkpoint; practitioners are directed to perform Phase II adaptation and postprocessing but no numeric safety thresholds are published in the inspected canonical sources."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://huggingface.co/lerobot/xvla-base",
+          "https://arxiv.org/abs/2510.10274"
+        ],
+        "modelScope": "lerobot/xvla-base",
+        "useCase": "Foundation policy pretraining and backbone for cross-embodiment research (Phase I pretrained backbone for downstream Phase II adaptation).",
+        "why": "Hugging Face docs and the model card present the checkpoint as the X-VLA base model intended for Phase I pretraining and as a pretrained backbone for Phase II adaptation; the paper and docs describe soft prompts and cross-embodiment methodology supporting this use."
+      },
+      {
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2510.10274",
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://huggingface.co/lerobot/xvla-base"
+        ],
+        "modelScope": "lerobot/xvla-base (used as pretrained backbone for Phase II soft-prompt adaptation)",
+        "useCase": "Research and development of soft-prompted cross-embodiment policies and Phase II domain-adaptation experiments (simulation and multi-platform pretraining research).",
+        "why": "The canonical paper and Hugging Face docs describe soft prompts as the mechanism to represent hardware/domain variation and document Phase II domain adaptation practices, indicating the base checkpoint is suitable as a research backbone for soft-prompt and cross-embodiment method development."
+      }
+    ],
+    "researchSummary": "Authoritative primary sources for lerobot/xvla-base present the checkpoint as the X-VLA base model (a soft-prompted, flow-matching Vision\u2011Language\u2011Action Transformer) with a reported parameter scale of 0.9 billion parameters. Primary documentation (Hugging Face docs and the repository) describes a two-phase training workflow (Phase I pretraining on ~290,000 episodes from Droid, Robomind, and Agibot spanning seven platforms and five arm types; Phase II domain adaptation using soft prompts). The inspected primary sources describe action-dimensionality handling: a pretrained compatibility max_action_dim of 20, padding of lower-dimensional dataset actions to 20 during training, and trimming to the real action dimension at deployment; an `auto` action mode is described for dimension detection. The processor/implementation-level files and docs describe three visual inputs as default and extraction of end-effector position (3D), axis-angle orientation (3D), and gripper joint positions (2D) into observation.state. The canonical preprint, model card, and docs identify X-VLA as soft-prompted and flow-matching. Primary sources do not report an immutable checkpoint artifact name or commit hash for lerobot/xvla-base, do not provide checkpoint-scoped numeric benchmark tables for lerobot/xvla-base itself, and do not provide tokenizer configuration or explicit image normalization (mean/std) or full robot_state field units and ordering for the base checkpoint. Where the canonical primary sources are silent, explicit evidence gaps are recorded.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/lerobot/xvla-base",
+          "https://huggingface.co/docs/lerobot/en/xvla",
+          "https://github.com/huggingface/lerobot"
+        ],
+        "statement": "Primary sources inspected do not contain explicit, checkpoint-scoped safety, privacy, or human-in-the-loop deployment constraints for using lerobot/xvla-base as a deployed robot controller."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: Require human supervision, staged simulation verification, platform-specific safety checks (limits, timeout/failsafe, and actuator saturation checks), and conservative sandboxed trials before any physical deployment of policies derived from lerobot/xvla-base."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "lerobot/xvla-base",
+        "primary": true,
+        "primaryReason": "First-party Hugging Face model card for the lerobot/xvla-base checkpoint; contains high-level checkpoint description and installation reference.",
+        "publisher": "Hugging Face (LeRobot project model card)",
+        "sourceType": "model-card",
+        "supports": [
+          "X-VLA conceptual description and base checkpoint identity",
+          "Parameter scale claim (0.9 billion parameters)",
+          "Conceptual modality support (text, image, robot_state)",
+          "Installation reference (pip install)"
+        ],
+        "title": "LeRobot X-VLA Base model card (Hugging Face)",
+        "url": "https://huggingface.co/lerobot/xvla-base"
+      },
+      {
+        "modelScope": "lerobot/xvla-base (implementation and docs)",
+        "primary": true,
+        "primaryReason": "Official project repository maintained by the project owners; contains documentation, processor/implementation code, rename-map behavior, and repository LICENSE file referenced in findings.",
+        "publisher": "GitHub / huggingface/lerobot",
+        "sourceType": "repository",
+        "supports": [
+          "Processor-level extraction of robot_state features and image processing steps",
+          "Action-dimension handling (pad to 20, trim to real_dim, auto mode described in docs)",
+          "Repository LICENSE file (reported in repository)",
+          "Documentation source files describing num_image_views, rename-map behavior, and training/Phase II guidance"
+        ],
+        "title": "LeRobot repository (official GitHub repository)",
+        "url": "https://github.com/huggingface/lerobot"
+      },
+      {
+        "modelScope": "X-VLA family and lerobot/xvla-base references in docs",
+        "primary": true,
+        "primaryReason": "Official documentation describing X-VLA design, Phase I/Phase II training workflow, dataset composition, domain IDs, and example checkpoint results (for other checkpoints).",
+        "publisher": "Hugging Face / LeRobot docs",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Parameter scale (0.9 billion)",
+          "Phase I pretraining details (290,000 episodes; datasets named)",
+          "Phase II domain adaptation description and soft-prompt approach",
+          "Action-dimension handling (max_action_dim=20, pad/trim, auto mode)",
+          "Reported numeric results for other named checkpoints (libero, widowx, folding) (but not for base checkpoint)"
+        ],
+        "title": "LeRobot X-VLA documentation (Hugging Face docs)",
+        "url": "https://huggingface.co/docs/lerobot/en/xvla"
+      },
+      {
+        "modelScope": "X-VLA architecture and methodology (paper-level description)",
+        "primary": true,
+        "primaryReason": "Canonical preprint describing X-VLA architecture, soft-prompt methodology, and high-level experimental design as referenced by project documentation.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "Soft-prompt approach and cross-embodiment claims",
+          "Architectural description (soft-prompted, flow-matching VLA transformer)",
+          "High-level training workflow (Phase I/Phase II)"
+        ],
+        "title": "X-VLA paper (arXiv preprint)",
+        "url": "https://arxiv.org/abs/2510.10274"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "16c2f6ef33087e4d0383cddc8bacb8de06a8297570eed1615b7d1230fa4a5cf0",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-lerobot-xvla-base-b834a228b7",
+  "researchedAt": "2026-08-06T12:22:22.185611+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/lerobot/xvla-base",
+  "sourceUrls": [
+    "https://huggingface.co/lerobot/xvla-base"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

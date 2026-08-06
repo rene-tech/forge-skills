@@ -66,6 +66,16 @@ Route: `POST /v1/inference/nvlabs-sana-sprint-1-6b`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-nvlabs-sana-c4c236c402`
+- Recommended: High-throughput text-to-image generation at 1024×1024 using the NVlabs-provided 1.6B Sana‑Sprint checkpoint packaged for Diffusers. — NVlabs model_zoo and asset/docs present a Sana‑Sprint 1.6B 1024px checkpoint and NVlabs conversion/examples show conversion to a Diffusers pipeline with dtype bf16 and usage examples for 1024×1024 variants; repository performance tables report throughput/latency operating points for 1024×1024 Sana variants.
+- Recommended: Image-to-image (img2img) workflows using the SanaSprint img2img Diffusers packaging as provided in NVlabs conversion examples and docs. — NVlabs repository includes a ComfyUI/packaging JSON and model_zoo/conversion examples referencing img2img-capable variants and Diffusers packaging; repository and docs show example configs and precision variants used for image-conditioning workflows.
+- Avoid: Treating NVlabs-reported numeric benchmarks (FID/CLIP/GenEval) as protocol-matched equivalents to other models without verifying dataset split identifiers, RNG/seed, and full preprocessing/evaluation protocol. — NVlabs repository performance tables include numeric operating-point summaries (for example a 2-step row with FID=6.50 in asset/docs/sana_sprint.md and a repository-root reported FID=5.92 for 1024×1024), but the inspected NVlabs primary materials do not publish canonical checkpoint-scoped dataset split identifiers or RNG/seed policy required for matched-protocol numeric comparison. Treat numeric rows as upstream-reported summaries unless full protocol metadata is published upstream.
+- Avoid: Clinical or PHI-bearing production deployment assuming upstream clinical validation or PHI-handling guidance. — Inspected NVlabs repository and docs do not publish checkpoint-scoped clinical validation, PHI handling procedures, or domain-specific safety approvals for this checkpoint; do not assume the checkpoint is validated for clinical use without separate domain-specific evaluation and approvals.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -83,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvlabs-sana-sprint-1-6b/inference-routes`
 - Regional deployment: `/v1/models/nvlabs-sana-sprint-1-6b/regional-deployment`
 - Serverless handoff: `/v1/models/nvlabs-sana-sprint-1-6b/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/nvlabs-sana-sprint-1-6b/SKILL.md

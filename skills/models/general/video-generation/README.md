@@ -2,6 +2,8 @@
 
 Category: `general` · exact model/version skills: 12
 
+[Audited model-selection dossier](research.md)
+
 - [Use CogVideoX 2B](zai-org-cogvideox-2b/SKILL.md) — `2b-diffusers` · source-linked
 - [Use HunyuanVideo 1.5 480p T2V](hunyuanvideo-community-hunyuanvideo-1-5-480p-t2v/SKILL.md) — `480p-t2v-diffusers` · source-linked
 - [Use LTX-2.3](lightricks-ltx-2-3-sglang/SKILL.md) — `2-3-one-stage` · source-linked

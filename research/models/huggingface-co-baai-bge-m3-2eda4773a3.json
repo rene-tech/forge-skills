@@ -1,0 +1,646 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11] uses unapproved repository owner 'flagopen' for this exact model scope",
+        "path": "$.sources[11] uses unapproved repository owner 'flagopen' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12] uses forbidden secondary host ollama.com",
+        "path": "$.sources[12] uses forbidden secondary host ollama.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12].primary must be true",
+        "path": "$.sources[12].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14].primary must be true",
+        "path": "$.sources[14].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.comparisons_evidence_removed",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.removedSecondaryUrls",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[1]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[1]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 9 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "BAAI BGE-M3 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic retrieval, long-document RAG, and dense embedding use.",
+      "displayName": "Use BGE-M3",
+      "group": "embeddings",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "mit",
+      "modelFamily": "baai-bge-m3",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "baai-bge-m3-tei-cuda-1-9",
+      "sourceUrl": "https://huggingface.co/BAAI/bge-m3",
+      "version": "tei-cuda-1.9.3",
+      "versionKey": "tei-cuda-1-9-3"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+        ],
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint)",
+        "reason": "No primary-file evidence documents a generation head, logits/head weights, or a generation/text-LM API for this checkpoint; the provided blobs and README present the model as an embedding/retrieval model.",
+        "useCase": "Using BAAI/bge-m3 as a standalone generative language model for text generation / LM tasks"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "I inspected https://huggingface.co/BAAI/bge-m3, https://huggingface.co/BAAI/bge-m3/blob/main/README.md, and https://arxiv.org/abs/2402.03216 and found no comparable table rows.",
+        "criteria": "No named dataset/split/metric table rows in the checked primary sources to support direct, protocol-matched comparisons for retrieval benchmarks.",
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://arxiv.org/abs/2402.03216"
+        ],
+        "rationale": "The model page lists numeric arrays but does not identify dataset names, splits, or metric labels in the checked primary blobs or the arXiv preprint; therefore direct comparisons to other checkpoints cannot be validated from these primary sources alone.",
+        "task": "Task-level numeric comparison",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "Checked https://arxiv.org/abs/2402.03216 and https://huggingface.co/BAAI/bge-m3/blob/main/README.md for explicit per-checkpoint tables; none were present in the checked primary locations.",
+        "criteria": "Paper-level family benchmarks (if present in the arXiv preprint) are not explicitly attributed in the checked primary blobs to this exact upstream checkpoint without noting downstream heads or evaluation scripts; therefore benchmarks cannot be attributed directly to the checkpoint without additional primary evidence.",
+        "evidenceUrls": [
+          "https://arxiv.org/abs/2402.03216",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+        ],
+        "rationale": "I inspected the arXiv preprint and the model page but did not find checkpoint-matched numeric tables tying family-level results to this exact upstream checkpoint in the checked locations.",
+        "task": "Family-level benchmark attribution",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "tokenizer_config.json sets model_max_length=8192 and config.json sets max_position_embeddings=8194; precise truncation/stride/batching semantics are not documented in the primary blobs so callers must validate tokenized length and implement chunking/aggregation.",
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+          "https://huggingface.co/BAAI/bge-m3"
+        ],
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint)",
+        "useCase": "Long-document retrieval and RAG up to the declared token bound"
+      },
+      {
+        "conditions": "config.json records torch_dtype=\"float32\" while README includes an example that sets use_fp16=True; the primary sources do not state a single authoritative runtime default dtype, so runtime FP16 behavior must be validated by the caller/serving layer.",
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+        ],
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint) when invoked with use_fp16 set in client code or a wrapper",
+        "useCase": "Using use_fp16 to speed encoding"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No canonical parameter-count for the exact upstream checkpoint was found in the inspected primary sources: https://huggingface.co/BAAI/bge-m3/blob/main/config.json, https://huggingface.co/BAAI/bge-m3/blob/main/README.md, https://arxiv.org/abs/2402.03216, https://huggingface.co/BAAI/bge-m3",
+      "Evidence gap: No explicit model-weight license file or model-weight license text was found in the inspected primary sources: https://huggingface.co/BAAI/bge-m3, https://huggingface.co/BAAI/bge-m3/blob/main/README.md, https://huggingface.co/BAAI/bge-m3/blob/main/config.json, https://arxiv.org/abs/2402.03216",
+      "Evidence gap: Tokenizer runtime behaviors necessary for strict comparability (Unicode normalization, OOV handling, whitespace/punctuation normalization, sentence-splitting rules) are not documented in the checked blobs: https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer.json, https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json, https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+      "Evidence gap: Precise truncation/stride/batching semantics when inputs exceed model_max_length are not specified in the checked primary blobs: https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json, https://huggingface.co/BAAI/bge-m3/blob/main/config.json, https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+      "Evidence gap: No numeric benchmark tables tying the presented retrieval score arrays to named datasets/splits/metric rows were found in the checked primary sources: https://huggingface.co/BAAI/bge-m3 (model page main), https://huggingface.co/BAAI/bge-m3/blob/main/README.md (README blob), https://arxiv.org/abs/2402.03216 (paper main).",
+      "Evidence gap: No explicit upstream statement that embeddings are normalized by default was found in the checked primary blobs: https://huggingface.co/BAAI/bge-m3/blob/main/README.md, https://huggingface.co/BAAI/bge-m3/blob/main/config.json, https://huggingface.co/BAAI/bge-m3",
+      "Evidence gap: No checkpoint-specific PHI/clinical/regulatory/data-retention statements were found in the checked primary sources: https://huggingface.co/BAAI/bge-m3/blob/main/README.md, https://huggingface.co/BAAI/bge-m3, https://arxiv.org/abs/2402.03216"
+    ],
+    "family": "huggingface-co-baai-bge-m3-2eda4773a3",
+    "identity": {
+      "architecture": "XLMRobertaModel; model_type=\"xlm-roberta\"; hidden_size=1024; num_hidden_layers=24; num_attention_heads=16; intermediate_size=4096; max_position_embeddings=8194; torch_dtype=\"float32\" (values from config.json)",
+      "checkpoint": "BAAI/bge-m3",
+      "evidenceUrls": [
+        "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+        "https://huggingface.co/BAAI/bge-m3",
+        "https://huggingface.co/BAAI/bge-m3/commits/be9f7f99731dba86ab44550821489908ef3b4baa",
+        "https://huggingface.co/BAAI/bge-m3/commits/694b61558aea4ae2512ed8d0e189d5cf8adc2259",
+        "https://arxiv.org/abs/2402.03216"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "BAAI/bge-m3"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "List of strings / text sequences as shown in README encode examples and model page."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/config.json"
+          ],
+          "statement": "Declared tokenizer model_max_length is 8192 (tokenizer_config.json) and config.json lists max_position_embeddings=8194; these are the documented numeric bounds present in repository blobs."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json"
+          ],
+          "statement": "Tokenizer class is declared as XLMRobertaTokenizer in tokenizer_config.json; tokenizer special tokens (bos/cls/eos/pad/unk/mask) are declared in tokenizer_config.json."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer.json",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/.gitattributes",
+            "https://huggingface.co/BAAI/bge-m3/commit/3069def033ce91d907258f9a830e442610dbfe0b"
+          ],
+          "statement": "tokenizer.json artifact is present in the repository blobs; .gitattributes marks tokenizer.json as an LFS pointer and a commit added tokenizer.json to the repo."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer.json",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+          ],
+          "statement": "Evidence gap: canonical tokenizer runtime behaviors (Unicode normalization, OOV handling, whitespace/punctuation normalization, sentence-splitting rules) are not documented in the checked primary blobs."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "Text input (list of strings) is the accepted input format for embedding calls and examples in the README and model page."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3",
+            "https://arxiv.org/abs/2402.03216"
+          ],
+          "statement": "Model is documented as multilingual in the model page and README."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "README examples call model.encode with text-only inputs and show returned dense/sparse/colbert components; there are no special prompt templates required for embedding usage in the checked blobs."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/config.json"
+          ],
+          "statement": "Callers should validate tokenized length against model_max_length because precise truncation/stride/batching semantics are not specified in the primary blobs."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "Evidence gap: No explicit upstream rules for invalid inputs (e.g., empty strings, binary payloads) were found in the checked primary blobs; client-side validation is required."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://arxiv.org/abs/2402.03216",
+          "https://huggingface.co/BAAI/bge-m3"
+        ],
+        "statement": "Evidence gap: No canonical parameter-count (total number of parameters) for this exact upstream checkpoint was found in the checked primary Hugging Face blobs or the arXiv preprint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+          "https://arxiv.org/abs/2402.03216"
+        ],
+        "statement": "Evidence gap: No model-weight license file or explicit license text for model weights or code was found in the checked primary blobs; identity.license is not reported from the primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/commits/be9f7f99731dba86ab44550821489908ef3b4baa",
+          "https://huggingface.co/BAAI/bge-m3/commit/6a3fd5fa10d7c4e4fabeace29e36b2bfa76d45d5",
+          "https://huggingface.co/BAAI/bge-m3/commit/3069def033ce91d907258f9a830e442610dbfe0b"
+        ],
+        "statement": "Repository history shows commits that add and remove model artifacts (ONNX uploads, deletion of model.safetensors, addition of pytorch_model.bin) — callers must verify exact files present at the revision they intend to use."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://arxiv.org/abs/2402.03216"
+        ],
+        "statement": "Evidence gap: Numeric benchmark tables with dataset names, splits, metric names, and per-checkpoint numeric values for standard retrieval benchmarks are not present in the checked primary sources; numeric benchmark claims cannot be recorded without those primary entries."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer.json",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+        ],
+        "statement": "Evidence gap: Tokenizer/full preprocessing behavior necessary for strict comparability (detailed OOV handling, Unicode normalization, whitespace/punctuation rules, truncation/stride semantics) is not specified in the checked primary blobs."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "Evidence gap: No explicit primary-blob statement that embeddings returned are normalized by default was found in the checked README, config.json, tokenizer blobs, or model page."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+          ],
+          "statement": "The README presents combined scoring components (dense/sparse/colbert) as returned parts of scoring dictionaries; exact downstream interpretation and thresholds require tuning."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/config.json",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "Dense embedding vectors are 1024-dimensional per hidden_size=1024 in config.json; README and model page present dense embedding usage."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "README demonstrates returning a 'sparse' lexical component and shows examples of computing lexical matching scores."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+            "https://huggingface.co/BAAI/bge-m3"
+          ],
+          "statement": "README demonstrates optional ColBERT-style multi-vector outputs and shows 'colbert' component in returned scoring dictionaries."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3",
+            "https://arxiv.org/abs/2402.03216",
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+          ],
+          "statement": "No upstream calibration, confidence intervals, or numeric thresholds for decision-making are provided in the checked primary sources; downstream validation on labeled data is required."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+          ],
+          "statement": "If using hybrid weighted scoring, tune component weights on validation data; the README provides component outputs but no universal thresholds in the checked blobs."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/config.json"
+        ],
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint)",
+        "useCase": "Multilingual dense retrieval (semantic search / vector retrieval)",
+        "why": "Model page and README demonstrate embedding/retrieval usage and show dense retrieval scores; config.json shows hidden_size=1024 which corresponds to the dense vector dimensionality."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://huggingface.co/BAAI/bge-m3"
+        ],
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint)",
+        "useCase": "Hybrid retrieval combining dense + sparse lexical scores",
+        "why": "README and model page show dense and sparse components and list retrieval scores for sparse, dense, and combined sparse+dense."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://huggingface.co/BAAI/bge-m3"
+        ],
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint)",
+        "useCase": "ColBERT-style multi-vector retrieval (multi-vector outputs)",
+        "why": "README and model page indicate ColBERT component outputs and list colbert retrieval scores; examples in README demonstrate 'colbert' in returned scoring dictionaries."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3",
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+        ],
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint); separate reranker checkpoints are distinct artifacts",
+        "useCase": "Reranking within retrieval pipelines (using reranker checkpoints when required)",
+        "why": "Model card and README recommend hybrid retrieval plus reranking as the recommended retrieval pipeline."
+      }
+    ],
+    "researchSummary": "Using only the canonical primary sources (Hugging Face model page, the repository blobs and commit pages it exposes, the tokenizer blobs referenced there, and the canonical arXiv preprint), I confirm: the HF config.json declares an XLM-Roberta architecture (model_type=\"xlm-roberta\") with hidden_size=1024, num_hidden_layers=24, num_attention_heads=16, intermediate_size=4096, max_position_embeddings=8194, and torch_dtype=\"float32\" (config.json). The tokenizer_config.json declares tokenizer_class=\"XLMRobertaTokenizer\", model_max_length=8192, and special tokens (bos/eos/pad/unk/mask). The README and model page document embedding-retrieval usage with dense, sparse, and ColBERT-style components and list retrieval score arrays. The repository commit history includes commits that add or remove weight/ONNX artifacts (commits recorded in the repository commit pages). Missing from these canonical primary sources are an explicit canonical parameter-count for the upstream checkpoint, an explicit model-weight or code license file, explicit tokenizer runtime-normalization/OOV/truncation semantics, and numeric benchmark tables that tie the presented retrieval scores to named datasets/splits/metric rows in the paper or model card. All claims below are individually either supported by exact-file locators or explicitly marked as evidence gaps citing the exact primary URLs and paths I inspected.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://huggingface.co/BAAI/bge-m3",
+          "https://arxiv.org/abs/2402.03216"
+        ],
+        "statement": "Evidence gap: No checkpoint-specific PHI, clinical suitability, regulated-use, or data-retention statements were found in the checked primary Hugging Face blobs or the arXiv preprint; expert review is required for clinical deployments."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/BAAI/bge-m3/blob/main/README.md",
+          "https://huggingface.co/BAAI/bge-m3",
+          "https://arxiv.org/abs/2402.03216"
+        ],
+        "statement": "Evidence gap: No checkpoint-specific upstream safety mitigations or human-review mandates are documented in the checked primary blobs; implementers must apply standard organizational safety review processes."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "BAAI/bge-m3 (upstream checkpoint)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model page and model card for the checkpoint 'BAAI/bge-m3'.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "model-card",
+        "supports": [
+          "model described as embedding/retrieval model",
+          "lists numeric retrieval score arrays (colbert, sparse, dense, hybrid combinations)",
+          "documents recommended hybrid retrieval plus reranking pipeline"
+        ],
+        "title": "Hugging Face model card — BAAI/bge-m3",
+        "url": "https://huggingface.co/BAAI/bge-m3"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 config.json (main blob)",
+        "primary": true,
+        "primaryReason": "Repository config.json blob contains architecture hyperparameters and dtype declarations.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "architecture: XLMRobertaModel; model_type='xlm-roberta'",
+          "hidden_size=1024",
+          "num_hidden_layers=24",
+          "num_attention_heads=16",
+          "intermediate_size=4096",
+          "max_position_embeddings=8194",
+          "torch_dtype=\"float32\""
+        ],
+        "title": "Hugging Face model config.json for BGE-M3 (main blob)",
+        "url": "https://huggingface.co/BAAI/bge-m3/blob/main/config.json"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 tokenizer_config.json (main blob)",
+        "primary": true,
+        "primaryReason": "Repository tokenizer_config.json blob declares tokenizer class, special tokens, and model_max_length.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "tokenizer_class='XLMRobertaTokenizer'",
+          "model_max_length=8192",
+          "special tokens declarations (bos/eos/pad/unk/mask)"
+        ],
+        "title": "Hugging Face tokenizer_config.json for BGE-M3 (main blob)",
+        "url": "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer_config.json"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 README (main blob)",
+        "primary": true,
+        "primaryReason": "Repository README demonstrates API usage, example encode calls, and example returned outputs (dense/sparse/colbert) and shows an example use_fp16 option.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "official-documentation",
+        "supports": [
+          "example model.encode usage returning dense/sparse/colbert components",
+          "example setting use_fp16=True in examples",
+          "compute_lexical_matching_score examples and demonstration of returned scoring dict keys"
+        ],
+        "title": "BGE-M3 README (Hugging Face repository blob)",
+        "url": "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 tokenizer.json (main blob)",
+        "primary": true,
+        "primaryReason": "Repository tokenizer artifact blob present (tokenization data/behaviour stored as blob); blob is present and referenced by .gitattributes.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "presence of tokenizer.json artifact (tokenization data/behaviour)"
+        ],
+        "title": "Hugging Face tokenizer.json blob (tokenizer artifact pointer)",
+        "url": "https://huggingface.co/BAAI/bge-m3/blob/main/tokenizer.json"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 .gitattributes (main blob)",
+        "primary": true,
+        "primaryReason": ".gitattributes marks tokenizer.json as a Git LFS pointer, confirming tokenizer.json is stored as an LFS artifact.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "tokenizer.json is stored via Git LFS pointer"
+        ],
+        "title": "Hugging Face .gitattributes (marks tokenizer.json as LFS pointer)",
+        "url": "https://huggingface.co/BAAI/bge-m3/blob/main/.gitattributes"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 commit listing (main)",
+        "primary": true,
+        "primaryReason": "Commit listing shows repository activity and SHAs referencing file additions and README updates.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "multiple README updates and other commits in repository history"
+        ],
+        "title": "Hugging Face commit listing (commits/main)",
+        "url": "https://huggingface.co/BAAI/bge-m3/commits/main"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 commit 694b61558... (commit view)",
+        "primary": true,
+        "primaryReason": "Commit view used to validate specific README/config/tokenizer uploads in history.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "commit that updated README.md; records of commits that updated config.json and uploaded tokenizer.json"
+        ],
+        "title": "Hugging Face commit (SHA 694b61558aea4ae2512ed8d0e189d5cf8adc2259) view",
+        "url": "https://huggingface.co/BAAI/bge-m3/commits/694b61558aea4ae2512ed8d0e189d5cf8adc2259"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 commit group (be9f7f9...)",
+        "primary": true,
+        "primaryReason": "Commit view documents additions/deletions: MIRACL evaluation update, ONNX addition, deletion of model.safetensors, uploads of pytorch_model.bin in history.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "commit that updated MIRACL evaluation results",
+          "commit that added ONNX file(s)",
+          "commit that deleted model.safetensors",
+          "commit that uploaded pytorch_model.bin under a directory"
+        ],
+        "title": "Hugging Face commit group (be9f7f99731dba86ab44550821489908ef3b4baa) view",
+        "url": "https://huggingface.co/BAAI/bge-m3/commits/be9f7f99731dba86ab44550821489908ef3b4baa"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 commit 3069def (tokenizer.json added)",
+        "primary": true,
+        "primaryReason": "Commit page records the upload of tokenizer.json to the repository.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "tokenizer.json upload event"
+        ],
+        "title": "Hugging Face commit adding tokenizer.json (commit view 3069def033ce91d907258f9a830e442610dbfe0b)",
+        "url": "https://huggingface.co/BAAI/bge-m3/commit/3069def033ce91d907258f9a830e442610dbfe0b"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 commit 6a3fd5f (ONNX files added)",
+        "primary": true,
+        "primaryReason": "Commit page records addition of ONNX model files with sizes and token decoder details.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "repository",
+        "supports": [
+          "ONNX files added to repository; token decoder special token definitions recorded"
+        ],
+        "title": "Hugging Face commit adding ONNX files (commit view 6a3fd5fa10d7c4e4fabeace29e36b2bfa76d45d5)",
+        "url": "https://huggingface.co/BAAI/bge-m3/commit/6a3fd5fa10d7c4e4fabeace29e36b2bfa76d45d5"
+      },
+      {
+        "modelScope": "BAAI/bge-m3 README (specific revision blob)",
+        "primary": true,
+        "primaryReason": "Alternate README revision used to corroborate example outputs and API demonstrations.",
+        "publisher": "BAAI / Hugging Face",
+        "sourceType": "official-documentation",
+        "supports": [
+          "demonstrates model.encode returning dense/sparse/ColBERT vectors",
+          "shows compute_score returning dict with 'colbert', 'sparse', 'dense' keys"
+        ],
+        "title": "Hugging Face README blob at specific revision (blob/694b61558.../README.md)",
+        "url": "https://huggingface.co/BAAI/bge-m3/blob/694b61558aea4ae2512ed8d0e189d5cf8adc2259/README.md"
+      },
+      {
+        "modelScope": "M3-Embedding / BGE-M3 paper (canonical preprint)",
+        "primary": true,
+        "primaryReason": "Canonical preprint describing the M3-Embedding approach; included for family/method context.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "paper title and authorship for M3-Embedding",
+          "context for the model family and methodological claims (no per-checkpoint numeric benchmark tables were found in the checked locations)"
+        ],
+        "title": "arXiv: M3-Embedding paper (BGE-M3 paper)",
+        "url": "https://arxiv.org/abs/2402.03216"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "d0f49981f7096659ce48c852d7813f61058ce21419dbf7c3a194a4ddfa2a4854",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-baai-bge-m3-2eda4773a3",
+  "researchedAt": "2026-07-23T23:43:01.540075+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/BAAI/bge-m3",
+  "sourceUrls": [
+    "https://huggingface.co/BAAI/bge-m3"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

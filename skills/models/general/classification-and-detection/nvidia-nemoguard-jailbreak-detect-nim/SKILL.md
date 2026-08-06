@@ -61,6 +61,16 @@ Route: `POST /v1/classify`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-nemoguard-jailbreak-detect-modelcard-3dbc6e85cc`
+- Recommended: Detecting jailbreak or prompt-injection attempts in large language model deployments as a guardrail classifier. — Primary documentation and the published model card describe the model's purpose as a safety classifier to identify jailbreak and prompt-injection activities.
+- Recommended: Integration into NVIDIA NeMo Guardrails orchestration to gate or block unsafe prompts prior to sending them to an LLM. — NVIDIA integration documentation and NeMo Guardrails guidance show NemoGuard JailbreakDetect is supported for use within the Guardrails microservice architecture.
+- Avoid: Using the model to make final security or safety-critical decisions without human oversight. — Primary sources describe the model as a guardrail/safety classifier; they do not claim it is a sole decision-maker for final security decisions.
+- Avoid: Applying the model to input formats or embedding sources other than the documented snowflake-arctic-embed-m-long without validation. — Primary sources indicate the classifier uses embeddings produced by snowflake-arctic-embed-m-long and the NGC container bundles the embedding model; primary sources do not certify performance on other embedding sources.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -78,11 +88,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-nemoguard-jailbreak-detect-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-nemoguard-jailbreak-detect-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-nemoguard-jailbreak-detect-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/classification-and-detection/nvidia-nemoguard-jailbreak-detect-nim/SKILL.md

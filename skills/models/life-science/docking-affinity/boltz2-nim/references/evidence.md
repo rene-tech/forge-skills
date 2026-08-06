@@ -3,6 +3,12 @@
 - Research status: `reviewed`
 - Policy: Forge runtime latency/throughput evidence is operational placement data, not model-quality evidence.
 
+## Deep research
+
+- Research key: `build-nvidia-com-mit-boltz2-596898d726`
+- Independent audit: `revised`
+- Full checkpoint-scoped selection, input/output, benchmark, comparison, limitation, and safety evidence: `research.md`.
+
 ## Reviewed public benchmark claims
 
 ### Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction

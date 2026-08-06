@@ -65,6 +65,15 @@ Route: `POST /v1/inference/qwen-qwen3-reranker-0-6b-vllm-cuda13`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-reranker-0-6b-b13594dd7d`
+- Recommended: Text retrieval / reranking in retrieval pipelines (reranker stage) — The HuggingFace model page documents this checkpoint as part of the Qwen3 embedding and reranking series, which is specifically designed for text embedding and ranking tasks.
+- Recommended: Multilingual reranking across many languages (pipeline reranker) — The Qwen3 technical report documents Qwen3's multilingual capabilities (stated support for many languages) and the HuggingFace model page lists the reranking model as part of that multilingual series.
+- Avoid: Standalone large-scale document retrieval without a separate first-stage retriever — The HuggingFace model page and family description present embedding and reranking modules that are intended to be combined; the series is described as providing both embedding and reranking models rather than replacing a first-stage retriever alone.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -83,11 +92,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-reranker-0-6b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/qwen-qwen3-reranker-0-6b-vllm-cuda13/SKILL.md

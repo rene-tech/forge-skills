@@ -63,6 +63,14 @@ Route: `POST /v1/inference/longsafari-hyenadna-medium-450k-dna-embedding`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-longsafari-hyenadna-medium-450k-seqlen-hf-22314617db`
+- Recommended: Research experiments in long-range genomic sequence modeling at single-nucleotide resolution (e.g., next-nucleotide prediction / causal LM research and exploratory modeling). — Checkpoint blobs and model page document a HyenaDNA causal-LM mapping (HyenaDNAForCausalLM), single-nucleotide character tokenization, and a very large tokenizer model_max_length (450,002) supporting long-context sequence modeling experiments.
+- Avoid: Assuming the checkpoint is approved or suitable for clinical decision-making without expert review. — Inspected checkpoint blobs and model page do not provide clinical-use approval, PHI-specific handling guidance, or checkpoint-scoped clinical validation statements; no checkpoint-scoped clinical disclaimers or PHI mitigation procedures are documented in the inspected blobs.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -81,11 +89,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/longsafari-hyenadna-medium-450k-dna-embedding/inference-routes`
 - Regional deployment: `/v1/models/longsafari-hyenadna-medium-450k-dna-embedding/regional-deployment`
 - Serverless handoff: `/v1/models/longsafari-hyenadna-medium-450k-dna-embedding/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/genomics/longsafari-hyenadna-medium-450k-dna-embedding/SKILL.md

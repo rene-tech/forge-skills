@@ -73,6 +73,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-mistralai-ministral-3-3b-instruct-2512-463ef33dd1`
+- Recommended: Chat and instruction-focused natural-language generation — The repository and ONNX-variant README describe this artifact as an instruct post-trained variant intended for instruction/chat tasks; repository files include an explicit SYSTEM_PROMPT and chat template supporting instruction-style usage.
+- Recommended: Local/edge deployment using quantized variants to reduce VRAM — The checkpoint config.json contains quantization metadata (quant_method = "fp8") and a GGUF artifact page in the findings lists quantization levels and an FP8 VRAM-fit claim, supporting variant-scoped deployment for lower-VRAM scenarios.
+- Avoid: High-stakes clinical, safety-critical, or other regulated decision-making without human expert review — Evidence gap: The inspected checkpoint-scoped upstream artifacts (repository tree, config.json blob, and SYSTEM_PROMPT blob) do not provide checkpoint-scoped documentation, validation, or certification procedures for clinical or regulated high-stakes use.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/mistralai-ministral-3-3b-instruct-2512-vllm-cuda13/SKILL.md

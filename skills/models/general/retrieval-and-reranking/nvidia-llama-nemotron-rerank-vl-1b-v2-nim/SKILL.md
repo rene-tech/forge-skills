@@ -73,6 +73,14 @@ Route: `POST /v1/ranking`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-llama-nemotron-rerank-vl-1b-v2-b32f924aa4`
+- Recommended: Multimodal document reranking in retrieval pipelines (text query vs passages that may contain text and/or images) — Primary NVIDIA model card and NIM API docs describe this checkpoint as a VLM reranker intended to score text queries against text-only, image-only, or text+image passages and produce per-passage relevance scores.
+- Avoid: Free-form text generation or instruction-following tasks — Upstream config.json and model type identify the checkpoint as a sequence-classification / reranker model (binary classification head) rather than an instruction-following generative model; the repository and NIM docs describe scoring/ranking outputs, not generative text APIs.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -90,11 +98,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-llama-nemotron-rerank-vl-1b-v2-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-llama-nemotron-rerank-vl-1b-v2-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-llama-nemotron-rerank-vl-1b-v2-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/retrieval-and-reranking/nvidia-llama-nemotron-rerank-vl-1b-v2-nim/SKILL.md

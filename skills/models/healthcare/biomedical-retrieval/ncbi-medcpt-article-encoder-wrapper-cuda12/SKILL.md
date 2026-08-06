@@ -69,6 +69,15 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-ncbi-medcpt-article-encoder-d189d60deb`
+- Recommended: Dense retrieval / semantic search of biomedical articles (title + abstract) using article embeddings — The MedCPT Article Encoder is described in the model card/repository as generating embeddings of biomedical texts that can be used for semantic search (dense retrieval) and the Article Encoder expects title and abstract inputs.
+- Recommended: Zero-shot biomedical information retrieval evaluation (as reported for the article encoder variant DEnc) — The original MedCPT paper reports zero-shot information retrieval evaluations and numeric results for the MedCPT article encoder (DEnc) on retrieval benchmarks (e.g., RELISH) in Table 2.
+- Avoid: Direct clinical diagnostic use without professional oversight — Evidence gap: Primary sources inspected (model card, paper, and repository) do not present evidence that the checkpoint is clinically validated for direct diagnostic decision-making or provide clinical-validation guidance for unsupervised diagnostic use.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -87,11 +96,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/ncbi-medcpt-article-encoder-wrapper-cuda12/inference-routes`
 - Regional deployment: `/v1/models/ncbi-medcpt-article-encoder-wrapper-cuda12/regional-deployment`
 - Serverless handoff: `/v1/models/ncbi-medcpt-article-encoder-wrapper-cuda12/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/biomedical-retrieval/ncbi-medcpt-article-encoder-wrapper-cuda12/SKILL.md

@@ -79,6 +79,14 @@ Route: `POST /v1/inference/nvidia-cosmos-policy-aloha-predict2-2b`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-nvlabs-cosmos-policy-blob-main-aloha-md-93a4d0fefa`
+- Recommended: Research and development of bimanual robot manipulation policies and evaluation on the ALOHA platform (contact-rich manipulation, imitation from human teleoperation demonstrations). — Primary model artifacts and repository guidance document the checkpoint as a 2B-parameter policy fine-tuned from a Predict2-2B video foundation model on ALOHA teleoperation data and provide ALOHA experiment guidance and example evaluation scripts suitable for R&D evaluation.
+- Avoid: Commercial deployment without obtaining an appropriate commercial license. — Primary checkpoint artifacts declare the NVIDIA One‑Way Noncommercial License (NSCLv1) for the base and planning checkpoints, which restricts commercial use per the model README/config artifacts.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -96,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-policy-aloha-predict2-cuda13/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-policy-aloha-predict2-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-policy-aloha-predict2-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/physical-ai/nvidia-cosmos-policy-aloha-predict2-cuda13/SKILL.md

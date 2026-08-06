@@ -1,0 +1,507 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14] uses forbidden secondary URL https://developer.nvidia.com/blog/optimizing-flux-1-kontext-for-image-editing-with-low-precision-quantization",
+        "path": "$.sources[14] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[15] uses forbidden secondary URL https://blogs.nvidia.com/blog/rtx-ai-garage-flux-kontext-nim-siggraph",
+        "path": "$.sources[15] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[16] uses forbidden secondary URL https://blogs.nvidia.com/blog/rtx-ai-garage-flux-kontext-nim-tensorrt",
+        "path": "$.sources[16] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/black-forest-labs/flux_1-kontext-dev/modelcard",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://build.nvidia.com/black-forest-labs/flux_1-kontext-dev/modelcard",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.inputPreparation_evidenceGap",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 9 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Black Forest Labs FLUX.1 Dev image generation packaged as NVIDIA Visual GenAI NIM.",
+      "displayName": "Use FLUX.1 Dev",
+      "group": "image-generation",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "black-forest-labs-flux-1-dev-license",
+      "modelFamily": "black-forest-labs-flux-1-dev",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-1-dev",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "version": "1.2.2",
+      "versionKey": "1-2-2"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_licenses/LICENSE-FLUX1-dev",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md"
+        ],
+        "modelScope": "black-forest-labs/FLUX.1-dev (upstream LICENSE files)",
+        "reason": "The upstream FLUX.1 [dev] license files published in the upstream repository and on the Hugging Face model repo identify the FLUX.1 [dev] Non\u2011Commercial License and restrict the dev-model weights and inference code to non-commercial/non-production use per the upstream license text.",
+        "useCase": "Commercial or production deployment without obtaining a separate commercial license from Black Forest Labs"
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+        ],
+        "modelScope": "black-forest-labs/FLUX.1-dev (upstream model card and Hugging Face README/tree)",
+        "reason": "Inspected upstream documentation (model card and README) describes generated image artifacts and usage examples but does not document probabilistic numeric outputs (likelihoods/log-probabilities/calibrated confidence scores) for the checkpoint at those locators.",
+        "useCase": "Relying on model-generated calibrated likelihoods/log-probabilities/confidence scores for automated decision-making"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "No comparable primary-side protocol rows present; cannot perform task- and protocol-specific comparison.",
+        "criteria": "No per-dataset numeric benchmark tables or head-to-head comparison rows explicitly attributed to the exact flux1-dev.safetensors checkpoint were found in the inspected primary locators.",
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+          "https://github.com/black-forest-labs/flux/blob/main/docs/text-to-image.md",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev"
+        ],
+        "rationale": "Inspected the upstream GitHub model card, docs/text-to-image.md, and the Hugging Face model landing/tree and did not find verifiable benchmark rows or comparison tables for flux1-dev.safetensors.",
+        "task": "Task-level head-to-head numeric comparisons for image-generation benchmarks tied to flux1-dev.safetensors",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Only appropriate if canonical upstream-published quantized weight files explicitly reference the exact flux1-dev.safetensors filename and checksum and upstream documentation validates runtime compatibility; the inspected upstream primary locators do not publish such quantized artifacts tied to flux1-dev.safetensors.",
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main",
+          "https://github.com/black-forest-labs/flux/blob/main/docs/image-editing.md",
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md"
+        ],
+        "modelScope": "canonical upstream flux1-dev.safetensors and any separately published quantized weight files that explicitly reference that file (none found at the checked locators)",
+        "useCase": "Low-precision / quantized deployment for accelerated inference (conditional)"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Exact tokenizer/tokenization specifics for the FLUX.1-dev checkpoint (tokenizer class, vocabulary file(s), special tokens, max token length) are not specified at the inspected upstream primary locators (checked: https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main, https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md, https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md).",
+      "Evidence gap: Exact numeric image preprocessing pipeline rules for image-conditioned inputs (resize/crop/pad/aspect-ratio policy, numeric resize targets, normalization mean/std, and channel order) are not documented at the inspected upstream locators (checked: https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md, https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main, https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md).",
+      "Evidence gap: Probabilistic/scoring outputs (likelihoods, log-probabilities, calibrated confidences) exposed by the upstream checkpoint are not documented at the inspected primary locators (checked: https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md, https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md).",
+      "Evidence gap: Canonical quantized weight files for the exact FLUX.1-dev checkpoint published by the upstream author were not found at the inspected upstream locators (checked: https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main, https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md, https://github.com/black-forest-labs/flux/blob/main/docs/image-editing.md).",
+      "Evidence gap: Per-dataset numeric benchmark tables (dataset name, split, metric, numeric value) explicitly attributed to the exact flux1-dev.safetensors checkpoint were not found at the inspected upstream primary locators (checked: https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md, https://huggingface.co/black-forest-labs/FLUX.1-dev, https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main, https://github.com/black-forest-labs/flux/blob/main/docs/text-to-image.md).",
+      "Evidence gap: Task-level head-to-head numeric comparisons tied to the exact FLUX.1-dev checkpoint with verified protocols and dataset splits were not found at the inspected upstream primary locators (checked: https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md, https://github.com/black-forest-labs/flux/blob/main/docs/text-to-image.md, https://huggingface.co/black-forest-labs/FLUX.1-dev).",
+      "Evidence gap: No inspected upstream primary source specifies a canonical automated content-filtering implementation, safety pipeline, or moderation controls for FLUX.1-dev at the checked locators (checked: https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md, https://huggingface.co/black-forest-labs/FLUX.1-dev)."
+    ],
+    "family": "docs-nvidia-com-nim-visual-genai-latest-getting-started-html-black-forest-labs-flux-1-dev-51a0d62834",
+    "identity": {
+      "architecture": "rectified flow transformer",
+      "checkpoint": "flux1-dev.safetensors",
+      "evidenceUrls": [
+        "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+        "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md",
+        "https://github.com/black-forest-labs/flux/blob/main/docs/text-to-image.md",
+        "https://github.com/black-forest-labs/flux/blob/main/model_licenses/LICENSE-FLUX1-dev",
+        "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md",
+        "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main"
+      ],
+      "license": "FLUX.1 [dev] Non\u2011Commercial License",
+      "parameterScale": "12 billion parameters",
+      "revision": "4610115bb0c89560703c892c59ac2742fa821e60ef5871b33493ba544683abd7",
+      "upstreamName": "black-forest-labs/FLUX.1-dev"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main"
+          ],
+          "statement": "Upstream Hugging Face repository landing and tree list Diffusers-style artifacts and runtime files, indicating availability of model_index.json and safetensors weight files suitable for Diffusers-style runtimes."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+          ],
+          "statement": "The Hugging Face repository tree and README list model files (Diffusers-style artifacts) that are expected to be consumed by runtime code; exact numeric preprocessing hyperparameters are not specified at the inspected locators."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md",
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md"
+          ],
+          "statement": "Evidence gap: Exact tokenizer/tokenization specifics for FLUX.1-dev (tokenizer class, vocabulary file(s), special tokens, max token length) are not specified at the inspected upstream locators."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+          ],
+          "statement": "Evidence gap: Exact numeric image preprocessing rules for image-conditioned inputs (resize/crop/pad/aspect-ratio policy, numeric resize values, normalization mean/std, channel order) are not documented at the inspected upstream locators."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+          ],
+          "statement": "Primary input: a single text prompt (one text string) used to condition image generation, as described in upstream usage examples."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main"
+          ],
+          "statement": "Optional image-conditioned inputs: upstream materials enumerate dev variants (e.g., Fill/Canny/Depth/Kontext) that indicate optional RGB image inputs for structural conditioning when those variants are selected upstream."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+          ],
+          "statement": "Upstream model card and README provide usage guidance and examples but do not prescribe a single canonical prompt template or enforced prompt-format at the inspected locators."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main"
+          ],
+          "statement": "Evidence gap: Explicit input validation constraints (exact character/token limits, per-request image-count limits, or exact prompt-length bounds) are not provided at the inspected upstream locators."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_licenses/LICENSE-FLUX1-dev",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md"
+        ],
+        "statement": "The FLUX.1 [dev] Non\u2011Commercial License restricts use of dev-model weights and inference code to non-commercial/non-production purposes; commercial deployment requires obtaining a separate commercial license per the upstream license text."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+          "https://github.com/black-forest-labs/flux/blob/main/docs/text-to-image.md"
+        ],
+        "statement": "Evidence gap: Per-dataset numeric benchmark tables (dataset name, split, metric, numeric value) explicitly attributed to the exact flux1-dev.safetensors checkpoint were not found at the inspected upstream primary locators."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md",
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md"
+        ],
+        "statement": "Evidence gap: Exact tokenizer/tokenization internals (tokenizer class, vocabulary file(s), special tokens, and max token length) for FLUX.1-dev are not specified at the inspected upstream locators."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+          ],
+          "statement": "Evidence gap: The inspected upstream model card and Hugging Face README do not document probabilistic numeric outputs (likelihoods, log-probabilities, or calibrated confidence scores) for the checkpoint; interpret outputs as generated image artifacts without upstream-provided calibrated numeric scores."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md",
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md"
+          ],
+          "statement": "Primary output object: generated images produced by the model from text prompts or image-conditioned variants, as described in the upstream README and model card."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main",
+            "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md"
+          ],
+          "statement": "Evidence gap: No upstream guidance found at the inspected locators for numeric calibration, probabilistic score validation, or recommended post-processing validation checks for image outputs."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+        ],
+        "modelScope": "black-forest-labs/FLUX.1-dev (upstream model card and Hugging Face README/tree)",
+        "useCase": "Text-to-image generation (single text prompt \u2192 generated image)",
+        "why": "Upstream model card and the Hugging Face model landing describe FLUX.1 [dev] as a generative text\u2192image model and provide usage examples and Diffusers-style runtime guidance."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main"
+        ],
+        "modelScope": "black-forest-labs/FLUX.1-dev variants as enumerated in the upstream model card and Hugging Face repo tree",
+        "useCase": "Image-conditioned generation/editing using explicitly enumerated FLUX.1 [dev] variants (e.g., Fill, Canny, Depth, Kontext) when those variants are selected upstream",
+        "why": "The upstream model card and repository enumerate dev variants intended for image-conditioned uses and document variant-specific usage."
+      }
+    ],
+    "researchSummary": "Checked canonical upstream primary sources (Black Forest Labs GitHub model card and docs, and the Hugging Face model repository). Verified checkpoint-scoped facts available in those sources: (1) Upstream descriptions identify FLUX.1 [dev] as a 12 billion-parameter rectified flow transformer for text\u2192image generation (source: Hugging Face model landing; GitHub model card). (2) A SHA-256 checksum string 4610115bb0c89560703c892c59ac2742fa821e60ef5871b33493ba544683abd7 is published in the upstream GitHub docs/text-to-image.md and is attributed there to FLUX.1\u2011dev. (3) The upstream license text for FLUX.1 [dev] is published as the FLUX.1 [dev] Non\u2011Commercial License in the repository model_licenses/LICENSE-FLUX1-dev and reiterated in the Hugging Face LICENSE.md. (4) The Hugging Face model repo landing and tree list Diffusers-style artifacts and repository files for FLUX.1-dev. Evidence gaps (items not specified in inspected primary locators): exact tokenizer internals (class, vocab/special-token files, max token length), exact numeric image-preprocessing hyperparameters (resize values, normalization mean/std, channel ordering, crop/pad policy), canonical probabilistic numeric outputs (likelihoods/log-probabilities/calibrated confidences), canonical quantized weight artifacts explicitly tied to flux1-dev.safetensors from the upstream author, and per-checkpoint numeric benchmark rows attributed to the exact flux1-dev.safetensors checkpoint. All claims and gaps above are tied to the exact primary-file locators listed in the sources section.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_licenses/LICENSE-FLUX1-dev",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md"
+        ],
+        "statement": "Adhere to the upstream FLUX.1 [dev] Non\u2011Commercial License terms: do not use the dev-model weights for commercial/production purposes without obtaining appropriate commercial licensing from Black Forest Labs."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md",
+          "https://huggingface.co/black-forest-labs/FLUX.1-dev"
+        ],
+        "statement": "Evidence gap: No inspected upstream primary source specifies a canonical automated content-filtering implementation, safety pipeline, or enforced moderation controls for FLUX.1-dev at the checked locators; implementers should assume no upstream-provided filter and perform independent safety review and content moderation."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "black-forest-labs/flux (repository root)",
+        "primary": true,
+        "primaryReason": "Official upstream GitHub repository containing model cards, docs, and license files for FLUX.1 variants.",
+        "publisher": "Black Forest Labs",
+        "sourceType": "repository",
+        "supports": [
+          "Repository-level listing of model_cards, docs, and model_licenses",
+          "General repository metadata and links to specific model files"
+        ],
+        "title": "Black Forest Labs repository: flux (GitHub)",
+        "url": "https://github.com/black-forest-labs/flux"
+      },
+      {
+        "modelScope": "black-forest-labs/flux (model_cards/FLUX.1-dev.md)",
+        "primary": true,
+        "primaryReason": "Official model card for FLUX.1-dev describing model identity, variants, and usage guidance at the repository.",
+        "publisher": "Black Forest Labs",
+        "sourceType": "repository",
+        "supports": [
+          "Statement that FLUX.1 [dev] is a 12B rectified flow transformer",
+          "Enumeration of dev variants (Fill/Canny/Depth/Kontext/etc.)",
+          "Usage guidance and examples as provided upstream"
+        ],
+        "title": "Black Forest Labs model card: FLUX.1-dev (GitHub)",
+        "url": "https://github.com/black-forest-labs/flux/blob/main/model_cards/FLUX.1-dev.md"
+      },
+      {
+        "modelScope": "black-forest-labs/flux (model_licenses/LICENSE-FLUX1-dev)",
+        "primary": true,
+        "primaryReason": "Canonical license file hosted in the official upstream repository enumerating the FLUX.1 [dev] Non\u2011Commercial license terms.",
+        "publisher": "Black Forest Labs",
+        "sourceType": "repository",
+        "supports": [
+          "Identification of FLUX.1 [dev] Non\u2011Commercial License and enumerated prohibitions/usage restrictions"
+        ],
+        "title": "Black Forest Labs FLUX.1-dev license file (GitHub)",
+        "url": "https://github.com/black-forest-labs/flux/blob/main/model_licenses/LICENSE-FLUX1-dev"
+      },
+      {
+        "modelScope": "black-forest-labs/flux (docs/text-to-image.md)",
+        "primary": true,
+        "primaryReason": "Documentation in the upstream repository listing model variants and published SHA-256 checksums attributed to FLUX.1 variants including FLUX.1-dev.",
+        "publisher": "Black Forest Labs",
+        "sourceType": "repository",
+        "supports": [
+          "Published SHA-256 checksum for FLUX.1-dev (4610115bb0c89560703c892c59ac2742fa821e60ef5871b33493ba544683abd7)",
+          "License attribution and model variant listings"
+        ],
+        "title": "GitHub docs: text-to-image (Black Forest Labs)",
+        "url": "https://github.com/black-forest-labs/flux/blob/main/docs/text-to-image.md"
+      },
+      {
+        "modelScope": "black-forest-labs/flux (docs/image-editing.md)",
+        "primary": true,
+        "primaryReason": "Upstream documentation referencing FLUX.1 variants and checksums for image-editing variants.",
+        "publisher": "Black Forest Labs",
+        "sourceType": "repository",
+        "supports": [
+          "Association of FLUX.1 variants with documentation and variant descriptions"
+        ],
+        "title": "GitHub docs: image-editing (Black Forest Labs)",
+        "url": "https://github.com/black-forest-labs/flux/blob/main/docs/image-editing.md"
+      },
+      {
+        "modelScope": "black-forest-labs/FLUX.1-dev (Hugging Face landing)",
+        "primary": true,
+        "primaryReason": "Canonical Hugging Face model landing and README for FLUX.1-dev documenting files, README content, and model description.",
+        "publisher": "Black Forest Labs (Hugging Face model repo)",
+        "sourceType": "model-card",
+        "supports": [
+          "High-level model description stating 12B rectified flow transformer identity",
+          "Pointer to repository files and usage guidance"
+        ],
+        "title": "Hugging Face model landing: black-forest-labs/FLUX.1-dev",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev"
+      },
+      {
+        "modelScope": "black-forest-labs/FLUX.1-dev (repo tree)",
+        "primary": true,
+        "primaryReason": "Direct file listing of the canonical upstream Hugging Face repository for FLUX.1-dev including model files and model_index.json.",
+        "publisher": "Black Forest Labs (Hugging Face repo)",
+        "sourceType": "repository",
+        "supports": [
+          "Presence of Diffusers-style artifacts and model files as listed in the repo tree",
+          "Repository file listing for tokenizer/text_encoder files (if present in the tree)"
+        ],
+        "title": "Hugging Face repository tree for FLUX.1-dev (files listing)",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev/tree/main"
+      },
+      {
+        "modelScope": "black-forest-labs/FLUX.1-dev (README.md)",
+        "primary": true,
+        "primaryReason": "Upstream README content on the Hugging Face model landing describing model usage and characteristics.",
+        "publisher": "Black Forest Labs (Hugging Face model repo)",
+        "sourceType": "repository",
+        "supports": [
+          "Model description stating 12B parameter rectified flow transformer identity",
+          "Usage examples and suggested Diffusers-based runtime usage"
+        ],
+        "title": "Hugging Face README for FLUX.1-dev",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/README.md"
+      },
+      {
+        "modelScope": "black-forest-labs/FLUX.1-dev (LICENSE.md)",
+        "primary": true,
+        "primaryReason": "Upstream license text hosted on the Hugging Face model repository reiterating the FLUX.1 [dev] Non\u2011Commercial license.",
+        "publisher": "Black Forest Labs (Hugging Face model repo)",
+        "sourceType": "repository",
+        "supports": [
+          "Statement that the FLUX.1 [dev] Model is licensed under the FLUX.1 [dev] Non\u2011Commercial License",
+          "Additional license disclaimers and risk-mitigation guidance"
+        ],
+        "title": "Hugging Face LICENSE.md for FLUX.1-dev",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md"
+      },
+      {
+        "modelScope": "NVIDIA NIM packaging and container names referencing FLUX.1-dev",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NIM documentation page that references a packaged NIM container name for FLUX.1-dev and documents supported variants in NVIDIA packaging.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NVIDIA NIM container naming and supported variants for FLUX.1-dev (NIM packaging evidence; does not assert it changes upstream checkpoint contents)"
+        ],
+        "title": "NVIDIA NIM Visual GenAI getting-started (FLUX.1-dev entry)",
+        "url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+      },
+      {
+        "modelScope": "NVIDIA NIM packaging overview referencing black-forest-labs/flux.1-dev",
+        "primary": true,
+        "primaryReason": "NVIDIA NIM overview pages documenting NIM microservice packaging and variant descriptions for models including flux.1-dev.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Statements about NVIDIA packaging of NIM microservices tied to specific models and variant support (NIM serving evidence)"
+        ],
+        "title": "NVIDIA NIM Visual GenAI overview",
+        "url": "https://docs.nvidia.com/nim/visual-genai/latest/overview.html"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "7975248b90e9507e0b6b2a4cb1af692d66dffb5a1d0fb13fa5e4eb3882e76288",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "docs-nvidia-com-nim-visual-genai-latest-getting-started-html-black-forest-labs-flux-1-dev-51a0d62834",
+  "researchedAt": "2026-07-24T00:08:06.882166+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html#black-forest-labs-flux-1-dev",
+  "sourceUrls": [
+    "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

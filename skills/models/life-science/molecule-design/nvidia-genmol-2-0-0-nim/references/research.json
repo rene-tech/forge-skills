@@ -1,0 +1,923 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://docs.nvidia.com/nim/bionemo/genmol/latest/",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "evidence URL is absent from $.sources: https://docs.nvidia.com/nim/bionemo/genmol/1.0.1/release-notes.html",
+        "path": "evidence URL is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/genmol/latest"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://docs.nvidia.com/nim/bionemo/genmol/latest",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 3 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "NVIDIA GenMol 2.0.0 NIM is a life-science molecular generation service for de novo and fragment-guided molecule design using SMILES or SAFE templates.",
+      "displayName": "Use GenMol NIM",
+      "group": "molecule-design",
+      "inputModalities": [
+        "molecule"
+      ],
+      "license": "Apache-2.0 source code; NVIDIA Open Model License weights; NVIDIA NIM terms",
+      "modelFamily": "nvidia-genmol",
+      "outputModalities": [
+        "molecule",
+        "score",
+        "json"
+      ],
+      "slug": "nvidia-genmol-2-0-0-nim",
+      "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/",
+      "version": "2.0.0",
+      "versionKey": "nim-2-0-0-candidate"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [],
+        "modelScope": "NVIDIA GenMol 2.0.0 NIM / GenMol v2.0 (NV-GenMol-89M-v2)",
+        "reason": "Primary findings describe molecular-generation and discovery uses, but the findings do not report clinical validation, regulatory approval, or clinical-grade evaluation for this checkpoint or NIM service.",
+        "useCase": "Clinical decision making or regulated clinical diagnostics"
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md"
+        ],
+        "modelScope": "GenMol v2.0 (NV-GenMol-89M-v2) upstream checkpoint evidence",
+        "reason": "The repository model card states a technical limitation that the model may not perform well on sequences highly divergent from the ZINC-15 dataset.",
+        "useCase": "Inputs highly divergent from the ZINC-15 dataset"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "This is a runtime/task benchmark from the NIM documentation rather than a checkpoint-only evaluation.",
+          "Dataset, split, and full protocol are not reported in the findings."
+        ],
+        "conditions": "Measured on an H100 GPU; the findings do not specify dataset, split, or full generation hyperparameters at this locator.",
+        "dataset": "not reported",
+        "direction": "lower-is-better",
+        "metric": "wall-time on H100 GPU",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1; serving/runtime benchmark, not a pure upstream checkpoint-only benchmark",
+        "sourceLocator": "benchmarks page, motif-extension wall-time row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Motif extension",
+        "value": "1.051 s for v2 versus 1.824 s for v1; 42.4% reduction"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings.",
+          "Comparability to external benchmarks is limited by missing dataset and split metadata."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "validity",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, motif-extension validity row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Motif extension",
+        "value": "0.889 for v2 versus 0.915 for v1"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "uniqueness",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, motif-extension uniqueness row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Motif extension",
+        "value": "0.670 for v2 versus 0.671 for v1"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "diversity",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, motif-extension diversity row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Motif extension",
+        "value": "0.674 for v2 versus 0.604 for v1"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "novelty",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, motif-extension novelty row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Motif extension",
+        "value": "0.691 for v2 versus 0.684 for v1"
+      },
+      {
+        "caveats": [
+          "Quality is explicitly reported as hyperparameter-sensitive.",
+          "Dataset and split are not reported in the findings."
+        ],
+        "conditions": "The findings note that motif-extension quality is sensitive to hyperparameter selection including temperature, noise, and mask-length.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "quality",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, motif-extension quality row and quality note",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Motif extension",
+        "value": "0.188 for v2 versus 0.273 for v1"
+      },
+      {
+        "caveats": [
+          "This is a runtime/task benchmark from the NIM documentation.",
+          "Dataset, split, and full protocol are not reported in the findings."
+        ],
+        "conditions": "Measured on an H100 GPU; the findings do not specify dataset, split, or full generation hyperparameters at this locator.",
+        "dataset": "not reported",
+        "direction": "lower-is-better",
+        "metric": "wall-time on H100 GPU",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1; serving/runtime benchmark",
+        "sourceLocator": "benchmarks page, scaffold-decoration wall-time row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Scaffold decoration",
+        "value": "0.961 s for v2 versus 0.972 s for v1; 1.1% reduction"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "validity",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, scaffold-decoration validity row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Scaffold decoration",
+        "value": "0.995 for v2 versus 0.967 for v1"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "uniqueness",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, scaffold-decoration uniqueness row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Scaffold decoration",
+        "value": "0.756 for v2 versus 0.763 for v1"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "diversity",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, scaffold-decoration diversity row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Scaffold decoration",
+        "value": "0.564 for v2 versus 0.555 for v1"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "novelty",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, scaffold-decoration novelty row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Scaffold decoration",
+        "value": "0.624 for v2 versus 0.655 for v1"
+      },
+      {
+        "caveats": [
+          "Protocol details are incomplete in the findings."
+        ],
+        "conditions": "The findings do not specify dataset, split, or exact generation protocol at this locator.",
+        "dataset": "not reported",
+        "direction": "higher-is-better",
+        "metric": "quality",
+        "modelScope": "NVIDIA GenMol NIM benchmark page comparing v2 to v1",
+        "sourceLocator": "benchmarks page, scaffold-decoration quality row",
+        "sourceUrl": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html",
+        "split": "not reported",
+        "task": "Scaffold decoration",
+        "value": "0.354 for v2 versus 0.346 for v1"
+      },
+      {
+        "caveats": [
+          "Not directly comparable to the NIM benchmark page values because the reported metric sets and protocols differ.",
+          "Dataset and split are not reported in the findings."
+        ],
+        "conditions": "The findings provide values from the NVIDIA-BioNeMo repository root but do not specify the exact benchmark page locator, dataset, split, or full protocol in the provided evidence.",
+        "dataset": "not reported",
+        "direction": "context-only",
+        "metric": "validity, uniqueness, quality, diversity, distance",
+        "modelScope": "GenMol V2 upstream repository benchmark result",
+        "sourceLocator": "repository root benchmark summary as captured in findings",
+        "sourceUrl": "https://github.com/NVIDIA-BioNeMo/genmol",
+        "split": "not reported",
+        "task": "Motif extension",
+        "value": "validity 99.4%; uniqueness 84.5%; quality 49.0%; diversity 0.626; distance 0.659"
+      },
+      {
+        "caveats": [
+          "Not directly comparable to the NIM benchmark page values because the reported metric sets and protocols differ.",
+          "Dataset and split are not reported in the findings."
+        ],
+        "conditions": "The findings provide values from the NVIDIA-BioNeMo repository root but do not specify the exact benchmark page locator, dataset, split, or full protocol in the provided evidence.",
+        "dataset": "not reported",
+        "direction": "context-only",
+        "metric": "validity, uniqueness, quality, diversity, distance",
+        "modelScope": "GenMol V2 upstream repository benchmark result",
+        "sourceLocator": "repository root benchmark summary as captured in findings",
+        "sourceUrl": "https://github.com/NVIDIA-BioNeMo/genmol",
+        "split": "not reported",
+        "task": "Scaffold decoration",
+        "value": "validity 99.2%; uniqueness 90.5%; quality 39.7%; diversity 0.571; distance 0.604"
+      },
+      {
+        "caveats": [
+          "Dataset and split are not reported in the findings."
+        ],
+        "conditions": "The findings provide values from the NVIDIA-BioNeMo repository root but do not specify the exact benchmark page locator, dataset, split, or full protocol in the provided evidence.",
+        "dataset": "not reported",
+        "direction": "context-only",
+        "metric": "validity, uniqueness, quality, diversity, distance",
+        "modelScope": "GenMol V2 upstream repository benchmark result",
+        "sourceLocator": "repository root benchmark summary as captured in findings",
+        "sourceUrl": "https://github.com/NVIDIA-BioNeMo/genmol",
+        "split": "not reported",
+        "task": "Superstructure generation",
+        "value": "validity 99.7%; uniqueness 89.8%; quality 39.0%; diversity 0.551; distance 0.769"
+      },
+      {
+        "caveats": [
+          "Dataset and split are not reported in the findings."
+        ],
+        "conditions": "The findings provide values from the NVIDIA-BioNeMo repository root but do not specify the exact benchmark page locator, dataset, split, or full protocol in the provided evidence.",
+        "dataset": "not reported",
+        "direction": "context-only",
+        "metric": "validity, uniqueness, quality, diversity, distance",
+        "modelScope": "GenMol V2 upstream repository benchmark result",
+        "sourceLocator": "repository root benchmark summary as captured in findings",
+        "sourceUrl": "https://github.com/NVIDIA-BioNeMo/genmol",
+        "split": "not reported",
+        "task": "Linker design (1-step)",
+        "value": "validity 81.8%; uniqueness 87.1%; quality 28.6%; diversity 0.566; distance 0.545"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "GenMol v1",
+        "comparisonConditions": "Comparison is limited to the official NIM benchmark page values; dataset, split, and full protocol are not reported in the findings, and motif-extension quality is explicitly hyperparameter-sensitive.",
+        "criteria": "v2 shows lower motif-extension wall-time and higher motif-extension diversity and novelty, but lower motif-extension validity and quality; for scaffold decoration, v2 improves validity, diversity, quality, and wall-time while reducing uniqueness and novelty.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html"
+        ],
+        "rationale": "Official NIM benchmarks report mixed changes from v1 to v2 rather than a uniform win. Motif-extension quality is also noted as sensitive to hyperparameter selection.",
+        "task": "Motif extension and scaffold decoration under the official NIM benchmark page",
+        "verdict": "tradeoff"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Use only when inputs can be expressed as SAFE-formatted text sequences with masked fragments denoted by asterisk symbols; the overview describes masking-unmasking inference over masked positions.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/genmol/latest/overview.html",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+        ],
+        "modelScope": "NVIDIA GenMol 2.0.0 NIM serving GenMol v2.0 (NV-GenMol-89M-v2)",
+        "useCase": "Use with masked fragment templates for fragment-guided molecular generation"
+      },
+      {
+        "conditions": "Applicable only within the officially documented endpoint scoring enum values QED or LogP; the findings do not specify broader score semantics or calibration, so downstream validation is required.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+        ],
+        "modelScope": "NVIDIA GenMol 2.0.0 NIM endpoint parameters",
+        "useCase": "Score-ranked generation using QED or LogP"
+      },
+      {
+        "conditions": "Primary checkpoint sources say GenMol v2.0 is ready for commercial use, but deployment remains subject to the NVIDIA Open Model License for weights plus NVIDIA NIM service terms and any downstream validation requirements.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+          "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol"
+        ],
+        "modelScope": "GenMol v2.0 checkpoint and NVIDIA GenMol NIM packaging",
+        "useCase": "Commercial deployment"
+      }
+    ],
+    "evidenceGaps": [
+      "The findings do not report an immutable checkpoint revision for NV-GenMol-89M-v2.",
+      "The findings do not provide a full official output JSON schema with named response fields for NVIDIA GenMol 2.0.0 NIM.",
+      "The findings do not specify score calibration, uncertainty, or broader semantics beyond reporting arrays of FP32 scores and a scoring selector of QED or LogP.",
+      "The findings do not report checkpoint-scoped clinical validation, regulatory approval, or clinical-grade evaluation.",
+      "Several benchmark entries lack dataset names, split identifiers, and full protocol details in the provided findings, which limits direct comparability.",
+      "Comparison evidence in the findings is limited to GenMol v2 versus GenMol v1 on the official NIM benchmark page; the findings do not provide primary protocol-matched comparisons against other Forge candidates.",
+      "The findings do not specify canonical tokenization, SAFE normalization, fragment ordering, or stereochemistry preprocessing details beyond SAFE-formatted sequence inputs."
+    ],
+    "family": "docs-nvidia-com-nim-bionemo-genmol-latest-908910ca42",
+    "identity": {
+      "architecture": "Transformer with a BERT network architecture; masked diffusion model trained on Sequential Attachment-based Fragment Embedding (SAFE) representations.",
+      "checkpoint": "NV-GenMol-89M-v2",
+      "evidenceUrls": [
+        "https://docs.nvidia.com/nim/bionemo/genmol/latest/release-notes.html",
+        "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+        "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol",
+        "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md",
+        "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+        "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+      ],
+      "license": "Model weights: NVIDIA Open Model License; source code: Apache 2.0; NIM service/container: NVIDIA Software License Agreement and Product-Specific Terms for NVIDIA AI Products.",
+      "parameterScale": "89 million parameters",
+      "revision": "not reported",
+      "upstreamName": "GenMol v2.0 (NV-GenMol-89M-v2)"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "The molecular sequence input format is a SAFE-formatted text string."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+            "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "Input types officially reported are Text (Molecular Sequence), Number, Enumeration, and Binary."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/overview.html"
+          ],
+          "statement": "Inference uses a masking-unmasking process inspired by masked discrete diffusion, predicting tokens at masked positions and iteratively recovering all masks."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the findings do not specify canonical tokenization, SAFE normalization, fragment ordering, stereochemistry handling, or other preprocessing details beyond SAFE-formatted molecular-sequence inputs."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "The model consumes molecular sequences represented as SAFE-formatted text strings."
+        },
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol",
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The endpoint also accepts numeric and control inputs for molecules to generate, temperature scaling factor, noise scaling factor, scoring method, and whether to show unique molecules only."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/overview.html"
+          ],
+          "statement": "For masked-fragment workflows, SAFE sequences may contain masked fragments denoted by asterisk symbols."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/overview.html"
+          ],
+          "statement": "For fragment-guided generation, use SAFE-formatted text with masked fragments denoted by asterisk symbols."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The official endpoint exposes temperature, noise, gamma, min_add_len, scoring, and deprecated step_size controls for generation behavior."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+            "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "Maximum input length is 512 tokens."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The temperature parameter must be a float from 0.01 to 10.0."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The noise parameter must be a float from 0.0 to 2.0, default 1.0."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The gamma parameter must be a float from 0.0 to 1.0, default 0.0."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The min_add_len parameter must be an integer from 1 to 128, default 24."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The scoring parameter is restricted to the enum values QED or LogP, default QED."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+          ],
+          "statement": "The step_size parameter is deprecated in v2.0.0 and ignored by the service."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+          "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+          "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+        ],
+        "statement": "Maximum input length is 512 tokens."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md"
+        ],
+        "statement": "Technical limitation: the model may not perform well on sequences highly divergent from the ZINC-15 dataset."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md"
+        ],
+        "statement": "Potential known risk: the model may produce molecules that are difficult or impossible to synthesize."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+        ],
+        "statement": "The step_size parameter is deprecated in v2.0.0 and ignored by the service."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the findings do not report an immutable checkpoint revision for NV-GenMol-89M-v2."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the findings do not provide a full official output JSON schema or explicit score calibration semantics for the service outputs."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "Interpret generated text outputs as candidate molecular sequences in SAFE format, not as validated molecules for a specific end use without downstream checks."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html",
+            "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "Interpret scores conservatively: the endpoint documents a scoring selector of QED or LogP, but the findings do not specify score calibration, uncertainty, or broader semantics beyond reporting an array of FP32 scores."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "Officially reported output types are Text (list of molecule sequences) and Number (list of scores)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "The output sequence format is an array of SAFE strings, and scores are an array of FP32 numbers."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/NV-GenMol-89M-v2",
+            "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+          ],
+          "statement": "Maximum output length is 512 tokens."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md"
+          ],
+          "statement": "Potential known risk: the model may produce molecules that are difficult or impossible to synthesize, so downstream synthesis or feasibility review is required."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the findings do not provide an official full output JSON object schema, named response fields, or a checkpoint-specific post-inference validation workflow beyond reported output types and score arrays."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol"
+        ],
+        "modelScope": "NVIDIA GenMol 2.0.0 NIM serving GenMol v2.0 (NV-GenMol-89M-v2)",
+        "useCase": "De novo molecule generation",
+        "why": "Primary NVIDIA model-card and container sources explicitly list de novo generation as a supported GenMol use."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol",
+          "https://github.com/NVIDIA-BioNeMo/genmol"
+        ],
+        "modelScope": "NVIDIA GenMol 2.0.0 NIM serving GenMol v2.0 (NV-GenMol-89M-v2)",
+        "useCase": "Linker design",
+        "why": "Primary NVIDIA sources explicitly list linker design as a GenMol capability; repository benchmark findings also report a linker-design (1-step) result for GenMol V2."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol",
+          "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html"
+        ],
+        "modelScope": "NVIDIA GenMol 2.0.0 NIM serving GenMol v2.0 (NV-GenMol-89M-v2)",
+        "useCase": "Motif extension and scaffold decoration or morphing",
+        "why": "Primary NVIDIA sources list motif extension and scaffold decoration or morphing as intended GenMol uses, and NVIDIA benchmark pages report task-specific validity, uniqueness, diversity, novelty, quality, and wall-time figures for these tasks."
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol"
+        ],
+        "modelScope": "NVIDIA GenMol 2.0.0 NIM serving GenMol v2.0 (NV-GenMol-89M-v2)",
+        "useCase": "Hit generation and lead optimization in research or discovery workflows",
+        "why": "Primary NVIDIA sources explicitly list hit generation and lead optimization among GenMol use cases."
+      }
+    ],
+    "researchSummary": "NVIDIA GenMol 2.0.0 NIM is a serving package that, according to official NVIDIA release notes and NGC catalog documentation, serves GenMol v2.0 using the NV-GenMol-89M-v2 checkpoint. Primary NVIDIA sources consistently describe the upstream checkpoint as an 89M-parameter Transformer with a BERT network architecture and masked-diffusion generation over SAFE molecular representations. Directly supported uses in primary sources are de novo generation, linker design, motif extension, scaffold decoration or morphing, hit generation, and lead optimization. Official endpoint documentation provides parameter bounds for temperature, noise, gamma, min_add_len, scoring, and a deprecated step_size field. Important evidence limits remain: the findings do not provide an immutable checkpoint revision, a full official output JSON field schema, explicit score calibration semantics, or checkpoint-specific clinical validation. Benchmark evidence is split between NIM runtime benchmark pages and upstream repository results, and some benchmark protocols are not fully specified in the findings.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/nvidia/genmol-generate/modelcard",
+          "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol",
+          "https://huggingface.co/nvidia/NV-GenMol-89M-v2"
+        ],
+        "statement": "Model use is governed by the NVIDIA Open Model License for weights, Apache 2.0 for source code, and NVIDIA Software License Agreement plus Product-Specific Terms for NVIDIA AI Products for the NIM service/container; deployments must comply with all applicable terms."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md"
+        ],
+        "statement": "Generated molecules should receive downstream feasibility review because primary sources note the model may produce molecules that are difficult or impossible to synthesize."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: Do not use this model as a substitute for clinical validation, regulated diagnostics, or treatment decision making without appropriate domain-specific review and validation."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "NVIDIA GenMol NIM documentation root",
+        "primary": true,
+        "primaryReason": "Official NVIDIA documentation root for the exact GenMol NIM source scope under audit.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "official starting source requirement",
+          "source scope for the exact Forge model entry"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://docs.nvidia.com/nim/bionemo/genmol/latest/"
+      },
+      {
+        "modelScope": "NVIDIA GenMol NIM 2.0.0 serving GenMol v2.0",
+        "primary": true,
+        "primaryReason": "Official NVIDIA release notes for the GenMol NIM service version and integrated checkpoint.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NIM version identity",
+          "integration of NV-GenMol-89M-v2 checkpoint",
+          "validated GPU matrix"
+        ],
+        "title": "GenMol NIM release notes",
+        "url": "https://docs.nvidia.com/nim/bionemo/genmol/latest/release-notes.html"
+      },
+      {
+        "modelScope": "NVIDIA GenMol NIM endpoint parameter interface",
+        "primary": true,
+        "primaryReason": "Official NVIDIA endpoint documentation for accepted parameters, bounds, defaults, and deprecated fields.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "temperature/noise/gamma/min_add_len bounds",
+          "scoring enum values",
+          "deprecated step_size behavior"
+        ],
+        "title": "GenMol NIM endpoints documentation",
+        "url": "https://docs.nvidia.com/nim/bionemo/genmol/latest/endpoints.html"
+      },
+      {
+        "modelScope": "NVIDIA GenMol NIM benchmark comparisons between v1 and v2",
+        "primary": true,
+        "primaryReason": "Official NVIDIA benchmark page for GenMol NIM runtime and task-level benchmark claims.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "motif-extension metrics",
+          "scaffold-decoration metrics",
+          "wall-time claims",
+          "hyperparameter-sensitivity note"
+        ],
+        "title": "GenMol NIM benchmarks",
+        "url": "https://docs.nvidia.com/nim/bionemo/genmol/latest/benchmarks.html"
+      },
+      {
+        "modelScope": "GenMol v2.0 (NV-GenMol-89M-v2) upstream checkpoint evidence",
+        "primary": true,
+        "primaryReason": "Official NVIDIA-hosted model card for GenMol v2.0 with architecture, scale, input types, intended uses, and license statement.",
+        "publisher": "NVIDIA",
+        "sourceType": "model-card",
+        "supports": [
+          "checkpoint identity",
+          "architecture",
+          "parameter count",
+          "SAFE input format",
+          "intended use cases",
+          "maximum input length",
+          "weight license"
+        ],
+        "title": "GenMol model card (NVIDIA Build)",
+        "url": "https://build.nvidia.com/nvidia/genmol-generate/modelcard"
+      },
+      {
+        "modelScope": "GenMol v2.0 (NV-GenMol-89M-v2) upstream checkpoint evidence",
+        "primary": true,
+        "primaryReason": "Official NVIDIA-BioNeMo repository model card for upstream checkpoint characteristics, source-code license, and documented limitations or risks.",
+        "publisher": "NVIDIA-BioNeMo",
+        "sourceType": "repository",
+        "supports": [
+          "checkpoint identity",
+          "source-code license",
+          "commercial-use statement",
+          "technical limitation on ZINC-15 divergence",
+          "synthesis risk"
+        ],
+        "title": "GenMol project MODEL_CARD.md",
+        "url": "https://github.com/NVIDIA-BioNeMo/genmol/blob/main/MODEL_CARD.md"
+      },
+      {
+        "modelScope": "NVIDIA GenMol NIM container packaging",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC container entry describing the GenMol NIM container, included checkpoint, and service license terms.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "NIM serves GenMol v2.0 (NV-GenMol-89M-v2)",
+          "container includes model weights and runtime components",
+          "NIM service license terms",
+          "supported use-case summary"
+        ],
+        "title": "NGC Catalog: GenMol container",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/genmol"
+      },
+      {
+        "modelScope": "GenMol v2.0 (NV-GenMol-89M-v2) upstream checkpoint evidence",
+        "primary": true,
+        "primaryReason": "Official NVIDIA-hosted checkpoint page reporting architecture, parameter count, I/O types, formats, limits, and licensing.",
+        "publisher": "NVIDIA",
+        "sourceType": "repository",
+        "supports": [
+          "architecture",
+          "parameter count",
+          "input types",
+          "output types",
+          "SAFE array outputs",
+          "maximum input and output lengths",
+          "license statements"
+        ],
+        "title": "NV-GenMol-89M-v2 model page",
+        "url": "https://huggingface.co/nvidia/NV-GenMol-89M-v2"
+      },
+      {
+        "modelScope": "NVIDIA GenMol NIM API interface",
+        "primary": true,
+        "primaryReason": "Official NVIDIA API reference for model identity and I/O contract as exposed by the NIM interface.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "architecture",
+          "parameter count",
+          "input types",
+          "SAFE input format",
+          "maximum input length",
+          "output types and formats",
+          "maximum output length"
+        ],
+        "title": "NIM reference: NVIDIA GenMol",
+        "url": "https://docs.api.nvidia.com/nim/reference/nvidia-genmol"
+      },
+      {
+        "modelScope": "Metric-definition context for molecular generation benchmarks",
+        "primary": true,
+        "primaryReason": "Official NVIDIA benchmark-definition documentation used to interpret validity, uniqueness, and novelty metric meanings where explicitly defined in findings.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "validity definition",
+          "uniqueness definition",
+          "novelty definition",
+          "benchmark-protocol context"
+        ],
+        "title": "BioNeMo framework model benchmarks definitions",
+        "url": "https://docs.nvidia.com/bionemo-framework/1.10/models/model-benchmarks.html"
+      },
+      {
+        "modelScope": "NVIDIA GenMol NIM inference overview",
+        "primary": true,
+        "primaryReason": "Official NVIDIA overview page describing the masking-unmasking inference process and masked SAFE input representation.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "masking-unmasking inference process",
+          "SAFE masked-fragment formatting"
+        ],
+        "title": "GenMol NIM overview",
+        "url": "https://docs.nvidia.com/nim/bionemo/genmol/latest/overview.html"
+      },
+      {
+        "modelScope": "GenMol V2 upstream repository benchmark summary",
+        "primary": true,
+        "primaryReason": "Official NVIDIA-BioNeMo repository root containing benchmark summary values for GenMol V2 tasks in the findings.",
+        "publisher": "NVIDIA-BioNeMo",
+        "sourceType": "repository",
+        "supports": [
+          "motif-extension benchmark summary",
+          "scaffold-decoration benchmark summary",
+          "superstructure-generation benchmark summary",
+          "linker-design benchmark summary"
+        ],
+        "title": "GenMol project repository",
+        "url": "https://github.com/NVIDIA-BioNeMo/genmol"
+      },
+      {
+        "modelScope": "nvidia-genmol",
+        "primary": true,
+        "primaryReason": "The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://docs.nvidia.com/nim/bionemo/genmol/latest"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "a3db7e335204de460ed13ee785aec8c58301ceb52c28c9ab69d90f90b5904f7a",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "docs-nvidia-com-nim-bionemo-genmol-latest-908910ca42",
+  "researchedAt": "2026-07-23T22:05:23.382222+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://docs.nvidia.com/nim/bionemo/genmol/latest",
+  "sourceUrls": [
+    "https://docs.nvidia.com/nim/bionemo/genmol/latest/"
+  ],
+  "upstreamAgentSkills": [
+    {
+      "forgeSlugs": [
+        "nvidia-genmol-2-0-0-nim"
+      ],
+      "notes": "The BioNeMo GenMol skill currently demonstrates a different named NIM tag than Forge's GenMol 2.0.0 entry. Use it for scientific workflow concepts and SAFE preparation only after reconciling every field, response, and deployment flag against the Forge 2.0.0 route; do not transfer version-specific behavior or benchmark claims.",
+      "relation": "related-version-workflow",
+      "skills": [
+        {
+          "name": "genmol-nim",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/genmol-nim"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "boltz2-nim",
+        "mit-diffdock-nim",
+        "nvidia-genmol-nim",
+        "nvidia-genmol-2-0-0-nim"
+      ],
+      "notes": "The NVIDIA BioNeMo drug-discovery meta-skill composes GenMol, DiffDock, and Boltz2. Use it as a workflow template only after independently selecting exact Forge versions, reconciling SAFE/SMILES and structure artifacts at every boundary, and validating each intermediate result; it is not a head-to-head quality benchmark.",
+      "relation": "related-multi-model-pipeline",
+      "skills": [
+        {
+          "name": "drug-discovery-pipeline",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/nim-skills/meta-skills/drug-discovery-pipeline"
+        }
+      ]
+    },
+    {
+      "forgeSlugs": [
+        "boltz2-nim",
+        "mit-diffdock-nim",
+        "nvidia-genmol-nim",
+        "nvidia-genmol-2-0-0-nim",
+        "nvidia-molmim-nim"
+      ],
+      "notes": "NVIDIA BioNeMo's nvMolKit skill is related GPU-batched cheminformatics guidance for fingerprints, similarity, conformers, force-field optimization, clustering, and substructure checks. Use it for large-batch ligand or generated-molecule validation when installed; it does not establish any model's request schema, quality, or Forge runtime behavior, and plain RDKit is generally more appropriate for one-off molecules.",
+      "relation": "related-cheminformatics-validation",
+      "skills": [
+        {
+          "name": "nvmolkit-usage",
+          "url": "https://github.com/NVIDIA-BioNeMo/bionemo-agent-toolkit/tree/a2ed0669325a156c1a58aea8bc3eb2ec0df17f4b/library-skills/nvMolKit"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

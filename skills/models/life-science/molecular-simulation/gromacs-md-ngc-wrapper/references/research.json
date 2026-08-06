@@ -1,0 +1,399 @@
+{
+  "audit": {
+    "issues": [],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 0 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "GROMACS Molecular Dynamics is an active Forge runtime for bounded nonclinical MD simulations.",
+      "displayName": "Use GROMACS Molecular Dynamics",
+      "group": "molecular-simulation",
+      "inputModalities": [
+        "structure",
+        "topology",
+        "simulation_parameters",
+        "json"
+      ],
+      "license": "LGPL-2.1-or-later; NVIDIA CUDA/HPC container terms",
+      "modelFamily": "gromacs-md",
+      "outputModalities": [
+        "trajectory",
+        "energy",
+        "log",
+        "json"
+      ],
+      "slug": "gromacs-md-ngc-wrapper",
+      "sourceUrl": "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+      "version": "ngc-2023.2-wrapper-20260602",
+      "versionKey": "ngc-2023-2-wrapper-20260602"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+        ],
+        "modelScope": "NVIDIA NGC hpc/gromacs:2023.2 container tag",
+        "reason": "The checked primary NVIDIA NGC source presents GROMACS as a research molecular-dynamics application for simulating biochemical molecules and does not document clinical authorization, regulatory clearance, or clinical-use approval.",
+        "useCase": "Clinical decision-making or regulated clinical use"
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+        ],
+        "modelScope": "NVIDIA NGC hpc/gromacs:2023.2 container tag",
+        "reason": "The NGC container listing states that the container does not support multinode execution.",
+        "useCase": "Assuming multinode execution is supported by this container tag"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "NVIDIA NGC nvidia/gromacs container listing",
+        "comparisonConditions": "Comparison is documentation-scope-specific rather than a performance comparison; protocols differ because one source is the scoped hpc listing and the other is an alternate NVIDIA container listing.",
+        "criteria": "The scoped hpc container source provides exact tag identity, image metadata, no-multinode status, and example mdrun invocation, while the alternate NVIDIA listing provides hardware/runtime prerequisites such as supported GPU architectures, AVX requirement on x86_64, Singularity or nvidia-docker runtime, and CUDA driver requirement.",
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+          "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gromacs"
+        ],
+        "rationale": "Both are primary NVIDIA sources but they support different operational questions. Use the scoped hpc listing for exact tag-level identity and example command details; use the alternate NVIDIA listing only for the documented hardware/runtime requirement facts it reports. The findings do not establish that the alternate listing is the same scoped artifact as hpc/gromacs:2023.2.",
+        "task": "Selecting between the scoped hpc/gromacs:2023.2 runtime and another NVIDIA GROMACS container listing for documented hardware/runtime requirements",
+        "verdict": "tradeoff"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Only if a primary source later provides an explicit mapping from ngc-2023.2-wrapper-20260602 to a specific container manifest, release artifact, or upstream revision; the checked primary sources do not provide that mapping.",
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+          "https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2/layers"
+        ],
+        "modelScope": "Forge wrapper string ngc-2023.2-wrapper-20260602 relative to NVIDIA NGC hpc/gromacs:2023.2",
+        "useCase": "Using the Forge wrapper string for provenance-sensitive audit trails or release-to-artifact traceability"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No primary-source numeric benchmark tied to the container tag was found at https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2 in the checked locator \"2023.2 container tag metadata and example-command sections\".",
+      "Evidence gap: The research did not find a primary-source mapping from the Forge wrapper string ngc-2023.2-wrapper-20260602 to a specific manifest digest, release artifact, or upstream revision.",
+      "Evidence gap: The checked primary NVIDIA hpc/gromacs sources do not provide a wrapper-exposed JSON input schema or a machine-readable Forge wrapper contract.",
+      "Evidence gap: The checked primary NVIDIA hpc/gromacs sources do not provide container-tag-specific post-processing or scientific validation procedures beyond example invocation context.",
+      "Evidence gap: The findings do not report primary-source numeric benchmarks or protocol-matched comparisons for hpc/gromacs:2023.2 against alternative runtimes, so performance comparison remains unsupported."
+    ],
+    "family": "catalog-ngc-nvidia-com-orgs-hpc-containers-gromacs-305a6b721f",
+    "identity": {
+      "architecture": "Molecular dynamics application packaged as the NVIDIA NGC container image hpc/gromacs:2023.2; upstream GROMACS documentation cited here establishes command-line MD workflow components such as gmx grompp and gmx mdrun.",
+      "checkpoint": "2023.2 (NGC container tag)",
+      "evidenceUrls": [
+        "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+        "https://manual.gromacs.org/2023.2/reference-manual/preface.html",
+        "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+      ],
+      "license": "Upstream GROMACS: GNU Lesser General Public License (LGPL) version 2.1 or any later version. NVIDIA container/runtime terms: not reported in the checked primary NVIDIA hpc/gromacs sources used here.",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "GROMACS"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+          ],
+          "statement": "Upstream GROMACS documentation states that the run input file is .tpr and that trajectory files can be written in .trr, .tng, or .xtc format."
+        },
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/documentation/2023.2/reference-manual/topologies/topology-file-formats.html"
+          ],
+          "statement": "Upstream GROMACS topology and structure documentation covers .top topology files and .gro coordinate files."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+          ],
+          "statement": "Upstream GROMACS documentation states that the .tpr run input file is generated by gmx grompp from a structure file (.gro), topology file (.top), mdp parameter file, and optionally an index file (.ndx)."
+        },
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+          ],
+          "statement": "The NGC example batch run command sets the working directory via -build_base_dir=/usr/local/gromacs -build_default=avx2_256 before invoking gmx mdrun."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+          ],
+          "statement": "A molecular system to be simulated, including biochemical molecules such as proteins, lipids, and nucleic acids, is within the documented problem scope."
+        },
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+          ],
+          "statement": "The only input file required by gmx mdrun to start a run is a .tpr run input file in upstream GROMACS workflow documentation."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+          ],
+          "statement": "The NGC example batch run command uses hpc/gromacs:2023.2 and invokes gmx mdrun with flags including -ntmpi 8, -ntomp 15, -nb gpu, -pme gpu, -npme 1, -update gpu, -bonded gpu, -nsteps 100000, -resetstep 90000, -noconfout, -dlb no, -nstlist 300, -pin on, -v, and -gpu_id 0123."
+        },
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/2023.2/user-guide/mdrun-features.html"
+          ],
+          "statement": "For upstream multi-simulation formatting, gmx mdrun -multidir requires one subdirectory per simulation, each containing the necessary input files such as topol.tpr, and directory order matters when simulation order matters."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+          ],
+          "statement": "Before mdrun, upstream workflow documentation requires creation of a valid .tpr file via gmx grompp from the documented upstream inputs; the research did not find additional container-tag-specific input bounds or schema validation rules."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+          "https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2/layers"
+        ],
+        "statement": "No authoritative primary-source mapping from the Forge wrapper string ngc-2023.2-wrapper-20260602 to a specific container manifest, release artifact, or upstream revision was found in the checked sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+        ],
+        "statement": "The scoped NGC container listing states that the container does not support multinode execution."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+          "https://manual.gromacs.org/2023.2/reference-manual/preface.html"
+        ],
+        "statement": "The checked primary NVIDIA hpc/gromacs sources used here do not report NVIDIA container/runtime license terms for this exact container tag, so only upstream GROMACS licensing is directly established by primary evidence in this dossier."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2"
+        ],
+        "statement": "No primary-source numeric benchmark tied to the NVIDIA hpc/gromacs:2023.2 container tag was found in the checked scoped source."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/2023.2/user-guide/mdrun-features.html"
+          ],
+          "statement": "For rerun mode, upstream GROMACS documentation states that only positions are read from the trajectory, velocities are ignored, and the output includes potential energy, volume, density, dH/dl terms, and restraint information; it does not report kinetic energy, total energy, conserved energy, temperature, virial, or pressure in rerun output."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+          ],
+          "statement": "Upstream GROMACS documentation says typical outputs of gmx mdrun are a trajectory file (.trr), a log file (.log), and optionally a checkpoint file (.cpt)."
+        },
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+          ],
+          "statement": "The NGC example batch run command writes a GROMACS log and energy-related outputs through the invoked gmx mdrun workflow; the checked primary findings specifically report example output paths only for command invocation context, not a full wrapper output schema."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://manual.gromacs.org/2023.2/user-guide/mdrun-features.html"
+          ],
+          "statement": "When gmx mdrun receives a TERM or INT signal, upstream documentation states it stops at the next neighbor-search step or second global communication step, writes usual output, and creates a checkpoint file; users can use that documented behavior as a post-run integrity check for interrupted runs."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+        ],
+        "modelScope": "NVIDIA NGC hpc/gromacs:2023.2 container tag",
+        "useCase": "Running bounded nonclinical molecular-dynamics simulations with the NVIDIA NGC hpc/gromacs:2023.2 container",
+        "why": "The NGC container listing identifies hpc/gromacs:2023.2 and provides an example batch run command invoking gmx mdrun with explicit runtime flags for GPU-accelerated execution."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+          "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+        ],
+        "modelScope": "NVIDIA NGC hpc/gromacs:2023.2 container tag with upstream GROMACS 2023.2 workflow evidence",
+        "useCase": "Simulating biochemical molecules such as proteins, lipids, and nucleic acids with GROMACS workflows served through the container",
+        "why": "The NGC container listing describes GROMACS as a molecular dynamics application used to simulate proteins and lipids and as designed for biochemical molecules like proteins, lipids, and nucleic acids; upstream GROMACS documentation provides the canonical gmx grompp to gmx mdrun workflow."
+      }
+    ],
+    "researchSummary": "Primary NVIDIA NGC evidence verifies the scoped runtime as hpc/gromacs:2023.2, an NVIDIA NGC HPC container for GROMACS molecular-dynamics use, with container metadata, example invocation, multi-arch status, no multinode support, and GPU-oriented example mdrun flags. Upstream GROMACS primary documentation supports checkpoint-scoped facts about canonical MD inputs, outputs, and file formats for GROMACS 2023.2. The checked primary sources do not report an authoritative mapping from the Forge wrapper string ngc-2023.2-wrapper-20260602 to a manifest digest, commit, or other immutable upstream artifact, and no primary-source numeric benchmark tied to the NVIDIA hpc/gromacs:2023.2 container tag was found.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+        ],
+        "statement": "Do not infer clinical suitability, regulatory clearance, or clinical authorization from the scoped NVIDIA NGC source; the checked source documents research molecular-dynamics usage, not regulated clinical use."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+        ],
+        "statement": "Treat molecular simulation inputs and outputs as research data requiring domain-expert review before any consequential life-science interpretation, because the checked scoped NVIDIA sources do not provide clinical validation or regulated-use guidance."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "NVIDIA NGC hpc/gromacs container listing including the 2023.2 tag context",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC container listing for the scoped hpc GROMACS container; supports exact tag identity, metadata, supported/unsupported runtime scope, and example command facts.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.upstreamName",
+          "identity.checkpoint",
+          "researchSummary",
+          "recommendedUseCases",
+          "avoidUseCases",
+          "inputPreparation.semanticInputs",
+          "inputPreparation.preprocessing",
+          "inputPreparation.taskSpecificFormatting",
+          "outputInterpretation.outputs",
+          "comparisons",
+          "limitations",
+          "safety"
+        ],
+        "title": "NVIDIA NGC Catalog \u2014 GROMACS (hpc org)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+      },
+      {
+        "modelScope": "NVIDIA NGC hpc/gromacs:2023.2 layers page",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC layers page for the scoped 2023.2 tag; supports tag-layer and entrypoint facts and is relevant to provenance limitations.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "official-documentation",
+        "supports": [
+          "conditionalUseCases",
+          "limitations"
+        ],
+        "title": "NVIDIA NGC GROMACS container tag layers (2023.2)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2/layers"
+      },
+      {
+        "modelScope": "NVIDIA NGC hpc/gromacs:2023.2 tag page",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC tag page for the scoped 2023.2 container tag; used here specifically to verify absence of container-tied numeric benchmark reporting in the checked locator.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "official-documentation",
+        "supports": [
+          "researchSummary",
+          "limitations",
+          "evidenceGaps"
+        ],
+        "title": "NVIDIA NGC GROMACS container tag page (2023.2)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/hpc/-/containers/gromacs/2023.2"
+      },
+      {
+        "modelScope": "Alternate official NVIDIA GROMACS container listing with runtime prerequisite documentation",
+        "primary": true,
+        "primaryReason": "Official NVIDIA NGC container listing under the nvidia org; supports documented runtime prerequisites used only in a scoped comparison note.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "official-documentation",
+        "supports": [
+          "comparisons"
+        ],
+        "title": "NVIDIA NGC Catalog \u2014 GROMACS (nvidia org)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gromacs"
+      },
+      {
+        "modelScope": "Upstream GROMACS 2023.2 licensing documentation",
+        "primary": true,
+        "primaryReason": "Official upstream GROMACS manual page establishing upstream licensing for GROMACS 2023.2.",
+        "publisher": "GROMACS project",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.license",
+          "limitations"
+        ],
+        "title": "GROMACS manual 2023.2 preface",
+        "url": "https://manual.gromacs.org/2023.2/reference-manual/preface.html"
+      },
+      {
+        "modelScope": "Upstream GROMACS workflow documentation applicable to GROMACS 2023.x command-line usage",
+        "primary": true,
+        "primaryReason": "Official upstream GROMACS workflow documentation for input preparation and typical outputs.",
+        "publisher": "GROMACS project",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.architecture",
+          "recommendedUseCases",
+          "inputPreparation.semanticInputs",
+          "inputPreparation.acceptedFormats",
+          "inputPreparation.preprocessing",
+          "inputPreparation.validation",
+          "outputInterpretation.outputs"
+        ],
+        "title": "GROMACS user guide \u2014 getting started (2023)",
+        "url": "https://manual.gromacs.org/documentation/2023/user-guide/getting-started.html"
+      },
+      {
+        "modelScope": "Upstream GROMACS 2023.2 topology and coordinate file documentation",
+        "primary": true,
+        "primaryReason": "Official upstream GROMACS file-format documentation for topology and coordinate inputs.",
+        "publisher": "GROMACS project",
+        "sourceType": "official-documentation",
+        "supports": [
+          "inputPreparation.acceptedFormats"
+        ],
+        "title": "GROMACS topology file formats (2023.2)",
+        "url": "https://manual.gromacs.org/documentation/2023.2/reference-manual/topologies/topology-file-formats.html"
+      },
+      {
+        "modelScope": "Upstream GROMACS 2023.2 mdrun feature documentation",
+        "primary": true,
+        "primaryReason": "Official upstream GROMACS documentation for mdrun operational features, rerun semantics, multi-simulation formatting, termination behavior, and checkpoint writing.",
+        "publisher": "GROMACS project",
+        "sourceType": "official-documentation",
+        "supports": [
+          "inputPreparation.taskSpecificFormatting",
+          "outputInterpretation.interpretation",
+          "outputInterpretation.validation"
+        ],
+        "title": "GROMACS user guide \u2014 mdrun features (2023.2)",
+        "url": "https://manual.gromacs.org/2023.2/user-guide/mdrun-features.html"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "62dc85c12985454bd4858b48d8ad404158ac41ee182e55987f6fdd71a5a51240",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "catalog-ngc-nvidia-com-orgs-hpc-containers-gromacs-305a6b721f",
+  "researchedAt": "2026-07-24T00:06:00.113148+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs",
+  "sourceUrls": [
+    "https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

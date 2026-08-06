@@ -73,6 +73,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-coder-30b-a3b-instruct-fp8-5b84e368da`
+- Recommended: Code generation and coding-focused text generation (Coder variant) — Checkpoint README and the model landing page present this named checkpoint as a 'Coder' variant focused on code-generation and agentic coding workflows.
+- Recommended: Long-context code comprehension and multi-file / repository-scale prompts (subject to hardware validation and README guidance) — Checkpoint config/commit artifacts expose a very large native context length and the repository README provides generation and long-context guidance; use for extreme long-context tasks is possible but requires hardware profiling and validation against the README recommendation.
+- Avoid: Using this exact FP8 instruct checkpoint for tasks that require thinking-mode behavior — Checkpoint README and commit metadata explicitly indicate this named FP8 instruct checkpoint operates in non-thinking mode; the Qwen3 family-level paper documents thinking-mode capability at the family level but the checkpoint does not advertise that behavior.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +100,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-coder-30b-a3b-instruct-fp8-vllm/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-coder-30b-a3b-instruct-fp8-vllm/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-coder-30b-a3b-instruct-fp8-vllm/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/qwen-qwen3-coder-30b-a3b-instruct-fp8-vllm/SKILL.md

@@ -90,6 +90,18 @@ Route: `POST /biology/openfold/openfold3/predict`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-bionemo-openfold3-latest-fcfde9d30f`
+- Recommended: Predicting all-atom 3D structures of biomolecular complexes composed of proteins, DNA, RNA, and non-covalent ligands for research and discovery workflows. — NVIDIA NIM overview and modelcard state the OpenFold3 NIM predicts all-atom 3D structures of complexes including proteins, DNA, RNA, and ligands and provides confidence scores; NVIDIA NIM packaging provides an accelerated inference backend for these tasks.
+- Recommended: Generating multiple independent structure predictions per request (ensemble-style sampling) via the diffusion_samples parameter. — NIM documentation documents diffusion_samples as an inference parameter that controls the number of independent structures to generate and example requests use this parameter.
+- Recommended: Accelerated inference on NVIDIA GPUs using the TensorRT-optimized backend within the NIM container for lower latency vs the open-source baseline. — NVIDIA NIM performance pages report speedups versus the open-source OpenFold3 baseline and catalog/model pages describe an NVIDIA-optimized inference backend.
+- Avoid: Modeling covalently bound ligands (covalent docking) relying on NIM or current OpenFold3 inference. — Primary sources indicate ligand inputs are accepted as SMILES or CCD and that covalent ligand support is planned but not currently available in upstream inference and NIM documentation.
+- Avoid: Relying on the NIM to perform automatic online MSA pairing (i.e., assuming the service will fetch and pair MSAs automatically without user-provided MSAs). — NIM release notes and API docs indicate MSAs are accepted and required for protein/RNA, and that supported MSA types include paired/unpaired inputs; the docs do not claim the NIM will perform automatic online pairing for all use cases—users must provide MSAs or follow the documented MSA modes.
+- Avoid: Assuming numeric calibration thresholds that map per-structure confidence scores to precise expected positional accuracy for the exact NIM-served checkpoint. — Primary sources do not publish a numeric confidence-to-accuracy mapping for the exact NIM-served checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -108,11 +120,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/openfold3-nim/inference-routes`
 - Regional deployment: `/v1/models/openfold3-nim/regional-deployment`
 - Serverless handoff: `/v1/models/openfold3-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/openfold3-nim/SKILL.md

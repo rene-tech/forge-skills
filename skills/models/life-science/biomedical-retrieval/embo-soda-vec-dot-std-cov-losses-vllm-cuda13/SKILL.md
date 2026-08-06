@@ -64,6 +64,15 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-embo-soda-vec-dot-std-cov-losses-81dbb7b5f9`
+- Recommended: Training sentence-transformer-style embedding models for text similarity/feature-extraction on PMC title-abstract pairs — The dataset commit page documents a paired (anchor-positive) format with fields 'anchor' (title) and 'positive' (abstract) and lists task categories 'text-similarity' and 'feature-extraction'.
+- Avoid: Direct deployment of a model checkpoint for clinical decision-making or production healthcare without further validation — Evidence gap: The inspected primary source is a dataset commit page and does not provide any model checkpoint clinical validation, safety, or calibration statements for a checkpoint.
+- Avoid: Assuming model-checkpoint-specific tokenizer, pooling, or calibrated scores for inference — Evidence gap: No model checkpoint, tokenizer metadata, pooling rules, or score-interpretation guidance for a checkpoint are present in the inspected primary source.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -82,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/biomedical-retrieval/embo-soda-vec-dot-std-cov-losses-vllm-cuda13/SKILL.md

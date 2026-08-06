@@ -76,6 +76,14 @@ Route: `POST /v1/inference/huggingface-lerobot-smolvla-robotwin`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-lerobot-smolvla-robotwin-74d33dc92d`
+- Recommended: Evidence gap: No creator-published recommended-use statement for lerobot/smolvla_robotwin was found in the inspected checkpoint-scoped primary source. — The checkpoint config.json contains configuration keys describing input/output feature shapes, temporal parameters, and runtime flags but does not contain an explicit creator-published 'intended use' or recommended-use section for this checkpoint.
+- Avoid: Avoid use in safety-critical deployments that require a declared model-weight license, an immutable checkpoint revision, or explicit creator-published safety guidance. — The checkpoint-scoped config.json sets "license" to null (no declared model-weight license text) and the inspected checkpoint-scoped primary files do not include an immutable checkpoint version tag or commit hash; therefore provenance and licensing are not verifiably documented for this checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -93,11 +101,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/huggingface-lerobot-smolvla-robotwin/inference-routes`
 - Regional deployment: `/v1/models/huggingface-lerobot-smolvla-robotwin/regional-deployment`
 - Serverless handoff: `/v1/models/huggingface-lerobot-smolvla-robotwin/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-robotwin/SKILL.md

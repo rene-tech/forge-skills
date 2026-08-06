@@ -69,6 +69,16 @@ Route: `POST /v1/inference/facebook-esmfold-v1`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-facebook-esmfold-v1-421dc564b0`
+- Recommended: Research-scale prediction of protein tertiary structure from a single amino-acid sequence for exploratory structural hypotheses and visualization (single-sequence monomer prediction) — Hugging Face model snapshot README for the cited commit documents ESMFold as an end-to-end, single-sequence predictor that does not require MSA or external databases; the checkpoint config.json contains folding/structure module fields indicating model produces structures.
+- Recommended: High-throughput, single-sequence scanning of large sequence sets when alignment-free inference and speed are prioritized over MSA-based accuracy — The Hugging Face snapshot README claims ESMFold does not require MSA or external databases and asserts inference is significantly faster than AlphaFold2; archive/repository summary notes ESMFold is an alignment-free end-to-end predictor harnessing an ESM-2 trunk.
+- Avoid: Clinical diagnostic decision making or making safety-critical structure-based diagnoses without expert review and experimental validation — No primary-source evidence in the checked sources establishes regulatory approval or validated acceptance criteria for clinical diagnostic use of this checkpoint; the checked model README and repository/ archive summaries describe research usage and do not claim regulatory approval.
+- Avoid: Fully automated high-consequence biological design (therapeutics, biological agent modification) without expert review and experimental validation — The checked primary sources describe research and benchmarking contexts and do not provide checkpoint-scoped validated acceptance thresholds for unattended safety-critical design workflows.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -87,11 +97,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/facebook-esmfold-v1/inference-routes`
 - Regional deployment: `/v1/models/facebook-esmfold-v1/regional-deployment`
 - Serverless handoff: `/v1/models/facebook-esmfold-v1/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-structure/facebook-esmfold-v1/SKILL.md

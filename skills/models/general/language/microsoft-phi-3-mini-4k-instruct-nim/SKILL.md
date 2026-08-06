@@ -66,6 +66,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-microsoft-phi-3-mini-4k-instruct-2cea73bbb6`
+- Recommended: Instruction-following and general-purpose chat (English) — Upstream model card and README describe Phi-3-mini-4k-instruct as an instruction‑tuned member of the Phi-3 family and the README/NGC entries describe instruction following and chat-style capabilities; the technical report documents SFT + DPO post-training alignment at the family level.
+- Recommended: Latency-constrained deployments requiring a compact instruction-tuned model — The upstream README and repository state the Phi-3 Mini (3.8B) is the smallest/tiniest Phi-3 member intended for quality/low-latency tradeoffs relative to larger family members; NGC packaging lists a compressed artifact targeted at RTX/Ada hardware for low-latency inference.
+- Avoid: Clinical or regulated decision-making without explicit domain validation and expert review — The technical report and Microsoft Research landing page describe post-training alignment, robustness testing, and family-level safety work (SFT + DPO and red-teaming) but do not provide checkpoint-specific clinical/regulatory validation or PHI/clinical handling procedures for Phi-3-mini-4k-instruct in the provided primary sources.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/microsoft-phi-3-mini-4k-instruct-nim/inference-routes`
 - Regional deployment: `/v1/models/microsoft-phi-3-mini-4k-instruct-nim/regional-deployment`
 - Serverless handoff: `/v1/models/microsoft-phi-3-mini-4k-instruct-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/microsoft-phi-3-mini-4k-instruct-nim/SKILL.md

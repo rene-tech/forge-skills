@@ -67,6 +67,16 @@ Route: `POST /v1/inference/nvidia-cosmos-predict1-7b-video2world`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `docs-nvidia-com-nim-cosmos-latest-quickstart-guide-html-nvidia-cosmos-predict1-7b-video2worl-c266df85c8`
+- Recommended: Generate synthetic video sequences for training robotics and autonomous-vehicle perception/simulation pipelines — NVIDIA documents Cosmos world foundation models and Predict1 variants as intended to produce physically realistic synthetic video data for Physical AI and simulation training workflows.
+- Recommended: Image- or video-conditioned future-frame prediction (video continuation) with optional textual conditioning — Repository examples and the Hugging Face model card describe Video2World variants that accept image or video conditioning concatenated in latent frames and optionally condition on text during denoising.
+- Avoid: Using outputs as the sole basis for life-critical or safety-critical decisions — No primary-source statement certifies this checkpoint for life-critical use; primary sources and model card require system-level validation rather than model-only certification.
+- Avoid: Bypassing documented guardrails to generate disallowed or unsafe content — NIM documentation and Predict1 diffusion reference describe pre- and post-guard safety mechanisms (including face-blurring for human faces) and warn about guardrail behavior; disabling or bypassing guardrails is not supported as a safe practice per the documented guardrail statements.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -84,11 +94,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-cosmos-predict1-7b-video2world/inference-routes`
 - Regional deployment: `/v1/models/nvidia-cosmos-predict1-7b-video2world/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-cosmos-predict1-7b-video2world/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/world-video-generation/nvidia-cosmos-predict1-7b-video2world/SKILL.md

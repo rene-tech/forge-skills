@@ -1,0 +1,395 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].caveats: expected array, got str",
+        "path": "$.benchmarks[0].caveats",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[3].primary must be true",
+        "path": "$.sources[3].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[1]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[1]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 8 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "BioEmu v1.1 is a Microsoft Research AI for Science protein monomer conformational ensemble sampler.",
+      "displayName": "Use BioEmu v1.1",
+      "group": "molecular-simulation",
+      "inputModalities": [
+        "protein_sequence",
+        "msa"
+      ],
+      "license": "mit",
+      "modelFamily": "microsoft-bioemu",
+      "outputModalities": [
+        "structure_ensemble",
+        "trajectory",
+        "pdb",
+        "xtc",
+        "json"
+      ],
+      "slug": "microsoft-bioemu-v1-1",
+      "sourceUrl": "https://github.com/microsoft/bioemu",
+      "version": "bioemu-v1.1-via-bioemu-1.3.1-wrapper",
+      "versionKey": "bioemu-v1-1-bioemu-1-3-1-wrapper"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [],
+        "modelScope": "bioemu-v1.1 upstream checkpoint",
+        "reason": "Evidence gap: the canonical upstream sources do not provide any authorization, regulatory clearance, or explicit upstream statement authorizing clinical use of bioemu-v1.1; do not deploy clinically without further expert review and regulatory authorization.",
+        "useCase": "Clinical deployment or real-world therapeutic prediction"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "The publisher page gives an empirical throughput statement but no paper table/figure/section/appendix/table row was located in the supplied canonical sources that enumerates hardware, batch size, or exact benchmark protocol details for a checkpoint-named run.",
+          "It is not established in the canonical sources whether this throughput measurement corresponds to a backbone-only output or requires additional downstream processing."
+        ],
+        "conditions": "Reported in publisher article; also notes 30–50 denoising steps per sample. The publisher page states the throughput as an empirical statement but does not present a paper table/figure locator in the supplied findings.",
+        "dataset": "not applicable",
+        "direction": "context-only",
+        "metric": "independent structures sampled (count) per wall-clock time",
+        "modelScope": "BioEmu as described in the Nature Methods paper (publisher-described model and experiments)",
+        "sourceLocator": "Nature Methods article (publisher page statement; article text describing throughput and denoising steps)",
+        "sourceUrl": "https://nature.com/articles/s41592-025-02874-1",
+        "split": "not reported",
+        "task": "Sampling throughput (independent structures per time on single GPU)",
+        "value": "BioEmu can sample 10,000 independent protein structures within minutes to hours on a single GPU (publisher statement)."
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "No comparable protocol and numeric table/figure found at canonical locators for both sides.",
+        "criteria": "No canonical primary-source, protocol-matched, checkpoint-to-checkpoint numeric comparison table/figure/section was found in the located repository or publisher article.",
+        "evidenceUrls": [
+          "https://github.com/microsoft/bioemu/blob/main/README.md",
+          "https://nature.com/articles/s41592-025-02874-1"
+        ],
+        "rationale": "The located primary sources (repo and publisher page) do not present a table or figure directly comparing BioEmu checkpoint results to classical MD engine runs under matched protocols; therefore direct numeric comparisons are unsupported.",
+        "task": "Protocol-matched checkpoint-to-checkpoint numeric comparison with classical MD engines (GROMACS/LAMMPS/OpenMM)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Requires invoking repository side-chain reconstruction tooling (HPacker) and optional MD-relaxation commands as described in README; downstream calibration or MD-equilibration may be required to produce side-chain-resolved or fully energy-minimized structures for workflows that demand those outputs.",
+        "evidenceUrls": [
+          "https://github.com/microsoft/bioemu/blob/main/README.md",
+          "https://github.com/microsoft/bioemu/blob/main/src/bioemu/config/steering/physical_steering.yaml"
+        ],
+        "modelScope": "bioemu-v1.1 upstream checkpoint used together with repository HPacker and optional MD-relaxation commands",
+        "useCase": "Downstream physics-based simulation seeding and MD augmentation (requires downstream side-chain reconstruction and optional MD-relaxation)"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No canonical upstream release tag or commit SHA was found that immutably binds the label \"bioemu-v1.1\" to a release asset in the located repository releases page or repository files; the README documents a --model_name selector but does not map that string to an immutable release asset at a located primary-source path.",
+      "Evidence gap: No canonical paper table/figure/section/appendix/page/README path was located in the primary sources that deterministically reports numeric MAE results tied to the bioemu-v1.1 checkpoint (the numeric MAE values reported in non-canonical artifacts cannot be used as upstream-checkpoint evidence).",
+      "Evidence gap: The located canonical repository sources include a code LICENSE (MIT) but do not provide a separate model-weights license statement; a weights-specific license locator is missing.",
+      "Evidence gap: Exact callable preprocessing/tokenization/featurization function names and file paths for protein_sequence inputs are not present in the located canonical sources; no file+function locator was found.",
+      "Evidence gap: Exact callable input-validation code (sequence-length bounds, allowed alphabet checks, steric-clash filters) with file/function/line locators is not present in the located canonical sources.",
+      "Evidence gap: For numeric MAE benchmarks, the canonical sources do not provide the full set of required protocol details (exact checkpoint name used in the experiment, dataset split, metric aggregation, hardware, batch size, and whether benchmarks are backbone-only or require downstream calibration); these elements are missing from canonical locators."
+    ],
+    "family": "github-com-microsoft-bioemu-1ade956592",
+    "identity": {
+      "architecture": "DiG",
+      "checkpoint": "bioemu-v1.1",
+      "evidenceUrls": [
+        "https://github.com/microsoft/bioemu/blob/main/README.md",
+        "https://github.com/microsoft/bioemu",
+        "https://nature.com/articles/s41592-025-02874-1"
+      ],
+      "license": "MIT (repository code license). Evidence gap: model-weights license not specified",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "BioEmu"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://github.com/microsoft/bioemu/blob/main/README.md"
+          ],
+          "statement": "Accepted input: a protein sequence for a monomer; repository CLI examples show sequence-based monomer ensemble generation."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: canonical repository files (README, source tree) do not expose an exact preprocessing/tokenization/featurization function name, module path, or in-repo callable that normalizes a protein_sequence input; no exact file+function locator was found in the supplied canonical sources."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/microsoft/bioemu/blob/main/README.md",
+            "https://nature.com/articles/s41592-025-02874-1"
+          ],
+          "statement": "Protein sequence of a single-chain (monomer) protein is the accepted primary input modality."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/microsoft/bioemu/blob/main/README.md"
+          ],
+          "statement": "The repository README documents CLI usage that selects a checkpoint by name; example: --model_name=\"bioemu-v1.1\"."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: canonical upstream sources do not provide a located callable input-validation function (sequence-length bounds, alphabet checks, steric-clash filters) with an exact file/function/line locator; no canonical in-repo validation locator was found."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: no canonical upstream locator provides an explicit model-weights license distinct from the repository code license; the repository contains a LICENSE file for code but a weights-specific license statement is not present in the located primary sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/microsoft/bioemu/blob/main/README.md"
+        ],
+        "statement": "The canonical repository README documents that side-chain reconstruction relies on HPacker and that optional MD-relaxation tooling is provided; HPacker installation has conda-related requirements documented in the repository README."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/microsoft/bioemu/blob/main/src/bioemu/config/steering/physical_steering.yaml",
+          "https://github.com/microsoft/bioemu/tree/main"
+        ],
+        "statement": "Ambiguity in denoiser/physical-steering parameter names: the physical_steering.yaml file located in the repository contains explicit steering parameters and umbrella potentials (eps_t, max_t, N, noise, umbrella potentials), while a repository-tree-level description in the located primary sources also lists key steering parameters including num_particles and ess_threshold. The two canonical locators create an ambiguity about the exact presence/location of parameters named num_particles and ess_threshold."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: exact callable preprocessing/tokenization function names, module paths, and in-repo example invocation locators for protein_sequence inputs were not found in the located canonical sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/microsoft/bioemu/blob/main/README.md",
+            "https://nature.com/articles/s41592-025-02874-1"
+          ],
+          "statement": "Ensembles are intended to represent sampled conformational distributions for protein monomers and may be analyzed relative to simulation or experimental data."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/microsoft/bioemu/blob/main/README.md"
+          ],
+          "statement": "BioEmu produces backbone-frame protein-structure ensembles (backbone-only representations) for monomer sequences; side-chain reconstruction is provided as a downstream optional step via HPacker."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: no canonical numbered paper table/figure/section/appendix/page or model-card heading in the located primary sources ties a specific numeric energy-calibration MAE claim to the exact bioemu-v1.1 checkpoint and exposed backbone-only output head; numeric MAE claims appear in non-canonical artifacts in the supplied findings and therefore cannot be deterministically grounded to an upstream-checkpoint locator."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://github.com/microsoft/bioemu/blob/main/README.md",
+          "https://nature.com/articles/s41592-025-02874-1"
+        ],
+        "modelScope": "bioemu-v1.1 upstream checkpoint (named checkpoint selector documented in README)",
+        "useCase": "Protein monomer conformational-ensemble sampling (backbone-frame ensembles)",
+        "why": "Repository README documents that BioEmu accepts a protein sequence and produces backbone-frame conformational ensembles for monomers; Nature Methods article describes BioEmu as a biomolecular emulator that samples approximate equilibrium distributions for protein conformations."
+      }
+    ],
+    "researchSummary": "Canonical repository files and the publisher article together establish that BioEmu is a Microsoft Research protein-monomer conformational-ensemble sampler built on the Distributional Graphormer (DiG) architecture; the repository README documents a named checkpoint selector (\"--model_name=\\\"bioemu-v1.1\\\"\") and backbone-frame ensemble outputs and documents HPacker-based side-chain reconstruction and optional MD-relaxation tooling. The Nature Methods publisher page confirms DiG as the architecture and reports sampling throughput (e.g., \"10,000 independent protein structures within minutes to hours on a single GPU\") and 30–50 denoising steps. Primary-source gaps remain for an immutable release tag or commit SHA that concretely binds the label bioemu-v1.1 to a release asset, an explicit model-weights license distinct from the repository code license, an authoritative numeric MAE benchmark locator (paper table/figure/section) for reported free-energy MAE values, and exact callable preprocessing/tokenization function locators in the repository.",
+    "safety": [
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the located canonical upstream sources do not provide any explicit authorization for clinical use or regulatory clearance for bioemu-v1.1; no clinical authorization statement is present in the repository or publisher article."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/microsoft/bioemu/blob/main/README.md",
+          "https://github.com/microsoft/bioemu"
+        ],
+        "statement": "Repository code is distributed under an MIT License per the repository's LICENSE and README file, but no weights-specific license text was located."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "BioEmu upstream repository",
+        "primary": true,
+        "primaryReason": "Canonical repository root used to locate repository-level metadata, LICENSE, MODEL_CARD.md, and to navigate to README and config files.",
+        "publisher": "Microsoft Research",
+        "sourceType": "repository",
+        "supports": [
+          "Repository-level metadata and navigation to primary files (README, config files, LICENSE)",
+          "General installation/runtime notes (packaging/attribution)"
+        ],
+        "title": "BioEmu repository (root)",
+        "url": "https://github.com/microsoft/bioemu"
+      },
+      {
+        "modelScope": "BioEmu repository README",
+        "primary": true,
+        "primaryReason": "Repository README provides CLI examples (--model_name selector), documents backbone outputs, HPacker-based side-chain reconstruction, optional MD-relaxation commands, and installation hints.",
+        "publisher": "Microsoft Research",
+        "sourceType": "repository",
+        "supports": [
+          "Checkpoint selector example (--model_name=\"bioemu-v1.1\")",
+          "Backbone-frame output descriptions and HPacker side-chain reconstruction invocation",
+          "Optional MD-relaxation command examples"
+        ],
+        "title": "BioEmu README.md",
+        "url": "https://github.com/microsoft/bioemu/blob/main/README.md"
+      },
+      {
+        "modelScope": "BioEmu steering configuration file",
+        "primary": true,
+        "primaryReason": "This repository file documents denoiser/physical-steering configuration parameters and umbrella potentials intended to be passed as denoiser_config.",
+        "publisher": "Microsoft Research",
+        "sourceType": "repository",
+        "supports": [
+          "Definition of denoiser_config parameters (eps_t, max_t, N, noise, umbrella potentials)",
+          "File-level evidence that steering config is provided in the repository"
+        ],
+        "title": "physical_steering.yaml (steering/denoiser configuration)",
+        "url": "https://github.com/microsoft/bioemu/blob/main/src/bioemu/config/steering/physical_steering.yaml"
+      },
+      {
+        "modelScope": "BioEmu upstream releases",
+        "primary": true,
+        "primaryReason": "Canonical releases page used to inspect available release tags and release metadata.",
+        "publisher": "Microsoft Research",
+        "sourceType": "repository",
+        "supports": [
+          "Repository release metadata (listed release tags and associated metadata)"
+        ],
+        "title": "BioEmu releases (GitHub releases page)",
+        "url": "https://github.com/microsoft/bioemu/releases"
+      },
+      {
+        "modelScope": "BioEmu repository tree",
+        "primary": true,
+        "primaryReason": "Repository tree provides context for file locations and higher-level documentation statements regarding steering parameters and packaging.",
+        "publisher": "Microsoft Research",
+        "sourceType": "repository",
+        "supports": [
+          "Tree-level statements about presence and organization of config files and steering parameters"
+        ],
+        "title": "BioEmu repository tree (main branch)",
+        "url": "https://github.com/microsoft/bioemu/tree/main"
+      },
+      {
+        "modelScope": "BioEmu canonical paper (publisher page)",
+        "primary": true,
+        "primaryReason": "Publisher article is the canonical primary publication describing BioEmu, the DiG architecture use, the sampling design and empirical throughput statements.",
+        "publisher": "Nature Methods / Springer Nature",
+        "sourceType": "paper",
+        "supports": [
+          "Description of BioEmu as a biomolecular emulator",
+          "Identification of Distributional Graphormer (DiG) architecture",
+          "Empirical statements on sampling throughput (10,000 independent structures within minutes to hours on a single GPU) and denoising steps (30–50)"
+        ],
+        "title": "Nature Methods publisher page for BioEmu (canonical paper/publisher page)",
+        "url": "https://nature.com/articles/s41592-025-02874-1"
+      },
+      {
+        "modelScope": "BioEmu canonical paper (bibliographic record)",
+        "primary": true,
+        "primaryReason": "PubMed record is a canonical bibliographic locator for the publisher article and supports identification of the primary publication.",
+        "publisher": "PubMed / NCBI",
+        "sourceType": "paper",
+        "supports": [
+          "Bibliographic metadata for the BioEmu Nature Methods publication"
+        ],
+        "title": "PubMed entry for BioEmu paper",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41068462"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "3a961986319cac837d1cd2ccfc8a2e36d23b637ce71a7384c8e54da638ae6791",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "github-com-microsoft-bioemu-1ade956592",
+  "researchedAt": "2026-07-23T23:29:48.566606+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://github.com/microsoft/bioemu",
+  "sourceUrls": [
+    "https://github.com/microsoft/bioemu"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -1,0 +1,404 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[2].direction: 'higher-is-better (for correlation magnitude)' is not in ['higher-is-better', 'lower-is-better', 'context-only']",
+        "path": "$.benchmarks[2].direction",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7].primary must be true",
+        "path": "$.sources[7].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[1].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "path": "$.benchmarks[1].sourceLocator for a paper must include a numbered/named table, figure, section, appendix, page, or heading",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[2].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[2].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[2].value must contain a reported numeric result",
+        "path": "$.benchmarks[2].value must contain a reported numeric result",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "discarded:$.benchmarks[0]"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "discarded:$.benchmarks[0]",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 6 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "life-science",
+      "description": "Open-source AntiFold onboarding manifest for antibody and nanobody inverse folding.",
+      "displayName": "Use AntiFold",
+      "group": "protein-design",
+      "inputModalities": [
+        "structure"
+      ],
+      "license": "bsd-3-clause",
+      "modelFamily": "oxpig-antifold",
+      "outputModalities": [
+        "sequence",
+        "json"
+      ],
+      "slug": "oxpig-antifold",
+      "sourceUrl": "https://github.com/oxpig/AntiFold",
+      "version": "latest",
+      "versionKey": "latest"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "modelScope": "AntiFold (model.pt in repository)",
+        "reason": "The inspected repository does not include regulatory approvals, clinical\u2011use documentation, or materials establishing suitability for clinical deployment; additionally, the repository does not provide an immutable release tag or commit SHA uniquely identifying model.pt to support reproducible checkpoint identification.",
+        "useCase": "Clinical diagnostic or therapeutic deployment without further validation or regulatory review."
+      },
+      {
+        "evidenceUrls": [],
+        "modelScope": "AntiFold repository and associated materials inspected",
+        "reason": "Evidence gap: the inspected repository does not include explicit PHI/data\u2011handling instructions, governance procedures, or clinical data mitigation measures.",
+        "useCase": "Assuming built\u2011in PHI handling, clinical data governance, or production clinical data pipelines."
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "dauparas-proteinmpnn-suite (ProteinMPNN)",
+        "comparisonConditions": "Repository search of the AntiFold project (root files, output/example_pdbs/6y1l_imgt.fasta, notebook.ipynb) yielded no like\u2011for\u2011like numeric comparison table/figure; no ProteinMPNN primary benchmark source was part of the inspected findings to allow a like\u2011for\u2011like comparison.",
+        "criteria": "No primary, numbered/figured repository table or figure was found that reports side\u2011by\u2011side numeric comparisons between AntiFold (model.pt) and ProteinMPNN under identical protocols in the inspected sources.",
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold",
+          "https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb"
+        ],
+        "rationale": "The inspected AntiFold repository contains implementation files and example outputs but does not present a benchmark table or figure providing numeric comparisons traceable to model.pt; no primary ProteinMPNN benchmark locators were inspected in these findings.",
+        "task": "Antibody inverse folding / sequence recovery",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "rfdiffusion-nim (RFdiffusion)",
+        "comparisonConditions": "Checked repository root, example outputs, and notebook.ipynb for benchmark tables; none reported side\u2011by\u2011side numeric comparisons with RFdiffusion.",
+        "criteria": "No primary, numbered/figured repository table or figure was found in the inspected AntiFold sources that reports RFdiffusion results alongside AntiFold results under identical protocols.",
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold",
+          "https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb"
+        ],
+        "rationale": "Inspected AntiFold repository files do not include numeric benchmark tables keyed to model.pt; no primary RFdiffusion benchmark locators were inspected within the provided findings.",
+        "task": "Antibody inverse folding / sequence recovery",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "abmpnn (AbMPNN)",
+        "comparisonConditions": "Inspected repository root, example outputs, and notebook.ipynb for benchmark tables; none reported AbMPNN comparisons.",
+        "criteria": "No primary, numbered/figured comparison table or figure in the inspected AntiFold repository reports numeric results for AbMPNN and AntiFold under identical protocols traceable to model.pt.",
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold",
+          "https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb"
+        ],
+        "rationale": "The inspected repository contains example outputs and implementation materials but lacks numeric side\u2011by\u2011side benchmark tables; no primary AbMPNN benchmark locators were part of the inspected findings.",
+        "task": "Antibody inverse folding / sequence recovery",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "esm-if1 (ESM\u2011IF1)",
+        "comparisonConditions": "Checked repository root, example outputs, and notebook.ipynb for numeric comparison tables; none found in inspected sources.",
+        "criteria": "While AntiFold is described as fine\u2011tuned from ESM\u2011IF1 in the inspected repository, no numbered/figured table or repository path in the inspected files reports a direct numeric comparison between the base ESM\u2011IF1 checkpoint and the AntiFold model.pt under identical evaluation protocols.",
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold",
+          "https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb"
+        ],
+        "rationale": "Inspected repository indicates lineage (fine\u2011tuning from ESM\u2011IF1) but does not contain numeric head\u2011to\u2011head benchmark tables or figures tied to model.pt and an explicit ESM\u2011IF1 checkpoint.",
+        "task": "Antibody inverse folding / sequence recovery (base vs. fine\u2011tuned performance)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Repository example outputs and statements indicate sampled sequences show structural agreement with experimental structures, but no numeric refolding protocol, refolding model name, or hyperparameters are provided in the inspected sources; downstream refolding/validation must therefore be performed by the user and the exact refolding method/hyperparameters must be selected and documented externally.",
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold",
+          "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta"
+        ],
+        "modelScope": "AntiFold (model.pt in repository) used with externally run structure\u2011prediction/refolding tools (refolding method and parameters not specified in inspected repository files).",
+        "useCase": "Use designed sequences in workflows that perform downstream structure prediction (refolding) to validate structural agreement before experimental follow\u2011up."
+      },
+      {
+        "conditions": "The repository contains implementation materials but does not present a numbered protocol or enumerated input format fields for antigen conditioning in the inspected files; users must verify antigen\u2011conditioning input parsing in the code before assuming compatibility.",
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "modelScope": "AntiFold (model.pt in repository) with conditioning behavior dependent on inspected repository code and user verification.",
+        "useCase": "Condition sequence generation on antigen context only after verifying repository codepaths for antigen conditioning."
+      }
+    ],
+    "evidenceGaps": [
+      "No immutable release tag, commit SHA, or other immutable identifier for the repository model file model.pt was found in the inspected repository at https://github.com/oxpig/AntiFold; exact checkout/commit for model.pt is not reported in the inspected files.",
+      "Parameter count for the specific model.pt checkpoint is not reported in the inspected repository files (https://github.com/oxpig/AntiFold).",
+      "The inspected repository does not contain numbered/figured benchmark tables or repository paths reporting aggregate numeric benchmarks (sequence\u2011recovery, CDR RMSD, per\u2011dataset Spearman correlations) traceable to model.pt; checked locations: repository root, output/example_pdbs/6y1l_imgt.fasta, notebook.ipynb.",
+      "No repository locator was found that enumerates inference hyperparameters (sampling temperatures, seeds, batch sizes) used for any numeric benchmarking in the inspected files (checked: https://github.com/oxpig/AntiFold and https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb).",
+      "No formal input specification file or numbered locator describing required PDB/mmCIF fields, coordinate units, or chain ID conventions was found in the inspected repository (checked: https://github.com/oxpig/AntiFold).",
+      "No numbered refolding protocol (refolding model name/version and hyperparameters) was found in the inspected repository; structural validation appears qualitatively in example outputs but lacks a reproducible refolding protocol locator (checked: https://github.com/oxpig/AntiFold and output/example_pdbs/6y1l_imgt.fasta)."
+    ],
+    "family": "github-com-oxpig-antifold-aef5c06bce",
+    "identity": {
+      "architecture": "Based on the ESM-IF1 backbone (AntiFold described as fine\u2011tuned from ESM\u2011IF1)",
+      "checkpoint": "model.pt (file present in repository at repository root; exact commit SHA for this file not reported in inspected sources)",
+      "evidenceUrls": [
+        "https://github.com/oxpig/AntiFold",
+        "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta",
+        "https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb"
+      ],
+      "license": "BSD-3-Clause",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "AntiFold"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta"
+          ],
+          "statement": "Repository example outputs demonstrate FASTA sampled outputs; an example sampled FASTA is present at output/example_pdbs/6y1l_imgt.fasta."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "Evidence gap: the inspected repository does not provide a formalized, enumerated input specification (required PDB/mmCIF fields, coordinate units, chain ID conventions) in a numbered table, figure, or dedicated input specification file."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "AntiFold is described in the repository as fine\u2011tuned on solved and predicted antibody structures derived from antibody structure datasets."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "Evidence gap: the inspected repository does not enumerate detailed preprocessing normalization, tokenization, or coordinate normalization steps in a numbered table/figure or dedicated file."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "Antibody variable\u2011domain backbone structure representations (structure modality) are the primary inputs consumed to predict sequences."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta"
+          ],
+          "statement": "Example sampled FASTA outputs in the repository include per\u2011sample metadata fields in FASTA headers (metadata visible in the example file output/example_pdbs/6y1l_imgt.fasta)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "The repository exposes CSV residue log\u2011likelihood outputs as part of inference outputs according to repository files/README, but no enumerated API prompt template or numbered input/output schema is present in a dedicated locator in the inspected files."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "Evidence gap: the inspected repository does not specify a formal set of input\u2011validation rules (e.g., required PDB/mmCIF fields, coordinate units, chain ID conventions) in a dedicated, numbered locator."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "statement": "AntiFold is based on and described in the repository as fine\u2011tuned from the ESM\u2011IF1 backbone and is trained on solved and predicted antibody structures derived from antibody structure datasets."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "statement": "Training and benchmarking rely on solved and predicted antibody structures (the inspected repository states fine\u2011tuning on solved and predicted antibody structures), but the repository does not provide numbered/figured tables with per\u2011split numeric coverage or detailed dataset split files for independent reconstruction in the inspected files."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "statement": "Evidence gap: no immutable release tag or commit SHA uniquely identifying the repository model file model.pt was reported in the inspected repository files; this limits reproducible identification of the exact checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold",
+          "https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb"
+        ],
+        "statement": "Evidence gap: the inspected repository does not enumerate exact inference hyperparameters (sampling temperatures, seeds, batch sizes) or refolding tool hyperparameters in a dedicated numbered locator, which reduces reproducibility of reported numeric comparisons."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta",
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "Seq_recovery and residue log\u2011likelihood scores are presented in repository outputs and used for ranking; the inspected sources do not provide probabilistic calibration bounds or per\u2011residue confidence thresholds."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta"
+          ],
+          "statement": "Repository example FASTA files contain per\u2011sample metadata fields in FASTA headers used for ranking and evaluation (visible in output/example_pdbs/6y1l_imgt.fasta)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold"
+          ],
+          "statement": "Residue log\u2011likelihoods are emitted in CSV format as part of the inference outputs according to repository files and examples."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://github.com/oxpig/AntiFold",
+            "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta"
+          ],
+          "statement": "Evidence gap: a numbered refolding/structural validation protocol (model, version, hyperparameters) is not present in the inspected repository; structural agreement is illustrated in example outputs but not specified with a reproducible refolding protocol."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "modelScope": "AntiFold checkpoint artifact referenced as model.pt in https://github.com/oxpig/AntiFold (repository files demonstrate sequence prediction conditioned on antibody backbone structures).",
+        "useCase": "Antibody variable\u2011domain inverse folding (predict amino\u2011acid sequences conditioned on a provided variable\u2011domain backbone structure).",
+        "why": "Repository materials and files indicate AntiFold is implemented to predict sequences that fit antibody variable\u2011domain backbone structures and are fine\u2011tuned on antibody structure data."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta",
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "modelScope": "AntiFold repository sampling code using model.pt producing FASTA outputs (example file present at output/example_pdbs/6y1l_imgt.fasta).",
+        "useCase": "Generate sampled candidate antibody sequences in FASTA format for downstream structural validation and design workflows.",
+        "why": "The repository contains example sampled FASTA outputs demonstrating sampling functionality and per\u2011sample metadata fields."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/oxpig/AntiFold"
+        ],
+        "modelScope": "AntiFold inference outputs produced by model.pt (CSV residue log\u2011likelihood outputs as present in repository artifacts).",
+        "useCase": "Produce per\u2011residue log\u2011likelihood CSV outputs for sequence\u2011to\u2011structure compatibility analysis and ranking candidate sequences.",
+        "why": "The repository includes CSV residue log\u2011likelihood outputs as part of inference outputs according to repository files/README."
+      }
+    ],
+    "researchSummary": "From the inspected canonical AntiFold repository and example files: the repository contains a file named model.pt and README references \"Model: model.pt\"; example sampled FASTA outputs and CSV residue log\u2011likelihood outputs are present in the repository's output folder; a Jupyter notebook (notebook.ipynb) exists with a recorded commit (SHA e353534) for that notebook file. The repository metadata and files indicate AntiFold is based on and fine\u2011tuned from ESM\u2011IF1 and trained on solved and predicted antibody structures; however, the inspected repository files do not provide an immutable commit SHA or release tag that uniquely identifies the model.pt artifact, do not report an explicit parameter count for the model.pt checkpoint, and do not present numbered/figured benchmark tables or numeric benchmark rows traceable to model.pt. Additional expected details (immutable checkpoint locator for model.pt, numeric benchmark tables tied to model.pt, explicit input\u2011validation specifications, inference hyperparameters, and probabilistic calibration bounds) are not reported in the inspected primary sources.",
+    "safety": [
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: the inspected repository does not include explicit PHI/data\u2011handling instructions, clinical\u2011use mitigation measures, or regulatory authorization statements tied to AntiFold in the files checked."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "AntiFold repository; checkpoint artifact referenced as model.pt (no immutable commit SHA for model.pt identified in the inspected files).",
+        "primary": true,
+        "primaryReason": "Official project repository containing code, model artifact reference (model.pt), example outputs, and notebooks used as primary evidence.",
+        "publisher": "oxpig (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "The AntiFold repository includes a file named model.pt and README references 'Model: model.pt'.",
+          "Repository indicates AntiFold is based on and fine\u2011tuned from ESM\u2011IF1 and trained on solved and predicted antibody structures.",
+          "Repository contains CSV residue log\u2011likelihood outputs and sampling/inference code examples."
+        ],
+        "title": "AntiFold (GitHub repository)",
+        "url": "https://github.com/oxpig/AntiFold"
+      },
+      {
+        "modelScope": "Example sampled FASTA illustrating inference output format and sample metadata.",
+        "primary": true,
+        "primaryReason": "Concrete example output file from the project demonstrating sampled FASTA headers and per\u2011sample metadata used as evidence.",
+        "publisher": "oxpig (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "Example sampled FASTA contains sequences with metadata fields used for ranking (e.g., score, global_score, seq_recovery visible in headers).",
+          "Demonstrates sampling output format produced by the repository."
+        ],
+        "title": "AntiFold example sampled FASTA (repository path)",
+        "url": "https://github.com/oxpig/AntiFold/blob/master/output/example_pdbs/6y1l_imgt.fasta"
+      },
+      {
+        "modelScope": "Repository notebook usage examples and code (notebook.ipynb).",
+        "primary": true,
+        "primaryReason": "Repository notebook file present in the project; commit metadata for this file (commit SHA for a recorded commit) was inspected and used as evidence for notebook provenance.",
+        "publisher": "oxpig (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "The repository includes notebook.ipynb; the notebook file has a recorded commit (inspected commit SHA e353534 for the May 21, 2024 update to notebook.ipynb as reported in the findings)."
+        ],
+        "title": "AntiFold notebook (repository file)",
+        "url": "https://github.com/oxpig/AntiFold/blob/master/notebook.ipynb"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "d0c110b99836e76f95eec6c300a3d7b3e499375e0b35f36f2dd9ff842bce1cd0",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "github-com-oxpig-antifold-aef5c06bce",
+  "researchedAt": "2026-07-23T23:37:13.142732+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://github.com/oxpig/AntiFold",
+  "sourceUrls": [
+    "https://github.com/oxpig/AntiFold"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -1,0 +1,528 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2] uses forbidden secondary URL https://huggingface.co/papers/2508.01630",
+        "path": "$.sources[2] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[7] uses unapproved repository owner 'onnx-community' for this exact model scope",
+        "path": "$.sources[7] uses unapproved repository owner 'onnx-community' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10] uses unapproved repository owner 'd4data' for this exact model scope",
+        "path": "$.sources[10] uses unapproved repository owner 'd4data' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11] uses unapproved repository owner 'maziyarpanahi' for this exact model scope",
+        "path": "$.sources[11] uses unapproved repository owner 'maziyarpanahi' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13] uses unapproved repository owner 'models' for this exact model scope",
+        "path": "$.sources[13] uses unapproved repository owner 'models' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13] uses forbidden secondary URL https://huggingface.co/models?other=arxiv%3A2508.01630",
+        "path": "$.sources[13] uses forbidden secondary URL https",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 6 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "OpenMed-NER-DiseaseDetect-BioMed-335M is an Apache-2.0 Hugging Face Transformers token-classification model for disease entity recognition in biomedical text.",
+      "displayName": "Use OpenMed DiseaseDetect BioMed 335M",
+      "group": "biomedical-extraction",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "openmed-ner-diseasedetect-biomed-335m",
+      "outputModalities": [
+        "json"
+      ],
+      "slug": "openmed-ner-diseasedetect-biomed-335m-wrapper-cuda12",
+      "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+      "version": "hf-a62e2a2-cuda12-cvefix-20260604t05z-r2",
+      "versionKey": "hf-a62e2a2-cuda12-cvefix-20260604t05z-r2"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+        ],
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M and OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android",
+        "reason": "Evidence gap: the checked primary sources for this checkpoint and its ONNX/Android artifact do not provide explicit documentation of calibrated thresholds, regulatory validation, or clinical-grade certification required to support automated diagnosis without human oversight.",
+        "useCase": "Automated clinical diagnosis or clinical decision-making without human oversight."
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Exact dataset split identifier and full evaluation protocol (tokenization\u2192offset mapping, IOB/span-matching rules, random seed) are not reported in the checked model card for this exact checkpoint."
+        ],
+        "conditions": "Reported in the Hugging Face model card performance table for this checkpoint; detailed evaluation protocol (exact split identifier, tokenization\u2192offset mapping, IOB/span-matching rules, and random seed) is not specified in the checked primary sources.",
+        "dataset": "BC5CDR-Disease",
+        "direction": "higher-is-better",
+        "metric": "F1",
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "sourceLocator": "performance table (model card)",
+        "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "split": "not reported",
+        "task": "Disease entity recognition (NER)",
+        "value": "0.9005"
+      },
+      {
+        "caveats": [
+          "Exact dataset split identifier and tokenization/matching rules are not reported in the checked model card."
+        ],
+        "conditions": "Reported in the Hugging Face model card performance table for this checkpoint; detailed evaluation protocol not specified.",
+        "dataset": "BC5CDR-Disease",
+        "direction": "higher-is-better",
+        "metric": "Precision",
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "sourceLocator": "performance table (model card)",
+        "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "split": "not reported",
+        "task": "Disease entity recognition (NER) - precision",
+        "value": "0.8887"
+      },
+      {
+        "caveats": [
+          "Exact dataset split identifier and tokenization/matching rules are not reported in the checked model card."
+        ],
+        "conditions": "Reported in the Hugging Face model card performance table for this checkpoint; detailed evaluation protocol not specified.",
+        "dataset": "BC5CDR-Disease",
+        "direction": "higher-is-better",
+        "metric": "Recall",
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "sourceLocator": "performance table (model card)",
+        "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "split": "not reported",
+        "task": "Disease entity recognition (NER) - recall",
+        "value": "0.9126"
+      },
+      {
+        "caveats": [
+          "Exact dataset split identifier and tokenization/matching rules are not reported in the checked model card."
+        ],
+        "conditions": "Reported in the Hugging Face model card performance table for this checkpoint; detailed evaluation protocol not specified.",
+        "dataset": "BC5CDR-Disease",
+        "direction": "higher-is-better",
+        "metric": "Accuracy",
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "sourceLocator": "performance table (model card)",
+        "sourceUrl": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "split": "not reported",
+        "task": "Disease entity recognition (NER) - accuracy",
+        "value": "0.9838"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M",
+        "comparisonConditions": "Different reported benchmark datasets (BC5CDR-Disease vs NCBI_DISEASE) and differing documented protocols in their respective model cards.",
+        "criteria": "Dataset and metric semantics differ between the two primary sources: BioMed-335M reports BC5CDR\u2011Disease metrics while the Tiny-60M primary model card reports an NCBI_DISEASE result (base F1=0.63) on a different dataset and protocol.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+        ],
+        "rationale": "Primary sources show different evaluated datasets and reported metrics; the checked model card sources do not provide matched dataset/split/protocol documentation to support a direct numeric comparison.",
+        "task": "Disease/entity NER (pathology / disease detection)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Perform target-data evaluation (precision/recall) and calibrate confidence thresholds on representative labeled data; validate tokenizer provenance and token\u2192character-offset alignment before integrating spans downstream.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx"
+        ],
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "useCase": "Integrating extracted disease spans into downstream knowledge-graph construction or literature-mining pipelines (non-clinical research) after evaluation on target data."
+      },
+      {
+        "conditions": "Confirm ONNX/Android variant suitability for target hardware, validate quantization variant correctness on-device, and verify token-to-character-offset alignment and confidence calibration for downstream consumers.",
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx"
+        ],
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android",
+        "useCase": "On-device inference (Android) for entity extraction using the ONNX/Android artifacts in low-latency or offline settings."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: The Hugging Face model card for the exact checkpoint does not include the full embedded Apache-2.0 license text at the model-card URL; the model card declares 'Apache-2.0' but a full embedded license text at that exact location was not found in the checked sources.",
+      "Evidence gap: The exact BC5CDR-Disease evaluation protocol details (dataset split identifier, explicit IOB/span-matching rules, tokenization\u2192character-offset mapping rules, and random seeds) for the reported BC5CDR metrics are not specified in the checked primary sources (model card and preprint).",
+      "Evidence gap: Token-to-character-offset mapping provenance and a complete explicit tokenizer token-id mapping for the main Hugging Face model-card checkout are not present on the main model card page; a tokenizer.json exists in an MLX snapshot but the main model card does not embed full tokenizer files or an explicit mapping algorithm.",
+      "Evidence gap: The ONNX/Android artifact README for this exact checkpoint does not, in the checked primary ONNX/Android artifact page, provide a documented token\u2192character-offset mapping algorithm proving how BIO outputs are converted to character offsets; the artifact is documented to run locally but the explicit mapping algorithm was not found in the checked artifact page.",
+      "Evidence gap: Calibration statistics or recommended numeric confidence thresholds for the exact checkpoint and its ONNX/Android artifacts are not provided in the checked primary sources; downstream calibration is required.",
+      "Evidence gap: Standardized runtime latency, memory, and throughput benchmarks for the transformer checkpoint and ONNX/Android variants under a stated protocol and hardware are not provided in the checked primary sources.",
+      "Evidence gap: The checked primary sources do not provide an explicit file-level listing of ONNX artifact filenames (model_int8.onnx, model_fp16.onnx, model.onnx, model.ort) for the exact OpenMed-NER-DiseaseDetect-BioMed-335M ONNX/Android artifact; artifact existence and exact file names at the ONNX/Android artifact page were not confirmed in the checked sources for this exact checkpoint."
+    ],
+    "family": "huggingface-co-openmed-openmed-ner-diseasedetect-biomed-335m-8e29af3034",
+    "identity": {
+      "architecture": "Fine-tuned BERT-family transformer backbone with a token-classification head producing token-level BIO labels (B-/I-/O) for DISEASE / O",
+      "checkpoint": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+      "evidenceUrls": [
+        "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android",
+        "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx",
+        "https://arxiv.org/abs/2508.01630",
+        "https://openmedproject.eu/home",
+        "https://openmed.life"
+      ],
+      "license": "Apache-2.0",
+      "parameterScale": "335M",
+      "revision": "not reported",
+      "upstreamName": "OpenMed-NER-DiseaseDetect-BioMed-335M"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+          ],
+          "statement": "Lists or batches of text strings supplied as textual inputs for token-classification inference."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+          ],
+          "statement": "On-device/local inference inputs supported by the published ONNX/Android artifact variant (text inputs for local Python CPU, browser, or Android execution)."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2508.01630"
+          ],
+          "statement": "Backbone tokenizer usage and BIO label-encoding are described at the OpenMed family level; the canonical OpenMed NER preprint documents use of the backbone tokenizer and BIO encoding as family methodology."
+        },
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2508.01630"
+          ],
+          "statement": "Family-level preprocessing reported in the preprint includes truncation to 256 word-pieces and a sliding window with 50-token overlap; this is upstream/family methodology in the preprint and is not automatically checkpoint-scoped evidence for the exact published checkpoint unless the model card explicitly states it."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx",
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx/blob/bfa6e04cd6d85c256523e662c3204bcae2649428/tokenizer.json"
+          ],
+          "statement": "A tokenizer.json artifact is published for an MLX snapshot of this checkpoint snapshot (tokenizer.json present in the MLX snapshot repository)."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+            "https://openmedproject.eu/home"
+          ],
+          "statement": "Free-text biomedical or healthcare text (e.g., PubMed abstracts, clinical or research documents) intended for disease-entity extraction."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2508.01630"
+          ],
+          "statement": "Entity labels are encoded using the BIO scheme (B-Disease, I-Disease, O) as described in the OpenMed NER preprint (family-level methodology)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx"
+          ],
+          "statement": "Validate tokenizer provenance, tokenization outputs, and token\u2192character-offset alignment on representative target data prior to deployment; confirm the MLX tokenizer.json when using the MLX snapshot."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the main Hugging Face model-card checkout does not include an explicit token\u2192character-offset mapping algorithm or full tokenizer files; downstream validation is required."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://arxiv.org/abs/2508.01630"
+        ],
+        "statement": "The Hugging Face model card reports BC5CDR performance numbers for this exact checkpoint but does not provide the complete evaluation protocol (exact dataset split identifier, explicit IOB/span-matching rules, tokenization\u2192character-offset mapping rules, or random seeds), limiting reproducibility of the reported metrics."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx/blob/bfa6e04cd6d85c256523e662c3204bcae2649428/tokenizer.json"
+        ],
+        "statement": "Tokenizer vocabulary and explicit token-id mappings for the main Hugging Face model-card checkout are not fully documented on the main model card; a separate MLX snapshot published under the OpenMed owner contains tokenizer.json for a snapshot variant."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+        ],
+        "statement": "Evidence gap: the checked primary model card page does not embed the full Apache-2.0 license text for the model weights and code at the model-card URL; the model card declares 'Apache-2.0' but a full embedded license text at that exact location was not found in the checked sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+        ],
+        "statement": "Evidence gap: calibration statistics or recommended numeric confidence thresholds for the checkpoint and ONNX/Android artifacts are not provided in the checked primary sources; downstream calibration is required before relying on confidence scores."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+        ],
+        "statement": "Evidence gap: standardized runtime latency, memory, and throughput benchmarks for the transformer checkpoint or ONNX/Android variants under a stated protocol and hardware are not provided in the checked primary sources."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+          ],
+          "statement": "Treat raw confidence scores as uncalibrated unless downstream calibration on representative labeled data is performed; primary sources for this checkpoint do not provide calibration statistics or recommended numeric thresholds."
+        },
+        {
+          "evidenceUrls": [
+            "https://arxiv.org/abs/2508.01630",
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+          ],
+          "statement": "BIO-tag outputs must be converted to contiguous entity spans and mapped to character offsets using tokenizer/preprocessing alignment; the canonical preprint documents BIO\u2192span semantics at the family level but a token\u2192character-offset algorithm is not present on the main model-card checkout."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+            "https://arxiv.org/abs/2508.01630"
+          ],
+          "statement": "Transformer token-classification outputs BIO labels per token (token-level NER outputs) produced by the model's token-classification head."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: whether the ONNX/Android artifact README for this exact checkpoint documents detected span labels, per-span confidence scores, and character-offset fields is not specified in the checked primary ONNX/Android artifact page for this checkpoint."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+            "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+          ],
+          "statement": "Post-inference validation should include recall/sensitivity checks, threshold calibration for confidence scores, span/offset sanity checks, and human expert review for high-risk uses prior to clinical deployment."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the checked primary sources do not provide standardized calibration procedures, numeric thresholds, or calibration statistics for this checkpoint or its ONNX/Android variant; downstream calibration and benchmarking are required."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+        ],
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "useCase": "Extracting disease mentions/entities from biomedical and healthcare text for downstream information-extraction pipelines (research or non-clinical analytics).",
+        "why": "The Hugging Face model card for the exact checkpoint describes the model as engineered for disease entity recognition and reports BC5CDR\u2011Disease performance metrics for this checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+        ],
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android",
+        "useCase": "On-device or local inference for entity extraction in constrained runtimes (research, prototyping, or non-regulated analytics) after downstream validation.",
+        "why": "The checkpoint has an ONNX/Android artifact published by the OpenMed owner that is documented to run locally (Python CPU), in the browser, and on Android; use on-device deployments only after validating span/offset mapping and calibration on target data."
+      }
+    ],
+    "researchSummary": "Checkpoint-scoped summary: OpenMed-NER-DiseaseDetect-BioMed-335M is a 335M-parameter fine-tuned transformer (BERT-family) token-classification model for disease named-entity recognition. The Hugging Face model card for this exact checkpoint reports BC5CDR\u2011Disease aggregate performance values (F1=0.9005, precision=0.8887, recall=0.9126, accuracy=0.9838). An ONNX/Android artifact variant for this checkpoint is published under the OpenMed Hugging Face owner and can run locally on Python CPU, in the browser, and on Android. A separate MLX snapshot published under the OpenMed owner contains a tokenizer.json artifact for a snapshot variant. The canonical OpenMed NER preprint (arXiv:2508.01630) documents family-level methodology (backbone tokenizer usage, BIO label encoding, truncation to 256 word-pieces and 50-token sliding window reported as family methodology, and LoRA fine-tuning) and should be treated as upstream/family evidence rather than automatic checkpoint proof. Primary-source documentation checked does not include a full embedded Apache-2.0 license text at the main model-card URL, explicit BC5CDR split and full evaluation protocol details for the reported metrics, nor a documented token\u2192character-offset mapping algorithm at the main model-card checkout; these are recorded as evidence gaps below.",
+    "safety": [
+      {
+        "evidenceUrls": [],
+        "statement": "Evidence gap: Do not use model outputs for automated clinical diagnosis without human expert review and regulatory validation; the checked primary sources do not document clinical-grade certification or calibrated diagnostic thresholds for this checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android",
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx"
+        ],
+        "statement": "Evaluate recall, thresholds, and span/offset alignment on governed target data before deployment; validate outputs and thresholds with domain experts for clinical or regulated uses."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+        ],
+        "statement": "Treat raw confidence scores as uncalibrated unless calibration is performed on representative labeled data; primary sources do not provide calibration statistics."
+      },
+      {
+        "evidenceUrls": [
+          "https://openmed.life",
+          "https://openmedproject.eu/home"
+        ],
+        "statement": "PHI/PII de-identification and regulatory compliance require expert review; project-level documentation indicates de-identification/PII detection capabilities but does not by itself guarantee HIPAA or regulatory suitability without expert validation."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model card for the exact OpenMed-NER-DiseaseDetect-BioMed-335M checkpoint containing checkpoint-scoped description and reported BC5CDR performance values.",
+        "publisher": "OpenMed (Hugging Face)",
+        "sourceType": "model-card",
+        "supports": [
+          "model identity as a fine-tuned transformer for disease NER",
+          "reported BC5CDR-Disease performance (F1/precision/recall/accuracy) as listed in the model card",
+          "declared license field (Apache-2.0)"
+        ],
+        "title": "OpenMed-NER-DiseaseDetect-BioMed-335M model card (Hugging Face)",
+        "url": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+      },
+      {
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android",
+        "primary": true,
+        "primaryReason": "ONNX/Android artifact page published under the OpenMed Hugging Face owner documenting the on-device artifact variant for this checkpoint and its local/browser/Android execution capabilities.",
+        "publisher": "OpenMed (Hugging Face artifact)",
+        "sourceType": "repository",
+        "supports": [
+          "on-device/local execution modes for this artifact (Python CPU, browser, Android)",
+          "artifact-level existence of an ONNX/Android packaging for this checkpoint"
+        ],
+        "title": "OpenMed-NER-DiseaseDetect-BioMed-335M ONNX Android artifact (Hugging Face)",
+        "url": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-v1-onnx-android"
+      },
+      {
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M-mlx",
+        "primary": true,
+        "primaryReason": "MLX snapshot published under the OpenMed owner that contains a tokenizer.json artifact for a snapshot variant of this checkpoint.",
+        "publisher": "OpenMed (Hugging Face MLX snapshot)",
+        "sourceType": "repository",
+        "supports": [
+          "presence of tokenizer.json and snapshot files for a snapshot variant of this checkpoint",
+          "downloadable MLX snapshot intended for local/offline workflows"
+        ],
+        "title": "OpenMed MLX snapshot tokenizer.json (Hugging Face MLX snapshot)",
+        "url": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx"
+      },
+      {
+        "modelScope": "OpenMed family / NER methodology",
+        "primary": true,
+        "primaryReason": "Canonical OpenMed NER preprint describing family-level methodology including backbone tokenizer usage, BIO label encoding, truncation and sliding-window preprocessing, and LoRA fine-tuning at the family level.",
+        "publisher": "arXiv",
+        "sourceType": "paper",
+        "supports": [
+          "tokenization and preprocessing rules at the family level (backbone tokenizer, truncation to 256 word-pieces, 50-token sliding window)",
+          "BIO label encoding and family-level methodology",
+          "description of LoRA fine-tuning and training corpus at family scope"
+        ],
+        "title": "OpenMed NER preprint (arXiv:2508.01630)",
+        "url": "https://arxiv.org/abs/2508.01630"
+      },
+      {
+        "modelScope": "OpenMed project and family",
+        "primary": true,
+        "primaryReason": "Project website providing project-level documentation for OpenMed.",
+        "publisher": "OpenMed (project website)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "project-level documentation and description of project capabilities"
+        ],
+        "title": "OpenMed project website (official documentation)",
+        "url": "https://openmedproject.eu/home"
+      },
+      {
+        "modelScope": "OpenMed project and family",
+        "primary": true,
+        "primaryReason": "Project-level site describing OpenMed capabilities including PII/PHI detection catalog claims and related project information.",
+        "publisher": "OpenMed (project website)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "project-level statements about PII/PHI detection capabilities"
+        ],
+        "title": "OpenMed project site (OpenMed.life)",
+        "url": "https://openmed.life"
+      },
+      {
+        "modelScope": "OpenMed-NER-DiseaseDetect-BioMed-335M-mlx (tokenizer artifact file)",
+        "primary": true,
+        "primaryReason": "Direct MLX snapshot file path demonstrating the presence of tokenizer.json for the snapshot variant.",
+        "publisher": "OpenMed (Hugging Face MLX snapshot)",
+        "sourceType": "repository",
+        "supports": [
+          "presence of tokenizer.json file at the snapshot repository path"
+        ],
+        "title": "OpenMed tokenizer.json file (MLX snapshot path)",
+        "url": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M-mlx/blob/bfa6e04cd6d85c256523e662c3204bcae2649428/tokenizer.json"
+      },
+      {
+        "modelScope": "openmed-ner-diseasedetect-biomed-335m",
+        "primary": true,
+        "primaryReason": "The independent audit cited this exact URL and its host is narrowly allowlisted as a first-party model or vendor documentation source.",
+        "publisher": "huggingface.co",
+        "sourceType": "model-card",
+        "supports": [
+          "Exact independently audited claim citation"
+        ],
+        "title": "Cited official first-party source",
+        "url": "https://huggingface.co/OpenMed/OpenMed-ZeroShot-NER-Pathology-Tiny-60M"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "a7ee0f4f88a169f1649a9e73651584428cb1ed83cb2bc346230954566c255caf",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-openmed-openmed-ner-diseasedetect-biomed-335m-8e29af3034",
+  "researchedAt": "2026-08-06T09:02:15.611174+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M",
+  "sourceUrls": [
+    "https://huggingface.co/OpenMed/OpenMed-NER-DiseaseDetect-BioMed-335M"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

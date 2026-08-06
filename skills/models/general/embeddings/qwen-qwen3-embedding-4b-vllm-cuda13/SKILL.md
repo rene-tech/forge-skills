@@ -63,6 +63,16 @@ Route: `POST /v1/embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-embedding-4b-5fc440f4b7`
+- Recommended: Multilingual semantic search / text retrieval — The Hugging Face model page and the checkpoint README present Qwen3-Embedding-4B as a text embedding model intended for retrieval and multilingual use; README includes retrieval-oriented examples and MTEB-style benchmark results for the checkpoint.
+- Recommended: Embedding-based code search / code retrieval (programming-language text) — Primary checkpoint-level materials list natural-language and programming-language text among intended inputs and retrieval-oriented examples applicable to code contexts.
+- Recommended: Text clustering and unsupervised organization — The checkpoint is published as a text embedding model intended for similarity, retrieval, clustering, and related downstream uses as shown on the Hugging Face model page and README benchmark summaries.
+- Avoid: Direct multimodal (image/video) inputs to this checkpoint — The checkpoint README and model card describe the Qwen3-Embedding series as a text-only embedding model; multimodal/VL embedding variants are documented at the family/repository level as separate variants, not as this exact checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -81,11 +91,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-embedding-4b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-embedding-4b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-embedding-4b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/embeddings/qwen-qwen3-embedding-4b-vllm-cuda13/SKILL.md

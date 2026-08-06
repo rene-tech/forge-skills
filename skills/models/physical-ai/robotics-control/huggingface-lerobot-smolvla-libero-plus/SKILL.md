@@ -80,6 +80,15 @@ Route: `POST /v1/inference/huggingface-lerobot-smolvla-libero-plus`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-lerobot-smolvla-libero-plus-2c9c8f8e10`
+- Recommended: Research and prototyping of vision-language-action policies for manipulation tasks (simulation or lab), using the checkpoint's VLM and action head as provided. — The model card and config.json describe a compact SmolVLA vision-language-action checkpoint, document inputs (text, images, state) and an action output feature, and state the model is intended as a compact/efficient VLA model suitable for consumer-grade hardware and research use.
+- Recommended: Low-resource local inference for robotics experimentation where a compact VLM is required (research/prototyping only). — The model card text and model naming describe SmolVLA as compact and deployable on consumer-grade hardware; configuration indicates use_amp=false and device 'cuda' in the repo guidance.
+- Avoid: Deployment for safety-critical autonomous robotic operation without human oversight or expert system-level validation. — Evidence gap: Safety-critical autonomous deployment without human oversight or expert-system validation is not documented in primary sources.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -97,11 +106,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/huggingface-lerobot-smolvla-libero-plus/inference-routes`
 - Regional deployment: `/v1/models/huggingface-lerobot-smolvla-libero-plus/regional-deployment`
 - Serverless handoff: `/v1/models/huggingface-lerobot-smolvla-libero-plus/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-smolvla-libero-plus/SKILL.md

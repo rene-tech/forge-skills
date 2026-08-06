@@ -77,6 +77,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-openbmb-minicpm5-1b-e330c92570`
+- Recommended: Local / on-device assistant and resource-constrained deployments using the upstream MiniCPM5-1B checkpoint — The Hugging Face model page lists supported local deployment backends (Transformers BF16/FP16, llama.cpp (GGUF), Ollama, LM Studio, MLX/4-bit), and the project README and model hosting emphasize local / on-device deployment and supported runtime backends.
+- Recommended: Applications requiring very long context windows (research or evaluation of long-context performance), after runtime validation — The model config and model card state a native maximum position embeddings / context length of 131,072 tokens; using such long contexts requires validating the chosen runtime and memory behavior.
+- Recommended: Reasoning, multi-step math, and coding tasks using the model's documented generation defaults (when validated for the target runtime) — The model-hosted generation_config.json sets do_sample true with temperature 0.9 and top_p 0.95; the project documents a Think/No-Think mode concept on the model card and README (switching generation mode is a documented feature of the upstream artifacts).
+- Avoid: Clinical decision-making, PHI-sensitive automated processing, or other regulated clinical deployments — No primary-source documentation in the reviewed model-hosted blobs or repository README provides clinical validation, PHI handling guidance, regulatory compliance statements, or operational clinical safeguards for MiniCPM5-1B.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -95,11 +105,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/openbmb-minicpm5-1b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/openbmb-minicpm5-1b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/openbmb-minicpm5-1b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/openbmb-minicpm5-1b-vllm-cuda13/SKILL.md

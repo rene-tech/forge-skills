@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forge portable model-group research catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "total", "groups"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "generatedAt": {"type": "string", "format": "date-time"},
+    "total": {"type": "integer", "minimum": 0},
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "category",
+          "group",
+          "modelCount",
+          "modelSlugs",
+          "researchStatus",
+          "researchPath",
+          "researchMarkdownPath"
+        ],
+        "properties": {
+          "category": {"type": "string"},
+          "group": {"type": "string"},
+          "modelCount": {"type": "integer", "minimum": 1},
+          "modelSlugs": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "researchStatus": {
+            "enum": ["accepted", "revised", "missing"]
+          },
+          "researchPath": {"type": ["string", "null"]},
+          "researchMarkdownPath": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

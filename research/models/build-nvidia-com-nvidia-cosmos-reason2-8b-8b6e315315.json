@@ -1,0 +1,559 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "official starting source is absent from $.sources: https://build.nvidia.com/nvidia/cosmos-reason2-8b",
+        "path": "official starting source is absent from $.sources",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12].primary must be true",
+        "path": "$.sources[12].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/cosmos/latest/prerequisites.html"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://docs.nvidia.com/cosmos/latest/prerequisites.html",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 2 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "physical-ai",
+      "description": "Physical AI reasoning model for robotics and world understanding, packaged as a self-hosted NVIDIA NIM.",
+      "displayName": "Use NVIDIA Cosmos Reason 2 (8B)",
+      "group": "physical-ai",
+      "inputModalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "license": "nvidia-open-model-license",
+      "modelFamily": "nvidia-cosmos-reason2",
+      "outputModalities": [
+        "text"
+      ],
+      "slug": "nvidia-cosmos-reason2-8b",
+      "sourceUrl": "https://build.nvidia.com/nvidia/cosmos-reason2-8b",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-reason2-8b"
+        ],
+        "modelScope": "nvidia/Cosmos-Reason2-8B (upstream checkpoint)",
+        "reason": "No publisher-provided checkpoint-scoped calibration semantics or canonical post-inference calibration procedures for textual outputs were found in the inspected upstream artifacts; do not assume generated text corresponds to calibrated probability scores without external calibration/validation.",
+        "useCase": "Treating generated text as calibrated probabilities or using raw model text outputs as calibrated confidence scores for direct actuation without external validation"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Missing explicit per-row dataset/split/protocol metadata in the cited README table; cannot assert strict comparability without additional protocol detail."
+        ],
+        "conditions": "As presented in the upstream README benchmark table; the artifact does not include explicit per-row dataset/split/protocol metadata required for strict protocol-matched comparisons.",
+        "dataset": "README benchmark table (dataset/split/protocol not fully specified in artifact)",
+        "direction": "higher-is-better",
+        "metric": "General score (aggregate)",
+        "modelScope": "nvidia/Cosmos-Reason2-8B (upstream README benchmark table)",
+        "sourceLocator": "README.md benchmark table",
+        "sourceUrl": "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+        "split": "not reported",
+        "task": "Aggregate multimodal benchmark (General score)",
+        "value": "73.73"
+      },
+      {
+        "caveats": [
+          "Benchmark table lacks per-row protocol/split metadata required for strict reproducibility."
+        ],
+        "conditions": "As presented in the upstream README benchmark table; protocol details not fully enumerated in the artifact.",
+        "dataset": "README benchmark table (dataset/split/protocol not fully specified in artifact)",
+        "direction": "higher-is-better",
+        "metric": "BlinkDepth",
+        "modelScope": "nvidia/Cosmos-Reason2-8B (upstream README benchmark table)",
+        "sourceLocator": "README.md benchmark table",
+        "sourceUrl": "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+        "split": "not reported",
+        "task": "BlinkDepth (subscore from README benchmark table)",
+        "value": "87.90"
+      },
+      {
+        "caveats": [
+          "Benchmark rows lack dataset/split/protocol detail in the cited artifact; see evidenceGaps for missing protocol metadata."
+        ],
+        "conditions": "As presented in the upstream README benchmark table; protocol details not fully enumerated in the artifact.",
+        "dataset": "README benchmark table (dataset/split/protocol not fully specified in artifact)",
+        "direction": "higher-is-better",
+        "metric": "VideoPhy2",
+        "modelScope": "nvidia/Cosmos-Reason2-8B (upstream README benchmark table)",
+        "sourceLocator": "README.md benchmark table",
+        "sourceUrl": "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+        "split": "not reported",
+        "task": "VideoPhy2 (subscore from README benchmark table)",
+        "value": "36.80"
+      }
+    ],
+    "comparisons": [
+      {
+        "alternative": "insufficient-evidence",
+        "comparisonConditions": "The README benchmark table and cookbook showcase lack full per-row dataset/split/protocol metadata necessary for direct protocol-matched comparisons.",
+        "criteria": "Upstream README numeric rows exist but lack per-row protocol metadata required for protocol-matched comparisons; cookbook examples provide side-by-side showcase content but do not provide full reproducibility metadata for strict benchmarking.",
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+          "https://nvidia-cosmos.github.io/cosmos-cookbook/index.html"
+        ],
+        "rationale": "The inspected primary artifacts (upstream README benchmark table and cookbook showcase) present numeric comparisons and side-by-side examples but do not include per-row protocol metadata required for strict comparability; therefore protocol-matched preference decisions are unsupported by the inspected artifacts.",
+        "task": "Multimodal physical-AI / embodied reasoning (as presented in upstream README and cookbook examples)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Integrators must validate long-context behavior, exact numeric limits, and serving-image specifics in their deployment environment before relying on very long context; this dossier did not locate a single canonical checkpoint-scoped numeric specification for maximum token/context length.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/cosmos/latest/reason2/index.html"
+        ],
+        "modelScope": "nvidia/Cosmos-Reason2-8B (upstream checkpoint) and nvcr.io/nim/nvidia/cosmos-reason2-8b (container-level serving claims) — treat container/NIM context claims as requiring independent validation",
+        "useCase": "Very long-context multimodal reasoning (very long videos / extremely long token contexts) — only with integrator validation"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: No checkpoint-scoped downloadable tokenizer artifact (vocab/token-id mapping file and explicit tokenizer config) for nvidia/Cosmos-Reason2-8B was located in the inspected sources; tokenizer code and tooling exist but a packaged checkpoint-scoped tokenizer file was not found.",
+      "Evidence gap: Precise long-context numeric limits for the upstream checkpoint (a single canonical checkpoint-scoped maximum token/context length) were not found in a single authoritative upstream artifact in the inspected sources; integrators must validate long-context behavior for their serving configuration.",
+      "Evidence gap: Precise per-modality preprocessing constants (explicit pixel-normalization constants, exact image resize dimensions, explicit accepted video fps/codec handling) were not found in a single canonical checkpoint-scoped artifact in the inspected sources.",
+      "Evidence gap: Canonical structured output schemas (exhaustive JSON response contracts) and explicit post-inference calibration procedures tied to the exact upstream checkpoint were not found in the inspected sources.",
+      "Evidence gap: A single consolidated license text enumerating model-weights license and all code/container license texts for the exact checkpoint and its container packaging was not found in a single authoritative inspected artifact."
+    ],
+    "family": "build-nvidia-com-nvidia-cosmos-reason2-8b-8b6e315315",
+    "identity": {
+      "architecture": "not reported",
+      "checkpoint": "nvidia/Cosmos-Reason2-8B",
+      "evidenceUrls": [
+        "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+        "https://github.com/NVIDIA/Cosmos-Tokenizer",
+        "https://docs.nvidia.com/vss/latest/License-Information.html"
+      ],
+      "license": "NVIDIA Open Model License (model weights); Apache-2.0 (code/artifacts) where applicable",
+      "parameterScale": "approximately 8 billion parameters",
+      "revision": "not reported",
+      "upstreamName": "nvidia/Cosmos-Reason2-8B"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/tao/tao-toolkit/latest/text/vlm_finetuning/cosmos_rl.html",
+            "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+          ],
+          "statement": "Model/serving examples and toolkit docs reference common image and video container formats (examples use JPG/PNG for images and MP4 for video in upstream examples and toolkit docs)."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/vision-language-models/1.6.0/examples/cosmos-reason2/api.html",
+            "https://nvidia-cosmos.github.io/cosmos-cookbook/recipes/post_training/reason2/video_caption_vqa/post_training.html"
+          ],
+          "statement": "The Cosmos Reason2 API and post-training recipe documents expose video/frame sampling parameters (fps or number-of-frames) and image/video resize/total-pixel configuration knobs (for example keys such as media_io_kwargs.video.fps, media_io_kwargs.video.num_frames, mm_processor_kwargs.size.shortest_edge)."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/NVIDIA/Cosmos-Tokenizer"
+          ],
+          "statement": "Evidence gap: Precise checkpoint-scoped tokenizer artifact (downloadable vocab/token-id mapping file and explicit tokenizer config) and canonical per-checkpoint tokenizer config were not found in the inspected sources; integrators should obtain and lock a tokenizer artifact appropriate to their serving setup."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+            "https://github.com/nvidia-cosmos/cosmos-reason2"
+          ],
+          "statement": "Evidence gap: Detailed per-modality preprocessing constants (explicit pixel-normalization constants, definitive image resize dimensions, canonical video FPS/codec handling) were not found in a single canonical checkpoint-scoped artifact; integrators must validate preprocessing recipes against their chosen serving configuration."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+          ],
+          "statement": "Text prompts / queries (text modality)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+          ],
+          "statement": "Images (image modality)."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+          ],
+          "statement": "Videos (video modality)."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://github.com/nvidia-cosmos/cosmos-reason2/blob/main/prompts/README.md",
+            "https://nvidia-cosmos.github.io/cosmos-cookbook/index.html"
+          ],
+          "statement": "Example prompt templates and repository-level prompt guidance for common tasks (captioning, temporal localization, embodied reasoning, 2D grounding, Robot COT) are provided in the Cosmos-Reason2 repository prompts area and the cookbook."
+        },
+        {
+          "evidenceUrls": [
+            "https://github.com/nvidia-cosmos/cosmos-reason2/blob/main/prompts/README.md"
+          ],
+          "statement": "Evidence gap: A single authoritative exhaustive paired-input order for all multimodal prompt variants and an authoritative instruction-tuning prompt format for the exact upstream checkpoint were not found in a single canonical artifact."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/vision-language-models/1.6.0/examples/cosmos-reason2/api.html",
+            "https://github.com/nvidia-cosmos/cosmos-reason2"
+          ],
+          "statement": "Evidence gap: Explicit input-validation bounds (detailed coordinate conventions beyond high-level examples, explicit per-task coordinate ranges, and exhaustive video frame-count limits) for the named checkpoint were not found in a single canonical artifact; integrators must enforce input bounds appropriate to their deployment."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+        ],
+        "statement": "Ambiguity and absence of canonical numeric benchmark protocol: the upstream README benchmark table provides numeric scores but does not include explicit per-row dataset/split/protocol metadata required for strict, protocol-matched comparisons."
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/NVIDIA/Cosmos-Tokenizer"
+        ],
+        "statement": "Evidence gap: Canonical per-checkpoint tokenizer downloads and explicit tokenizer configuration files for the exact upstream checkpoint were not found in the inspected sources; tokenizer code and tooling exist but a packaged checkpoint-scoped tokenizer artifact was not located."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+          "https://github.com/nvidia-cosmos/cosmos-reason2"
+        ],
+        "statement": "Evidence gap: Detailed preprocessing (explicit pixel-normalization constants, exact image resize dimensions, explicit canonical video fps/codec handling) and exhaustive input-validation bounds for the upstream checkpoint are not specified in the inspected sources."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+          "https://docs.nvidia.com/vss/latest/License-Information.html",
+          "https://github.com/NVIDIA/Cosmos-Tokenizer"
+        ],
+        "statement": "Evidence gap: No single consolidated license text enumerating both the model-weights license and all code/container license texts for the exact checkpoint and its container packaging was found in a single canonical artifact."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+          ],
+          "statement": "Evidence gap: The inspected upstream artifacts do not provide publisher-supplied, checkpoint-scoped calibration semantics for textual outputs; do not treat raw generated text as calibrated probability scores without external calibration or validation."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+          ],
+          "statement": "Primary emitted modality reported in inspected artifacts is generated text / textual reasoning as the model's primary response form."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-reason2-8b",
+            "https://docs.nvidia.com/nim/vision-language-models/1.6.0/examples/cosmos-reason2/api.html"
+          ],
+          "statement": "Evidence gap: Checkpoint-scoped post-inference calibration procedures, canonical safety-check scripts, or an exhaustive post-inference validation checklist were not found in the inspected artifacts; integrators should implement task-specific sanity checks and human-in-the-loop gating."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+          "https://github.com/nvidia-cosmos/cosmos-reason2",
+          "https://nvidia-cosmos.github.io/cosmos-cookbook/index.html"
+        ],
+        "modelScope": "nvidia/Cosmos-Reason2-8B (upstream checkpoint / model card); cookbook and repository examples are supporting artifacts for usage patterns",
+        "useCase": "Multimodal physical-AI reasoning and explanatory text generation (image/video + text) for research, development, and non-safety-critical prototyping",
+        "why": "The upstream Hugging Face model page and NVIDIA cookbook/repository materials describe the model as an ~8B multimodal reasoning vision-language model intended for Physical AI/robotics reasoning tasks and provide example prompts, recipes, and inference workflows supporting this use."
+      }
+    ],
+    "researchSummary": "Checkpoint-scoped dossier for nvidia/Cosmos-Reason2-8B assembled from inspected first-party artifacts. The upstream checkpoint is hosted on Hugging Face under nvidia/Cosmos-Reason2-8B and is described as an ~8B-parameter multimodal reasoning (vision-language) model for Physical AI and robotics. NVIDIA provides a container/NIM variant (nvcr.io/nim/nvidia/cosmos-reason2-8b) documented in the NGC catalog; container-level packaging, runtime, and serving claims are treated separately from upstream-checkpoint facts in this dossier. The upstream model artifact contains a README benchmark table with numeric rows (e.g., General score 73.73; BlinkDepth 87.90; VideoPhy2 36.80) but the table does not include explicit per-row dataset/split/protocol metadata required for strict protocol-matched comparisons; these numeric rows are recorded with an explicit caveat and evidence gaps. Multiple checkpoint-scoped engineering artifacts required for exact operational reproduction (for example a downloadable checkpoint-scoped tokenizer vocab/token-id mapping file, canonical preprocessing constants such as pixel-normalization and resize dims, and a single consolidated license text covering both model weights and container/code artifacts) were not found in a single authoritative artifact and are recorded as evidence gaps in this dossier. Container/NIM pages and NVIDIA docs provide example API parameters and example default settings (for example video FPS sampling and media IO parameters) and are cited as container/serving-level evidence distinct from upstream-checkpoint evidence.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/nvidia/Cosmos-Reason2-8B",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-reason2-8b"
+        ],
+        "statement": "Evidence gap: The inspected artifacts do not include publisher-provided checkpoint-scoped safety validation workflows, human-in-the-loop gating procedures, actuator-safety checklists, or example safety-check scripts tied specifically to this checkpoint; integrators must adopt independent safety validation processes."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.nvidia.com/cosmos/latest/prerequisites.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-reason2-8b"
+        ],
+        "statement": "Evidence gap: A single canonical documented numeric minimum GPU-memory requirement for the upstream checkpoint (expressed as an absolute single value tied to the named checkpoint) was not found in a single inspected artifact; integrators should consult container/NIM documentation and validate memory requirements in their deployment environment."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "forge starting source (serving/packaging identity)",
+        "primary": true,
+        "primaryReason": "Forge starting URL for the covered checkpoint/serving variant; listed by the user as the canonical Forge entry point for this dossier.",
+        "publisher": "build.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "researchSummary"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://build.nvidia.com/nvidia/cosmos-reason2-8b"
+      },
+      {
+        "modelScope": "nvidia/Cosmos-Reason2-8B (model-card / upstream README)",
+        "primary": true,
+        "primaryReason": "Upstream model hosting page and README used to verify checkpoint identifier, multimodal capability statements, and the README benchmark numeric rows.",
+        "publisher": "Hugging Face (NVIDIA account)",
+        "sourceType": "model-card",
+        "supports": [
+          "identity.upstreamName",
+          "identity.parameterScale",
+          "researchSummary",
+          "inputPreparation.semanticInputs",
+          "benchmarks",
+          "outputInterpretation.outputs",
+          "limitations"
+        ],
+        "title": "Hugging Face model page: nvidia/Cosmos-Reason2-8B",
+        "url": "https://huggingface.co/nvidia/Cosmos-Reason2-8B"
+      },
+      {
+        "modelScope": "nvcr.io/nim/nvidia/cosmos-reason2-8b:1.6.0 (container/NGC catalog listing)",
+        "primary": true,
+        "primaryReason": "NGC container/registry catalog used to source container-level metadata, packaging identity, and to separate container/NIM claims from upstream-checkpoint facts.",
+        "publisher": "NVIDIA NGC",
+        "sourceType": "official-documentation",
+        "supports": [
+          "researchSummary",
+          "safety",
+          "inputPreparation.preprocessin",
+          "outputInterpretation.validation"
+        ],
+        "title": "NVIDIA NGC catalog: nvcr.io/nim/nvidia/cosmos-reason2-8b",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/cosmos-reason2-8b"
+      },
+      {
+        "modelScope": "nvcr.io/nim/nvidia/cosmos-reason2-8b:1.6.0 (NIM examples/documentation)",
+        "primary": true,
+        "primaryReason": "Official NIM/VLM example documentation inspected for API parameters (video fps/num_frames), default sampling behaviors, and mm_processor kwargs.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "inputPreparation.preprocessing",
+          "inputPreparation.validation",
+          "conditionalUseCases",
+          "researchSummary"
+        ],
+        "title": "NIM Vision-Language Models examples: Cosmos-Reason2 API (NVIDIA NIM docs)",
+        "url": "https://docs.nvidia.com/nim/vision-language-models/1.6.0/examples/cosmos-reason2/api.html"
+      },
+      {
+        "modelScope": "nvcr.io/nim/nvidia/cosmos-reason2-8b:1.6.0 (NIM introduction / 1.6.0 context)",
+        "primary": true,
+        "primaryReason": "NIM introduction and release-level artifacts providing NIM version context and links to release notes; used to separate container/NIM claims from upstream-checkpoint facts.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "researchSummary",
+          "conditionalUseCases"
+        ],
+        "title": "NIM Vision-Language Models introduction (1.6.0)",
+        "url": "https://docs.nvidia.com/nim/vision-language-models/1.6.0/introduction.html"
+      },
+      {
+        "modelScope": "Cosmos-Reason2 product documentation",
+        "primary": true,
+        "primaryReason": "Product-level documentation used to inspect feature claims and to flag long-context and feature-level documentation as container/product-level evidence.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "conditionalUseCases",
+          "researchSummary",
+          "limitations"
+        ],
+        "title": "Cosmos Reason2 product documentation (reason2 product docs)",
+        "url": "https://docs.nvidia.com/cosmos/latest/reason2/index.html"
+      },
+      {
+        "modelScope": "nvidia/Cosmos-Reason2-8B (repository examples and prompts)",
+        "primary": true,
+        "primaryReason": "Official repository containing prompts, examples, and recipes used to verify availability of prompt templates and usage guidance.",
+        "publisher": "NVIDIA (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "inputPreparation.taskSpecificFormatting",
+          "researchSummary",
+          "limitations"
+        ],
+        "title": "Cosmos Reason2 repository (prompts and examples)",
+        "url": "https://github.com/nvidia-cosmos/cosmos-reason2"
+      },
+      {
+        "modelScope": "nvidia/Cosmos-Reason2-8B (prompts/examples file)",
+        "primary": true,
+        "primaryReason": "Repository file with task-specific prompt templates used to support prompt guidance claims.",
+        "publisher": "NVIDIA (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "inputPreparation.taskSpecificFormatting",
+          "researchSummary"
+        ],
+        "title": "Cosmos Reason2 repository prompts README (file view)",
+        "url": "https://github.com/nvidia-cosmos/cosmos-reason2/blob/main/prompts/README.md"
+      },
+      {
+        "modelScope": "tokenizer tooling and code",
+        "primary": true,
+        "primaryReason": "Official tokenizer repository inspected to search for checkpoint-scoped tokenizer artifacts and to verify tokenizer-related code and licensing.",
+        "publisher": "NVIDIA (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "inputPreparation.preprocessing",
+          "limitations"
+        ],
+        "title": "NVIDIA Cosmos Tokenizer repository (tokenizer code/artifacts)",
+        "url": "https://github.com/NVIDIA/Cosmos-Tokenizer"
+      },
+      {
+        "modelScope": "post-training recipe guidance for Cosmos-Reason2",
+        "primary": true,
+        "primaryReason": "Post-training recipe used to inspect training/mixing proportions, nframes/fps usage, and pixel-size guidance in recipe examples.",
+        "publisher": "NVIDIA Cosmos (documentation site)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "inputPreparation.preprocessing",
+          "researchSummary"
+        ],
+        "title": "Cosmos cookbook: post-training recipe (video caption VQA)",
+        "url": "https://nvidia-cosmos.github.io/cosmos-cookbook/recipes/post_training/reason2/video_caption_vqa/post_training.html"
+      },
+      {
+        "modelScope": "cookbook inference and prompt guidance",
+        "primary": true,
+        "primaryReason": "Cookbook site providing prompting guides, inference workflows, and example showcase material.",
+        "publisher": "NVIDIA Cosmos (documentation site)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "recommendedUseCases",
+          "comparisons",
+          "researchSummary"
+        ],
+        "title": "Cosmos cookbook index / inference cookbook",
+        "url": "https://nvidia-cosmos.github.io/cosmos-cookbook/index.html"
+      },
+      {
+        "modelScope": "product reference for predict2",
+        "primary": true,
+        "primaryReason": "Reference page consulted for example default resolution/fps configurations and model invocation parameters in product docs.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "inputPreparation.preprocessing",
+          "researchSummary"
+        ],
+        "title": "Cosmos predict2 reference",
+        "url": "https://docs.nvidia.com/cosmos/latest/predict2/reference.html"
+      },
+      {
+        "modelScope": "toolkit example fields and defaults",
+        "primary": true,
+        "primaryReason": "Toolkit docs showing example inference fields (media field, fps defaults) and supported media formats.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "inputPreparation.acceptedFormats",
+          "inputPreparation.preprocessing"
+        ],
+        "title": "TAO Toolkit COSMOS RL (example input field descriptions)",
+        "url": "https://docs.nvidia.com/tao/tao-toolkit/latest/text/vlm_finetuning/cosmos_rl.html"
+      },
+      {
+        "modelScope": "deployment blueprint references",
+        "primary": true,
+        "primaryReason": "Blueprint and deployment reference file used to inspect deployment/serve example variables and memory/precision guidance for serving workflows.",
+        "publisher": "NVIDIA-AI-Blueprints (GitHub)",
+        "sourceType": "repository",
+        "supports": [
+          "researchSummary",
+          "limitations",
+          "safety"
+        ],
+        "title": "Deployment/blueprint references and worked examples (video search/summarization blueprint)",
+        "url": "https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization/blob/main/skills/vss-deploy-profile/references/base.md"
+      },
+      {
+        "modelScope": "license and artifact licensing references",
+        "primary": true,
+        "primaryReason": "License information page consulted when assembling license and artifact licensing statements.",
+        "publisher": "NVIDIA",
+        "sourceType": "official-documentation",
+        "supports": [
+          "identity.license",
+          "limitations"
+        ],
+        "title": "NVIDIA VSS license information (docs)",
+        "url": "https://docs.nvidia.com/vss/latest/License-Information.html"
+      },
+      {
+        "modelScope": "nvidia-cosmos-reason2",
+        "primary": true,
+        "primaryReason": "The independent audit cited this exact URL and its host is narrowly allowlisted as a first-party model or vendor documentation source.",
+        "publisher": "docs.nvidia.com",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Exact independently audited claim citation"
+        ],
+        "title": "Cited official first-party source",
+        "url": "https://docs.nvidia.com/cosmos/latest/prerequisites.html"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "44cd4e2276d8c7c9070a6342be4fac8c09cd083bffa205d3254e7b1150aeefbe",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-nvidia-cosmos-reason2-8b-8b6e315315",
+  "researchedAt": "2026-07-23T23:19:09.861852+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/nvidia/cosmos-reason2-8b",
+  "sourceUrls": [
+    "https://build.nvidia.com/nvidia/cosmos-reason2-8b"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

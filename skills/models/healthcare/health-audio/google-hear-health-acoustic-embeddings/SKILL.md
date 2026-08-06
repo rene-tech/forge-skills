@@ -69,6 +69,15 @@ Route: `POST /v1/audio_embeddings`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-google-hear-084246ebc4`
+- Recommended: Generate embeddings for two-second health-acoustic audio clips to be used as input features for downstream supervised classifiers or linear-probe evaluations (research use). — Primary sources describe HeAR as producing low-dimensional representations of two-second audio clips and evaluating those embeddings via linear probes on health acoustic tasks, indicating suitability as feature inputs for downstream classifiers and linear-probe evaluation.
+- Avoid: On-device deployment in constrained hardware where model size is a constraint (production on-device inference without adaptation). — Primary-source documentation states the current HeAR model size is large and not suitable for on-device deployment without further research or adaptation.
+- Avoid: Encoding audio segments significantly longer than two seconds without downstream adaptation or segmentation. — Primary sources state HeAR’s primary training and encoder scope target two-second audio clips and document cropping/zero-padding guidance for 2 s inputs; they do not document support for longer-duration inputs without adaptation.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -87,11 +96,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/google-hear-health-acoustic-embeddings/inference-routes`
 - Regional deployment: `/v1/models/google-hear-health-acoustic-embeddings/regional-deployment`
 - Serverless handoff: `/v1/models/google-hear-health-acoustic-embeddings/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/healthcare/health-audio/google-hear-health-acoustic-embeddings/SKILL.md

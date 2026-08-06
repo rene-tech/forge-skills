@@ -1,0 +1,857 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8].primary must be true",
+        "path": "$.sources[8].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[13].primary must be true",
+        "path": "$.sources[13].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[22].primary must be true",
+        "path": "$.sources[22].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[23].primary must be true",
+        "path": "$.sources[23].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[27].primary must be true",
+        "path": "$.sources[27].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [
+          "https://build.nvidia.com/black-forest-labs/flux_1-schnell/modelcard"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://build.nvidia.com/black-forest-labs/flux_1-schnell/modelcard",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://github.com/HiDream-ai/HiDream-I1"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://github.com/HiDream-ai/HiDream-I1",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/pixart_sigma"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/pixart_sigma",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image"
+        ],
+        "issue": "Audited claim cited a first-party child URL omitted from the source index.",
+        "path": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image",
+        "resolution": "The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 5 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "description": "Black Forest Labs FLUX.1 Dev image generation packaged as NVIDIA Visual GenAI NIM.",
+      "displayName": "Use FLUX.1 Dev",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "black-forest-labs-flux-1-dev-license",
+      "modelFamily": "black-forest-labs-flux-1-dev",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-1-dev",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "versionKey": "1-2-2"
+    },
+    {
+      "description": "FLUX.1 Kontext Dev NIM for prompt-driven in-context image editing on a single GPU.",
+      "displayName": "Use FLUX.1 Kontext Dev",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "black-forest-labs-flux-1-kontext-dev-license",
+      "modelFamily": "black-forest-labs-flux-1-kontext-dev",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-1-kontext-dev",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "versionKey": "1-1-3"
+    },
+    {
+      "description": "Distilled FLUX.1 Schnell image generation NIM for fast single-GPU text-to-image experiments.",
+      "displayName": "Use FLUX.1 Schnell",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "black-forest-labs-flux-1-schnell",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-1-schnell",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "versionKey": "1-1-3"
+    },
+    {
+      "description": "FLUX.2 Dev is a gated, non-commercial Black Forest Labs image generation and editing model served through a Forge-owned Diffusers Flux2Pipeline BF16 wrapper.",
+      "displayName": "Use FLUX.2 Dev",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "flux-non-commercial-license",
+      "modelFamily": "black-forest-labs-flux-2-dev",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-2-dev-diffusers-bf16",
+      "sourceUrl": "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+      "versionKey": "diffusers-bf16"
+    },
+    {
+      "description": "Compact FLUX.2 Klein 4B Visual GenAI NIM for efficient text-to-image and image-editing workloads.",
+      "displayName": "Use FLUX.2 Klein 4B",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "black-forest-labs-flux-2-klein-4b",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-2-klein-4b",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "versionKey": "1-0-1"
+    },
+    {
+      "description": "Fast distilled FLUX.2 Klein 4B running in a Forge-owned Diffusers container.",
+      "displayName": "Use FLUX.2 Klein 4B",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "black-forest-labs-flux-2-klein-4b",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-2-klein-4b-diffusers",
+      "sourceUrl": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+      "versionKey": "4b-diffusers"
+    },
+    {
+      "description": "FLUX.2 Klein 4B low-VRAM Diffusers variant based on the shared PyTorch 2.5.1 CUDA 12.4 script.",
+      "displayName": "Use FLUX.2 Klein 4B",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "black-forest-labs-flux-2-klein-4b",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+      "sourceUrl": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+      "versionKey": "4b-diffusers-cpu-offload"
+    },
+    {
+      "description": "Higher-quality FLUX.2 Klein 4B Base variant running in a Forge-owned Diffusers container.",
+      "displayName": "Use FLUX.2 Klein 4B Base",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "black-forest-labs-flux-2-klein-4b",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "black-forest-labs-flux-2-klein-base-4b-diffusers",
+      "sourceUrl": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B",
+      "versionKey": "base-4b-diffusers"
+    },
+    {
+      "description": "HiDream-I1 Fast text-to-image generation through the Forge Diffusers wrapper.",
+      "displayName": "Use HiDream-I1 Fast",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "mit",
+      "modelFamily": "hidream-ai-hidream-i1",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "hidream-ai-hidream-i1-fast",
+      "sourceUrl": "https://github.com/HiDream-ai/HiDream-I1",
+      "versionKey": "fast-diffusers"
+    },
+    {
+      "description": "Kandinsky 5.0 Image Lite SFT text-to-image generation through the Forge Diffusers wrapper.",
+      "displayName": "Use Kandinsky 5.0 T2I Lite SFT",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "kandinskylab-kandinsky-5-0",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "kandinskylab-kandinsky-5-0-t2i-lite-sft",
+      "sourceUrl": "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image",
+      "versionKey": "t2i-lite-sft-diffusers"
+    },
+    {
+      "description": "SANA Sprint 1.6B text-to-image generation through a reusable Diffusers wrapper.",
+      "displayName": "Use SANA Sprint 1.6B",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "nvlabs-sana-sprint",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "nvlabs-sana-sprint-1-6b",
+      "sourceUrl": "https://github.com/NVlabs/Sana",
+      "versionKey": "1-6b-1024px-diffusers"
+    },
+    {
+      "description": "PixArt-Sigma XL 1024 text-to-image generation through the Forge Diffusers wrapper.",
+      "displayName": "Use PixArt-Sigma XL 2 1024 MS",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "pixart-alpha-pixart-sigma",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "pixart-alpha-pixart-sigma-xl-2-1024-ms",
+      "sourceUrl": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/pixart_sigma",
+      "versionKey": "xl-2-1024-ms-diffusers"
+    },
+    {
+      "description": "Qwen-Image Visual GenAI NIM for high-quality multilingual text-to-image generation, with the container default pinned to the qwen-image-2512 model version.",
+      "displayName": "Use Qwen-Image",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "qwen-qwen-image",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "qwen-qwen-image",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "versionKey": "1-0-0"
+    },
+    {
+      "description": "Qwen-Image-Edit Visual GenAI NIM for prompt-driven image editing on a single 80GB GPU.",
+      "displayName": "Use Qwen-Image-Edit",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "qwen-qwen-image-edit",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "qwen-qwen-image-edit",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "versionKey": "1-0-0"
+    },
+    {
+      "description": "Stability AI Stable Diffusion 3.5 Large Visual GenAI NIM for high-quality text-to-image generation on a single GPU.",
+      "displayName": "Use Stable Diffusion 3.5 Large",
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "license": "stability-ai-community-license",
+      "modelFamily": "stabilityai-stable-diffusion-3-5-large",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "stabilityai-stable-diffusion-3-5-large",
+      "sourceUrl": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html",
+      "versionKey": "1-1-0"
+    },
+    {
+      "description": "Stable Diffusion XL Base 1.0 text-to-image generation through the Forge Diffusers media wrapper.",
+      "displayName": "Use Stable Diffusion XL Base 1.0",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "openrail++",
+      "modelFamily": "stabilityai-stable-diffusion-xl",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "stabilityai-stable-diffusion-xl-base-1-0",
+      "sourceUrl": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+      "versionKey": "base-1-0-diffusers"
+    },
+    {
+      "description": "Z-Image Turbo text-to-image generation through the Forge Diffusers wrapper.",
+      "displayName": "Use Z-Image Turbo",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "tongyi-mai-z-image",
+      "outputModalities": [
+        "image"
+      ],
+      "slug": "tongyi-mai-z-image-turbo",
+      "sourceUrl": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image",
+      "versionKey": "turbo-diffusers"
+    }
+  ],
+  "dossier": {
+    "benchmarkTaxonomy": [
+      {
+        "comparisonConditions": [
+          "Exact model wrapper/checkpoint/versionKey must match the Forge slug naming.",
+          "Inference config must match (sampler/algorithm, diffusion steps, guidance scale, seed policy, and any postprocessing). If these are not present in primary sources, report as evidence gap."
+        ],
+        "datasets": [
+          "Evidence gap: no primary-source dataset/split documented in the supplied findings (e.g., GenEval / DPG-Bench / HPSv2.1 not present in the supplied primary sources for the exact Forge-serving slugs)."
+        ],
+        "metrics": [
+          "Evidence gap: FID (primary-source reported FID not found in the supplied findings for exact Forge slugs)",
+          "Evidence gap: GenEval score (no primary-source GenEval numbers for exact Forge slugs in the supplied findings)",
+          "Evidence gap: Human A/B preference (requires primary-source human-study protocol; none found in the supplied findings)"
+        ],
+        "task": "Photorealistic text-to-image generation (fixed target resolution: 1024×1024 where supported by the model primary source)."
+      },
+      {
+        "comparisonConditions": [
+          "Use the exact number of diffusion steps reported by each primary source; if the primary source does not list sampler name or steps, do not compare—mark as evidence gap."
+        ],
+        "datasets": [
+          "Evidence gap: no primary-source distilled-evaluation dataset/split documented in the supplied findings"
+        ],
+        "metrics": [
+          "Evidence gap: FID with explicit sampling steps (primary-source sampling steps and sampler name not present for distilled claims in supplied findings)",
+          "Evidence gap: Latency (operational GPU/runtime measurement is Forge metadata and must be separately measured; no primary-source runtime latencies present in the supplied findings for exact Forge-serving slugs)"
+        ],
+        "task": "Low-step / distilled high-throughput generation (single-step or few-step distilled operation)."
+      },
+      {
+        "comparisonConditions": [
+          "Ensure same input image preprocessing, mask semantics, and 'strength' conditioning as defined by the model's primary source; if the primary source omits these, mark as evidence gap."
+        ],
+        "datasets": [
+          "Evidence gap: no primary-source common editing benchmark split listed in the supplied findings"
+        ],
+        "metrics": [
+          "Evidence gap: Human A/B edit-fidelity preference (no primary-source human-study protocol in supplied findings)",
+          "Evidence gap: LPIPS or other perceptual metrics with implementation/version details absent from supplied findings"
+        ],
+        "task": "Image editing / inpainting (text+image conditioning)."
+      },
+      {
+        "comparisonConditions": [
+          "Report the same safety filtering pipeline and thresholds as described in the primary source; if different or unspecified, mark as evidence gap."
+        ],
+        "datasets": [
+          "Evidence gap: no primary-source adversarial/prohibited-content test suites or splits documented in the supplied findings"
+        ],
+        "metrics": [
+          "Evidence gap: Safety-filter firing rates (requires vendor primary-source filter descriptions; not present in the supplied findings)",
+          "Evidence gap: Qualitative human adjudication (requires documented protocol; not present in the supplied findings)"
+        ],
+        "task": "Safety & prohibited-content robustness testing (adversarial/prohibited prompts)."
+      }
+    ],
+    "category": "general",
+    "comparabilityRules": [
+      "Only compare metrics when the compared entries are the exact same checkpoint/wrapper/versionKey/task head as named in Forge (e.g., a 'diffusers' wrapper variant vs an NIM container variant may not be comparable unless primary sources document equivalence).",
+      "Inference configuration (sampler/algorithm, diffusion steps, guidance scale, scheduler, target resolution/aspect ratio, seed policy, and any postprocessing such as upscaling) must match exactly between runs before comparing numeric metrics; if the primary source omits any of these, mark as evidence gap.",
+      "Compare only models evaluated on the same dataset name and split with the same sample-selection and prompt lists; if the primary source does not document dataset/split/protocol, mark as evidence gap.",
+      "Do not transfer evaluation claims across regimes (base vs SFT vs distilled vs CPU-offload) unless the primary sources explicitly state equivalence."
+    ],
+    "decisionRules": [
+      {
+        "alternatives": [
+          "qwen-qwen-image-edit",
+          "black-forest-labs-flux-1-kontext-dev",
+          "black-forest-labs-flux-1-dev",
+          "black-forest-labs-flux-2-klein-base-4b-diffusers",
+          "black-forest-labs-flux-2-klein-4b-diffusers",
+          "black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload"
+        ],
+        "because": "The Black Forest Labs Hugging Face model card and NIM container entries in the supplied findings document that FLUX.2-klein-4B accepts Text and Image inputs and is published as a Flux.2-klein-4B container; these primary sources provide checkpoint-level evidence of text+image editing capability and Diffusers load instructions.",
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/black-forest-labs/containers/flux.2-klein-4b",
+          "https://docs.nvidia.com/nim/visual-genai/latest/support-matrix.html"
+        ],
+        "prefer": "black-forest-labs-flux-2-klein-4b",
+        "when": "I need prompt-driven image editing / inpainting that accepts text+image inputs on Forge single‑GPU-managed variants (interactive editing workflows)."
+      },
+      {
+        "alternatives": [
+          "qwen-qwen-image-edit",
+          "stabilityai-stable-diffusion-3-5-large",
+          "tongyi-mai-z-image-turbo",
+          "black-forest-labs-flux-2-dev-diffusers-bf16"
+        ],
+        "because": "The Qwen-Image NIM/build entry and the Qwen Hugging Face entry in the supplied findings document Qwen‑Image as a text-to-image foundation model with advanced multilingual text rendering; those primary sources are the available vendor-supplied primary evidence for the multilingual claim.",
+        "evidenceUrls": [
+          "https://build.nvidia.com/qwen/qwen-image",
+          "https://huggingface.co/Qwen/Qwen-Image",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/qwen/containers/qwen-image-edit"
+        ],
+        "prefer": "qwen-qwen-image",
+        "when": "I need strong multilingual text rendering and vendor-documented multilingual capability (alphabetic and logographic scripts)."
+      },
+      {
+        "alternatives": [
+          "black-forest-labs-flux-1-dev",
+          "black-forest-labs-flux-1-kontext-dev",
+          "black-forest-labs-flux-1-schnell",
+          "qwen-qwen-image",
+          "qwen-qwen-image-edit",
+          "stabilityai-stable-diffusion-3-5-large"
+        ],
+        "because": "The NVIDIA NIM support matrix and NGC catalog entries in the supplied findings list FLUX.2-klein (model ID black-forest-labs/flux.2-klein-4b) and FLUX.1 variants with minimal/recommended GPU memory and supported precisions; these are the primary NIM/NGC evidence of managed deployment support.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/support-matrix.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/black-forest-labs/containers/flux.1-dev/-",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/black-forest-labs/containers/flux.2-klein-4b"
+        ],
+        "prefer": "black-forest-labs-flux-2-klein-4b",
+        "when": "I require an image-generation model that is explicitly listed with NIM model profile IDs and NIM-supported variants for managed deployment on NVIDIA NIM / Forge-managed infrastructure."
+      },
+      {
+        "alternatives": [
+          "black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+          "black-forest-labs-flux-2-klein-4b-diffusers",
+          "black-forest-labs-flux-2-klein-base-4b-diffusers"
+        ],
+        "because": "The supplied findings include the Hugging Face FLUX.2-klein-4B entry but do not contain a primary-source NIM/NGC or vendor model card that documents an exact Forge-serving slug named black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload; therefore the CPU-offload variant properties for that exact Forge slug cannot be verified from the supplied primary sources.",
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B"
+        ],
+        "prefer": "insufficient-evidence",
+        "when": "I require a low‑VRAM CPU‑offload Diffusers variant specifically named in Forge (low-GPU-memory/offload runtime)."
+      },
+      {
+        "alternatives": [
+          "nvlabs-sana-sprint-1-6b",
+          "black-forest-labs-flux-1-schnell",
+          "hidream-ai-hidream-i1-fast"
+        ],
+        "because": "The supplied findings do not include primary-source benchmark tables or model-card lines that report single-step FID/GenEval numbers for SANA-Sprint or other distilled claims tied to the exact Forge-serving slugs; therefore preference cannot be established from the supplied primary sources.",
+        "evidenceUrls": [
+          "https://github.com/NVlabs/Sana",
+          "https://build.nvidia.com/black-forest-labs/flux_1-schnell/modelcard"
+        ],
+        "prefer": "insufficient-evidence",
+        "when": "I require an explicitly documented distilled / very-low-step single- or few-step operation (e.g., single-step distilled models)."
+      },
+      {
+        "alternatives": [
+          "black-forest-labs-flux-2-dev-diffusers-bf16",
+          "black-forest-labs-flux-2-klein-base-4b-diffusers",
+          "black-forest-labs-flux-2-klein-4b"
+        ],
+        "because": "The Hugging Face FLUX.2-klein-4B model card in the supplied findings documents Diffusers load instructions (Flux2KleinPipeline) and references bfloat16 usage, supporting the Diffusers-hosted wrapper claim for the HF checkpoint.",
+        "evidenceUrls": [
+          "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B"
+        ],
+        "prefer": "black-forest-labs-flux-2-klein-4b-diffusers",
+        "when": "I require a Diffusers-hosted vendor model card / Diffusers wrapper variant (Hugging Face Diffusers compatibility) as the canonical primary-source for a candidate."
+      },
+      {
+        "alternatives": [
+          "black-forest-labs-flux-1-kontext-dev",
+          "black-forest-labs-flux-1-schnell",
+          "black-forest-labs-flux-2-klein-4b"
+        ],
+        "because": "The NIM support matrix in the supplied findings lists minimal and recommended GPU/memory and supported precisions for FLUX.1-dev and FLUX.1-schnell, providing primary-source operational-requirements evidence.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/support-matrix.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/black-forest-labs/containers/flux.1-dev/-"
+        ],
+        "prefer": "black-forest-labs-flux-1-dev",
+        "when": "I require models that are explicitly listed in the NVIDIA NIM support matrix for minimal system requirements and supported precisions."
+      },
+      {
+        "alternatives": [
+          "kandinskylab-kandinsky-5-0-t2i-lite-sft",
+          "pixart-alpha-pixart-sigma-xl-2-1024-ms",
+          "stabilityai-stable-diffusion-xl-base-1-0",
+          "hidream-ai-hidream-i1-fast",
+          "tongyi-mai-z-image-turbo",
+          "black-forest-labs-flux-2-dev-diffusers-bf16",
+          "black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload",
+          "black-forest-labs-flux-2-klein-base-4b-diffusers",
+          "nvlabs-sana-sprint-1-6b",
+          "black-forest-labs-flux-1-schnell"
+        ],
+        "because": "For several Forge candidate slugs in the expected scope the supplied findings do not contain a canonical primary-source model card, NIM model page, or NGC container page documenting the exact Forge-serving wrapper/checkpoint/versionKey; therefore preference cannot be established from the supplied primary sources.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+        ],
+        "prefer": "insufficient-evidence",
+        "when": "I need to decide among models for which no primary-source vendor model card or NIM/NGC serving documentation is present in the supplied findings."
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Exact primary-source benchmark tables (FID, GenEval, DPG‑Bench, HPSv2.1) tied to the exact Forge-serving slugs listed are not present in the supplied findings; dataset splits, sample counts, seeds, CLIP/reference model versions, and sampler details are missing for Forge-serving slugs.",
+      "Evidence gap: Exact token limits / maximum text-context window for nearly all Forge slugs are unspecified in the supplied findings.",
+      "Evidence gap: Exact maximum reference image resolution and pixel-dimension hard limits for many Forge slugs (beyond a few HF model-card resolution notes) are not documented in the supplied findings.",
+      "Evidence gap: Exact sampler/scheduler names, diffusion step counts used to produce any primary-source quality metrics, and guidance-scale settings are missing for most Forge-serving slugs in the supplied findings.",
+      "Evidence gap: For the Forge slug black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload there is no primary-source NIM/NGC or vendor model card in the supplied findings documenting that exact Forge-serving wrapper/versionKey.",
+      "Evidence gap: Primary-source statements of commercial licensing or explicit commercial-use permissions for several slugs are not present in the supplied findings (where licensing is referenced, the supplied findings often point to container or support-matrix governance rather than direct model-card license text).",
+      "Evidence gap: Upstream-checkpoint provenance linking NVIDIA-served containers to an upstream Hugging Face or GitHub checkpoint for every Forge slug is incomplete in the supplied findings; some HF entries exist (FLUX.2-klein, FLUX.2-dev), but many Forge-serving slugs lack an explicit mapping in the supplied primary sources."
+    ],
+    "group": "image-generation",
+    "selectionQuestions": [
+      "Do you require explicit NVIDIA NIM-hosted model IDs or NGC container availability for deployment on Forge-managed infrastructure (yes/no)? (Check NIM model listing and NGC container pages in the dossier.)",
+      "Do you require text-only generation, or text+image (image editing / inpainting) support?",
+      "Do you require an explicitly documented target resolution (e.g., native 1024×1024) from the model's primary source?",
+      "Do you require low-diffusion-step / distilled single- or few-step operation (yes/no)?",
+      "Do you require explicit primary-source statements about commercial licensing or 'ready for commercial use' (yes/no)?",
+      "Do you require multilingual/logographic prompt fidelity (e.g., Chinese) documented by the vendor?",
+      "Must the selected model be the exact Forge wrapper variant (Diffusers wrapper, NIM container, or CPU-offload variant) named in the expected scope?"
+    ],
+    "sources": [
+      {
+        "primary": true,
+        "publisher": "NVIDIA NIM documentation",
+        "supports": [
+          "The FLUX.1-dev container name listed is nvcr.io/nim/black-forest-labs/flux.1-dev:1.2.3.",
+          "The FLUX.1-Kontext-dev container name is nvcr.io/nim/black-forest-labs/flux.1-kontext-dev:1.1.4.",
+          "The FLUX.1-schnell container name is nvcr.io/nim/black-forest-labs/flux.1-schnell:1.1.4.",
+          "The FLUX.2-klein-4B container name is nvcr.io/nim/black-forest-labs/flux.2-klein-4b:1.0.2-variant.",
+          "The Stable Diffusion 3.5 Large container name is nvcr.io/nim/stabilityai/stable-diffusion-3.5-large:1.1.1."
+        ],
+        "title": "NVIDIA NIM Visual GenAI getting-started",
+        "url": "https://docs.nvidia.com/nim/visual-genai/latest/getting-started.html"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA NIM documentation",
+        "supports": [
+          "In the NVIDIA Support Matrix, FLUX.1-dev model ID is black-forest-labs/flux.1-dev and publisher is Black Forest Labs.",
+          "Minimal system requirements for FLUX.1-dev are 16 GB GPU memory, 40 GB RAM; recommended are 32 GB GPU memory, 64 GB RAM.",
+          "In the NVIDIA Support Matrix, FLUX.2-klein model ID is black-forest-labs/flux.2-klein-4b and publisher is Black Forest Labs."
+        ],
+        "title": "NVIDIA NIM Visual GenAI support matrix (latest)",
+        "url": "https://docs.nvidia.com/nim/visual-genai/latest/support-matrix.html"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA NGC (catalog)",
+        "supports": [
+          "The FLUX.1-dev container houses a collection of generative image AI models creating high quality, realistic images.",
+          "The FLUX.1-dev container components are ready for non-commercial use.",
+          "The container version for FLUX.1-dev is nvcr.io/nim/black-forest-labs/flux.1-dev:latest."
+        ],
+        "title": "NGC catalog: FLUX.1-dev container",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/black-forest-labs/containers/flux.1-dev/-"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA NGC (catalog)",
+        "supports": [
+          "FLUX.1-Kontext container includes the FLUX.1-Kontext model for changing existing images based on an edit instruction without any finetuning.",
+          "The container version for FLUX.1-Kontext-dev is nvcr.io/nim/black-forest-labs/flux.1-kontext-dev:latest.",
+          "FLUX.1-Kontext is not owned or developed by NVIDIA; it was developed by a third party."
+        ],
+        "title": "NGC team container: FLUX.1-Kontext-dev",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/black-forest-labs/containers/flux.1-kontext-dev"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA build (Black Forest Labs hosting)",
+        "supports": [
+          "FLUX.1-schnell is a distilled image generation model that produces high quality images at fast speeds."
+        ],
+        "title": "Build: FLUX.1-schnell (NVIDIA build model page)",
+        "url": "https://build.nvidia.com/black-forest-labs/flux_1-schnell"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA NGC (catalog)",
+        "supports": [
+          "The FLUX.2-klein-4B container houses Flux.2 [klein] 4B, the fastest Black Forest Labs image model to date.",
+          "Flux.2 [klein] 4B unifies generation and editing in a single compact architecture and supports multi-reference editing.",
+          "The FLUX.2-klein-4B container components are ready for commercial and non-commercial use."
+        ],
+        "title": "NGC team container: FLUX.2-klein-4B",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/black-forest-labs/containers/flux.2-klein-4b"
+      },
+      {
+        "primary": true,
+        "publisher": "Black Forest Labs (Hugging Face model card)",
+        "supports": [
+          "FLUX.2-klein-4B fits in approximately 13 GB VRAM and is accessible on NVIDIA RTX 3090, RTX 4070, and above.",
+          "FLUX.2-klein-4B has 4 billion parameters.",
+          "The FLUX.2-klein-4B model can be loaded with Diffusers via Flux2KleinPipeline.from_pretrained(\"black-forest-labs/FLUX.2-klein-4B\")."
+        ],
+        "title": "FLUX.2-klein-4B Hugging Face model card",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B"
+      },
+      {
+        "primary": true,
+        "publisher": "Black Forest Labs (Hugging Face model card)",
+        "supports": [
+          "FLUX.2 [dev] is a 32 billion parameter rectified flow transformer capable of generating, editing, and combining images based on text instructions.",
+          "FLUX.2 [dev] is available in Diffusers and ComfyUI and has a reference implementation on GitHub."
+        ],
+        "title": "FLUX.2-dev Hugging Face model card",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.2-dev"
+      },
+      {
+        "primary": true,
+        "publisher": "HiDream-ai (Hugging Face model card)",
+        "supports": [
+          "HiDream-I1-Fast achieved an averaged HPSv2.1 benchmark score of 33.82, with category scores: Animation 35.05, Concept‑art 33.74, Painting 33.88, Photo 32.61."
+        ],
+        "title": "HiDream-I1-Fast Hugging Face model card",
+        "url": "https://huggingface.co/HiDream-ai/HiDream-I1-Fast"
+      },
+      {
+        "primary": true,
+        "publisher": "arXiv (paper preprint)",
+        "supports": [
+          "HiDream-I1 has three variants: Full (>50 diffusion steps), Dev (28 diffusion steps), and Fast (14 diffusion steps).",
+          "HiDream-I1-Fast, using 14 diffusion steps, is intended for real‑time applications."
+        ],
+        "title": "HiDream-I1 paper (preprint)",
+        "url": "https://arxiv.org/html/2505.22705v1"
+      },
+      {
+        "primary": true,
+        "publisher": "KandinskyLab (Hugging Face model card)",
+        "supports": [
+          "Kandinsky 5.0 Image Lite is a lineup of 6 billion parameter image models.",
+          "Kandinsky 5.0 models support 1K resolution (e.g., 1024×1024)."
+        ],
+        "title": "Kandinsky-5.0 T2I Lite Hugging Face model card",
+        "url": "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2I-Lite"
+      },
+      {
+        "primary": true,
+        "publisher": "NVlabs (GitHub repository)",
+        "supports": [
+          "Sana is a series of efficient diffusion models for high‑resolution image and video generation.",
+          "Sana‑1.6B achieves 1.0 samples/s throughput with 1.2 s latency (reported in the supplied findings)."
+        ],
+        "title": "NVlabs Sana GitHub repository",
+        "url": "https://github.com/NVlabs/Sana"
+      },
+      {
+        "primary": true,
+        "publisher": "PixArt-alpha (Hugging Face model card)",
+        "supports": [
+          "PixArt‑Sigma‑XL‑2‑1024‑MS can directly generate 1024 px, 2K, and 4K images from text prompts within a single sampling process."
+        ],
+        "title": "PixArt-Sigma-XL-2-1024-MS Hugging Face model card",
+        "url": "https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA build (Qwen)",
+        "supports": [
+          "Qwen‑Image is a text‑to‑image foundation model with advanced multilingual text rendering, supporting English and Chinese scripts.",
+          "Qwen‑Image input type is text; output type is raster image formats (e.g., png, jpg, jpeg)."
+        ],
+        "title": "Build: Qwen-Image (NVIDIA build page)",
+        "url": "https://build.nvidia.com/qwen/qwen-image"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA NGC (catalog)",
+        "supports": [
+          "Qwen‑Image‑Edit is the image editing version of Qwen‑Image, built upon the 20 B Qwen‑Image model."
+        ],
+        "title": "NGC team container: Qwen-Image-Edit",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/qwen/containers/qwen-image-edit"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA NGC (catalog)",
+        "supports": [
+          "Stable Diffusion 3.5 Large is an 8 billion parameter base model that produces high‑quality images and includes Depth and Canny ControlNets for controllability.",
+          "Stable Diffusion 3.5 Large release dates and NIM packaging are documented in the supplied findings."
+        ],
+        "title": "NGC team container: Stable Diffusion 3.5 Large",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/stabilityai/containers/stable-diffusion-3.5-large"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA build (Stability AI)",
+        "supports": [
+          "Stable Diffusion 3.5 Large is ready for non‑commercial use; commercial use requires contacting Stability AI (stated in the supplied findings)."
+        ],
+        "title": "Build: Stable Diffusion 3.5 Large (NVIDIA build page)",
+        "url": "https://build.nvidia.com/stabilityai/stable-diffusion-3_5-large"
+      },
+      {
+        "primary": true,
+        "publisher": "Tongyi-MAI (Hugging Face model card)",
+        "supports": [
+          "Z‑Image‑Turbo model uses 8 inference steps, provides very high visual quality, and low diversity (as reported in the supplied findings)."
+        ],
+        "title": "Z-Image-Turbo Hugging Face model card",
+        "url": "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo"
+      },
+      {
+        "primary": true,
+        "publisher": "Qwen (Hugging Face model card)",
+        "supports": [
+          "Qwen‑Image on HuggingFace demonstrates strong general capabilities in image generation and editing, with exceptional performance in Chinese text rendering."
+        ],
+        "title": "Qwen-Image Hugging Face model card",
+        "url": "https://huggingface.co/Qwen/Qwen-Image"
+      },
+      {
+        "primary": true,
+        "publisher": "Stability AI (Hugging Face model card)",
+        "supports": [
+          "Stable Diffusion 3.5 Large on HuggingFace is a Multimodal Diffusion Transformer (MMDiT) model with improved image quality, typography, complex prompt understanding, and resource efficiency.",
+          "Stable Diffusion 3.5 Large on HuggingFace is released under the Stability Community License."
+        ],
+        "title": "Stable Diffusion 3.5 Large Hugging Face model card",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large"
+      },
+      {
+        "primary": true,
+        "publisher": "Stability AI (Hugging Face model card)",
+        "supports": [
+          "Stable Diffusion XL 1.0 base model consists of an ensemble of expert pipelines for latent diffusion, where the base model generates noisy latents that are refined by a separate refinement model."
+        ],
+        "title": "Stable Diffusion XL Base 1.0 Hugging Face model card",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0"
+      },
+      {
+        "primary": true,
+        "publisher": "NVIDIA build (Black Forest Labs hosting)",
+        "supports": [
+          "Exact audited claim citation"
+        ],
+        "title": "Build: FLUX.1-schnell (NVIDIA build model page) — cited revision/file",
+        "url": "https://build.nvidia.com/black-forest-labs/flux_1-schnell/modelcard"
+      },
+      {
+        "primary": true,
+        "publisher": "huggingface.co",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+      },
+      {
+        "primary": true,
+        "publisher": "github.com",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://github.com/HiDream-ai/HiDream-I1"
+      },
+      {
+        "primary": true,
+        "publisher": "huggingface.co",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/docs/diffusers/api/pipelines/kandinsky5_image"
+      },
+      {
+        "primary": true,
+        "publisher": "huggingface.co",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/pixart_sigma"
+      },
+      {
+        "primary": true,
+        "publisher": "huggingface.co",
+        "supports": [
+          "Forge-to-upstream exact-version identity"
+        ],
+        "title": "Exact official starting source declared by Forge",
+        "url": "https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/z_image"
+      }
+    ],
+    "taskDefinition": "Text-to-image and image-editing generation that produce raster image artifacts (PNG/JPG/JPEG) from text prompts and optionally from reference images. Excludes video generation, non-image modalities, and any checkpoint/wrapper other than the exact Forge slugs listed in the expected scope. The dossier is limited to properties and operational metadata that are documented in the supplied research findings primary sources; where a primary source does not specify a property, that property is an evidence gap."
+  },
+  "kind": "group",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "3e8b238e330908af4775279580a5fe6e557707f44be4184b31130e4d2d388446",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "general--image-generation",
+  "researchedAt": "2026-07-23T21:28:15.088113+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": null,
+  "sourceUrls": [],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

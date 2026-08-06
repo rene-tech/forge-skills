@@ -66,6 +66,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-meta-llama-3-1-70b-instruct-1a2c4f9e26`
+- Recommended: Multilingual chatbots and virtual assistants — Meta's Llama 3.1 model card describes the instruction‑tuned Llama 3.1 models (including the 70B size) as optimized for multilingual dialogue and instruction‑following; NVIDIA NGC packaging documents the 70B Instruct checkpoint as a text-in/text-out generative model suitable for dialogue workloads.
+- Recommended: Complex question answering, summarization, and multilingual content generation — Meta documents the tuned Llama 3.1 instruction variants as optimized for reasoning and instruction‑following across multilingual tasks; NVIDIA packaging describes the model as a text-in/text-out generative checkpoint packaged for deployment.
+- Avoid: Deploying the model for prohibited or high-risk categories (e.g., weapons, illegal activity, processing sensitive personal data without consent) — The NVIDIA NIM reference/support documentation for the Llama 3.1 listing specifies prohibited use categories and states that system safeguards and developer responsibility for guardrails are required.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -84,11 +93,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/meta-llama-3.1-70b-instruct-v1/inference-routes`
 - Regional deployment: `/v1/models/meta-llama-3.1-70b-instruct-v1/regional-deployment`
 - Serverless handoff: `/v1/models/meta-llama-3.1-70b-instruct-v1/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/meta-llama-3-1-70b-instruct-v1/SKILL.md

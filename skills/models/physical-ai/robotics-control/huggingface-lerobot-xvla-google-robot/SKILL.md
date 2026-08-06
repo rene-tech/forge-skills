@@ -78,6 +78,14 @@ Route: `POST /v1/inference/huggingface-lerobot-xvla-google-robot`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-lerobot-xvla-google-robot-123e023f09`
+- Recommended: Research experimentation with multimodal vision-language-action policies adapted for Google Robot-like platforms (non-safety-critical research, simulation, and offline evaluation). — The repository config declares X-VLA policy settings (florence_config.model_type = "florence2"), tokenizer settings (facebook/bart-large, max length 1024), multimodal flags (use_proprio = true, num_image_views = 3), and an action_mode identifier ("ee6d"), which together indicate this checkpoint is a vision-language-action policy artifact appropriate for research/fine-tuning and integration experiments rather than direct hardware actuation.
+- Avoid: Sending model outputs directly to physical robot actuators without human supervision, embodiment-specific de-normalization, and hardware safety interlocks. — Primary sources inspected do not publish coordinate-frame conventions, command-unit mappings, gripper conventions, or an explicit hardware-safe actuation contract for this checkpoint; therefore direct actuation would exceed the documented evidence.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -95,11 +103,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/huggingface-lerobot-xvla-google-robot/inference-routes`
 - Regional deployment: `/v1/models/huggingface-lerobot-xvla-google-robot/regional-deployment`
 - Serverless handoff: `/v1/models/huggingface-lerobot-xvla-google-robot/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/huggingface-lerobot-xvla-google-robot/SKILL.md

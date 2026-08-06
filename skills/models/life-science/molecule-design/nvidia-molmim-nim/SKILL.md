@@ -77,6 +77,16 @@ Route: `POST /generate`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-molmim-generate-212f025c33`
+- Recommended: Sampling novel small-molecule SMILES by perturbing latent representations from a seed molecule — Primary NVIDIA model card, NIM overview, and the MolMIM preprint describe MolMIM as a probabilistic latent-variable auto-encoder that samples valid SMILES by perturbing clustered latent codes derived from a seed molecule.
+- Recommended: Compute fixed-length molecular embeddings from SMILES for downstream machine-learning tasks — The official NIM endpoints documentation documents an /embedding endpoint that returns fixed-length numerical embeddings for a given input SMILES string.
+- Recommended: Use MolMIM latent-space representations in optimization workflows (example: CMA-ES guided optimization) for early-stage candidate generation under expert review — NVIDIA primary documentation and the NGC model page describe latent-space optimization capability and document CMA-ES usage for optimization in examples and notebooks.
+- Avoid: Clinical diagnostic use or direct medical decision making — Primary NVIDIA model-card and NGC explainability pages present MolMIM for molecular design and research and do not document clinical validation, authorization, or regulatory approval for clinical use.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -94,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-molmim-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-molmim-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-molmim-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecule-design/nvidia-molmim-nim/SKILL.md

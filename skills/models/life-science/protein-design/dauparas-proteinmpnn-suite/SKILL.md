@@ -86,6 +86,14 @@ Route: `POST /v1/inference/dauparas-proteinmpnn-suite`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-dauparas-proteinmpnn-9039aae134`
+- Recommended: Structure-conditioned protein sequence design / inverse folding (vanilla ProteinMPNN) — Repository contains vanilla model weight directory and end-to-end runtime and utility scripts implementing structure-conditioned sequence-design workflows; protein_mpnn_run.py and protein_mpnn_utils.py implement backbone parsing, featurization, and design/scoring paths consistent with inverse-folding usage.
+- Avoid: Clinical or regulated use without expert review and experimental validation — Evidence gap: No primary-source evidence in the inspected repository files documents clinical validation, regulated-use approval, or operationalized safety validations for any upstream weight variant.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `true`.
@@ -103,11 +111,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/dauparas-proteinmpnn-suite/inference-routes`
 - Regional deployment: `/v1/models/dauparas-proteinmpnn-suite/regional-deployment`
 - Serverless handoff: `/v1/models/dauparas-proteinmpnn-suite/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-design/dauparas-proteinmpnn-suite/SKILL.md

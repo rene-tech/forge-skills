@@ -73,6 +73,17 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-30b-a3b-instruct-2507-ff761b3644`
+- Recommended: General instruction following and conversational/dialog tasks — The repository README demonstrates instruction/chat generation usage and the model page identifies this checkpoint as an Instruct variant.
+- Recommended: Long-context document-grounded workflows (conditional on following README/config_1m.json guidance) — The repository contains a config_1m.json intended for length extrapolation and the README provides long-context workflow instructions; tokenizer_config.json and config_1m.json contain fields indicating extended-context support.
+- Recommended: Coding assistance and code generation (research/deployment with downstream validation) — The README and model card present this checkpoint as an Instruct variant with coding-related capability claims; use for code generation should include downstream validation and protocol-specific testing.
+- Avoid: Clinical or safety-critical medical diagnosis without domain validation — No checkpoint-scoped documentation of clinical validation, PHI handling procedures, or regulatory-clearance guidance was located in the inspected checkpoint repository blobs or the family technical report.
+- Avoid: Assuming the model emits calibrated numeric confidence/probability scores in plain text by default — The inspected primary artifacts do not document checkpoint-scoped emission of calibrated numeric confidence/probability fields or calibration guarantees.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +102,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-30b-a3b-instruct-2507-bf16-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-30b-a3b-instruct-2507-bf16-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-30b-a3b-instruct-2507-bf16-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/qwen-qwen3-30b-a3b-instruct-2507-bf16-vllm-cuda13/SKILL.md

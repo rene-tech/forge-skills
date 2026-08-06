@@ -1,0 +1,107 @@
+# Multimodal And Specialized model selection
+
+- Category: `general`
+- Group: `multimodal-and-specialized`
+- Independent audit: `revised`
+- Researched: `2026-07-23T19:46:30.612644+00:00`
+
+PII span extraction (as implemented by the exact NIM/container packaging targeted by the Forge candidate slug nvidia-gliner-pii-nim, versionKey v1): Given one-dimensional UTF-8 text inputs (structured or unstructured) provided per inference call, produce non-generative, span-level entity annotations identifying personally identifiable information (PII) and protected health information (PHI). For each predicted span the model emits a category label (vendor-defined >55 category schema) and an associated confidence score. The artifact scope for evaluation and deployment is the exact NVIDIA NIM/container packaging (NGC container listing and layers for GLiNER PII). Evidence available in primary NVIDIA pages documents span-level outputs, confidence scores, >55 categories, and NGC/container packaging; primary sources do not publish canonical dataset names/splits, exact tokenization/preprocessing, or formal metric computation definitions for the v1/container packaging (see evidenceGaps).
+
+## Questions to answer before selecting
+
+- Is an NVIDIA NIM/container-delivered artifact required for operational deployment (do you need the official NIM/container)?
+- Do you require span-level entity annotations with per-span confidence scores and the vendor-defined >55 category schema?
+- Do you require vendor-published, canonical numeric evaluation metrics on named PII benchmark dataset(s) and explicit train/dev/test splits for v1?
+- Is explicit commercial-use permission (ready for commercial use) required from the primary model license/terms?
+- Do you require exact input/context size limits (max tokens/characters per inference) or tokenization details to be specified by the vendor?
+- Do you require training-data provenance or an explicit vendor disclosure of fine-tuning datasets for v1?
+- Will you compare model outputs against a canonical evaluation (e.g., a seven-category SPY-style mapping) and require deterministic label-mapping documentation for v1?
+
+## Comparability rules
+
+- Compare only artifacts matching the exact artifact identity: same Forge candidate slug and same versionKey (nvidia-gliner-pii-nim, versionKey v1). Primary container/packaging identity (NGC container listing and layers) must match before comparing runtime results.
+- Datasets and splits must be identical and explicitly documented in primary sources for each compared artifact (canonical dataset name plus explicit train/dev/test split). (Evidence gap: primary NVIDIA sources do not publish canonical dataset pages or splits for the v1/container packaging.)
+- Label schema must match exactly or an explicit deterministic mapping between label schemas must be published in primary sources before comparing numeric results (Evidence gap: deterministic mapping artifact for v1 not published in primary NVIDIA docs).
+- Prediction output encoding and format must match exactly (character offsets vs token offsets vs BIO tags, overlap handling). Primary sources must confirm the exact output encoding used in each evaluation run before numeric comparisons.
+- Tokenization and input-preprocessing that can affect model outputs (tokenizer type, tokenization mapping, max tokens/characters, sliding-window/chunking) must be identical and documented in primary sources for each run (Evidence gap: tokenization/preprocessing not published for v1).
+- Evaluation metrics and their exact computation (strict span match vs partial match, micro/macro averaging rules, tie-breaking) must be identical and explicitly documented in primary sources for each compared run (Evidence gap: formal metric definitions and numeric vendor-published metrics for v1 are not in primary docs).
+- Operational packaging differences that do not change model outputs (e.g., container metadata, environment variables, runtime user) are recorded as operational metadata but do not substitute for the comparability requirements above.
+
+## Conditional routing
+
+### Prefer `nvidia-gliner-pii-nim` when You require an officially packaged NVIDIA NIM/NGC container artifact for deployment (NIM/container mandatory).
+
+- Why: Primary NVIDIA distribution pages and NGC container listings and layer metadata identify an official NGC/NIM container packaging for GLiNER PII and provide container-layer runtime metadata and release timestamps, supporting use of the official container for deployment.
+- Evidence: https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-, https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/1/layers, https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/latest/layers, https://build.nvidia.com/nvidia/gliner-pii
+
+### Prefer `nvidia-gliner-pii-nim` when You require span-level entity annotations with per-span confidence scores across the vendor-defined >55 category schema.
+
+- Why: Primary NVIDIA modelcard and product pages state GLiNER PII is non-generative and produces span-level entity annotations with confidence scores across more than 55 categories; Guardrails documentation and NGC listings reference GLiNER PII as the model used for PII detection.
+- Evidence: https://build.nvidia.com/nvidia/gliner-pii/modelcard, https://build.nvidia.com/nvidia/gliner-pii, https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog/third-party/gliner
+
+### Prefer `insufficient-evidence` when You require vendor-published, canonical numeric performance metrics on named PII benchmark dataset(s) with explicit dataset/split/metric definitions for v1 to decide adoption.
+
+- Why: Primary NVIDIA model and container documentation do not publish canonical numeric evaluation metrics, canonical dataset names/splits, or formal metric computation definitions for the v1/container packaging; therefore a vendor-published apples-to-apples numeric comparison for v1 is not available in the primary sources.
+- Evidence: https://build.nvidia.com/nvidia/gliner-pii/modelcard, https://build.nvidia.com/nvidia/gliner-pii, https://arxiv.org/html/2605.09973v1
+
+### Prefer `nvidia-gliner-pii-nim` when You require explicit vendor confirmation that the artifact is ready for commercial use (license permitting commercial deployment).
+
+- Why: Primary NVIDIA pages and NGC listing state the GLiNER PII model is governed by NVIDIA licensing terms (including the NVIDIA Open Model License and references to Apache-2.0) and describe availability for commercial and non-commercial use in the product documentation.
+- Evidence: https://build.nvidia.com/nvidia/gliner-pii, https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-
+
+### Prefer `insufficient-evidence` when You need exact input/context limits (max tokens/characters per inference) or tokenization behavior documented for reproducible evaluation or deployment.
+
+- Why: Primary NVIDIA modelcard and Guardrails documentation describe input as UTF-8 text strings and reference usage in Guardrails, but they do not publish exact tokenization, max token/character limits, or sliding-window/chunking behavior for the v1/container packaging.
+- Evidence: https://build.nvidia.com/nvidia/gliner-pii/modelcard, https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog/third-party/gliner, https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog/pii-detection
+
+### Prefer `insufficient-evidence` when You will compare model outputs to a canonical SPY-style seven-category evaluation and require a deterministic label-mapping artifact for fair comparison.
+
+- Why: An academic preprint documents comparative evaluations of GLiNER variants, but primary NVIDIA distribution and container documentation do not publish the deterministic label-mapping artifact, canonical SPY dataset/splits, or the explicit metric computation rules for the v1/container packaging required to reproduce such comparisons.
+- Evidence: https://arxiv.org/html/2605.09973v1, https://build.nvidia.com/nvidia/gliner-pii
+
+### Prefer `insufficient-evidence` when You require explicit vendor disclosure of training or fine-tuning data provenance for the v1/container packaging (to assess data provenance or privacy concerns).
+
+- Why: Primary NVIDIA modelcard and NGC/container pages do not disclose training or fine-tuning dataset provenance for the v1/container packaging in the available documentation.
+- Evidence: https://build.nvidia.com/nvidia/gliner-pii/modelcard, https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-
+
+## Benchmark taxonomy
+
+### PII span extraction (span-level detection and classification) as implemented by nvidia-gliner-pii v1
+
+- Datasets: Evidence gap: No vendor-published canonical PII benchmark dataset name and explicit train/dev/test splits for v1 were found in primary NVIDIA sources.
+- Metrics: Span-level F1 (strict span+type match) — Evidence gap: primary NVIDIA sources do not publish a formal metric definition or vendor-published numeric values for v1/container packaging., Confidence-threshold precision/recall operating points (e.g., precision/recall at specified confidence cutoffs) — Evidence gap: primary NVIDIA sources do not publish which confidence thresholds or numeric operating points (per-threshold precision/recall) to use for v1.
+- Compare only when: Artifact identity: exact Forge candidate slug and versionKey must match (nvidia-gliner-pii-nim, versionKey v1).
+- Compare only when: Datasets and explicit splits must match and be documented in primary sources.
+- Compare only when: Label schema or a published deterministic label-mapping must be identical across compared runs.
+- Compare only when: Prediction output encoding (character vs token offsets vs BIO tags) must be identical and documented in primary sources.
+- Compare only when: Tokenization and input-preprocessing must match and be documented in primary sources.
+- Compare only when: Metric computation (strict vs partial match; micro vs macro aggregation) must be identical and documented in primary sources.
+
+## Primary sources
+
+- [GLiNER PII model page (Build.NVIDIA.com)](https://build.nvidia.com/nvidia/gliner-pii) — NVIDIA; supports Model detects Personally Identifiable Information and Protected Health Information in text; input described as UTF-8 text strings., Model is governed by NVIDIA licensing terms (NVIDIA Open Model License Agreement and references to Apache-2.0)., Model release/availability information and product-level statements about deployment and recommended validation/human review.
+- [GLiNER PII modelcard (Build.NVIDIA.com modelcard page)](https://build.nvidia.com/nvidia/gliner-pii/modelcard) — NVIDIA; supports GLiNER PII described as non-generative and producing span-level entity annotations with confidence scores across more than 55 categories., Modelcard and model page document readiness for commercial and non-commercial use as stated in the vendor documentation., Modelcard is the vendor-hosted canonical model documentation for GLiNER PII.
+- [NGC container listing for GLiNER PII (NGC catalog - container root)](https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/-) — NVIDIA NGC; supports NGC listing asserts GLiNER PII detects and classifies a broad range of PII and PHI in structured and unstructured text., NGC distribution metadata documents licensing references and distribution/packaging information for the GLiNER PII container.
+- [NGC container layer metadata for GLiNER PII (layer index 1)](https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/1/layers) — NVIDIA NGC; supports Container layer metadata includes timestamps and environment variable SERVER_START_SCRIPT_PATH = /opt/nim/start_server.sh and documents container filesystem artifacts such as model_manifest.yaml., Container layer is a primary operational artifact for the v1 packaging.
+- [NGC container layer metadata for GLiNER PII (latest layers view)](https://catalog.ngc.nvidia.com/orgs/nim/nvidia/containers/gliner-pii/latest/layers) — NVIDIA NGC; supports Alternate NGC layers view documenting container layer metadata (build timestamp, SHA256 hash entries) and runtime environment variables., Confirms container-level operational metadata for GLiNER PII packaging.
+- [NeMo Guardrails — GLiNER third-party guardrail catalog entry](https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog/third-party/gliner) — NVIDIA; supports NeMo Guardrails documentation references GLiNER-PII as a third-party PII detection guardrail and documents supported PII entity categories and minimum GPU requirements in Guardrails configuration., Indicates GLiNER is used within NVIDIA Guardrails configurations for PII detection.
+- [NeMo Guardrails — PII detection configuration (default entities and thresholds)](https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog/pii-detection) — NVIDIA; supports Guardrails documentation lists default PII entities and documents default confidence thresholds (documented default threshold for GLiNER detection in Guardrails configuration)., Documents that locally hosted NIM instances do not require an API key for inference, but NGC Personal API key is needed to pull images.
+- [GLiNER technical report / comparative evaluation (preprint)](https://arxiv.org/html/2605.09973v1) — arXiv; supports Comparative preprint reporting benchmark evaluations for GLiNER variants (reports exact-match F1 outcomes on legal and medical subsets and recall/precision observations for GLiNER variants)., Provides independent comparative evaluation context for GLiNER family variants (note: primary NVIDIA model/container documentation does not publish the canonical datasets/splits or deterministic mapping artifacts used in that preprint for the vendor v1/container packaging).
+- [NIM benchmarking / performance pages (operational benchmarking examples)](https://docs.nvidia.com/nim/benchmarking/llm/latest/performance.html) — NVIDIA; supports NIM performance benchmarking pages document throughput and latency examples for LLM NIM containers and note the environment used for benchmarking (e.g., H100 GPUs)., These pages are operational performance references for NIM containers (not model-quality numeric PII metrics for GLiNER PII).
+- [NeMo Guardrails releases (project release notes referencing GLiNER examples)](https://github.com/NVIDIA/NeMo-Guardrails/releases) — NVIDIA (NeMo Guardrails project); supports Guardrails releases document additions such as standalone validation endpoints and examples relevant to GLiNER PII detection and combined guardrails examples., Provides primary repository release context for Guardrails integrations used with GLiNER PII.
+
+## Evidence gaps
+
+- No vendor-published numeric evaluation metrics for the exact nvidia-gliner-pii v1/container packaging on canonical PII benchmark datasets (no numeric span-level F1, precision, recall values in primary NVIDIA docs for v1).
+- No canonical dataset pages or explicit train/dev/test splits for vendor-reported evaluations of the v1/container packaging are published in primary sources.
+- Tokenization and input-preprocessing details (tokenizer type, mapping, max tokens/characters per inference, sliding-window/chunking) are not specified in the primary NIM/modelcard/NGC documentation for v1.
+- Exact prediction output encoding (character offsets vs token offsets vs BIO tagging, overlap representation) is not specified in primary sources for the v1/container packaging.
+- Training/fine-tuning data provenance for v1 (datasets used, synthetic vs real, generation process) is not disclosed in the primary NVIDIA documentation for v1.
+- Formal metric computation details (strict vs partial match; micro vs macro aggregation rules) used for any vendor comparisons for v1 are not present in the primary documentation.
+- Deterministic label-mapping artifact and canonical SPY-style dataset/split metadata used to align GLiNER outputs to a seven-category evaluation are not published in primary NVIDIA sources for v1.
+
+## Independent audit
+
+Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 1 deterministic draft defect(s) were supplied to the audit.
+
+- `medium` $.sources[6].primary must be true: $.sources[6].primary must be true Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.

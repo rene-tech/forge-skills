@@ -3,6 +3,12 @@
 - Research status: `reviewed`
 - Policy: Forge runtime latency/throughput evidence is operational placement data, not model-quality evidence.
 
+## Deep research
+
+- Research key: `huggingface-co-facebook-esm2-t33-650m-ur50d-e087b68cac`
+- Independent audit: `revised`
+- Full checkpoint-scoped selection, input/output, benchmark, comparison, limitation, and safety evidence: `research.md`.
+
 ## Reviewed public benchmark claims
 
 ### Evolutionary-scale prediction of atomic-level protein structure with a language model

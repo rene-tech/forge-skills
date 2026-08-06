@@ -1,0 +1,342 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[1] uses unapproved repository owner 'laion-ai' for this exact model scope",
+        "path": "$.sources[1] uses unapproved repository owner 'laion-ai' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[2].primary must be true",
+        "path": "$.sources[2].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[5].primary must be true",
+        "path": "$.sources[5].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[0].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[1].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[2].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[2].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[3].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[3].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.benchmarks[4].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "path": "$.benchmarks[4].sourceLocator must identify the exact table, figure, section, appendix, page, heading, or repository path",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 9 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "healthcare",
+      "description": "LAION CLAP HTSAT Fused is a contrastive language-audio model for audio-text retrieval and zero-shot audio classification.",
+      "displayName": "Use LAION CLAP HTSAT Fused Zero-Shot Audio",
+      "group": "health-audio",
+      "inputModalities": [
+        "audio",
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "laion-clap-zero-shot-audio",
+      "outputModalities": [
+        "classification",
+        "embedding",
+        "json"
+      ],
+      "slug": "laion-clap-htsat-fused-zero-shot-audio",
+      "sourceUrl": "https://huggingface.co/laion/clap-htsat-fused",
+      "version": "hf365dea6-transformers53-20260706",
+      "versionKey": "hf365dea6-transformers53-20260706"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "modelScope": "Exact Hugging Face repository laion/clap-htsat-fused",
+        "reason": "The provided findings do not report clinical evaluation, clinical deployment guidance, or healthcare-specific validation for this exact upload.",
+        "useCase": "Clinical diagnosis or other healthcare decision-making without expert validation"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused",
+          "https://huggingface.co/laion/clap-htsat-fused/commits/a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2"
+        ],
+        "modelScope": "Exact Hugging Face repository laion/clap-htsat-fused",
+        "reason": "The findings report likes, followers, and commit/file-history facts, but they do not report checkpoint-scoped evaluation results establishing quality for this exact upload.",
+        "useCase": "Treating repository popularity or file-history metadata as evidence of model quality"
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "named alternatives not reported",
+        "comparisonConditions": "Direct comparison is not supported because the provided findings do not include named alternative checkpoints, matched datasets/splits, metrics, or evaluation conditions for this exact upload.",
+        "criteria": "No protocol-matched primary-source comparison data for this exact upload were provided in the findings.",
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused",
+          "https://huggingface.co/laion/clap-htsat-fused/commits/a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2"
+        ],
+        "rationale": "The findings verify repository identity, model-card title, dataset mention, and commit/file-history facts, but do not report a comparable evaluation table for this upload against another named model under matched conditions.",
+        "task": "Checkpoint-matched quality comparison for this exact Hugging Face upload",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Only with downstream task validation and domain-expert review, because the provided findings verify repository identity and pipeline usage instructions but do not report healthcare-specific validation, clinical evaluation, or deployment guidance for this exact upload.",
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "modelScope": "Exact Hugging Face repository laion/clap-htsat-fused",
+        "useCase": "Healthcare audio research workflows"
+      }
+    ],
+    "evidenceGaps": [
+      "Evidence gap: Benchmark review checked the official Hugging Face model card at https://huggingface.co/laion/clap-htsat-fused and the official commits page at https://huggingface.co/laion/clap-htsat-fused/commits/a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2; the provided findings name no exact benchmark table, figure, section, page, heading, or repository path with dataset/split/metric/value conditions that can be safely attached to this exact upload.",
+      "Evidence gap: Comparison review checked the official Hugging Face model card at https://huggingface.co/laion/clap-htsat-fused and the official commits page at https://huggingface.co/laion/clap-htsat-fused/commits/a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2; the provided findings do not identify a named alternative with protocol-matched primary evidence for this exact upload.",
+      "Evidence gap: The provided findings do not specify the exact model-weight license for laion/clap-htsat-fused.",
+      "Evidence gap: The provided findings do not specify the exact parameter count for laion/clap-htsat-fused.",
+      "Evidence gap: The provided findings do not specify exact preprocessing parameters or accepted input formats for laion/clap-htsat-fused.",
+      "Evidence gap: The provided findings do not specify exact output schema or score semantics for laion/clap-htsat-fused."
+    ],
+    "family": "huggingface-co-laion-clap-htsat-fused-5b45ac0127",
+    "identity": {
+      "architecture": "CLAP: Contrastive Language-Audio Pretraining; exact architecture details for this upload are not reported in the provided findings beyond the model-card title and that the repository provides Transformers pipeline usage instructions.",
+      "checkpoint": "not reported",
+      "evidenceUrls": [
+        "https://huggingface.co/laion/clap-htsat-fused",
+        "https://huggingface.co/laion/clap-htsat-fused/commits/a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2",
+      "upstreamName": "laion/clap-htsat-fused"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not specify accepted audio file formats, containers, codecs, array layouts, or text field formatting for this exact upload."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not specify sample rate, chunk length, resampling rules, normalization, channel handling, truncation, padding, FFT settings, hop length, or mel-feature settings for this exact upload."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "The repository provides instructions to use laion/clap-htsat-fused with Transformers pipelines."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not explicitly specify the exact semantic input objects, beyond the CLAP model identity and the presence of Transformers pipeline usage instructions."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "The repository provides instructions to use laion/clap-htsat-fused with Transformers pipelines."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not include a quoted prompt template, paired-input ordering rule, or task-specific formatting contract for this exact upload."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not provide an official input-validation checklist, duration bounds, invalid-case handling, or ambiguity-handling guidance for this exact upload."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "statement": "The provided findings do not report an explicit model-weight license for this exact Hugging Face upload."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "statement": "The provided findings do not report a total parameter count for this exact Hugging Face upload."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "statement": "The provided findings do not report exact architecture internals for this upload beyond the CLAP model-card title and the presence of Transformers pipeline usage instructions."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "statement": "The provided findings do not provide checkpoint-matched benchmark results for this exact Hugging Face upload."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not specify whether any returned scores should be interpreted as logits, probabilities, similarities, or another unit for this exact upload."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "The repository provides instructions to use laion/clap-htsat-fused with Transformers pipelines."
+        },
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not explicitly specify the output object schema, score fields, embedding dimensionality, or JSON contract for this exact upload."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/laion/clap-htsat-fused"
+          ],
+          "statement": "Evidence gap: The provided findings do not provide post-inference calibration guidance, threshold selection guidance, or output-quality validation procedures for this exact upload."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "modelScope": "Exact Hugging Face repository laion/clap-htsat-fused",
+        "useCase": "Using the Hugging Face upload with Transformers pipelines for CLAP model experimentation and prototyping",
+        "why": "The official Hugging Face repository explicitly provides instructions to use laion/clap-htsat-fused with Transformers pipelines, and the model card identifies the upload as \"Model card for CLAP: Contrastive Language-Audio Pretraining.\""
+      }
+    ],
+    "researchSummary": "Primary-source findings verify that the exact Hugging Face repository is laion/clap-htsat-fused, whose model card is titled \"Model card for CLAP: Contrastive Language-Audio Pretraining\" and whose page provides Transformers pipeline usage instructions. The findings also verify repository-history facts from the official commits page, including the latest shown commit hash a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2 and earlier commits that created README.md and uploaded processor, config, model, and safetensors-related files. However, the findings do not report a model-weight license, parameter count, exact architecture internals, exact preprocessing parameters, output score semantics, or any checkpoint-matched benchmark table for this exact upload, so those areas remain evidence-limited.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/laion/clap-htsat-fused"
+        ],
+        "statement": "Evidence gap: The provided findings do not report model-specific privacy, PHI, or clinical safety guidance for this exact upload; sensitive healthcare use should therefore apply conservative review and governance."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Exact Hugging Face repository laion/clap-htsat-fused",
+        "primary": true,
+        "primaryReason": "Official Hugging Face repository and model card for the exact checkpoint scope named in the prompt.",
+        "publisher": "Hugging Face / LAION",
+        "sourceType": "model-card",
+        "supports": [
+          "repository identity",
+          "model-card title",
+          "dataset mention",
+          "Transformers pipeline usage instructions",
+          "absence of explicit reported license/benchmark/preprocessing/output details in the provided findings"
+        ],
+        "title": "Hugging Face model card: laion/clap-htsat-fused",
+        "url": "https://huggingface.co/laion/clap-htsat-fused"
+      },
+      {
+        "modelScope": "Exact Hugging Face repository laion/clap-htsat-fused commit history",
+        "primary": true,
+        "primaryReason": "Official repository history page for the exact Hugging Face upload, used to verify revision and file-history facts.",
+        "publisher": "Hugging Face / LAION",
+        "sourceType": "repository",
+        "supports": [
+          "latest shown commit hash a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2",
+          "README creation commit noted in findings",
+          "processor/config/model/safetensors-related upload history noted in findings"
+        ],
+        "title": "Hugging Face commits page: laion/clap-htsat-fused",
+        "url": "https://huggingface.co/laion/clap-htsat-fused/commits/a2cbbe3acf4b37d3bf9dbf85d276bb2ab9e147c2"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "fe0f17aa2a3efaf7ce434499c01c4b2fe53221ec206eefe0e674f253f941c05e",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-laion-clap-htsat-fused-5b45ac0127",
+  "researchedAt": "2026-08-06T12:19:44.757546+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/laion/clap-htsat-fused",
+  "sourceUrls": [
+    "https://huggingface.co/laion/clap-htsat-fused"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -77,6 +77,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen3-8b-3527d355ea`
+- Recommended: Long-context tasks (e.g., long-context summarization, long-context document reading and QA) — Qwen3-8B is reported with a context length of 128K tokens in the Qwen3 technical report.
+- Recommended: General reasoning and academic-benchmark evaluation candidate (instruction-following / chat / reasoning tasks) — The Qwen3 technical report states architectural and training innovations across the series and describes benchmark evaluation of Qwen3 models; Qwen3-8B is a reported dense checkpoint in that evaluation scope.
+- Avoid: Explicit safety-critical clinical deployment (diagnosis, triage, treatment planning, or other regulated clinical decision-making) — Evidence gap: the checked primary sources (Qwen3 technical report PDF/HTML and the Hugging Face Qwen3-8B model card) do not document clinical validation, regulatory approval, or clinical-grade evaluation or provide expert-review workflows specific to Qwen3-8B.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -95,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen3-8b-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen3-8b-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen3-8b-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/document-ai/qwen-qwen3-8b-vllm-cuda13/SKILL.md

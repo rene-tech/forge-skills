@@ -1,0 +1,464 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources must include the original creator's primary source for this third-party model packaged by NVIDIA",
+        "path": "$.sources must include the original creator's primary source for this third-party model packaged by NVIDIA",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 1 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Hive AI-generated image detection NIM for classifying synthetic images; mirrored into Forge regional registries as part of all-accessible NVIDIA NIM wave6.",
+      "displayName": "Use Hive AI-Generated Image Detection",
+      "group": "classification-and-detection",
+      "inputModalities": [
+        "image"
+      ],
+      "license": "nvidia-nim; third-party model license",
+      "modelFamily": "hive-ai-generated-image-detection",
+      "outputModalities": [
+        "classification"
+      ],
+      "slug": "hive-ai-generated-image-detection-nim",
+      "sourceUrl": "https://build.nvidia.com/hive/ai-generated-image-detection",
+      "version": "v1",
+      "versionKey": "v1"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+          "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+          "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html"
+        ],
+        "modelScope": "hive/ai-generated-image-detection (NIM-packaged model; upstream v1.0)",
+        "reason": "Primary sources describe the model specifically as an AI-generated image detector with a binary head and a source-attribution head; there is no primary-source evidence the checkpoint supports other vision tasks.",
+        "useCase": "Any vision task outside AI-generated image detection or source attribution (for example: fine-grained species identification, OCR, general object detection)."
+      },
+      {
+        "evidenceUrls": [
+          "https://thehive.ai/terms-of-use",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://build.nvidia.com/hive/ai-generated-image-detection"
+        ],
+        "modelScope": "hive/ai-generated-image-detection (NIM-packaged model)",
+        "reason": "Creator terms of use and NGC catalog documentation include usage restrictions and access requirements; users must review contractual/terms requirements prior to deployment.",
+        "useCase": "Deploying the model without reviewing or complying with Hive's terms-of-use and NIM/NGC access/governance requirements."
+      }
+    ],
+    "benchmarks": [],
+    "comparisons": [
+      {
+        "alternative": "hive-deepfake-image-detection-nim",
+        "comparisonConditions": "Checked NIM support matrix and NGC catalog entries for both models; no numeric benchmark tables/figures/sections for either checkpoint were found in these primary sources.",
+        "criteria": "No primary-source checkpoint-scoped numeric benchmarks, dataset names/splits, metrics, or evaluation protocols for direct comparison were found in the inspected documentation for the exact hive/ai-generated-image-detection checkpoint versus hive/deepfake-image-detection.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/multimodal-safety/latest/support-matrix.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://build.nvidia.com/hive/ai-generated-image-detection"
+        ],
+        "rationale": "The NIM support matrix and NGC catalog list both Hive models, but the inspected sources do not publish numeric, checkpoint-scoped evaluation results or comparable protocol details for these specific checkpoints.",
+        "task": "AI-generated / manipulated image detection (detection/classification of synthetic images)",
+        "verdict": "insufficient-evidence"
+      },
+      {
+        "alternative": "nvidia-nemoguard-jailbreak-detect-nim",
+        "comparisonConditions": "Checked NIM docs and NGC catalog for benchmark or protocol links; no comparable numeric evaluation data found.",
+        "criteria": "No primary-source checkpoint-scoped performance metrics or direct protocol comparisons between hive/ai-generated-image-detection and the cited alternative were available in the inspected NIM documentation and NGC catalog.",
+        "evidenceUrls": [
+          "https://docs.nvidia.com/nim/multimodal-safety/latest/support-matrix.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+        ],
+        "rationale": "Inspected NIM documentation and NGC catalog do not contain checkpoint-scoped benchmark numbers or protocol details for a direct comparison; therefore insufficient primary evidence exists to prefer one candidate over the other for this task.",
+        "task": "AI-generated / manipulated image detection (detection/classification of synthetic images)",
+        "verdict": "insufficient-evidence"
+      }
+    ],
+    "conditionalUseCases": [
+      {
+        "conditions": "Primary sources do not provide calibrated score ranges or recommended decision thresholds; therefore automated actions must be gated by human review or validated local thresholds and continuous monitoring. Users must validate operating points in their environment.",
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://build.nvidia.com/hive/ai-generated-image-detection"
+        ],
+        "modelScope": "hive/ai-generated-image-detection (NIM-packaged model; upstream v1.0)",
+        "useCase": "Integration into automated content-moderation stacks to surface likely AI-generated images for human review (automated gating only with local calibration)."
+      },
+      {
+        "conditions": "NIM catalog and creator documentation state the model receives frequent updates; deployments should monitor updates and apply NIM model profiles and container updates as provided.",
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection"
+        ],
+        "modelScope": "NIM-packaged hive/ai-generated-image-detection (container runtime)",
+        "useCase": "Production deployment with operational monitoring to capture model updates and changes in coverage over time."
+      }
+    ],
+    "evidenceGaps": [
+      "Benchmark gap: No primary-source numeric benchmark results (dataset name/version/split, metric, numeric value, evaluation protocol) for the exact hive/ai-generated-image-detection checkpoint were found in the inspected primary sources. Checked locators: https://docs.thehive.ai/docs/ai-image-and-video-detection (model documentation page), https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection (NIM model reference page), https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection (NGC container catalog entry), https://build.nvidia.com/hive/ai-generated-image-detection (Build.NVIDIA model card).",
+      "Preprocessing gap: Primary sources do not publish explicit preprocessing parameters (pixel-dimension limits, resize/cropping rules, normalization mean/std, or color-space conversions). Checked locators: https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection, https://docs.nvidia.com/nim/multimodal-safety/latest/models.html, https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection.",
+      "Checkpoint metadata gap: Primary sources do not publish parameter counts, an immutable checkpoint revision beyond v1.0, or full layer-level architecture details. Checked locators: https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection, https://docs.thehive.ai/docs/ai-image-and-video-detection, https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection.",
+      "Runtime profile contents gap: The NIM model manifest location is documented (/opt/nim/etc/default/model_manifest.yaml) but the manifest/profile contents for this model were not published in the inspected documentation. Checked locators: https://docs.nvidia.com/nim/multimodal-safety/latest/models.html, https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection.",
+      "Licensing gap: Primary sources inspected do not provide an explicit model-weight versus code-license statement (exact license identifiers for model weights and container code are not reported). Checked locators: https://docs.thehive.ai/docs/ai-image-and-video-detection, https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection, https://thehive.ai/terms-of-use."
+    ],
+    "family": "build-nvidia-com-hive-ai-generated-image-detection-36e2b7f1b1",
+    "identity": {
+      "architecture": "EfficientNet-B4 (CNN) — as stated in the NIM reference",
+      "checkpoint": "v1.0",
+      "evidenceUrls": [
+        "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+        "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+        "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+        "https://docs.nvidia.com/nim/multimodal-safety/latest/support-matrix.html",
+        "https://build.nvidia.com/hive/ai-generated-image-detection"
+      ],
+      "license": "not reported",
+      "parameterScale": "not reported",
+      "revision": "not reported",
+      "upstreamName": "hive/ai-generated-image-detection"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer",
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection"
+          ],
+          "statement": "Accepted image formats for the inference endpoint are jpg, jpeg, and png."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer"
+          ],
+          "statement": "Runtime input encoding: images <200 KB must be provided as a base64-encoded data URI (data:image/{format};base64,{base64encodedimage}); images >200 KB must be uploaded to a presigned S3 bucket via NVCF Asset APIs and referenced as data:image/png;asset_id,{asset_id}."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer"
+          ],
+          "statement": "Only a single image is supported per inference request; batching is not supported by the documented inference endpoint."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+          ],
+          "statement": "Model manifest and profile location: NIM model profiles are stored inside the container at /opt/nim/etc/default/model_manifest.yaml (profile contents not exposed in the inspected documentation)."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+            "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+          ],
+          "statement": "Evidence gap: Primary sources do not specify pixel-dimension limits, explicit resize/cropping rules, normalization mean/std, color-space conversions, or any numeric preprocessing parameters for this checkpoint in the inspected documents."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer"
+          ],
+          "statement": "Image content: single 2D image representing the visual content to be classified for AI-generation origin."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer",
+            "https://docs.thehive.ai/docs/ai-image-and-video-detection"
+          ],
+          "statement": "No task-specific prompt templates, paired-input order, or control fields are documented for the image-classification inference endpoint in the inspected primary evidence."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer"
+          ],
+          "statement": "Validate that the input is a single 2D image in an accepted format (jpg/jpeg/png) and that images larger than 200 KB are uploaded as assets and referenced by asset_id URIs; invalid requests produce HTTP 422 as documented."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+            "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html"
+          ],
+          "statement": "Evidence gap: Primary sources do not provide per-input semantic bounds for ambiguous cases, nor do they provide a canonical list of unsupported image types or per-pixel limits in the inspected references."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+        ],
+        "statement": "Model coverage and updates: the model was trained on millions of AI-generated and human-created images and receives frequent updates to address new generative engines and adversarial techniques; coverage therefore evolves over time (implication: operational drift and coverage gaps are possible)."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+          "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html"
+        ],
+        "statement": "Optimization scope: primary sources state the model is optimized for media generated by popular engines (examples listed by the creator); the scope beyond listed engines and per-engine performance are not documented in the inspected references."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html"
+        ],
+        "statement": "Packaging/runtime constraints: the model is delivered as an NVIDIA NIM container running on a CUDA-accelerated runtime; operational characteristics and optimizations are tied to the NIM container and model profiles (implementation details separate from upstream checkpoint behavior)."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+          "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+        ],
+        "statement": "Evidence gap: Primary sources inspected do not report per-input preprocessing parameters (pixel-dimension caps, resize/resampling/cropping rules, normalization mean/std, or explicit color-space conversions) for this exact checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+        ],
+        "statement": "Evidence gap: Primary sources inspected do not report parameter counts, an immutable checkpoint revision identifier beyond v1.0, or layer-level architecture details beyond the stated EfficientNet-B4 family description."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection"
+          ],
+          "statement": "Do not assume calibrated numeric score ranges or fixed thresholds: primary sources describe confidence scores but do not provide numeric calibration guidance or recommended operating points in the inspected documents."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection"
+          ],
+          "statement": "Binary classification head: returns a confidence indicator that the image is AI-generated or modified (described as a confidence score in creator and NIM references). Exact tensor shapes, numeric score datatype, and explicit calibrated numeric bounds are not reported in the inspected primary sources."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+            "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html"
+          ],
+          "statement": "Source-attribution head: returns the likely generative engine (generator identifier) when identifiable or \"none\" if it cannot identify a source. Primary sources describe the field semantically but do not expose a formal token list, shape, or confidence-vector schema."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer"
+          ],
+          "statement": "Inference endpoint behavior: on success returns HTTP 200 with classification results; invalid requests return HTTP 422 Validation Error (documented response semantics)."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+            "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+          ],
+          "statement": "Post-inference validation: users should validate local performance and set decision thresholds appropriate to their risk tolerance because the primary sources do not document calibrated thresholds or gating guidance for automated actions."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection"
+        ],
+        "modelScope": "hive/ai-generated-image-detection (NIM-packaged model; upstream v1.0)",
+        "useCase": "Binary classification to detect whether an image is AI-generated or modified (surface likely AI-generated content for downstream workflows).",
+        "why": "Primary Hive documentation and the NIM catalog/reference describe a binary classification head that indicates whether an image is AI-generated accompanied by a confidence score."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection",
+          "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection",
+          "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html"
+        ],
+        "modelScope": "hive/ai-generated-image-detection (NIM-packaged model; upstream v1.0)",
+        "useCase": "Source attribution: return the likely generative engine that produced an image when identifiable (use as a signal for triage or investigative workflows).",
+        "why": "Creator documentation and NIM references describe a source-attribution head that returns the likely AI synthesis model or \"none\" if unidentified."
+      }
+    ],
+    "researchSummary": "The Forge-covered artifact is the Hive AI Generated Image Detection model (upstream ID hive/ai-generated-image-detection) packaged as an NVIDIA NIM container and exposed via a NIM inference endpoint. Primary creator documentation and NIM references state the model provides a binary AI-generated classification head (confidence score) and a source-attribution head that returns the likely generative engine or \"none\" when unidentified. The NIM reference reports the model architecture as a CNN based on EfficientNet-B4 and a model version v1.0. The NIM inference API documents runtime input encoding and upload rules (base64 data URI for images <200 KB; presigned S3 asset for larger images), accepted formats (jpg, jpeg, png), and a single-image-per-request constraint. Primary sources document training on millions of generated and human-created images and frequent updates to address new engines and adversarial techniques. Primary sources do not report parameter counts, an immutable checkpoint/revision identifier beyond v1.0, precise preprocessing transforms (pixel-dimension limits, resize/cropping, normalization mean/std, color-space conversions), numeric output tensor shapes or explicit calibrated score ranges or recommended thresholds; these missing items are recorded as evidence gaps.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://thehive.ai/terms-of-use",
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://build.nvidia.com/hive/ai-generated-image-detection"
+        ],
+        "statement": "Use governance and contractual restrictions: users must comply with creator terms and NIM/NGC access/governance; Hive's Terms of Use prohibit using the AI Service for identifying any person or for facial recognition without explicit written authorization."
+      },
+      {
+        "evidenceUrls": [
+          "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection",
+          "https://docs.thehive.ai/docs/ai-image-and-video-detection"
+        ],
+        "statement": "Security maintenance: the model receives frequent updates to address new engines and adversarial techniques; deployments should include update-monitoring and security maintenance practices."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "Upstream Hive ai-generated-image-detection model (creator documentation)",
+        "primary": true,
+        "primaryReason": "Canonical creator documentation describing the Hive AI-generated-image-detection model, training data description, output heads, and intended uses.",
+        "publisher": "Hive",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Model determines whether an input image or video is entirely AI-generated",
+          "Model trained on millions of artificially generated images and human-created images from across the web",
+          "Model returns a binary classification indicating whether the image is AI-generated accompanied by a confidence score",
+          "Model returns the likely AI synthesis model that created the image (source attribution head)",
+          "Model can be used to flag and remove AI-generated content on platforms"
+        ],
+        "title": "Hive — AI Image and Video Detection (creator documentation)",
+        "url": "https://docs.thehive.ai/docs/ai-image-and-video-detection"
+      },
+      {
+        "modelScope": "NIM-packaged hive/ai-generated-image-detection (reference-level upstream metadata)",
+        "primary": true,
+        "primaryReason": "NVIDIA NIM reference page documenting the packaged Hive model, version, architecture statement, accepted inputs, and high-level output descriptions.",
+        "publisher": "NVIDIA (NIM API reference)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Model returns a binary classification and a source-attribution head",
+          "Model architecture described as a CNN based on EfficientNet-B4",
+          "Accepted input image formats include PNG, JPEG, JPG",
+          "Model version reported as v1.0",
+          "Model uses a TensorRT engine for inference and was tested on NVIDIA L40 hardware (runtime evidence listed on the reference)"
+        ],
+        "title": "NVIDIA NIM reference: hive-ai-generated-image-detection (model reference)",
+        "url": "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection"
+      },
+      {
+        "modelScope": "NIM inference endpoint for hive/ai-generated-image-detection",
+        "primary": true,
+        "primaryReason": "Official NIM inference endpoint documentation describing runtime input encoding, size/upload rules, accepted formats, single-image request constraint, and HTTP response behaviors.",
+        "publisher": "NVIDIA (NIM API reference)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Inference requests must provide each image as a base64-encoded data URI if the image is smaller than 200 KB",
+          "Images larger than 200 KB must be uploaded to a presigned S3 bucket and referenced via an asset_id URI",
+          "Only a single image input is supported per inference request",
+          "Accepted image formats for the inference endpoint are jpg, png, and jpeg",
+          "Successful inference returns HTTP 200; invalid requests return HTTP 422 Validation Error"
+        ],
+        "title": "NVIDIA NIM inference API: hive-ai-generated-image-detection infer",
+        "url": "https://docs.api.nvidia.com/nim/reference/hive-ai-generated-image-detection-infer"
+      },
+      {
+        "modelScope": "NIM-packaged multimodal-safety models including hive/ai-generated-image-detection",
+        "primary": true,
+        "primaryReason": "NIM multimodal-safety official documentation describing supported models, model profiles, and the two-head architecture for Hive's model as packaged in NIM.",
+        "publisher": "NVIDIA Documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Model has two heads: a binary classification head and a source-attribution head",
+          "NIM model profiles are stored at /opt/nim/etc/default/model_manifest.yaml inside the container",
+          "The model manifest defines a profile for Hive AI Generated Image Detection with the two-head architecture"
+        ],
+        "title": "NVIDIA NIM Multimodal Safety — models page",
+        "url": "https://docs.nvidia.com/nim/multimodal-safety/latest/models.html"
+      },
+      {
+        "modelScope": "Support matrix entries for NIM multimodal-safety models including hive/ai-generated-image-detection",
+        "primary": true,
+        "primaryReason": "Official NIM support matrix listing model IDs and supported hardware/engine notes for NIM-packaged models.",
+        "publisher": "NVIDIA Documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Lists model named \"AI Generated Image Detection\" with model ID \"hive/ai-generated-image-detection\" published by Hive",
+          "Lists hive/deepfake-image-detection as a separate model published by Hive",
+          "Indicates NVIDIA provides optimized TensorRT engine support on specific GPU models for the Hive model"
+        ],
+        "title": "NVIDIA NIM for Multimodal Safety — support matrix",
+        "url": "https://docs.nvidia.com/nim/multimodal-safety/latest/support-matrix.html"
+      },
+      {
+        "modelScope": "NIM-packaged hive/ai-generated-image-detection container (NGC catalog)",
+        "primary": true,
+        "primaryReason": "NGC catalog entry documenting the NIM container packaging of Hive's AI Generated Image Detection model, runtime packaging, update behavior, and access model.",
+        "publisher": "NVIDIA NGC / NIM",
+        "sourceType": "repository",
+        "supports": [
+          "NIM container analyzes images and returns a confidence score indicating how likely the image is AI-generated or modified",
+          "NIM model was trained on millions of images from dozens of major AI image generators and receives frequent updates",
+          "NIM container runs on a CUDA-accelerated runtime optimized for NVIDIA GPUs",
+          "Access to the NGC catalog entry requires a subscription"
+        ],
+        "title": "NVIDIA NGC catalog: Hive AI Generated Image Detection (NIM container)",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nim/teams/hive/containers/ai-generated-image-detection"
+      },
+      {
+        "modelScope": "Build.NVIDIA presentation and model card for hive/ai-generated-image-detection",
+        "primary": true,
+        "primaryReason": "Build.NVIDIA landing/model-card presenting the Hive offering as packaged for Forge/Build and describing model purpose at a high level.",
+        "publisher": "NVIDIA Build",
+        "sourceType": "model-card",
+        "supports": [
+          "Model described as a robust image classification model for detecting and managing AI-generated content",
+          "High-level product description and links to deployment guidance"
+        ],
+        "title": "Build.NVIDIA — Hive AI Generated Image Detection (landing)",
+        "url": "https://build.nvidia.com/hive/ai-generated-image-detection"
+      },
+      {
+        "modelScope": "Hive legal terms applicable to use of Hive AI services including detection APIs",
+        "primary": true,
+        "primaryReason": "Creator's terms of use describing allowed uses, restrictions (noting prohibitions on facial recognition/identification), and license-like usage restrictions for their AI services.",
+        "publisher": "Hive",
+        "sourceType": "official-documentation",
+        "supports": [
+          "States AI Service does not provide definitive identifications of any person",
+          "Prohibits using the AI Service for identifying any person or for facial recognition without explicit written authorization",
+          "Grants a revocable, limited, non-exclusive, non-sublicensable, non-transferable right to use the services for internal business purposes"
+        ],
+        "title": "Hive — Terms of Use",
+        "url": "https://thehive.ai/terms-of-use"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "dda6fec40ad123b171044be7ffb635cabba448146537c26f7d2a6eb1ebb4b852",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "build-nvidia-com-hive-ai-generated-image-detection-36e2b7f1b1",
+  "researchedAt": "2026-07-23T20:02:40.323973+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://build.nvidia.com/hive/ai-generated-image-detection",
+  "sourceUrls": [
+    "https://build.nvidia.com/hive/ai-generated-image-detection"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -80,6 +80,17 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `build-nvidia-com-nvidia-llama-3-1-nemotron-nano-vl-8b-v1-8525423fc4`
+- Recommended: Interactive visual question answering and multimodal chat over images — Primary NVIDIA NIM API reference, Build model card, NGC container listing, and NVIDIA-authored Hugging Face model card describe the model as a vision-language model accepting image and text inputs and list interactive image Q&A and multimodal chat among supported use cases.
+- Recommended: Document and image summarization — NVIDIA primary sources for the checkpoint list image summarization and document-image summarization among intended uses.
+- Recommended: OCR and document understanding from image inputs — Primary NVIDIA sources explicitly list optical character recognition and document‑intelligence use cases for this VL checkpoint.
+- Avoid: Clinical diagnostic or regulated medical use — Primary sources inspected for this checkpoint do not report clinical validation, regulatory approval, or medical‑use evaluation for the exact Forge-served artifact.
+- Avoid: Any task requiring documented calibrated confidence scores or probability-calibrated outputs — Primary sources describe text-string outputs but do not report calibrated confidence semantics or probability-calibration procedures for this checkpoint.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -97,11 +108,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim/inference-routes`
 - Regional deployment: `/v1/models/nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim/regional-deployment`
 - Serverless handoff: `/v1/models/nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/nvidia-llama-3-1-nemotron-nano-vl-8b-v1-nim/SKILL.md

@@ -78,6 +78,14 @@ Route: `POST /v1/inference/microsoft-bioemu-v1-1`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `github-com-microsoft-bioemu-1ade956592`
+- Recommended: Protein monomer conformational-ensemble sampling (backbone-frame ensembles) — Repository README documents that BioEmu accepts a protein sequence and produces backbone-frame conformational ensembles for monomers; Nature Methods article describes BioEmu as a biomolecular emulator that samples approximate equilibrium distributions for protein conformations.
+- Avoid: Clinical deployment or real-world therapeutic prediction — Evidence gap: the canonical upstream sources do not provide any authorization, regulatory clearance, or explicit upstream statement authorizing clinical use of bioemu-v1.1; do not deploy clinically without further expert review and regulatory authorization.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -96,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/microsoft-bioemu-v1-1/inference-routes`
 - Regional deployment: `/v1/models/microsoft-bioemu-v1-1/regional-deployment`
 - Serverless handoff: `/v1/models/microsoft-bioemu-v1-1/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/molecular-simulation/microsoft-bioemu-v1-1/SKILL.md

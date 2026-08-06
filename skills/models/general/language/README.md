@@ -2,6 +2,8 @@
 
 Category: `general` · exact model/version skills: 23
 
+[Audited model-selection dossier](research.md)
+
 - [Use BigCode StarCoder2 7B](bigcode-starcoder2-7b-nim/SKILL.md) — `v1` · source-linked
 - [Use Meta Llama 3.1 70B Instruct](meta-llama-3.1-70b-instruct-v1/SKILL.md) — `v1` · source-linked
 - [Use Meta Llama 3.1 8B Instruct](meta-llama-3-1-8b-instruct-nim/SKILL.md) — `v1` · source-linked

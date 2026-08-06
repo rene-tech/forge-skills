@@ -73,6 +73,16 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen2-5-coder-7b-instruct-1fed2cd4d7`
+- Recommended: Code generation (single-file and multi-file snippets) — Primary evidence identifies the Qwen2.5‑Coder series as code-specialized and confirms an instruction‑tuned 7B checkpoint exists in the repository; therefore the instruct 7B checkpoint is presented upstream for code-focused instruction use.
+- Recommended: Code completion and code repair (with downstream validation) — Primary sources present the Qwen2.5‑Coder series as code-focused and document the existence of an instruction‑tuned 7B checkpoint intended for instruction-style code tasks; checkpoint-scoped numeric protocol or performance details are not available in the supplied primary evidence and downstream validation is required.
+- Recommended: Instruction-following for developer workflows and agentic coding assistants — The repository-level evidence and the technical report collectively document an instruction-tuned member of the Qwen2.5‑Coder family at the 7B scale, indicating upstream intent for instruction-following in code contexts.
+- Avoid: Using an unmodified base 7B model for conversational/dialogue tasks without instruction tuning — Evidence gap: The supplied primary findings do not contain an explicit upstream statement advising against conversational use of a base (non‑instruction‑tuned) 7B checkpoint, nor a checkpoint-scoped upstream comparison establishing such a caution. Only the instruction‑tuned 7B repository is confirmed upstream in the inspected sources.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -91,11 +101,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen2-5-coder-7b-instruct-vllm-cuda13/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen2-5-coder-7b-instruct-vllm-cuda13/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen2-5-coder-7b-instruct-vllm-cuda13/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/language/qwen-qwen2-5-coder-7b-instruct-vllm-cuda13/SKILL.md

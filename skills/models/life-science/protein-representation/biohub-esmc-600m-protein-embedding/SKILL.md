@@ -73,6 +73,14 @@ Route: `POST /v1/inference/biohub-esmc-600m-protein-embedding`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-biohub-esmc-600m-50cdefa50a`
+- Recommended: Research and development: loading and experimentation with the esmc-600m-2024-12 checkpoint for protein representation and exploratory embedding extraction. — The Hugging Face model page and repository README identify the checkpoint and packaging format; the upstream Biohub README demonstrates programmatic usage and the Colab cookbook sets model_name to "esmc-600m-2024-12" and shows encode/logits usage patterns.
+- Avoid: Unverified clinical decision-making or deployment without independent validation and explicit licensing confirmation. — Evidence gap: The inspected primary sources for this checkpoint do not include explicit checkpoint-scoped clinical-validation guidance or an unambiguous, separate model-weights vs code license mapping; therefore high-consequence clinical deployment is not supported by the checked primary documents.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -91,11 +99,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/biohub-esmc-600m-protein-embedding/inference-routes`
 - Regional deployment: `/v1/models/biohub-esmc-600m-protein-embedding/regional-deployment`
 - Serverless handoff: `/v1/models/biohub-esmc-600m-protein-embedding/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/biohub-esmc-600m-protein-embedding/SKILL.md

@@ -78,6 +78,15 @@ Route: `POST /v1/inference/rail-berkeley-octo-small-1-5`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-rail-berkeley-octo-small-1-5-a0c1a13281`
+- Recommended: Vision-and-language-conditioned short-horizon continuous robot control for robot arms (predicting multi-step 7‑DoF continuous actions conditioned on RGB cameras, language instructions, and optional goal images). — I found config and model-card evidence that this checkpoint uses a DiffusionActionHead predicting 7‑dimensional continuous actions with prediction horizon 4, accepts multiple RGB camera inputs (primary and wrist) tokenized via SmallStem16, and uses a T5 tokenizer/encoder for language inputs.
+- Recommended: Short-horizon receding-horizon control where a downstream controller consumes the first action from the model's multi-step (horizon‑4) predictions and replans at each control step. — The checkpoint configuration documents a prediction horizon of 4 and continuous 7‑D action chunks, which supports receding-horizon execution patterns where a controller executes a subset (e.g., the first) of predicted actions and replans.
+- Avoid: Unconstrained claims of verified robot compatibility or out-of-the-box deployment on specific robot platforms without per-platform validation. — Evidence gap: I did not find a creator-authored, enumerated list of verified robot platforms or per-platform certification guarantees for Octo Small in the inspected primary sources; therefore avoid asserting out-of-the-box compatibility with specific hardware without independent verification.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -95,11 +104,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/rail-berkeley-octo-small-1-5/inference-routes`
 - Regional deployment: `/v1/models/rail-berkeley-octo-small-1-5/regional-deployment`
 - Serverless handoff: `/v1/models/rail-berkeley-octo-small-1-5/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/physical-ai/robotics-control/rail-berkeley-octo-small-1-5/SKILL.md

@@ -83,6 +83,15 @@ Route: `POST /v1/chat/completions`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-qwen-qwen2-5-vl-7b-instruct-557edb1d63`
+- Recommended: General multimodal question answering and scene understanding (text+image/video to text) — The Hugging Face model page and repository README provide an inference example using the processor.apply_chat_template and model.generate code path and report multimodal benchmark scores indicating multimodal QA/video capabilities for the exact Qwen2.5-VL-7B-Instruct checkpoint.
+- Recommended: Long-form video/multimodal temporal understanding (research/evaluation) — The Hugging Face model page/README for Qwen2.5-VL-7B-Instruct reports LongVideoBench and other video-related benchmark scores and the preprocessor/config indicate temporal_patch_size and video token IDs for video inputs, supporting evaluation-oriented long-video understanding use under the reported evaluation conditions.
+- Avoid: Clinical, medical, or other safety‑critical decision-making — Evidence gap: no primary evidence in the inspected checkpoint repository files or technical report documents any clinical validation, regulatory evaluation, or explicit clinical‑use safeguards for Qwen2.5-VL-7B-Instruct. The model README and config do not document clinical datasets, certifications, or instructions for safety‑critical deployment.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `false`.
@@ -101,11 +110,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/inference-routes`
 - Regional deployment: `/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/regional-deployment`
 - Serverless handoff: `/v1/models/qwen-qwen2-5-vl-7b-instruct-vllm/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/vision-language/qwen-qwen2-5-vl-7b-instruct-vllm/SKILL.md

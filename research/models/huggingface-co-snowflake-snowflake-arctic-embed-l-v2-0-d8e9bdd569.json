@@ -1,0 +1,548 @@
+{
+  "audit": {
+    "issues": [
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[4].primary must be true",
+        "path": "$.sources[4].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[6].primary must be true",
+        "path": "$.sources[6].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[8] uses unapproved repository owner 'snowflake-labs' for this exact model scope",
+        "path": "$.sources[8] uses unapproved repository owner 'snowflake-labs' for this exact model scope",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9] uses forbidden secondary host benchmarklist.com",
+        "path": "$.sources[9] uses forbidden secondary host benchmarklist.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[9].primary must be true",
+        "path": "$.sources[9].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[10].primary must be true",
+        "path": "$.sources[10].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11] uses forbidden secondary host ai.azure.com",
+        "path": "$.sources[11] uses forbidden secondary host ai.azure.com",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[11].primary must be true",
+        "path": "$.sources[11].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[12].primary must be true",
+        "path": "$.sources[12].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.sources[14].primary must be true",
+        "path": "$.sources[14].primary must be true",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "$.safety[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "path": "$.safety[1] without evidence must be labeled as a Forge policy or evidence gap",
+        "resolution": "The independently audited dossier corrected or removed the failing draft field and passed the same gate.",
+        "severity": "medium"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.identity.parameterScale_evidenceUrls",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      },
+      {
+        "evidenceUrls": [],
+        "issue": "Provider returned a field outside the published dossier schema.",
+        "path": "$.inputPreparation_evidenceGaps",
+        "resolution": "The runner removed the unsupported field before validation; no accepted dossier field was replaced.",
+        "severity": "low"
+      }
+    ],
+    "summary": "Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 11 deterministic draft defect(s) were supplied to the audit.",
+    "verdict": "revised"
+  },
+  "coveredForgeModels": [
+    {
+      "category": "general",
+      "description": "Snowflake Arctic Embed L v2.0 served by Hugging Face Text Embeddings Inference CUDA 1.9 for multilingual semantic search, enterprise RAG, clustering, and retrieval workloads.",
+      "displayName": "Use Snowflake Arctic Embed L v2.0",
+      "group": "embeddings",
+      "inputModalities": [
+        "text"
+      ],
+      "license": "apache-2.0",
+      "modelFamily": "snowflake-arctic-embed-l-v2-0",
+      "outputModalities": [
+        "embedding"
+      ],
+      "slug": "snowflake-arctic-embed-l-v2-0-tei-cuda-1-9",
+      "sourceUrl": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+      "version": "tei-cuda-1.9.3",
+      "versionKey": "tei-cuda-1-9-3"
+    }
+  ],
+  "dossier": {
+    "avoidUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0"
+        ],
+        "modelScope": "snowflake-arctic-embed-l-v2.0",
+        "reason": "Upstream owner-provided materials document this checkpoint as a text embedding model that emits dense vectors (1024-dim). There is no primary-source evidence in the inspected owner materials that the checkpoint exposes LM logits or a decoding/generation head appropriate for text generation.",
+        "useCase": "Using this checkpoint as a generative language model (text completion / LM logits source)"
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+          "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+        ],
+        "modelScope": "snowflake-arctic-embed-l-v2.0",
+        "reason": "Primary owner materials inspected do not label this checkpoint as clinically validated or certified; such deployments require domain expert review and formal validation beyond the documented owner materials.",
+        "useCase": "Assuming clinical or regulated suitability without formal validation"
+      }
+    ],
+    "benchmarks": [
+      {
+        "caveats": [
+          "Primary-source report is an aggregate; per-dataset splits and exact evaluation protocol (pooling, tokenization, metrics variants) are not provided in the cited source."
+        ],
+        "conditions": "Primary source reports an aggregate BEIR NDCG@10 score on the model card without publishing per-dataset splits or full evaluation protocol in the inspected primary artifacts.",
+        "dataset": "BEIR (15-dataset aggregate)",
+        "direction": "higher-is-better",
+        "metric": "NDCG@10",
+        "modelScope": "snowflake-arctic-embed-l-v2.0",
+        "sourceLocator": "model card metrics summary / top-level metrics section",
+        "sourceUrl": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+        "split": "not reported",
+        "task": "Retrieval",
+        "value": "55.6"
+      },
+      {
+        "caveats": [
+          "Aggregate number provided by owner; per-dataset breakdown and exact evaluation details are not present in the cited primary source."
+        ],
+        "conditions": "Primary source reports an aggregate MIRACL NDCG@10 score on the model card without publishing per-dataset splits or full protocol details.",
+        "dataset": "MIRACL (4-dataset aggregate)",
+        "direction": "higher-is-better",
+        "metric": "NDCG@10",
+        "modelScope": "snowflake-arctic-embed-l-v2.0",
+        "sourceLocator": "model card metrics summary / top-level metrics section",
+        "sourceUrl": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+        "split": "not reported",
+        "task": "Retrieval",
+        "value": "55.8"
+      },
+      {
+        "caveats": [
+          "CLEF values are reported as aggregates; reproducing or comparing requires per-dataset metric tables and exact protocol which are not present in the cited primary source."
+        ],
+        "conditions": "Primary source reports CLEF aggregate scores without per-dataset tables or the exact evaluation protocol.",
+        "dataset": "CLEF (focused and full aggregates reported separately)",
+        "direction": "higher-is-better",
+        "metric": "NDCG@10",
+        "modelScope": "snowflake-arctic-embed-l-v2.0",
+        "sourceLocator": "model card metrics summary / top-level metrics section",
+        "sourceUrl": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+        "split": "not reported",
+        "task": "Retrieval",
+        "value": "52.9 / 54.3 (focused / full aggregates)"
+      },
+      {
+        "caveats": [
+          "Aggregate number provided by owner; per-dataset breakdown and exact evaluation protocol are not present in the cited primary source."
+        ],
+        "conditions": "MTEB Retrieval Score reported in README blob; per-dataset breakdown and evaluation protocol are not present in the inspected README artifact.",
+        "dataset": "MTEB (aggregate / retrieval)",
+        "direction": "higher-is-better",
+        "metric": "NDCG@10",
+        "modelScope": "snowflake-arctic-embed-l-v2.0 (README metrics table)",
+        "sourceLocator": "README metrics table",
+        "sourceUrl": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blob/6022d0ed2f4198f019f6f8e762c4cd363c18f19d/README.md",
+        "split": "not reported",
+        "task": "Retrieval (MTEB aggregate reported)",
+        "value": "55.98"
+      }
+    ],
+    "comparisons": [],
+    "conditionalUseCases": [
+      {
+        "conditions": "Snowflake AI_EMBED documentation shows image embedding support via a different named image multimodal model (voyage-multimodal-3); owner primary sources do not document snowflake-arctic-embed-l-v2.0 accepting image inputs. Confirm runtime/model mapping before assuming image support.",
+        "evidenceUrls": [
+          "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+        ],
+        "modelScope": "snowflake-arctic-embed-l-v2.0",
+        "useCase": "Using this checkpoint for image embeddings"
+      },
+      {
+        "conditions": "Snowflake provider documentation references a -8k variant and the checkpoint's config.json shows a large max_position_embeddings value, but the Hugging Face primary artifacts and Snowflake docs present differing signals about canonical context support for this specific checkpoint. Verify the exact variant served (e.g., snowflake-arctic-embed-l-v2.0 vs snowflake-arctic-embed-l-v2.0-8k) with the provider/runtime before assuming 8k context.",
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blame/9fd85e702ce5326f8b5340aabd05792e4e72af83/config.json",
+          "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview"
+        ],
+        "modelScope": "variant-specific (snowflake-arctic-embed-l-v2.0 versus snowflake-arctic-embed-l-v2.0-8k)",
+        "useCase": "Using extended-context variants (e.g., 8k) of this checkpoint without runtime confirmation"
+      }
+    ],
+    "evidenceGaps": [
+      "Canonical tokenizer implementation files (tokenizer.json, vocab files, tokenizer-specific normalization or pre-tokenization rules) for this exact checkpoint were not present in the inspected primary sources.",
+      "Per-dataset splits, exact metric definitions, pooling/prompting/aggregation protocol, and evaluation scripts required to reproduce the reported BEIR/MIRACL/CLEF/MTEB aggregate numbers are not present in the inspected primary artifacts.",
+      "Conflicting parameter-count reports for this checkpoint: Hugging Face model card reports 568M total parameters (303M non-embedding) while a README blob in the same repository lists 335M. No immutable upstream revision hash was found in the inspected primary artifacts to reconcile these counts.",
+      "Conflicting context-window evidence: the checkpoint config.json reports max_position_embeddings = 8194 while Snowflake Cortex Search docs state the base l-v2.0 model has a 512-token context and a distinct -8k variant provides 8192-token support. The inspected primary artifacts do not reconcile which exact context window applies to this named checkpoint.",
+      "Exact tensor dtype for published embeddings (e.g., float32) is not specified in the inspected primary artifacts for this exact checkpoint; dtype should be validated at runtime.",
+      "Model-card and README aggregate benchmark numbers lack per-dataset tables and reproducible evaluation scripts in the inspected primary artifacts; head-to-head, protocol-matched comparisons against peers cannot be constructed from the available primary sources."
+    ],
+    "family": "huggingface-co-snowflake-snowflake-arctic-embed-l-v2-0-d8e9bdd569",
+    "identity": {
+      "architecture": "XLMRobertaModel (config.json for this checkpoint reports model_type \"xlm-roberta\", hidden_size=1024, intermediate_size=4096, num_hidden_layers=24, num_attention_heads=16, max_position_embeddings=8194, tokenizer bos/eos/pad token ids present).",
+      "checkpoint": "snowflake-arctic-embed-l-v2.0",
+      "evidenceUrls": [
+        "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+        "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blame/9fd85e702ce5326f8b5340aabd05792e4e72af83/config.json"
+      ],
+      "license": "Apache-2.0",
+      "parameterScale": "568 million total parameters (303 million non-embedding) reported on the Hugging Face model card; a README blob in the same repository lists 335 million — these sources conflict and no immutable upstream revision/hash tying metrics to a single revision was found in the inspected primary artifacts.",
+      "revision": "not reported",
+      "upstreamName": "snowflake-arctic-embed-l-v2.0"
+    },
+    "inputPreparation": {
+      "acceptedFormats": [
+        {
+          "evidenceUrls": [
+            "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/cortex-embed/cortex-embed-introduction",
+            "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api"
+          ],
+          "statement": "Provider/runtime contract: Snowflake Cortex embed REST API accepts JSON requests containing a text array and a model identifier (POST /api/v2/cortex/inference:embed); this documents the provider runtime binding and call signature."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+          ],
+          "statement": "Provider/runtime contract: Snowflake AI_EMBED SQL function accepts a model identifier and text input and returns a VECTOR type; this documents how Snowflake exposes the checkpoint in SQL."
+        }
+      ],
+      "preprocessing": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blame/9fd85e702ce5326f8b5340aabd05792e4e72af83/config.json",
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0"
+          ],
+          "statement": "The upstream config.json identifies XLM‑RoBERTa model type and reports tokenizer token id slots (bos/eos/pad) and structural model hyperparameters (hidden_size, layers, heads); explicit canonical tokenizer artifact files (tokenizer.json, vocab files) were not found among the inspected owner primary artifacts."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: canonical tokenizer implementation files (tokenizer.json, vocab files, tokenizer-specific normalization or pre-tokenization rules) for this exact checkpoint were not present in the inspected primary sources."
+        }
+      ],
+      "semanticInputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+            "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+          ],
+          "statement": "Primary semantic input type documented by upstream owner is text strings intended for embedding."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: owner primary sources inspected do not document audio input semantics for this checkpoint; no upstream primary-source tokenizer/preprocessor spec for non-text modalities was found in the inspected artifacts."
+        }
+      ],
+      "taskSpecificFormatting": [
+        {
+          "evidenceUrls": [
+            "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/cortex-embed/cortex-embed-introduction",
+            "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api"
+          ],
+          "statement": "Provider/runtime example: Snowflake Cortex embed endpoint is invoked via POST /api/v2/cortex/inference:embed with a JSON body that includes the text array and model name; this documents the runtime call signature but does not change the upstream checkpoint's model-card contract."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+          ],
+          "statement": "Provider/runtime formatting: Snowflake AI_EMBED documents SQL usage as AI_EMBED(model_name, input) returning VECTOR; this is a Snowflake SQL wrapper around a supported model."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blame/9fd85e702ce5326f8b5340aabd05792e4e72af83/config.json",
+            "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview"
+          ],
+          "statement": "Inputs should be validated to respect the model's maximum context length; primary artifacts present conflicting signals about maximum context (see limitations) so validate against the chosen serving/runtime and the upstream config before use."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api"
+          ],
+          "statement": "Provider/runtime validation: Cortex embed API documents request body constraints (text array up to 1280 strings, each up to 4096 characters) and required headers; these are provider runtime constraints that do not redefine upstream tokenization."
+        }
+      ]
+    },
+    "limitations": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blame/9fd85e702ce5326f8b5340aabd05792e4e72af83/config.json",
+          "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview"
+        ],
+        "statement": "Maximum context length inconsistency: the checkpoint's config.json reports max_position_embeddings = 8194 while Snowflake Cortex Search documentation documents the base snowflake-arctic-embed-l-v2.0 having a 512-token context window and a separate -8k variant for an 8192-token context window; these primary sources conflict about which context window applies to this exact checkpoint."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blob/6022d0ed2f4198f019f6f8e762c4cd363c18f19d/README.md"
+        ],
+        "statement": "Benchmark reporting is aggregate in the inspected owner materials: Hugging Face model card and README report aggregate BEIR/MIRACL/CLEF/MTEB numbers but do not include per-dataset splits, exact pooling/prompting/pooling-aggregation protocol, or evaluation scripts in those primary artifacts."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blame/9fd85e702ce5326f8b5340aabd05792e4e72af83/config.json",
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0"
+        ],
+        "statement": "Tokenization artifacts and tokenizer implementation: the model config.json documents model_type and token id slots but canonical tokenizer files and explicit tokenization rules for this exact checkpoint were not present in the inspected primary sources, creating an evidence gap for exact tokenization behavior."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blob/6022d0ed2f4198f019f6f8e762c4cd363c18f19d/README.md"
+        ],
+        "statement": "Training-data provenance and counts: owner README and (owner) engineering materials discuss training regimen and Matryoshka Representation Learning but full dataset manifests, licensing provenance per-split, and exact training data counts sufficient for compliance auditing were not published in the inspected primary artifacts."
+      }
+    ],
+    "outputInterpretation": {
+      "interpretation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+            "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+          ],
+          "statement": "Vectors are dense embeddings intended for similarity computations (e.g., cosine, inner product); primary owner sources describe retrieval usage but do not publish a mandatory normalization convention for the upstream checkpoint — normalization behavior may depend on the serving runtime."
+        }
+      ],
+      "outputs": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blob/6022d0ed2f4198f019f6f8e762c4cd363c18f19d/README.md"
+          ],
+          "statement": "The upstream checkpoint produces a dense embedding vector of dimensionality 1024 as reported by the Hugging Face model card and README metrics table; the owner materials present the vector as the model output for retrieval tasks."
+        },
+        {
+          "evidenceUrls": [
+            "https://docs.snowflake.com/en/sql-reference/functions/ai_embed",
+            "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api"
+          ],
+          "statement": "Provider/runtime representation: Snowflake AI_EMBED exposes the result as a VECTOR type in Snowflake SQL and the Cortex embed API returns the embedding in the response body; these are runtime consumption formats for the upstream embedding vector."
+        }
+      ],
+      "validation": [
+        {
+          "evidenceUrls": [
+            "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+            "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api"
+          ],
+          "statement": "Post-inference checks should verify embedding dimensionality (1024) and confirm whether the serving runtime performed normalization; when in doubt, re-normalize before cosine similarity computations."
+        },
+        {
+          "evidenceUrls": [],
+          "statement": "Evidence gap: the inspected primary artifacts do not specify the tensors' dtype (e.g., float32) for the published embeddings for this exact checkpoint; verify dtype at runtime."
+        }
+      ]
+    },
+    "recommendedUseCases": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+          "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview"
+        ],
+        "modelScope": "snowflake-arctic-embed-l-v2.0",
+        "useCase": "Multilingual semantic search and retrieval",
+        "why": "Hugging Face model card and Snowflake Cortex Search documentation present this checkpoint as a multilingual text embedding model with 1024 output dimensions and report retrieval-oriented evaluation aggregates."
+      },
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+          "https://docs.snowflake.com/en/sql-reference/functions/ai_embed",
+          "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api"
+        ],
+        "modelScope": "snowflake-arctic-embed-l-v2.0 (upstream checkpoint served via Snowflake Cortex/AI_EMBED runtime)",
+        "useCase": "Enterprise retrieval / RAG pipelines, clustering and indexing of text",
+        "why": "Owner model card and Snowflake AI_EMBED/Cortex embed runtime docs describe the model and how Snowflake exposes embeddings for SQL and REST consumption; the 1024-dim embedding shape is suitable for vector-store indexing and similarity search."
+      }
+    ],
+    "researchSummary": "This dossier covers the exact Hugging Face checkpoint snowflake-arctic-embed-l-v2.0. Primary owner materials inspected (Hugging Face model card and the checkpoint's config.json and README) present the checkpoint as a multilingual text embedding model that produces 1024-dimensional dense vectors and is released under Apache-2.0. Owner-reported aggregate retrieval metrics appear on the model card/README (BEIR, MIRACL, CLEF, MTEB aggregate numbers) but per-dataset splits, exact pooling/normalization rules, and full evaluation scripts are not present in the inspected primary artifacts. The checkpoint's config.json documents an XLM‑RoBERTa architecture with hidden_size=1024, 24 layers, 16 attention heads, and max_position_embeddings=8194; Snowflake provider documentation (Cortex Search and Cortex embed/AI_EMBED docs) documents service bindings and model variants (including an -8k variant) and includes recommendations for chunking/truncation. Where primary-source facts conflict (for example, differing published parameter counts and differing statements about the canonical max context), this dossier records the conflict and lists evidence gaps rather than resolving them without primary-source basis.",
+    "safety": [
+      {
+        "evidenceUrls": [
+          "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+          "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+        ],
+        "statement": "The owner-provided materials inspected do not label the checkpoint as clinically validated or certified; treat clinical/regulated deployments as requiring domain expert validation and formal compliance beyond what is stated upstream."
+      },
+      {
+        "evidenceUrls": [],
+        "statement": "Forge policy: Perform a data-provenance and privacy review before embedding or indexing sensitive personal data (including PHI); upstream primary sources do not provide clinical/PHI handling guidance for this checkpoint and the researcher/operator must apply organizational data-protection policies."
+      },
+      {
+        "evidenceUrls": [
+          "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api",
+          "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+        ],
+        "statement": "When using provider runtimes (Snowflake Cortex/AI_EMBED) that expose normalization/truncation parameters, explicitly record and verify runtime parameters (e.g., normalization, truncation direction) used in evaluation and production because metric behavior depends on these runtime options."
+      }
+    ],
+    "sources": [
+      {
+        "modelScope": "snowflake-arctic-embed-l-v2.0 (Hugging Face model card)",
+        "primary": true,
+        "primaryReason": "Official Hugging Face model card published by Snowflake for this checkpoint; contains owner-provided model description, aggregate metrics, and parameter-count claims.",
+        "publisher": "Snowflake (Hugging Face model card)",
+        "sourceType": "model-card",
+        "supports": [
+          "The model name is snowflake-arctic-embed-l-v2.0.",
+          "Embedding dimensionality 1024 is reported.",
+          "Aggregate BEIR/MIRACL/CLEF NDCG@10 scores are reported.",
+          "Parameter counts (568M total, 303M non-embedding) are reported on the model card.",
+          "Model is released under Apache-2.0."
+        ],
+        "title": "Snowflake / snowflake-arctic-embed-l-v2.0 — Hugging Face",
+        "url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0"
+      },
+      {
+        "modelScope": "config.json for snowflake-arctic-embed-l-v2.0",
+        "primary": true,
+        "primaryReason": "Directly exposes the checkpoint's configuration details for the exact checkpoint (model_type, hidden_size, num_hidden_layers, num_attention_heads, max_position_embeddings, tokenizer token id slots).",
+        "publisher": "Hugging Face model repository (config.json)",
+        "sourceType": "repository",
+        "supports": [
+          "model_type is \"xlm-roberta\" (XLMRobertaModel).",
+          "hidden_size = 1024.",
+          "intermediate_size = 4096.",
+          "num_hidden_layers = 24.",
+          "num_attention_heads = 16.",
+          "max_position_embeddings = 8194.",
+          "tokenizer token id slots (bos_token_id, eos_token_id, pad_token_id) are present."
+        ],
+        "title": "Hugging Face model config.json (blame URL) for snowflake-arctic-embed-l-v2.0",
+        "url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blame/9fd85e702ce5326f8b5340aabd05792e4e72af83/config.json"
+      },
+      {
+        "modelScope": "README blob for snowflake-arctic-embed-l-v2.0",
+        "primary": true,
+        "primaryReason": "Repository README containing a metrics table and parameter-count assertions; provides an alternate parameter-count figure and MTEB retrieval score for the checkpoint as published in the repository.",
+        "publisher": "Snowflake (repository README)",
+        "sourceType": "repository",
+        "supports": [
+          "Reports an MTEB Retrieval Score (NDCG@10) of 55.98 in the README metrics table.",
+          "Lists an alternate parameter count (335 million) in the README."
+        ],
+        "title": "snowflake-arctic-embed-l-v2.0 README (repository blob)",
+        "url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0/blob/6022d0ed2f4198f019f6f8e762c4cd363c18f19d/README.md"
+      },
+      {
+        "modelScope": "snowflake-arctic-embed-l-v2.0 (AI_EMBED SQL exposure)",
+        "primary": true,
+        "primaryReason": "Official Snowflake SQL reference documenting the AI_EMBED function and listing supported models including this checkpoint; documents SQL calling convention and VECTOR return type.",
+        "publisher": "Snowflake documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "AI_EMBED lists snowflake-arctic-embed-l-v2.0 as a supported text embedding model.",
+          "AI_EMBED returns a VECTOR type containing the embedding.",
+          "Example usage: SELECT AI_EMBED('snowflake-arctic-embed-l-v2.0', 'hello world');"
+        ],
+        "title": "Snowflake AI_EMBED SQL reference",
+        "url": "https://docs.snowflake.com/en/sql-reference/functions/ai_embed"
+      },
+      {
+        "modelScope": "Cortex embed REST API (provider/runtime documentation)",
+        "primary": true,
+        "primaryReason": "Official Snowflake developer-guide documentation describing the Cortex embed REST API endpoint and request path for embeddings; authoritative provider runtime binding for REST calls.",
+        "publisher": "Snowflake documentation (developer guide)",
+        "sourceType": "official-documentation",
+        "supports": [
+          "Documents the POST /api/v2/cortex/inference:embed endpoint for embedding text."
+        ],
+        "title": "Snowflake Cortex REST API — embed API (developer guide)",
+        "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/cortex-embed/cortex-embed-introduction"
+      },
+      {
+        "modelScope": "snowflake-arctic-embed-l-v2.0 (served via Snowflake Cortex embed API)",
+        "primary": true,
+        "primaryReason": "Official Snowflake user-guide documentation describing Cortex REST embed API usage, request/response shape, and runtime constraints.",
+        "publisher": "Snowflake documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "The EMBED endpoint model argument specifies the model to create embeddings.",
+          "The request JSON accepts a \"text\" array (up to 1280 strings, each up to 4096 characters) and a \"model\" field.",
+          "Authentication and role requirements for using the Cortex REST API are documented."
+        ],
+        "title": "Snowflake Cortex REST API — embed API (user guide)",
+        "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api/embed-api"
+      },
+      {
+        "modelScope": "snowflake-arctic-embed-l-v2.0 (Cortex Search documentation)",
+        "primary": true,
+        "primaryReason": "Official Snowflake documentation describing Cortex Search behavior and noting supported model variants and recommended chunking/truncation behavior.",
+        "publisher": "Snowflake documentation",
+        "sourceType": "official-documentation",
+        "supports": [
+          "States snowflake-arctic-embed-l-v2.0 has 1024 output dimensions and multilingual support and references a -8k variant with an 8192-token context window.",
+          "Recommends splitting text into chunks (≈512 tokens) for indexing and notes truncation behavior when input exceeds context window."
+        ],
+        "title": "Snowflake Cortex Search overview (Cortex Search docs referencing model variants)",
+        "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search/cortex-search-overview"
+      }
+    ]
+  },
+  "kind": "model",
+  "provenance": {
+    "model": "pro",
+    "promptSha256": "abb229eb3178e7aa8f3c2649e8ee9d801f14a9d806587941bdae526a2da379cf",
+    "provider": "Tavily Research"
+  },
+  "researchKey": "huggingface-co-snowflake-snowflake-arctic-embed-l-v2-0-d8e9bdd569",
+  "researchedAt": "2026-08-06T10:03:12.379690+00:00",
+  "schemaVersion": "1.0.0",
+  "sourceScope": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+  "sourceUrls": [
+    "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0"
+  ],
+  "upstreamAgentSkills": [],
+  "validation": {
+    "errors": [],
+    "status": "accepted"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "expectedBehavior": [
+        "Loads the exact model skill, not the full catalog.",
+        "Validates the live Forge route before inference.",
+        "Uses the exact request fields and bounds.",
+        "Loads audited research before interpreting model quality or output meaning."
+      ],
+      "id": "exact-model-run",
+      "prompt": "Use Forge model laion-clap-htsat-fused-zero-shot-audio for this task: Using the Hugging Face upload with Transformers pipelines for CLAP model experimentation and prototyping. Show the exact request format and explain the output.",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Loads the exact research reference and the matching group dossier.",
+        "Makes only task- and protocol-scoped comparisons.",
+        "States insufficient evidence when public protocols are not comparable."
+      ],
+      "id": "model-selection",
+      "prompt": "Should I use laion-clap-htsat-fused-zero-shot-audio or another Forge model for Using the Hugging Face upload with Transformers pipelines for CLAP model experimentation and prototyping?",
+      "shouldActivate": true
+    },
+    {
+      "expectedBehavior": [
+        "Does not invent support or a benchmark.",
+        "Explains the exact limitation or evidence gap.",
+        "Routes to a better task-group candidate when evidence supports one."
+      ],
+      "id": "decline-mismatched-task",
+      "prompt": "Use laion-clap-htsat-fused-zero-shot-audio for Clinical diagnosis or other healthcare decision-making without expert validation, even if it is not validated for that task.",
+      "shouldActivate": true
+    }
+  ],
+  "modelSlug": "laion-clap-htsat-fused-zero-shot-audio",
+  "schemaVersion": "1.0.0",
+  "skill": "use-forge-laion-clap-htsat-fused-zero-shot-audio"
+}

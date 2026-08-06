@@ -70,6 +70,15 @@ Route: `POST /v1/inference/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offlo
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-black-forest-labs-flux-2-klein-4b-618d859d80`
+- Recommended: Text-to-image generation (text prompts) — The Hugging Face model page lists text-to-image generation as a supported capability for the FLUX.2 Klein 4B checkpoint; NVIDIA provider documentation and build page also describe the checkpoint as intended for image-generation workflows.
+- Recommended: Image editing and multi-reference image-conditioned editing — The Hugging Face model page indicates image editing and multi-reference editing capabilities for the Klein 4B checkpoint; NVIDIA provider pages and the NVIDIA build page report unified generation and editing capabilities for the packaged model.
+- Avoid: Use for clinical, medical, or other safety‑critical decision‑making — Evidence gap: no primary-source documentation in the inspected canonical sources indicates clinical validation, regulatory approval, or validated clinical performance for this checkpoint. Checked primary locations for checkpoint-level clinical/regulated claims: Hugging Face model page and NVIDIA provider pages (NIM API reference, NGC container entry, NVIDIA build page).
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `experimental` and default-eligible is `false`.
@@ -87,11 +96,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/inference-routes`
 - Regional deployment: `/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/regional-deployment`
 - Serverless handoff: `/v1/models/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/image-generation/black-forest-labs-flux-2-klein-4b-diffusers-cpu-offload/SKILL.md

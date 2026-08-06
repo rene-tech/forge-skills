@@ -78,6 +78,14 @@ Route: `POST /v1/inference/openmoss-team-mova`
 Forge has linked the exact model's primary source, but has not attached an independently reviewed public benchmark claim to this exact skill. Do not invent one, transfer a neighboring checkpoint's result, or treat Forge latency/GPU probes as model-quality evidence.
 Read `references/evidence.md` and the linked primary source before making a model-quality comparison.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-openmoss-team-mova-360p-9ea737edd1`
+- Recommended: Synchronized video-plus-audio generation from text and/or image prompts (IT2VA/T2VA) — Hugging Face model card describes MOVA as a framework for Image‑Text and Text‑to‑Video‑Audio tasks and the arXiv technical report title and abstract define MOVA's aim toward scalable and synchronized video-audio generation.
+- Avoid: Adopting undocumented hardware or per-step performance recommendations as authoritative (for example: 'do not train 8s 360p on single RTX 4090') — Evidence gap: the inspected canonical artifacts (model-card, repository README, and arXiv PDF) do not contain checkpoint-scoped hardware recommendation statements or per-step performance tables tied specifically to MOVA-360p.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `stable` and default-eligible is `true`.
@@ -95,11 +103,15 @@ Read `references/evidence.md` and the linked primary source before making a mode
 - Routes: `/v1/models/openmoss-team-mova-360p-sglang/inference-routes`
 - Regional deployment: `/v1/models/openmoss-team-mova-360p-sglang/regional-deployment`
 - Serverless handoff: `/v1/models/openmoss-team-mova-360p-sglang/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/general/video-generation/openmoss-team-mova-360p-sglang/SKILL.md

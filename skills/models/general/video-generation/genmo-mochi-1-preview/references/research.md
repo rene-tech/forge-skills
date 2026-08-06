@@ -1,0 +1,277 @@
+# Audited model research
+
+## Contents
+
+- [Identity](#identity)
+- [Selection](#selection)
+- [Input preparation](#input-preparation)
+- [Output interpretation](#output-interpretation)
+- [Public benchmarks](#public-benchmarks)
+- [Comparisons](#comparisons)
+- [Limitations and safety](#limitations-and-safety)
+- [Related upstream agent skills](#related-upstream-agent-skills)
+- [Primary sources](#primary-sources)
+- [Evidence gaps](#evidence-gaps)
+
+- Research key: `github-com-genmoai-mochi-e002a7537d`
+- Independent audit: `revised`
+- Researched: `2026-07-23T23:22:09.120762+00:00`
+
+This dossier is scoped to the checkpoint genmo/mochi-1-preview at revision c228c039e56e9feae0688704face368fd2b99f1c and uses only canonical primary sources enumerated in the sources list. Verified checkpoint-scoped facts from primary sources: Mochi 1 is a text-to-video model using an Asymmetric Diffusion Transformer (AsymmDiT) architecture with an accompanying AsymmVAE and a single T5-XXL text encoder. Primary sources state a 10 billion parameter scale and that the project is released under an Apache-2.0 license. The AsymmVAE compresses to a 12-channel latent with 8×8 spatial and 6× temporal factors (supported by multiple primary blobs), but there is a documented conflict in the reported overall compression multiple: the Hugging Face model page states a 128× compression while a checkpoint-level README blob (the named commit) reports a 96× compression; both sources agree on 12 latent channels and the spatial/temporal factors. Tokenizer artifacts and explicit text_encoder configuration for this checkpoint are present as model blobs (tokenizer/added_tokens.json and text_encoder/config.json) in the model repository and are listed in the sources. Diffusers pipeline documentation and implementation provide pipeline-level defaults (width=848 px; pipeline implementation shows num_frames default=19; docs example shows num_frames=85) and example export FPS=30; these are pipeline defaults/examples in Diffusers sources and are not explicitly documented as checkpoint-scoped defaults for this exact checkpoint. Named-commit documentation and the repository README include operational guidance (including a commit-level note advising organizational safety review and a commit-level README referencing large GPU requirements); the named commit blob explicitly anchors the revision. Primary sources do not contain checkpoint-scoped numeric benchmark tables tied to the named revision. Where primary sources disagree or do not state a checkpoint-scoped assertion (for example, the overall VAE compression multiple and canonical numeric pipeline defaults tied to the checkpoint), this dossier records explicit evidence gaps with the exact primary locators inspected.
+
+## Identity
+
+- Upstream name: genmo/mochi-1-preview
+- Checkpoint/version: genmo/mochi-1-preview
+- Immutable revision: c228c039e56e9feae0688704face368fd2b99f1c
+- Parameter scale: 10B parameters
+- Architecture/head: AsymmDiT (Asymmetric Diffusion Transformer) + AsymmVAE; text encoder: T5-XXL
+- License: Apache-2.0
+- Evidence: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c, https://github.com/genmoai/mochi/blob/main/README.md, https://github.com/genmoai/mochi/blob/main/LICENSE, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+
+## Selection
+
+### Recommended
+
+- **Text-to-video generation (research and experimentation) with text prompts** — The Hugging Face model page and the Diffusers Mochi pipeline documentation describe Mochi 1 as a video-generation model that encodes text prompts with a single T5-XXL encoder and is intended for text-conditioned video generation experiments.
+  Scope: genmo/mochi-1-preview
+  Evidence: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+- **Research & development of text-conditioned video inference harnesses (integration with Diffusers)** — The Genmo repository README and Diffusers documentation provide code examples and pipeline integration points suitable for R&D and controlled experimentation using the checkpoint.
+  Scope: genmo/mochi-1-preview (upstream-checkpoint evidence)
+  Evidence: https://github.com/genmoai/mochi/blob/main/README.md, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+
+### Conditional
+
+- **Large-scale inference deployments that require multiple H100 GPUs** — Primary commit-level README notes substantial GPU requirements and references requiring multiple high-memory GPUs; users must validate exact multi-GPU orchestration and memory behavior for their deployment. The primary sources document VRAM guidance in Diffusers but do not explicitly tie a specific multi‑GPU count (e.g., explicit 4× H100) as a formal checkpoint-scoped minimum in the Diffusers docs; the commit-level README contains operational guidance referencing large GPU resources.
+  Scope: genmo/mochi-1-preview@c228c039e56e9feae0688704face368fd2b99f1c
+  Evidence: https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c, https://github.com/genmoai/mochi/blob/main/README.md, https://github.com/huggingface/diffusers/blob/main/docs/source/en/api/pipelines/mochi.md
+- **Consumer‑GPU inference (experimental) with ComfyUI/tiling/offload optimizations** — Repository README documents consumer‑GPU and ComfyUI support and mentions tiling/CPU-offload options; users must validate memory, quantization, and performance tradeoffs for their specific hardware and optimizations before production use.
+  Scope: repository-level support statements (GitHub README)
+  Evidence: https://github.com/genmoai/mochi/blob/main/README.md
+
+### Avoid
+
+- **Commercial deployment without organizational safety protocols and review** — The named commit README for the checkpoint states steps have been taken to limit NSFW content but explicitly advises organizations to implement additional safety protocols before commercial deployment.
+  Scope: genmo/mochi-1-preview@c228c039e56e9feae0688704face368fd2b99f1c
+  Evidence: https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c
+
+## Input preparation
+
+### Semantic inputs
+
+- Text prompts describing scenes or actions for text-to-video generation. Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+
+### Accepted formats
+
+- Text input (text prompts) is the official upstream accepted input modality for the Mochi pipeline. Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+
+### Preprocessing
+
+- Prompts are encoded by a single T5-XXL text encoder as stated in the Diffusers pipeline documentation and the model repository text_encoder config. Sources: https://huggingface.co/docs/diffusers/en/api/pipelines/mochi, https://huggingface.co/genmo/mochi-1-preview
+- Videos are compressed by the upstream AsymmVAE to a 12-channel latent with 8×8 spatial and 6× temporal factors; primary sources agree on the latent channel count and factorization but disagree on the overall reported compression multiple (128× on the model page vs 96× in a checkpoint README blob). Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c
+
+### Pre-submit validation
+
+- Validate that prompts are text and compatible with the T5-XXL encoder; the primary sources do not publish a canonical input-validation test suite for tokenizer/config presence. Sources: https://huggingface.co/docs/diffusers/en/api/pipelines/mochi, https://huggingface.co/genmo/mochi-1-preview
+- Presence of tokenizer artifacts and explicit text_encoder configuration is verifiable in model blobs (tokenizer/added_tokens.json and text_encoder/config.json) for this checkpoint. Sources: https://huggingface.co/genmo/mochi-1-preview/blob/526dc7a57de33cf5c8300ca17b2ca2a0a4843fab/tokenizer/added_tokens.json, https://huggingface.co/genmo/mochi-1-preview/blob/4dfb6afc3379f72f7a53d85d14d3f0dfb7834c05/text_encoder/config.json
+
+### Task-specific formatting
+
+- The upstream documentation and Diffusers pipeline docs describe a Mochi pipeline/inference harness for text-to-video with parameterized fields (pipeline factory/harness present) but do not publish a single canonical prompt template tied to this checkpoint. Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi, https://github.com/genmoai/mochi/blob/main/README.md
+
+## Output interpretation
+
+### Outputs
+
+- Primary outputs are generated videos (sequences of frames) produced by the Mochi text-to-video pipeline. Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+
+### Interpretation
+
+- Interpret generation outputs cautiously: primary sources do not supply checkpoint-scoped numeric frame-level quality metrics tied to the named revision, so direct numeric quality claims for this checkpoint are unsupported by the inspected primary locators. Sources: https://huggingface.co/genmo/mochi-1-preview, https://github.com/genmoai/mochi/blob/main/README.md
+
+### Post-inference validation
+
+- Post-inference validation should include human review for prompt adherence and motion coherence; primary sources do not publish a checkpoint-scoped automated post-inference calibration or benchmark suite. Sources: https://github.com/genmoai/mochi/blob/main/README.md, https://huggingface.co/genmo/mochi-1-preview
+- Evidence gap: canonical output tensor shapes (explicit width×height×frames examples tied to this checkpoint) and FPS/playback frame-rate tied specifically to genmo/mochi-1-preview@c228c039e56e9feae0688704face368fd2b99f1c are not published in the inspected checkpoint-scoped primary locators. Diffusers examples provide example export FPS and example sizes but do not explicitly claim these as checkpoint-scoped defaults for this named revision. Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi, https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/mochi/pipeline_mochi.py
+
+## Public benchmarks
+
+No checkpoint-matched public benchmark row passed the evidence gate.
+
+## Comparisons
+
+### insufficient-evidence — `insufficient-evidence`
+
+- Task: Text-to-video generation benchmarks or direct model-to-model comparisons tied specifically to genmo/mochi-1-preview@c228c039e56e9feae0688704face368fd2b99f1c
+- Criteria: No checkpoint-scoped benchmark tables, rows, or figures for this exact revision were found in the primary sources (model card, commit README, repository README, or Diffusers docs).
+- Rationale: Primary sources inspected do not publish numeric benchmark results or direct comparative tables tied to this exact checkpoint/revision; therefore no evidence supports task-level comparisons for this checkpoint.
+- Comparison conditions: Searched the canonical primary locations for checkpoint-scoped benchmarks: the Hugging Face model card, the named commit README, the Genmo GitHub README, and the Diffusers Mochi documentation; none contain benchmark tables or direct comparison rows for the named revision.
+- Evidence: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c, https://github.com/genmoai/mochi/blob/main/README.md, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+
+## Limitations and safety
+
+### Limitations
+
+- Hardware and operational limits: repository and commit-level documentation reference substantial GPU-resource expectations and VRAM guidance; Diffusers docs provide VRAM examples for bf16 (~22 GB) and fp32 (>=42 GB), and the named commit README references substantial GPU requirements. Sources: https://github.com/huggingface/diffusers/blob/main/docs/source/en/api/pipelines/mochi.md, https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c, https://github.com/genmoai/mochi/blob/main/README.md
+- Scale/architecture limits: primary sources describe Mochi 1 as a 10B-parameter AsymmDiT diffusion model with an accompanying AsymmVAE, implying a large memory footprint. Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+- Ambiguity/conflict in AsymmVAE compression-ratio reporting: the Hugging Face model page documents a 128× compression claim while a named commit README blob reports a 96× compression claim; both agree on 8×8 spatial and 6× temporal factors to a 12-channel latent but conflict on the overall reported compression multiple. Sources: https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c
+- Evidence gap: canonical checkpoint-scoped numeric defaults for parameters such as num_frames, num_inference_steps, cfg_schedule, and sigma_schedule tied specifically to genmo/mochi-1-preview@c228c039e56e9feae0688704face368fd2b99f1c were not found. Diffusers pipeline code and docs include pipeline-level defaults and examples, but primary checkpoint blobs do not explicitly declare these values as checkpoint-scoped defaults. Sources: https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/mochi/pipeline_mochi.py, https://github.com/huggingface/diffusers/blob/main/docs/source/en/api/pipelines/mochi.md, https://huggingface.co/genmo/mochi-1-preview
+
+### Safety
+
+- Organizations should implement safety protocols prior to commercial deployment; the named commit documentation states steps have been taken to limit NSFW content but advises additional organizational review. Sources: https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c
+
+## Related upstream agent skills
+
+No exact or related NVIDIA/BioNeMo agent skill is mapped.
+
+## Primary sources
+
+### Mochi 1 Preview model page (Hugging Face)
+
+- URL: https://huggingface.co/genmo/mochi-1-preview
+- Publisher: Genmo AI (Hugging Face model page)
+- Type: `official-documentation`
+- Primary because: Canonical Hugging Face model page summarizing checkpoint attributes, architecture, and model-card documentation for Mochi 1 Preview.
+- Scope: genmo/mochi-1-preview (model card summary)
+- Supports: AsymmDiT architecture description
+- Supports: T5-XXL text encoder usage claim
+- Supports: 10B parameter scale claim
+- Supports: AsymmVAE latent-channel and factorization (8×8 spatial, 6× temporal to 12-channel latent)
+- Supports: AsymmVAE compression-ratio claim (128×) as stated on the model page
+- Supports: general model description emphasizing prompt adherence and motion quality
+- Supports: model license statement
+
+### Mochi 1 Preview commit (c228c039e56e9feae0688704face368fd2b99f1c) (Hugging Face blob/commit)
+
+- URL: https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c
+- Publisher: Genmo AI (Hugging Face commit view)
+- Type: `repository`
+- Primary because: Named Hugging Face commit page anchoring the exact revision and containing commit-level README documentation and checkpoint-scoped notes.
+- Scope: genmo/mochi-1-preview@c228c039e56e9feae0688704face368fd2b99f1c
+- Supports: checkpoint revision locator (c228c039e56e9feae0688704face368fd2b99f1c)
+- Supports: commit-level README content including AsymmVAE details and a differing AsymmVAE compression-ratio claim (96×)
+- Supports: commit-level statement advising additional organizational safety review prior to commercial deployment
+
+### Genmo Mochi GitHub Repository README (main)
+
+- URL: https://github.com/genmoai/mochi/blob/main/README.md
+- Publisher: Genmo AI (GitHub)
+- Type: `repository`
+- Primary because: Canonical project repository README used to verify architecture summary and operational guidance.
+- Scope: repository-level documentation for Mochi
+- Supports: project README statements about architecture and operational guidance
+- Supports: references to consumer-GPU / ComfyUI support and inference-harness instructions (as documented in the repository README)
+
+### Genmo Mochi GitHub LICENSE
+
+- URL: https://github.com/genmoai/mochi/blob/main/LICENSE
+- Publisher: Genmo AI (GitHub)
+- Type: `official-documentation`
+- Primary because: Repository LICENSE file proving the project license status as distributed in the repository.
+- Scope: repository-level license file
+- Supports: Apache-2.0 license for the project as distributed in the repository
+
+### Diffusers Mochi pipeline documentation (Hugging Face docs)
+
+- URL: https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+- Publisher: Hugging Face Documentation
+- Type: `official-documentation`
+- Primary because: Official Diffusers pipeline documentation describing the Mochi pipeline, encoder usage, and integration points.
+- Scope: pipeline-level documentation for Mochi integration in Diffusers
+- Supports: statement that Mochi is a video generation model and emphasizes prompt adherence and motion quality
+- Supports: statement that a single T5-XXL text encoder is used to encode prompts
+- Supports: pipeline/integration documentation for Mochi
+
+### Model tokenizer added_tokens.json (Hugging Face blob)
+
+- URL: https://huggingface.co/genmo/mochi-1-preview/blob/526dc7a57de33cf5c8300ca17b2ca2a0a4843fab/tokenizer/added_tokens.json
+- Publisher: Genmo AI (Hugging Face model blob)
+- Type: `official-documentation`
+- Primary because: Direct model repository blob showing tokenizer added tokens for this checkpoint.
+- Scope: tokenizer artifacts for genmo/mochi-1-preview
+- Supports: presence of tokenizer/added_tokens.json and mappings for extra token IDs (e.g., <extra_id_0> through <extra_id_91>)
+
+### Model text_encoder config (Hugging Face blob)
+
+- URL: https://huggingface.co/genmo/mochi-1-preview/blob/4dfb6afc3379f72f7a53d85d14d3f0dfb7834c05/text_encoder/config.json
+- Publisher: Genmo AI (Hugging Face model blob)
+- Type: `official-documentation`
+- Primary because: Direct model repository blob showing the text encoder configuration for the model checkpoint.
+- Scope: text_encoder configuration for genmo/mochi-1-preview
+- Supports: explicit text encoder model path set to "google/t5-v1_1-xxl"
+- Supports: text encoder architecture listed as "T5EncoderModel"
+- Supports: text encoder config parameters such as d_model, d_ff, number of layers/heads, and vocab size
+
+### Diffusers pipeline implementation for Mochi (source)
+
+- URL: https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/mochi/pipeline_mochi.py
+- Publisher: Hugging Face (Diffusers repository)
+- Type: `repository`
+- Primary because: Official Diffusers pipeline implementation containing code-level defaults and pipeline behavior used by the Mochi pipeline.
+- Scope: Diffusers pipeline implementation for Mochi
+- Supports: pipeline default: generated image width = 848 pixels
+- Supports: pipeline default: num_frames = 19
+- Supports: pipeline default: num_inference_steps = 50
+- Supports: pipeline default: guidance_scale = 4.5
+
+### Diffusers Mochi docs source (repository docs)
+
+- URL: https://github.com/huggingface/diffusers/blob/main/docs/source/en/api/pipelines/mochi.md
+- Publisher: Hugging Face (Diffusers documentation source)
+- Type: `official-documentation`
+- Primary because: Documentation source showing example pipeline parameters, VRAM guidance, and an example exporting FPS.
+- Scope: Diffusers Mochi docs example and guidance
+- Supports: example height = 480 px, width = 848 px, num_frames = 85
+- Supports: example num_inference_steps = 50, guidance_scale = 4.5
+- Supports: example export FPS = 30
+- Supports: VRAM guidance for bf16 (~22 GB) and fp32 (>=42 GB)
+
+### Exact official starting source declared by Forge
+
+- URL: https://github.com/genmoai/mochi
+- Publisher: github.com
+- Type: `official-documentation`
+- Primary because: The Forge exact-version catalog declares this first-party URL as the official source for the covered serving variant.
+- Scope: genmo-mochi
+- Supports: Forge-to-upstream exact-version identity
+
+## Evidence gaps
+
+- Evidence gap: Canonical checkpoint-scoped numeric benchmark tables, figures, or benchmark rows tied exactly to genmo/mochi-1-preview@c228c039e56e9feae0688704face368fd2b99f1c were not found in inspected primary locators: searched https://huggingface.co/genmo/mochi-1-preview, https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face3682b99f1c, https://github.com/genmoai/mochi/blob/main/README.md, and Diffusers docs at https://huggingface.co/docs/diffusers/en/api/pipelines/mochi.
+- Evidence gap: The primary sources contain a conflict in AsymmVAE overall compression multiple (128× on the model page vs 96× in the named commit README blob). Both agree on 12 latent channels and 8×8 spatial × 6× temporal factors, but the overall compression multiple is inconsistent; searched https://huggingface.co/genmo/mochi-1-preview and https://huggingface.co/genmo/mochi-1-preview/commit/c228c039e56e9feae0688704face368fd2b99f1c.
+- Evidence gap: Canonical pipeline numeric defaults (num_frames, num_inference_steps, cfg_schedule, sigma_schedule) tied specifically to the named checkpoint/revision were not found. Pipeline-level defaults and examples exist in Diffusers code and docs (e.g., pipeline code default num_frames=19; docs example num_frames=85; num_inference_steps=50 in both), but no checkpoint-scoped declaration was found in the checkpoint blobs; searched https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/mochi/pipeline_mochi.py, https://github.com/huggingface/diffusers/blob/main/docs/source/en/api/pipelines/mochi.md, and https://huggingface.co/genmo/mochi-1-preview.
+- Evidence gap: FPS/playback frame-rate explicitly tied to this checkpoint is not published in the checkpoint blobs; Diffusers docs example uses fps=30 when exporting video but do not state this as a checkpoint-scoped default for genmo/mochi-1-preview; searched https://huggingface.co/genmo/mochi-1-preview, https://github.com/genmoai/mochi/blob/main/README.md, and https://huggingface.co/docs/diffusers/en/api/pipelines/mochi.
+- Evidence gap: Exact canonical tokenizer file paths and a full tokenizer artifact set (beyond added_tokens.json) tied to this checkpoint are not exhaustively documented in a single checkpoint-scoped manifest; while tokenizer/added_tokens.json and text_encoder/config.json blobs are present, a single canonical tokenizer manifest listing all tokenizer files was not found at the inspected primary locators: checked tokenizer blob and model card at https://huggingface.co/genmo/mochi-1-preview and the commit view.
+
+## Independent audit
+
+Independent primary-source verification returned a complete corrected dossier that passed all local schema, source, and checkpoint-scope gates; 26 deterministic draft defect(s) were supplied to the audit.
+
+- `medium` $.outputInterpretation.interpretation[0]: $.outputInterpretation.interpretation[0]: missing required property evidenceUrls Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.outputInterpretation.interpretation[1]: $.outputInterpretation.interpretation[1]: missing required property evidenceUrls Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.outputInterpretation.validation[0]: $.outputInterpretation.validation[0]: missing required property evidenceUrls Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.sources[2].primary must be true: $.sources[2].primary must be true Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.sources[4].primary must be true: $.sources[4].primary must be true Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/genmo/mochi-1-preview/blob/4dfb6afc3379f72f7a53d85d14d3f0dfb7834c05/text_encoder/config.json Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/genmo/mochi-1-preview/blob/4dfb6afc3379f72f7a53d85d14d3f0dfb7834c05/text_encoder/config.json Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/genmo/mochi-1-preview/blob/4dfb6afc3379f72f7a53d85d14d3f0dfb7834c05/text_encoder/config.json Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/huggingface/diffusers/blob/main/src/diffusers/pipelines/mochi/pipeline_mochi.py Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/genmo/mochi-1-preview/blob/526dc7a57de33cf5c8300ca17b2ca2a0a4843fab/tokenizer/added_tokens.json Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/mochi/pipeline_mochi.py Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/docs/diffusers/v0.38.0/en/api/pipelines/hunyuan_video15 Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/Lightricks/LTX-2.3 Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://github.com/Lightricks/LTX-Video Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/OpenMOSS-Team/MOVA-360p Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/OpenMOSS-Team/MOVA-720p Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/docs/diffusers/v0.37.1/en/api/pipelines/skyreels_v2 Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://github.com/Wan-Video/Wan2.2 Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/zai-org/CogVideoX-2b Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` evidence URL is absent from $.sources: evidence URL is absent from $.sources: https://huggingface.co/genmo/mochi-1-preview/blob/4dfb6afc3379f72f7a53d85d14d3f0dfb7834c05/text_encoder/config.json Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path: $.benchmarks is empty without an evidence gap naming the exact primary-source URL and checked table/figure/section/page/heading/path Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.outputInterpretation.interpretation[0] without evidence must be labeled as a Forge policy or evidence gap: $.outputInterpretation.interpretation[0] without evidence must be labeled as a Forge policy or evidence gap Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.outputInterpretation.interpretation[1] without evidence must be labeled as a Forge policy or evidence gap: $.outputInterpretation.interpretation[1] without evidence must be labeled as a Forge policy or evidence gap Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `medium` $.outputInterpretation.validation[0] without evidence must be labeled as a Forge policy or evidence gap: $.outputInterpretation.validation[0] without evidence must be labeled as a Forge policy or evidence gap Resolution: The independently audited dossier corrected or removed the failing draft field and passed the same gate.
+- `low` https://github.com/genmoai/mochi: Audited claim cited a first-party child URL omitted from the source index. Resolution: The runner indexed the exact child URL beneath its already verified first-party parent; no claim content changed.

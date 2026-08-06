@@ -67,6 +67,15 @@ Route: `POST /v1/inference/facebook-esm-2-650m-protein-embedding`
 Reviewed public benchmark claims are attached below. Keep their model scope, dataset, split, metric, conditions, and caveats intact.
 Read `references/evidence.md` for 1 reviewed public claim(s) and their exact scope.
 
+## Audited model guidance
+
+- Audited research: `revised`
+- Research key: `huggingface-co-facebook-esm2-t33-650m-ur50d-e087b68cac`
+- Recommended: Produce per-residue and per-sequence protein sequence embeddings for downstream representation learning — The checkpoint is an ESM-2 embedding model checkpoint producing embeddings for protein sequences as described on the Hugging Face checkpoint page and in the ESM-2 paper; embeddings are appropriate as input features for downstream protein tasks.
+- Recommended: Fine-tuning or adapter-based supervised learning using the checkpoint embeddings as input features — The ESM-2 family and the checkpoint are presented in primary sources as models whose embeddings are usable for downstream tasks and fine-tuning; the checkpoint provides token-level embeddings suitable for downstream predictors.
+- Avoid: Assuming the base embedding checkpoint alone performs structure prediction (end-to-end) — Structure-prediction results reported in the ESM-2 paper (e.g., CASP/CAMEO TM-scores) depend on a downstream structure prediction pipeline/head (e.g., ESMFold) rather than solely the base embedding outputs; the base embedding checkpoint by itself is not shown in the primary sources to directly produce folded structures.
+- Before selecting against another model, transforming user data, interpreting outputs, or citing quality, read `references/research.md`.
+
 ## Limitations
 
 - Catalog stability is `testing` and default-eligible is `true`.
@@ -85,11 +94,15 @@ Read `references/evidence.md` for 1 reviewed public claim(s) and their exact sco
 - Routes: `/v1/models/facebook-esm-2-650m-protein-embedding/inference-routes`
 - Regional deployment: `/v1/models/facebook-esm-2-650m-protein-embedding/regional-deployment`
 - Serverless handoff: `/v1/models/facebook-esm-2-650m-protein-embedding/deploy`
-- Load `$use-nebius` for direct Nebius operations.
+- Load `$use-nebius` and `$nebius-forge-model-deployment` for a user-owned endpoint.
 
 ## Progressive references
 
+- `../research.md` — audited task-group selection and comparability rules.
+- `../research.json` — machine-readable task-group dossier.
 - `references/evidence.md` — benchmark/source scope.
+- `references/research.md` — full audited model-use dossier.
+- `references/research.json` — machine-readable audited dossier.
 - `references/forge-model.json` — complete public Forge model snapshot.
 - `references/forge-skill.json` — complete exact-skill API snapshot.
 - Repository file: https://github.com/rene-tech/forge-skills/blob/main/skills/models/life-science/protein-representation/facebook-esm-2-650m-protein-embedding/SKILL.md
