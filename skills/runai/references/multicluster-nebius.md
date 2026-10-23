@@ -49,6 +49,16 @@ priority/preemptibility. Distinguish cloud preemption, operator stop, OOM evicti
 node maintenance and scheduler reclaim using actual event/audit timestamps.
 A VM stopped near a502 does not establish who stopped it or why.
 
+For Compute VMs, discover the installed `nebius compute maintenance` commands
+(`get-by-instance`, `list-active`); the separate MSP `maintenance v1alpha1`
+service is a different API. Capture active event identity, reason, deadline,
+timestamps and any support-ticket reference before the event finishes. Public
+reads may expose only active events, not initiator or detailed cause. Nebius
+documents [maintenance for all VM types](https://docs.nebius.com/compute/virtual-machines/maintenance)
+and [reason codes](https://docs.nebius.com/compute/virtual-machines/maintenance-reasons):
+`OTHER` is an unmapped condition, not proof of Spot preemption. Tenant Audit Logs
+may require a separate scoped read grant; do not switch identities after denial.
+
 Set bounded capacity waits and a documented compatible fallback within existing
 authorization. Do not silently raise quotas, increase pool size, switch to costly
 capacity or restart scientific work. Verify checkpoint availability and the native
