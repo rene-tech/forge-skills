@@ -46,6 +46,14 @@ It reads the compact catalog, narrows by category/group, and loads only the
 selected exact model skill. Raw metadata and evidence stay under `references/`
 until needed, preventing the full catalog from consuming an agent's context.
 
+For NVIDIA Run:ai platform work, use
+[`skills/runai/SKILL.md`](skills/runai/SKILL.md). It routes to version-matched
+technical documentation and focused guides for installation, CLI/REST,
+identity, workloads, scheduling and GPU sharing, inference/NIM, storage,
+multi-cluster operations, Nebius integration, extensions and troubleshooting.
+This hand-authored operational skill is independent of the generated model
+catalog and contains no private deployment configuration.
+
 ## Catalog
 
 - `catalog/models.json` — compact exact-model lookup.
