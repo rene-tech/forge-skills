@@ -27,6 +27,60 @@ credentials are separate. Keep endpoint OAuth authorization enabled for approved
 clients and verify the exact OAuth client ID. `clusterLocalAccessOnly` controls
 exposure; it does not replace authorization.
 
+## Native cache prewarming and local models
+
+Use the [versioned NIM Operator cache workflow](https://docs.nvidia.com/nim-operator/3.1.2/cache-non-llm.html#cache-nims-that-use-model-profiles)
+appropriate to that model. Profile-based NIMs can use explicit
+`source.ngc.model.profiles` and an existing owner PVC; avoid downloading all
+profiles unintentionally. CPU-only prewarming is appropriate when the exact
+model's download path supports it, not a universal NIM guarantee. Keep native
+cache ownership separate from Run:ai inference serving; another serving
+controller or custom preparation wrapper is not inherently required.
+
+Check Ready, completion condition, PVC and immutable source against retained
+successful execution evidence; for profile-based caches, also verify selected
+`status.profiles[].name`. Native-download NIMs can have no profile list. In
+[Operator 3.1.2's controller](https://github.com/NVIDIA/k8s-nim-operator/blob/v3.1.2/internal/controller/nimcache_controller.go#L737),
+cache Jobs have a 600s TTL and a Ready cache does not recreate an expired Job.
+Capture Job/Pod ownership, command, imageID and identity before expiry when
+needed; distinguish a retained successful Pod from a complete Job owner chain.
+A filename listing does not prove weight integrity or scientific validity.
+This release's [validation rejects changed cache specs](https://github.com/NVIDIA/k8s-nim-operator/blob/v3.1.2/internal/webhook/apps/v1alpha1/nimcache_webhook_validation_helper.go#L227),
+including a registry URL change that preserves the image digest. Do not force a
+refresh or assume an in-place mirror update is supported.
+
+Local-model settings are model/version-specific. For example, the versioned
+[Boltz2 NIM 1.10 configuration](https://docs.nvidia.com/nim/bionemo/boltz2/1.10.0/configure.html)
+supports `MODEL_PATH` together with
+`NIM_DISABLE_MODEL_DOWNLOAD=1`; these are not universal NIM variables. Verify
+that the complete pinned assets exist, all later loaders use that directory,
+and skipping download does not leave a required workspace unprepared. Preserve
+the approved serving entrypoint and validate exact metadata and predictions;
+an image tag alone does not establish the reported application version.
+
+## Read-only root and customer-data boundaries
+
+An EROFS startup failure identifies an attempted write path, not GPU
+incompatibility. Inventory the exact image's workspace, model/runtime caches,
+temporary files, home/XDG state and optional output exports. Prefer documented
+local-model/path configuration or supported native mounts over image patches.
+Use the installed Run:ai schema for read-only root, UID/GID, PVC mounts and home
+creation; inspect the admitted Pod and every container's actual mounts.
+
+Read-only root applies per container and does not make mounted volumes
+read-only. Review queue/OAuth sidecars and init containers independently, plus
+`emptyDir`, shared memory and host/node storage. Owner-private PVCs deliberately
+allow same-owner sharing; they do not establish per-request isolation or crash
+erasure. A cache may also receive results through an application's fallback.
+Use [storage qualification](storage-durability.md) for ownership and retention.
+
+A supported high log threshold can suppress input-bearing records at lower
+levels, but is not payload redaction: direct prints, exception responses and
+native libraries can bypass the application logger. Check validation/error
+paths, stdout/stderr, access logs, traces and node log retention. Telemetry-off
+is a separate control. Successful inference with private scratch does not prove
+complete data confinement, snapshot safety or regulated-data suitability.
+
 ## Readiness, initialization and concurrency
 
 Read the installed API, generated Revision and Pod. The **3.0.20** native `Probes`
