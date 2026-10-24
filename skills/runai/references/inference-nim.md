@@ -49,6 +49,11 @@ although VM failure, preemption or eviction can still remove its only replica.
 Align native `concurrencyHardLimit` with actual engine capacity; an autoscaling
 target is a soft target, not the hard request limit.
 
+In [3.0.20's autoscaling validator](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/control-plane/workloads-and-policies/composer/fields_composer.go#L701),
+`minReplicas > 0` requires omitting `scaleToZeroRetentionSeconds` entirely;
+even an explicit zero is rejected. Validate these cross-field rules as well as
+the published request schema when adapting a scale-to-zero fixture.
+
 Verify **effective Pod placement**, not a `nodePools` field echoed by an API.
 The [3.0.20 inference composer](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/control-plane/workloads-and-policies/composer/composer_v2/inference_workloads/compose_helpers.go#L281)
 explicitly skips `nodePools` and `priorityClass` in its placement conversion,
@@ -56,6 +61,12 @@ while it does compose native required node affinity. Policies and CLI translatio
 can also affect the result. Inspect supported CLI/schema translation and actual
 Revision/Pod affinity before claiming a GPU-pool restriction. This release-local
 finding is not a universal limitation or permission to patch the generated Pod.
+
+An unscheduled Pending Pod may not yet have its assignment pool label: the
+[KAI binding path](https://github.com/kai-scheduler/KAI-Scheduler/blob/330e0235c963841a53e079f88ce11b65b88a64f3/pkg/scheduler/cache/cache.go#L342)
+patches it after creating a BindRequest. Check required affinity before binding
+and actual node placement afterward; a missing assignment label alone does not
+prove a placement violation. A present conflicting label still needs investigation.
 
 For example, [Boltz2 NIM1.10 configuration](https://docs.nvidia.com/nim/bionemo/boltz2/1.10.0/configure.html)
 documents one request per GPU and one HTTP worker. Its optional bounded admission
