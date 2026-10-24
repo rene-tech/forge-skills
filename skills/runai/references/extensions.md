@@ -43,6 +43,27 @@ the Operator only for an authorized use case that needs its CRDs/lifecycle.
 An unchanged NIM container can use standard inference without a custom wrapper
 when the documented image/API/prerequisites fit. See [inference](inference-nim.md).
 
+## Dynamo/Grove pool binding
+
+For a `DynamoGraphDeployment` v1beta1 graph that must stay in one native pool,
+set required node affinity in every component's `podTemplate.spec`, including
+the frontend, using that pool's configured node-label key/value. The
+[Run:ai3.0.20 DGD parser](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/runai-cluster/cluster/external-workload-integrator/pkg/handlers/dynamo_graph_deployment_handler.go#L192)
+reads component affinity for native requested pools; a node selector or
+`nvidia.com/kai-scheduler-queue` annotation alone does not bind that list. The
+[pool converter](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/runai-cluster/common/node-pool-utils/converter/converter.go#L27)
+maps required affinity `In` expressions to native pools before falling back to
+object labels and project defaults.
+
+The [shared parser](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/runai-cluster/cluster/external-workload-integrator/pkg/handlers/commonparsers/common_handler.go#L38)
+keeps an already populated `ExternalWorkload.spec.requestedNodePools`; the first
+component can establish it. Correct a missing binding through a fresh graph UID
+and normal owner lifecycle. Before qualification HTTP, match the external
+workload's `spec.originalWorkloadUID` to that graph and require its requested
+list to contain only the intended pool. Recheck after readiness alongside the
+actual PodGroup queue and physical Pod placement. An initially correct queue
+alone is insufficient; verify this release-specific behavior before generalizing.
+
 ## Optional process-snapshot acceleration
 
 Private process-snapshot add-ons are independent of stock Run:ai/KAI/NIM and
