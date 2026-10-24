@@ -116,6 +116,20 @@ voluntary Eviction only when the actor honors it; KAI's stale eviction uses Pod
 DELETE. Check actual matching workload PDBs rather than substituting controller
 PDBs, and retain normal grace periods without force or eviction bypasses.
 
+Before a controlled disruption, verify both initial replicas. During the selected
+target's eviction or loss, pin the known survivor's Pod/node identity, image,
+restarts, readiness and real predictions. The target may become NotReady, reboot
+or be replaced; qualify every recovered Ready replica's actual placement, GPU,
+driver and ownership independently. Preserve interrupted attempts and bound any
+separately authorized case without resetting its deadline.
+
+[Nebius managed maintenance](https://docs.nebius.com/kubernetes/maintenance/index)
+cordons, waits/drains, stops/starts the VM, then uncordons and clears its condition.
+Leave provider-owned maintenance cordons to that controller. For a conflicting
+maintenance window, consider an already prepared authorized region after checking
+capacity, models, cache, data residency and endpoint grants; this is an operator
+procedure, not an automatic regional-failover claim.
+
 The official rolling-update guide budgets both old and new minimum gangs at
 once: two old plus two new replicas require four GPUs/quota in that documented
 mode. Independent grouping does not establish a different zero-downtime rollout
