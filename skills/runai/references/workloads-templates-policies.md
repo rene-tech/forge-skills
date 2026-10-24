@@ -51,6 +51,20 @@ the installed contract before relying on this behavior. Wait for an Active nativ
 namespace, then provision project-scoped PVCs and runtime credentials there.
 Do not manually create a namespace merely to conceal failed reconciliation.
 
+In the [3.0.20 Project guide](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/docs/platform-management/aiinitiatives/organization/projects.md#deleting-a-project),
+Project deletion retains its namespace while attempting workload/asset deletion;
+namespace retention alone is not a leak or a successful complete teardown.
+The [pinned Project GC guard](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/runai-cluster/cluster/agent/pkg/validator/project_garbage_collector.go)
+accepts only the authentic `system:serviceaccount:kube-system:generic-garbage-collector`
+username plus the current ServiceAccount UID, on a deleting Project UPDATE that
+removes only `orphan` and preserves other fields apart from managedFields.
+Managed control planes can use different controller identities: obtain actual
+admission/audit `userInfo` before attributing a stuck finalizer. Source conditions
+or an absent SA alone do not identify the live caller. Do not strip finalizers,
+activate a controller SA's ambient privileges or broaden admission trust without
+explicit authorization. These are privileged recovery exceptions, not ordinary
+Project deletion or proof that reproducible lifecycle works.
+
 ## MPI/distributed jobs
 
 Use native distributed-training/MPI support or a supported training operator.
@@ -65,3 +79,27 @@ Preserve actual user options and protocol. Separate faster execution defaults
 from scientific parameter changes, retries and result validation. Reuse the
 existing engine and native controller; a custom MPI coordinator is not the first
 response to missing capacity or a misconfigured launcher.
+
+### Retry ownership in the checked 3.0.20 path
+
+An omitted native distributed `backoffLimit` becomes `numWorkers × 6`, not zero;
+an explicit value is preserved. See the
+[native composer](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/control-plane/workloads-and-policies/composer/composer_v2/distributed_to_kubeflow/distributed_to_kf.go)
+(`composeBackoffLimit`). MPI Operator v0.6.0 copies that run policy to the
+**launcher Kubernetes Job**; it is not a promise of worker, workload or checkpoint
+recovery.
+
+Inspect outer `spec.mpiReplicaSpecs.Worker.restartPolicy`, its inner
+`template.spec.restartPolicy`, the launcher Job and actual worker Pods separately.
+The native composer writes the supplied restart policy to the inner Pod template;
+the [checked MPI API defaults](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/runai-cluster/cluster/workload-controller/pkg/api/mpijob/v2beta1/constants.go)
+are Worker `Never` and Launcher `OnFailure` when outer policies are omitted.
+[MPI Operator v0.6.0](https://github.com/kubeflow/mpi-operator/blob/v0.6.0/pkg/controller/mpi_job_controller.go)
+overrides the Pod policy from the outer replica policy (`ExitCode` maps to Pod
+`Never`; other values copy through). An inner `OnFailure` therefore does not
+establish effective worker restart behavior. Record owner UIDs and checkpoint
+progress to distinguish launcher backoff, worker recreation, Run:ai workload
+recreation and genuine application resume. Recheck these mappings on upgrades.
+
+MPI and Project lifecycle source facts refreshed **2026-10-24**; these findings
+are version-scoped and contain no deployment qualification claim.
