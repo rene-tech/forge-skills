@@ -68,5 +68,6 @@ For serving, check authorized external requests after idle periods. For batch,
 validate actual artifacts. Admission, Pod Ready, exit zero or unit tests alone do
 not establish scientific validity, durable recovery or production readiness.
 
-Sources checked **2026-10-23**, with MPI/Project lifecycle refresh **2026-10-24**.
+Sources checked **2026-10-23**, with MPI/Project lifecycle and inference
+scheduling refresh **2026-10-24**.
 Recheck version-sensitive facts when used.

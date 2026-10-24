@@ -64,6 +64,54 @@ proof of bounded queuing. Prefer one already-supported control layer and measure
 limits rather than adding another proxy/queue. Do not turn this model-specific
 example into a universal NIM setting.
 
+## Independent replicas and maintenance
+
+Replica count and scheduler gang size are different controls. In checked
+**Run:ai3.0.20 / KAI0.18.3**, the default Knative plugin makes one Revision-owned
+PodGroup whose `minMember` comes from `min-scale`. Thus minimum2 replicas form a
+two-member gang. Losing one member can make KAI evict the survivor as a stale
+gang, including a non-preemptible group. Two replicas alone do not prove
+maintenance failover.
+
+The [published RunaiConfig field](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/runai-cluster/cluster/sdk/apis/run/v1/pod-grouper/types.go#L56)
+defaults to true. Through the existing Run:ai Helm owner, the native option is:
+
+```yaml
+clusterConfig:
+  pod-grouper:
+    args:
+      gangScheduleKnative: false
+```
+
+[Run:ai converts it into KAI Config](https://github.com/dsx-ai-factory/run-ai/blob/74280199d8665d14e12c88f4cd13dd6a408300ca/runai-cluster/cluster/go-operator/internal/run/operands/kai-operator/resources/pod_grouper.go#L19),
+which emits `--knative-gang-schedule=false`. The
+[KAI Knative plugin](https://github.com/kai-scheduler/KAI-Scheduler/blob/330e0235c963841a53e079f88ce11b65b88a64f3/pkg/podgrouper/podgrouper/plugins/knative/knative.go#L72)
+then creates a Pod-owned group with minimum1 for each Pod while native
+`autoscaling.minReplicas` can remain2. This changes regional Knative grouping,
+not MPI or batch grouping. Do not use the batch-only `kai.scheduler/batch-min-member`
+annotation as a Knative override or assume existing groups migrate automatically.
+Inspect fresh groups and preserve the workload's required placement and quotas.
+
+This per-Pod path selects PriorityClass `inference` (125). KAI's
+[preemptibility fallback](https://github.com/kai-scheduler/KAI-Scheduler/blob/330e0235c963841a53e079f88ce11b65b88a64f3/pkg/common/podgroup/preemptible.go#L14)
+uses non-preemptible when the explicit enum is omitted and priority is at least100.
+Inspect the actual PodGroup and PriorityClass: the Kubernetes Pod's own
+`spec.priority` can be0 and is not proof of KAI's scheduling priority. Review
+effects on any custom Knative priority settings and Revision-wide allocation.
+
+Use the provider's documented serialized-maintenance procedure. Non-preemptible
+autoscaler annotations are not a workload PodDisruptionBudget (PDB). A PDB limits
+voluntary Eviction only when the actor honors it; KAI's stale eviction uses Pod
+DELETE. Check actual matching workload PDBs rather than substituting controller
+PDBs, and retain normal grace periods without force or eviction bypasses.
+
+The official rolling-update guide budgets both old and new minimum gangs at
+once: two old plus two new replicas require four GPUs/quota in that documented
+mode. Independent grouping does not establish a different zero-downtime rollout
+guarantee. Cloud node minimum0 also does not override an active inference
+minimum2. Qualify the chosen availability/cost tradeoff with actual survivor
+requests during a bounded disruption and verify owned cleanup afterward.
+
 ## Diagnose and qualify
 
 | Observation | Distinction to resolve |
