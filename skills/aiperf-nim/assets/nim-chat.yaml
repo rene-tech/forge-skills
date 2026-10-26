@@ -1,0 +1,44 @@
+# AIPerf 0.13.0, schema 2.0. Small synthetic smoke example, not a capacity test.
+# Set NIM_MODEL to the exact served ID and NIM_TOKENIZER to its tokenizer.
+# NIM_URL is the origin, e.g. http://localhost:8000, WITHOUT /v1.
+# For a gateway prefix, change endpoint.path to the actual complete route.
+# NIM_API_KEY may be empty for a confirmed unauthenticated local endpoint.
+schemaVersion: "2.0"
+randomSeed: 42
+
+benchmark:
+  model: ${NIM_MODEL}
+  endpoint:
+    url: ${NIM_URL}
+    path: /v1/chat/completions
+    type: chat
+    streaming: true
+    api_key: ${NIM_API_KEY:}
+    timeout: 60
+    # Match the actual NIM API schema; set false if it requires the newer field.
+    use_legacy_max_tokens: true
+  tokenizer:
+    name: ${NIM_TOKENIZER}
+    revision: ${NIM_TOKENIZER_REVISION}
+    apply_chat_template: true
+  dataset:
+    type: synthetic
+    entries: 25
+    prompts:
+      isl: {mean: 512, stddev: 0}
+      osl: {mean: 128, stddev: 0}
+  phases:
+    - name: warmup
+      type: concurrency
+      concurrency: 1
+      requests: 5
+      duration: 60
+    - name: profiling
+      type: concurrency
+      concurrency: 1
+      requests: 20
+      duration: 120
+  artifacts:
+    dir: ${AIPERF_ARTIFACT_DIR}
+    summary: [json] # The CSV summary is emitted separately by AIPerf.
+    records: [jsonl]

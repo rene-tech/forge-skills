@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import tempfile
@@ -122,12 +123,35 @@ class CatalogTest(unittest.TestCase):
     def test_hand_authored_skills_have_portable_frontmatter(self) -> None:
         for path in sorted((ROOT / "skills").glob("**/SKILL.md")):
             text = path.read_text(encoding="utf-8")
-            match = re.match(
-                r"^---\nname: ([a-z0-9-]+)\ndescription: (.+?)\n---\n",
-                text,
-            )
+            match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
             self.assertIsNotNone(match, str(path))
-            self.assertLessEqual(len(match.group(1)), 63)
+            # Official skills also use folded descriptions and license/metadata
+            # fields. Preserve those bytes instead of imposing our generator's
+            # two-line scalar serialization on every author.
+            frontmatter = match.group(1)
+            name = re.search(r"^name: ([a-z0-9]+(?:-[a-z0-9]+)*)$", frontmatter, re.MULTILINE)
+            description = re.search(
+                r"^description: ([^\n]+)((?:\n[ \t]+[^\n]*)*)",
+                frontmatter,
+                re.MULTILINE,
+            )
+            self.assertIsNotNone(name, str(path))
+            self.assertLessEqual(len(name.group(1)), 63)
+            self.assertIsNotNone(description, str(path))
+            if description.group(1).strip() in {">", ">-", ">+", "|", "|-", "|+"}:
+                self.assertTrue(description.group(2).strip(), str(path))
+            else:
+                self.assertTrue(description.group(1).strip().strip("\"'"), str(path))
+
+    def test_vendored_upstream_files_match_pinned_manifests(self) -> None:
+        for manifest in sorted((ROOT / "skills").glob("*/upstream.json")):
+            metadata = json.loads(manifest.read_text(encoding="utf-8"))
+            self.assertRegex(metadata["revision"], r"^[0-9a-f]{40}$")
+            self.assertTrue(metadata["files"], str(manifest))
+            for entry in metadata["files"]:
+                path = manifest.parent / entry["path"]
+                self.assertTrue(path.is_file(), str(path))
+                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), entry["sha256"], str(path))
 
     def test_nebius_router_has_executable_forge_serverless_leaf(self) -> None:
         router = (ROOT / "skills" / "nebius" / "SKILL.md").read_text(

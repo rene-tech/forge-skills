@@ -54,6 +54,30 @@ multi-cluster operations, Nebius integration, extensions and troubleshooting.
 This hand-authored operational skill is independent of the generated model
 catalog and contains no private deployment configuration.
 
+## NVIDIA benchmarking skills
+
+- [`aiperf-nim`](skills/aiperf-nim/SKILL.md): a community-authored NIM workflow
+  with a parser-validated AIPerf 0.13.0 configuration, authentication, workload
+  design, SLO goodput and measurement guidance.
+- [`nvidia-dynamo`](skills/nvidia-dynamo/upstream.json): unchanged official
+  `configure-aiperf-benchmark`, `run-aiperf-benchmark` and
+  `analyze-aiperf-results`, with their referenced upstream rules packaged beside
+  them. Workload/deployment/recipe paths still require a matching Dynamo checkout.
+- [`nvidia-aiperf`](skills/nvidia-aiperf/upstream.json): unchanged official
+  `aiperf-kube-setup`, `aiperf-kube-run`, `aiperf-kube-sweep` and
+  `aiperf-kube-triage`, including bundled references and their upstream verifier.
+
+Both upstream packs preserve licenses and record exact commits/file hashes.
+Their commands and assumptions belong to those revisions; inspect the installed
+CLI before use. The Kubernetes verifier requires the matching AIPerf source
+checkout. AIPerf performance measurements are not MLPerf compliance or accuracy
+evaluations, and installing these skills does not launch any benchmarks.
+
+For Codex and Claude Code, expose each selected directory containing `SKILL.md`
+under `~/.codex/skills/<name>` and `~/.claude/skills/<name>`. Symlinks to this
+checkout preserve the adjacent Dynamo rules; do not copy only its `SKILL.md`.
+Keep existing skills intact. Reload skill discovery in a new session if needed.
+
 ## Catalog
 
 - `catalog/models.json` — compact exact-model lookup.
