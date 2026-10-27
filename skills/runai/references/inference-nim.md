@@ -191,6 +191,31 @@ guarantee. Cloud node minimum0 also does not override an active inference
 minimum2. Qualify the chosen availability/cost tradeoff with actual survivor
 requests during a bounded disruption and verify owned cleanup afterward.
 
+## Observed shutdown and shared-service edge cases
+
+On a tested Boltz2 NIM 1.10.0-derived image, SIGTERM released the default thread
+launcher's wait, then Python atexit waited on a live GPU worker. The vendor
+`NIM_USE_MULTIPROCESSING_FOR_INFERENCE=true` path put inference on a child main
+thread; with separately approved SIGTERM forwarding it passed repeat wake and
+natural shutdown. Verify the exact image's OCI PID1 → launcher → inference → worker
+signal chain. This model/version-specific finding is not permission to patch images;
+the [NVIDIA example using this flag](https://nvidia.github.io/xr-ai/v0.2.0-beta.2/reference/configuration.html#yaml-96g-blackwell-nim-stt-server-yaml) concerns another NIM, not a Boltz2 guarantee.
+
+For a bounded release test (for example, 300s), start at actual HTTP completion,
+before owner uploads, validators or authorization probes. Track each Pod UID to
+conservative first absence and actual main-container exit status, beyond desired zero.
+Preserve old-UID deadlines during another wake and budget terminating replicas.
+
+For same-cluster public HTTPS, inspect Service/DNAT identity and target port:
+external 443 may reach internal ingress 8443. An FQDN allow for 443 can fail after
+translation. Use narrowly selected native Service/backend access at the actual
+port; retain TLS/authentication and recheck peer-Pod and metadata-service denials.
+
+Shared Boltz2 clients can read their owner bucket and persist inline results;
+the model need not receive bucket credentials. Private memory-backed output mounts
+provide Pod isolation, not immediate per-request erasure. Check actual artifact routes
+and retention; an absent download route does not establish regulated-data readiness.
+
 ## Diagnose and qualify
 
 | Observation | Distinction to resolve |
