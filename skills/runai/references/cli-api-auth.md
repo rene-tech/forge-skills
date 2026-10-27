@@ -21,6 +21,12 @@ print environment/configuration, enable shell tracing or commit auth responses.
 Refresh for actual expiry with bounded transport retry. Never retry a denied
 action with broader credentials as an unrequested workaround.
 
+A live 3.0.20 test of simultaneous valid password grants to `/api/v2/token` for
+one user returned 401/200 without shared-file I/O; five serial grants succeeded.
+For this symptom, verify the exact grant before assuming a bad secret or rotating
+it. Reuse an unexpired bearer; test serialized renewal per identity and atomic
+token storage in concurrent clients. This is an observed version-specific symptom.
+
 Read-only paths checked in the **3.0.20** assembled spec:
 
 ```sh
